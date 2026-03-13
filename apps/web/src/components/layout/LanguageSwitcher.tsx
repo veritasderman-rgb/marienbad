@@ -23,7 +23,8 @@ export function LanguageSwitcher() {
   }, [])
 
   function switchLocale(newLocale: Locale) {
-    router.replace(pathname, { locale: newLocale })
+    // At runtime pathname is always a concrete path; the union type includes dynamic segments
+    router.replace(pathname as '/', { locale: newLocale })
     setOpen(false)
   }
 
