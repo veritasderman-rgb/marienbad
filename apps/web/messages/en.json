@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "siteName": "Marienbad.com",
+    "tagline": "Your Guide to Mariánské Lázně",
+    "description": "Discover Marienbad – mineral springs, spa, culture, history and the People of the Colonnade."
+  },
+  "nav": {
+    "home": "Home",
+    "mineralSprings": "Mineral Springs & Spa",
+    "thingsToDo": "Things to Do",
+    "accommodation": "Where to Stay",
+    "history": "History & Culture",
+    "practicalInfo": "Practical Info",
+    "people": "People of Colonnade",
+    "magazine": "Magazine",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "home": {
+    "heroTitle": "Welcome to Marienbad",
+    "heroSubtitle": "Where healing springs meet timeless elegance",
+    "heroCta": "Explore",
+    "sections": {
+      "springs": "Healing Springs & Spa",
+      "springsDesc": "Discover the mineral springs that have made Marienbad famous for centuries.",
+      "thingsToDo": "Things to Do",
+      "thingsToDoDesc": "From the Singing Fountain to the Royal Golf Club – experience the best.",
+      "accommodation": "Where to Stay",
+      "accommodationDesc": "Find your perfect stay – from historic spa hotels to cozy guesthouses.",
+      "history": "History & Culture",
+      "historyDesc": "UNESCO heritage, famous visitors and fascinating architecture.",
+      "people": "People of Colonnade",
+      "peopleDesc": "Real stories from real visitors. Why they keep coming back."
+    }
+  },
+  "people": {
+    "title": "People of the Colonnade",
+    "subtitle": "Real stories. Real people. A place that connects.",
+    "shareYourStory": "Share Your Story",
+    "allStories": "All Stories",
+    "archetypes": {
+      "loyal": "Loyal Guests",
+      "firstVisit": "First Visits",
+      "healing": "Healing",
+      "love": "Love",
+      "generation": "Generations",
+      "cultural": "Culture",
+      "local": "Locals",
+      "faraway": "From Afar"
+    },
+    "visitCount": "Visit #{count}",
+    "readMore": "Read Story"
+  },
+  "ensana": {
+    "ctaTitle": "Experience It Yourself",
+    "ctaText": "Ensana Health Spa Hotels offer authentic spa experiences in the heart of Marienbad.",
+    "ctaButton": "Learn More",
+    "editorsChoice": "Editor's Choice"
+  },
+  "footer": {
+    "about": "About Marienbad.com",
+    "aboutText": "Your independent guide to Mariánské Lázně – mineral springs, culture, history and the people who make this place special.",
+    "quickLinks": "Quick Links",
+    "newsletter": "Newsletter",
+    "newsletterText": "Get the best stories and tips delivered monthly.",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "privacy": "Privacy Policy",
+    "imprint": "Imprint",
+    "copyright": "© {year} Marienbad.com. All rights reserved."
+  },
+  "common": {
+    "readMore": "Read More",
+    "backTo": "Back to {page}",
+    "shareArticle": "Share Article",
+    "relatedArticles": "Related Articles",
+    "lastUpdated": "Last updated: {date}",
+    "minRead": "{minutes} min read",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page Not Found",
+    "tableOfContents": "Table of Contents"
+  }
+}

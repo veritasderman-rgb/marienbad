@@ -1,0 +1,19 @@
+version: '3.9'
+
+# Local development environment
+# Supabase is used in production — this provides local PostgreSQL for dev
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: marienbad
+      POSTGRES_USER: marienbad
+      POSTGRES_PASSWORD: marienbad_dev_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
