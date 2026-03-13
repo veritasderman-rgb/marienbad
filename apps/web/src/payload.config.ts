@@ -63,7 +63,7 @@ export default buildConfig({
 
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/marienbad',
     },
   }),
 
@@ -87,10 +87,10 @@ export default buildConfig({
   },
 
   cors: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   ],
   csrf: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   ],
 
   secret: process.env.PAYLOAD_SECRET || 'CHANGE-ME-IN-PRODUCTION',
