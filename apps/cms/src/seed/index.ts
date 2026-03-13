@@ -452,29 +452,29 @@ export async function seed(payload: Payload) {
 
   // 1. Categories
   console.log('  → Categories')
-  const categoryMap: Record<string, string> = {}
+  const categoryMap: Record<string, number> = {}
   for (const cat of seedCategories) {
     const created = await payload.create({
       collection: 'categories',
       data: { name: cat.name.en, slug: cat.slug, description: cat.description.en },
     })
-    categoryMap[cat.slug] = created.id as string
+    categoryMap[cat.slug] = created.id as number
   }
 
   // 2. Authors
   console.log('  → Authors')
-  const authorMap: Record<string, string> = {}
+  const authorMap: Record<string, number> = {}
   for (const author of seedAuthors) {
     const created = await payload.create({
       collection: 'authors',
       data: author,
     })
-    authorMap[author.email] = created.id as string
+    authorMap[author.email] = created.id as number
   }
 
   // 3. Pages
   console.log('  → Pages')
-  const pageMap: Record<string, string> = {}
+  const pageMap: Record<string, number> = {}
   for (const page of seedPages) {
     const created = await payload.create({
       collection: 'pages',
@@ -501,7 +501,7 @@ export async function seed(payload: Payload) {
         publishedAt: page.publishedAt,
       },
     })
-    pageMap[page.slug.en] = created.id as string
+    pageMap[page.slug.en] = created.id as number
   }
 
   // 4. Articles
@@ -587,8 +587,8 @@ export async function seed(payload: Payload) {
   await payload.updateGlobal({
     slug: 'site-settings',
     data: {
-      siteTitle: seedSiteSettings.siteTitle.en,
-      siteDescription: seedSiteSettings.siteDescription.en,
+      siteName: seedSiteSettings.siteTitle.en,
+      tagline: seedSiteSettings.siteDescription.en,
     },
   })
 
