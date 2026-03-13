@@ -1,9 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
+  "buildCommand": "pnpm turbo run build --filter=@marienbad/web",
   "installCommand": "pnpm install",
-  "buildCommand": "cd ../.. && pnpm turbo run build --filter=@marienbad/web",
-  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "outputDirectory": "apps/web/.next",
   "regions": ["fra1"],
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap" },
