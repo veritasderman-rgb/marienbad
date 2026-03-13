@@ -17,5 +17,4 @@ export const localeFlags: Record<Locale, string> = {
   cs: '🇨🇿',
 }
 
-// Only DE and EN for launch phase, RU and CS prepared for phase 2
-export const activeLocales: Locale[] = ['de', 'en']
+export const activeLocales: Locale[] = ['de', 'en', 'ru', 'cs']
