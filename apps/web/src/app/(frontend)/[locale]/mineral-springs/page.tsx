@@ -35,7 +35,7 @@ export default async function MineralSpringsPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale })
   const page = await getPageBySlug('mineral-springs', locale as any)
-  const relatedArticles = page?.id ? await getArticlesByPillar(page.id, locale as any) : []
+  const relatedArticles = page?.id ? await getArticlesByPillar(String(page.id), locale as any) : []
 
   const faqItems = page?.faq?.length ? page.faq : fallbackFaq
   const toc = page?.tableOfContents?.length
