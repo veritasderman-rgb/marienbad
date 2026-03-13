@@ -64,6 +64,7 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/marienbad',
+      ...(process.env.DATABASE_URL ? { ssl: { rejectUnauthorized: false } } : {}),
     },
     push: true,
   }),
