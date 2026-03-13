@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { SectionCard } from '@/components/sections/SectionCard'
 import { PeopleCarousel } from '@/components/people/PeopleCarousel'
+import { getPeopleStories } from '@/lib/api'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -17,44 +17,50 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default function HomePage() {
-  const t = useTranslations('home')
-  const tNav = useTranslations('nav')
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'home' })
+  const tNav = await getTranslations({ locale, namespace: 'nav' })
+
+  const cmsStories = await getPeopleStories(locale as any, { limit: 3 })
+  const carouselStories = cmsStories.length > 0
+    ? cmsStories.map((s: any) => ({
+        name: s.name,
+        country: s.country,
+        pullQuote: s.pullQuote,
+        archetype: s.archetype,
+      }))
+    : undefined
 
   const sections = [
     {
       title: t('sections.springs'),
       description: t('sections.springsDesc'),
       href: '/mineral-springs' as const,
-      image: '/images/springs-placeholder.jpg',
       gradient: 'from-primary-600 to-primary-800',
     },
     {
       title: t('sections.thingsToDo'),
       description: t('sections.thingsToDoDesc'),
       href: '/things-to-do' as const,
-      image: '/images/things-placeholder.jpg',
       gradient: 'from-accent-600 to-accent-800',
     },
     {
       title: t('sections.accommodation'),
       description: t('sections.accommodationDesc'),
       href: '/accommodation' as const,
-      image: '/images/accommodation-placeholder.jpg',
       gradient: 'from-stone-600 to-stone-800',
     },
     {
       title: t('sections.history'),
       description: t('sections.historyDesc'),
       href: '/history' as const,
-      image: '/images/history-placeholder.jpg',
       gradient: 'from-primary-700 to-primary-950',
     },
     {
       title: t('sections.people'),
       description: t('sections.peopleDesc'),
       href: '/people' as const,
-      image: '/images/people-placeholder.jpg',
       gradient: 'from-accent-700 to-accent-950',
     },
   ]
@@ -86,7 +92,7 @@ export default function HomePage() {
       {/* People of Colonnade Preview */}
       <section className="bg-primary-950 text-white py-16 md:py-24">
         <div className="container-wide">
-          <PeopleCarousel />
+          <PeopleCarousel stories={carouselStories} />
         </div>
       </section>
     </>

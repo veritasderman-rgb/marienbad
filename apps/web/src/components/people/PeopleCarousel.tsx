@@ -3,8 +3,14 @@
 import { useTranslations } from 'next-intl'
 import { Link } from '@/lib/i18n/navigation'
 
-// Placeholder stories for homepage carousel — will be replaced by CMS data
-const placeholderStories = [
+type CarouselStory = {
+  name: string
+  country: string
+  pullQuote: string
+  archetype: string
+}
+
+const placeholderStories: CarouselStory[] = [
   {
     name: 'Helga',
     country: 'Österreich',
@@ -25,8 +31,13 @@ const placeholderStories = [
   },
 ]
 
-export function PeopleCarousel() {
+type Props = {
+  stories?: CarouselStory[]
+}
+
+export function PeopleCarousel({ stories }: Props) {
   const t = useTranslations('people')
+  const displayStories = stories && stories.length > 0 ? stories : placeholderStories
 
   return (
     <div>
@@ -41,7 +52,7 @@ export function PeopleCarousel() {
 
       {/* Stories */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-        {placeholderStories.map((story) => (
+        {displayStories.map((story) => (
           <div key={story.name} className="bg-primary-900/50 rounded-2xl p-6 md:p-8">
             <blockquote className="text-lg text-stone-300 italic leading-relaxed mb-6">
               &ldquo;{story.pullQuote}&rdquo;
