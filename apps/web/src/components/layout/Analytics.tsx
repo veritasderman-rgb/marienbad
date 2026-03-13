@@ -19,33 +19,38 @@ export function Analytics() {
           gtag('config', '${GA_MEASUREMENT_ID}', {
             page_title: document.title,
             page_location: window.location.href,
+            send_page_view: true,
+            cookie_flags: 'SameSite=None;Secure',
           });
+        `}
+      </Script>
+      <Script id="ga4-scroll-tracking" strategy="afterInteractive">
+        {`
+          (function() {
+            var thresholds = [25, 50, 75, 100];
+            var fired = {};
+            function getScrollPercent() {
+              var h = document.documentElement;
+              var b = document.body;
+              var st = h.scrollTop || b.scrollTop;
+              var sh = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+              return sh > 0 ? Math.round((st / sh) * 100) : 0;
+            }
+            window.addEventListener('scroll', function() {
+              var pct = getScrollPercent();
+              for (var i = 0; i < thresholds.length; i++) {
+                if (pct >= thresholds[i] && !fired[thresholds[i]]) {
+                  fired[thresholds[i]] = true;
+                  gtag('event', 'scroll_depth', {
+                    event_category: 'engagement',
+                    value: thresholds[i],
+                  });
+                }
+              }
+            }, { passive: true });
+          })();
         `}
       </Script>
     </>
   )
-}
-
-/**
- * Track Ensana CTA clicks
- * Usage: onClick={() => trackEnsanaCTA('mineral-springs', 'sidebar')}
- */
-export function trackEnsanaCTA(campaign: string, position: string) {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
-    ;(window as any).gtag('event', 'ensana_cta_click', {
-      event_category: 'conversion',
-      event_label: campaign,
-      cta_position: position,
-    })
-  }
-}
-
-export function trackEnsanaCTAView(campaign: string, position: string) {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
-    ;(window as any).gtag('event', 'ensana_cta_view', {
-      event_category: 'engagement',
-      event_label: campaign,
-      cta_position: position,
-    })
-  }
 }

@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import { EnsanaCTABox } from '@/components/ensana/EnsanaCTABox'
+import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
@@ -27,6 +28,21 @@ export default async function ClusterArticlePage({ params }: Props) {
 
   return (
     <article>
+      <ArticleJsonLd
+        title={title}
+        description={`${title} — Mineral Springs & Spa guide for Marienbad`}
+        url={`/mineral-springs/${slug}`}
+        publishedTime="2026-03-10T00:00:00.000Z"
+        locale={locale}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Mineral Springs', url: `/${locale}/mineral-springs` },
+          { name: title, url: `/${locale}/mineral-springs/${slug}` },
+        ]}
+      />
+
       {/* Article header */}
       <header className="bg-primary-950 text-white py-16 md:py-20">
         <div className="container-narrow">

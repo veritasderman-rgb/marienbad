@@ -5,6 +5,8 @@ import { getMessages, getTranslations } from 'next-intl/server'
 import { locales } from '@/lib/i18n/config'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { Analytics } from '@/components/layout/Analytics'
+import { TouristDestinationJsonLd, WebSiteJsonLd } from '@/components/seo/JsonLd'
 import '@/styles/globals.css'
 
 type Props = {
@@ -65,6 +67,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="min-h-screen flex flex-col bg-stone-50 text-stone-900 antialiased">
         <NextIntlClientProvider messages={messages}>
+          <TouristDestinationJsonLd />
+          <WebSiteJsonLd />
+          <Analytics />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

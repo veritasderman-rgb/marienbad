@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { EnsanaCTABox } from '@/components/ensana/EnsanaCTABox'
+import { FAQJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -44,6 +45,14 @@ export default function MineralSpringsPage() {
 
   return (
     <>
+      <FAQJsonLd items={faqItems} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Mineral Springs', url: '/mineral-springs' },
+        ]}
+      />
+
       <HeroSection
         title={t('nav.mineralSprings')}
         subtitle={
