@@ -69,21 +69,48 @@ importers:
       '@marienbad/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@payloadcms/db-postgres':
+        specifier: ^3.14.0
+        version: 3.79.0(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))
+      '@payloadcms/next':
+        specifier: ^3.14.0
+        version: 3.79.0(@types/react@19.2.14)(graphql@16.13.1)(monaco-editor@0.55.1)(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+      '@payloadcms/plugin-seo':
+        specifier: ^3.14.0
+        version: 3.79.0(@types/react@19.2.14)(monaco-editor@0.55.1)(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+      '@payloadcms/richtext-lexical':
+        specifier: ^3.14.0
+        version: 3.79.0(@faceless-ui/modal@3.0.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@payloadcms/next@3.79.0(@types/react@19.2.14)(graphql@16.13.1)(monaco-editor@0.55.1)(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(@types/react@19.2.14)(monaco-editor@0.55.1)(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)(yjs@13.6.29)
+      '@payloadcms/storage-s3':
+        specifier: ^3.14.0
+        version: 3.79.0(@types/react@19.2.14)(monaco-editor@0.55.1)(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+      '@payloadcms/ui':
+        specifier: ^3.14.0
+        version: 3.79.0(@types/react@19.2.14)(monaco-editor@0.55.1)(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       next:
         specifier: ^15.2.0
         version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4)
       next-intl:
         specifier: ^4.1.0
         version: 4.8.3(next@15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.77.4))(react@19.2.4)(typescript@5.9.3)
+      payload:
+        specifier: ^3.14.0
+        version: 3.79.0(graphql@16.13.1)(typescript@5.9.3)
       react:
         specifier: ^19.0.0
         version: 19.2.4
       react-dom:
         specifier: ^19.0.0
         version: 19.2.4(react@19.2.4)
+      sharp:
+        specifier: ^0.33.0
+        version: 0.33.5
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.0.0
@@ -109,6 +136,9 @@ importers:
       tailwindcss:
         specifier: ^4.0.0
         version: 4.2.1
+      tsx:
+        specifier: ^4.0.0
+        version: 4.21.0
       typescript:
         specifier: ^5.7.0
         version: 5.9.3

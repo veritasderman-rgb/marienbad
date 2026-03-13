@@ -2,11 +2,13 @@
   "name": "@marienbad/web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts next dev",
+    "build": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts next build",
+    "start": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts next start",
+    "lint": "next lint",
+    "seed": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx src/seed.ts"
   },
   "dependencies": {
     "next": "^15.2.0",
@@ -14,7 +16,16 @@
     "react-dom": "^19.0.0",
     "next-intl": "^4.1.0",
     "clsx": "^2.1.1",
-    "@marienbad/shared": "workspace:*"
+    "@marienbad/shared": "workspace:*",
+    "payload": "^3.14.0",
+    "@payloadcms/db-postgres": "^3.14.0",
+    "@payloadcms/richtext-lexical": "^3.14.0",
+    "@payloadcms/storage-s3": "^3.14.0",
+    "@payloadcms/plugin-seo": "^3.14.0",
+    "@payloadcms/next": "^3.14.0",
+    "@payloadcms/ui": "^3.14.0",
+    "cross-env": "^7.0.3",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -25,6 +36,7 @@
     "@tailwindcss/postcss": "^4.0.0",
     "postcss": "^8.5.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^15.2.0"
+    "eslint-config-next": "^15.2.0",
+    "tsx": "^4.0.0"
   }
 }
