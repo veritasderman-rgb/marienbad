@@ -6,6 +6,8 @@
       "outputs": [".next/**", "!.next/cache/**", "dist/**"],
       "env": [
         "DATABASE_URL",
+        "POSTGRES_URL",
+        "POSTGRES_URL_NON_POOLING",
         "PAYLOAD_SECRET",
         "PAYLOAD_CONFIG_PATH",
         "NEXT_PUBLIC_SITE_URL"
