@@ -65,6 +65,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/marienbad',
     },
+    push: true,
   }),
 
   plugins: [
