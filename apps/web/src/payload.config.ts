@@ -23,6 +23,18 @@ import { SiteSettings } from './globals/SiteSettings'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const resolvedDatabaseUrl = (() => {
+  if (process.env.DATABASE_URL) {
+    return process.env.DATABASE_URL
+  }
+
+  if (process.env.USE_VERCEL_POSTGRES === 'true') {
+    return process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING || ''
+  }
+
+  return ''
+})()
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -63,8 +75,8 @@ export default buildConfig({
 
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING || 'postgresql://localhost:5432/marienbad',
-      ...((process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING) ? { ssl: { rejectUnauthorized: false } } : {}),
+      connectionString: resolvedDatabaseUrl || 'postgresql://localhost:5432/marienbad',
+      ...(resolvedDatabaseUrl ? { ssl: { rejectUnauthorized: false } } : {}),
     },
     push: true,
   }),
