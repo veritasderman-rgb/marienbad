@@ -23,6 +23,28 @@ import { SiteSettings } from './globals/SiteSettings'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const resolvedDatabaseUrl = (() => {
+  const databaseUrl = process.env.DATABASE_URL || ''
+  const vercelPostgresUrl = process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING || ''
+  const runningOnVercel = process.env.VERCEL === '1'
+
+  // On Vercel, prefer platform-provided Postgres URL if available.
+  // This avoids hard failures when DATABASE_URL contains a stale Supabase host.
+  if (runningOnVercel && vercelPostgresUrl) {
+    return vercelPostgresUrl
+  }
+
+  if (databaseUrl) {
+    return databaseUrl
+  }
+
+  if (process.env.USE_VERCEL_POSTGRES === 'true' && vercelPostgresUrl) {
+    return vercelPostgresUrl
+  }
+
+  return ''
+})()
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -63,8 +85,8 @@ export default buildConfig({
 
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING || 'postgresql://localhost:5432/marienbad',
-      ...((process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_URL_NON_POOLING) ? { ssl: { rejectUnauthorized: false } } : {}),
+      connectionString: resolvedDatabaseUrl || 'postgresql://localhost:5432/marienbad',
+      ...(resolvedDatabaseUrl ? { ssl: { rejectUnauthorized: false } } : {}),
     },
     push: true,
   }),
