@@ -1,0 +1,94 @@
+---
+import type { Locale } from '@/i18n/config'
+import { localeNames } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import { getNavItems } from '@/i18n/utils'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const navItems = getNavItems(locale)
+const otherLocales = (['de', 'en', 'cs', 'ru'] as const).filter((l) => l !== locale)
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+  <div class="container-wide">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href={`/${locale}`} class="flex items-center gap-1 shrink-0">
+        <span class="font-heading text-xl md:text-2xl font-bold text-primary-800">Marienbad</span>
+        <span class="text-accent-500 text-lg">.com</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        {navItems.map(({ navKey, href }) => (
+          <a
+            href={href}
+            class="px-3 py-2 text-sm font-medium text-stone-700 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors"
+          >
+            {t(locale, navKey as any)}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div class="relative group">
+          <button class="px-2 py-1 text-sm font-medium text-stone-600 hover:text-primary-700 border border-stone-200 rounded-md">
+            {localeNames[locale]}
+          </button>
+          <div class="absolute right-0 mt-1 w-32 bg-white border border-stone-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+            {otherLocales.map((l) => (
+              <a
+                href={`/${l}`}
+                class="block px-4 py-2 text-sm text-stone-700 hover:bg-primary-50 hover:text-primary-700"
+              >
+                {localeNames[l]}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 text-stone-700 hover:text-primary-700 hover:bg-primary-50 rounded-lg"
+          aria-label={t(locale, 'nav.menu')}
+        >
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="hidden lg:hidden bg-white border-t border-stone-200">
+    <nav class="container-wide py-4 flex flex-col gap-1">
+      {navItems.map(({ navKey, href }) => (
+        <a
+          href={href}
+          class="px-4 py-3 text-base font-medium text-stone-700 hover:text-primary-700 hover:bg-primary-50 rounded-lg"
+        >
+          {t(locale, navKey as any)}
+        </a>
+      ))}
+      <div class="border-t border-stone-200 mt-2 pt-2 flex gap-2">
+        {otherLocales.map((l) => (
+          <a
+            href={`/${l}`}
+            class="px-3 py-2 text-sm text-stone-600 hover:text-primary-700 border border-stone-200 rounded-md"
+          >
+            {localeNames[l]}
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn')
+  const nav = document.getElementById('mobile-nav')
+  btn?.addEventListener('click', () => nav?.classList.toggle('hidden'))
+</script>

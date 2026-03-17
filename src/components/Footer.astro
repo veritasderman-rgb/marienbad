@@ -1,0 +1,56 @@
+---
+import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import { getNavItems } from '@/i18n/utils'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const navItems = getNavItems(locale)
+const year = new Date().getFullYear()
+---
+
+<footer class="bg-primary-950 text-white">
+  <div class="container-wide py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <div>
+        <div class="flex items-center gap-1 mb-4">
+          <span class="font-heading text-xl font-bold">Marienbad</span>
+          <span class="text-accent-400">.com</span>
+        </div>
+        <p class="text-stone-300 text-sm leading-relaxed">
+          {t(locale, 'footer.aboutText')}
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-heading text-lg font-semibold mb-4">{t(locale, 'footer.quickLinks')}</h3>
+        <nav class="flex flex-col gap-2">
+          {navItems.slice(0, 5).map(({ navKey, href }) => (
+            <a href={href} class="text-stone-300 hover:text-accent-400 text-sm transition-colors">
+              {t(locale, navKey as any)}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div>
+        <h3 class="font-heading text-lg font-semibold mb-4">Mariánské Lázně</h3>
+        <p class="text-stone-300 text-sm leading-relaxed mb-4">
+          Czech Republic, Europe<br />
+          UNESCO World Heritage Site
+        </p>
+        <div class="flex gap-4 text-sm">
+          <a href="#" class="text-stone-400 hover:text-accent-400 transition-colors">{t(locale, 'footer.privacy')}</a>
+          <a href="#" class="text-stone-400 hover:text-accent-400 transition-colors">{t(locale, 'footer.imprint')}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-primary-800 mt-8 pt-8 text-center text-stone-400 text-sm">
+      &copy; {year} Marienbad.com
+    </div>
+  </div>
+</footer>

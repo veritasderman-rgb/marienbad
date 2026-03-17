@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string
+  subtitle: string
+  ctaText: string
+  ctaHref: string
+}
+
+const { title, subtitle, ctaText, ctaHref } = Astro.props
+---
+
+<section class="relative bg-primary-950 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-950/80 to-primary-950"></div>
+  <div class="relative container-wide py-24 md:py-36 lg:py-44">
+    <div class="max-w-3xl">
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        {title}
+      </h1>
+      <p class="text-lg md:text-xl text-stone-300 mb-8 max-w-2xl">
+        {subtitle}
+      </p>
+      <a
+        href={ctaHref}
+        class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-lg transition-colors"
+      >
+        {ctaText}
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

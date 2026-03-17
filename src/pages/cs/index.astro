@@ -1,0 +1,53 @@
+---
+import Base from '@/layouts/Base.astro'
+import HeroSection from '@/components/HeroSection.astro'
+import SectionCard from '@/components/SectionCard.astro'
+import { t } from '@/i18n/ui'
+import { localizedHref } from '@/i18n/utils'
+
+const locale = 'cs' as const
+---
+
+<Base locale={locale}>
+  <HeroSection
+    title={t(locale, 'home.heroTitle')}
+    subtitle={t(locale, 'home.heroSubtitle')}
+    ctaText={t(locale, 'home.heroCta')}
+    ctaHref={localizedHref(locale, 'mineral-springs')}
+  />
+
+  <section class="container-wide py-16 md:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <SectionCard
+        title={t(locale, 'home.springs')}
+        description={t(locale, 'home.springsDesc')}
+        href={localizedHref(locale, 'mineral-springs')}
+        gradient="from-primary-600 to-primary-800"
+      />
+      <SectionCard
+        title={t(locale, 'home.thingsToDo')}
+        description={t(locale, 'home.thingsToDoDesc')}
+        href={localizedHref(locale, 'things-to-do')}
+        gradient="from-accent-600 to-accent-800"
+      />
+      <SectionCard
+        title={t(locale, 'home.accommodation')}
+        description={t(locale, 'home.accommodationDesc')}
+        href={localizedHref(locale, 'accommodation')}
+        gradient="from-stone-600 to-stone-800"
+      />
+      <SectionCard
+        title={t(locale, 'home.history')}
+        description={t(locale, 'home.historyDesc')}
+        href={localizedHref(locale, 'history')}
+        gradient="from-primary-700 to-primary-950"
+      />
+      <SectionCard
+        title={t(locale, 'home.people')}
+        description={t(locale, 'home.peopleDesc')}
+        href={localizedHref(locale, 'people')}
+        gradient="from-accent-700 to-accent-950"
+      />
+    </div>
+  </section>
+</Base>

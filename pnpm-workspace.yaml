@@ -1,9 +1,0 @@
-packages:
-  - "apps/*"
-  - "packages/*"
-onlyBuiltDependencies:
-  - sharp
-  - "@swc/core"
-  - esbuild
-  - "@parcel/watcher"
-  - unrs-resolver

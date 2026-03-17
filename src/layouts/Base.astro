@@ -1,0 +1,40 @@
+---
+import '@/styles/global.css'
+import Header from '@/components/Header.astro'
+import Footer from '@/components/Footer.astro'
+import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+
+interface Props {
+  title?: string
+  description?: string
+  locale: Locale
+  section?: string
+}
+
+const { locale, section } = Astro.props
+const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
+const description = Astro.props.description ?? t(locale, 'meta.description')
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="de" href={`https://marienbad.vercel.app/de${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="en" href={`https://marienbad.vercel.app/en${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="cs" href={`https://marienbad.vercel.app/cs${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="ru" href={`https://marienbad.vercel.app/ru${section ? '/' + section : ''}`} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-stone-50">
+    <Header locale={locale} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

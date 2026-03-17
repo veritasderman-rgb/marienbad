@@ -1,14 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm turbo run build --filter=@marienbad/web",
-  "installCommand": "pnpm install",
-  "framework": "nextjs",
-  "outputDirectory": "apps/web/.next",
+  "framework": "astro",
   "regions": ["fra1"],
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap" },
-    { "source": "/robots.txt", "destination": "/robots" }
-  ],
   "headers": [
     {
       "source": "/images/(.*)",
@@ -17,7 +10,7 @@
       ]
     },
     {
-      "source": "/_next/static/(.*)",
+      "source": "/_astro/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]

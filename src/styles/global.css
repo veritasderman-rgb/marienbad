@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0f7f4;
+  --color-primary-100: #d9ede2;
+  --color-primary-200: #b5dbc6;
+  --color-primary-300: #85c2a3;
+  --color-primary-400: #55a47d;
+  --color-primary-500: #358762;
+  --color-primary-600: #266c4e;
+  --color-primary-700: #1f5740;
+  --color-primary-800: #1b4635;
+  --color-primary-900: #173a2d;
+  --color-primary-950: #0c2019;
+
+  --color-accent-50: #fdf8ef;
+  --color-accent-100: #f9edd5;
+  --color-accent-200: #f2d8aa;
+  --color-accent-300: #eabd74;
+  --color-accent-400: #e3a04c;
+  --color-accent-500: #db8528;
+  --color-accent-600: #c46b1e;
+  --color-accent-700: #a3511b;
+  --color-accent-800: #85411d;
+  --color-accent-900: #6d361b;
+  --color-accent-950: #3b1a0c;
+
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: theme(--color-stone-800);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.container-wide {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}

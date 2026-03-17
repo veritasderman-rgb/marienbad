@@ -1,14 +1,9 @@
 # Dependencies
 node_modules/
-.pnpm-store/
 
-# Next.js
-.next/
-out/
-
-# Build
+# Astro
 dist/
-build/
+.astro/
 
 # Environment
 .env
@@ -24,18 +19,6 @@ build/
 # OS
 .DS_Store
 Thumbs.db
-
-# Turbo
-.turbo/
-
-# Payload
-media/
-
-# Debug
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Vercel
 .vercel
