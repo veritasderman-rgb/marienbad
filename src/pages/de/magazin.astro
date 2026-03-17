@@ -8,8 +8,8 @@ const locale = 'de' as const
 const page = await getPage('de-magazin')
 ---
 
-<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
-  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
-    <MarkdocRenderer content={page.body} />
+<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

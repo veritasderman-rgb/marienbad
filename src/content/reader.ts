@@ -19,8 +19,13 @@ export async function getSettings(locale: Locale) {
 }
 
 export async function getPage(slug: string) {
-  const page = await reader.collections.pages.read(slug, {
-    resolveLinkedFiles: true,
-  })
-  return page
+  try {
+    const page = await reader.collections.pages.read(slug, {
+      resolveLinkedFiles: true,
+    })
+    if (!page) return null
+    return page
+  } catch {
+    return null
+  }
 }
