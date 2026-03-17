@@ -4,22 +4,30 @@ interface Props {
   description: string
   href: string
   icon?: string
-  gradient?: string
+  variant?: 'indigo' | 'turquoise' | 'beige' | 'dark'
 }
 
-const { title, description, href, icon, gradient = 'from-primary-700 to-primary-900' } = Astro.props
+const { title, description, href, variant = 'indigo' } = Astro.props
+
+const bgMap: Record<string, string> = {
+  indigo: 'from-indigo-500 to-indigo-700',
+  turquoise: 'from-indigo-700 to-turquoise-800',
+  beige: 'from-indigo-600 to-indigo-800',
+  dark: 'from-beige-950 to-indigo-900',
+}
+const bgGradient = bgMap[variant] ?? bgMap.indigo
 ---
 
 <a href={href} class="group block card-hover">
-  <div class={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${gradient} p-7 md:p-8 min-h-[220px] flex flex-col justify-end`}>
-    <!-- Subtle pattern overlay -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.08)_0%,_transparent_60%)]"></div>
-    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+  <div class={`relative overflow-hidden bg-gradient-to-br ${bgGradient} p-7 md:p-8 min-h-[220px] flex flex-col justify-end`} style={`border-radius: var(--radius-card);`}>
+    <!-- Subtle decorative overlay -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(138,216,237,0.1)_0%,_transparent_60%)]"></div>
+    <div class="absolute top-0 right-0 w-32 h-32 bg-turquoise-400/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
 
     <div class="relative">
-      <h3 class="font-heading text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-accent-200 transition-colors duration-300">{title}</h3>
-      <p class="text-white/75 text-sm md:text-base leading-relaxed mb-4">{description}</p>
-      <div class="flex items-center gap-2 text-accent-300/80 group-hover:text-accent-200 group-hover:gap-3 transition-all duration-300 text-sm font-medium">
+      <h3 class="font-heading text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-turquoise-300 transition-colors duration-300">{title}</h3>
+      <p class="text-white/70 text-sm md:text-base leading-relaxed mb-4">{description}</p>
+      <div class="flex items-center gap-2 text-turquoise-300/80 group-hover:text-turquoise-200 group-hover:gap-3 transition-all duration-300 text-sm font-medium">
         <span class="h-px w-6 bg-current group-hover:w-10 transition-all duration-300"></span>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -1,100 +1,194 @@
 @import "tailwindcss";
 
 @theme {
-  /* Spa Green — refined, deeper, more sophisticated */
-  --color-primary-50: #f0f7f3;
-  --color-primary-100: #dcede2;
-  --color-primary-200: #bcdbc8;
-  --color-primary-300: #8ec3a5;
-  --color-primary-400: #5ea67e;
-  --color-primary-500: #3d8a62;
-  --color-primary-600: #2d6f4e;
-  --color-primary-700: #255a40;
-  --color-primary-800: #1f4835;
-  --color-primary-900: #1a3b2c;
-  --color-primary-950: #0d2118;
+  /* ─── Ensana Primary: Indigo ─── */
+  --color-indigo-50: #e8f4f8;
+  --color-indigo-100: #c5e3ed;
+  --color-indigo-200: #9ecfe0;
+  --color-indigo-300: #74b9d2;
+  --color-indigo-400: #4da3c3;
+  --color-indigo-500: #266782;
+  --color-indigo-600: #1f5a73;
+  --color-indigo-700: #004F71;
+  --color-indigo-800: #003d58;
+  --color-indigo-900: #002d42;
+  --color-indigo-950: #001a28;
 
-  /* Colonnade Gold — warm, elegant sandstone tones */
-  --color-accent-50: #fdf8f0;
-  --color-accent-100: #f9edda;
-  --color-accent-200: #f2d8b4;
-  --color-accent-300: #e9be84;
-  --color-accent-400: #dfa053;
-  --color-accent-500: #d88a35;
-  --color-accent-600: #c9722a;
-  --color-accent-700: #a75925;
-  --color-accent-800: #874824;
-  --color-accent-900: #6e3c20;
-  --color-accent-950: #3b1e10;
+  /* ─── Ensana Accent: Turquoise ─── */
+  --color-turquoise-50: #edf9fc;
+  --color-turquoise-100: #d2f1f8;
+  --color-turquoise-200: #b5e8f4;
+  --color-turquoise-300: #8BD3E6;
+  --color-turquoise-400: #8AD8ED;
+  --color-turquoise-500: #6cc8e0;
+  --color-turquoise-600: #4ab5d0;
+  --color-turquoise-700: #3199b3;
+  --color-turquoise-800: #267a8f;
+  --color-turquoise-900: #1d5f6f;
+  --color-turquoise-950: #0f3640;
 
-  /* Warm Stone — heritage warmth */
-  --color-sand-50: #faf9f7;
-  --color-sand-100: #f0eee9;
-  --color-sand-200: #e0dbd3;
-  --color-sand-300: #cbc3b6;
-  --color-sand-400: #b4a898;
-  --color-sand-500: #a39483;
-  --color-sand-600: #968475;
-  --color-sand-700: #7d6d62;
-  --color-sand-800: #675b53;
-  --color-sand-900: #564c46;
-  --color-sand-950: #2d2724;
+  /* ─── CTA: Warm Yellow ─── */
+  --color-yellow-50: #fffbeb;
+  --color-yellow-100: #fef3c7;
+  --color-yellow-200: #fde68a;
+  --color-yellow-300: #FFD54F;
+  --color-yellow-400: #F6BA00;
+  --color-yellow-500: #dba600;
+  --color-yellow-600: #b88a00;
+  --color-yellow-700: #8f6b00;
+  --color-yellow-800: #6b5000;
+  --color-yellow-900: #4a3800;
+  --color-yellow-950: #2b2100;
 
-  --font-heading: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Inter', 'system-ui', '-apple-system', 'Segoe UI', sans-serif;
+  /* ─── Medical: Aubergine ─── */
+  --color-aubergine-50: #fdf2f8;
+  --color-aubergine-100: #fce7f3;
+  --color-aubergine-200: #f9c4e0;
+  --color-aubergine-300: #e98cbe;
+  --color-aubergine-400: #c4508f;
+  --color-aubergine-500: #A0005A;
+  --color-aubergine-600: #800048;
+  --color-aubergine-700: #660039;
+  --color-aubergine-800: #4d002b;
+  --color-aubergine-900: #33001c;
+  --color-aubergine-950: #1a000e;
+
+  /* ─── Neutrals: Warm tones ─── */
+  --color-beige-50: #fefcf9;
+  --color-beige-100: #FAF7F2;
+  --color-beige-200: #F5EEE1;
+  --color-beige-300: #F3EDE4;
+  --color-beige-400: #e4d8c7;
+  --color-beige-500: #c9b99f;
+  --color-beige-600: #A19CA3;
+  --color-beige-700: #7d7880;
+  --color-beige-800: #5a565c;
+  --color-beige-900: #3a3740;
+  --color-beige-950: #1A1916;
+
+  /* ─── Typography ─── */
+  --font-heading: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'DM Sans', 'Verdana', 'Arial', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ─── Type Scale ─── */
+  --text-hero: clamp(3rem, 5vw, 4.5rem);
+  --text-h1: clamp(2.25rem, 3.5vw, 3rem);
+  --text-h2: clamp(1.75rem, 2.5vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body-lg: 1.125rem;
+
+  /* ─── Shadows ─── */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  /* ─── Border Radius ─── */
+  --radius-card: 12px;
 }
 
+/* ─── CSS Custom Properties (Semantic) ─── */
+:root {
+  /* Primary */
+  --color-indigo: #266782;
+  --color-indigo-dark: #004F71;
+  --color-turquoise: #8AD8ED;
+  --color-turquoise-muted: #8BD3E6;
+
+  /* Accent */
+  --color-yellow: #F6BA00;
+  --color-aubergine: #800048;
+  --color-warm-grey: #A19CA3;
+
+  /* Neutrals */
+  --color-beige: #F5EEE1;
+  --color-off-white: #FAF7F2;
+  --color-cream: #F3EDE4;
+  --color-dark: #1A1916;
+
+  /* Semantic */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5EEE1;
+  --color-bg-tertiary: #FAF7F2;
+  --color-bg-dark: #1A1916;
+  --color-text-primary: #000000;
+  --color-text-secondary: #A19CA3;
+  --color-text-inverse: #FFFFFF;
+  --color-link: #266782;
+  --color-link-hover: #004F71;
+  --color-accent: #8AD8ED;
+  --color-cta: #F6BA00;
+  --color-medical: #800048;
+
+  /* Transitions */
+  --transition-default: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  color: #3a3530;
-  background-color: var(--color-sand-50);
+  color: #000000;
+  background-color: #FFFFFF;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
+/* ─── Container ─── */
 .container-wide {
-  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
-/* Elegant divider */
+/* ─── Section Spacing ─── */
+.section {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+/* ─── Divider Ornament ─── */
 .divider-ornament {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--color-accent-400);
+  color: var(--color-turquoise);
 }
 .divider-ornament::before,
 .divider-ornament::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-accent-300), transparent);
+  background: linear-gradient(to right, transparent, var(--color-turquoise-muted), transparent);
 }
 
-/* Subtle text gradient for hero titles */
-.text-gradient-gold {
-  background: linear-gradient(135deg, var(--color-accent-300), var(--color-accent-500));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Smooth card hover */
+/* ─── Card Hover ─── */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-default), box-shadow var(--transition-default);
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(13, 33, 24, 0.12);
+  box-shadow: var(--shadow-card-hover);
 }
 
-/* Section fade-in */
+/* ─── Scroll Reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Section fade-in ─── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -103,29 +197,143 @@ h1, h2, h3, h4, h5, h6 {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Prose overrides for pillar pages */
+/* ─── Ken Burns ─── */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.animate-ken-burns {
+  animation: kenBurns 15s ease-in-out infinite;
+}
+
+/* ─── Wave Divider ─── */
+.wave-divider {
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ─── Image Placeholder System ─── */
+.placeholder-image {
+  background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-turquoise) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 1rem;
+}
+.placeholder-image-light {
+  background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-cream) 100%);
+  color: var(--color-warm-grey);
+}
+
+/* ─── Prose overrides for pillar pages ─── */
 .prose-marienbad h2 {
   font-family: var(--font-heading);
-  color: var(--color-primary-800);
-  border-bottom: 2px solid var(--color-accent-200);
+  color: var(--color-indigo-dark);
+  border-bottom: 2px solid var(--color-turquoise-muted);
   padding-bottom: 0.5rem;
   margin-top: 2.5rem;
+  letter-spacing: -0.02em;
 }
 .prose-marienbad h3 {
   font-family: var(--font-heading);
-  color: var(--color-primary-700);
+  color: var(--color-indigo);
+  letter-spacing: -0.02em;
 }
 .prose-marienbad a {
-  color: var(--color-primary-600);
-  text-decoration-color: var(--color-accent-300);
+  color: var(--color-link);
+  text-decoration-color: var(--color-turquoise-muted);
+  transition: color var(--transition-default);
 }
 .prose-marienbad a:hover {
-  color: var(--color-primary-800);
+  color: var(--color-link-hover);
 }
 .prose-marienbad blockquote {
-  border-left-color: var(--color-accent-400);
-  background: var(--color-accent-50);
+  border-left-color: var(--color-turquoise);
+  background: var(--color-off-white);
   padding: 1rem 1.5rem;
   border-radius: 0 0.5rem 0.5rem 0;
   font-style: italic;
+  font-family: var(--font-heading);
+}
+.prose-marienbad ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+.prose-marienbad li {
+  margin-bottom: 0.25rem;
+}
+
+/* ─── Button Styles ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--color-cta);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all var(--transition-default);
+  text-decoration: none;
+}
+.btn-primary:hover {
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-indigo);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all var(--transition-default);
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: var(--color-indigo-dark);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--color-indigo);
+  font-family: var(--font-body);
+  font-weight: 600;
+  border: 1.5px solid var(--color-indigo);
+  border-radius: 0.75rem;
+  transition: all var(--transition-default);
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  background-color: var(--color-indigo);
+  color: white;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .animate-fade-in-up,
+  .animate-ken-burns,
+  .card-hover {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

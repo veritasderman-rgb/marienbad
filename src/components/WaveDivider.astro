@@ -1,0 +1,43 @@
+---
+interface Props {
+  /** Color variant: which color fills the wave path */
+  variant?: 'turquoise-on-white' | 'white-on-indigo' | 'indigo-on-beige' | 'beige-on-white' | 'white-on-dark'
+  /** Flip the wave upside down */
+  flip?: boolean
+}
+
+const { variant = 'turquoise-on-white', flip = false } = Astro.props
+
+const colorMap: Record<string, string> = {
+  'turquoise-on-white': '#8AD8ED',
+  'white-on-indigo': '#FFFFFF',
+  'indigo-on-beige': '#266782',
+  'beige-on-white': '#F5EEE1',
+  'white-on-dark': '#FFFFFF',
+}
+
+const fillColor = colorMap[variant] ?? '#8AD8ED'
+---
+
+<div
+  class:list={['wave-divider w-full overflow-hidden leading-none', flip && 'rotate-180']}
+  style="height: 60px;"
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 1440 60"
+    preserveAspectRatio="none"
+    class="w-full h-full"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"
+      fill={fillColor}
+      opacity="0.6"
+    />
+    <path
+      d="M0,40 C360,10 720,50 1080,20 C1260,10 1380,30 1440,35 L1440,60 L0,60 Z"
+      fill={fillColor}
+    />
+  </svg>
+</div>

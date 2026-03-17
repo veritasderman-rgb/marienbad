@@ -10,92 +10,156 @@ interface Props {
 
 const { locale } = Astro.props
 const navItems = getNavItems(locale)
-const otherLocales = (['de', 'en', 'cs', 'ru'] as const).filter((l) => l !== locale)
+const allLocales = (['de', 'en', 'cs', 'ru'] as const)
+const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Rezervovat pobyt' : locale === 'ru' ? 'Забронировать' : 'Book your stay'
 ---
 
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-sand-200/60">
+<header id="site-header" class="sticky top-0 z-50 transition-all duration-300" data-transparent="true">
   <div class="container-wide">
     <div class="flex items-center justify-between h-16 md:h-20">
-      <!-- Logo -->
+      <!-- Logo: "marienbad" wordmark -->
       <a href={`/${locale}`} class="flex items-baseline gap-0.5 shrink-0 group">
-        <span class="font-heading text-2xl md:text-[1.65rem] font-semibold tracking-tight text-primary-800 group-hover:text-primary-600 transition-colors">Marienbad</span>
-        <span class="text-accent-500 text-lg font-medium">.com</span>
+        <span class="font-heading text-2xl md:text-[1.75rem] font-bold tracking-tight text-white group-hover:text-turquoise-400 transition-colors header-logo">marienbad</span>
       </a>
 
-      <!-- Desktop nav -->
-      <nav class="hidden lg:flex items-center gap-0.5">
-        {navItems.map(({ navKey, href }) => (
+      <!-- Desktop nav (center) -->
+      <nav class="hidden xl:flex items-center gap-0.5">
+        {navItems.slice(0, 6).map(({ navKey, href }) => (
           <a
             href={href}
-            class="px-3 py-2 text-[0.84rem] font-medium text-sand-700 hover:text-primary-700 hover:bg-primary-50/60 rounded-lg transition-all duration-200"
+            class="px-3 py-2 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-white/80 hover:text-white transition-colors header-nav-link"
           >
             {t(locale, navKey as any)}
           </a>
         ))}
       </nav>
 
-      <div class="flex items-center gap-2">
-        <!-- Language switcher -->
-        <div class="relative group">
-          <button class="flex items-center gap-1 px-2.5 py-1.5 text-sm font-medium text-sand-600 hover:text-primary-700 border border-sand-200 hover:border-primary-200 rounded-lg transition-all">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418" />
-            </svg>
-            {localeNames[locale].substring(0, 2).toUpperCase()}
-          </button>
-          <div class="absolute right-0 mt-1 w-36 bg-white border border-sand-200 rounded-xl shadow-lg shadow-sand-200/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-            {otherLocales.map((l) => (
-              <a
-                href={`/${l}`}
-                class="block px-4 py-2.5 text-sm text-sand-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
-              >
-                {localeNames[l]}
-              </a>
-            ))}
-          </div>
+      <div class="flex items-center gap-3">
+        <!-- Language switcher: text pills -->
+        <div class="hidden md:flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider">
+          {allLocales.map((l) => (
+            <a
+              href={`/${l}`}
+              class:list={[
+                'px-2 py-1 rounded transition-colors',
+                l === locale
+                  ? 'text-white bg-white/20'
+                  : 'text-white/60 hover:text-white header-lang-link'
+              ]}
+            >
+              {l.toUpperCase()}
+            </a>
+          ))}
         </div>
+
+        <!-- CTA Button (yellow pill) -->
+        <a
+          href={`https://www.ensanahotels.com/?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+          class="hidden lg:inline-flex items-center gap-1.5 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold rounded-full transition-all duration-200"
+          target="_blank"
+          rel="noopener"
+        >
+          {bookingCta}
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
 
         <!-- Mobile menu button -->
         <button
           id="mobile-menu-btn"
-          class="lg:hidden p-2 text-sand-700 hover:text-primary-700 hover:bg-primary-50/60 rounded-lg transition-colors"
+          class="xl:hidden p-2 text-white/80 hover:text-white transition-colors"
           aria-label={t(locale, 'nav.menu')}
         >
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile nav -->
-  <div id="mobile-nav" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-sand-200/60">
-    <nav class="container-wide py-4 flex flex-col gap-0.5">
+  <!-- Mobile nav: full-screen overlay -->
+  <div id="mobile-nav" class="hidden fixed inset-0 top-16 md:top-20 z-40 bg-indigo-700/98 backdrop-blur-md xl:hidden overflow-y-auto">
+    <nav class="container-wide py-8 flex flex-col gap-1">
       {navItems.map(({ navKey, href }) => (
         <a
           href={href}
-          class="px-4 py-3 text-base font-medium text-sand-700 hover:text-primary-700 hover:bg-primary-50/60 rounded-xl transition-colors"
+          class="px-4 py-3.5 text-lg font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
         >
           {t(locale, navKey as any)}
         </a>
       ))}
-      <div class="border-t border-sand-200 mt-3 pt-3 flex gap-2">
-        {otherLocales.map((l) => (
+
+      <!-- Mobile language switcher -->
+      <div class="border-t border-white/10 mt-6 pt-6 flex gap-2">
+        {allLocales.map((l) => (
           <a
             href={`/${l}`}
-            class="px-3 py-2 text-sm text-sand-600 hover:text-primary-700 border border-sand-200 hover:border-primary-200 rounded-lg transition-colors"
+            class:list={[
+              'px-4 py-2 text-sm font-medium rounded-lg transition-colors',
+              l === locale
+                ? 'text-white bg-white/20'
+                : 'text-white/60 hover:text-white hover:bg-white/10'
+            ]}
           >
             {localeNames[l]}
           </a>
         ))}
+      </div>
+
+      <!-- Mobile CTA -->
+      <div class="mt-6">
+        <a
+          href={`https://www.ensanahotels.com/?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+          class="block w-full text-center px-6 py-3.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors"
+          target="_blank"
+          rel="noopener"
+        >
+          {bookingCta} →
+        </a>
       </div>
     </nav>
   </div>
 </header>
 
 <script>
+  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn')
   const nav = document.getElementById('mobile-nav')
-  btn?.addEventListener('click', () => nav?.classList.toggle('hidden'))
+  const iconOpen = document.getElementById('menu-icon-open')
+  const iconClose = document.getElementById('menu-icon-close')
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !nav?.classList.contains('hidden')
+    nav?.classList.toggle('hidden')
+    iconOpen?.classList.toggle('hidden')
+    iconClose?.classList.toggle('hidden')
+    document.body.style.overflow = isOpen ? '' : 'hidden'
+  })
+
+  // Sticky header: transparent on top, solid on scroll
+  const header = document.getElementById('site-header')
+  const updateHeader = () => {
+    if (!header) return
+    const scrolled = window.scrollY > 50
+
+    if (scrolled) {
+      header.setAttribute('data-transparent', 'false')
+      header.style.backgroundColor = 'rgba(0, 79, 113, 0.95)'
+      header.style.backdropFilter = 'blur(12px)'
+      header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)'
+    } else {
+      header.setAttribute('data-transparent', 'true')
+      header.style.backgroundColor = 'transparent'
+      header.style.backdropFilter = 'none'
+      header.style.boxShadow = 'none'
+    }
+  }
+
+  updateHeader()
+  window.addEventListener('scroll', updateHeader, { passive: true })
 </script>

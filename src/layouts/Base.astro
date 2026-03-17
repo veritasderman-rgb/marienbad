@@ -15,6 +15,7 @@ interface Props {
 const { locale, section } = Astro.props
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
+const canonicalUrl = `https://marienbad.com/${locale}${section ? '/' + section : ''}`
 ---
 
 <!doctype html>
@@ -24,24 +25,53 @@ const description = Astro.props.description ?? t(locale, 'meta.description')
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Cormorant Garamond + DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
     <!-- Hreflang -->
-    <link rel="alternate" hreflang="de" href={`https://marienbad.vercel.app/de${section ? '/' + section : ''}`} />
-    <link rel="alternate" hreflang="en" href={`https://marienbad.vercel.app/en${section ? '/' + section : ''}`} />
-    <link rel="alternate" hreflang="cs" href={`https://marienbad.vercel.app/cs${section ? '/' + section : ''}`} />
-    <link rel="alternate" hreflang="ru" href={`https://marienbad.vercel.app/ru${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="de" href={`https://marienbad.com/de${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="en" href={`https://marienbad.com/en${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="cs" href={`https://marienbad.com/cs${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="ru" href={`https://marienbad.com/ru${section ? '/' + section : ''}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Marienbad.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
   </head>
-  <body class="min-h-screen flex flex-col bg-sand-50 text-sand-950">
+  <body class="min-h-screen flex flex-col bg-white text-black">
     <Header locale={locale} />
     <main class="flex-1">
       <slot />
     </main>
     <Footer locale={locale} />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
