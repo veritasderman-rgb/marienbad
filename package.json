@@ -10,10 +10,16 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.9.0",
-    "@astrojs/vercel": "^8.1.0",
     "@astrojs/mdx": "^4.3.0",
-    "@astrojs/sitemap": "^3.3.0"
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/sitemap": "^3.3.0",
+    "@astrojs/vercel": "^8.1.0",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.48",
+    "@markdoc/markdoc": "^0.5.6",
+    "astro": "^5.9.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.0",

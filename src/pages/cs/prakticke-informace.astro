@@ -1,12 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'cs' as const
+const page = await getPage('cs-prakticke-informace')
 ---
 
-<Base locale={locale} title="Praktické informace — Marienbad.com" description="Vše, co potřebujete vědět pro návštěvu Mariánských Lázní.">
-  <PillarPage locale={locale} title="Praktické informace" description="Vše, co potřebujete vědět pro návštěvu Mariánských Lázní.">
-    <p>Content coming soon.</p>
+<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+    <MarkdocRenderer content={page.body} />
   </PillarPage>
 </Base>

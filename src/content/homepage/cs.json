@@ -1,0 +1,128 @@
+{
+  "hero": {
+    "title": "Objevte Mariánské Lázně",
+    "subtitle": "UNESCO světové dědictví · Od roku 1812 · Čtyři léčivé zdroje — Jediné lázně na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
+    "ctaText": "Poznejte město",
+    "ctaHref": "#discover",
+    "badges": ["UNESCO dědictví", "Od roku 1812"]
+  },
+  "quickFacts": [
+    { "value": "40+", "label": "Minerální prameny" },
+    { "value": "UNESCO", "label": "Světové dědictví 2021" },
+    { "value": "1812", "label": "Lázeňská tradice" },
+    { "value": "Royal", "label": "Golf Club 1905" }
+  ],
+  "healingElements": {
+    "sectionLabel": "Čím jsou Mariánské Lázně výjimečné",
+    "title": "Čtyři přírodní léčivé zdroje",
+    "description": "Jediné lázně na světě, které spojují všechny čtyři živly přírodního léčení.",
+    "items": [
+      { "name": "Voda", "description": "Přes 40 minerálních pramenů s jedinečným složením — od pitných kúr po léčivé koupele." },
+      { "name": "Země", "description": "Přírodní rašelinové peloidy s protizánětlivými a analgetickými účinky." },
+      { "name": "Plyn", "description": "99,7% čistý CO₂ — ‚Mariin plyn' — prokazatelně zlepšuje periferní prokrvení." },
+      { "name": "Klima", "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly." }
+    ]
+  },
+  "discover": {
+    "sectionLabel": "Vítejte",
+    "title": "Poznejte město",
+    "description": "Mariánské Lázně — perla západních Čech — už přes 200 let okouzlují návštěvníky z celého světa léčivými prameny, nádhernou architekturou a úchvatnou přírodou."
+  },
+  "hotels": {
+    "sectionLabel": "Ubytování",
+    "title": "Kde se ubytovat v Mariánských Lázních",
+    "description": "Od historických 5hvězdičkových lázeňských hotelů po útulné penziony.",
+    "allHotelsLabel": "Všech 6 hotelů →",
+    "items": [
+      {
+        "name": "Nové Lázně",
+        "stars": 5,
+        "badge": "Tip redakce",
+        "description": "Historický 5hvězdičkový klenot s původními Římskými lázněmi — vlajková loď hotelů Ensana.",
+        "tags": ["Římské lázně", "CO₂ terapie", "Bazén"],
+        "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Rezervovat pobyt"
+      },
+      {
+        "name": "Centrální Lázně",
+        "stars": 4,
+        "badge": "",
+        "description": "Přímo u kolonády — tradiční lázeňská péče v centru města s moderními procedurami.",
+        "tags": ["U kolonády", "Pitná kúra", "Wellness"],
+        "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Rezervovat pobyt"
+      }
+    ]
+  },
+  "people": {
+    "sectionLabel": "Lidé z Kolonády",
+    "title": "Příběhy, které vypráví voda",
+    "description": "Skutečné příběhy skutečných lidí — lázeňští hosté, místní i lékaři vyprávějí, proč jsou Mariánské Lázně tak výjimečné.",
+    "allStoriesLabel": "Přečíst všechny příběhy →",
+    "stories": [
+      {
+        "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
+        "name": "Ingrid",
+        "location": "Hamburg 🇩🇪",
+        "visitLabel": "Podvanácté",
+        "lang": "de"
+      },
+      {
+        "quote": "\"I came for the treatment, but I stayed for the peace.\"",
+        "name": "James",
+        "location": "London 🇬🇧",
+        "visitLabel": "3. návštěva",
+        "lang": "en"
+      },
+      {
+        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
+        "name": "Наталья",
+        "location": "Москва 🇷🇺",
+        "visitLabel": "8. návštěva",
+        "lang": "ru"
+      }
+    ]
+  },
+  "seasonal": {
+    "badge": "Právě teď",
+    "season": "Jaro 2026",
+    "title": "Prameny se probouzejí — jarní kúra v Mariánských Lázních",
+    "description": "Na jaře Mariánské Lázně rozkvétají: Skalníkovy sady hrají barvami, Zpívající fontána zahajuje novou sezónu a jemný jarní vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
+    "ctaText": "Zjistit více"
+  },
+  "magazine": {
+    "sectionLabel": "Magazín",
+    "title": "Aktuality z Mariánských Lázní",
+    "articles": [
+      {
+        "category": "Zdraví",
+        "title": "CO₂ koupele: Co říká věda",
+        "excerpt": "V klinických studiích uvádí 83 % pacientů snížení bolestí kloubů po čtrnáctidenní lázeňské kúře.",
+        "date": "15. března 2026",
+        "readTime": "5 min. čtení"
+      },
+      {
+        "category": "Kultura",
+        "title": "Po stopách Goetha městem",
+        "excerpt": "Tytéž prameny, které Goethe roku 1823 opěvoval, dnes napájejí moderní rehabilitační programy.",
+        "date": "10. března 2026",
+        "readTime": "7 min. čtení"
+      },
+      {
+        "category": "Tip",
+        "title": "5 nejkrásnějších procházek",
+        "excerpt": "Od kolonády přes Skalníkovy sady až ke Geologickému parku — nejlepší trasy pro každé roční období.",
+        "date": "5. března 2026",
+        "readTime": "4 min. čtení"
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Váš bezplatný průvodce po Mariánských Lázních",
+    "description": "Nejlepší tipy od místních, sezónní doporučení a nové příběhy přímo do vaší schránky.",
+    "placeholder": "Váš e-mail",
+    "buttonText": "Odebírat",
+    "successMessage": "Děkujeme! Přihlášení k odběru proběhlo úspěšně.",
+    "disclaimer": "Žádný spam. Maximálně 1x měsíčně. Odhlášení kdykoliv."
+  }
+}

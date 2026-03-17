@@ -1,109 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-mineral-springs')
 ---
 
-<Base locale={locale} title="Healing Springs & Spa — Marienbad.com" description="Discover the mineral springs that have made Marienbad famous for centuries.">
-  <PillarPage locale={locale} title="Healing Springs & Spa" description="Discover the mineral springs that have made Marienbad famous for centuries.">
-
-    <h2>A Town Built on Water</h2>
-    <p>
-      Beneath the forested hills of western Bohemia lies an extraordinary geological gift: more than forty natural mineral springs, each with its own distinct chemical composition and therapeutic properties. For over two centuries, these springs have drawn visitors from across the world to Mariánské Lázně — known internationally as Marienbad — transforming a quiet valley into one of Europe's most celebrated spa destinations.
-    </p>
-    <p>
-      Unlike many spa towns that rely on a single thermal source, Marienbad's springs are remarkably varied. Some are rich in iron, others in sulphur or magnesium. Some emerge cold; others are naturally carbonated. This diversity means that a single town can offer treatments for an unusually wide range of conditions — from digestive and metabolic disorders to respiratory ailments and musculoskeletal problems.
-    </p>
-
-    <h2>The Springs: A Living Pharmacy</h2>
-    <p>
-      Of the more than forty documented springs in the Marienbad area, several have become particularly renowned. Visitors have been drinking from and bathing in these waters since the early nineteenth century, and many of the springs are freely accessible along the town's elegant colonnades and park promenades.
-    </p>
-
-    <h3>Cross Spring (Křížový pramen)</h3>
-    <p>
-      The most famous of Marienbad's springs, the Cross Spring has been in use since 1818 and is traditionally recommended for digestive conditions. Its waters are rich in minerals and naturally carbonated, with a distinctive taste that visitors quickly come to appreciate. The spring is housed in a beautiful pavilion at the heart of the spa district.
-    </p>
-
-    <h3>Caroline Spring (Karolinin pramen)</h3>
-    <p>
-      Named after the wife of Emperor Franz I, the Caroline Spring is valued for its high magnesium and calcium content. It has long been associated with treatments for kidney and urinary tract conditions. The elegant neo-classical pavilion that shelters it is one of the town's architectural highlights.
-    </p>
-
-    <h3>Rudolf Spring (Rudolfův pramen)</h3>
-    <p>
-      With its notable calcium and iron content, the Rudolf Spring is traditionally prescribed for metabolic and blood disorders. Located in a serene park setting, it offers one of the most pleasant spots for a quiet morning ritual of mineral water tasting.
-    </p>
-
-    <h3>Forest Spring (Lesní pramen)</h3>
-    <p>
-      True to its name, this spring emerges in the woodlands above the town. Rich in iron compounds, it has historically been recommended for anaemia and fatigue. The walk to reach it — through ancient beech and spruce forest — is itself part of the therapy.
-    </p>
-
-    <blockquote>
-      <p>"The waters of Marienbad are among the most remarkable in all of Europe — not for one spring alone, but for the extraordinary variety that nature has concentrated in this single valley."</p>
-      <p>— Dr. Josef Nehr, the physician who first catalogued the springs in the early 1800s</p>
-    </blockquote>
-
-    <h2>The Spa Tradition: From 1818 to Today</h2>
-    <p>
-      Marienbad's story as a spa town began in earnest in 1818, when the monastery physician Dr. Josef Nehr convinced the Abbot of Teplá to develop the springs for public use. Within just a few decades, the town had grown from a marshy clearing into a grand resort, attracting royalty, composers, writers and diplomats. The fundamental philosophy, however, has remained unchanged: harness the natural healing properties of the springs through carefully supervised programmes of drinking cures, baths and complementary therapies.
-    </p>
-    <p>
-      Today, Marienbad continues this tradition with a blend of time-honoured methods and modern medical expertise. Visitors can follow a structured spa programme under the guidance of qualified physicians, or simply enjoy the springs at their own pace — filling a porcelain spa cup at the colonnade each morning, as generations have done before them.
-    </p>
-
-    <h2>Signature Treatments</h2>
-
-    <h3>CO₂ Mineral Baths</h3>
-    <p>
-      Perhaps the most distinctive treatment offered in Marienbad, the carbon dioxide bath immerses the body in naturally carbonated mineral water. The dissolved CO₂ is absorbed through the skin, improving blood circulation, lowering blood pressure and promoting deep relaxation. Guests often describe a pleasant tingling sensation as thousands of tiny bubbles settle on the skin. The treatment has been a cornerstone of Marienbad's therapeutic offering for nearly two hundred years and remains one of its most sought-after experiences.
-    </p>
-
-    <h3>Peat Wraps and Baths</h3>
-    <p>
-      The peat deposits surrounding Marienbad are rich in humic acids and minerals. Heated peat is applied as wraps or used in baths to relieve joint and muscle pain, reduce inflammation and improve skin condition. The warmth penetrates deep into the tissue, offering lasting relief that many guests find more effective than conventional heat therapy.
-    </p>
-
-    <h3>Drinking Cures</h3>
-    <p>
-      The most traditional — and perhaps most gentle — of all Marienbad treatments. A spa physician prescribes a specific spring (or combination of springs), along with the quantity and timing of each dose. Guests carry a traditional porcelain spa cup and visit the prescribed springs throughout the day, often combining the cure with leisurely walks through the town's parks. The ritual itself — the unhurried pace, the fresh air, the beauty of the surroundings — is considered an integral part of the healing process.
-    </p>
-
-    <h3>Inhalation Therapy</h3>
-    <p>
-      Mineral-rich aerosols derived from the springs are used in inhalation treatments for respiratory conditions including asthma, chronic bronchitis and sinusitis. The therapy takes place in purpose-built inhalation rooms within the spa facilities and can be combined with other treatments for a comprehensive programme.
-    </p>
-
-    <h2>What Conditions Can Be Treated?</h2>
-    <p>
-      Marienbad's spa facilities hold official medical accreditation and treat a wide spectrum of conditions. The most common indications include:
-    </p>
-    <ul>
-      <li><strong>Digestive and metabolic disorders</strong> — gastritis, irritable bowel syndrome, liver and gallbladder conditions, diabetes</li>
-      <li><strong>Musculoskeletal conditions</strong> — arthritis, back pain, post-operative rehabilitation, osteoporosis</li>
-      <li><strong>Respiratory ailments</strong> — asthma, chronic bronchitis, allergies, sinusitis</li>
-      <li><strong>Cardiovascular conditions</strong> — hypertension, peripheral circulation disorders</li>
-      <li><strong>Kidney and urinary tract disorders</strong> — kidney stones, chronic infections</li>
-      <li><strong>Stress and burnout</strong> — fatigue, sleep disorders, general wellbeing</li>
-    </ul>
-
-    <h2>Modern Facilities, Timeless Philosophy</h2>
-    <p>
-      While the springs themselves are unchanged, the facilities that surround them have evolved considerably. Today's leading spa hotels in Marienbad offer state-of-the-art wellness centres with indoor pools, saunas, fitness studios, physiotherapy rooms and diagnostic equipment — all complementing the natural mineral water treatments that remain at the heart of every programme.
-    </p>
-    <p>
-      Several of the town's grand historic hotels, including those operated by Ensana Health Spa Hotels, have been carefully restored to combine period elegance with modern therapeutic infrastructure. Guests can enjoy the atmosphere of a nineteenth-century spa resort while benefiting from treatments guided by contemporary medical science.
-    </p>
-
-    <h2>Planning Your Spa Visit</h2>
-    <p>
-      A traditional spa stay in Marienbad lasts between one and three weeks, allowing the body time to respond fully to the mineral waters and treatments. However, shorter stays of a few days can also be rewarding, particularly for those seeking relaxation and a taste of the spa tradition. Most spa hotels offer packages that include an initial medical consultation, a personalised treatment plan, daily therapies and full board.
-    </p>
-    <p>
-      The springs along the colonnade are open to all visitors, free of charge. Whether you are embarking on a full therapeutic programme or simply passing through town, taking a moment to taste the mineral water — warm from the earth, sharp with iron or gentle with magnesium — is an essential Marienbad experience.
-    </p>
-
+<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+    <MarkdocRenderer content={page.body} />
   </PillarPage>
 </Base>

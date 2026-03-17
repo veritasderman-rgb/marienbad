@@ -1,12 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'cs' as const
+const page = await getPage('cs-lide')
 ---
 
-<Base locale={locale} title="Lidé z Kolonády — Marienbad.com" description="Skutečné příběhy skutečných návštěvníků. Proč se stále vracejí.">
-  <PillarPage locale={locale} title="Lidé z Kolonády" description="Skutečné příběhy skutečných návštěvníků. Proč se stále vracejí.">
-    <p>Content coming soon.</p>
+<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+    <MarkdocRenderer content={page.body} />
   </PillarPage>
 </Base>

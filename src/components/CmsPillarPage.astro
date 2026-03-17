@@ -1,0 +1,31 @@
+---
+import type { Locale } from '@/i18n/config'
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
+
+interface Props {
+  locale: Locale
+  slug: string
+}
+
+const { locale, slug } = Astro.props
+
+let page: Awaited<ReturnType<typeof getPage>> | null = null
+try {
+  page = await getPage(slug)
+} catch {
+  // Content not yet migrated to CMS, fall through to slot
+}
+---
+
+{page ? (
+  <Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+    <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+      <MarkdocRenderer content={page.body} />
+    </PillarPage>
+  </Base>
+) : (
+  <slot />
+)}

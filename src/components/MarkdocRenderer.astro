@@ -1,0 +1,13 @@
+---
+import Markdoc from '@markdoc/markdoc'
+
+interface Props {
+  content: () => Promise<any>
+}
+
+const { content } = Astro.props
+const node = await content()
+const html = Markdoc.renderers.html(node)
+---
+
+<Fragment set:html={html} />

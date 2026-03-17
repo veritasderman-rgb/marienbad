@@ -1,12 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'ru' as const
+const page = await getPage('ru-lyudi')
 ---
 
-<Base locale={locale} title="Люди Колоннады — Marienbad.com" description="Настоящие истории настоящих посетителей. Почему они возвращаются.">
-  <PillarPage locale={locale} title="Люди Колоннады" description="Настоящие истории настоящих посетителей. Почему они возвращаются.">
-    <p>Content coming soon.</p>
+<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+    <MarkdocRenderer content={page.body} />
   </PillarPage>
 </Base>

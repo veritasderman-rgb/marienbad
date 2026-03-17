@@ -1,0 +1,246 @@
+---
+import type { Locale } from '@/i18n/config'
+import HeroSection from '@/components/HeroSection.astro'
+import SectionCard from '@/components/SectionCard.astro'
+import WaveDivider from '@/components/WaveDivider.astro'
+import { t } from '@/i18n/ui'
+import { localizedHref } from '@/i18n/utils'
+import { getHomepage } from '@/content/reader'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const cms = await getHomepage(locale)
+
+const gradients = [
+  'linear-gradient(135deg, #1A1916 0%, #266782 100%)',
+  'linear-gradient(135deg, #1A1916 0%, #004F71 100%)',
+  'linear-gradient(135deg, #1A1916 0%, #3A8BA8 100%)',
+]
+---
+
+<!-- 1. HERO -->
+<HeroSection
+  title={cms.hero.title}
+  subtitle={cms.hero.subtitle}
+  ctaText={cms.hero.ctaText}
+  ctaHref={cms.hero.ctaHref}
+  badges={cms.hero.badges}
+/>
+
+<!-- 2. QUICK FACTS STRIP -->
+<section class="relative z-10 -mt-16 md:-mt-20">
+  <div class="container-wide">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      {cms.quickFacts.map((fact) => (
+        <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
+          <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" /></svg></div>
+          <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">{fact.value}</div>
+          <div class="text-sm text-beige-600">{fact.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 3. FOUR HEALING ELEMENTS -->
+<section class="bg-indigo-700 text-white py-20 md:py-28 mt-12 md:mt-16">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+      <span class="text-turquoise-300 text-sm font-medium tracking-widest uppercase">{cms.healingElements.sectionLabel}</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mt-4 mb-4" style="font-size: var(--text-h2);">{cms.healingElements.title}</h2>
+      <p class="text-white/70 text-lg">{cms.healingElements.description}</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {cms.healingElements.items.map((item) => (
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center card-hover reveal">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-turquoise-400/20 flex items-center justify-center">
+            <svg class="w-8 h-8 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">{item.name}</h3>
+          <p class="text-white/70 text-sm leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<WaveDivider variant="white-on-indigo" />
+
+<!-- 4. DISCOVER THE TOWN -->
+<section id="discover" class="py-16 md:py-24 bg-white">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+      <div class="divider-ornament mb-6">
+        <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{cms.discover.sectionLabel}</span>
+      </div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-4" style="font-size: var(--text-h2);">{cms.discover.title}</h2>
+      <p class="text-beige-700 text-lg leading-relaxed">{cms.discover.description}</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <SectionCard title={t(locale, 'home.springs')} description={t(locale, 'home.springsDesc')} href={localizedHref(locale, 'mineral-springs')} variant="indigo" />
+      <SectionCard title={t(locale, 'home.thingsToDo')} description={t(locale, 'home.thingsToDoDesc')} href={localizedHref(locale, 'things-to-do')} variant="turquoise" />
+      <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} variant="dark" />
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHERE TO STAY -->
+<section class="bg-beige-200 py-16 md:py-24">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+      <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{cms.hotels.sectionLabel}</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3 mb-4" style="font-size: var(--text-h2);">{cms.hotels.title}</h2>
+      <p class="text-beige-700 text-lg">{cms.hotels.description}</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {cms.hotels.items.map((hotel) => (
+        <div class="bg-white rounded-xl overflow-hidden shadow-card card-hover reveal">
+          <div class="placeholder-image h-48 relative">
+            <span class="text-white/80 text-sm">{hotel.name} — Foto</span>
+            <div class="absolute top-3 left-3 flex gap-2">
+              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">{'★'.repeat(hotel.stars)}</span>
+              {hotel.badge && <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">{hotel.badge}</span>}
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-xl font-bold text-indigo-700 mb-2">{hotel.name}</h3>
+            <p class="text-beige-700 text-sm mb-3">{hotel.description}</p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {hotel.tags.map((tag) => (
+                <span class="px-2 py-0.5 bg-turquoise-50 text-turquoise-800 text-xs rounded-full">{tag}</span>
+              ))}
+            </div>
+            <a href={hotel.bookingUrl} class="inline-flex items-center gap-1.5 text-indigo-500 hover:text-indigo-700 text-sm font-semibold transition-colors" target="_blank" rel="noopener">
+              {hotel.bookingLabel}
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="text-center mt-8">
+      <a href={localizedHref(locale, 'accommodation')} class="btn-ghost">{cms.hotels.allHotelsLabel}</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PEOPLE OF COLONNADE -->
+<section class="bg-beige-950 text-white py-20 md:py-28">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+      <span class="text-turquoise-400 text-sm font-medium tracking-widest uppercase">{cms.people.sectionLabel}</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-4" style="font-size: var(--text-h2);">{cms.people.title}</h2>
+      <p class="text-beige-600 text-lg">{cms.people.description}</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cms.people.stories.map((story, i) => (
+        <div class="group bg-white/5 rounded-xl overflow-hidden card-hover reveal">
+          <div class="placeholder-image h-64 relative" style={`background: ${gradients[i % 3]};`}>
+            <span class="text-white/60 text-sm">Portrait — Foto</span>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
+              <p class="font-heading text-base italic text-white/90 leading-snug mb-2" lang={story.lang || undefined}>{story.quote}</p>
+              <div class="flex items-center gap-2">
+                <span class="text-white font-semibold text-sm">{story.name}</span>
+                <span class="text-white/50 text-sm">· {story.location}</span>
+                <span class="px-2 py-0.5 bg-turquoise-400/30 text-turquoise-300 text-xs rounded-full ml-auto">{story.visitLabel}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="text-center mt-10">
+      <a href={localizedHref(locale, 'people')} class="btn-ghost text-white border-white/30 hover:bg-white hover:text-beige-950">{cms.people.allStoriesLabel}</a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. SEASONAL HIGHLIGHT -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container-wide">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal">
+      <div class="placeholder-image rounded-xl h-72 lg:h-96 relative">
+        <span class="text-white/80 text-sm">Seasonal — Foto</span>
+        <div class="absolute top-4 left-4">
+          <span class="px-3 py-1 bg-turquoise-400 text-indigo-900 text-xs font-semibold uppercase tracking-wider rounded-full">{cms.seasonal.badge}</span>
+        </div>
+      </div>
+      <div>
+        <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{cms.seasonal.season}</span>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mt-3 mb-4" style="font-size: var(--text-h3);">{cms.seasonal.title}</h2>
+        <p class="text-beige-700 text-lg leading-relaxed mb-6">{cms.seasonal.description}</p>
+        <a href={localizedHref(locale, 'things-to-do')} class="btn-secondary">
+          {cms.seasonal.ctaText}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<WaveDivider variant="beige-on-white" />
+
+<!-- 8. MAGAZINE PREVIEW -->
+<section class="bg-beige-200 py-16 md:py-24">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+      <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{cms.magazine.sectionLabel}</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3 mb-4" style="font-size: var(--text-h2);">{cms.magazine.title}</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cms.magazine.articles.map((article) => (
+        <div class="bg-white rounded-xl overflow-hidden shadow-card card-hover reveal">
+          <div class="placeholder-image-light h-44 flex items-center justify-center">
+            <span class="text-beige-600 text-sm">Artikelbild</span>
+          </div>
+          <div class="p-5">
+            <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{article.category}</span>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">{article.title}</h3>
+            <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">{article.excerpt}</p>
+            <div class="mt-3 text-beige-600 text-xs">{article.date} · {article.readTime}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 9. EMAIL CAPTURE -->
+<section class="py-16 md:py-24" style="background: linear-gradient(135deg, #004F71 0%, #1A1916 100%);">
+  <div class="container-wide">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4" style="font-size: var(--text-h2);">{cms.newsletter.title}</h2>
+      <p class="text-white/70 text-lg mb-8">{cms.newsletter.description}</p>
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST">
+        <label for="newsletter-email" class="sr-only">E-Mail</label>
+        <input id="newsletter-email" type="email" placeholder={cms.newsletter.placeholder} required class="flex-1 px-5 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-turquoise-400 focus:ring-1 focus:ring-turquoise-400 transition-colors" />
+        <button type="submit" class="btn-primary whitespace-nowrap">
+          {cms.newsletter.buttonText}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </button>
+      </form>
+      <p id="newsletter-success" class="hidden text-turquoise-300 text-sm font-medium mt-4">{cms.newsletter.successMessage}</p>
+      <p id="newsletter-disclaimer" class="text-white/40 text-xs mt-4">{cms.newsletter.disclaimer}</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    btn.disabled = true
+    btn.style.opacity = '0.6'
+    setTimeout(() => {
+      form.style.display = 'none'
+      document.getElementById('newsletter-success')?.classList.remove('hidden')
+      document.getElementById('newsletter-disclaimer')?.classList.add('hidden')
+    }, 600)
+  })
+</script>

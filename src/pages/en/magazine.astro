@@ -1,106 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-magazine')
 ---
 
-<Base locale={locale} title="Magazine — Marienbad.com" description="Stories, guides and hidden gems from Marienbad — your window into the life of this extraordinary spa town.">
-  <PillarPage locale={locale} title="Magazine" description="Stories, guides and hidden gems from Marienbad — your window into the life of this extraordinary spa town.">
-
-    <h2>Welcome to the Marienbad Magazine</h2>
-    <p>
-      Some places can be captured in a guidebook entry. Marienbad is not one of them. Behind the elegant facades and famous springs lies a town of quiet depth — layers of history, pockets of unexpected beauty, seasonal rhythms that only reveal themselves to those who pay attention. The Marienbad Magazine is our attempt to share what we know and love about this place: the stories behind the landmarks, the science behind the spa, the corners that most visitors walk past without noticing, and the people who make this town what it is.
-    </p>
-    <p>
-      Whether you are planning your first visit, reminiscing about a past one, or simply curious about one of Europe's most distinctive small towns, you will find something here to explore.
-    </p>
-
-    <h2>Seasonal Guides</h2>
-    <p>
-      Marienbad is a different town in every season, and each one has its own pleasures. Our seasonal guides go beyond the obvious to help you make the most of whenever you happen to visit.
-    </p>
-
-    <h3>Spring: The Awakening</h3>
-    <p>
-      As the snow melts and the first crocuses appear along the colonnade, Marienbad shakes off its winter quiet. Spring is the season of renewal — the parks come alive, the spa season opens fully, and the town begins to hum with a fresh energy. Our spring guide covers the best walks as the forest turns green, the first outdoor concerts, and why April and May might be the best-kept secret in the Marienbad calendar.
-    </p>
-
-    <h3>Summer: The Full Bloom</h3>
-    <p>
-      Peak season brings the Singing Fountain to life, fills the concert halls with the Chopin Festival, and turns the hotel terraces into stages for people-watching. Summer in Marienbad is vibrant and social, but it also holds quieter pleasures — an early morning at the Forest Spring before the crowds arrive, a twilight walk through the upper park, a late dinner at a restaurant with garden seating. Our summer guide helps you find the balance between event and escape.
-    </p>
-
-    <h3>Autumn: The Golden Season</h3>
-    <p>
-      Many returning visitors consider autumn the most beautiful time in Marienbad. The spa parks become a canvas of amber, gold and deep red; the air is crisp and fragrant with fallen leaves; the crowds thin and the town regains its contemplative character. Our autumn guide includes the finest foliage walks, the best mushroom foraging spots in the Slavkov Forest, and recommendations for warming evenings by the fire.
-    </p>
-
-    <h3>Winter: The Quiet Magic</h3>
-    <p>
-      Snow transforms Marienbad into something from a fairy tale — colonnades dusted with white, springs steaming against the cold air, the soft glow of lights in the early darkness. Winter is the least visited season, and for those who embrace the cold, it offers an intimacy and tranquillity that summer cannot match. Our winter guide covers the Christmas markets, cross-country skiing routes, the restorative pleasure of a hot mineral bath on a freezing day, and the atmospheric charm of a near-empty colonnade at dusk.
-    </p>
-
-    <h2>Hidden Gems</h2>
-    <p>
-      Every town has its well-trodden paths — and its secrets. In this series, we explore the corners of Marienbad that reward the curious: the forgotten pavilion in the upper park, the Art Nouveau details hidden in plain sight on Hlavní třída, the tiny spring that hardly anyone visits, the viewpoint that only the locals know. These are the details that turn a pleasant visit into an unforgettable one.
-    </p>
-
-    <h3>Recent Features</h3>
-    <ul>
-      <li><strong>The Kladská Boardwalk</strong> — A pristine peat bog just fifteen minutes from town, with a fairy-tale hunting lodge at its centre. Why this is Marienbad's most underrated day trip.</li>
-      <li><strong>The Geological Park</strong> — An open-air museum of Bohemian rock formations, tucked away in the forest above the town. Perfect for a quiet afternoon of geology and greenery.</li>
-      <li><strong>Café Culture in Marienbad</strong> — Beyond the hotel dining rooms: independent cafes, bakeries and sweet spots where locals linger over coffee and koláče.</li>
-      <li><strong>The Chapel of St. Valentine</strong> — A tiny woodland chapel with a surprising history and one of the loveliest forest walks in the area.</li>
-    </ul>
-
-    <h2>The Science of Spa</h2>
-    <p>
-      Spa culture is often presented as a matter of tradition and feeling — and it is both of those things. But the mineral springs of Marienbad are also a subject of serious science. In this series, we explore the research behind the treatments: how CO₂ baths affect blood circulation, what happens to the body during a peat wrap, why drinking mineral water in prescribed doses can influence digestion and metabolism, and what modern balneology (the science of therapeutic bathing) has to say about age-old practices.
-    </p>
-
-    <h3>Featured Topics</h3>
-    <ul>
-      <li><strong>How CO₂ Baths Work</strong> — The physiology of carbon dioxide absorption through the skin, and why a simple bath can produce such profound effects on circulation and blood pressure.</li>
-      <li><strong>Mineral Water Chemistry</strong> — What makes each spring unique: a guide to the key minerals, their concentrations and their documented effects on the body.</li>
-      <li><strong>Peat Therapy: Ancient Remedy, Modern Evidence</strong> — The humic acids, trace elements and thermal properties that make Bohemian peat a uniquely effective therapeutic material.</li>
-      <li><strong>The Psychology of Spa</strong> — Why the spa environment itself — the pace, the beauty, the ritual — contributes to healing in ways that science is only beginning to understand.</li>
-    </ul>
-
-    <h2>History and Heritage</h2>
-    <p>
-      Marienbad's past is endlessly rich and sometimes surprising. In this category, we publish deep dives into episodes, personalities and themes from the town's history — from the monks who first discovered the springs to the UNESCO inscription of 2021, and everything in between.
-    </p>
-
-    <h3>Recent Articles</h3>
-    <ul>
-      <li><strong>Goethe's Last Love</strong> — The full story of the 74-year-old poet's infatuation with Ulrike von Levetzow, and the masterpiece it inspired.</li>
-      <li><strong>Edward VII's Marienbad</strong> — How a British king shaped the town's identity, founded its golf club, and turned it into the summer capital of European diplomacy.</li>
-      <li><strong>The Architect of Paradise</strong> — Václav Skalník, the gardener who transformed a swamp into one of Europe's most admired landscape parks.</li>
-      <li><strong>After the Silence</strong> — Marienbad's post-war story: expulsion, reinvention and the long road back to its former glory.</li>
-    </ul>
-
-    <h2>Categories</h2>
-    <p>
-      Browse the Magazine by topic:
-    </p>
-    <ul>
-      <li><strong>Seasonal Guides</strong> — The best of Marienbad in spring, summer, autumn and winter.</li>
-      <li><strong>Hidden Gems</strong> — Off-the-beaten-path discoveries for curious travellers.</li>
-      <li><strong>Spa Science</strong> — The research and reasoning behind Marienbad's treatments.</li>
-      <li><strong>History and Heritage</strong> — Deep dives into the town's remarkable past.</li>
-      <li><strong>Food and Drink</strong> — Restaurants, cafes, local specialities and the art of dining in a spa town.</li>
-      <li><strong>Active Marienbad</strong> — Golf, hiking, cycling and outdoor adventures.</li>
-      <li><strong>People of Colonnade</strong> — Stories from the visitors and locals who bring this town to life.</li>
-    </ul>
-
-    <h2>Stay in the Know</h2>
-    <p>
-      Love Marienbad? Want to know about seasonal events, new articles and travel tips before anyone else? Join our newsletter — a brief, thoughtfully curated email sent once a month with the best of Marienbad.com. No spam, no clutter — just stories and recommendations from a town we care about deeply.
-    </p>
-    <p>
-      <strong>Sign up at the bottom of any page on Marienbad.com</strong>, or drop us a line at <strong>magazine@marienbad.com</strong> and we will add you to the list. We look forward to keeping you connected to this extraordinary place, wherever in the world you may be.
-    </p>
-
+<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+    <MarkdocRenderer content={page.body} />
   </PillarPage>
 </Base>

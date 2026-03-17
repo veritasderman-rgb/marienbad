@@ -1,0 +1,128 @@
+{
+  "hero": {
+    "title": "Entdecken Sie Marienbad",
+    "subtitle": "UNESCO Welterbe · Seit 1812 · Vier Heilquellen — Das einzige Kurbad der Welt, das alle vier natürlichen Heilressourcen vereint.",
+    "ctaText": "Stadt entdecken",
+    "ctaHref": "#discover",
+    "badges": ["UNESCO Welterbe", "Seit 1812"]
+  },
+  "quickFacts": [
+    { "value": "40+", "label": "Mineralquellen" },
+    { "value": "UNESCO", "label": "Welterbe 2021" },
+    { "value": "1812", "label": "Kurtradition" },
+    { "value": "Royal", "label": "Golf Club 1905" }
+  ],
+  "healingElements": {
+    "sectionLabel": "Was Marienbad einzigartig macht",
+    "title": "Vier natürliche Heilressourcen",
+    "description": "Das einzige Kurbad weltweit, das alle vier Elemente der natürlichen Heilung vereint.",
+    "items": [
+      { "name": "Wasser", "description": "Über 40 Mineralquellen mit einzigartiger Zusammensetzung — von Trinkkuren bis zu heilenden Bädern." },
+      { "name": "Erde", "description": "Natürliche Torfpeloide mit entzündungshemmenden und schmerzlindernden Eigenschaften." },
+      { "name": "Gas", "description": "99,7% reines CO₂ — „Marias Gas“ — verbessert die periphere Durchblutung nachweislich." },
+      { "name": "Klima", "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen." }
+    ]
+  },
+  "discover": {
+    "sectionLabel": "Willkommen",
+    "title": "Entdecken Sie die Stadt",
+    "description": "Mariánské Lázně — das weltberühmte Marienbad — verzaubert seit über 200 Jahren Besucher aus aller Welt mit heilenden Quellen, prächtiger Architektur und atemberaubender Natur."
+  },
+  "hotels": {
+    "sectionLabel": "Unterkünfte",
+    "title": "Wo übernachten in Marienbad",
+    "description": "Von historischen 5-Sterne-Spa-Hotels bis zu charmanten Pensionen.",
+    "allHotelsLabel": "Alle 6 Hotels entdecken →",
+    "items": [
+      {
+        "name": "Nové Lázně",
+        "stars": 5,
+        "badge": "Editor's Pick",
+        "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
+        "tags": ["Römisches Bad", "CO₂ Therapie", "Pool"],
+        "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung"
+      },
+      {
+        "name": "Centrální Lázně",
+        "stars": 4,
+        "badge": "",
+        "description": "Direkt an der Kolonnade — traditionelle Kur in zentraler Lage mit modernen Behandlungsräumen.",
+        "tags": ["Kolonnade-Lage", "Trinkkur", "Wellness"],
+        "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung"
+      }
+    ]
+  },
+  "people": {
+    "sectionLabel": "Menschen der Kolonnade",
+    "title": "Geschichten, die das Wasser erzählt",
+    "description": "Echte Geschichten von echten Menschen — Kurgäste, Einheimische und Ärzte erzählen, warum Marienbad ein besonderer Ort ist.",
+    "allStoriesLabel": "Alle Geschichten lesen →",
+    "stories": [
+      {
+        "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
+        "name": "Ingrid",
+        "location": "Hamburg 🇩🇪",
+        "visitLabel": "Zum 12. Mal",
+        "lang": "de"
+      },
+      {
+        "quote": "\"I came for the treatment, but I stayed for the peace.\"",
+        "name": "James",
+        "location": "London 🇬🇧",
+        "visitLabel": "3rd visit",
+        "lang": "en"
+      },
+      {
+        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
+        "name": "Наталья",
+        "location": "Москва 🇷🇺",
+        "visitLabel": "8-й визит",
+        "lang": "ru"
+      }
+    ]
+  },
+  "seasonal": {
+    "badge": "Diese Saison",
+    "season": "Frühling 2026",
+    "title": "Die Quellen erwachen — Frühlingskur in Marienbad",
+    "description": "Im Frühling blüht Marienbad auf: Die Skalníkovy-Gärten erstrahlen in Farben, die Singende Fontäne nimmt ihren Betrieb wieder auf, und die milde Frühlingsluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
+    "ctaText": "Mehr erfahren"
+  },
+  "magazine": {
+    "sectionLabel": "Magazin",
+    "title": "Aktuelles aus Marienbad",
+    "articles": [
+      {
+        "category": "Gesundheit",
+        "title": "CO₂-Bäder: Was die Wissenschaft sagt",
+        "excerpt": "In klinischen Studien berichten 83% der Patienten über reduzierte Gelenkschmerzen nach einer 14-tägigen Kur.",
+        "date": "15. März 2026",
+        "readTime": "5 Min. Lesezeit"
+      },
+      {
+        "category": "Kultur",
+        "title": "Auf Goethes Spuren durch die Stadt",
+        "excerpt": "Die gleichen Quellen, die Goethe 1823 pries, speisen heute evidenzbasierte Rehabilitationsprogramme.",
+        "date": "10. März 2026",
+        "readTime": "7 Min. Lesezeit"
+      },
+      {
+        "category": "Tipp",
+        "title": "Die 5 schönsten Spaziergänge",
+        "excerpt": "Von der Kolonnade durch den Skalníkovy-Park bis zum Geologischen Park — die besten Routen.",
+        "date": "5. März 2026",
+        "readTime": "4 Min. Lesezeit"
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Ihr kostenloser Marienbad-Guide",
+    "description": "Die besten Insidertipps, saisonale Empfehlungen und neue Geschichten direkt in Ihr Postfach.",
+    "placeholder": "Ihre E-Mail-Adresse",
+    "buttonText": "Anmelden",
+    "successMessage": "Vielen Dank! Sie wurden erfolgreich angemeldet.",
+    "disclaimer": "Kein Spam. Maximal 1× im Monat. Jederzeit abmeldbar."
+  }
+}

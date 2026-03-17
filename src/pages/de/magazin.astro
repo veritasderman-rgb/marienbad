@@ -1,132 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'de' as const
+const page = await getPage('de-magazin')
 ---
 
-<Base locale={locale} title="Magazin — Marienbad.com" description="Neuigkeiten, Tipps und Geschichten aus Marienbad.">
-  <PillarPage locale={locale} title="Magazin" description="Neuigkeiten, Tipps und Geschichten aus Marienbad.">
-
-    <p>
-      Willkommen im Marienbad Magazin — Ihrem Begleiter für alles, was diese außergewöhnliche Kurstadt
-      zu bieten hat. Hier finden Sie keine oberflächlichen Reisetipps, sondern durchdachte Beiträge,
-      die Ihnen Marienbad so zeigen, wie es wirklich ist: vielschichtig, überraschend und immer
-      eine Entdeckung wert.
-    </p>
-    <p>
-      Ob Sie Ihren ersten Besuch planen oder seit Jahren regelmäßig kommen — unser Magazin bietet
-      Ihnen frische Perspektiven, verborgene Geschichten und praktisches Wissen rund um das
-      westböhmische Bäderdreieck.
-    </p>
-
-    <h2>Unsere Themen</h2>
-
-    <h3>Saisonale Reiseführer</h3>
-    <p>
-      Jede Jahreszeit verwandelt Marienbad. Im Frühling erwacht der Kurpark mit tausenden Krokussen,
-      im Sommer erklingt die Singende Fontäne unter freiem Himmel, im Herbst färben sich die Wälder
-      des Kaiserwaldes in leuchtendes Gold, und im Winter hüllt sich die Stadt in eine stille,
-      verschneite Eleganz.
-    </p>
-    <p>
-      Unsere saisonalen Guides zeigen Ihnen, was Sie zu jeder Jahreszeit erleben können: von den
-      besten Wanderwegen im Herbstlaub über winterliche Wellness-Rituale bis zu Frühlingskonzerten
-      in historischen Sälen. Wir verraten Ihnen, wann die Kolonnaden am schönsten sind und welche
-      Veranstaltungen Sie nicht verpassen sollten.
-    </p>
-
-    <h3>Verborgene Schätze</h3>
-    <p>
-      Abseits der bekannten Sehenswürdigkeiten verbirgt Marienbad unzählige kleine Wunder. Die
-      verfallene Kapelle im Wald, zu der nur ein schmaler Pfad führt. Das Café in einer Seitenstraße,
-      in dem die Zeit stehen geblieben scheint. Der Aussichtspunkt, den selbst viele Einheimische
-      nicht kennen.
-    </p>
-    <p>
-      In unserer Reihe <em>Verborgene Schätze</em> nehmen wir Sie mit auf Entdeckungsreisen jenseits
-      der ausgetretenen Pfade. Wir sprechen mit Einheimischen, folgen vergessenen Wanderwegen und
-      öffnen Türen, die normalerweise geschlossen bleiben. Denn die wahre Magie Marienbads liegt
-      oft dort, wo man sie am wenigsten erwartet.
-    </p>
-
-    <h3>Die Wissenschaft des Heilens</h3>
-    <p>
-      Marienbads Mineralquellen sind kein Mythos — ihre heilende Wirkung ist wissenschaftlich belegt.
-      Aber wie genau wirken Moorbäder auf den Körper? Warum unterscheidet sich jede Quelle in ihrer
-      Zusammensetzung? Und was sagt die moderne Forschung über die Balneologie?
-    </p>
-    <p>
-      In Zusammenarbeit mit den medizinischen Experten der Ensana Spa Hotels beleuchten wir die
-      Wissenschaft hinter der Kur. Verständlich geschrieben, fundiert recherchiert — für alle,
-      die verstehen möchten, warum dieses Wasser seit Jahrhunderten Menschen heilt. Von der Geologie
-      der Quellen bis zu den neuesten Studien über die Wirksamkeit traditioneller Kuranwendungen.
-    </p>
-
-    <h3>Böhmische Küche und Rezepte</h3>
-    <p>
-      Knödel, Svíčková, Trdelník — die böhmische Küche ist herzhaft, ehrlich und voller
-      Überraschungen. Aber Marienbad bietet mehr als Tradition: Junge Köche verbinden lokale
-      Zutaten mit modernen Techniken, und in den umliegenden Dörfern findet man noch
-      Bauernhöfe, die nach alten Rezepten produzieren.
-    </p>
-    <p>
-      Unser Magazin bringt Ihnen die kulinarische Seite Marienbads näher: mit Restaurantempfehlungen,
-      Porträts von Köchen und Produzenten, und natürlich mit Rezepten zum Nachkochen.
-      Dazu gehören auch die Heilwasser-Rezepturen, die seit Generationen in der Region überliefert werden.
-    </p>
-
-    <h3>Gespräche und Begegnungen</h3>
-    <p>
-      Wer sind die Menschen, die Marienbad prägen? Wir sprechen mit Kurärzten und Hoteliers,
-      mit Musikern und Historikern, mit Stammgästen und Neuankömmlingen. Unsere Interviews
-      und Porträts geben Einblicke in das Leben einer Stadt, die seit über zweihundert Jahren
-      Gastfreundschaft lebt.
-    </p>
-    <p>
-      Erwarten Sie keine PR-Texte, sondern offene Gespräche: über die Herausforderungen des
-      Denkmalschutzes, die Zukunft des Kurtourismus und die kleinen Freuden des Alltags in
-      einer der schönsten Kleinstädte Europas.
-    </p>
-
-    <h2>Unsere Rubriken</h2>
-    <ul>
-      <li><strong>Erleben</strong> — Ausflüge, Wanderungen, Veranstaltungen und saisonale Highlights</li>
-      <li><strong>Verstehen</strong> — Geschichte, Architektur, Wissenschaft und Kulturerbe</li>
-      <li><strong>Genießen</strong> — Kulinarik, Wellness, Rezepte und Lebensart</li>
-      <li><strong>Begegnen</strong> — Interviews, Porträts und persönliche Geschichten</li>
-      <li><strong>Planen</strong> — Praktische Tipps, Neuigkeiten und Reiseplanung</li>
-    </ul>
-    <p>
-      Jeder Beitrag wird sorgfältig recherchiert und vor Ort verfasst. Wir arbeiten mit lokalen
-      Autoren, Fotografen und Experten zusammen, die Marienbad aus erster Hand kennen. Kein
-      Stockfoto, kein Algorithmus — sondern echte Einblicke von echten Menschen.
-    </p>
-
-    <h2>Bleiben Sie auf dem Laufenden</h2>
-    <p>
-      Sie möchten keinen Beitrag verpassen? Unser Newsletter bringt Ihnen einmal im Monat die
-      besten Geschichten direkt in Ihr Postfach — zusammen mit exklusiven Tipps, die Sie nur
-      hier finden.
-    </p>
-    <p>
-      <strong>Was Sie erwartet:</strong>
-    </p>
-    <ul>
-      <li>Einen handverlesenen Artikel aus dem Magazin</li>
-      <li>Saisonale Empfehlungen und Veranstaltungshinweise</li>
-      <li>Exklusive Einblicke hinter die Kulissen</li>
-      <li>Gelegentliche Sonderangebote unserer Partnerhäuser</li>
-    </ul>
-    <p>
-      Kein Spam, kein tägliches Bombardement. Nur das Beste aus Marienbad, einmal im Monat,
-      mit Liebe zusammengestellt. Denn auch unser Newsletter folgt dem Marienbader Prinzip:
-      Qualität vor Quantität. Langsamkeit vor Hektik.
-    </p>
-    <p>
-      <strong>Melden Sie sich an</strong> und lassen Sie sich inspirieren. Ihr nächster Besuch in
-      Marienbad beginnt vielleicht mit einer Geschichte, die Sie hier lesen.
-    </p>
-
+<Base locale={locale} title={page.metaTitle} description={page.metaDescription}>
+  <PillarPage locale={locale} title={page.title} description={page.metaDescription}>
+    <MarkdocRenderer content={page.body} />
   </PillarPage>
 </Base>
