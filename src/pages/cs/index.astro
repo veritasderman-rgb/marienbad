@@ -16,38 +16,78 @@ const locale = 'cs' as const
     ctaHref={localizedHref(locale, 'mineral-springs')}
   />
 
-  <section class="container-wide py-16 md:py-24">
+  <section id="discover" class="container-wide py-16 md:py-24">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <div class="divider-ornament mb-6">
+        <span class="text-accent-500 text-sm font-medium tracking-widest uppercase">Vítejte</span>
+      </div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary-900 mb-6">Klenot v srdci Čech</h2>
+      <p class="text-sand-600 text-lg leading-relaxed">
+        Mariánské Lázně — světoznámý Marienbad — okouzlují návštěvníky z celého světa
+        již více než 200 let. Přes 40 minerálních pramenů obklopených nádhernou architekturou
+        19. století a dechberoucí parkovou krajinou. Od roku 2021 památka UNESCO.
+      </p>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      <SectionCard
-        title={t(locale, 'home.springs')}
-        description={t(locale, 'home.springsDesc')}
-        href={localizedHref(locale, 'mineral-springs')}
-        gradient="from-primary-600 to-primary-800"
-      />
-      <SectionCard
-        title={t(locale, 'home.thingsToDo')}
-        description={t(locale, 'home.thingsToDoDesc')}
-        href={localizedHref(locale, 'things-to-do')}
-        gradient="from-accent-600 to-accent-800"
-      />
-      <SectionCard
-        title={t(locale, 'home.accommodation')}
-        description={t(locale, 'home.accommodationDesc')}
-        href={localizedHref(locale, 'accommodation')}
-        gradient="from-stone-600 to-stone-800"
-      />
-      <SectionCard
-        title={t(locale, 'home.history')}
-        description={t(locale, 'home.historyDesc')}
-        href={localizedHref(locale, 'history')}
-        gradient="from-primary-700 to-primary-950"
-      />
-      <SectionCard
-        title={t(locale, 'home.people')}
-        description={t(locale, 'home.peopleDesc')}
-        href={localizedHref(locale, 'people')}
-        gradient="from-accent-700 to-accent-950"
-      />
+      <SectionCard title={t(locale, 'home.springs')} description={t(locale, 'home.springsDesc')} href={localizedHref(locale, 'mineral-springs')} gradient="from-primary-700 to-primary-900" />
+      <SectionCard title={t(locale, 'home.thingsToDo')} description={t(locale, 'home.thingsToDoDesc')} href={localizedHref(locale, 'things-to-do')} gradient="from-accent-600 to-accent-800" />
+      <SectionCard title={t(locale, 'home.accommodation')} description={t(locale, 'home.accommodationDesc')} href={localizedHref(locale, 'accommodation')} gradient="from-sand-600 to-sand-800" />
+      <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} gradient="from-primary-800 to-primary-950" />
+      <SectionCard title={t(locale, 'home.people')} description={t(locale, 'home.peopleDesc')} href={localizedHref(locale, 'people')} gradient="from-accent-700 to-accent-950" />
+      <SectionCard title="Magazín" description="Sezónní tipy, insider informace a aktuální reportáže z Mariánských Lázní." href={localizedHref(locale, 'magazine')} gradient="from-primary-600 to-accent-800" />
+    </div>
+  </section>
+
+  <section class="bg-primary-950 text-white py-20 md:py-28">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Proč Mariánské Lázně?</h2>
+        <p class="text-sand-400 text-lg">Tři důvody, proč lidé přijíždějí — a stále se vracejí.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-primary-800/60 flex items-center justify-center">
+            <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-3">Léčivé prameny</h3>
+          <p class="text-sand-400 text-sm leading-relaxed">Přes 40 minerálních pramenů s unikátním složením — od pitných kúr po léčivé CO₂ koupele.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-primary-800/60 flex items-center justify-center">
+            <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-3">UNESCO dědictví</h3>
+          <p class="text-sand-400 text-sm leading-relaxed">Nádherná lázeňská architektura je od roku 2021 na seznamu UNESCO — jako součást „Great Spa Towns of Europe".</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-primary-800/60 flex items-center justify-center">
+            <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-3">Příběhy a lidé</h3>
+          <p class="text-sand-400 text-sm leading-relaxed">Od Goetha přes krále Eduarda VII. až po dnešní hosty — Mariánské Lázně žijí svými lidmi a jejich příběhy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-wide py-20 md:py-28">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-accent-50 to-sand-100 rounded-3xl p-8 md:p-12 border border-accent-200/50">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-px w-12 bg-accent-400"></div>
+          <span class="text-accent-600 text-sm font-medium tracking-widest uppercase">Lidé z Kolonády</span>
+        </div>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary-900 mb-4">„Mariánské Lázně mi změnily život."</h2>
+        <p class="text-sand-600 text-lg leading-relaxed mb-8">
+          Skutečné příběhy skutečných lidí — lázeňští hosté, místní, umělci i lékaři vyprávějí,
+          proč pro ně Mariánské Lázně mají zvláštní místo v srdci.
+        </p>
+        <a href={localizedHref(locale, 'people')} class="inline-flex items-center gap-2 px-6 py-3 bg-primary-800 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-300">
+          Objevit příběhy
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
     </div>
   </section>
 </Base>

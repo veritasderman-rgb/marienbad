@@ -1,32 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #f0f7f4;
-  --color-primary-100: #d9ede2;
-  --color-primary-200: #b5dbc6;
-  --color-primary-300: #85c2a3;
-  --color-primary-400: #55a47d;
-  --color-primary-500: #358762;
-  --color-primary-600: #266c4e;
-  --color-primary-700: #1f5740;
-  --color-primary-800: #1b4635;
-  --color-primary-900: #173a2d;
-  --color-primary-950: #0c2019;
+  /* Spa Green — refined, deeper, more sophisticated */
+  --color-primary-50: #f0f7f3;
+  --color-primary-100: #dcede2;
+  --color-primary-200: #bcdbc8;
+  --color-primary-300: #8ec3a5;
+  --color-primary-400: #5ea67e;
+  --color-primary-500: #3d8a62;
+  --color-primary-600: #2d6f4e;
+  --color-primary-700: #255a40;
+  --color-primary-800: #1f4835;
+  --color-primary-900: #1a3b2c;
+  --color-primary-950: #0d2118;
 
-  --color-accent-50: #fdf8ef;
-  --color-accent-100: #f9edd5;
-  --color-accent-200: #f2d8aa;
-  --color-accent-300: #eabd74;
-  --color-accent-400: #e3a04c;
-  --color-accent-500: #db8528;
-  --color-accent-600: #c46b1e;
-  --color-accent-700: #a3511b;
-  --color-accent-800: #85411d;
-  --color-accent-900: #6d361b;
-  --color-accent-950: #3b1a0c;
+  /* Colonnade Gold — warm, elegant sandstone tones */
+  --color-accent-50: #fdf8f0;
+  --color-accent-100: #f9edda;
+  --color-accent-200: #f2d8b4;
+  --color-accent-300: #e9be84;
+  --color-accent-400: #dfa053;
+  --color-accent-500: #d88a35;
+  --color-accent-600: #c9722a;
+  --color-accent-700: #a75925;
+  --color-accent-800: #874824;
+  --color-accent-900: #6e3c20;
+  --color-accent-950: #3b1e10;
 
-  --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body: 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', sans-serif;
+  /* Warm Stone — heritage warmth */
+  --color-sand-50: #faf9f7;
+  --color-sand-100: #f0eee9;
+  --color-sand-200: #e0dbd3;
+  --color-sand-300: #cbc3b6;
+  --color-sand-400: #b4a898;
+  --color-sand-500: #a39483;
+  --color-sand-600: #968475;
+  --color-sand-700: #7d6d62;
+  --color-sand-800: #675b53;
+  --color-sand-900: #564c46;
+  --color-sand-950: #2d2724;
+
+  --font-heading: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', 'system-ui', '-apple-system', 'Segoe UI', sans-serif;
 }
 
 html {
@@ -35,7 +50,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: theme(--color-stone-800);
+  color: #3a3530;
+  background-color: var(--color-sand-50);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,4 +60,72 @@ h1, h2, h3, h4, h5, h6 {
 
 .container-wide {
   @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Elegant divider */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-accent-400);
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-accent-300), transparent);
+}
+
+/* Subtle text gradient for hero titles */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-accent-300), var(--color-accent-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth card hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(13, 33, 24, 0.12);
+}
+
+/* Section fade-in */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Prose overrides for pillar pages */
+.prose-marienbad h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-800);
+  border-bottom: 2px solid var(--color-accent-200);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+.prose-marienbad h3 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-700);
+}
+.prose-marienbad a {
+  color: var(--color-primary-600);
+  text-decoration-color: var(--color-accent-300);
+}
+.prose-marienbad a:hover {
+  color: var(--color-primary-800);
+}
+.prose-marienbad blockquote {
+  border-left-color: var(--color-accent-400);
+  background: var(--color-accent-50);
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
 }

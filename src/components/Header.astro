@@ -13,35 +13,41 @@ const navItems = getNavItems(locale)
 const otherLocales = (['de', 'en', 'cs', 'ru'] as const).filter((l) => l !== locale)
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-sand-200/60">
   <div class="container-wide">
     <div class="flex items-center justify-between h-16 md:h-20">
-      <a href={`/${locale}`} class="flex items-center gap-1 shrink-0">
-        <span class="font-heading text-xl md:text-2xl font-bold text-primary-800">Marienbad</span>
-        <span class="text-accent-500 text-lg">.com</span>
+      <!-- Logo -->
+      <a href={`/${locale}`} class="flex items-baseline gap-0.5 shrink-0 group">
+        <span class="font-heading text-2xl md:text-[1.65rem] font-semibold tracking-tight text-primary-800 group-hover:text-primary-600 transition-colors">Marienbad</span>
+        <span class="text-accent-500 text-lg font-medium">.com</span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1">
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-0.5">
         {navItems.map(({ navKey, href }) => (
           <a
             href={href}
-            class="px-3 py-2 text-sm font-medium text-stone-700 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors"
+            class="px-3 py-2 text-[0.84rem] font-medium text-sand-700 hover:text-primary-700 hover:bg-primary-50/60 rounded-lg transition-all duration-200"
           >
             {t(locale, navKey as any)}
           </a>
         ))}
       </nav>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
+        <!-- Language switcher -->
         <div class="relative group">
-          <button class="px-2 py-1 text-sm font-medium text-stone-600 hover:text-primary-700 border border-stone-200 rounded-md">
-            {localeNames[locale]}
+          <button class="flex items-center gap-1 px-2.5 py-1.5 text-sm font-medium text-sand-600 hover:text-primary-700 border border-sand-200 hover:border-primary-200 rounded-lg transition-all">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+            {localeNames[locale].substring(0, 2).toUpperCase()}
           </button>
-          <div class="absolute right-0 mt-1 w-32 bg-white border border-stone-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+          <div class="absolute right-0 mt-1 w-36 bg-white border border-sand-200 rounded-xl shadow-lg shadow-sand-200/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
             {otherLocales.map((l) => (
               <a
                 href={`/${l}`}
-                class="block px-4 py-2 text-sm text-stone-700 hover:bg-primary-50 hover:text-primary-700"
+                class="block px-4 py-2.5 text-sm text-sand-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
               >
                 {localeNames[l]}
               </a>
@@ -49,13 +55,14 @@ const otherLocales = (['de', 'en', 'cs', 'ru'] as const).filter((l) => l !== loc
           </div>
         </div>
 
+        <!-- Mobile menu button -->
         <button
           id="mobile-menu-btn"
-          class="lg:hidden p-2 text-stone-700 hover:text-primary-700 hover:bg-primary-50 rounded-lg"
+          class="lg:hidden p-2 text-sand-700 hover:text-primary-700 hover:bg-primary-50/60 rounded-lg transition-colors"
           aria-label={t(locale, 'nav.menu')}
         >
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </button>
       </div>
@@ -63,21 +70,21 @@ const otherLocales = (['de', 'en', 'cs', 'ru'] as const).filter((l) => l !== loc
   </div>
 
   <!-- Mobile nav -->
-  <div id="mobile-nav" class="hidden lg:hidden bg-white border-t border-stone-200">
-    <nav class="container-wide py-4 flex flex-col gap-1">
+  <div id="mobile-nav" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-sand-200/60">
+    <nav class="container-wide py-4 flex flex-col gap-0.5">
       {navItems.map(({ navKey, href }) => (
         <a
           href={href}
-          class="px-4 py-3 text-base font-medium text-stone-700 hover:text-primary-700 hover:bg-primary-50 rounded-lg"
+          class="px-4 py-3 text-base font-medium text-sand-700 hover:text-primary-700 hover:bg-primary-50/60 rounded-xl transition-colors"
         >
           {t(locale, navKey as any)}
         </a>
       ))}
-      <div class="border-t border-stone-200 mt-2 pt-2 flex gap-2">
+      <div class="border-t border-sand-200 mt-3 pt-3 flex gap-2">
         {otherLocales.map((l) => (
           <a
             href={`/${l}`}
-            class="px-3 py-2 text-sm text-stone-600 hover:text-primary-700 border border-stone-200 rounded-md"
+            class="px-3 py-2 text-sm text-sand-600 hover:text-primary-700 border border-sand-200 hover:border-primary-200 rounded-lg transition-colors"
           >
             {localeNames[l]}
           </a>
