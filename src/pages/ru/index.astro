@@ -24,22 +24,22 @@ const locale = 'ru' as const
     <div class="container-wide">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
-          <div class="text-3xl mb-2">💧</div>
+          <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 009-9c0-4.97-9-12-9-12S3 7.03 3 12a9 9 0 009 9z" /></svg></div>
           <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">40+</div>
           <div class="text-sm text-beige-600">Минеральных источников</div>
         </div>
         <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
-          <div class="text-3xl mb-2">🏛</div>
+          <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg></div>
           <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">ЮНЕСКО</div>
           <div class="text-sm text-beige-600">Наследие 2021</div>
         </div>
         <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
-          <div class="text-3xl mb-2">👑</div>
+          <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" /></svg></div>
           <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">1812</div>
           <div class="text-sm text-beige-600">Традиция курортов</div>
         </div>
         <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
-          <div class="text-3xl mb-2">⛳</div>
+          <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" /></svg></div>
           <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">Royal</div>
           <div class="text-sm text-beige-600">Гольф-клуб 1905</div>
         </div>
@@ -379,7 +379,7 @@ const locale = 'ru' as const
         <p class="text-white/70 text-lg mb-8">
           Лучшие рекомендации, сезонные советы и новые истории — прямо на вашу почту.
         </p>
-        <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST">
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST">
           <input
             type="email"
             placeholder="Ваш e-mail"
@@ -391,8 +391,24 @@ const locale = 'ru' as const
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </button>
         </form>
-        <p class="text-white/40 text-xs mt-4">Без спама. Не чаще 1 раза в месяц. Отписка в любой момент.</p>
+        <p id="newsletter-success" class="hidden text-turquoise-300 text-sm font-medium mt-4">Спасибо! Вы успешно подписались на рассылку.</p>
+        <p id="newsletter-disclaimer" class="text-white/40 text-xs mt-4">Без спама. Не чаще 1 раза в месяц. Отписка в любой момент.</p>
       </div>
     </div>
   </section>
+
+  <script>
+    const form = document.getElementById('newsletter-form') as HTMLFormElement
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
+      btn.disabled = true
+      btn.style.opacity = '0.6'
+      setTimeout(() => {
+        form.style.display = 'none'
+        document.getElementById('newsletter-success')?.classList.remove('hidden')
+        document.getElementById('newsletter-disclaimer')?.classList.add('hidden')
+      }, 600)
+    })
+  </script>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
 
 interface Props {
   locale: Locale
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const { locale, title, description } = Astro.props
+const homeLabel = t(locale, 'nav.home')
 ---
 
 <!-- Pillar Hero -->
@@ -15,10 +17,13 @@ const { locale, title, description } = Astro.props
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
   <div class="relative container-wide py-20 md:py-28">
-    <div class="flex items-center gap-3 mb-6">
-      <div class="h-px w-12 bg-turquoise-400"></div>
-      <span class="text-turquoise-300 text-sm font-medium tracking-widest uppercase">Marienbad.com</span>
-    </div>
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-6">
+      <ol class="flex items-center gap-2 text-sm text-white/60">
+        <li><a href={`/${locale}`} class="hover:text-white transition-colors">{homeLabel}</a></li>
+        <li class="before:content-['/'] before:mr-2">{title}</li>
+      </ol>
+    </nav>
     <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{title}</h1>
     <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed">{description}</p>
   </div>
