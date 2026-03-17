@@ -23,7 +23,7 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
       </a>
 
       <!-- Desktop nav (center) -->
-      <nav class="hidden lg:flex items-center gap-0.5">
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-0.5">
         {navItems.slice(0, 6).map(({ navKey, href }) => (
           <a
             href={href}
@@ -36,10 +36,11 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
 
       <div class="flex items-center gap-3">
         <!-- Language switcher: text pills -->
-        <div class="hidden md:flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider">
+        <div class="hidden md:flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider" role="navigation" aria-label="Language">
           {allLocales.map((l) => (
             <a
               href={`/${l}`}
+              aria-current={l === locale ? 'true' : undefined}
               class:list={[
                 'px-2 py-1 rounded transition-colors',
                 l === locale
@@ -84,7 +85,7 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
 
   <!-- Mobile nav: full-screen overlay -->
   <div id="mobile-nav" class="hidden fixed inset-0 top-16 md:top-20 z-40 bg-indigo-700/98 backdrop-blur-md lg:hidden overflow-y-auto">
-    <nav class="container-wide py-8 flex flex-col gap-1">
+    <nav aria-label="Mobile navigation" class="container-wide py-8 flex flex-col gap-1">
       {navItems.map(({ navKey, href }) => (
         <a
           href={href}

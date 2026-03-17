@@ -159,12 +159,12 @@ const locale = 'cs' as const
           <div class="placeholder-image h-48 relative">
             <span class="text-white/80 text-sm">Nové Lázně — Foto</span>
             <div class="absolute top-3 left-3 flex gap-2">
-              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">★★★★★</span>
+              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full" aria-label="5 hvězdiček">★★★★★</span>
               <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">Tip redakce</span>
             </div>
           </div>
           <div class="p-6">
-            <h4 class="font-heading text-xl font-bold text-indigo-700 mb-2">Nové Lázně</h4>
+            <h3 class="font-heading text-xl font-bold text-indigo-700 mb-2">Nové Lázně</h4>
             <p class="text-beige-700 text-sm mb-3">Historický 5hvězdičkový klenot s původními Římskými lázněmi — vlajková loď hotelů Ensana.</p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="px-2 py-0.5 bg-turquoise-50 text-turquoise-800 text-xs rounded-full">Římské lázně</span>
@@ -187,11 +187,11 @@ const locale = 'cs' as const
           <div class="placeholder-image h-48 relative">
             <span class="text-white/80 text-sm">Centrální Lázně — Foto</span>
             <div class="absolute top-3 left-3">
-              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">★★★★</span>
+              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full" aria-label="4 hvězdičky">★★★★</span>
             </div>
           </div>
           <div class="p-6">
-            <h4 class="font-heading text-xl font-bold text-indigo-700 mb-2">Centrální Lázně</h4>
+            <h3 class="font-heading text-xl font-bold text-indigo-700 mb-2">Centrální Lázně</h4>
             <p class="text-beige-700 text-sm mb-3">Přímo u kolonády — tradiční lázeňská péče v centru města s moderními procedurami.</p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="px-2 py-0.5 bg-turquoise-50 text-turquoise-800 text-xs rounded-full">U kolonády</span>
@@ -222,7 +222,7 @@ const locale = 'cs' as const
   <section class="bg-beige-950 text-white py-20 md:py-28">
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center mb-14 reveal">
-        <span class="text-turquoise-400 text-sm font-medium tracking-widest uppercase">People of Colonnade</span>
+        <span class="text-turquoise-400 text-sm font-medium tracking-widest uppercase">Lidé z Kolonády</span>
         <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-4" style="font-size: var(--text-h2);">
           Příběhy, které vypráví voda
         </h2>
@@ -235,7 +235,7 @@ const locale = 'cs' as const
           <div class="placeholder-image h-64 relative" style="background: linear-gradient(135deg, #1A1916 0%, #266782 100%);">
             <span class="text-white/60 text-sm">Portrait — Foto</span>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-2">„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch."</p>
+              <p lang="de" class="font-heading text-base italic text-white/90 leading-snug mb-2">„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch."</p>
               <div class="flex items-center gap-2">
                 <span class="text-white font-semibold text-sm">Ingrid</span>
                 <span class="text-white/50 text-sm">· Hamburg 🇩🇪</span>
@@ -249,7 +249,7 @@ const locale = 'cs' as const
           <div class="placeholder-image h-64 relative" style="background: linear-gradient(135deg, #1A1916 0%, #004F71 100%);">
             <span class="text-white/60 text-sm">Portrait — Foto</span>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-2">"I came for the treatment, but I stayed for the peace."</p>
+              <p lang="en" class="font-heading text-base italic text-white/90 leading-snug mb-2">"I came for the treatment, but I stayed for the peace."</p>
               <div class="flex items-center gap-2">
                 <span class="text-white font-semibold text-sm">James</span>
                 <span class="text-white/50 text-sm">· London 🇬🇧</span>
@@ -263,7 +263,7 @@ const locale = 'cs' as const
           <div class="placeholder-image h-64 relative" style="background: linear-gradient(135deg, #1A1916 0%, #3A8BA8 100%);">
             <span class="text-white/60 text-sm">Portrait — Foto</span>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-2">«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»</p>
+              <p lang="ru" class="font-heading text-base italic text-white/90 leading-snug mb-2">«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»</p>
               <div class="flex items-center gap-2">
                 <span class="text-white font-semibold text-sm">Наталья</span>
                 <span class="text-white/50 text-sm">· Москва 🇷🇺</span>
@@ -337,7 +337,7 @@ const locale = 'cs' as const
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Zdraví</span>
-            <h4 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">CO₂ koupele: Co říká věda</h4>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">CO₂ koupele: Co říká věda</h4>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">V klinických studiích uvádí 83 % pacientů snížení bolestí kloubů po čtrnáctidenní lázeňské kúře.</p>
             <div class="mt-3 text-beige-600 text-xs">15. března 2026 · 5 min. čtení</div>
           </div>
@@ -349,7 +349,7 @@ const locale = 'cs' as const
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Kultura</span>
-            <h4 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">Po stopách Goetha městem</h4>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">Po stopách Goetha městem</h4>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">Tytéž prameny, které Goethe roku 1823 opěvoval, dnes napájejí moderní rehabilitační programy.</p>
             <div class="mt-3 text-beige-600 text-xs">10. března 2026 · 7 min. čtení</div>
           </div>
@@ -361,7 +361,7 @@ const locale = 'cs' as const
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Tip</span>
-            <h4 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">5 nejkrásnějších procházek</h4>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">5 nejkrásnějších procházek</h4>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">Od kolonády přes Skalníkovy sady až ke Geologickému parku — nejlepší trasy pro každé roční období.</p>
             <div class="mt-3 text-beige-600 text-xs">5. března 2026 · 4 min. čtení</div>
           </div>
@@ -381,7 +381,9 @@ const locale = 'cs' as const
           Nejlepší tipy od místních, sezónní doporučení a nové příběhy přímo do vaší schránky.
         </p>
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST">
+          <label for="newsletter-email" class="sr-only">E-mail</label>
           <input
+            id="newsletter-email"
             type="email"
             placeholder="Váš e-mail"
             required

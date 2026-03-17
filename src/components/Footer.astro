@@ -13,7 +13,7 @@ const year = new Date().getFullYear()
 
 const discoverLabel = locale === 'de' ? 'Entdecken' : locale === 'cs' ? 'Objevte' : locale === 'ru' ? 'Откройте' : 'Discover'
 const magazineLabel = locale === 'de' ? 'Magazin' : locale === 'cs' ? 'Magazín' : locale === 'ru' ? 'Журнал' : 'Magazine'
-const peopleLabel = locale === 'de' ? 'Menschen der Kolonnade' : locale === 'cs' ? 'Lidé z Kolonády' : locale === 'ru' ? 'Люди Колоннады' : 'People of Colonnade'
+const contactLabel = locale === 'de' ? 'Kontakt' : locale === 'cs' ? 'Kontakt' : locale === 'ru' ? 'Контакт' : 'Contact'
 const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health Spa Hotels' : locale === 'cs' ? 'Destinace Ensana Health Spa Hotels' : locale === 'ru' ? 'Направление Ensana Health Spa Hotels' : 'A destination by Ensana Health Spa Hotels'
 ---
 
@@ -48,7 +48,7 @@ const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health S
       <!-- Col 2: Discover (internal links) -->
       <div>
         <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{discoverLabel}</h3>
-        <nav class="flex flex-col gap-2.5">
+        <nav aria-label={discoverLabel} class="flex flex-col gap-2.5">
           {navItems.slice(0, 5).map(({ navKey, href }) => (
             <a href={href} class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
               {t(locale, navKey as any)}
@@ -60,7 +60,7 @@ const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health S
       <!-- Col 3: Magazine -->
       <div>
         <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{magazineLabel}</h3>
-        <nav class="flex flex-col gap-2.5">
+        <nav aria-label={magazineLabel} class="flex flex-col gap-2.5">
           {navItems.slice(5).map(({ navKey, href }) => (
             <a href={href} class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
               {t(locale, navKey as any)}
@@ -71,7 +71,7 @@ const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health S
 
       <!-- Col 4: Contact & Location -->
       <div>
-        <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{peopleLabel}</h3>
+        <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{contactLabel}</h3>
         <div class="space-y-3 text-sm text-beige-600">
           <p class="flex items-start gap-2">
             <svg class="w-4 h-4 mt-0.5 text-turquoise-400/70 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

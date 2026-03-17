@@ -159,12 +159,12 @@ const locale = 'en' as const
           <div class="placeholder-image h-48 relative">
             <span class="text-white/80 text-sm">Nové Lázně — Photo</span>
             <div class="absolute top-3 left-3 flex gap-2">
-              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">★★★★★</span>
+              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full" aria-label="5 stars">★★★★★</span>
               <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">Editor's Pick</span>
             </div>
           </div>
           <div class="p-6">
-            <h4 class="font-heading text-xl font-bold text-indigo-700 mb-2">Nové Lázně</h4>
+            <h3 class="font-heading text-xl font-bold text-indigo-700 mb-2">Nové Lázně</h4>
             <p class="text-beige-700 text-sm mb-3">A historic 5-star gem featuring an original Roman Bath — the flagship of the Ensana Spa Hotels collection.</p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="px-2 py-0.5 bg-turquoise-50 text-turquoise-800 text-xs rounded-full">Roman Bath</span>
@@ -187,11 +187,11 @@ const locale = 'en' as const
           <div class="placeholder-image h-48 relative">
             <span class="text-white/80 text-sm">Centrální Lázně — Photo</span>
             <div class="absolute top-3 left-3">
-              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">★★★★</span>
+              <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full" aria-label="4 stars">★★★★</span>
             </div>
           </div>
           <div class="p-6">
-            <h4 class="font-heading text-xl font-bold text-indigo-700 mb-2">Centrální Lázně</h4>
+            <h3 class="font-heading text-xl font-bold text-indigo-700 mb-2">Centrální Lázně</h4>
             <p class="text-beige-700 text-sm mb-3">Steps from the Colonnade — traditional spa treatments in a prime central location with modern therapy rooms.</p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="px-2 py-0.5 bg-turquoise-50 text-turquoise-800 text-xs rounded-full">Colonnade Location</span>
@@ -235,7 +235,7 @@ const locale = 'en' as const
           <div class="placeholder-image h-64 relative" style="background: linear-gradient(135deg, #1A1916 0%, #266782 100%);">
             <span class="text-white/60 text-sm">Portrait — Photo</span>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-2">„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch."</p>
+              <p lang="de" class="font-heading text-base italic text-white/90 leading-snug mb-2">„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch."</p>
               <div class="flex items-center gap-2">
                 <span class="text-white font-semibold text-sm">Ingrid</span>
                 <span class="text-white/50 text-sm">· Hamburg 🇩🇪</span>
@@ -263,7 +263,7 @@ const locale = 'en' as const
           <div class="placeholder-image h-64 relative" style="background: linear-gradient(135deg, #1A1916 0%, #3A8BA8 100%);">
             <span class="text-white/60 text-sm">Portrait — Photo</span>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-2">«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»</p>
+              <p lang="ru" class="font-heading text-base italic text-white/90 leading-snug mb-2">«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»</p>
               <div class="flex items-center gap-2">
                 <span class="text-white font-semibold text-sm">Наталья</span>
                 <span class="text-white/50 text-sm">· Москва 🇷🇺</span>
@@ -336,7 +336,7 @@ const locale = 'en' as const
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Health</span>
-            <h4 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">CO₂ Baths: What the Science Says</h4>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">CO₂ Baths: What the Science Says</h4>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">In clinical studies, 83% of patients report reduced joint pain after a 14-day spa treatment course.</p>
             <div class="mt-3 text-beige-600 text-xs">15 March 2026 · 5 min read</div>
           </div>
@@ -348,7 +348,7 @@ const locale = 'en' as const
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Culture</span>
-            <h4 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">In Goethe's Footsteps Through the Town</h4>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">In Goethe's Footsteps Through the Town</h4>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">The very springs that Goethe praised in 1823 now feed evidence-based rehabilitation programmes.</p>
             <div class="mt-3 text-beige-600 text-xs">10 March 2026 · 7 min read</div>
           </div>
@@ -360,7 +360,7 @@ const locale = 'en' as const
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Guide</span>
-            <h4 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">The 5 Most Beautiful Walks</h4>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">The 5 Most Beautiful Walks</h4>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">From the Colonnade through Skalníkovy Park to the Geological Park — the best routes to explore.</p>
             <div class="mt-3 text-beige-600 text-xs">5 March 2026 · 4 min read</div>
           </div>
@@ -380,7 +380,9 @@ const locale = 'en' as const
           The best insider tips, seasonal recommendations, and fresh stories delivered straight to your inbox.
         </p>
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST">
+          <label for="newsletter-email" class="sr-only">Email</label>
           <input
+            id="newsletter-email"
             type="email"
             placeholder="Your email address"
             required

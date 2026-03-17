@@ -9,13 +9,19 @@ interface Props {
   title?: string
   description?: string
   locale: Locale
-  section?: string
 }
 
-const { locale, section } = Astro.props
+const { locale } = Astro.props
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
-const canonicalUrl = `https://marienbad.com/${locale}${section ? '/' + section : ''}`
+const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
+const canonicalUrl = `https://marienbad.com${pathname}`
+
+/** Build hreflang URL for a given locale from current pathname */
+function hreflangUrl(targetLocale: string): string {
+  const path = pathname.replace(/^\/[a-z]{2}/, `/${targetLocale}`)
+  return `https://marienbad.com${path}`
+}
 ---
 
 <!doctype html>
@@ -33,11 +39,14 @@ const canonicalUrl = `https://marienbad.com/${locale}${section ? '/' + section :
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
+    <meta name="robots" content="index, follow" />
+
     <!-- Hreflang -->
-    <link rel="alternate" hreflang="de" href={`https://marienbad.com/de${section ? '/' + section : ''}`} />
-    <link rel="alternate" hreflang="en" href={`https://marienbad.com/en${section ? '/' + section : ''}`} />
-    <link rel="alternate" hreflang="cs" href={`https://marienbad.com/cs${section ? '/' + section : ''}`} />
-    <link rel="alternate" hreflang="ru" href={`https://marienbad.com/ru${section ? '/' + section : ''}`} />
+    <link rel="alternate" hreflang="de" href={hreflangUrl('de')} />
+    <link rel="alternate" hreflang="en" href={hreflangUrl('en')} />
+    <link rel="alternate" hreflang="cs" href={hreflangUrl('cs')} />
+    <link rel="alternate" hreflang="ru" href={hreflangUrl('ru')} />
+    <link rel="alternate" hreflang="x-default" href={hreflangUrl('de')} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -52,8 +61,11 @@ const canonicalUrl = `https://marienbad.com/${locale}${section ? '/' + section :
     <meta name="twitter:description" content={description} />
   </head>
   <body class="min-h-screen flex flex-col bg-white text-black">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-yellow-400 focus:text-black focus:rounded-lg focus:font-semibold">
+      Skip to content
+    </a>
     <Header locale={locale} />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer locale={locale} />
