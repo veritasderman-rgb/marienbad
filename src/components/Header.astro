@@ -12,6 +12,9 @@ const { locale } = Astro.props
 const navItems = getNavItems(locale)
 const allLocales = (['de', 'en', 'cs', 'ru'] as const)
 const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Rezervovat pobyt' : locale === 'ru' ? 'Забронировать' : 'Book your stay'
+
+const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
+const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-republika/marianske-lazne`
 ---
 
 <header id="site-header" class="sticky top-0 z-50 transition-all duration-300 will-change-transform" data-transparent="true">
@@ -35,8 +38,8 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
       </nav>
 
       <div class="flex items-center gap-3">
-        <!-- Language switcher: text pills -->
-        <div class="hidden md:flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider" role="navigation" aria-label="Language">
+        <!-- Language switcher: always visible -->
+        <div class="flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider" role="navigation" aria-label="Language">
           {allLocales.map((l) => (
             <a
               href={`/${l}`}
@@ -55,7 +58,7 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
 
         <!-- CTA Button (yellow pill) -->
         <a
-          href={`https://www.ensanahotels.com/?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+          href={`${bookingUrl}?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
           class="hidden lg:inline-flex items-center gap-1.5 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold rounded-full transition-all duration-200"
           target="_blank"
           rel="noopener"
@@ -115,7 +118,7 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
       <!-- Mobile CTA -->
       <div class="mt-6">
         <a
-          href={`https://www.ensanahotels.com/?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+          href={`${bookingUrl}?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
           class="block w-full text-center px-6 py-3.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors"
           target="_blank"
           rel="noopener"

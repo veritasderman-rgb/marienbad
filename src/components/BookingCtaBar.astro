@@ -8,6 +8,9 @@ interface Props {
 
 const { locale } = Astro.props
 
+const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
+const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-republika/marianske-lazne?utm_source=marienbad&utm_medium=cta-bar&utm_campaign=mobile-sticky`
+
 const ctaLabels: Record<Locale, string> = {
   de: 'Jetzt buchen',
   en: 'Book now',
@@ -26,7 +29,7 @@ const ctaLabels: Record<Locale, string> = {
       <span class="text-white/60 ml-1">· Ensana Hotels</span>
     </div>
     <a
-      href="https://www.ensanahotels.com/hotels/marianske-lazne?utm_source=marienbad&utm_medium=cta-bar&utm_campaign=mobile-sticky"
+      href={bookingUrl}
       class="btn-primary text-sm py-2 px-5 whitespace-nowrap"
       target="_blank"
       rel="noopener"
