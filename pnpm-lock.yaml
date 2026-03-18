@@ -32,6 +32,9 @@ importers:
       astro:
         specifier: ^5.9.0
         version: 5.18.1(@types/node@24.12.0)(@vercel/functions@2.2.13)(idb-keyval@6.2.2)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(typescript@5.9.3)
+      js-yaml:
+        specifier: ^4.1.1
+        version: 4.1.1
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -42,6 +45,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.0
         version: 4.2.1(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.31.1))
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
       tailwindcss:
         specifier: ^4.1.0
         version: 4.2.1
@@ -1648,6 +1654,9 @@ packages:
 
   '@types/is-hotkey@0.1.10':
     resolution: {integrity: sha512-RvC8KMw5BCac1NvRRyaHgMMEtBaZ6wh0pyPTBu7izn4Sj/AX9Y4aXU5c7rX8PnM/knsuUpC1IeoBkANtxBypsQ==}
+
+  '@types/js-yaml@4.0.9':
+    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
 
   '@types/linkify-it@3.0.5':
     resolution: {integrity: sha512-yg6E+u0/+Zjva+buc3EIb+29XEg4wltq7cSmd4Uc2EE/1nUVmxyzpX6gUXD0V8jIrG0r7YeOGVIbYRkxeooCtw==}
@@ -5661,6 +5670,8 @@ snapshots:
       '@types/unist': 3.0.3
 
   '@types/is-hotkey@0.1.10': {}
+
+  '@types/js-yaml@4.0.9': {}
 
   '@types/linkify-it@3.0.5':
     optional: true

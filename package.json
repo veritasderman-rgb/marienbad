@@ -18,11 +18,13 @@
     "@keystatic/core": "^0.5.48",
     "@markdoc/markdoc": "^0.5.6",
     "astro": "^5.9.0",
+    "js-yaml": "^4.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.0",
+    "@types/js-yaml": "^4.0.9",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.0"
   }
