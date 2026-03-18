@@ -127,7 +127,8 @@
     "season": "Frühling 2026",
     "title": "Die Quellen erwachen — Frühlingskur in Marienbad",
     "description": "Im Frühling blüht Marienbad auf: Die Skalníkovy-Gärten erstrahlen in Farben, die Singende Fontäne nimmt ihren Betrieb wieder auf, und die milde Frühlingsluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
-    "ctaText": "Mehr erfahren"
+    "ctaText": "Mehr erfahren",
+    "image": "/images/content/seasonal/seasonal/image.jpg"
   },
   "magazine": {
     "sectionLabel": "Magazin",
@@ -138,7 +139,8 @@
         "title": "CO₂-Bäder: Was die Wissenschaft sagt",
         "excerpt": "In klinischen Studien berichten 83% der Patienten über reduzierte Gelenkschmerzen nach einer 14-tägigen Kur.",
         "date": "15. März 2026",
-        "readTime": "5 Min. Lesezeit"
+        "readTime": "5 Min. Lesezeit",
+        "image": "/images/content/articles/magazine/articles/0/image.jpg"
       },
       {
         "category": "Kultur",
