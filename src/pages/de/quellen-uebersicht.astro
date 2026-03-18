@@ -1,0 +1,117 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
+import { t } from '@/i18n/ui'
+
+const locale = 'de' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Heilquellen', href: `/${locale}/mineralquellen` },
+  { label: 'Quellenübersicht' },
+]
+---
+
+<Base locale={locale} section="mineral-springs" title="Quellenübersicht — Die 40+ Mineralquellen Marienbads — Marienbad.com" description="Detaillierter Überblick über alle Mineralquellen in Mariánské Lázně: Kreuzquelle, Ferdinandquelle, Waldquelle, Rudolfsquelle und mehr. Mineralgehalt, Temperatur und Anwendung.">
+  <PillarPage locale={locale} title="Quellenübersicht: Die Mineralquellen Marienbads" description="Mariánské Lázně besitzt über 40 Mineralquellen — jede mit einzigartiger Zusammensetzung und therapeutischer Wirkung. Ein Führer durch die wichtigsten Heilquellen." breadcrumbs={breadcrumbs}>
+    <h2>Ein einzigartiges Quellengebiet</h2>
+    <p>Mariánské Lázně (Marienbad) liegt inmitten eines der <strong>quellenreichsten Gebiete Europas</strong>. Über 40 Mineralquellen treten hier auf einer verhältnismäßig kleinen Fläche zutage — jede mit einer eigenen chemischen Signatur, Temperatur und therapeutischen Wirkung. Was dieses Quellgebiet besonders macht: Während die meisten Kurorte einen einzigen Quellentyp besitzen, bietet Marienbad eine erstaunliche Vielfalt an Mineralwässern, die ein breites Spektrum an Erkrankungen abdecken.</p>
+
+    <p>Die Quellen entspringen dem <strong>vulkanischen Untergrund des Slavkovský les (Kaiserwald)</strong>. Regenwasser sickert in große Tiefen, wird dort mit Mineralien angereichert und steigt durch tektonische Verwerfungen wieder an die Oberfläche. Der Prozess dauert Tausende von Jahren — das Wasser, das heute aus den Quellen fließt, begann seine unterirdische Reise vor etwa 14.000 Jahren.</p>
+
+    <p>Allen Quellen gemein ist ein hoher Gehalt an <strong>natürlichem Kohlendioxid (CO₂)</strong>, das den Mineralwässern ihren charakteristischen prickelnden Geschmack verleiht. Die Quellen unterscheiden sich jedoch erheblich in ihrem Mineralgehalt — manche sind eisenreich, andere natriumreich, wieder andere enthalten besonders viel Calcium oder Magnesium.</p>
+
+    <TreatmentHighlightBox
+      title="Pitná kúra — Die Trinkkur"
+      description="Die Trinkkur (tschechisch: pitná kúra) ist das Herzstück der Marienbader Heilmethoden. Patienten trinken mehrmals täglich vorgeschriebene Mengen Mineralwasser direkt an der Quelle — in der Regel morgens auf nüchternen Magen. Die Kurärzte empfehlen spezifische Quellen je nach Diagnose. Eine typische Trinkkur dauert 14–21 Tage."
+      icon="water"
+    />
+
+    <h2>Kolonnadenquellen — Das Herz des Kurviertels</h2>
+    <p>Die Quellen an der Hauptkolonnade und der Kreuzbrunnenkolonnade bilden das historische Zentrum des Kurbetriebs. Hier flanieren die Kurgäste mit ihren Trinkbechern und genießen die einzigartige Atmosphäre der neoklassizistischen Architektur.</p>
+
+    <h3>Kreuzquelle (Křížový pramen)</h3>
+    <p>Die <strong>Kreuzquelle</strong> ist die berühmteste und meistbesuchte Quelle Marienbads. Sie befindet sich in der prächtigen <strong>Kreuzbrunnenkolonnade</strong>, einem neobarocken Bauwerk aus dem Jahr 1912. Das Wasser der Kreuzquelle zeichnet sich durch einen besonders hohen CO₂-Gehalt und ein ausgewogenes Mineralprofil aus.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 7–10 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 5.500 mg/l (natriumsulfatisch-hydrogenkarbonatisch)</li>
+      <li><strong>CO₂-Gehalt:</strong> ca. 2.800 mg/l — einer der höchsten Werte aller Quellen</li>
+      <li><strong>Indikationen:</strong> Erkrankungen des Verdauungstrakts, Leber- und Gallenbeschwerden, Stoffwechselstörungen, Diabetes</li>
+      <li><strong>Geschmack:</strong> Leicht salzig-mineralisch mit deutlichem Prickeln</li>
+    </ul>
+
+    <h3>Karolinenquelle (Karolinin pramen)</h3>
+    <p>Die <strong>Karolinenquelle</strong> liegt ebenfalls an der Hauptkolonnade und wird seit dem 19. Jahrhundert speziell für <strong>gynäkologische Erkrankungen</strong> empfohlen. Ihr Wasser enthält eine einzigartige Kombination von Mineralien, die sich positiv auf den Hormonhaushalt und entzündliche Erkrankungen des Urogenitaltrakts auswirken soll.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 8–10 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 4.200 mg/l (calcium-magnesiumreich)</li>
+      <li><strong>Indikationen:</strong> Gynäkologische Erkrankungen, Infertilität, Harnwegsinfektionen, Nierenbeschwerden</li>
+    </ul>
+
+    <h3>Ambrosquelle (Ambrožův pramen)</h3>
+    <p>Die <strong>Ambrosquelle</strong> ist eine der ältesten dokumentierten Quellen Marienbads und wurde bereits im 16. Jahrhundert erwähnt. Ihr Wasser wird vor allem bei <strong>Verdauungsbeschwerden</strong> eingesetzt und ist für seinen milden, angenehmen Geschmack bekannt — was sie bei Kurgästen besonders beliebt macht.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 9–11 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 3.800 mg/l (hydrogenkarbonatisch-natriumreich)</li>
+      <li><strong>Indikationen:</strong> Chronische Gastritis, Magengeschwüre, Reizdarmsyndrom, Sodbrennen</li>
+    </ul>
+
+    <h2>Waldquellen — Heilendes Wasser im Grünen</h2>
+    <p>Eingebettet in die weitläufigen Parkanlagen und Wälder rund um das Stadtzentrum befinden sich einige der traditionsreichsten Quellen Marienbads. Der Spaziergang zu diesen Quellen ist Teil der Therapie — die Kombination aus Bewegung, frischer Luft und Trinkkur verstärkt die heilende Wirkung.</p>
+
+    <h3>Waldquelle (Lesní pramen)</h3>
+    <p>Die <strong>Waldquelle</strong> befindet sich im wunderschönen Kurpark, umgeben von alten Bäumen und gepflegten Blumenbeeten. Sie ist nach der Kreuzquelle die meistbesuchte Quelle und wird in einem eleganten Pavillon gefasst.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 7–9 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 4.800 mg/l (eisenhaltig, sulfatisch)</li>
+      <li><strong>Indikationen:</strong> Erkrankungen der oberen Atemwege, chronische Bronchitis, Asthma, allergische Erkrankungen</li>
+      <li><strong>Besonderheit:</strong> Wird auch für Inhalationen verwendet</li>
+    </ul>
+
+    <h3>Marienquelle (Mariin pramen)</h3>
+    <p>Die <strong>Marienquelle</strong> — Namensgeberin der Stadt — befindet sich etwas abseits des Zentrums in einer ruhigen Waldlichtung. Ihr Wasser ist besonders reich an gelösten Gasen und Mineralien und wird traditionell bei Atemwegserkrankungen empfohlen.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 8–10 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 5.100 mg/l (natriumhydrogenkarbonatisch, gasreich)</li>
+      <li><strong>Indikationen:</strong> Atemwegserkrankungen, chronische Bronchitis, Asthma, Stärkung des Immunsystems</li>
+      <li><strong>Besonderheit:</strong> Historisch die erste entdeckte Quelle Marienbads</li>
+    </ul>
+
+    <h2>Parkquellen — Zwischen Architektur und Natur</h2>
+    <p>Entlang der Promenaden und in den Parkanlagen Marienbads finden sich weitere wichtige Quellen, die in kunstvollen Pavillons und Brunnenanlagen gefasst sind.</p>
+
+    <h3>Ferdinandquelle (Ferdinandův pramen)</h3>
+    <p>Die <strong>Ferdinandquelle</strong> ist eine der eisenreichsten Quellen Marienbads und wurde nach Kaiser Ferdinand I. benannt. Ihr rostbraun gefärbtes Wasser verrät den hohen Eisengehalt, der sie besonders wertvoll für Patienten mit Blutarmut macht.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 9–11 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 4.600 mg/l (stark eisenhaltig, hydrogenkarbonatisch)</li>
+      <li><strong>Eisengehalt:</strong> ca. 20 mg/l — einer der höchsten natürlichen Eisenwerte in Europa</li>
+      <li><strong>Indikationen:</strong> Eisenmangelanämie, Erschöpfungszustände, Rekonvaleszenz nach Operationen</li>
+    </ul>
+
+    <h3>Rudolfsquelle (Rudolfův pramen)</h3>
+    <p>Die <strong>Rudolfsquelle</strong> wird seit dem 19. Jahrhundert gezielt bei <strong>Nieren- und Harnwegserkrankungen</strong> eingesetzt. Ihr Wasser hat eine leicht diuretische Wirkung und unterstützt die Durchspülung der Harnwege.</p>
+    <ul>
+      <li><strong>Temperatur:</strong> 7–9 °C</li>
+      <li><strong>Mineralgehalt:</strong> ca. 3.600 mg/l (calciumreich, leicht diuretisch)</li>
+      <li><strong>Indikationen:</strong> Nierensteine, Harnwegsinfektionen, chronische Nierenentzündung, Prostatabeschwerden</li>
+    </ul>
+
+    <h2>Praktische Tipps für die Trinkkur</h2>
+    <p>Wer die Mineralquellen Marienbads therapeutisch nutzen möchte, sollte einige wichtige Regeln beachten:</p>
+
+    <ul>
+      <li><strong>Ärztliche Beratung:</strong> Lassen Sie sich vor Beginn der Trinkkur von einem Kurarzt beraten. Er bestimmt, welche Quellen für Ihre Beschwerden geeignet sind und in welcher Menge Sie trinken sollten.</li>
+      <li><strong>Trinkbecher:</strong> Verwenden Sie einen traditionellen <em>Lázeňský pohárek</em> (Kurbecher) — die flache Tülle sorgt dafür, dass das Mineralwasser langsam und in kleinen Schlucken getrunken wird.</li>
+      <li><strong>Trinkmenge:</strong> In der Regel 100–200 ml pro Quelle, 2–3 Mal täglich. Trinken Sie langsam und im Gehen.</li>
+      <li><strong>Zeitpunkt:</strong> Am besten morgens auf nüchternen Magen, mindestens 30 Minuten vor dem Frühstück.</li>
+      <li><strong>Temperatur:</strong> Die Quellen sind kalt (7–11 °C). Das ist gewollt — die Kühle regt die Magenaktivität an.</li>
+      <li><strong>Dauer:</strong> Eine vollständige Trinkkur dauert mindestens 14 Tage. Erste Wirkungen zeigen sich oft nach 5–7 Tagen.</li>
+    </ul>
+
+    <h2>Öffnungszeiten und Zugang</h2>
+    <p>Die meisten Quellen sind <strong>ganzjährig frei zugänglich</strong>. Die Kolonnadenquellen sind in der Regel von 6:00 bis 18:00 Uhr geöffnet (Sommerzeit: bis 19:00 Uhr). Einige Quellen in den Wäldern sind nur während der Sommersaison (Mai–Oktober) aktiv zugänglich.</p>
+
+    <p>Ein Spaziergang entlang aller Hauptquellen dauert etwa <strong>2–3 Stunden</strong> und führt durch die schönsten Teile des Kurviertels und der Parkanlagen — ein unvergessliches Erlebnis, das Gesundheit und Genuss verbindet.</p>
+  </PillarPage>
+</Base>
