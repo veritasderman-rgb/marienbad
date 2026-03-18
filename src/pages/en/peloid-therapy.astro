@@ -3,12 +3,18 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'en' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Healing Springs', href: `/${locale}/mineral-springs` },
+  { label: 'Peloid Therapy' },
+]
 ---
 
 <Base locale={locale} section="mineral-springs" title="Peloid Therapy — Healing Peat & Mud Treatments — Marienbad.com" description="Peloid therapy in Marienbad: how local peat and mud deposits help treat joint, muscle and skin conditions.">
-  <PillarPage locale={locale} title="Peloid Therapy: Healing Peat from Marienbad" description="Peloid therapy uses natural peat from the moorlands surrounding Marienbad to treat joint, muscle and skin conditions.">
+  <PillarPage locale={locale} title="Peloid Therapy: Healing Peat from Marienbad" description="Peloid therapy uses natural peat from the moorlands surrounding Marienbad to treat joint, muscle and skin conditions." breadcrumbs={breadcrumbs}>
     <h2>What Are Peloids?</h2>
     <p>The term <strong>peloid</strong> derives from the Greek <em>pelos</em> (mud) and refers to natural substances such as peat, moor, mud and fango used for therapeutic purposes in balneotherapy. In Mariánské Lázně (Marienbad), <strong>local peat deposits</strong> from the extensive moorlands of the Slavkov Forest have been used for over two centuries — a natural healing resource that, alongside the mineral springs and natural CO₂ gas, forms one of the cornerstones of Marienbad's spa medicine.</p>
 

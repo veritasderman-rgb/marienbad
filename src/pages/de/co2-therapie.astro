@@ -3,12 +3,18 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'de' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Heilquellen', href: `/${locale}/mineralquellen` },
+  { label: 'CO₂-Therapie' },
+]
 ---
 
 <Base locale={locale} section="mineral-springs" title="CO₂-Therapie — Marias Gas — Marienbad.com" description="Die einzigartige CO₂-Therapie in Marienbad: Wie natürliches Kohlendioxid Durchblutung, Blutdruck und Wohlbefinden verbessert.">
-  <PillarPage locale={locale} title="CO₂-Therapie: Marias Gas" description="Die einzigartige CO₂-Therapie nutzt 99,7% reines natürliches Kohlendioxid zur Verbesserung der Durchblutung und des Wohlbefindens.">
+  <PillarPage locale={locale} title="CO₂-Therapie: Marias Gas" description="Die einzigartige CO₂-Therapie nutzt 99,7% reines natürliches Kohlendioxid zur Verbesserung der Durchblutung und des Wohlbefindens." breadcrumbs={breadcrumbs}>
     <h2>Was ist Marias Gas?</h2>
     <p>Mariánské Lázně verfügt über eine weltweit einzigartige natürliche Ressource: <strong>99,7% reines Kohlendioxidgas (CO₂)</strong>, das auf natürliche Weise aus dem vulkanischen Untergrund des Slavkovský les (Kaiserwald) aufsteigt. Dieses Gas, liebevoll <em>„Marias Gas"</em> genannt, ist eines der vier natürlichen Heilmittel Marienbads und bildet die Grundlage für eine Reihe hochwirksamer therapeutischer Behandlungen.</p>
 

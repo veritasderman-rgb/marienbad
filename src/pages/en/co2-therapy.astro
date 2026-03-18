@@ -3,12 +3,18 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'en' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Healing Springs', href: `/${locale}/mineral-springs` },
+  { label: 'CO₂ Therapy' },
+]
 ---
 
 <Base locale={locale} section="mineral-springs" title="CO₂ Therapy — Maria's Gas — Marienbad.com" description="The unique CO₂ therapy in Marienbad: how natural carbon dioxide improves circulation, blood pressure and wellbeing.">
-  <PillarPage locale={locale} title="CO₂ Therapy: Maria's Gas" description="The unique CO₂ therapy uses 99.7% pure natural carbon dioxide to improve circulation and overall wellbeing.">
+  <PillarPage locale={locale} title="CO₂ Therapy: Maria's Gas" description="The unique CO₂ therapy uses 99.7% pure natural carbon dioxide to improve circulation and overall wellbeing." breadcrumbs={breadcrumbs}>
     <h2>What is Maria's Gas?</h2>
     <p>Mariánské Lázně possesses a globally unique natural resource: <strong>99.7% pure carbon dioxide gas (CO₂)</strong> that rises naturally from the volcanic subsoil of the Slavkov Forest. This gas, affectionately known as <em>"Maria's Gas"</em>, is one of Marienbad's four natural healing resources and forms the basis for a range of highly effective therapeutic treatments.</p>
 
