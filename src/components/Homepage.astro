@@ -31,7 +31,7 @@ const gradients = [
 />
 
 <!-- 2. QUICK FACTS STRIP -->
-<section class="relative z-10 -mt-16 md:-mt-20">
+<section class="relative z-10 -mt-16 md:-mt-20 reveal">
   <div class="container-wide">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
       {cms.quickFacts.map((fact) => (
@@ -89,7 +89,7 @@ const gradients = [
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-4" style="font-size: var(--text-h2);">{cms.discover.title}</h2>
       <p class="text-beige-700 text-lg leading-relaxed">{cms.discover.description}</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 reveal">
       <SectionCard title={t(locale, 'home.springs')} description={t(locale, 'home.springsDesc')} href={localizedHref(locale, 'mineral-springs')} variant="indigo" />
       <SectionCard title={t(locale, 'home.thingsToDo')} description={t(locale, 'home.thingsToDoDesc')} href={localizedHref(locale, 'things-to-do')} variant="turquoise" />
       <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} variant="dark" />
@@ -105,7 +105,7 @@ const gradients = [
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3 mb-4" style="font-size: var(--text-h2);">{cms.hotels.title}</h2>
       <p class="text-beige-700 text-lg">{cms.hotels.description}</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto reveal">
       {cms.hotels.items.map((hotel) => (
         <div class="bg-white rounded-xl overflow-hidden shadow-card card-hover reveal">
           <div class="placeholder-image h-48 relative">
@@ -219,9 +219,9 @@ const gradients = [
 </section>
 
 <!-- 9. EMAIL CAPTURE -->
-<section class="py-16 md:py-24" style="background: linear-gradient(135deg, #004F71 0%, #1A1916 100%);">
+<section class="py-16 md:py-24 reveal" style="background: linear-gradient(135deg, #004F71 0%, #1A1916 100%);">
   <div class="container-wide">
-    <div class="max-w-2xl mx-auto text-center reveal">
+    <div class="max-w-2xl mx-auto text-center">
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4" style="font-size: var(--text-h2);">{cms.newsletter.title}</h2>
       <p class="text-white/70 text-lg mb-8">{cms.newsletter.description}</p>
       <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST">

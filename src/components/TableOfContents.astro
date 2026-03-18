@@ -1,0 +1,35 @@
+---
+interface Props {
+  headings?: Array<{ text: string; slug: string; depth: number }>
+}
+
+const { headings = [] } = Astro.props
+---
+
+<nav
+  id="toc-nav"
+  class="hidden lg:block sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto"
+  aria-label="Table of Contents"
+>
+  <div class="border-l-2 border-gray-200 pl-4">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+      Inhalt
+    </p>
+    <ul id="toc-list" class="space-y-1 text-sm">
+      {headings.map((h) => (
+        <li>
+          <a
+            href={`#${h.slug}`}
+            class:list={[
+              'toc-link block py-1 transition-colors duration-200 hover:text-indigo-600',
+              h.depth === 3 ? 'pl-4 text-xs text-gray-400' : 'text-gray-500',
+            ]}
+            data-slug={h.slug}
+          >
+            {h.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

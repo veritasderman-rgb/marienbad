@@ -1,0 +1,48 @@
+---
+interface BreadcrumbItem {
+  label: string
+  href?: string
+}
+
+interface Props {
+  items: BreadcrumbItem[]
+  locale: string
+}
+
+const { items, locale } = Astro.props
+
+const siteUrl = 'https://marienbad.com'
+
+const breadcrumbSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: `${siteUrl}${item.href}` } : {}),
+  })),
+})
+---
+
+<script type="application/ld+json" set:html={breadcrumbSchema} />
+
+<nav aria-label="breadcrumb" class="mb-6">
+  <ol class="flex flex-wrap items-center gap-1 text-sm text-white/60">
+    {items.map((item, index) => (
+      <li class:list={[
+        'flex items-center gap-1',
+        index === items.length - 1 && 'text-white/80 font-medium',
+      ]}>
+        {index > 0 && (
+          <span class="text-white/40 mx-1" aria-hidden="true">&gt;</span>
+        )}
+        {item.href && index !== items.length - 1 ? (
+          <a href={item.href} class="hover:text-white transition-colors">{item.label}</a>
+        ) : (
+          <span>{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

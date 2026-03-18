@@ -1,51 +1,159 @@
 ---
 import type { Locale } from '@/i18n/config'
 import { t } from '@/i18n/ui'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import TableOfContents from '@/components/TableOfContents.astro'
+
+interface BreadcrumbItem {
+  label: string
+  href?: string
+}
 
 interface Props {
   locale: Locale
   title: string
   description: string
+  breadcrumbs?: BreadcrumbItem[]
 }
 
-const { locale, title, description } = Astro.props
+const { locale, title, description, breadcrumbs } = Astro.props
 const homeLabel = t(locale, 'nav.home')
 const pathname = Astro.url.pathname.replace(/\/$/, '')
 const canonicalUrl = `https://marienbad.com${pathname}`
-const homeUrl = `https://marienbad.com/${locale}`
+const homeUrl = `/${locale}`
 
-const breadcrumbSchema = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: homeLabel, item: homeUrl },
-    { '@type': 'ListItem', position: 2, name: title, item: canonicalUrl },
-  ],
-})
+const defaultBreadcrumbs: BreadcrumbItem[] = [
+  { label: homeLabel, href: homeUrl },
+  { label: title },
+]
+
+const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
 ---
-
-<script type="application/ld+json" set:html={breadcrumbSchema} />
 
 <!-- Pillar Hero -->
 <section class="relative bg-indigo-700 text-white overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
   <div class="relative container-wide py-20 md:py-28">
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="mb-6">
-      <ol class="flex items-center gap-2 text-sm text-white/60">
-        <li><a href={`/${locale}`} class="hover:text-white transition-colors">{homeLabel}</a></li>
-        <li class="before:content-['/'] before:mr-2">{title}</li>
-      </ol>
-    </nav>
+    <Breadcrumbs items={breadcrumbItems} locale={locale} />
     <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{title}</h1>
     <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed">{description}</p>
   </div>
 </section>
 
-<!-- Content -->
+<!-- Content with TOC sidebar -->
 <section class="container-wide py-12 md:py-20">
-  <div class="prose-marienbad max-w-4xl mx-auto">
-    <slot />
+  <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12 max-w-5xl mx-auto">
+    <div id="pillar-content" class="prose-marienbad max-w-4xl">
+      <slot />
+    </div>
+    <aside class="hidden lg:block">
+      <TableOfContents />
+    </aside>
   </div>
 </section>
+
+<script>
+  function initToc() {
+    const content = document.getElementById('pillar-content')
+    const tocList = document.getElementById('toc-list')
+    const tocNav = document.getElementById('toc-nav')
+    if (!content || !tocList || !tocNav) return
+
+    const headings = content.querySelectorAll('h2, h3')
+    if (headings.length === 0) {
+      tocNav.style.display = 'none'
+      return
+    }
+
+    function toSlug(text: string): string {
+      return text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim()
+    }
+
+    const tocItems: Array<{ el: HTMLElement; slug: string; depth: number; text: string }> = []
+    const slugCounts = new Map<string, number>()
+
+    headings.forEach((h) => {
+      const heading = h as HTMLElement
+      let slug = heading.id || toSlug(heading.textContent || '')
+      const count = slugCounts.get(slug) || 0
+      slugCounts.set(slug, count + 1)
+      if (count > 0) slug = `${slug}-${count}`
+      if (!heading.id) heading.id = slug
+
+      const depth = heading.tagName === 'H3' ? 3 : 2
+      tocItems.push({ el: heading, slug, depth, text: heading.textContent || '' })
+    })
+
+    // Populate TOC
+    tocList.innerHTML = ''
+    tocItems.forEach((item) => {
+      const li = document.createElement('li')
+      const a = document.createElement('a')
+      a.href = `#${item.slug}`
+      a.textContent = item.text
+      a.dataset.slug = item.slug
+      a.className =
+        item.depth === 3
+          ? 'toc-link block py-1 transition-colors duration-200 hover:text-indigo-600 pl-4 text-xs text-gray-400'
+          : 'toc-link block py-1 transition-colors duration-200 hover:text-indigo-600 text-gray-500'
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        const target = document.getElementById(item.slug)
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          history.replaceState(null, '', `#${item.slug}`)
+        }
+      })
+      li.appendChild(a)
+      tocList.appendChild(li)
+    })
+
+    // IntersectionObserver for active heading
+    let activeSlug = ''
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+
+        if (visible.length > 0) {
+          const newSlug = (visible[0].target as HTMLElement).id
+          if (newSlug !== activeSlug) {
+            activeSlug = newSlug
+            updateActive(newSlug)
+          }
+        }
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    )
+
+    tocItems.forEach((item) => observer.observe(item.el))
+
+    function updateActive(slug: string) {
+      tocList.querySelectorAll('.toc-link').forEach((link) => {
+        const el = link as HTMLElement
+        const isActive = el.dataset.slug === slug
+        if (isActive) {
+          el.classList.remove('text-gray-500', 'text-gray-400')
+          el.classList.add('text-indigo-600', 'font-medium')
+        } else {
+          el.classList.remove('text-indigo-600', 'font-medium')
+          if (el.classList.contains('pl-4')) {
+            el.classList.add('text-gray-400')
+          } else {
+            el.classList.add('text-gray-500')
+          }
+        }
+      })
+    }
+  }
+
+  initToc()
+  document.addEventListener('astro:after-swap', initToc)
+</script>
