@@ -252,3 +252,101 @@ const gradients = [
     }, 600)
   })
 </script>
+
+<!-- Schema.org: TouristDestination -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "name": "Mariánské Lázně (Marienbad)",
+  "description": "UNESCO World Heritage spa town famous for over 40 mineral springs and four natural healing resources — water, earth, natural gas, and a certified healing climate.",
+  "url": "https://marienbad.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mariánské Lázně",
+    "addressRegion": "Karlovarský kraj",
+    "postalCode": "353 01",
+    "addressCountry": "CZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.9644,
+    "longitude": 12.7066
+  },
+  "touristType": [
+    "Wellness & Spa Travellers",
+    "Cultural Heritage Enthusiasts",
+    "Medical Tourism Patients"
+  ],
+  "containsPlace": [
+    {
+      "@type": "LodgingBusiness",
+      "name": "Ensana Nové Lázně",
+      "url": "https://www.ensanahotels.com/nove-lazne"
+    },
+    {
+      "@type": "LodgingBusiness",
+      "name": "Ensana Centrální Lázně",
+      "url": "https://www.ensanahotels.com/centralni-lazne"
+    }
+  ]
+})} />
+
+<!-- Schema.org: LodgingBusiness entities -->
+<script type="application/ld+json" set:html={JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Ensana Nové Lázně",
+    "description": "A historic 5-star spa hotel featuring an original Roman Bath — the flagship of the Ensana Spa Hotels collection in Mariánské Lázně.",
+    "url": "https://www.ensanahotels.com/nove-lazne",
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "5"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mariánské Lázně",
+      "addressRegion": "Karlovarský kraj",
+      "postalCode": "353 01",
+      "addressCountry": "CZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.9644,
+      "longitude": 12.7066
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Roman Bath", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "CO₂ Therapy", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Pool", "value": true }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Ensana Centrální Lázně",
+    "description": "Steps from the Colonnade — traditional spa treatments in a prime central location with modern therapy rooms in Mariánské Lázně.",
+    "url": "https://www.ensanahotels.com/centralni-lazne",
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "4"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mariánské Lázně",
+      "addressRegion": "Karlovarský kraj",
+      "postalCode": "353 01",
+      "addressCountry": "CZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.9644,
+      "longitude": 12.7066
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Colonnade Location", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Drinking Cure", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Wellness", "value": true }
+    ]
+  }
+])} />
