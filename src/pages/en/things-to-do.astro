@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
+import RelatedArticles from '@/components/RelatedArticles.astro'
 
 const locale = 'en' as const
 const page = await getPage('en-things-to-do')
@@ -11,5 +12,6 @@ const page = await getPage('en-things-to-do')
 <Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <RelatedArticles locale={locale} category="nature" />
   </PillarPage>
 </Base>
