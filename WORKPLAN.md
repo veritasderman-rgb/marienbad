@@ -1,7 +1,7 @@
 # MARIENBAD.COM — Kompletní plán práce pro Claude Code
 
 **Stav k:** 18. 3. 2026
-**Repo:** `veritasderman-rgb/marienbad` → branch `claude/marienbad-website-plan-V22c5`
+**Repo:** `veritasderman-rgb/marienbad` → branch `claude/plan-work-tasks-z9aPo`
 **Stack:** Astro 5 + Tailwind 4 + Keystatic CMS + React 19 + Vercel (fra1)
 **Deploy URL:** marienbad.vercel.app
 
@@ -10,7 +10,6 @@
 - ✅ HOTOVO — implementováno, funguje
 - ⚠️ ČÁSTEČNĚ — existuje základ, potřebuje dokončení/opravu
 - ❌ CHYBÍ — dosud neimplementováno
-- 🔧 OPRAVIT — existuje ale je broken/nesprávné
 
 ---
 
@@ -20,12 +19,12 @@
 
 | # | Úkol | Stav | Poznámka |
 |---|------|------|----------|
-| 0.1.1 | GitHub repo veritasderman-rgb/marienbad | ✅ | Existuje, 22 commitů |
+| 0.1.1 | GitHub repo veritasderman-rgb/marienbad | ✅ | Existuje |
 | 0.1.2 | Vercel projekt napojený | ✅ | vercel.json nakonfigurován, region fra1 |
 | 0.1.3 | Vlastní doména marienbad.com na Vercel | ❌ | Zatím jen marienbad.vercel.app — nutno přesměrovat DNS |
-| 0.1.4 | SSL certifikát na produkční doméně | ❌ | Dříve hlášen SELF_SIGNED_CERT_IN_CHAIN problém |
-| 0.1.5 | site v astro.config ukazuje na produkční URL | 🔧 | Ukazuje na marienbad.vercel.app, změnit na https://marienbad.com |
-| 0.1.6 | Environment variables na Vercel | ⚠️ | Keystatic může potřebovat GitHub token pro API mode |
+| 0.1.4 | SSL certifikát na produkční doméně | ❌ | Závisí na 0.1.3 |
+| 0.1.5 | site v astro.config ukazuje na produkční URL | ⚠️ | Ukazuje na marienbad.vercel.app — změnit na marienbad.com až bude DNS |
+| 0.1.6 | Environment variables na Vercel | ⚠️ | Keystatic GitHub token pro API mode, MailerLite API key |
 
 ### 0.2 Stack & dependencies
 
@@ -38,10 +37,10 @@
 | 0.2.5 | Keystatic CMS | ✅ | @keystatic/astro@^5.0.6, /admin route existuje |
 | 0.2.6 | Sitemap generátor | ✅ | @astrojs/sitemap |
 | 0.2.7 | MDX support | ✅ | @astrojs/mdx |
-| 0.2.8 | Output mode server (SSR) | ✅ | Změněno z static → hybrid → server |
-| 0.2.9 | Supabase napojení | ❌ | Dříve plánováno pro PoC submissions, newsletter — dosud nepřipojeno |
-| 0.2.10 | Plausible/Umami analytics | ✅ | Plausible script v Base.astro, podmíněný na PUBLIC_PLAUSIBLE_DOMAIN |
-| 0.2.11 | CLAUDE.md branding brief v repo root | ✅ | CLAUDE.md vytvořen s kompletním branding brief |
+| 0.2.8 | Output mode server (SSR) | ✅ | output: 'server' |
+| 0.2.9 | Supabase napojení | ❌ | Původně plánováno pro PoC submissions — zatím nepotřeba |
+| 0.2.10 | Plausible analytics | ✅ | Plausible script v Base.astro, podmíněný na PUBLIC_PLAUSIBLE_DOMAIN |
+| 0.2.11 | CLAUDE.md branding brief | ✅ | Kompletní |
 
 ### 0.3 i18n
 
@@ -50,8 +49,8 @@
 | 0.3.1 | Astro i18n konfigurace (DE default) | ✅ | 4 locales: de, en, cs, ru; prefix na všech |
 | 0.3.2 | UI překlady (src/i18n/ui.ts) | ✅ | ~9KB, všechny 4 jazyky |
 | 0.3.3 | Helper funkce (config.ts, utils.ts) | ✅ | localizedHref(), t() atd. |
-| 0.3.4 | hreflang tagy | ⚠️ | Zkontrolovat zda Base.astro generuje hreflang pro všechny varianty |
-| 0.3.5 | Root / redirect na /de/ | ⚠️ | src/pages/index.astro existuje — ověřit funkčnost |
+| 0.3.4 | hreflang tagy | ✅ | Base.astro generuje hreflang pro všechny varianty + alternateUrls prop pro sub-stránky |
+| 0.3.5 | Root / redirect na /de/ | ✅ | src/pages/index.astro existuje |
 
 ---
 
@@ -73,26 +72,32 @@
 | 1.1.10 | prefers-reduced-motion | ✅ | Media query vypíná animace |
 | 1.1.11 | Prose styly pro pillar pages | ✅ | .prose-marienbad h2-h4, p, a, blockquote, lists |
 | 1.1.12 | Image placeholder systém | ✅ | .placeholder-image a .placeholder-image-light |
-| 1.1.13 | Google Fonts loading | ⚠️ | Načítáno přes `<link>` — ideálně přejít na @fontsource |
+| 1.1.13 | Self-hosted fonty (@fontsource) | ✅ | @fontsource-variable/dm-sans + @fontsource/cormorant-garamond |
 
 ### 1.2 Globální komponenty
 
 | # | Úkol | Stav | Poznámka |
 |---|------|------|----------|
-| 1.2.1 | Header (sticky, language switcher, nav, CTA) | ✅ | Header.astro ~8.5KB |
-| 1.2.2 | Footer (4-column, Ensana disclosure) | ✅ | Footer.astro ~6.5KB |
-| 1.2.3 | Base layout (meta tags, OG, fonts) | ✅ | Base.astro ~3.5KB |
+| 1.2.1 | Header (sticky, language switcher, nav, CTA) | ✅ | Header.astro |
+| 1.2.2 | Footer (4-column, Ensana disclosure) | ✅ | Footer.astro |
+| 1.2.3 | Base layout (meta tags, OG, fonts) | ✅ | Base.astro |
 | 1.2.4 | HeroSection | ✅ | HeroSection.astro s badges |
 | 1.2.5 | SectionCard | ✅ | SectionCard.astro s variants |
 | 1.2.6 | WaveDivider | ✅ | WaveDivider.astro — 2 varianty |
 | 1.2.7 | PillarPage template | ✅ | PillarPage.astro |
 | 1.2.8 | CmsPillarPage (Keystatic-powered) | ✅ | CmsPillarPage.astro |
 | 1.2.9 | MarkdocRenderer | ✅ | Pro CMS content rendering |
-| 1.2.10 | Hotel Recommendation Box (inline component) | ❌ | Pro použití uvnitř článků |
-| 1.2.11 | Treatment Highlight Box | ❌ | Indigo accent bar, icon, popis procedury |
-| 1.2.12 | Booking CTA Bar (sticky mobile) | ❌ | Fixed bottom bar s "Jetzt buchen" |
-| 1.2.13 | Breadcrumbs komponenta | ✅ | Schema.org BreadcrumbList na pillar pages |
-| 1.2.14 | Image component (s lazy loading, LQIP) | ❌ | Wrapper kolem `<img>` s blur-up placeholderem |
+| 1.2.10 | Hotel Recommendation Box | ✅ | HotelRecommendationBox.astro — star ratings, badge, booking URL |
+| 1.2.11 | Treatment Highlight Box | ✅ | TreatmentHighlightBox.astro — 4 healing element ikony |
+| 1.2.12 | Booking CTA Bar (sticky mobile) | ✅ | BookingCtaBar.astro — scroll detection, locale-aware |
+| 1.2.13 | Breadcrumbs komponenta | ✅ | Schema.org BreadcrumbList |
+| 1.2.14 | Image component (s lazy loading) | ✅ | ResponsiveImage.astro + OptimizedImage.astro |
+| 1.2.15 | SocialShare komponenta | ✅ | SocialShare.astro — Facebook, X, WhatsApp, Email, Copy link |
+| 1.2.16 | RelatedArticles komponenta | ✅ | RelatedArticles.astro — filtr dle kategorie |
+| 1.2.17 | StoryCard komponenta | ✅ | StoryCard.astro — portrait, quote, gradient fallback |
+| 1.2.18 | ArticleGrid komponenta | ✅ | ArticleGrid.astro — responsive 3-col grid |
+| 1.2.19 | DestinationMap (Leaflet) | ✅ | DestinationMap.astro — lazy-loaded, 4 marker kategorie |
+| 1.2.20 | EventCalendar | ✅ | EventCalendar.astro — sezónní grouping, locale-aware |
 
 ---
 
@@ -102,13 +107,13 @@
 |---|-------|------|----------|
 | 2.1 | Hero (fullscreen, Ken Burns, badges) | ✅ | Gradient placeholder, badges z CMS |
 | 2.2 | Quick Facts Strip (4 stat karty) | ✅ | 2×2 grid mobile, 4-col desktop |
-| 2.3 | Four Healing Elements (indigo bg) | ✅ | Indigo-700 background, turquoise ikony |
+| 2.3 | Four Healing Elements (indigo bg) | ✅ | Unikátní SVG ikony (water, earth, gas, climate) |
 | 2.4 | Discover the Town (3 pillar karty) | ✅ | SectionCard komponenty |
 | 2.5 | Where to Stay (2 hotel karty) | ✅ | Star ratings, feature tags, booking links |
 | 2.6 | People of Colonnade (dark bg) | ✅ | Portrait placeholders, pull quotes |
 | 2.7 | Seasonal Highlight (2-col) | ✅ | Image + text layout |
 | 2.8 | Magazine Preview (3 article karty) | ✅ | Category, title, excerpt, date |
-| 2.9 | Email Capture (gradient bg, form) | ✅ | Form s client-side handler |
+| 2.9 | Email Capture (gradient bg, form) | ✅ | Form napojen na /api/newsletter endpoint |
 | 2.10 | Wave dividers mezi sekcemi | ✅ | 2× použito |
 
 ### 2.11 Homepage — co chybí/opravit
@@ -116,12 +121,12 @@
 | # | Úkol | Stav |
 |---|------|------|
 | 2.11.1 | Nahradit placeholder gradienty reálnými fotkami | ❌ |
-| 2.11.2 | Newsletter form napojit na MailerLite API | ❌ |
-| 2.11.3 | Scroll reveal — JS Intersection Observer inicializace | ⚠️ |
-| 2.11.4 | Unikátní ikony pro 4 healing elements | ❌ |
-| 2.11.5 | Hotel booking linky s UTM parametry | ⚠️ |
-| 2.11.6 | Schema.org TouristDestination na homepage | ❌ |
-| 2.11.7 | Open Graph image pro social sharing | ❌ |
+| 2.11.2 | Newsletter form → MailerLite API (potřeba API key) | ⚠️ | Endpoint existuje s graceful degradation, chybí MAILERLITE_API_KEY env var |
+| 2.11.3 | Scroll reveal — JS IntersectionObserver | ✅ | Implementováno v Base.astro |
+| 2.11.4 | Unikátní ikony pro 4 healing elements | ✅ | Custom SVG paths |
+| 2.11.5 | Hotel booking linky s UTM parametry | ⚠️ | Linky existují, UTM TBD |
+| 2.11.6 | Schema.org TouristDestination na homepage | ✅ | + LodgingBusiness pro 2 hotely |
+| 2.11.7 | Dynamic OG image | ✅ | /api/og endpoint generuje SVG |
 
 ---
 
@@ -131,13 +136,13 @@
 
 | Stránka | DE | EN | CS | RU |
 |---------|----|----|----|----|
-| Mineral Springs | ✅ 14KB | ✅ 13KB | ✅ 14KB | ✅ 20KB |
-| Things to Do | ✅ 12KB | ✅ 13KB | ✅ 12KB | ✅ 17KB |
-| History | ✅ 11KB | ✅ 13KB | ✅ 11KB | ✅ 18KB |
-| Accommodation | ✅ 13KB | ✅ 12KB | ✅ 13KB | ✅ 18KB |
-| Magazine | ✅ 10KB | ✅ 12KB | ✅ | ✅ |
-| People | ✅ 11KB | ✅ 13KB | ✅ | ✅ |
-| Practical Info | ✅ 12KB | ✅ 13KB | ✅ | ✅ |
+| Mineral Springs | ✅ | ✅ | ✅ | ✅ |
+| Things to Do | ✅ | ✅ | ✅ | ✅ |
+| History | ✅ | ✅ | ✅ | ✅ |
+| Accommodation | ✅ | ✅ | ✅ | ✅ |
+| Magazine | ✅ | ✅ | ✅ | ✅ |
+| People | ✅ | ✅ | ✅ | ✅ |
+| Practical Info | ✅ | ✅ | ✅ | ✅ |
 
 ### 3.2 Pillar page šablony
 
@@ -148,10 +153,10 @@
 | 3.2.3 | CS routes | ✅ | /cs/mineralni-prameny atd. |
 | 3.2.4 | RU routes | ✅ | /ru/mineralnye-istochniki atd. |
 | 3.2.5 | Pillar page layout — sidebar TOC | ✅ | Sticky table of contents |
-| 3.2.6 | In-content hotel recommendation boxy | ❌ | Kontextové CTA boxy |
-| 3.2.7 | Related articles sekce dole | ✅ | "Další čtení" s 2-3 kartami |
-| 3.2.8 | Social sharing tlačítka | ❌ |
-| 3.2.9 | SEO meta title/description | ⚠️ | Ověřit v CMS datech |
+| 3.2.6 | In-content hotel recommendation boxy | ⚠️ | Komponenta existuje, integrace do pillar pages TBD |
+| 3.2.7 | Related articles sekce dole | ✅ | RelatedArticles.astro |
+| 3.2.8 | Social sharing tlačítka | ✅ | SocialShare.astro — 5 kanálů |
+| 3.2.9 | SEO meta title/description | ✅ | V CMS datech pro každou stránku |
 
 ---
 
@@ -159,13 +164,13 @@
 
 | # | Úkol | Stav | Poznámka |
 |---|------|------|----------|
-| 4.1 | PoC landing page (masonry grid, filtry) | ✅ | Implementováno |
+| 4.1 | PoC landing page (grid) | ✅ | Implementováno |
 | 4.2 | PoC detail page | ✅ | Detail routes [slug] pro DE/EN/CS/RU |
 | 4.3 | PoC TypeScript datový model | ✅ | Implementováno |
 | 4.4 | PoC Keystatic kolekce | ✅ | Implementováno |
-| 4.5 | PoC card komponenta | ✅ | StoryCard.astro — reusable komponenta |
-| 4.6 | PoC submission formulář | ❌ |
-| 4.7 | PoC filtrování dle jazyka/tagu | ❌ |
+| 4.5 | PoC card komponenta | ✅ | StoryCard.astro |
+| 4.6 | PoC submission formulář | ❌ | Potřebuje backend (Supabase?) |
+| 4.7 | PoC filtrování dle jazyka/tagu | ❌ | React island s filtry |
 | 4.8 | PoC RSS/JSON feed | ❌ |
 | 4.9 | Reálné PoC příběhy (min. 3) | ✅ | 3 DE + 3 EN seed stories |
 
@@ -175,14 +180,14 @@
 
 | # | Úkol | Stav |
 |---|------|------|
-| 5.1 | Magazine listing page (card grid, pagination) | ✅ | ArticleGrid.astro |
+| 5.1 | Magazine listing page (card grid) | ✅ | ArticleGrid.astro |
 | 5.2 | Article detail page template | ✅ | Detail routes [slug] pro DE/EN/CS/RU |
 | 5.3 | Keystatic kolekce pro články | ✅ | Implementováno |
 | 5.4 | Kategorie systém | ✅ | Implementováno |
 | 5.5 | Tag systém | ✅ | Implementováno |
 | 5.6 | Reading time kalkulace | ✅ | Implementováno |
-| 5.7 | Related articles algoritmus | ❌ |
-| 5.8 | Article Schema.org structured data | ❌ |
+| 5.7 | Related articles algoritmus | ✅ | RelatedArticles.astro — filtr dle kategorie |
+| 5.8 | Article Schema.org structured data | ❌ | Chybí ld+json Article markup na detail stránkách |
 | 5.9 | RSS feed | ✅ | /rss.xml |
 | 5.10 | Min. 3 seed články (DE + EN) | ✅ | 3 DE + 3 EN seed články |
 
@@ -192,22 +197,24 @@
 
 | # | Stránka | Stav | Rodičovská |
 |---|---------|------|------------|
-| 6.1 | /mineralquellen/ — detail 40+ springs | ❌ | Heilquellen |
+| 6.1 | /quellen-uebersicht/ — Springs overview | ✅ | DE/EN s TreatmentHighlightBox |
 | 6.2 | /co2-therapie/ | ✅ | DE/EN s TreatmentHighlightBox |
-| 6.3 | /peloidtherapie/ | ✅ | Heilquellen |
-| 6.4 | /klimatherapie/ | ✅ | Heilquellen |
-| 6.5 | /kolonnade/ — Singing Fountain | ✅ | Erleben |
+| 6.3 | /peloidtherapie/ | ✅ | DE/EN |
+| 6.4 | /klimatherapie/ | ✅ | DE/EN |
+| 6.5 | /kolonnade/ — Singing Fountain | ✅ | DE/EN |
 | 6.6 | /natur/ — Parks, Kladská | ✅ | DE/EN |
 | 6.7 | /golf/ — Royal Golf Club | ✅ | DE/EN |
-| 6.8 | /kultur/ — Culture, Chopin | ✅ | DE/EN |
-| 6.9 | /ausfluege/ — Day trips | ✅ | Erleben |
+| 6.8 | /kultur/ — Culture, Chopin | ✅ | DE/EN s EventCalendar |
+| 6.9 | /ausfluege/ — Day trips | ✅ | DE/EN |
 | 6.10 | /beruehmte-gaeste/ — Famous visitors | ✅ | DE/EN |
-| 6.11 | /architektur/ | ✅ | Geschichte |
+| 6.11 | /architektur/ | ✅ | DE/EN |
 | 6.12 | /unesco/ | ✅ | DE/EN |
-| 6.13 | /hotel/{slug}/ | ✅ | Unterkunft |
-| 6.14 | /anreise/ — Getting there | ✅ | DE/EN |
-| 6.15 | /beste-reisezeit/ | ❌ | Praktische Infos |
+| 6.13 | /hotel/{slug}/ | ✅ | DE/EN |
+| 6.14 | /anreise/ — Getting there | ✅ | DE/EN s DestinationMap |
+| 6.15 | /beste-reisezeit/ — Best time to visit | ✅ | DE/EN |
 | 6.16 | /faq/ + FAQPage Schema | ✅ | DE/EN/CS/RU se Schema.org FAQPage |
+| 6.17 | /datenschutz/ — Privacy | ✅ | DE/EN/CS/RU |
+| 6.18 | /impressum/ — Imprint | ✅ | DE/EN/CS/RU |
 
 ---
 
@@ -215,22 +222,22 @@
 
 | # | Úkol | Stav |
 |---|------|------|
-| 7.1 | Meta titles & descriptions | ⚠️ |
-| 7.2 | hreflang tagy | ⚠️ |
-| 7.3 | Canonical URLs | ⚠️ |
-| 7.4 | Open Graph tags | ⚠️ |
-| 7.5 | Twitter Card tags | ✅ |
-| 7.6 | Schema.org: TouristDestination | ✅ |
-| 7.7 | Schema.org: LodgingBusiness | ✅ |
-| 7.8 | Schema.org: Article | ❌ |
-| 7.9 | Schema.org: FAQPage | ❌ |
-| 7.10 | Schema.org: BreadcrumbList | ✅ |
-| 7.11 | XML sitemap | ✅ |
-| 7.12 | robots.txt | ✅ |
-| 7.13 | Image optimization | ❌ |
-| 7.14 | Font optimization (@fontsource) | ❌ |
-| 7.15 | Lighthouse audit ≥ 95 | ❌ |
-| 7.16 | Cache headers | ✅ |
+| 7.1 | Meta titles & descriptions | ✅ | V CMS datech a stránkových komponentách |
+| 7.2 | hreflang tagy | ✅ | Base.astro — všechny varianty + alternateUrls pro sub-stránky |
+| 7.3 | Canonical URLs | ✅ | Base.astro — siteUrl + pathname |
+| 7.4 | Open Graph tags | ✅ | og:title, og:description, og:type, og:url, og:site_name, og:image |
+| 7.5 | Twitter Card tags | ✅ | twitter:card, twitter:title, twitter:description, twitter:image |
+| 7.6 | Schema.org: TouristDestination | ✅ | Homepage.astro |
+| 7.7 | Schema.org: LodgingBusiness | ✅ | Homepage.astro — 2 hotely |
+| 7.8 | Schema.org: Article | ❌ | Chybí na article detail stránkách |
+| 7.9 | Schema.org: FAQPage | ✅ | Na FAQ stránkách (DE/EN/CS/RU) |
+| 7.10 | Schema.org: BreadcrumbList | ✅ | Breadcrumbs.astro |
+| 7.11 | XML sitemap | ✅ | @astrojs/sitemap |
+| 7.12 | robots.txt | ✅ | Existuje |
+| 7.13 | Image optimization (Astro Image) | ❌ | Zatím placeholder gradienty — relevantní až s reálnými fotkami |
+| 7.14 | Font optimization (@fontsource) | ✅ | Self-hosted via @fontsource packages |
+| 7.15 | Lighthouse audit ≥ 95 | ❌ | Dosud neprovedeno |
+| 7.16 | Cache headers | ✅ | Na OG endpoint + Vercel config |
 
 ---
 
@@ -238,12 +245,12 @@
 
 | # | Úkol | Stav |
 |---|------|------|
-| 8.1 | Newsletter signup → MailerLite API | ❌ |
-| 8.2 | Interactive destination map | ❌ |
-| 8.3 | Event calendar | ❌ |
-| 8.4 | Treatment finder / quiz | ❌ |
+| 8.1 | Newsletter signup → MailerLite API | ⚠️ | Endpoint existuje s rate limiting + honeypot, chybí API key na Vercel |
+| 8.2 | Interactive destination map | ✅ | DestinationMap.astro — Leaflet, lazy-loaded, 4 kategorie markerů |
+| 8.3 | Event calendar | ✅ | EventCalendar.astro — sezónní grouping |
+| 8.4 | Treatment finder / quiz | ❌ | Interaktivní React island |
 | 8.5 | Cookie-free analytics | ✅ | Plausible v Base.astro |
-| 8.6 | Scroll reveal JS inicializace | ✅ | IntersectionObserver v Base.astro |
+| 8.6 | Scroll reveal JS inicializace | ✅ | IntersectionObserver v Base.astro, respektuje prefers-reduced-motion |
 | 8.7 | Header scroll behavior | ✅ | Implementováno |
 
 ---
@@ -252,153 +259,108 @@
 
 | # | Úkol | Stav |
 |---|------|------|
-| 9.1 | Hero fotografie | ❌ |
-| 9.2 | Hotel fotografie | ❌ |
-| 9.3 | Treatment fotografie | ❌ |
-| 9.4 | PoC portréty | ❌ |
-| 9.5 | Seasonal fotografie | ❌ |
-| 9.6 | OG image template | ❌ |
-| 9.7 | Favicon + app icons | ⚠️ |
-| 9.8 | Custom ikony pro healing elements | ❌ |
-| 9.9 | DE seed články (min. 3) | ❌ |
-| 9.10 | EN seed články (min. 3) | ❌ |
+| 9.1 | Hero fotografie | ❌ | Placeholder gradienty |
+| 9.2 | Hotel fotografie | ❌ | Placeholder gradienty |
+| 9.3 | Treatment fotografie | ❌ | Placeholder gradienty |
+| 9.4 | PoC portréty | ❌ | Placeholder gradienty |
+| 9.5 | Seasonal fotografie | ❌ | Placeholder gradienty |
+| 9.6 | OG image template | ✅ | Dynamický SVG via /api/og endpoint |
+| 9.7 | Favicon + app icons | ⚠️ | Ověřit kompletnost (favicon.ico, apple-touch-icon, manifest) |
+| 9.8 | Custom ikony pro healing elements | ✅ | 4 unikátní SVG paths (water, earth, gas, climate) |
+| 9.9 | DE seed články (min. 3) | ✅ | CO₂-Bäder, Goethe, Spaziergänge |
+| 9.10 | EN seed články (min. 3) | ✅ | CO₂ Baths, Goethe's Footsteps, Best Walks |
 
 ---
 
-## DOPORUČENÉ POŘADÍ PRÁCE
+## ZBÝVAJÍCÍ PRÁCE — PRIORITIZOVÁNO
 
-### Sprint 1 — Opravy & infrastruktura
-- 0.1.5 Opravit site URL v astro.config
-- 0.2.11 Přidat CLAUDE.md
-- 1.1.13 @fontsource pro fonty
-- 0.3.4 Ověřit/doplnit hreflang
-- 0.3.5 Ověřit root redirect
-- 2.11.3 IntersectionObserver JS
-- 2.11.5 UTM parametry
-- 7.2-7.4 hreflang, Canonical, OG tags
+### P1 — Před spuštěním (blocking)
 
-### Sprint 2 — Chybějící komponenty
-- 1.2.10 Hotel Recommendation Box
-- 1.2.11 Treatment Highlight Box
-- 1.2.12 Booking CTA Bar
-- 1.2.13 Breadcrumbs
-- 1.2.14 Image component
-- 2.11.4 Custom healing element ikony
+| # | Úkol | Effort |
+|---|------|--------|
+| 0.1.3 | DNS doména marienbad.com → Vercel | Manuální (mimo kód) |
+| 0.1.4 | SSL certifikát | Automatický po DNS |
+| 0.1.5 | Změnit site URL na marienbad.com | 1 řádek v astro.config |
+| 0.1.6 | Env vars na Vercel (MailerLite key) | Manuální (Vercel dashboard) |
 
-### Sprint 3 — SEO & structured data
-- 7.5-7.10 Schema.org
-- 7.14 Font optimization
-- 9.7 Favicon audit
-- 2.11.6 TouristDestination
-- 2.11.7 OG image
+### P2 — SEO & kvalita
 
-### Sprint 4 — Magazín systém
-- 5.1-5.9 Kompletní magazine/blog systém
+| # | Úkol | Effort |
+|---|------|--------|
+| 5.8 / 7.8 | Schema.org Article markup na article detail pages | Střední |
+| 7.15 | Lighthouse audit + opravy | Střední |
+| 2.11.5 | UTM parametry na hotel booking links | Malý |
 
-### Sprint 5 — People of Colonnade
-- 4.1-4.8 PoC systém komplet
+### P3 — Nice to have funkce
 
-### Sprint 6 — Sub-stránky
-- 6.13 Hotel detail pages (highest priority)
-- 6.1 Springs detail
-- 6.2 CO₂ therapy
-- 6.14 Anreise + map
-- 6.16 FAQ + Schema
+| # | Úkol | Effort |
+|---|------|--------|
+| 4.6 | PoC submission formulář | Velký (potřebuje backend) |
+| 4.7 | PoC filtrování dle jazyka/tagu | Střední |
+| 4.8 | PoC RSS/JSON feed | Malý |
+| 8.4 | Treatment finder / quiz | Velký |
+| 3.2.6 | Hotel recommendation boxy integrovat do pillar pages | Malý |
 
-### Sprint 7 — Interaktivní funkce
-- 8.1 MailerLite API
-- 8.5 Analytics
-- 8.2 Destination map
-- 8.3 Event calendar
+### P4 — Obsah (mimo Claude Code)
 
-### Sprint 8 — Obsah & fotografie (mimo Claude Code)
-
-### Sprint 9 — DNS & go-live
-- 0.1.3 DNS přesměrování
-- 0.1.4 SSL
-- 7.15 Lighthouse audit
+| # | Úkol |
+|---|------|
+| 9.1-9.5 | Reálné fotografie (hero, hotely, treatments, portréty, seasonal) |
+| 7.13 | Image optimization (relevantní až s fotkami) |
 
 ---
 
 ## SOUHRNNÉ STATISTIKY
 
-| Kategorie | ✅ | ⚠️ | ❌ | 🔧 |
-|-----------|----|----|----|----|
-| Infrastruktura (Fáze 0) | 11 | 3 | 2 | 1 |
-| Design system (Fáze 1) | 22 | 1 | 4 | 0 |
-| Homepage (Fáze 2) | 10 | 2 | 5 | 0 |
-| Pillar pages (Fáze 3) | 8 | 3 | 2 | 0 |
-| People of Colonnade (Fáze 4) | 6 | 0 | 3 | 0 |
-| Magazín (Fáze 5) | 8 | 0 | 2 | 0 |
-| Sub-stránky (Fáze 6) | 14 | 0 | 2 | 0 |
-| SEO (Fáze 7) | 7 | 4 | 5 | 0 |
-| Interaktivní (Fáze 8) | 3 | 0 | 4 | 0 |
-| Obsah & foto (Fáze 9) | 0 | 1 | 9 | 0 |
-| **CELKEM** | **89** | **14** | **38** | **1** |
+| Kategorie | ✅ | ⚠️ | ❌ |
+|-----------|----|----|-----|
+| Infrastruktura (Fáze 0) | 13 | 2 | 2 |
+| Design system (Fáze 1) | 27 | 0 | 0 |
+| Homepage (Fáze 2) | 15 | 2 | 1 |
+| Pillar pages (Fáze 3) | 12 | 1 | 0 |
+| People of Colonnade (Fáze 4) | 6 | 0 | 3 |
+| Magazín (Fáze 5) | 9 | 0 | 1 |
+| Sub-stránky (Fáze 6) | 18 | 0 | 0 |
+| SEO (Fáze 7) | 13 | 0 | 2 |
+| Interaktivní (Fáze 8) | 5 | 1 | 1 |
+| Obsah & foto (Fáze 9) | 4 | 1 | 5 |
+| **CELKEM** | **122** | **7** | **15** |
 
-**Celkový pokrok: ~63% hotovo (updated 18.3.2026)**
+**Celkový pokrok: ~85% hotovo (122/144 — updated 18.3.2026)**
 
-## PROVEDENÉ ZMĚNY (18. 3. 2026)
+---
 
-### Opraveno
-- ✅ reader.ts přepsán z Keystatic createReader na přímé importy (opravuje Internal Server Error na Vercel)
-- ✅ admin/index.astro přepsán na Astro.redirect()
-- ✅ site URL změněna na marienbad.com
-- ✅ hreflang opraveny pro lokalizované slug cesty
-- ✅ Fonty přesunuty z Google CDN na @fontsource (lepší performance)
-- ✅ Healing element ikony nahrazeny unikátními SVG (water, earth, gas, climate)
+## CHANGELOG
 
-### Nové komponenty
-- ✅ HotelRecommendationBox.astro
-- ✅ TreatmentHighlightBox.astro
-- ✅ BookingCtaBar.astro (sticky mobile CTA)
-- ✅ ResponsiveImage.astro
-- ✅ StoryCard.astro
-- ✅ ArticleGrid.astro
+### 18. 3. 2026 — Session 3 (branch claude/plan-work-tasks-z9aPo)
 
-### Nové stránky (30+ nových stránek)
-- ✅ FAQ (DE/EN/CS/RU) se Schema.org FAQPage
-- ✅ UNESCO (DE/EN)
-- ✅ CO₂-Therapie (DE/EN) s TreatmentHighlightBox
-- ✅ Golf (DE/EN)
-- ✅ Natur/Nature (DE/EN)
-- ✅ Anreise/Getting-there (DE/EN)
-- ✅ Berühmte Gäste/Famous Visitors (DE/EN)
-- ✅ Kultur/Culture (DE/EN)
-- ✅ Magazín detail routes [slug] (DE/EN/CS/RU)
-- ✅ PoC detail routes [slug] (DE/EN/CS/RU)
-- ✅ RSS feed (/rss.xml)
+#### Implementováno
+- ✅ hreflang alternateUrls pro 30+ sub-stránek (DE/EN páry + 4-locale stránky)
+- ✅ Security headers middleware (X-Frame-Options, CSP, HSTS atd.)
+- ✅ Footer opraven — Ensana disclosure, kontaktní údaje, právní odkazy
+- ✅ DestinationMap integrován do things-to-do a getting-there stránek
+- ✅ EventCalendar integrován do culture stránek
+- ✅ Newsletter API endpoint s rate limiting, honeypot, bot detection
 
-### Nový obsah
-- ✅ 3 DE seed články (CO₂-Bäder, Goethe, Spaziergänge)
-- ✅ 3 EN seed články (CO₂ Baths, Goethe's Footsteps, Best Walks)
-- ✅ 3 DE seed stories (Ingrid Hamburg, Thomas Wien, Dr. Novák)
-- ✅ 3 EN seed stories (James London, Sarah & James UK, Pavel Prague)
-- ✅ CS obsah dokončen (magazín, lidé, praktické info)
-- ✅ RU obsah dokončen (журнал, люди, практическая информация)
+#### Aktualizace WORKPLAN
+- Kompletní reaudit všech položek — stavy aktualizovány dle skutečného stavu kódu
+- Pokrok zvýšen z 63% na 85%
+- Přidány nové položky (1.2.15-1.2.20, 6.17-6.18) reflektující implementované komponenty
+- Přepracovaná sekce "Zbývající práce" s prioritizací
 
-### SEO
-- ✅ Schema.org TouristDestination na homepage
-- ✅ Schema.org LodgingBusiness pro Ensana hotely
-- ✅ Schema.org FAQPage na FAQ stránkách
-- ✅ Schema.org BreadcrumbList na pillar pages
-- ✅ Twitter Card tags
-- ✅ section prop pro správné hreflang na všech stránkách
+### 18. 3. 2026 — Session 2
 
-## PROVEDENÉ ZMĚNY (18. 3. 2026 — session 2)
+- ✅ Plausible Analytics přidán do Base.astro
+- ✅ CLAUDE.md branding brief vytvořen
 
-### Nové
-- ✅ Plausible Analytics (cookie-free) přidán do Base.astro — podmíněný na `PUBLIC_PLAUSIBLE_DOMAIN` env var
-- ✅ CLAUDE.md branding brief vytvořen v repo root
+### 18. 3. 2026 — Session 1
 
-### Aktualizace WORKPLAN
-- ✅ Fáze 4 (PoC): 4.1-4.5, 4.9 označeny jako hotové
-- ✅ Fáze 5 (Magazín): 5.1-5.6, 5.9-5.10 označeny jako hotové
-- ✅ Fáze 6 (Sub-stránky): 6.2-6.14, 6.16 označeny jako hotové
-- ✅ Fáze 7 (SEO): 7.5, 7.6, 7.7, 7.10 označeny jako hotové
-- ✅ Fáze 8 (Interaktivní): 8.5, 8.6, 8.7 označeny jako hotové
-- ✅ Fáze 1: 1.2.13 (Breadcrumbs) označeno jako hotové
-- ✅ Fáze 3: 3.2.5 (sidebar TOC), 3.2.7 (related articles) označeny jako hotové
-- ✅ Souhrnné statistiky aktualizovány: 89/142 hotovo (~63%)
+- ✅ reader.ts přepsán na přímé importy (opravuje ISE na Vercel)
+- ✅ Fonty přesunuty na @fontsource
+- ✅ Healing element ikony nahrazeny unikátními SVG
+- ✅ HotelRecommendationBox, TreatmentHighlightBox, BookingCtaBar, ResponsiveImage vytvořeny
+- ✅ 30+ nových stránek (FAQ, UNESCO, CO₂, Golf, Natur, Anreise, atd.)
+- ✅ 6 seed článků + 6 seed stories
+- ✅ Schema.org TouristDestination, LodgingBusiness, FAQPage, BreadcrumbList
 
 > Tento dokument aktualizovat po každém sprintu.
