@@ -85,6 +85,11 @@
         ],
         "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
+      },
+      {
+        "name": "sdfg",
+        "stars": 1,
+        "tags": []
       }
     ]
   },
