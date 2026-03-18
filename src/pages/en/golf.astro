@@ -1,12 +1,18 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'en' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.thingsToDo'), href: `/${locale}/things-to-do` },
+  { label: 'Golf' },
+]
 ---
 
 <Base locale={locale} section="things-to-do" title="Royal Golf Club Mariánské Lázně — Marienbad.com" description="The oldest golf club in the Czech Republic, founded in 1905 by King Edward VII. 18-hole championship course in the Slavkov Forest.">
-  <PillarPage locale={locale} title="Royal Golf Club Mariánské Lázně" description="Founded in 1905 by King Edward VII — the oldest golf club in the Czech Republic with an 18-hole championship course at 787 metres elevation.">
+  <PillarPage locale={locale} title="Royal Golf Club Mariánské Lázně" description="Founded in 1905 by King Edward VII — the oldest golf club in the Czech Republic with an 18-hole championship course at 787 metres elevation." breadcrumbs={breadcrumbs}>
     <h2>A Royal Heritage</h2>
     <p>The <strong>Royal Golf Club Mariánské Lázně</strong> was founded in 1905 at the initiative of <strong>King Edward VII of England</strong>, who visited Marienbad regularly and was a passionate golfer. The club is the <strong>oldest golf club in the Czech Republic</strong> and one of the oldest in Central Europe.</p>
 
