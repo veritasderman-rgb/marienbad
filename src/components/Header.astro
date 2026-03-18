@@ -14,7 +14,7 @@ const allLocales = (['de', 'en', 'cs', 'ru'] as const)
 const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Rezervovat pobyt' : locale === 'ru' ? 'Забронировать' : 'Book your stay'
 ---
 
-<header id="site-header" class="sticky top-0 z-50 transition-all duration-300" data-transparent="true">
+<header id="site-header" class="sticky top-0 z-50 transition-all duration-300 will-change-transform" data-transparent="true">
   <div class="container-wide">
     <div class="flex items-center justify-between h-16 md:h-20">
       <!-- Logo: "marienbad" wordmark -->
@@ -127,6 +127,22 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
   </div>
 </header>
 
+<style>
+  /* Header scroll states — driven by .scrolled and .header-hidden classes */
+  #site-header {
+    transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  }
+  #site-header.scrolled {
+    background-color: rgba(0, 79, 113, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  #site-header.header-hidden {
+    transform: translateY(-100%);
+  }
+</style>
+
 <script>
   // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn')
@@ -142,25 +158,47 @@ const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Re
     document.body.style.overflow = isOpen ? '' : 'hidden'
   })
 
-  // Sticky header: transparent on top, solid on scroll
+  // Smart header: compact/opaque on scroll, hide on scroll-down, show on scroll-up
   const header = document.getElementById('site-header')
+  let lastScrollY = 0
+  let ticking = false
+
   const updateHeader = () => {
     if (!header) return
-    const scrolled = window.scrollY > 50
+    const currentScrollY = window.scrollY
+    const isScrolled = currentScrollY > 50
 
-    if (scrolled) {
-      header.setAttribute('data-transparent', 'false')
-      header.style.backgroundColor = 'rgba(0, 79, 113, 0.95)'
-      header.style.backdropFilter = 'blur(12px)'
-      header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)'
+    // Add/remove scrolled class for compact/opaque state
+    header.classList.toggle('scrolled', isScrolled)
+    header.setAttribute('data-transparent', isScrolled ? 'false' : 'true')
+
+    // Smart hide: hide on scroll-down, show on scroll-up
+    // Only apply when scrolled past threshold and mobile menu is closed
+    const mobileMenuOpen = nav && !nav.classList.contains('hidden')
+    if (!mobileMenuOpen && isScrolled) {
+      if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 5) {
+        // Scrolling down
+        header.classList.add('header-hidden')
+      } else if (lastScrollY > currentScrollY && lastScrollY - currentScrollY > 5) {
+        // Scrolling up
+        header.classList.remove('header-hidden')
+      }
     } else {
-      header.setAttribute('data-transparent', 'true')
-      header.style.backgroundColor = 'transparent'
-      header.style.backdropFilter = 'none'
-      header.style.boxShadow = 'none'
+      // At top of page — always visible
+      header.classList.remove('header-hidden')
+    }
+
+    lastScrollY = currentScrollY
+    ticking = false
+  }
+
+  const onScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader)
+      ticking = true
     }
   }
 
   updateHeader()
-  window.addEventListener('scroll', updateHeader, { passive: true })
+  window.addEventListener('scroll', onScroll, { passive: true })
 </script>
