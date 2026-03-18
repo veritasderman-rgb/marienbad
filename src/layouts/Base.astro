@@ -25,7 +25,7 @@ const { locale, section } = Astro.props
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
 const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
-const siteUrl = 'https://marienbad.com'
+const siteUrl = 'https://marienbad.vercel.app'
 const canonicalUrl = `${siteUrl}${pathname}`
 
 /** Dynamic OG image — use static prop if provided, otherwise generate via API */

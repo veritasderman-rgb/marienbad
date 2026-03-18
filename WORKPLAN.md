@@ -324,19 +324,19 @@
 
 | Kategorie | ✅ | ⚠️ | ❌ | 🔧 |
 |-----------|----|----|----|----|
-| Infrastruktura (Fáze 0) | 9 | 3 | 4 | 1 |
-| Design system (Fáze 1) | 21 | 1 | 5 | 0 |
+| Infrastruktura (Fáze 0) | 11 | 3 | 2 | 1 |
+| Design system (Fáze 1) | 22 | 1 | 4 | 0 |
 | Homepage (Fáze 2) | 10 | 2 | 5 | 0 |
-| Pillar pages (Fáze 3) | 6 | 3 | 4 | 0 |
-| People of Colonnade (Fáze 4) | 0 | 1 | 8 | 0 |
-| Magazín (Fáze 5) | 0 | 0 | 10 | 0 |
-| Sub-stránky (Fáze 6) | 0 | 0 | 16 | 0 |
-| SEO (Fáze 7) | 3 | 4 | 9 | 0 |
-| Interaktivní (Fáze 8) | 0 | 2 | 5 | 0 |
+| Pillar pages (Fáze 3) | 8 | 3 | 2 | 0 |
+| People of Colonnade (Fáze 4) | 6 | 0 | 3 | 0 |
+| Magazín (Fáze 5) | 8 | 0 | 2 | 0 |
+| Sub-stránky (Fáze 6) | 14 | 0 | 2 | 0 |
+| SEO (Fáze 7) | 7 | 4 | 5 | 0 |
+| Interaktivní (Fáze 8) | 3 | 0 | 4 | 0 |
 | Obsah & foto (Fáze 9) | 0 | 1 | 9 | 0 |
-| **CELKEM** | **49** | **17** | **75** | **1** |
+| **CELKEM** | **89** | **14** | **38** | **1** |
 
-**Celkový pokrok: ~60% hotovo (updated 18.3.2026)**
+**Celkový pokrok: ~63% hotovo (updated 18.3.2026)**
 
 ## PROVEDENÉ ZMĚNY (18. 3. 2026)
 
@@ -384,5 +384,21 @@
 - ✅ Schema.org BreadcrumbList na pillar pages
 - ✅ Twitter Card tags
 - ✅ section prop pro správné hreflang na všech stránkách
+
+## PROVEDENÉ ZMĚNY (18. 3. 2026 — session 2)
+
+### Nové
+- ✅ Plausible Analytics (cookie-free) přidán do Base.astro — podmíněný na `PUBLIC_PLAUSIBLE_DOMAIN` env var
+- ✅ CLAUDE.md branding brief vytvořen v repo root
+
+### Aktualizace WORKPLAN
+- ✅ Fáze 4 (PoC): 4.1-4.5, 4.9 označeny jako hotové
+- ✅ Fáze 5 (Magazín): 5.1-5.6, 5.9-5.10 označeny jako hotové
+- ✅ Fáze 6 (Sub-stránky): 6.2-6.14, 6.16 označeny jako hotové
+- ✅ Fáze 7 (SEO): 7.5, 7.6, 7.7, 7.10 označeny jako hotové
+- ✅ Fáze 8 (Interaktivní): 8.5, 8.6, 8.7 označeny jako hotové
+- ✅ Fáze 1: 1.2.13 (Breadcrumbs) označeno jako hotové
+- ✅ Fáze 3: 3.2.5 (sidebar TOC), 3.2.7 (related articles) označeny jako hotové
+- ✅ Souhrnné statistiky aktualizovány: 89/142 hotovo (~63%)
 
 > Tento dokument aktualizovat po každém sprintu.

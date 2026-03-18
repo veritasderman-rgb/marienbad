@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marienbad.com/sitemap-index.xml
+Sitemap: https://marienbad.vercel.app/sitemap-index.xml

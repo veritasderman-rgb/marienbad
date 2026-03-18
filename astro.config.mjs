@@ -7,7 +7,7 @@ import keystatic from '@keystatic/astro'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  site: 'https://marienbad.com',
+  site: 'https://marienbad.vercel.app',
   output: 'server',
   adapter: vercel(),
   integrations: [react(), keystatic(), mdx(), sitemap()],
