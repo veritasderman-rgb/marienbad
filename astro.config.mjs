@@ -11,6 +11,13 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
   integrations: [react(), keystatic(), mdx(), sitemap()],
+  security: {
+    allowedDomains: [
+      { hostname: '*.vercel.app', protocol: 'https' },
+      { hostname: 'marienbad.com', protocol: 'https' },
+      { hostname: '*.marienbad.com', protocol: 'https' },
+    ],
+  },
   vite: {
     plugins: [tailwindcss()],
   },
