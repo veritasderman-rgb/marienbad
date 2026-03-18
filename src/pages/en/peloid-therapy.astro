@@ -1,0 +1,79 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+
+const locale = 'en' as const
+---
+
+<Base locale={locale} section="mineral-springs" title="Peloid Therapy — Healing Peat & Mud Treatments — Marienbad.com" description="Peloid therapy in Marienbad: how local peat and mud deposits help treat joint, muscle and skin conditions.">
+  <PillarPage locale={locale} title="Peloid Therapy: Healing Peat from Marienbad" description="Peloid therapy uses natural peat from the moorlands surrounding Marienbad to treat joint, muscle and skin conditions.">
+    <h2>What Are Peloids?</h2>
+    <p>The term <strong>peloid</strong> derives from the Greek <em>pelos</em> (mud) and refers to natural substances such as peat, moor, mud and fango used for therapeutic purposes in balneotherapy. In Mariánské Lázně (Marienbad), <strong>local peat deposits</strong> from the extensive moorlands of the Slavkov Forest have been used for over two centuries — a natural healing resource that, alongside the mineral springs and natural CO₂ gas, forms one of the cornerstones of Marienbad's spa medicine.</p>
+
+    <p>Marienbad's therapeutic peat is distinguished by its exceptionally high content of <strong>humic acids, minerals and organic compounds</strong>. It is carefully extracted, processed and heated to a therapeutic temperature of 38-42°C before being applied in various treatment forms.</p>
+
+    <TreatmentHighlightBox
+      title="Peat Body Wrap"
+      description="Warm therapeutic peat is applied as a wrap to affected body areas. The heat penetrates deep into the tissue, promoting circulation and releasing muscle tension. Humic acids provide anti-inflammatory effects. Duration: 20-30 minutes."
+      icon="earth"
+    />
+
+    <h2>How Does Peloid Therapy Work?</h2>
+    <p>The therapeutic effect of peloid therapy is based on the interplay of several factors:</p>
+
+    <ul>
+      <li><strong>Thermal effect:</strong> Peat has an exceptionally high heat capacity and releases stored warmth slowly and evenly to the body. This produces deep tissue warming that far exceeds the effect of a conventional warm water bath.</li>
+      <li><strong>Chemical effect:</strong> Humic and fulvic acids in the peat possess proven anti-inflammatory, antioxidant and antibacterial properties. They can be absorbed through the skin and exert systemic effects.</li>
+      <li><strong>Mechanical effect:</strong> The gentle pressure of the peat wrap promotes venous and lymphatic return, supporting tissue decongestion.</li>
+      <li><strong>Hormonal effect:</strong> Deep warming stimulates the release of endorphins and cortisol, contributing to pain relief and inflammation reduction.</li>
+    </ul>
+
+    <h2>Forms of Peloid Therapy in Marienbad</h2>
+
+    <h3>1. Peat Wraps (Moor Packs)</h3>
+    <p>The classic application: warm therapeutic peat (38-42°C) is applied over large areas of the body or targeted to specific joints and body regions. The patient is then wrapped in foils and blankets to retain the warmth. After 20-30 minutes, the peat is washed off. Many patients report a deep sense of relaxation and pain relief after the very first application.</p>
+
+    <h3>2. Peat Baths (Moor Baths)</h3>
+    <p>A full-body bath in a peat-water suspension, allowing the entire body to benefit from the therapeutic effect. The bath temperature is 37-39°C. Moor baths are particularly suited for generalised musculoskeletal complaints and skin conditions.</p>
+
+    <h3>3. Peat Compresses</h3>
+    <p>Localised applications of warm peat to specific joints or pain points. This targeted method is particularly suitable for acute local complaints such as osteoarthritis of individual joints or tendon insertion irritations.</p>
+
+    <h2>Indications</h2>
+    <p>Peloid therapy is successfully used for:</p>
+    <ul>
+      <li>Degenerative joint diseases (osteoarthritis of the knee, hip, shoulder and wrist)</li>
+      <li>Chronic back pain and disc complaints</li>
+      <li>Rheumatic conditions (outside acute flare-ups)</li>
+      <li>Muscle tension and myalgia</li>
+      <li>Skin conditions (psoriasis, atopic dermatitis, chronic eczema)</li>
+      <li>Gynaecological complaints (chronic pelvic inflammation, infertility)</li>
+      <li>Post-traumatic and post-operative conditions</li>
+    </ul>
+
+    <h2>What Does the Science Say?</h2>
+    <p>Numerous clinical studies confirm the effectiveness of peloid therapy. Research findings show:</p>
+    <ul>
+      <li>Significant reduction in joint pain for osteoarthritis patients after a 14-day treatment cycle</li>
+      <li>Measurable improvement in joint mobility and functionality</li>
+      <li>Reduction in inflammatory markers (CRP, IL-6) in the blood</li>
+      <li>Long-term effects that can persist for up to 6 months after treatment</li>
+    </ul>
+
+    <HotelRecommendationBox
+      name="Ensana Centrální Lázně"
+      stars={4}
+      badge="Peloid Expert"
+      description="Centrální Lázně offers a comprehensive peloid therapy programme using natural Marienbad therapeutic peat — including moor wraps, moor baths and targeted peat compresses under specialist medical supervision."
+      bookingUrl="https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=peloid-therapy"
+      bookingLabel="Book peloid therapy"
+    />
+
+    <h2>Practical Information</h2>
+    <p>Peloid treatments are available at most spa hotels in Marienbad. A single application lasts 20-30 minutes plus rest time. Treatment is typically administered every other day to allow the body sufficient recovery time. For optimal results, doctors recommend a series of at least 8-10 applications over a period of 2-3 weeks.</p>
+
+    <p>Before beginning treatment, a medical examination is conducted. Contraindications include acute inflammation, fever, severe cardiovascular conditions, open wounds and certain skin conditions. Pregnant women should avoid peat treatments.</p>
+  </PillarPage>
+</Base>

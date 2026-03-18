@@ -1,0 +1,76 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+
+const locale = 'de' as const
+---
+
+<Base locale={locale} section="mineral-springs" title="Klimatherapie — Heilklima in Marienbad — Marienbad.com" description="Klimatherapie in Marienbad: Wie das einzigartige Mikroklima auf 630 m Höhe bei Atemwegserkrankungen und Allergien hilft.">
+  <PillarPage locale={locale} title="Klimatherapie: Das Heilklima von Marienbad" description="Das einzigartige Mikroklima Marienbads auf 630 m Höhe mit waldreicher Luft und niedrigem Allergengehalt bildet die Grundlage für wirksame Klimatherapie.">
+    <h2>Marienbads einzigartiges Mikroklima</h2>
+    <p>Mariánské Lázně (Marienbad) liegt eingebettet in einem geschützten Talkessel auf <strong>630 Metern Höhe</strong>, umgeben von den dichten Wäldern des Slavkovský les (Kaiserwald). Diese besondere geographische Lage schafft ein <strong>einzigartiges Mikroklima</strong>, das seit dem 19. Jahrhundert als eigenständiges Heilmittel anerkannt ist und neben den Mineralquellen, dem natürlichen CO₂-Gas und dem Heiltorf das vierte natürliche Heilmittel Marienbads bildet.</p>
+
+    <p>Die Kombination aus mittlerer Höhenlage, ausgedehnten Nadelwäldern und der geschützten Tallage erzeugt Bedingungen, die sich grundlegend von denen der meisten mitteleuropäischen Städte unterscheiden: Die Luft ist außergewöhnlich rein, reich an <strong>Phytonziden</strong> (antibakteriell wirkende Pflanzenstoffe) und arm an Allergenen, Feinstaub und industriellen Schadstoffen.</p>
+
+    <TreatmentHighlightBox
+      title="Terrenkur (Klimawanderweg)"
+      description="Ärztlich verordnete Wanderungen auf speziell angelegten Wegen mit definierter Steigung, Länge und Höhenlage. Die Terrenkur kombiniert dosierte Bewegung mit der therapeutischen Wirkung der Waldluft. Verschiedene Schwierigkeitsgrade verfügbar."
+      icon="climate"
+    />
+
+    <h2>Wie wirkt die Klimatherapie?</h2>
+    <p>Die Klimatherapie — auch Freiluftkur oder Aerotherapie genannt — nutzt die natürlichen klimatischen Bedingungen als therapeutisches Werkzeug. Die Wirkung beruht auf mehreren Faktoren:</p>
+
+    <ul>
+      <li><strong>Reine Waldluft:</strong> Die Nadelwälder rund um Marienbad setzen Phytonzide frei — flüchtige organische Verbindungen, die antibakterielle und immunstimulierende Eigenschaften besitzen. Studien zeigen, dass der Aufenthalt in Waldluft die Anzahl der natürlichen Killerzellen im Blut signifikant erhöht.</li>
+      <li><strong>Niedriger Allergengehalt:</strong> Die Höhenlage und die Zusammensetzung der lokalen Flora sorgen für eine deutlich geringere Belastung mit Hausstaubmilben, Pollen und Schimmelpilzsporen als in Tieflandregionen.</li>
+      <li><strong>Höhenstimulation:</strong> Auf 630 m ist der Sauerstoffpartialdruck leicht reduziert, was eine sanfte Höhenstimulation bewirkt: Der Körper reagiert mit einer Steigerung der Erythropoese (Bildung roter Blutkörperchen) und einer Verbesserung der Sauerstoffaufnahme.</li>
+      <li><strong>Thermische Reize:</strong> Der Wechsel zwischen kühler Waldluft und wärmerer Talluft trainiert das vegetative Nervensystem und stärkt die Thermoregulation des Körpers — ein Prozess, der als „Abhärtung" bekannt ist.</li>
+      <li><strong>Ionisation:</strong> Die Luft in der Umgebung von Wasserfällen und dichten Wäldern ist reich an negativen Ionen, die stimmungsaufhellend und stressreduzierend wirken.</li>
+    </ul>
+
+    <h2>Formen der Klimatherapie in Marienbad</h2>
+
+    <h3>1. Terrenkur (Klimawanderwege)</h3>
+    <p>Das Herzstück der Marienbader Klimatherapie. Auf einem Netz von über <strong>70 Kilometern</strong> markierter Wanderwege können Patienten ärztlich verordnete Spaziergänge und Wanderungen unternehmen. Die Wege sind in drei Schwierigkeitsgrade eingeteilt — von flachen Promenadenwegen bis zu anspruchsvolleren Waldwegen mit Steigungen. Geschwindigkeit, Dauer und Strecke werden individuell vom Kurarzt festgelegt.</p>
+
+    <h3>2. Freiluft-Liegekuren</h3>
+    <p>Gezieltes Ruhen in der Waldluft auf speziell eingerichteten Liegeflächen in den Kurparks. Diese passive Form der Klimatherapie eignet sich besonders für Patienten mit eingeschränkter Mobilität oder in der Rekonvaleszenz.</p>
+
+    <h3>3. Atemtherapie im Freien</h3>
+    <p>Gezielte Atemübungen in der reinen Waldluft, angeleitet von ausgebildeten Therapeuten. Die Kombination aus bewusster Atmung und phytonzidreicher Luft ist besonders wirksam bei Atemwegserkrankungen.</p>
+
+    <h2>Indikationen</h2>
+    <p>Die Klimatherapie wird erfolgreich eingesetzt bei:</p>
+    <ul>
+      <li>Chronischen Atemwegserkrankungen (Asthma bronchiale, chronische Bronchitis, COPD)</li>
+      <li>Allergischen Erkrankungen (Heuschnupfen, allergisches Asthma)</li>
+      <li>Wiederkehrenden Atemwegsinfekten bei Kindern und Erwachsenen</li>
+      <li>Herz-Kreislauf-Erkrankungen (arterielle Hypertonie, koronare Herzkrankheit)</li>
+      <li>Erschöpfungssyndromen und Burnout</li>
+      <li>Schlafstörungen</li>
+      <li>Immunschwäche und erhöhter Infektanfälligkeit</li>
+    </ul>
+
+    <h2>Die Heilwälder des Kaiserwalds</h2>
+    <p>Der Slavkovský les (Kaiserwald), der Marienbad umgibt, ist eines der am besten erhaltenen Waldgebiete Mitteleuropas. Das Gebiet ist als <strong>Landschaftsschutzgebiet</strong> ausgewiesen und umfasst ausgedehnte Bestände von Fichten, Kiefern und Buchen. Die Luftqualität wird regelmäßig überwacht und erfüllt die Kriterien für einen <strong>anerkannten Heilklimatischen Kurort</strong> — eine Auszeichnung, die nur wenige Orte in Europa tragen dürfen.</p>
+
+    <p>Besonders empfehlenswert sind die Wanderwege durch die Waldgebiete nördlich der Stadt, die zum Naturschutzgebiet Kladská führen — einem Hochmoor mit einzigartiger Flora und besonders reiner Luft.</p>
+
+    <HotelRecommendationBox
+      name="Ensana Spa Hotel Hvězda"
+      stars={4}
+      badge="Klimatherapie"
+      description="Das Ensana Spa Hotel Hvězda besticht durch seine elegante Jugendstil-Architektur und ist über einen Verbindungsgang mit dem Imperial Spa verbunden. Gäste profitieren von einem umfangreichen Klimatherapie-Programm mit ärztlich begleiteten Terrenkur-Wanderungen, Atemtherapie und Freiluftkuren im angrenzenden Kurpark."
+      bookingUrl="https://www.ensanahotels.com/hvezda?utm_source=marienbad&utm_medium=editorial&utm_campaign=climate-therapy"
+      bookingLabel="Klimatherapie buchen"
+    />
+
+    <h2>Praktische Informationen</h2>
+    <p>Die Klimatherapie ist ganzjährig möglich, wobei jede Jahreszeit ihre eigenen Vorzüge bietet: Der Frühling und Herbst gelten als ideal für Allergiker, der Sommer bietet die intensivste Phytonzid-Konzentration, und der Winter stärkt durch Kältereize die Abwehrkräfte. Eine klimatherapeutische Kur dauert idealerweise 14-21 Tage, um nachhaltige Effekte zu erzielen.</p>
+
+    <p>Die Terrenkur-Wege sind ganzjährig zugänglich und kostenlos nutzbar. Für eine optimale therapeutische Wirkung empfiehlt sich jedoch eine ärztliche Beratung, bei der ein individueller Bewegungsplan erstellt wird, der Ihren gesundheitlichen Zustand und Ihre Leistungsfähigkeit berücksichtigt.</p>
+  </PillarPage>
+</Base>
