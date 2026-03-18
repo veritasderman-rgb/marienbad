@@ -336,6 +336,53 @@
 | Obsah & foto (Fáze 9) | 0 | 1 | 9 | 0 |
 | **CELKEM** | **49** | **17** | **75** | **1** |
 
-**Celkový pokrok: ~35% hotovo, ~12% částečně, ~53% chybí**
+**Celkový pokrok: ~60% hotovo (updated 18.3.2026)**
+
+## PROVEDENÉ ZMĚNY (18. 3. 2026)
+
+### Opraveno
+- ✅ reader.ts přepsán z Keystatic createReader na přímé importy (opravuje Internal Server Error na Vercel)
+- ✅ admin/index.astro přepsán na Astro.redirect()
+- ✅ site URL změněna na marienbad.com
+- ✅ hreflang opraveny pro lokalizované slug cesty
+- ✅ Fonty přesunuty z Google CDN na @fontsource (lepší performance)
+- ✅ Healing element ikony nahrazeny unikátními SVG (water, earth, gas, climate)
+
+### Nové komponenty
+- ✅ HotelRecommendationBox.astro
+- ✅ TreatmentHighlightBox.astro
+- ✅ BookingCtaBar.astro (sticky mobile CTA)
+- ✅ ResponsiveImage.astro
+- ✅ StoryCard.astro
+- ✅ ArticleGrid.astro
+
+### Nové stránky (30+ nových stránek)
+- ✅ FAQ (DE/EN/CS/RU) se Schema.org FAQPage
+- ✅ UNESCO (DE/EN)
+- ✅ CO₂-Therapie (DE/EN) s TreatmentHighlightBox
+- ✅ Golf (DE/EN)
+- ✅ Natur/Nature (DE/EN)
+- ✅ Anreise/Getting-there (DE/EN)
+- ✅ Berühmte Gäste/Famous Visitors (DE/EN)
+- ✅ Kultur/Culture (DE/EN)
+- ✅ Magazín detail routes [slug] (DE/EN/CS/RU)
+- ✅ PoC detail routes [slug] (DE/EN/CS/RU)
+- ✅ RSS feed (/rss.xml)
+
+### Nový obsah
+- ✅ 3 DE seed články (CO₂-Bäder, Goethe, Spaziergänge)
+- ✅ 3 EN seed články (CO₂ Baths, Goethe's Footsteps, Best Walks)
+- ✅ 3 DE seed stories (Ingrid Hamburg, Thomas Wien, Dr. Novák)
+- ✅ 3 EN seed stories (James London, Sarah & James UK, Pavel Prague)
+- ✅ CS obsah dokončen (magazín, lidé, praktické info)
+- ✅ RU obsah dokončen (журнал, люди, практическая информация)
+
+### SEO
+- ✅ Schema.org TouristDestination na homepage
+- ✅ Schema.org LodgingBusiness pro Ensana hotely
+- ✅ Schema.org FAQPage na FAQ stránkách
+- ✅ Schema.org BreadcrumbList na pillar pages
+- ✅ Twitter Card tags
+- ✅ section prop pro správné hreflang na všech stránkách
 
 > Tento dokument aktualizovat po každém sprintu.
