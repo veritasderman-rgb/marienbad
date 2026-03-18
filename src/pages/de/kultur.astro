@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import EventCalendar from '@/components/EventCalendar.astro'
 
 const locale = 'de' as const
 ---
@@ -37,5 +38,7 @@ const locale = 'de' as const
 
     <h2>Architektur erleben</h2>
     <p>Marienbad selbst ist ein Freilichtmuseum der Architektur: <strong>Neurenaissance, Neobarock, Jugendstil und Klassizismus</strong> stehen harmonisch nebeneinander. Geführte Architekturtouren werden über das Touristenzentrum angeboten. Besonders sehenswert: die Hauptkolonnade (1889), die Kirche Mariä Himmelfahrt, das Hotel Nové Lázně und die Jugendstil-Villen entlang der Třebízského ulice.</p>
+
+    <EventCalendar locale={locale} />
   </PillarPage>
 </Base>
