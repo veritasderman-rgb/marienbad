@@ -16,6 +16,7 @@ import { t } from '@/i18n/ui'
 interface Props {
   title?: string
   description?: string
+  ogImage?: string
   locale: Locale
   section?: SectionKey | 'home'
 }
@@ -26,6 +27,10 @@ const description = Astro.props.description ?? t(locale, 'meta.description')
 const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
 const siteUrl = 'https://marienbad.com'
 const canonicalUrl = `${siteUrl}${pathname}`
+
+/** Dynamic OG image — use static prop if provided, otherwise generate via API */
+const ogImageUrl = Astro.props.ogImage
+  ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description.slice(0, 100))}&locale=${locale}`
 
 /** Build hreflang URL for a given locale from current pathname */
 function hreflangUrl(targetLocale: Locale): string {
@@ -74,6 +79,11 @@ function hreflangUrl(targetLocale: Locale): string {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <!-- Cookie-free analytics (Plausible) -->
+    {import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN && (
+      <script defer data-domain={import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js"></script>
+    )}
   </head>
   <body class="min-h-screen flex flex-col bg-white text-black">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-yellow-400 focus:text-black focus:rounded-lg focus:font-semibold">
