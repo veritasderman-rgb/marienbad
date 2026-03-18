@@ -35,13 +35,48 @@ const gradients = [
 <section class="relative z-10 -mt-16 md:-mt-20 reveal">
   <div class="container-wide">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-      {cms.quickFacts.map((fact) => (
-        <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
-          <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" /></svg></div>
-          <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">{fact.value}</div>
-          <div class="text-sm text-beige-600">{fact.label}</div>
-        </div>
-      ))}
+      {cms.quickFacts.map((fact, i) => {
+        const factIcons = [
+          /* Mineral Spring — stylized fountain with water drops */
+          `<path d="M12 2v6" stroke-linecap="round"/>
+           <path d="M12 8c0 0-3 2-3 5a3 3 0 006 0c0-3-3-5-3-5z"/>
+           <path d="M8 20c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke-linecap="round"/>
+           <path d="M6 22h12" stroke-linecap="round"/>
+           <circle cx="8" cy="5" r="0.8" fill="currentColor" stroke="none"/>
+           <circle cx="16" cy="4" r="0.8" fill="currentColor" stroke="none"/>
+           <circle cx="15" cy="7" r="0.6" fill="currentColor" stroke="none"/>`,
+          /* UNESCO — heritage temple/monument */
+          `<path d="M3 21h18" stroke-linecap="round"/>
+           <path d="M5 21V11" stroke-linecap="round"/>
+           <path d="M19 21V11" stroke-linecap="round"/>
+           <path d="M9 21V11" stroke-linecap="round"/>
+           <path d="M15 21V11" stroke-linecap="round"/>
+           <path d="M12 3l9 8H3l9-8z"/>
+           <circle cx="12" cy="7" r="1.5"/>`,
+          /* 1812 Spa tradition — historic bath/thermal vessel */
+          `<path d="M4 12h16" stroke-linecap="round"/>
+           <path d="M6 12v5a6 6 0 0012 0v-5" stroke-linecap="round"/>
+           <path d="M8 8c0-1 .5-2 1.5-2s1.5 1 1.5 2" stroke-linecap="round"/>
+           <path d="M11 6c0-1 .5-2 1.5-2s1.5 1 1.5 2" stroke-linecap="round"/>
+           <path d="M14 8c0-1 .5-2 1.5-2s1.5 1 1.5 2" stroke-linecap="round"/>
+           <circle cx="12" cy="17" r="1.5"/>`,
+          /* Golf — flag on green with ball */
+          `<path d="M12 2v16" stroke-linecap="round"/>
+           <path d="M12 2l7 4-7 4z" fill="currentColor" stroke="none"/>
+           <circle cx="12" cy="20" r="2"/>
+           <circle cx="7" cy="19" r="1.2" fill="currentColor" stroke="none"/>
+           <path d="M4 22c2-2 6-3 8-3s6 1 8 3" stroke-linecap="round"/>`,
+        ]
+        return (
+          <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
+            <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10" set:html={factIcons[i % 4]} />
+            </div>
+            <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">{fact.value}</div>
+            <div class="text-sm text-beige-600">{fact.label}</div>
+          </div>
+        )
+      })}
     </div>
   </div>
 </section>
