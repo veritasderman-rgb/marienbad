@@ -7,7 +7,8 @@
     "badges": [
       "UNESCO Welterbe",
       "Seit 1812"
-    ]
+    ],
+    "image": "/images/content/hero/hero/image.jpg"
   },
   "quickFacts": [
     {
@@ -66,6 +67,7 @@
         "stars": 5,
         "badge": "Editor's Pick",
         "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
+        "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
           "Römisches Bad",
           "CO₂ Therapie",
@@ -78,6 +80,7 @@
         "name": "Centrální Lázně",
         "stars": 4,
         "description": "Direkt an der Kolonnade — traditionelle Kur in zentraler Lage mit modernen Behandlungsräumen.",
+        "image": "/images/content/hotels/hotels/items/1/image.jpg",
         "tags": [
           "Kolonnade-Lage",
           "Trinkkur",
@@ -85,11 +88,6 @@
         ],
         "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
-      },
-      {
-        "name": "sdfg",
-        "stars": 1,
-        "tags": []
       }
     ]
   },
