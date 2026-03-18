@@ -2,12 +2,18 @@
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'en' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.thingsToDo'), href: `/${locale}/things-to-do` },
+  { label: 'Colonnade' },
+]
 ---
 
 <Base locale={locale} section="mineral-springs" title="Colonnade & Singing Fountain — Marienbad.com" description="The iconic colonnade and singing fountain in Marienbad: architecture, history and show times.">
-  <PillarPage locale={locale} title="The Colonnade & Singing Fountain" description="Marienbad's colonnade and the famous singing fountain are among the most significant landmarks of the Bohemian spa triangle.">
+  <PillarPage locale={locale} title="The Colonnade & Singing Fountain" description="Marienbad's colonnade and the famous singing fountain are among the most significant landmarks of the Bohemian spa triangle." breadcrumbs={breadcrumbs}>
     <h2>An Architectural Masterpiece</h2>
     <p>The <strong>Main Colonnade</strong> of Mariánské Lázně (Marienbad) is far more than a building — it is the beating heart of the spa town and one of the most impressive examples of Neo-Baroque spa architecture in Europe. The elegant cast-iron construction extends over a length of <strong>119 metres</strong> and, with its delicate ceiling structure and ornamental columns, forms a covered promenade that has sheltered spa guests from sun and rain for over a century while they drink the healing waters of the mineral springs.</p>
 

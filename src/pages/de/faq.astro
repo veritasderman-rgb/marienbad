@@ -1,8 +1,14 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'de' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.practicalInfo'), href: `/${locale}/praktische-infos` },
+  { label: 'FAQ' },
+]
 
 const faqs = [
   {
@@ -63,7 +69,7 @@ const faqSchema = JSON.stringify({
 
 <Base locale={locale} section="practical-info" title="Häufige Fragen (FAQ) — Marienbad.com" description="Antworten auf die häufigsten Fragen zu Marienbad: Anreise, Kosten, Behandlungen, Sprachen und mehr.">
   <script type="application/ld+json" set:html={faqSchema} />
-  <PillarPage locale={locale} title="Häufige Fragen" description="Antworten auf die wichtigsten Fragen rund um Ihren Aufenthalt in Mariánské Lázně.">
+  <PillarPage locale={locale} title="Häufige Fragen" description="Antworten auf die wichtigsten Fragen rund um Ihren Aufenthalt in Mariánské Lázně." breadcrumbs={breadcrumbs}>
     <div class="space-y-6">
       {faqs.map((faq, i) => (
         <details class="group bg-beige-200 rounded-xl overflow-hidden" open={i === 0}>
