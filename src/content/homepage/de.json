@@ -118,7 +118,8 @@
         "name": "Наталья",
         "location": "Москва 🇷🇺",
         "visitLabel": "8-й визит",
-        "lang": "ru"
+        "lang": "ru",
+        "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
