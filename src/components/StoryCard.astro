@@ -1,0 +1,40 @@
+---
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+  slug: string
+  name: string
+  location: string
+  visitLabel: string
+  quote: string
+  lang?: string
+  index?: number
+}
+
+const { locale, slug, name, location, visitLabel, quote, lang, index = 0 } = Astro.props
+
+const gradients = [
+  'linear-gradient(135deg, #1A1916 0%, #266782 100%)',
+  'linear-gradient(135deg, #1A1916 0%, #004F71 100%)',
+  'linear-gradient(135deg, #1A1916 0%, #3A8BA8 100%)',
+]
+
+const peopleSlug = routes.people[locale]
+const href = `/${locale}/${peopleSlug}/${slug}`
+---
+
+<a href={href} class="group bg-white/5 rounded-xl overflow-hidden card-hover reveal block no-underline">
+  <div class="placeholder-image h-64 relative" style={`background: ${gradients[index % 3]};`}>
+    <span class="text-white/60 text-sm">Portrait — Foto</span>
+    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
+      <p class="font-heading text-base italic text-white/90 leading-snug mb-2" lang={lang || undefined}>&ldquo;{quote}&rdquo;</p>
+      <div class="flex items-center gap-2">
+        <span class="text-white font-semibold text-sm">{name}</span>
+        <span class="text-white/50 text-sm">&middot; {location}</span>
+        <span class="px-2 py-0.5 bg-turquoise-400/30 text-turquoise-300 text-xs rounded-full ml-auto">{visitLabel}</span>
+      </div>
+    </div>
+  </div>
+</a>

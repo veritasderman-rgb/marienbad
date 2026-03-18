@@ -44,6 +44,10 @@ export async function getSettings(locale: Locale) {
 const yamlFiles = import.meta.glob('./pages/*/index.yaml', { query: '?raw', import: 'default', eager: true })
 const mdocFiles = import.meta.glob('./pages/*/content.mdoc', { query: '?raw', import: 'default', eager: true })
 
+// Import all article YAML and Markdoc files
+const articleYamlFiles = import.meta.glob('./articles/*/index.yaml', { query: '?raw', import: 'default', eager: true })
+const articleMdocFiles = import.meta.glob('./articles/*/content.mdoc', { query: '?raw', import: 'default', eager: true })
+
 export async function getPage(slug: string) {
   try {
     const yamlPath = `./pages/${slug}/index.yaml`
@@ -69,4 +73,186 @@ export async function getPage(slug: string) {
   } catch {
     return null
   }
+}
+
+export interface Article {
+  slug: string
+  title: string
+  locale: string
+  category: string
+  excerpt: string
+  date: string
+  readingTime: string
+  body: any
+}
+
+export async function getArticles(locale: Locale): Promise<Article[]> {
+  const articles: Article[] = []
+
+  for (const [path, rawYaml] of Object.entries(articleYamlFiles)) {
+    // path looks like ./articles/de-co2-baeder-wissenschaft/index.yaml
+    const slug = path.replace('./articles/', '').replace('/index.yaml', '')
+    const meta = yaml.load(rawYaml as string) as Record<string, string>
+
+    if (meta.locale !== locale) continue
+
+    const mdocPath = `./articles/${slug}/content.mdoc`
+    const mdocRaw = articleMdocFiles[mdocPath]
+    if (!mdocRaw) continue
+
+    const ast = Markdoc.parse(mdocRaw as string)
+    const content = Markdoc.transform(ast)
+
+    articles.push({
+      slug,
+      title: meta.title ?? '',
+      locale: meta.locale ?? '',
+      category: meta.category ?? '',
+      excerpt: meta.excerpt ?? '',
+      date: meta.date ?? '',
+      readingTime: meta.readingTime ?? '',
+      body: content,
+    })
+  }
+
+  // Sort by date descending
+  articles.sort((a, b) => b.date.localeCompare(a.date))
+  return articles
+}
+
+export async function getArticle(slug: string): Promise<Article | null> {
+  try {
+    const yamlPath = `./articles/${slug}/index.yaml`
+    const mdocPath = `./articles/${slug}/content.mdoc`
+
+    const yamlRaw = articleYamlFiles[yamlPath]
+    const mdocRaw = articleMdocFiles[mdocPath]
+
+    if (!yamlRaw || !mdocRaw) return null
+
+    const meta = yaml.load(yamlRaw as string) as Record<string, string>
+    const ast = Markdoc.parse(mdocRaw as string)
+    const content = Markdoc.transform(ast)
+
+    return {
+      slug,
+      title: meta.title ?? '',
+      locale: meta.locale ?? '',
+      category: meta.category ?? '',
+      excerpt: meta.excerpt ?? '',
+      date: meta.date ?? '',
+      readingTime: meta.readingTime ?? '',
+      body: content,
+    }
+  } catch {
+    return null
+  }
+}
+
+// Import all story YAML and Markdoc files
+const storyYamlFiles = import.meta.glob('./stories/*/index.yaml', { query: '?raw', import: 'default', eager: true })
+const storyMdocFiles = import.meta.glob('./stories/*/content.mdoc', { query: '?raw', import: 'default', eager: true })
+
+export interface Story {
+  slug: string
+  title: string
+  locale: string
+  name: string
+  location: string
+  visitLabel: string
+  quote: string
+  lang: string
+  body: any
+}
+
+export async function getStories(locale: Locale): Promise<Story[]> {
+  const stories: Story[] = []
+
+  for (const [path, rawYaml] of Object.entries(storyYamlFiles)) {
+    const slug = path.replace('./stories/', '').replace('/index.yaml', '')
+    const meta = yaml.load(rawYaml as string) as Record<string, string>
+
+    if (meta.locale !== locale) continue
+
+    const mdocPath = `./stories/${slug}/content.mdoc`
+    const mdocRaw = storyMdocFiles[mdocPath]
+    if (!mdocRaw) continue
+
+    const ast = Markdoc.parse(mdocRaw as string)
+    const content = Markdoc.transform(ast)
+
+    stories.push({
+      slug,
+      title: meta.title ?? '',
+      locale: meta.locale ?? '',
+      name: meta.name ?? '',
+      location: meta.location ?? '',
+      visitLabel: meta.visitLabel ?? '',
+      quote: meta.quote ?? '',
+      lang: meta.lang ?? '',
+      body: content,
+    })
+  }
+
+  return stories
+}
+
+export async function getStory(slug: string): Promise<Story | null> {
+  try {
+    const yamlPath = `./stories/${slug}/index.yaml`
+    const mdocPath = `./stories/${slug}/content.mdoc`
+
+    const yamlRaw = storyYamlFiles[yamlPath]
+    const mdocRaw = storyMdocFiles[mdocPath]
+
+    if (!yamlRaw || !mdocRaw) return null
+
+    const meta = yaml.load(yamlRaw as string) as Record<string, string>
+    const ast = Markdoc.parse(mdocRaw as string)
+    const content = Markdoc.transform(ast)
+
+    return {
+      slug,
+      title: meta.title ?? '',
+      locale: meta.locale ?? '',
+      name: meta.name ?? '',
+      location: meta.location ?? '',
+      visitLabel: meta.visitLabel ?? '',
+      quote: meta.quote ?? '',
+      lang: meta.lang ?? '',
+      body: content,
+    }
+  } catch {
+    return null
+  }
+}
+
+export async function getAllArticles(): Promise<Article[]> {
+  const articles: Article[] = []
+
+  for (const [path, rawYaml] of Object.entries(articleYamlFiles)) {
+    const slug = path.replace('./articles/', '').replace('/index.yaml', '')
+    const meta = yaml.load(rawYaml as string) as Record<string, string>
+
+    const mdocPath = `./articles/${slug}/content.mdoc`
+    const mdocRaw = articleMdocFiles[mdocPath]
+    if (!mdocRaw) continue
+
+    const ast = Markdoc.parse(mdocRaw as string)
+    const content = Markdoc.transform(ast)
+
+    articles.push({
+      slug,
+      title: meta.title ?? '',
+      locale: meta.locale ?? '',
+      category: meta.category ?? '',
+      excerpt: meta.excerpt ?? '',
+      date: meta.date ?? '',
+      readingTime: meta.readingTime ?? '',
+      body: content,
+    })
+  }
+
+  articles.sort((a, b) => b.date.localeCompare(a.date))
+  return articles
 }
