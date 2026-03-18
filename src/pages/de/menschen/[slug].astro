@@ -1,0 +1,21 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getStory } from '@/content/reader'
+
+const locale = 'de' as const
+const { slug } = Astro.params
+
+const story = slug ? await getStory(slug) : null
+if (!story) return Astro.redirect(`/${locale}/menschen`)
+---
+
+<Base locale={locale} section="people" title={`${story.name} — Menschen der Kolonnade`} description={story.quote}>
+  <PillarPage locale={locale} title={story.name} description={`${story.location} · ${story.visitLabel}`}>
+    <blockquote class="text-xl italic text-indigo-700 border-l-4 border-turquoise-400 pl-6 mb-8" lang={story.lang || undefined}>
+      {story.quote}
+    </blockquote>
+    <MarkdocRenderer content={story.body} />
+  </PillarPage>
+</Base>

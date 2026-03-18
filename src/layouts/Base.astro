@@ -1,26 +1,46 @@
 ---
+import '@fontsource/cormorant-garamond/400.css'
+import '@fontsource/cormorant-garamond/500.css'
+import '@fontsource/cormorant-garamond/600.css'
+import '@fontsource/cormorant-garamond/700.css'
+import '@fontsource/cormorant-garamond/400-italic.css'
+import '@fontsource/cormorant-garamond/500-italic.css'
+import '@fontsource-variable/dm-sans'
 import '@/styles/global.css'
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
-import type { Locale } from '@/i18n/config'
+import BookingCtaBar from '@/components/BookingCtaBar.astro'
+import { type Locale, locales, routes, type SectionKey } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 
 interface Props {
   title?: string
   description?: string
   locale: Locale
+  section?: SectionKey | 'home'
 }
 
-const { locale } = Astro.props
+const { locale, section } = Astro.props
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
 const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
-const canonicalUrl = `https://marienbad.com${pathname}`
+const siteUrl = 'https://marienbad.com'
+const canonicalUrl = `${siteUrl}${pathname}`
 
 /** Build hreflang URL for a given locale from current pathname */
-function hreflangUrl(targetLocale: string): string {
+function hreflangUrl(targetLocale: Locale): string {
+  // Homepage
+  if (!section || section === 'home') {
+    return `${siteUrl}/${targetLocale}`
+  }
+  // Pillar pages — use route mapping for correct localized slugs
+  if (section in routes) {
+    const slug = routes[section as SectionKey][targetLocale]
+    return `${siteUrl}/${targetLocale}/${slug}`
+  }
+  // Fallback: simple locale prefix swap
   const path = pathname.replace(/^\/[a-z]{2}/, `/${targetLocale}`)
-  return `https://marienbad.com${path}`
+  return `${siteUrl}${path}`
 }
 ---
 
@@ -33,11 +53,6 @@ function hreflangUrl(targetLocale: string): string {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Google Fonts: Cormorant Garamond + DM Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
     <meta name="robots" content="index, follow" />
 
@@ -69,6 +84,7 @@ function hreflangUrl(targetLocale: string): string {
       <slot />
     </main>
     <Footer locale={locale} />
+    <BookingCtaBar locale={locale} />
 
     <!-- Scroll reveal observer -->
     <script>

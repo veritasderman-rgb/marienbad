@@ -1,0 +1,23 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getArticle } from '@/content/reader'
+
+const locale = 'cs' as const
+const { slug } = Astro.params
+const article = slug ? await getArticle(`${locale}-${slug}`) : null
+if (!article) return Astro.redirect(`/${locale}/magazin`)
+---
+
+<Base locale={locale} section="magazine" title={`${article.title} — Magazín Marienbad`} description={article.excerpt}>
+  <PillarPage locale={locale} title={article.title} description={article.excerpt}>
+    <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
+      <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{article.category}</span>
+      <span>{article.date}</span>
+      <span>·</span>
+      <span>{article.readingTime}</span>
+    </div>
+    <MarkdocRenderer content={article.body} />
+  </PillarPage>
+</Base>

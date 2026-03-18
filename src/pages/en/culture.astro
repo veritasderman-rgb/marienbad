@@ -1,0 +1,41 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+
+const locale = 'en' as const
+---
+
+<Base locale={locale} section="things-to-do" title="Culture & Events — Marienbad.com" description="Chopin Festival, Town Theatre, Casino, concerts — cultural life in Mariánské Lázně.">
+  <PillarPage locale={locale} title="Culture & Events" description="From world-class concerts to intimate theatre performances — Marienbad offers a rich cultural programme.">
+    <h2>International Chopin Festival</h2>
+    <p>The <strong>Chopin Festival</strong> is the cultural highlight of the year. Since 1960, world-renowned pianists have come to Marienbad every August to perform in the town's most atmospheric venues: the Casino, the Nový Lázně and the Main Colonnade. The festival commemorates Chopin's stay in the summer of 1836 and has become one of <strong>Europe's most prestigious piano festivals</strong>.</p>
+    <p>Concerts, masterclasses, competitions and film screenings form a week-long programme that attracts music lovers from around the world. Tickets are in high demand — early booking recommended.</p>
+
+    <h2>Town Theatre (Městské divadlo)</h2>
+    <p>The neoclassical Town Theatre, built in 1868, offers a year-round programme of <strong>opera, ballet, drama and concerts</strong>. The intimate format — the hall seats approximately 400 guests — makes every theatre visit a special experience. Guest performances by national and international ensembles complement the local programme.</p>
+
+    <h2>Casino (Společenský dům)</h2>
+    <p>The <strong>Casino</strong> is one of the town's finest buildings — a Neo-Renaissance masterpiece that serves as a cultural and events centre. The magnificent ballroom hosts concerts, balls and exhibitions. The atmosphere alone is worth a visit.</p>
+
+    <h2>Singing Fountain</h2>
+    <p>The <strong>Zpívající fontána</strong> in front of the Main Colonnade is Marienbad's most iconic landmark. Every odd hour (7am–7pm in season), water dances in time to music — from Dvořák and Chopin to popular melodies. The evening performances with light effects after dark are particularly impressive.</p>
+
+    <h2>Museums</h2>
+    <ul>
+      <li><strong>Městské muzeum (Town Museum)</strong> — The history of Marienbad from marshy valley to world-class spa resort. Historical spa equipment, photographs, guest books of famous visitors.</li>
+      <li><strong>Goethe House</strong> — Memories of the poet's stays and his love for Ulrike von Levetzow.</li>
+      <li><strong>Geological Museum</strong> — The science behind the springs and the volcanic history of the region.</li>
+    </ul>
+
+    <h2>Seasonal Events</h2>
+    <ul>
+      <li><strong>Spring:</strong> Opening of the spa season, first outdoor concerts</li>
+      <li><strong>Summer:</strong> Chopin Festival, Singing Fountain, open-air concerts</li>
+      <li><strong>Autumn:</strong> Goethe Days, harvest festival, autumn concerts</li>
+      <li><strong>Winter:</strong> Advent markets, Christmas concerts, New Year's Eve gala</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <p>Marienbad itself is an open-air museum of architecture: <strong>Neo-Renaissance, Neo-Baroque, Art Nouveau and Classicism</strong> stand in harmonious coexistence. Guided architecture tours are available through the Tourist Information Centre. Highlights include: the Main Colonnade (1889), the Church of the Assumption, Hotel Nové Lázně and the Art Nouveau villas along Třebízského ulice.</p>
+  </PillarPage>
+</Base>

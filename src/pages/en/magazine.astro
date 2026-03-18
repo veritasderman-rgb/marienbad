@@ -2,14 +2,17 @@
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
-import { getPage } from '@/content/reader'
+import ArticleGrid from '@/components/ArticleGrid.astro'
+import { getPage, getArticles } from '@/content/reader'
 
 const locale = 'en' as const
 const page = await getPage('en-magazine')
+const articles = await getArticles(locale)
 ---
 
-<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
+<Base locale={locale} section="magazine" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <ArticleGrid articles={articles} locale={locale} />
   </PillarPage>
 </Base>

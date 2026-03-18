@@ -1,0 +1,71 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+
+const locale = 'de' as const
+---
+
+<Base locale={locale} section="practical-info" title="Anreise nach Marienbad — Marienbad.com" description="So erreichen Sie Mariánské Lázně: Flug, Zug, Bus, Auto. Entfernungen, Fahrtzeiten und praktische Tipps.">
+  <PillarPage locale={locale} title="Anreise nach Marienbad" description="Mariánské Lázně liegt im westlichen Böhmen, nah an der deutschen Grenze — gut erreichbar aus München, Prag und ganz Mitteleuropa.">
+    <h2>Lage</h2>
+    <p>Mariánské Lázně (Marienbad) liegt im <strong>westlichen Zipfel der Tschechischen Republik</strong>, im Slavkovský les (Kaiserwald), nur etwa 30 km von der bayerischen Grenze entfernt. Die günstige Lage macht die Stadt leicht erreichbar aus Deutschland, Österreich und der gesamten Region.</p>
+
+    <h2>Mit dem Flugzeug</h2>
+    <h3>Flughafen Prag (PRG) — 170 km</h3>
+    <p>Der internationale Flughafen Václav Havel in Prag ist der wichtigste Zubringer. Von Prag nach Marienbad sind es ca. <strong>2 Stunden mit dem Auto</strong> oder <strong>3 Stunden mit dem Bus</strong>. Mehrere Shuttle-Dienste bieten direkte Transfers zu den Kurhotels an.</p>
+
+    <h3>Flughafen Karlovy Vary (KLV) — 50 km</h3>
+    <p>Der kleine Regionalflughafen bietet in der Sommersaison Verbindungen zu ausgewählten europäischen Städten (u.a. Moskau, St. Petersburg). Nur 50 km entfernt — ca. <strong>45 Minuten</strong> Fahrtzeit.</p>
+
+    <h3>Flughafen München (MUC) — 300 km</h3>
+    <p>Für Reisende aus Süddeutschland und dem internationalen Fernverkehr eine praktische Alternative. Ca. <strong>3 Stunden Fahrtzeit</strong> über die A9/A93.</p>
+
+    <h2>Mit dem Zug</h2>
+    <p>Der <strong>Bahnhof Mariánské Lázně</strong> hat regelmäßige Verbindungen:</p>
+    <ul>
+      <li><strong>Ab Prag:</strong> ca. 3 Stunden (Umstieg in Plzeň/Pilsen). Die Strecke durch den Kaiserwald gehört zu den schönsten Bahnstrecken Tschechiens.</li>
+      <li><strong>Ab Plzeň:</strong> ca. 1,5 Stunden direkt</li>
+      <li><strong>Ab Karlovy Vary:</strong> ca. 1 Stunde</li>
+      <li><strong>Ab Cheb:</strong> 25 Minuten — mit Anschluss an internationale Züge aus/nach Deutschland</li>
+    </ul>
+    <p>Über Cheb bestehen Anschlüsse an das deutsche Bahnnetz (Nürnberg, Hof, München).</p>
+
+    <h2>Mit dem Bus</h2>
+    <p><strong>FlixBus</strong> und <strong>RegioJet</strong> verbinden Marienbad mit:</p>
+    <ul>
+      <li>Prag (ca. 2,5 Stunden)</li>
+      <li>Plzeň, Karlovy Vary, Cheb</li>
+    </ul>
+    <p>Die Busse bieten WiFi, Steckdosen und Erfrischungen. Der Busbahnhof liegt wenige Gehminuten vom Zentrum.</p>
+
+    <h2>Mit dem Auto</h2>
+    <h3>Ab Prag (170 km, ca. 2 Stunden)</h3>
+    <p>Dálnice D5 Richtung Plzeň, dann R21 nach Mariánské Lázně. Gut ausgeschildert.</p>
+
+    <h3>Ab München (300 km, ca. 3 Stunden)</h3>
+    <p>A9 nach Norden, A93 bis Grenzübergang Pomezí nad Ohří/Schirnding, dann weiter nach Mariánské Lázně.</p>
+
+    <h3>Ab Nürnberg (200 km, ca. 2,5 Stunden)</h3>
+    <p>A6/A93 bis Grenzübergang, dann Richtung Mariánské Lázně.</p>
+
+    <h3>Maut und Vignette</h3>
+    <p>Für tschechische Autobahnen ist eine <strong>Dálniční známka (Autobahnvignette)</strong> erforderlich. Diese können Sie elektronisch auf <strong>edalnice.cz</strong> kaufen oder an Grenzübergängen und Tankstellen.</p>
+
+    <h2>Entfernungstabelle</h2>
+
+    | Abfahrtsort | Entfernung | Fahrzeit (Auto) |
+    |-------------|-----------|-----------------|
+    | Prag | 170 km | 2:00 h |
+    | München | 300 km | 3:00 h |
+    | Nürnberg | 200 km | 2:30 h |
+    | Karlovy Vary | 48 km | 0:45 h |
+    | Plzeň | 80 km | 1:15 h |
+    | Dresden | 250 km | 3:00 h |
+    | Wien | 380 km | 4:00 h |
+
+    <h2>Transfer-Services</h2>
+    <p>Alle <strong>Ensana Spa Hotels</strong> können Flughafentransfers organisieren. Viele Gäste buchen einen privaten Transfer direkt vom Flughafen Prag oder München — bequem und stressfrei nach einer langen Anreise.</p>
+
+    <p>Der Hotelempfang kann auch <strong>lokale Taxis</strong> und <strong>Mietwagen</strong> für Ausflüge in der Region arrangieren.</p>
+  </PillarPage>
+</Base>

@@ -1,0 +1,51 @@
+---
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import type { Article } from '@/content/reader'
+
+interface Props {
+  articles: Article[]
+  locale: Locale
+}
+
+const { articles, locale } = Astro.props
+const magazineSlug = routes.magazine[locale]
+
+const categoryLabels: Record<string, Record<Locale, string>> = {
+  health: { de: 'Gesundheit', en: 'Health', cs: 'Zdravi', ru: 'Здоровье' },
+  culture: { de: 'Kultur', en: 'Culture', cs: 'Kultura', ru: 'Культура' },
+  tip: { de: 'Tipp', en: 'Tip', cs: 'Tip', ru: 'Совет' },
+  nature: { de: 'Natur', en: 'Nature', cs: 'Příroda', ru: 'Природа' },
+  history: { de: 'Geschichte', en: 'History', cs: 'Historie', ru: 'История' },
+  food: { de: 'Genuss', en: 'Food', cs: 'Jídlo', ru: 'Еда' },
+}
+---
+
+{articles.length > 0 && (
+  <div class="mt-12 pt-12 border-t border-beige-300">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {articles.map((article) => {
+        const articleSlug = article.slug.replace(/^[a-z]{2}-/, '')
+        const href = `/${locale}/${magazineSlug}/${articleSlug}`
+        const categoryLabel = categoryLabels[article.category]?.[locale] ?? article.category
+        return (
+          <a href={href} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover block">
+            <div class="placeholder-image-light h-44 flex items-center justify-center">
+              <span class="text-beige-600 text-sm">{categoryLabel}</span>
+            </div>
+            <div class="p-5">
+              <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{categoryLabel}</span>
+              <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2 group-hover:text-turquoise-600 transition-colors">{article.title}</h3>
+              <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">{article.excerpt}</p>
+              <div class="mt-3 flex items-center justify-between text-beige-600 text-xs">
+                <span>{article.date} · {article.readingTime}</span>
+                <span class="text-turquoise-600 font-medium group-hover:underline">{t(locale, 'common.readMore')}</span>
+              </div>
+            </div>
+          </a>
+        )
+      })}
+    </div>
+  </div>
+)}

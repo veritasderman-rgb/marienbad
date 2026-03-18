@@ -1,0 +1,55 @@
+---
+import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const ctaLabels: Record<Locale, string> = {
+  de: 'Jetzt buchen',
+  en: 'Book now',
+  cs: 'Rezervovat',
+  ru: 'Забронировать',
+}
+---
+
+<div
+  id="booking-cta-bar"
+  class="fixed bottom-0 left-0 right-0 z-50 md:hidden translate-y-full transition-transform duration-300"
+>
+  <div class="bg-indigo-700/95 backdrop-blur-sm border-t border-white/10 px-4 py-3 flex items-center justify-between gap-3">
+    <div class="text-white text-sm">
+      <span class="font-heading font-bold">Marienbad</span>
+      <span class="text-white/60 ml-1">· Ensana Hotels</span>
+    </div>
+    <a
+      href="https://www.ensanahotels.com/hotels/marianske-lazne?utm_source=marienbad&utm_medium=cta-bar&utm_campaign=mobile-sticky"
+      class="btn-primary text-sm py-2 px-5 whitespace-nowrap"
+      target="_blank"
+      rel="noopener"
+    >
+      {ctaLabels[locale]}
+    </a>
+  </div>
+</div>
+
+<script>
+  const bar = document.getElementById('booking-cta-bar')
+  if (bar) {
+    let lastScrollY = 0
+    const showThreshold = 400
+
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY
+      if (currentY > showThreshold && currentY > lastScrollY) {
+        bar.classList.remove('translate-y-full')
+      } else if (currentY < showThreshold || currentY < lastScrollY - 50) {
+        bar.classList.add('translate-y-full')
+      }
+      lastScrollY = currentY
+    }, { passive: true })
+  }
+</script>

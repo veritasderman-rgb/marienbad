@@ -8,7 +8,7 @@ const locale = 'en' as const
 const page = await getPage('en-things-to-do')
 ---
 
-<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
