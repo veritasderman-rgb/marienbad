@@ -60,7 +60,7 @@
     "sectionLabel": "Ubytování",
     "title": "Kde se ubytovat v Mariánských Lázních",
     "description": "Od historických 5hvězdičkových lázeňských hotelů po útulné penziony.",
-    "allHotelsLabel": "Všech 6 hotelů →",
+    "allHotelsLabel": "Všech 7 hotelů →",
     "items": [
       {
         "name": "Nové Lázně",
@@ -102,21 +102,24 @@
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "Podvanácté",
-        "lang": "de"
+        "lang": "de",
+        "portrait": "/images/content/stories/people/stories/0/portrait.png"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
         "name": "James",
         "location": "London 🇬🇧",
         "visitLabel": "3. návštěva",
-        "lang": "en"
+        "lang": "en",
+        "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
       {
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
         "name": "Наталья",
         "location": "Москва 🇷🇺",
         "visitLabel": "8. návštěva",
-        "lang": "ru"
+        "lang": "ru",
+        "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
