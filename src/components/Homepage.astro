@@ -15,9 +15,9 @@ const { locale } = Astro.props
 const cms = await getHomepage(locale)
 
 const gradients = [
-  'linear-gradient(135deg, #1A1916 0%, #266782 100%)',
-  'linear-gradient(135deg, #1A1916 0%, #004F71 100%)',
-  'linear-gradient(135deg, #1A1916 0%, #3A8BA8 100%)',
+  'linear-gradient(135deg, #3D1F3D 0%, #266782 100%)',
+  'linear-gradient(135deg, #3D1F3D 0%, #004F71 100%)',
+  'linear-gradient(135deg, #3D1F3D 0%, #3A8BA8 100%)',
 ]
 ---
 
@@ -54,7 +54,7 @@ const gradients = [
       <h2 class="font-heading text-3xl md:text-4xl font-bold mt-4 mb-4" style="font-size: var(--text-h2);">{cms.healingElements.title}</h2>
       <p class="text-white/70 text-lg">{cms.healingElements.description}</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
       {cms.healingElements.items.map((item, i) => {
         const icons = [
           /* Water/Drop */ 'M12 21.5c-3.04 0-5.5-2.46-5.5-5.5 0-3.91 5.5-11.5 5.5-11.5s5.5 7.59 5.5 11.5c0 3.04-2.46 5.5-5.5 5.5z',
@@ -63,14 +63,14 @@ const gradients = [
           /* Climate/Sun */ 'M12 7a5 5 0 100 10 5 5 0 000-10zM12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42',
         ]
         return (
-          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center card-hover reveal">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-turquoise-400/20 flex items-center justify-center">
-              <svg class="w-8 h-8 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center card-hover reveal">
+            <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-turquoise-400/20 flex items-center justify-center">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d={icons[i % 4]} />
               </svg>
             </div>
-            <h3 class="font-heading text-xl font-bold mb-2">{item.name}</h3>
-            <p class="text-white/70 text-sm leading-relaxed">{item.description}</p>
+            <h3 class="font-heading text-base md:text-xl font-bold mb-1 md:mb-2">{item.name}</h3>
+            <p class="text-white/70 text-xs md:text-sm leading-relaxed hidden md:block">{item.description}</p>
           </div>
         )
       })}
@@ -143,7 +143,7 @@ const gradients = [
 </section>
 
 <!-- 6. PEOPLE OF COLONNADE -->
-<section class="bg-beige-950 text-white py-20 md:py-28">
+<section class="bg-aubergine-900 text-white py-20 md:py-28">
   <div class="container-wide">
     <div class="max-w-3xl mx-auto text-center mb-14 reveal">
       <span class="text-turquoise-400 text-sm font-medium tracking-widest uppercase">{cms.people.sectionLabel}</span>
