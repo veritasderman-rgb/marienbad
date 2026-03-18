@@ -28,6 +28,7 @@ const gradients = [
   ctaText={cms.hero.ctaText}
   ctaHref={cms.hero.ctaHref}
   badges={cms.hero.badges}
+  image={(cms.hero as any).image}
 />
 
 <!-- 2. QUICK FACTS STRIP -->
@@ -108,8 +109,12 @@ const gradients = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto reveal">
       {cms.hotels.items.map((hotel) => (
         <div class="bg-white rounded-xl overflow-hidden shadow-card card-hover reveal">
-          <div class="placeholder-image h-48 relative">
-            <span class="text-white/80 text-sm">{hotel.name} — Foto</span>
+          <div class="h-48 relative overflow-hidden" class:list={[(hotel as any).image ? '' : 'placeholder-image']}>
+            {(hotel as any).image ? (
+              <img src={(hotel as any).image} alt={hotel.name} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            ) : (
+              <span class="text-white/80 text-sm absolute inset-0 flex items-center justify-center">{hotel.name} — Foto</span>
+            )}
             <div class="absolute top-3 left-3 flex gap-2">
               <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">{'★'.repeat(hotel.stars)}</span>
               {hotel.badge && <span class="px-2.5 py-1 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">{hotel.badge}</span>}
@@ -148,8 +153,12 @@ const gradients = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {cms.people.stories.map((story, i) => (
         <div class="group bg-white/5 rounded-xl overflow-hidden card-hover reveal">
-          <div class="placeholder-image h-64 relative" style={`background: ${gradients[i % 3]};`}>
-            <span class="text-white/60 text-sm">Portrait — Foto</span>
+          <div class="h-64 relative overflow-hidden" style={`${!(story as any).portrait ? `background: ${gradients[i % 3]};` : ''}`} class:list={[(story as any).portrait ? '' : 'placeholder-image']}>
+            {(story as any).portrait ? (
+              <img src={(story as any).portrait} alt={story.name} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            ) : (
+              <span class="text-white/60 text-sm absolute inset-0 flex items-center justify-center">Portrait — Foto</span>
+            )}
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
               <p class="font-heading text-base italic text-white/90 leading-snug mb-2" lang={story.lang || undefined}>{story.quote}</p>
               <div class="flex items-center gap-2">
@@ -172,8 +181,12 @@ const gradients = [
 <section class="py-16 md:py-24 bg-white">
   <div class="container-wide">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal">
-      <div class="placeholder-image rounded-xl h-72 lg:h-96 relative">
-        <span class="text-white/80 text-sm">Seasonal — Foto</span>
+      <div class="rounded-xl h-72 lg:h-96 relative overflow-hidden" class:list={[(cms.seasonal as any).image ? '' : 'placeholder-image']}>
+        {(cms.seasonal as any).image ? (
+          <img src={(cms.seasonal as any).image} alt={cms.seasonal.title} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+        ) : (
+          <span class="text-white/80 text-sm absolute inset-0 flex items-center justify-center">Seasonal — Foto</span>
+        )}
         <div class="absolute top-4 left-4">
           <span class="px-3 py-1 bg-turquoise-400 text-indigo-900 text-xs font-semibold uppercase tracking-wider rounded-full">{cms.seasonal.badge}</span>
         </div>
@@ -202,18 +215,25 @@ const gradients = [
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {cms.magazine.articles.map((article) => (
-        <div class="bg-white rounded-xl overflow-hidden shadow-card card-hover reveal">
-          <div class="placeholder-image-light h-44 flex items-center justify-center">
-            <span class="text-beige-600 text-sm">Artikelbild</span>
+        <a href={localizedHref(locale, 'magazine')} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
+          <div class="h-44 relative overflow-hidden" class:list={[(article as any).image ? '' : 'placeholder-image-light flex items-center justify-center']}>
+            {(article as any).image ? (
+              <img src={(article as any).image} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+            ) : (
+              <span class="text-beige-600 text-sm">Artikelbild</span>
+            )}
           </div>
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{article.category}</span>
-            <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2">{article.title}</h3>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mt-1 mb-2">{article.title}</h3>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">{article.excerpt}</p>
             <div class="mt-3 text-beige-600 text-xs">{article.date} · {article.readTime}</div>
           </div>
-        </div>
+        </a>
       ))}
+    </div>
+    <div class="text-center mt-8">
+      <a href={localizedHref(locale, 'magazine')} class="btn-ghost">{cms.magazine.sectionLabel}</a>
     </div>
   </div>
 </section>
@@ -225,6 +245,13 @@ const gradients = [
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4" style="font-size: var(--text-h2);">{cms.newsletter.title}</h2>
       <p class="text-white/70 text-lg mb-8">{cms.newsletter.description}</p>
       <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST" data-locale={locale}>
+        <!-- Honeypot field (hidden from real users, bots will fill it) -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;overflow:hidden;">
+          <label for="newsletter-website">Website</label>
+          <input id="newsletter-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <!-- Timestamp for timing-based bot detection -->
+        <input type="hidden" id="newsletter-ts" name="_ts" value="" />
         <label for="newsletter-email" class="sr-only">E-Mail</label>
         <input id="newsletter-email" type="email" placeholder={cms.newsletter.placeholder} required class="flex-1 px-5 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-turquoise-400 focus:ring-1 focus:ring-turquoise-400 transition-colors" />
         <button type="submit" class="btn-primary whitespace-nowrap">
@@ -241,6 +268,10 @@ const gradients = [
 </section>
 
 <script>
+  // Set timestamp on page load for bot timing detection
+  const tsInput = document.getElementById('newsletter-ts') as HTMLInputElement
+  if (tsInput) tsInput.value = String(Date.now())
+
   const form = document.getElementById('newsletter-form') as HTMLFormElement
   form?.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -250,6 +281,8 @@ const gradients = [
     const btnIcon = btn.querySelector('.btn-icon') as HTMLElement
     const btnSpinner = btn.querySelector('.btn-spinner') as HTMLElement
     const emailInput = form.querySelector('#newsletter-email') as HTMLInputElement
+    const honeypotInput = form.querySelector('#newsletter-website') as HTMLInputElement
+    const timestampInput = form.querySelector('#newsletter-ts') as HTMLInputElement
     const errorEl = document.getElementById('newsletter-error')!
     const successEl = document.getElementById('newsletter-success')!
     const disclaimerEl = document.getElementById('newsletter-disclaimer')!
@@ -275,6 +308,8 @@ const gradients = [
         body: JSON.stringify({
           email: emailInput.value,
           locale: form.dataset.locale || 'de',
+          website: honeypotInput?.value || '',
+          _ts: timestampInput?.value ? Number(timestampInput.value) : undefined,
         }),
       })
 

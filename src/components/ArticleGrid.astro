@@ -31,8 +31,12 @@ const categoryLabels: Record<string, Record<Locale, string>> = {
         const categoryLabel = categoryLabels[article.category]?.[locale] ?? article.category
         return (
           <a href={href} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover block">
-            <div class="placeholder-image-light h-44 flex items-center justify-center">
-              <span class="text-beige-600 text-sm">{categoryLabel}</span>
+            <div class="h-44 relative overflow-hidden" class:list={[article.coverImage ? '' : 'placeholder-image-light flex items-center justify-center']}>
+              {article.coverImage ? (
+                <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+              ) : (
+                <span class="text-beige-600 text-sm">{categoryLabel}</span>
+              )}
             </div>
             <div class="p-5">
               <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{categoryLabel}</span>

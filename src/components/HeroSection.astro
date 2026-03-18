@@ -5,15 +5,28 @@ interface Props {
   ctaText: string
   ctaHref: string
   badges?: string[]
+  image?: string | null
 }
 
-const { title, subtitle, ctaText, ctaHref, badges = [] } = Astro.props
+const { title, subtitle, ctaText, ctaHref, badges = [], image } = Astro.props
+const hasImage = image && image.trim().length > 0
 ---
 
 <section class="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
-  <!-- Background: gradient placeholder with Ken Burns animation -->
+  <!-- Background: real image or gradient placeholder with Ken Burns animation -->
   <div class="absolute inset-0 animate-ken-burns">
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-500 to-indigo-900"></div>
+    {hasImage ? (
+      <img
+        src={image}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    ) : (
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-500 to-indigo-900"></div>
+    )}
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.15)_0%,_transparent_60%)]"></div>
   </div>
 

@@ -11,7 +11,7 @@ const article = slug ? await getArticle(`${locale}-${slug}`) : null
 if (!article) return Astro.redirect(`/${locale}/zhurnal`)
 ---
 
-<Base locale={locale} section="magazine" title={`${article.title} — Журнал Marienbad`} description={article.excerpt}>
+<Base locale={locale} section="magazine" title={`${article.title} — Журнал Marienbad`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }}>
   <PillarPage locale={locale} title={article.title} description={article.excerpt}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
       <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{article.category}</span>

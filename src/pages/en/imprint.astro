@@ -1,0 +1,28 @@
+---
+import Base from '@/layouts/Base.astro'
+
+const locale = 'en' as const
+---
+
+<Base locale={locale} title="Imprint — Marienbad.com" description="Legal notice and operator information for marienbad.com." alternateUrls={{ de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }}>
+  <main class="container-wide py-16 md:py-24">
+    <div class="max-w-3xl mx-auto prose-marienbad">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Imprint</h1>
+
+      <h2>Operator</h2>
+      <p>Marienbad Tourism<br/>in cooperation with Ensana Health Spa Hotels<br/>Hlavní třída 47<br/>353 01 Mariánské Lázně, Czech Republic</p>
+
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:info@marienbad.com">info@marienbad.com</a><br/>Phone: +420 354 622 474</p>
+
+      <h2>Editorial Responsibility</h2>
+      <p>The editorial content is created by the Marienbad Tourism editorial team. We do not guarantee the accuracy or completeness of the content.</p>
+
+      <h2>Disclaimer</h2>
+      <p>Despite careful content control, we assume no liability for the content of external links.</p>
+
+      <h2>Copyright</h2>
+      <p>Content is subject to Czech copyright law. Reproduction requires written consent.</p>
+    </div>
+  </main>
+</Base>

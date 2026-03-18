@@ -11,9 +11,11 @@ interface Props {
   quote: string
   lang?: string
   index?: number
+  portrait?: string
 }
 
-const { locale, slug, name, location, visitLabel, quote, lang, index = 0 } = Astro.props
+const { locale, slug, name, location, visitLabel, quote, lang, index = 0, portrait } = Astro.props
+const hasPortrait = portrait && portrait.trim().length > 0
 
 const gradients = [
   'linear-gradient(135deg, #1A1916 0%, #266782 100%)',
@@ -26,8 +28,12 @@ const href = `/${locale}/${peopleSlug}/${slug}`
 ---
 
 <a href={href} class="group bg-white/5 rounded-xl overflow-hidden card-hover reveal block no-underline">
-  <div class="placeholder-image h-64 relative" style={`background: ${gradients[index % 3]};`}>
-    <span class="text-white/60 text-sm">Portrait — Foto</span>
+  <div class="h-64 relative overflow-hidden" style={`${!hasPortrait ? `background: ${gradients[index % 3]};` : ''}`} class:list={[hasPortrait ? '' : 'placeholder-image']}>
+    {hasPortrait ? (
+      <img src={portrait} alt={name} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+    ) : (
+      <span class="text-white/60 text-sm absolute inset-0 flex items-center justify-center">Portrait — Foto</span>
+    )}
     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
       <p class="font-heading text-base italic text-white/90 leading-snug mb-2" lang={lang || undefined}>&ldquo;{quote}&rdquo;</p>
       <div class="flex items-center gap-2">

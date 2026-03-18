@@ -53,7 +53,7 @@ const lodgingSchema = JSON.stringify({
 })
 ---
 
-<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription}>
+<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription} alternateUrls={{ de: `/de/hotel/${hotel.slug}`, en: `/en/hotel/${hotel.slug}` }}>
   <script type="application/ld+json" set:html={lodgingSchema} />
 
   <PillarPage locale={locale} title={hotel.name} description={pageDescription}>

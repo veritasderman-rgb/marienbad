@@ -83,6 +83,7 @@ export interface Article {
   excerpt: string
   date: string
   readingTime: string
+  coverImage?: string
   body: any
 }
 
@@ -111,6 +112,7 @@ export async function getArticles(locale: Locale): Promise<Article[]> {
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
+      coverImage: meta.coverImage ?? '',
       body: content,
     })
   }
@@ -142,6 +144,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
+      coverImage: meta.coverImage ?? '',
       body: content,
     }
   } catch {
@@ -162,6 +165,7 @@ export interface Story {
   visitLabel: string
   quote: string
   lang: string
+  portrait?: string
   body: any
 }
 
@@ -190,6 +194,7 @@ export async function getStories(locale: Locale): Promise<Story[]> {
       visitLabel: meta.visitLabel ?? '',
       quote: meta.quote ?? '',
       lang: meta.lang ?? '',
+      portrait: meta.portrait ?? '',
       body: content,
     })
   }
@@ -220,6 +225,7 @@ export async function getStory(slug: string): Promise<Story | null> {
       visitLabel: meta.visitLabel ?? '',
       quote: meta.quote ?? '',
       lang: meta.lang ?? '',
+      portrait: meta.portrait ?? '',
       body: content,
     }
   } catch {
@@ -249,6 +255,7 @@ export async function getAllArticles(): Promise<Article[]> {
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
+      coverImage: meta.coverImage ?? '',
       body: content,
     })
   }
