@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import DestinationMap from '@/components/DestinationMap.astro'
 
 const locale = 'en' as const
 ---
@@ -67,5 +68,6 @@ const locale = 'en' as const
     <p>All <strong>Ensana Spa Hotels</strong> can arrange airport transfers. Many guests book a private transfer directly from Prague or Munich Airport — comfortable and stress-free after a long journey.</p>
 
     <p>The hotel reception can also arrange <strong>local taxis</strong> and <strong>car hire</strong> for excursions in the region.</p>
+    <DestinationMap locale={locale} />
   </PillarPage>
 </Base>

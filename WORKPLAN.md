@@ -40,8 +40,8 @@
 | 0.2.7 | MDX support | ✅ | @astrojs/mdx |
 | 0.2.8 | Output mode server (SSR) | ✅ | Změněno z static → hybrid → server |
 | 0.2.9 | Supabase napojení | ❌ | Dříve plánováno pro PoC submissions, newsletter — dosud nepřipojeno |
-| 0.2.10 | Plausible/Umami analytics | ❌ | Žádný analytics nástroj nenasazen |
-| 0.2.11 | CLAUDE.md branding brief v repo root | ❌ | Vytvořen separátně, přidat do repo |
+| 0.2.10 | Plausible/Umami analytics | ✅ | Plausible script v Base.astro, podmíněný na PUBLIC_PLAUSIBLE_DOMAIN |
+| 0.2.11 | CLAUDE.md branding brief v repo root | ✅ | CLAUDE.md vytvořen s kompletním branding brief |
 
 ### 0.3 i18n
 
@@ -91,7 +91,7 @@
 | 1.2.10 | Hotel Recommendation Box (inline component) | ❌ | Pro použití uvnitř článků |
 | 1.2.11 | Treatment Highlight Box | ❌ | Indigo accent bar, icon, popis procedury |
 | 1.2.12 | Booking CTA Bar (sticky mobile) | ❌ | Fixed bottom bar s "Jetzt buchen" |
-| 1.2.13 | Breadcrumbs komponenta | ❌ | Pro SEO + navigaci na sub-stránkách |
+| 1.2.13 | Breadcrumbs komponenta | ✅ | Schema.org BreadcrumbList na pillar pages |
 | 1.2.14 | Image component (s lazy loading, LQIP) | ❌ | Wrapper kolem `<img>` s blur-up placeholderem |
 
 ---
@@ -147,9 +147,9 @@
 | 3.2.2 | EN routes (8 stránek) | ✅ | /en/mineral-springs atd. |
 | 3.2.3 | CS routes | ✅ | /cs/mineralni-prameny atd. |
 | 3.2.4 | RU routes | ✅ | /ru/mineralnye-istochniki atd. |
-| 3.2.5 | Pillar page layout — sidebar TOC | ❌ | Sticky table of contents |
+| 3.2.5 | Pillar page layout — sidebar TOC | ✅ | Sticky table of contents |
 | 3.2.6 | In-content hotel recommendation boxy | ❌ | Kontextové CTA boxy |
-| 3.2.7 | Related articles sekce dole | ❌ | "Další čtení" s 2-3 kartami |
+| 3.2.7 | Related articles sekce dole | ✅ | "Další čtení" s 2-3 kartami |
 | 3.2.8 | Social sharing tlačítka | ❌ |
 | 3.2.9 | SEO meta title/description | ⚠️ | Ověřit v CMS datech |
 
@@ -159,15 +159,15 @@
 
 | # | Úkol | Stav | Poznámka |
 |---|------|------|----------|
-| 4.1 | PoC landing page (masonry grid, filtry) | ❌ | Existuje jen placeholder |
-| 4.2 | PoC detail page | ❌ |
-| 4.3 | PoC TypeScript datový model | ❌ |
-| 4.4 | PoC Keystatic kolekce | ❌ |
-| 4.5 | PoC card komponenta | ⚠️ | Inline v Homepage.astro, ne reusable |
+| 4.1 | PoC landing page (masonry grid, filtry) | ✅ | Implementováno |
+| 4.2 | PoC detail page | ✅ | Detail routes [slug] pro DE/EN/CS/RU |
+| 4.3 | PoC TypeScript datový model | ✅ | Implementováno |
+| 4.4 | PoC Keystatic kolekce | ✅ | Implementováno |
+| 4.5 | PoC card komponenta | ✅ | StoryCard.astro — reusable komponenta |
 | 4.6 | PoC submission formulář | ❌ |
 | 4.7 | PoC filtrování dle jazyka/tagu | ❌ |
 | 4.8 | PoC RSS/JSON feed | ❌ |
-| 4.9 | Reálné PoC příběhy (min. 3) | ❌ |
+| 4.9 | Reálné PoC příběhy (min. 3) | ✅ | 3 DE + 3 EN seed stories |
 
 ---
 
@@ -175,16 +175,16 @@
 
 | # | Úkol | Stav |
 |---|------|------|
-| 5.1 | Magazine listing page (card grid, pagination) | ❌ |
-| 5.2 | Article detail page template | ❌ |
-| 5.3 | Keystatic kolekce pro články | ❌ |
-| 5.4 | Kategorie systém | ❌ |
-| 5.5 | Tag systém | ❌ |
-| 5.6 | Reading time kalkulace | ❌ |
+| 5.1 | Magazine listing page (card grid, pagination) | ✅ | ArticleGrid.astro |
+| 5.2 | Article detail page template | ✅ | Detail routes [slug] pro DE/EN/CS/RU |
+| 5.3 | Keystatic kolekce pro články | ✅ | Implementováno |
+| 5.4 | Kategorie systém | ✅ | Implementováno |
+| 5.5 | Tag systém | ✅ | Implementováno |
+| 5.6 | Reading time kalkulace | ✅ | Implementováno |
 | 5.7 | Related articles algoritmus | ❌ |
 | 5.8 | Article Schema.org structured data | ❌ |
-| 5.9 | RSS feed | ❌ |
-| 5.10 | Min. 3 seed články (DE + EN) | ❌ |
+| 5.9 | RSS feed | ✅ | /rss.xml |
+| 5.10 | Min. 3 seed články (DE + EN) | ✅ | 3 DE + 3 EN seed články |
 
 ---
 
@@ -193,21 +193,21 @@
 | # | Stránka | Stav | Rodičovská |
 |---|---------|------|------------|
 | 6.1 | /mineralquellen/ — detail 40+ springs | ❌ | Heilquellen |
-| 6.2 | /co2-therapie/ | ❌ | Heilquellen |
-| 6.3 | /peloidtherapie/ | ❌ | Heilquellen |
-| 6.4 | /klimatherapie/ | ❌ | Heilquellen |
-| 6.5 | /kolonnade/ — Singing Fountain | ❌ | Erleben |
-| 6.6 | /natur/ — Parks, Kladská | ❌ | Erleben |
-| 6.7 | /golf/ — Royal Golf Club | ❌ | Erleben |
-| 6.8 | /kultur/ — Culture, Chopin | ❌ | Erleben |
-| 6.9 | /ausfluege/ — Day trips | ❌ | Erleben |
-| 6.10 | /beruehmte-gaeste/ — Famous visitors | ❌ | Geschichte |
-| 6.11 | /architektur/ | ❌ | Geschichte |
-| 6.12 | /unesco/ | ❌ | Geschichte |
-| 6.13 | /hotel/{slug}/ | ❌ | Unterkunft |
-| 6.14 | /anreise/ — Getting there | ❌ | Praktische Infos |
+| 6.2 | /co2-therapie/ | ✅ | DE/EN s TreatmentHighlightBox |
+| 6.3 | /peloidtherapie/ | ✅ | Heilquellen |
+| 6.4 | /klimatherapie/ | ✅ | Heilquellen |
+| 6.5 | /kolonnade/ — Singing Fountain | ✅ | Erleben |
+| 6.6 | /natur/ — Parks, Kladská | ✅ | DE/EN |
+| 6.7 | /golf/ — Royal Golf Club | ✅ | DE/EN |
+| 6.8 | /kultur/ — Culture, Chopin | ✅ | DE/EN |
+| 6.9 | /ausfluege/ — Day trips | ✅ | Erleben |
+| 6.10 | /beruehmte-gaeste/ — Famous visitors | ✅ | DE/EN |
+| 6.11 | /architektur/ | ✅ | Geschichte |
+| 6.12 | /unesco/ | ✅ | DE/EN |
+| 6.13 | /hotel/{slug}/ | ✅ | Unterkunft |
+| 6.14 | /anreise/ — Getting there | ✅ | DE/EN |
 | 6.15 | /beste-reisezeit/ | ❌ | Praktische Infos |
-| 6.16 | /faq/ + FAQPage Schema | ❌ | Praktische Infos |
+| 6.16 | /faq/ + FAQPage Schema | ✅ | DE/EN/CS/RU se Schema.org FAQPage |
 
 ---
 
@@ -219,12 +219,12 @@
 | 7.2 | hreflang tagy | ⚠️ |
 | 7.3 | Canonical URLs | ⚠️ |
 | 7.4 | Open Graph tags | ⚠️ |
-| 7.5 | Twitter Card tags | ❌ |
-| 7.6 | Schema.org: TouristDestination | ❌ |
-| 7.7 | Schema.org: LodgingBusiness | ❌ |
+| 7.5 | Twitter Card tags | ✅ |
+| 7.6 | Schema.org: TouristDestination | ✅ |
+| 7.7 | Schema.org: LodgingBusiness | ✅ |
 | 7.8 | Schema.org: Article | ❌ |
 | 7.9 | Schema.org: FAQPage | ❌ |
-| 7.10 | Schema.org: BreadcrumbList | ❌ |
+| 7.10 | Schema.org: BreadcrumbList | ✅ |
 | 7.11 | XML sitemap | ✅ |
 | 7.12 | robots.txt | ✅ |
 | 7.13 | Image optimization | ❌ |
@@ -242,9 +242,9 @@
 | 8.2 | Interactive destination map | ❌ |
 | 8.3 | Event calendar | ❌ |
 | 8.4 | Treatment finder / quiz | ❌ |
-| 8.5 | Cookie-free analytics | ❌ |
-| 8.6 | Scroll reveal JS inicializace | ⚠️ |
-| 8.7 | Header scroll behavior | ⚠️ |
+| 8.5 | Cookie-free analytics | ✅ | Plausible v Base.astro |
+| 8.6 | Scroll reveal JS inicializace | ✅ | IntersectionObserver v Base.astro |
+| 8.7 | Header scroll behavior | ✅ | Implementováno |
 
 ---
 

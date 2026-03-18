@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import EventCalendar from '@/components/EventCalendar.astro'
 
 const locale = 'en' as const
 ---
@@ -37,5 +38,7 @@ const locale = 'en' as const
 
     <h2>Architecture</h2>
     <p>Marienbad itself is an open-air museum of architecture: <strong>Neo-Renaissance, Neo-Baroque, Art Nouveau and Classicism</strong> stand in harmonious coexistence. Guided architecture tours are available through the Tourist Information Centre. Highlights include: the Main Colonnade (1889), the Church of the Assumption, Hotel Nové Lázně and the Art Nouveau villas along Třebízského ulice.</p>
+
+    <EventCalendar locale={locale} />
   </PillarPage>
 </Base>

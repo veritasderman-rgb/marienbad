@@ -2,6 +2,7 @@
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import SocialShare from '@/components/SocialShare.astro'
 import { getStory } from '@/content/reader'
 
 const locale = 'en' as const
@@ -17,5 +18,6 @@ if (!story) return Astro.redirect(`/${locale}/people`)
       {story.quote}
     </blockquote>
     <MarkdocRenderer content={story.body} />
+    <SocialShare url={Astro.url.href} title={story.name} locale={locale} />
   </PillarPage>
 </Base>

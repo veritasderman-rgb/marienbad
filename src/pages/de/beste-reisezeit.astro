@@ -1,0 +1,142 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import { t } from '@/i18n/ui'
+
+const locale = 'de' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.practicalInfo'), href: `/${locale}/praktische-infos` },
+  { label: 'Beste Reisezeit' },
+]
+---
+
+<Base locale={locale} section="practical-info" title="Beste Reisezeit für Marienbad — Wetter, Klima & Saisontipps — Marienbad.com" description="Wann ist die beste Zeit für eine Reise nach Mariánské Lázně? Klima, Wetter, Veranstaltungen und Tipps für jede Jahreszeit.">
+  <PillarPage locale={locale} title="Beste Reisezeit für Marienbad" description="Mariánské Lázně ist zu jeder Jahreszeit reizvoll — doch jede Saison hat ihren eigenen Charakter. Ein Überblick über Wetter, Veranstaltungen und die Vor- und Nachteile jeder Reisezeit." breadcrumbs={breadcrumbs}>
+    <h2>Marienbad — Ein Ganzjahresziel</h2>
+    <p>Mariánské Lázně (Marienbad) liegt auf einer Höhe von <strong>630 Metern</strong> im Slavkovský les (Kaiserwald) und genießt ein mildes Mittelgebirgsklima. Die geschützte Lage in einem Talkessel, umgeben von dichten Wäldern, sorgt für ein ausgeglichenes Mikroklima, das schon seit dem 19. Jahrhundert als besonders heilsam gilt. Tatsächlich wurde das Klima selbst als einer der vier natürlichen Heilfaktoren Marienbads anerkannt.</p>
+
+    <p>Die Kursaison läuft offiziell von <strong>Mai bis Oktober</strong>, doch die Spa-Hotels und Mineralquellen sind ganzjährig geöffnet. Jede Jahreszeit bietet ihre eigenen Vorzüge — die ideale Reisezeit hängt von Ihren persönlichen Prioritäten ab.</p>
+
+    <h2>Frühling (März–Mai): Aufblühende Pracht</h2>
+    <p>Der Frühling in Marienbad ist eine Zeit des Erwachens. Die weitläufigen Parkanlagen beginnen zu blühen, und die Stadt schüttelt den Winter ab. Diese Jahreszeit eignet sich besonders für Reisende, die <strong>Ruhe und Erholung</strong> suchen.</p>
+
+    <h3>Wetter</h3>
+    <ul>
+      <li><strong>März:</strong> 1–8 °C, noch kühl, gelegentlich Schnee möglich</li>
+      <li><strong>April:</strong> 5–14 °C, wechselhaft, erste warme Tage</li>
+      <li><strong>Mai:</strong> 9–18 °C, angenehm mild, die Parks stehen in voller Blüte</li>
+    </ul>
+
+    <h3>Vorteile</h3>
+    <ul>
+      <li>Weniger Touristen — mehr Ruhe in den Kolonnaden und Parkanlagen</li>
+      <li>Günstigere Hotelpreise in der Vorsaison (März–April)</li>
+      <li>Die Magnolien- und Kirschblüte im Kurpark (Mitte April bis Mai) ist spektakulär</li>
+      <li>Ideal für intensive Kuren ohne Ablenkung</li>
+    </ul>
+
+    <h3>Was einpacken</h3>
+    <p>Schichten sind der Schlüssel: warme Jacke, Regenkleidung und bequeme Wanderschuhe. Ab Mai reicht oft eine leichte Jacke für den Abend.</p>
+
+    <h2>Sommer (Juni–August): Hochsaison mit Kulturprogramm</h2>
+    <p>Der Sommer ist die <strong>lebendigste Jahreszeit</strong> in Marienbad. Die Stadt ist voller Kultur, Musik und Leben. Die Kuranlagen sind in vollem Betrieb, und das angenehme Klima lädt zu langen Spaziergängen und Ausflügen ein.</p>
+
+    <h3>Wetter</h3>
+    <ul>
+      <li><strong>Juni:</strong> 13–22 °C, angenehm warm, gelegentlich Gewitterschauer</li>
+      <li><strong>Juli:</strong> 15–24 °C, der wärmste Monat, manchmal über 28 °C</li>
+      <li><strong>August:</strong> 14–23 °C, warm mit zunehmenden Regentagen</li>
+    </ul>
+
+    <h3>Highlights</h3>
+    <ul>
+      <li><strong>Chopin-Festival (August):</strong> Das renommierte internationale Klavierfestival zu Ehren Frédéric Chopins, der 1836 in Marienbad weilte</li>
+      <li><strong>Singende Fontäne:</strong> Die abendlichen Vorstellungen mit Licht, Wasser und Musik laufen von Mai bis Oktober — im Sommer täglich</li>
+      <li>Freilichtkonzerte in der Kolonnade</li>
+      <li>Voller Betrieb aller Quellen, Parks und Ausflugsziele</li>
+    </ul>
+
+    <h3>Nachteile</h3>
+    <ul>
+      <li>Höchste Hotelpreise, besonders im Juli und August</li>
+      <li>Mehr Besucher — Kolonnaden und Quellen können belebter sein</li>
+      <li>Frühzeitige Buchung empfohlen</li>
+    </ul>
+
+    <h3>Was einpacken</h3>
+    <p>Leichte Sommerkleidung, Sonnenschutz und eine leichte Regenjacke für überraschende Schauer. Abends kann es auf 630 m Höhe kühler werden — ein Pullover ist ratsam.</p>
+
+    <h2>Herbst (September–November): Goldene Ruhe</h2>
+    <p>Der Herbst verwandelt Marienbad in ein <strong>Farbenspektakel</strong>. Die Wälder des Kaiserwaldes leuchten in Gold und Rot, die Luft wird frischer, und die Zahl der Besucher nimmt ab. Für viele Stammgäste ist dies die schönste Jahreszeit.</p>
+
+    <h3>Wetter</h3>
+    <ul>
+      <li><strong>September:</strong> 10–18 °C, angenehm, oft sonnige „Altweibersommer"-Tage</li>
+      <li><strong>Oktober:</strong> 5–12 °C, kühl, herbstliche Stimmung, häufiger Nebel am Morgen</li>
+      <li><strong>November:</strong> 1–6 °C, kühl bis kalt, erste Frosttage möglich</li>
+    </ul>
+
+    <h3>Vorteile</h3>
+    <ul>
+      <li>Spektakuläre Herbstfärbung in den Parkanlagen und Wäldern (Oktober)</li>
+      <li>Ruhige, meditative Atmosphäre — ideal für Kuren und Erholung</li>
+      <li>Günstigere Preise ab Oktober (Nebensaison)</li>
+      <li>Die Luft ist besonders klar und sauerstoffreich</li>
+    </ul>
+
+    <h3>Was einpacken</h3>
+    <p>Warme Jacke, Schal, wetterfeste Schuhe. Im September reicht tagsüber oft noch eine leichte Jacke, aber die Abende sind frisch.</p>
+
+    <h2>Winter (Dezember–Februar): Winterzauber und Indoor-Spa</h2>
+    <p>Der Winter taucht Marienbad in eine <strong>stille, verschneite Atmosphäre</strong>. Während das kulturelle Programm ruht, konzentriert sich die Stadt auf das, was sie am besten kann: <strong>Heilbehandlungen und Wellness</strong>. Die Spa-Hotels bieten Winterpakete zu attraktiven Preisen.</p>
+
+    <h3>Wetter</h3>
+    <ul>
+      <li><strong>Dezember:</strong> -3 bis 2 °C, oft Schnee, Weihnachtsstimmung</li>
+      <li><strong>Januar:</strong> -5 bis 0 °C, der kälteste Monat, regelmäßiger Schneefall</li>
+      <li><strong>Februar:</strong> -4 bis 2 °C, noch winterlich, aber die Tage werden länger</li>
+    </ul>
+
+    <h3>Highlights</h3>
+    <ul>
+      <li><strong>Weihnachtsmarkt (Dezember):</strong> Ein stimmungsvoller Adventsmarkt auf der Kolonnade mit Glühwein, Trdelník und Handwerkskunst</li>
+      <li>Verschneite Spaziergänge durch die winterlichen Parkanlagen</li>
+      <li>Fokus auf Indoor-Behandlungen: Moorbäder, CO₂-Therapie, Massagen</li>
+      <li>Silvester-Galas in den Spa-Hotels</li>
+    </ul>
+
+    <h3>Vorteile</h3>
+    <ul>
+      <li>Die niedrigsten Hotelpreise des Jahres (außer Weihnachten/Silvester)</li>
+      <li>Maximale Ruhe und Privatsphäre</li>
+      <li>Alle Indoor-Behandlungen und Quellen bleiben geöffnet</li>
+      <li>Die winterliche Landschaft hat einen besonderen Reiz</li>
+    </ul>
+
+    <h3>Was einpacken</h3>
+    <p>Warme Winterkleidung, gefütterte Schuhe mit rutschfester Sohle, Mütze und Handschuhe. Thermounterwäsche ist bei Minusgraden empfehlenswert. Für die Spa-Bereiche: Bademantel und Badeschuhe (werden oft vom Hotel gestellt).</p>
+
+    <h2>Klimadaten im Überblick</h2>
+
+    | Monat | Ø Temperatur | Ø Niederschlag | Sonnenstunden |
+    |-------|-------------|----------------|---------------|
+    | Januar | -3 °C | 45 mm | 2 h |
+    | Februar | -1 °C | 40 mm | 3 h |
+    | März | 3 °C | 40 mm | 4 h |
+    | April | 8 °C | 45 mm | 5 h |
+    | Mai | 13 °C | 65 mm | 7 h |
+    | Juni | 16 °C | 80 mm | 7 h |
+    | Juli | 18 °C | 85 mm | 7 h |
+    | August | 17 °C | 80 mm | 7 h |
+    | September | 13 °C | 55 mm | 5 h |
+    | Oktober | 8 °C | 50 mm | 4 h |
+    | November | 3 °C | 50 mm | 2 h |
+    | Dezember | -1 °C | 50 mm | 2 h |
+
+    <h2>Unsere Empfehlung</h2>
+    <p>Für eine <strong>Kur mit vollem Kulturprogramm</strong> empfehlen wir den Zeitraum <strong>Mai bis September</strong>. Wer <strong>Ruhe und günstige Preise</strong> bevorzugt, ist im <strong>Frühling (April–Mai)</strong> oder <strong>Herbst (September–Oktober)</strong> am besten aufgehoben. Für <strong>reine Wellness und Erholung</strong> bietet der <strong>Winter</strong> mit seinen attraktiven Spa-Paketen ein hervorragendes Preis-Leistungs-Verhältnis.</p>
+
+    <p>Unabhängig von der Jahreszeit gilt: Die Mineralquellen fließen das ganze Jahr, die Kurhäuser sind ganzjährig geöffnet und die heilende Atmosphäre Marienbads entfaltet zu jeder Zeit ihre Wirkung.</p>
+  </PillarPage>
+</Base>
