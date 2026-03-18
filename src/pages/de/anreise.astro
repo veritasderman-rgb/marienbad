@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import DestinationMap from '@/components/DestinationMap.astro'
 
 const locale = 'de' as const
 ---
@@ -67,5 +68,6 @@ const locale = 'de' as const
     <p>Alle <strong>Ensana Spa Hotels</strong> können Flughafentransfers organisieren. Viele Gäste buchen einen privaten Transfer direkt vom Flughafen Prag oder München — bequem und stressfrei nach einer langen Anreise.</p>
 
     <p>Der Hotelempfang kann auch <strong>lokale Taxis</strong> und <strong>Mietwagen</strong> für Ausflüge in der Region arrangieren.</p>
+    <DestinationMap locale={locale} />
   </PillarPage>
 </Base>
