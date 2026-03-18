@@ -1,0 +1,134 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import { hotels, type Hotel } from '@/data/hotels'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return hotels.map((hotel) => ({
+    params: { slug: hotel.slug },
+    props: { hotel },
+  }))
+}
+
+const locale = 'en' as const
+const { hotel } = Astro.props as { hotel: Hotel }
+
+const starsDisplay = '★'.repeat(hotel.stars) + '☆'.repeat(5 - hotel.stars)
+const pageTitle = `${hotel.name} — ${hotel.stars}-Star Spa Hotel in Marienbad`
+const pageDescription = hotel.description.en.slice(0, 155).replace(/\s+\S*$/, '') + '…'
+
+const pathname = Astro.url.pathname.replace(/\/$/, '')
+const canonicalUrl = `https://marienbad.com${pathname}`
+
+const lodgingSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: hotel.name,
+  description: hotel.description.en.slice(0, 300),
+  url: canonicalUrl,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: hotel.address.split(',')[0]?.trim(),
+    addressLocality: 'Mariánské Lázně',
+    addressRegion: 'Karlovarský kraj',
+    postalCode: '353 01',
+    addressCountry: 'CZ',
+  },
+  starRating: {
+    '@type': 'Rating',
+    ratingValue: hotel.stars,
+    bestRating: 5,
+  },
+  amenityFeature: hotel.features.en.map((f) => ({
+    '@type': 'LocationFeatureSpecification',
+    name: f,
+    value: true,
+  })),
+  sameAs: hotel.bookingUrl,
+  currenciesAccepted: 'CZK, EUR',
+  paymentAccepted: 'Cash, Credit Card',
+  priceRange: hotel.stars >= 5 ? '€€€€' : hotel.stars >= 4 ? '€€€' : '€€',
+})
+---
+
+<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={lodgingSchema} />
+
+  <PillarPage locale={locale} title={hotel.name} description={pageDescription}>
+    <!-- Star Rating & Year -->
+    <div class="flex flex-wrap items-center gap-4 mb-8 text-sm">
+      <span class="text-yellow-500 text-lg tracking-wide" aria-label={`${hotel.stars} out of 5 stars`}>{starsDisplay}</span>
+      <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{hotel.stars} Stars</span>
+      <span class="text-beige-600">Built {hotel.yearBuilt}</span>
+      <span class="text-beige-600">·</span>
+      <span class="text-beige-600">{hotel.style}</span>
+    </div>
+
+    <!-- Description -->
+    <div class="prose-marienbad mb-12">
+      {hotel.description.en.split('\n\n').map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+    </div>
+
+    <!-- Features -->
+    <div class="mb-12">
+      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Features & Highlights</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {hotel.features.en.map((feature) => (
+          <li class="flex items-start gap-3 text-beige-800">
+            <svg class="w-5 h-5 text-turquoise-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Treatments -->
+    <div class="mb-12">
+      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Available Treatments</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {hotel.treatments.en.map((treatment) => (
+          <li class="flex items-start gap-3 text-beige-800">
+            <svg class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+            <span>{treatment}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Booking CTA -->
+    <aside class="bg-beige-200 rounded-xl p-6 md:p-8 border-l-4 border-turquoise-400">
+      <h2 class="font-heading text-xl font-bold text-indigo-700 mb-3">Book Your Stay at {hotel.name}</h2>
+      <p class="text-beige-700 text-sm leading-relaxed mb-5">
+        Plan your spa retreat at {hotel.name} in Marienbad. Experience the combination of medical expertise and {hotel.stars === 5 ? 'luxurious' : hotel.stars === 3 ? 'comfortable' : 'upscale'} surroundings.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href={hotel.bookingUrl}
+          class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+          target="_blank"
+          rel="noopener"
+        >
+          Check Availability
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a
+          href={`/${locale}/accommodation`}
+          class="inline-flex items-center gap-2 px-6 py-3 border border-indigo-300 text-indigo-700 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+        >
+          Compare All Hotels
+        </a>
+      </div>
+    </aside>
+  </PillarPage>
+</Base>
