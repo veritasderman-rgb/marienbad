@@ -1,12 +1,18 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'de' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.thingsToDo'), href: `/${locale}/unternehmungen` },
+  { label: 'Golf' },
+]
 ---
 
 <Base locale={locale} section="things-to-do" title="Royal Golf Club Mariánské Lázně — Marienbad.com" description="Der älteste Golfclub Tschechiens, gegründet 1905 von König Edward VII. 18-Loch-Championship-Course im Slavkovský les.">
-  <PillarPage locale={locale} title="Royal Golf Club Mariánské Lázně" description="Gegründet 1905 von König Edward VII. — der älteste Golfclub Tschechiens mit einem 18-Loch-Championship-Course auf 787 Metern Höhe.">
+  <PillarPage locale={locale} title="Royal Golf Club Mariánské Lázně" description="Gegründet 1905 von König Edward VII. — der älteste Golfclub Tschechiens mit einem 18-Loch-Championship-Course auf 787 Metern Höhe." breadcrumbs={breadcrumbs}>
     <h2>Ein königliches Erbe</h2>
     <p>Der <strong>Royal Golf Club Mariánské Lázně</strong> wurde 1905 auf Initiative von <strong>König Edward VII. von England</strong> gegründet, der Marienbad regelmäßig besuchte und ein begeisterter Golfer war. Der Club ist damit der <strong>älteste Golfclub in der Tschechischen Republik</strong> und einer der ältesten in Mitteleuropa.</p>
 
