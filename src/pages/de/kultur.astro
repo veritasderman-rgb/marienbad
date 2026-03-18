@@ -1,0 +1,41 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+
+const locale = 'de' as const
+---
+
+<Base locale={locale} section="things-to-do" title="Kultur & Events — Marienbad.com" description="Chopin-Festival, Stadttheater, Casino, Konzerte — das kulturelle Leben in Mariánské Lázně.">
+  <PillarPage locale={locale} title="Kultur & Events" description="Von Weltklasse-Konzerten bis zu intimen Theateraufführungen — Marienbad bietet ein reiches kulturelles Programm.">
+    <h2>Internationales Chopin-Festival</h2>
+    <p>Das <strong>Chopin-Festival</strong> ist der kulturelle Höhepunkt des Jahres. Seit 1960 kommen jeden August Pianisten von Weltruf nach Marienbad, um in den atmosphärischsten Sälen der Stadt aufzutreten: dem Casino, dem Nový Lázně und der Hauptkolonnade. Das Festival erinnert an Chopins Aufenthalt im Sommer 1836 und hat sich zu einem der <strong>bedeutendsten Klavierfestivals Europas</strong> entwickelt.</p>
+    <p>Konzerte, Meisterkurse, Wettbewerbe und Filmvorführungen bilden ein einwöchiges Programm, das Musikliebhaber aus aller Welt anzieht. Tickets sind begehrt — frühzeitige Reservierung empfohlen.</p>
+
+    <h2>Stadttheater (Městské divadlo)</h2>
+    <p>Das neoklassizistische Stadttheater aus dem Jahr 1868 bietet ein ganzjähriges Programm mit <strong>Oper, Ballett, Schauspiel und Konzerten</strong>. Das intimere Format — der Saal fasst etwa 400 Gäste — macht jeden Theaterbesuch zu einem besonderen Erlebnis. Gastspiele nationaler und internationaler Ensembles ergänzen das lokale Programm.</p>
+
+    <h2>Casino (Společenský dům)</h2>
+    <p>Das <strong>Casino</strong> ist eines der schönsten Gebäude der Stadt — ein Meisterwerk der Neurenaissance-Architektur, das als Kultur- und Veranstaltungszentrum dient. Der prachtvolle Ballsaal beherbergt Konzerte, Bälle und Ausstellungen. Die Atmosphäre allein ist einen Besuch wert.</p>
+
+    <h2>Singende Fontäne</h2>
+    <p>Die <strong>Zpívající fontána</strong> vor der Hauptkolonnade ist Marienbads ikonischstes Wahrzeichen. Zu jeder ungeraden Stunde (7-19 Uhr in der Saison) tanzt Wasser im Takt der Musik — von Dvořák über Chopin bis zu modernen Melodien. Die abendlichen Vorstellungen mit Lichteffekten nach Einbruch der Dunkelheit sind besonders eindrucksvoll.</p>
+
+    <h2>Museen</h2>
+    <ul>
+      <li><strong>Městské muzeum (Stadtmuseum)</strong> — Geschichte Marienbads vom sumpfigen Tal zur Weltklasse-Kurstadt. Historische Kurgeräte, Fotografien, Gästebücher berühmter Besucher.</li>
+      <li><strong>Goethe-Haus</strong> — Erinnerungen an die Aufenthalte des Dichters und seine Liebe zu Ulrike von Levetzow.</li>
+      <li><strong>Geologisches Museum</strong> — Die Wissenschaft hinter den Quellen und der vulkanischen Geschichte der Region.</li>
+    </ul>
+
+    <h2>Saisonale Veranstaltungen</h2>
+    <ul>
+      <li><strong>Frühling:</strong> Eröffnung der Kursaison, erste Konzerte im Freien</li>
+      <li><strong>Sommer:</strong> Chopin-Festival, Singende Fontäne, Open-Air-Konzerte</li>
+      <li><strong>Herbst:</strong> Goethe-Tage, Weinlesefest, Herbstkonzerte</li>
+      <li><strong>Winter:</strong> Adventsmärkte, Weihnachtskonzerte, Silvester-Gala</li>
+    </ul>
+
+    <h2>Architektur erleben</h2>
+    <p>Marienbad selbst ist ein Freilichtmuseum der Architektur: <strong>Neurenaissance, Neobarock, Jugendstil und Klassizismus</strong> stehen harmonisch nebeneinander. Geführte Architekturtouren werden über das Touristenzentrum angeboten. Besonders sehenswert: die Hauptkolonnade (1889), die Kirche Mariä Himmelfahrt, das Hotel Nové Lázně und die Jugendstil-Villen entlang der Třebízského ulice.</p>
+  </PillarPage>
+</Base>
