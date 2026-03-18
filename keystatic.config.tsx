@@ -16,6 +16,12 @@ function homepageSingleton(locale: string, label: string) {
             label: 'Badges',
             itemLabel: (props) => props.value || 'Badge',
           }),
+          image: fields.image({
+            label: 'Hero Background Image',
+            directory: 'public/images/content/hero',
+            publicPath: '/images/content/hero/',
+            description: 'Recommended: 1920x1080px, JPG/WebP. Landscape orientation.',
+          }),
         },
         { label: 'Hero Section' }
       ),
@@ -73,6 +79,12 @@ function homepageSingleton(locale: string, label: string) {
                 label: 'Description',
                 multiline: true,
               }),
+              image: fields.image({
+                label: 'Hotel Photo',
+                directory: 'public/images/content/hotels',
+                publicPath: '/images/content/hotels/',
+                description: 'Recommended: 800x500px, JPG/WebP.',
+              }),
               tags: fields.array(fields.text({ label: 'Tag' }), {
                 label: 'Tags',
                 itemLabel: (props) => props.value || 'Tag',
@@ -101,6 +113,12 @@ function homepageSingleton(locale: string, label: string) {
               location: fields.text({ label: 'Location' }),
               visitLabel: fields.text({ label: 'Visit Label' }),
               lang: fields.text({ label: 'Language Code (optional)' }),
+              portrait: fields.image({
+                label: 'Portrait Photo',
+                directory: 'public/images/content/stories',
+                publicPath: '/images/content/stories/',
+                description: 'Recommended: 400x400px or 3:4 ratio, JPG/WebP.',
+              }),
             }),
             {
               label: 'Stories',
@@ -117,6 +135,12 @@ function homepageSingleton(locale: string, label: string) {
           title: fields.text({ label: 'Title' }),
           description: fields.text({ label: 'Description', multiline: true }),
           ctaText: fields.text({ label: 'CTA Button Text' }),
+          image: fields.image({
+            label: 'Seasonal Photo',
+            directory: 'public/images/content/seasonal',
+            publicPath: '/images/content/seasonal/',
+            description: 'Recommended: 800x600px, JPG/WebP.',
+          }),
         },
         { label: 'Seasonal Highlight' }
       ),
@@ -131,6 +155,12 @@ function homepageSingleton(locale: string, label: string) {
               excerpt: fields.text({ label: 'Excerpt', multiline: true }),
               date: fields.text({ label: 'Date' }),
               readTime: fields.text({ label: 'Read Time' }),
+              image: fields.image({
+                label: 'Article Thumbnail',
+                directory: 'public/images/content/articles',
+                publicPath: '/images/content/articles/',
+                description: 'Recommended: 800x500px, JPG/WebP.',
+              }),
             }),
             {
               label: 'Articles',
@@ -292,6 +322,12 @@ export default config({
         visitLabel: fields.text({ label: 'Visit Label (e.g. "12th visit")' }),
         quote: fields.text({ label: 'Pull Quote', multiline: true }),
         lang: fields.text({ label: 'Language Code for Quote' }),
+        portrait: fields.image({
+          label: 'Portrait Photo',
+          directory: 'public/images/content/stories',
+          publicPath: '/images/content/stories/',
+          description: 'Recommended: 600x800px, JPG/WebP. Portrait orientation.',
+        }),
         body: fields.markdoc({
           label: 'Full Story',
           options: {
@@ -325,6 +361,12 @@ export default config({
             { label: 'Русский', value: 'ru' },
           ],
           defaultValue: 'de',
+        }),
+        coverImage: fields.image({
+          label: 'Cover Image',
+          directory: 'public/images/content/articles',
+          publicPath: '/images/content/articles/',
+          description: 'Recommended: 1200x630px, JPG/WebP. Used as article thumbnail and OG image.',
         }),
         category: fields.select({
           label: 'Category',
@@ -374,6 +416,12 @@ export default config({
             { label: 'Русский', value: 'ru' },
           ],
           defaultValue: 'de',
+        }),
+        featuredImage: fields.image({
+          label: 'Featured Image',
+          directory: 'public/images/content/pages',
+          publicPath: '/images/content/pages/',
+          description: 'Recommended: 1200x630px, JPG/WebP. Used as page hero and OG image.',
         }),
         section: fields.select({
           label: 'Section',

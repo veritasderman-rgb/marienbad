@@ -11,6 +11,9 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
   integrations: [react(), keystatic(), mdx(), sitemap()],
+  image: {
+    domains: ['marienbad.vercel.app', 'marienbad.com'],
+  },
   security: {
     allowedDomains: [
       { hostname: '*.vercel.app', protocol: 'https' },

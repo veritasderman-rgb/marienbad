@@ -12,7 +12,7 @@ const story = slug ? await getStory(slug) : null
 if (!story) return Astro.redirect(`/${locale}/people`)
 ---
 
-<Base locale={locale} section="people" title={`${story.name} — People of Colonnade`} description={story.quote}>
+<Base locale={locale} section="people" title={`${story.name} — People of Colonnade`} description={story.quote} alternateUrls={{ [locale]: Astro.url.pathname }}>
   <PillarPage locale={locale} title={story.name} description={`${story.location} · ${story.visitLabel}`}>
     <blockquote class="text-xl italic text-indigo-700 border-l-4 border-turquoise-400 pl-6 mb-8" lang={story.lang || undefined}>
       {story.quote}

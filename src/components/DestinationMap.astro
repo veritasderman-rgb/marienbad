@@ -19,9 +19,9 @@ const defaultMarkers: Record<string, MarkerData[]> = {
   de: [
     { lat: 49.9647, lng: 12.7012, name: 'Hauptkolonnade', description: 'Die neobarocke Hauptkolonnade — das Wahrzeichen von Marienbad.', url: `/${locale}/unternehmungen`, category: 'culture' },
     { lat: 49.9642, lng: 12.7008, name: 'Singende Fontäne', description: 'Die berühmte Singende Fontäne mit Licht- und Musikshow.', url: `/${locale}/unternehmungen`, category: 'culture' },
-    { lat: 49.9650, lng: 12.7020, name: 'Kreuzquelle', description: 'Křížový pramen — eine der wichtigsten Heilquellen.', url: `/${locale}/mineralquellen-spa`, category: 'springs' },
-    { lat: 49.9660, lng: 12.6990, name: 'Waldquelle', description: 'Lesní pramen — idyllisch im Wald gelegen.', url: `/${locale}/mineralquellen-spa`, category: 'springs' },
-    { lat: 49.9635, lng: 12.7030, name: 'Rudolfquelle', description: 'Rudolfův pramen — bekannt für seine Heilwirkung.', url: `/${locale}/mineralquellen-spa`, category: 'springs' },
+    { lat: 49.9650, lng: 12.7020, name: 'Kreuzquelle', description: 'Křížový pramen — eine der wichtigsten Heilquellen.', url: `/${locale}/mineralquellen`, category: 'springs' },
+    { lat: 49.9660, lng: 12.6990, name: 'Waldquelle', description: 'Lesní pramen — idyllisch im Wald gelegen.', url: `/${locale}/mineralquellen`, category: 'springs' },
+    { lat: 49.9635, lng: 12.7030, name: 'Rudolfquelle', description: 'Rudolfův pramen — bekannt für seine Heilwirkung.', url: `/${locale}/mineralquellen`, category: 'springs' },
     { lat: 49.9655, lng: 12.7025, name: 'Nové Lázně', description: 'Historisches Spa-Hotel mit römischem Bad.', url: `/${locale}/unterkunft`, category: 'hotels' },
     { lat: 49.9750, lng: 12.7100, name: 'Royal Golf Club', description: 'Der älteste Golfclub Tschechiens, gegründet 1905.', url: `/${locale}/unternehmungen`, category: 'nature' },
     { lat: 50.0050, lng: 12.6800, name: 'Naturreservat Kladská', description: 'Hochmoor-Naturschutzgebiet mit Lehrpfad.', url: `/${locale}/unternehmungen`, category: 'nature' },
@@ -29,12 +29,32 @@ const defaultMarkers: Record<string, MarkerData[]> = {
   en: [
     { lat: 49.9647, lng: 12.7012, name: 'Main Colonnade', description: 'The neo-baroque Main Colonnade — Marienbad\'s iconic landmark.', url: `/${locale}/things-to-do`, category: 'culture' },
     { lat: 49.9642, lng: 12.7008, name: 'Singing Fountain', description: 'The famous Singing Fountain with light and music shows.', url: `/${locale}/things-to-do`, category: 'culture' },
-    { lat: 49.9650, lng: 12.7020, name: 'Cross Spring', description: 'Křížový pramen — one of the most important healing springs.', url: `/${locale}/mineral-springs-spa`, category: 'springs' },
-    { lat: 49.9660, lng: 12.6990, name: 'Forest Spring', description: 'Lesní pramen — set in an idyllic forest location.', url: `/${locale}/mineral-springs-spa`, category: 'springs' },
-    { lat: 49.9635, lng: 12.7030, name: 'Rudolf Spring', description: 'Rudolfův pramen — renowned for its healing properties.', url: `/${locale}/mineral-springs-spa`, category: 'springs' },
-    { lat: 49.9655, lng: 12.7025, name: 'Nové Lázně Hotel', description: 'Historic spa hotel featuring a Roman bath.', url: `/${locale}/where-to-stay`, category: 'hotels' },
+    { lat: 49.9650, lng: 12.7020, name: 'Cross Spring', description: 'Křížový pramen — one of the most important healing springs.', url: `/${locale}/mineral-springs`, category: 'springs' },
+    { lat: 49.9660, lng: 12.6990, name: 'Forest Spring', description: 'Lesní pramen — set in an idyllic forest location.', url: `/${locale}/mineral-springs`, category: 'springs' },
+    { lat: 49.9635, lng: 12.7030, name: 'Rudolf Spring', description: 'Rudolfův pramen — renowned for its healing properties.', url: `/${locale}/mineral-springs`, category: 'springs' },
+    { lat: 49.9655, lng: 12.7025, name: 'Nové Lázně Hotel', description: 'Historic spa hotel featuring a Roman bath.', url: `/${locale}/accommodation`, category: 'hotels' },
     { lat: 49.9750, lng: 12.7100, name: 'Royal Golf Club', description: 'The oldest golf club in the Czech Republic, founded 1905.', url: `/${locale}/things-to-do`, category: 'nature' },
     { lat: 50.0050, lng: 12.6800, name: 'Kladská Nature Reserve', description: 'Peat bog nature reserve with an educational trail.', url: `/${locale}/things-to-do`, category: 'nature' },
+  ],
+  cs: [
+    { lat: 49.9647, lng: 12.7012, name: 'Hlavní kolonáda', description: 'Novobarokní Hlavní kolonáda — symbol Mariánských Lázní.', url: `/${locale}/co-delat`, category: 'culture' },
+    { lat: 49.9642, lng: 12.7008, name: 'Zpívající fontána', description: 'Slavná Zpívající fontána se světelnou a hudební show.', url: `/${locale}/co-delat`, category: 'culture' },
+    { lat: 49.9650, lng: 12.7020, name: 'Křížový pramen', description: 'Křížový pramen — jeden z nejdůležitějších léčivých pramenů.', url: `/${locale}/mineralni-prameny`, category: 'springs' },
+    { lat: 49.9660, lng: 12.6990, name: 'Lesní pramen', description: 'Lesní pramen — idylicky umístěný v lese.', url: `/${locale}/mineralni-prameny`, category: 'springs' },
+    { lat: 49.9635, lng: 12.7030, name: 'Rudolfův pramen', description: 'Rudolfův pramen — známý svými léčivými účinky.', url: `/${locale}/mineralni-prameny`, category: 'springs' },
+    { lat: 49.9655, lng: 12.7025, name: 'Nové Lázně', description: 'Historický lázeňský hotel s římskými lázněmi.', url: `/${locale}/ubytovani`, category: 'hotels' },
+    { lat: 49.9750, lng: 12.7100, name: 'Royal Golf Club', description: 'Nejstarší golfový klub v Česku, založený v roce 1905.', url: `/${locale}/co-delat`, category: 'nature' },
+    { lat: 50.0050, lng: 12.6800, name: 'Přírodní rezervace Kladská', description: 'Rašelinná přírodní rezervace s naučnou stezkou.', url: `/${locale}/co-delat`, category: 'nature' },
+  ],
+  ru: [
+    { lat: 49.9647, lng: 12.7012, name: 'Главная колоннада', description: 'Необарочная Главная колоннада — символ Марианских Лазней.', url: `/${locale}/chem-zanyatsya`, category: 'culture' },
+    { lat: 49.9642, lng: 12.7008, name: 'Поющий фонтан', description: 'Знаменитый Поющий фонтан со световым и музыкальным шоу.', url: `/${locale}/chem-zanyatsya`, category: 'culture' },
+    { lat: 49.9650, lng: 12.7020, name: 'Крестовый источник', description: 'Křížový pramen — один из важнейших целебных источников.', url: `/${locale}/mineralnye-istochniki`, category: 'springs' },
+    { lat: 49.9660, lng: 12.6990, name: 'Лесной источник', description: 'Lesní pramen — расположен в живописном лесу.', url: `/${locale}/mineralnye-istochniki`, category: 'springs' },
+    { lat: 49.9635, lng: 12.7030, name: 'Рудольфов источник', description: 'Rudolfův pramen — известен своими целебными свойствами.', url: `/${locale}/mineralnye-istochniki`, category: 'springs' },
+    { lat: 49.9655, lng: 12.7025, name: 'Nové Lázně', description: 'Исторический спа-отель с римскими банями.', url: `/${locale}/razmeshchenie`, category: 'hotels' },
+    { lat: 49.9750, lng: 12.7100, name: 'Royal Golf Club', description: 'Старейший гольф-клуб Чехии, основанный в 1905 году.', url: `/${locale}/chem-zanyatsya`, category: 'nature' },
+    { lat: 50.0050, lng: 12.6800, name: 'Природный заповедник Кладска', description: 'Торфяной природный заповедник с познавательной тропой.', url: `/${locale}/chem-zanyatsya`, category: 'nature' },
   ],
 }
 
@@ -67,7 +87,7 @@ const labels = legendLabels[locale] ?? legendLabels['en']
     <span class="legend-item"><span class="legend-dot" style="background:#9333ea"></span> {labels.culture}</span>
   </div>
 
-  <div id="destination-map" data-markers={JSON.stringify(mapMarkers)}></div>
+  <div id="destination-map" data-markers={JSON.stringify(mapMarkers)} data-locale={locale}></div>
 </section>
 
 <style>
@@ -123,6 +143,15 @@ const labels = legendLabels[locale] ?? legendLabels['en']
     ;(container as any).__leafletReady = true
 
     const markersData = JSON.parse(container.dataset.markers || '[]')
+    const locale = container.dataset.locale || 'en'
+
+    const ctaLabels: Record<string, string> = {
+      de: 'Mehr erfahren',
+      en: 'Learn more',
+      cs: 'Zjistit více',
+      ru: 'Узнать больше',
+    }
+    const ctaText = ctaLabels[locale] || ctaLabels['en']
 
     const categoryColors: Record<string, string> = {
       springs: '#2563eb',
@@ -188,7 +217,7 @@ const labels = legendLabels[locale] ?? legendLabels['en']
             <div style="font-size:14px;line-height:1.4;max-width:200px">
               <strong>${m.name}</strong><br/>
               <span style="color:#555">${m.description}</span><br/>
-              <a href="${m.url}" style="color:#2563eb;text-decoration:underline;font-size:13px">&rarr; ${m.url.includes('/de/') ? 'Mehr erfahren' : 'Learn more'}</a>
+              <a href="${m.url}" style="color:#2563eb;text-decoration:underline;font-size:13px">&rarr; ${ctaText}</a>
             </div>
           `)
       }

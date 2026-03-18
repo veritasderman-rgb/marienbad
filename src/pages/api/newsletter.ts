@@ -2,15 +2,71 @@ import type { APIRoute } from 'astro'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// --- Rate limiting (in-memory) ---
+const rateLimitMap = new Map<string, number[]>()
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
+const RATE_LIMIT_MAX = 3
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const timestamps = rateLimitMap.get(ip) || []
+  // Remove entries outside the window
+  const recent = timestamps.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS)
+  rateLimitMap.set(ip, recent)
+  if (recent.length >= RATE_LIMIT_MAX) return true
+  recent.push(now)
+  rateLimitMap.set(ip, recent)
+  return false
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': new URL(request.url).origin,
   }
 
+  // --- Rate limiting by IP ---
+  const ip =
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+
+  if (isRateLimited(ip)) {
+    return new Response(
+      JSON.stringify({ success: false, error: 'Too many requests. Please try again later.' }),
+      { status: 429, headers },
+    )
+  }
+
   try {
     const body = await request.json()
-    const { email, locale } = body as { email?: string; locale?: string }
+    const { email, locale, website, _ts } = body as {
+      email?: string
+      locale?: string
+      website?: string
+      _ts?: number
+    }
+
+    // --- Honeypot check ---
+    if (website) {
+      // Bot filled the honeypot field — return fake success
+      return new Response(
+        JSON.stringify({ success: true }),
+        { status: 200, headers },
+      )
+    }
+
+    // --- Timing check ---
+    if (_ts) {
+      const elapsed = Date.now() - _ts
+      if (elapsed < 3000) {
+        // Submitted too fast (likely a bot) — return fake success
+        return new Response(
+          JSON.stringify({ success: true }),
+          { status: 200, headers },
+        )
+      }
+    }
 
     if (!email || !EMAIL_RE.test(email)) {
       return new Response(

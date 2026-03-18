@@ -1,0 +1,94 @@
+---
+/**
+ * OptimizedImage — smart image component for Marienbad.com
+ *
+ * Handles three scenarios:
+ * 1. Image with src provided → renders responsive <img> with lazy loading
+ * 2. No image → renders CSS gradient placeholder with optional label
+ * 3. Supports different aspect ratios via the `aspect` prop
+ *
+ * Images stored in public/images/ are served by Vercel's CDN with caching.
+ * Width/height are set to prevent CLS (Cumulative Layout Shift).
+ */
+
+interface Props {
+  src?: string | null
+  alt: string
+  width?: number
+  height?: number
+  class?: string
+  loading?: 'lazy' | 'eager'
+  sizes?: string
+  aspect?: 'hero' | 'card' | 'portrait' | 'square' | 'wide'
+  placeholder?: 'dark' | 'light'
+  placeholderText?: string
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className = '',
+  loading = 'lazy',
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+  aspect = 'card',
+  placeholder = 'dark',
+  placeholderText,
+} = Astro.props
+
+const aspectClasses: Record<string, string> = {
+  hero: 'aspect-[21/9]',
+  card: 'aspect-[16/10]',
+  portrait: 'aspect-[3/4]',
+  square: 'aspect-square',
+  wide: 'aspect-[2/1]',
+}
+
+const defaultDimensions: Record<string, { w: number; h: number }> = {
+  hero: { w: 1920, h: 823 },
+  card: { w: 800, h: 500 },
+  portrait: { w: 600, h: 800 },
+  square: { w: 600, h: 600 },
+  wide: { w: 1200, h: 600 },
+}
+
+const dims = defaultDimensions[aspect] ?? defaultDimensions.card
+const imgWidth = width ?? dims.w
+const imgHeight = height ?? dims.h
+const aspectClass = aspectClasses[aspect] ?? aspectClasses.card
+const placeholderClass = placeholder === 'light' ? 'placeholder-image-light' : 'placeholder-image'
+
+const hasImage = src && src.trim().length > 0
+---
+
+{hasImage ? (
+  <div class:list={['optimized-image-wrapper overflow-hidden', aspectClass, className]}>
+    <img
+      src={src}
+      alt={alt}
+      width={imgWidth}
+      height={imgHeight}
+      loading={loading}
+      decoding="async"
+      sizes={sizes}
+      class="w-full h-full object-cover transition-opacity duration-300"
+    />
+  </div>
+) : (
+  <div class:list={[placeholderClass, aspectClass, className]}>
+    {placeholderText && <span class={placeholder === 'light' ? 'text-beige-600 text-sm' : 'text-white/60 text-sm'}>{placeholderText}</span>}
+  </div>
+)}
+
+<style>
+  .optimized-image-wrapper {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-turquoise) 100%);
+  }
+
+  .optimized-image-wrapper img {
+    position: absolute;
+    inset: 0;
+  }
+</style>

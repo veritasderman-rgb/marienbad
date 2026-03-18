@@ -19,9 +19,11 @@ interface Props {
   ogImage?: string
   locale: Locale
   section?: SectionKey | 'home'
+  /** Explicit locale→URL map for hreflang tags. Overrides automatic generation. Locales not present are skipped. */
+  alternateUrls?: Partial<Record<Locale, string>>
 }
 
-const { locale, section } = Astro.props
+const { locale, section, alternateUrls } = Astro.props
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
 const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
@@ -32,8 +34,15 @@ const canonicalUrl = `${siteUrl}${pathname}`
 const ogImageUrl = Astro.props.ogImage
   ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description.slice(0, 100))}&locale=${locale}`
 
-/** Build hreflang URL for a given locale from current pathname */
-function hreflangUrl(targetLocale: Locale): string {
+/** Build hreflang URL for a given locale from current pathname.
+ *  Returns null if alternateUrls is provided but has no entry for the target locale. */
+function hreflangUrl(targetLocale: Locale): string | null {
+  // If explicit alternate URLs are provided, use them exclusively
+  if (alternateUrls) {
+    const url = alternateUrls[targetLocale]
+    if (!url) return null
+    return `${siteUrl}${url}`
+  }
   // Homepage
   if (!section || section === 'home') {
     return `${siteUrl}/${targetLocale}`
@@ -62,11 +71,11 @@ function hreflangUrl(targetLocale: Locale): string {
     <meta name="robots" content="index, follow" />
 
     <!-- Hreflang -->
-    <link rel="alternate" hreflang="de" href={hreflangUrl('de')} />
-    <link rel="alternate" hreflang="en" href={hreflangUrl('en')} />
-    <link rel="alternate" hreflang="cs" href={hreflangUrl('cs')} />
-    <link rel="alternate" hreflang="ru" href={hreflangUrl('ru')} />
-    <link rel="alternate" hreflang="x-default" href={hreflangUrl('de')} />
+    {hreflangUrl('de') && <link rel="alternate" hreflang="de" href={hreflangUrl('de')} />}
+    {hreflangUrl('en') && <link rel="alternate" hreflang="en" href={hreflangUrl('en')} />}
+    {hreflangUrl('cs') && <link rel="alternate" hreflang="cs" href={hreflangUrl('cs')} />}
+    {hreflangUrl('ru') && <link rel="alternate" hreflang="ru" href={hreflangUrl('ru')} />}
+    {hreflangUrl('de') && <link rel="alternate" hreflang="x-default" href={hreflangUrl('de')} />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
