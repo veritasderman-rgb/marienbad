@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   site: 'https://marienbad.vercel.app',
-  output: 'hybrid',
+  output: 'server',
   adapter: vercel(),
   integrations: [react(), keystatic(), mdx(), sitemap()],
   vite: {
