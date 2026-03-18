@@ -4,23 +4,50 @@
     "subtitle": "UNESCO Welterbe · Seit 1812 · Vier Heilquellen — Das einzige Kurbad der Welt, das alle vier natürlichen Heilressourcen vereint.",
     "ctaText": "Stadt entdecken",
     "ctaHref": "#discover",
-    "badges": ["UNESCO Welterbe", "Seit 1812"]
+    "badges": [
+      "UNESCO Welterbe",
+      "Seit 1812"
+    ]
   },
   "quickFacts": [
-    { "value": "40+", "label": "Mineralquellen" },
-    { "value": "UNESCO", "label": "Welterbe 2021" },
-    { "value": "1812", "label": "Kurtradition" },
-    { "value": "Royal", "label": "Golf Club 1905" }
+    {
+      "value": "40+",
+      "label": "Mineralquellen"
+    },
+    {
+      "value": "UNESCO",
+      "label": "Welterbe 2021"
+    },
+    {
+      "value": "1812",
+      "label": "Kurtradition"
+    },
+    {
+      "value": "Royal",
+      "label": "Golf Club 1905"
+    }
   ],
   "healingElements": {
     "sectionLabel": "Was Marienbad einzigartig macht",
     "title": "Vier natürliche Heilressourcen",
     "description": "Das einzige Kurbad weltweit, das alle vier Elemente der natürlichen Heilung vereint.",
     "items": [
-      { "name": "Wasser", "description": "Über 40 Mineralquellen mit einzigartiger Zusammensetzung — von Trinkkuren bis zu heilenden Bädern." },
-      { "name": "Erde", "description": "Natürliche Torfpeloide mit entzündungshemmenden und schmerzlindernden Eigenschaften." },
-      { "name": "Gas", "description": "99,7% reines CO₂ — „Marias Gas“ — verbessert die periphere Durchblutung nachweislich." },
-      { "name": "Klima", "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen." }
+      {
+        "name": "Wasser",
+        "description": "Über 40 Mineralquellen mit einzigartiger Zusammensetzung — von Trinkkuren bis zu heilenden Bädern."
+      },
+      {
+        "name": "Erde",
+        "description": "Natürliche Torfpeloide mit entzündungshemmenden und schmerzlindernden Eigenschaften."
+      },
+      {
+        "name": "Gas",
+        "description": "99,7% reines CO₂ — „Marias Gas“ — verbessert die periphere Durchblutung nachweislich."
+      },
+      {
+        "name": "Klima",
+        "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen."
+      }
     ]
   },
   "discover": {
@@ -32,23 +59,30 @@
     "sectionLabel": "Unterkünfte",
     "title": "Wo übernachten in Marienbad",
     "description": "Von historischen 5-Sterne-Spa-Hotels bis zu charmanten Pensionen.",
-    "allHotelsLabel": "Alle 6 Hotels entdecken →",
+    "allHotelsLabel": "Alle 7 Hotels entdecken →",
     "items": [
       {
         "name": "Nové Lázně",
         "stars": 5,
         "badge": "Editor's Pick",
         "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
-        "tags": ["Römisches Bad", "CO₂ Therapie", "Pool"],
+        "tags": [
+          "Römisches Bad",
+          "CO₂ Therapie",
+          "Pool"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
       },
       {
         "name": "Centrální Lázně",
         "stars": 4,
-        "badge": "",
         "description": "Direkt an der Kolonnade — traditionelle Kur in zentraler Lage mit modernen Behandlungsräumen.",
-        "tags": ["Kolonnade-Lage", "Trinkkur", "Wellness"],
+        "tags": [
+          "Kolonnade-Lage",
+          "Trinkkur",
+          "Wellness"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
       }
