@@ -3,12 +3,18 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
 
 const locale = 'en' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Healing Springs', href: `/${locale}/mineral-springs` },
+  { label: 'Climate Therapy' },
+]
 ---
 
 <Base locale={locale} section="mineral-springs" title="Climate Therapy — Marienbad's Healing Microclimate — Marienbad.com" description="Climate therapy in Marienbad: how the unique microclimate at 630m elevation with forest air and low allergens helps respiratory conditions.">
-  <PillarPage locale={locale} title="Climate Therapy: Marienbad's Healing Microclimate" description="Marienbad's unique microclimate at 630m elevation, with forest-rich air and low allergen levels, provides the foundation for effective climate therapy.">
+  <PillarPage locale={locale} title="Climate Therapy: Marienbad's Healing Microclimate" description="Marienbad's unique microclimate at 630m elevation, with forest-rich air and low allergen levels, provides the foundation for effective climate therapy." breadcrumbs={breadcrumbs}>
     <h2>Marienbad's Unique Microclimate</h2>
     <p>Mariánské Lázně (Marienbad) lies nestled in a sheltered valley basin at <strong>630 metres elevation</strong>, surrounded by the dense forests of the Slavkov Forest (Kaiserwald). This exceptional geographical setting creates a <strong>unique microclimate</strong> that has been recognised as a healing resource in its own right since the 19th century, forming alongside the mineral springs, natural CO₂ gas and therapeutic peat the fourth natural healing resource of Marienbad.</p>
 
