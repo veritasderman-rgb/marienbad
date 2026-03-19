@@ -310,6 +310,114 @@
 
 ---
 
+## FÁZE 10 — OBSAHOVÝ PLÁN (SEO ČLÁNKY)
+
+### 10.0 CMS infrastruktura
+
+| # | Úkol | Stav |
+|---|------|------|
+| 10.0.1 | Keystatic: rozšířené kategorie (healing, springs, activities, planning, comparison, wellness) | ✅ |
+| 10.0.2 | Keystatic: SEO pole (primaryKeyword, secondaryKeywords, metaDescription, relatedEnsanaLink) | ✅ |
+| 10.0.3 | Keystatic: articleType pole (pillar, cluster, guide, comparison, faq) | ✅ |
+| 10.0.4 | Cover image zobrazení na article detail stránkách (DE/EN/CS/RU) | ✅ |
+
+### 10.1 KLASTR A — Léčba a zdravotní indikace
+
+Každý článek existuje ve 4 jazykových verzích: CS, DE, EN, RU.
+
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| A1 | Lázeňská léčba — kompletní průvodce | Pillar | ❌ | ❌ | ❌ | ❌ |
+| A2 | Plynové injekce CO2 — unikátní léčba | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A3 | Pitná kúra — průvodce prameny | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A4 | Rehabilitace po covidu v lázních | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A6 | Léčba ledvin a močových cest | Cluster | ❌ | ❌ | ❌ | ❌ |
+
+### 10.2 KLASTR B — Lázeňský pobyt (praktické info)
+
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| B1 | Jak získat lázeňský poukaz od lékaře (2026) | Guide | ❌ | ❌ | ❌ | ❌ |
+| B2 | Kolik stojí týden v lázních — cenový průvodce 2026 | Guide | ❌ | ❌ | ❌ | ❌ |
+
+### 10.3 KLASTR C — Destinace a kultura
+
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| C1 | Mariánské Lázně — kompletní průvodce UNESCO městem | Pillar | ❌ | ❌ | ❌ | ❌ |
+| C2 | Mariánské Lázně vs. Karlovy Vary — který kurort? | Comparison | ❌ | ❌ | ❌ | ❌ |
+| C3 | Zpívající fontána — program, historie, info | Guide | ❌ | ❌ | ❌ | ❌ |
+
+### 10.4 KLASTR D — Wellness a relaxace
+
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| D1 | Wellness víkend pro dva v Mariánských Lázních | Guide | ❌ | ❌ | ❌ | ❌ |
+| D2 | Burnout prevence — proč lázeňský pobyt pomáhá | Cluster | ❌ | ❌ | ❌ | ❌ |
+| D3 | Lázeňský pobyt pro seniory — kompletní průvodce | Guide | ❌ | ❌ | ❌ | ❌ |
+
+### 10.5 Publikační vlny
+
+Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
+
+**Vlna 1 (duben–květen 2026) — Nejvyšší priorita**
+
+| # | Článek | Důvod priority |
+|---|--------|----------------|
+| A1 | Lázeňská léčba — kompletní průvodce (×4 jazyky) | Hlavní pillar pro organic traffic |
+| C2 | ML vs. Karlovy Vary (×4 jazyky) | Vysoký search volume ve všech jazycích |
+| B1 | Lázeňský poukaz od lékaře (×4 jazyky) | Vysoký intent — konverzní |
+| B2 | Cenový průvodce lázně (×4 jazyky) | Konverzní — srovnání s DE/AT/CH cenami |
+
+**Vlna 2 (červen–červenec 2026)**
+
+| # | Článek |
+|---|--------|
+| A3 | Pitná kúra — průvodce prameny (×4) |
+| A2 | Plynové injekce CO2 (×4) |
+| D1 | Wellness víkend pro dva (×4) |
+| C1 | Kompletní průvodce UNESCO městem (×4) |
+
+**Vlna 3 (srpen–září 2026)**
+
+| # | Článek |
+|---|--------|
+| A4 | Post-covid rehabilitace (×4) |
+| D2 | Burnout prevence (×4) |
+| D3 | Lázeňský pobyt pro seniory (×4) |
+| C3 | Zpívající fontána (×4) |
+
+**Vlna 4 (říjen+ 2026)**
+
+| # | Článek |
+|---|--------|
+| A5 | Pohybový aparát (×4) |
+| A6 | Ledviny a močové cesty (×4) |
+
+### 10.6 SEO pravidla pro články
+
+- **Poměr obsahu:** 70% nezávislý destinační obsah / 30% přirozené napojení na Ensana
+- **Primary keyword:** v H1, prvním odstavci, alespoň jednom H2, meta description, URL slug
+- **Interní odkazy:** min. 3 na jiné stránky marienbad.com
+- **Ensana odkazy:** 1–2 kontextové (nikdy reklamní), formou "Pitná kúra z Lesního pramene je dostupná přímo v lobby Centrálních Lázní"
+- **Zakázáno:** "Rezervujte si!", "Neváhejte!", urgency marketing, prodejní fráze
+- **Tón:** zkušený lokální průvodce — důvěryhodný, vřelý, bez klišé
+- **Délky:** Pillar 2000-3000 slov, Cluster 1200-1800, Guide 1500-2500, Comparison 1500-2000, FAQ 800-1200
+- **Každý článek:** vždy ve všech 4 jazycích (CS, DE, EN, RU) — ne překlad, ale lokalizace s relevantními reáliemi (DE verze: vzdálenosti z DE měst, Krankenkasse; CS: pojišťovna, poukaz; EN: international traveler perspective; RU: vizum, doprava z RU/BY)
+
+### 10.7 Statistiky obsahového plánu
+
+| Klastr | Články | × 4 jazyky = verze |
+|--------|--------|---------------------|
+| A — Léčba | 6 | 24 |
+| B — Praktické | 2 | 8 |
+| C — Destinace | 3 | 12 |
+| D — Wellness | 3 | 12 |
+| **CELKEM** | **14 článků** | **56 jazykových verzí** |
+
+---
+
 ## SOUHRNNÉ STATISTIKY
 
 | Kategorie | ✅ | ⚠️ | ❌ |
@@ -324,13 +432,34 @@
 | SEO (Fáze 7) | 13 | 0 | 2 |
 | Interaktivní (Fáze 8) | 5 | 1 | 1 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
-| **CELKEM** | **122** | **7** | **15** |
+| Obsahový plán (Fáze 10) | 4 | 0 | 56 |
+| **CELKEM** | **126** | **7** | **71** |
 
-**Celkový pokrok: ~85% hotovo (122/144 — updated 18.3.2026)**
+**Celkový pokrok: ~62% hotovo (126/204 — updated 19.3.2026)**
 
 ---
 
 ## CHANGELOG
+
+### 19. 3. 2026 — Session 4 (branch claude/plan-work-tasks-z9aPo)
+
+#### UX opravy
+- ✅ Header: poloprůhledné pozadí hned od načtení (ne jen po scrollu) — jazyk lze přepnout okamžitě
+- ✅ Quick Facts: unikátní SVG ikony (pramen, UNESCO chrám, termální lázeň, golf)
+- ✅ People of Colonnade: bg-beige-950 → bg-aubergine-900 (brandová barva)
+- ✅ Booking URLs: locale-aware ensanahotels.com/{locale}/destinace/... s UTM
+
+#### CMS rozšíření
+- ✅ Keystatic: nové kategorie (healing, springs, activities, planning, comparison, wellness)
+- ✅ Keystatic: SEO pole (primaryKeyword, secondaryKeywords, metaDescription, relatedEnsanaLink)
+- ✅ Keystatic: articleType (pillar/cluster/guide/comparison/faq)
+- ✅ Cover image zobrazení na article detail stránkách (všechny 4 locale)
+
+#### Obsahový plán
+- ✅ Fáze 10 přidána: 14 článků × 4 jazyky = 56 jazykových verzí, 4 publikační vlny
+- ✅ 4 klastry: A (Léčba, 6 článků), B (Praktické, 2), C (Destinace, 3), D (Wellness, 3)
+- ✅ Každý článek vždy ve všech 4 jazycích (CS, DE, EN, RU) — lokalizace, ne překlad
+- ✅ Sloučeny původní klastry E (DACH) a F (EN) do hlavních klastrů — obsah D2 (Burnout) a D3 (Seniory) přesunut z E4/E5
 
 ### 18. 3. 2026 — Session 3 (branch claude/plan-work-tasks-z9aPo)
 
