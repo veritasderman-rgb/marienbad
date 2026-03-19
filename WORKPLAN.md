@@ -310,6 +310,133 @@
 
 ---
 
+## FÁZE 10 — OBSAHOVÝ PLÁN (SEO ČLÁNKY)
+
+### 10.0 CMS infrastruktura
+
+| # | Úkol | Stav |
+|---|------|------|
+| 10.0.1 | Keystatic: rozšířené kategorie (healing, springs, activities, planning, comparison, wellness) | ✅ |
+| 10.0.2 | Keystatic: SEO pole (primaryKeyword, secondaryKeywords, metaDescription, relatedEnsanaLink) | ✅ |
+| 10.0.3 | Keystatic: articleType pole (pillar, cluster, guide, comparison, faq) | ✅ |
+| 10.0.4 | Cover image zobrazení na article detail stránkách (DE/EN/CS/RU) | ✅ |
+
+### 10.1 KLASTR A — Léčba a zdravotní indikace
+
+| # | Článek | Typ | Jazyky | Stav |
+|---|--------|-----|--------|------|
+| A1 | Lázeňská léčba v Mariánských Lázních — kompletní průvodce | Pillar | CS, DE, EN, RU | ❌ |
+| A2 | Plynové injekce CO2 — unikátní mariánskolázeňská léčba | Cluster | CS, DE, EN, RU | ❌ |
+| A3 | Pitná kúra v Mariánských Lázních — průvodce prameny | Cluster | CS, DE, EN, RU | ❌ |
+| A4 | Rehabilitace po covidu v lázních | Cluster | CS, DE, EN, RU | ❌ |
+| A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | CS, DE, EN, RU | ❌ |
+| A6 | Léčba ledvin a močových cest | Cluster | CS, DE, EN, RU | ❌ |
+
+### 10.2 KLASTR B — Lázeňský pobyt (praktické info)
+
+| # | Článek | Typ | Jazyky | Stav |
+|---|--------|-----|--------|------|
+| B1 | Jak získat lázeňský poukaz od lékaře (2026) | Guide | CS | ❌ |
+| B2 | Kolik stojí týden v lázních — cenový průvodce 2026 | Guide | CS, DE, EN | ❌ |
+
+### 10.3 KLASTR C — Destinace a kultura
+
+| # | Článek | Typ | Jazyky | Stav |
+|---|--------|-----|--------|------|
+| C1 | Mariánské Lázně — kompletní průvodce UNESCO lázeňským městem | Pillar | CS, DE, EN, RU | ❌ |
+| C2 | Mariánské Lázně vs. Karlovy Vary — který kurort vybrat? | Comparison | CS, DE, EN | ❌ |
+| C3 | Zpívající fontána — program, historie, praktické informace | Guide | CS, DE, EN | ❌ |
+
+### 10.4 KLASTR D — Wellness a relaxace
+
+| # | Článek | Typ | Jazyky | Stav |
+|---|--------|-----|--------|------|
+| D1 | Wellness víkend pro dva v Mariánských Lázních | Guide | CS, DE, EN, RU | ❌ |
+
+### 10.5 KLASTR E — Německy psaný obsah (DACH priorita)
+
+| # | Článek | Typ | Jazyk | Stav |
+|---|--------|-----|-------|------|
+| E1 | Kur in Marienbad — Ihr kompletter Ratgeber | Pillar | DE | ❌ |
+| E2 | Marienbad oder Karlsbad — welcher Kurort passt zu Ihnen? | Comparison | DE | ❌ |
+| E3 | Wieviel kostet eine Kur in Marienbad? | Guide | DE | ❌ |
+| E4 | Burnout Prävention — warum ein Kuraufenthalt helfen kann | Cluster | DE | ❌ |
+| E5 | Kurreise für Senioren nach Marienbad | Guide | DE | ❌ |
+
+### 10.6 KLASTR F — Anglicky psaný obsah
+
+| # | Článek | Typ | Jazyk | Stav |
+|---|--------|-----|-------|------|
+| F1 | Marienbad Spa Guide — Everything You Need to Know | Pillar | EN | ❌ |
+| F2 | Marienbad vs Karlovy Vary — Which Czech Spa Town? | Comparison | EN | ❌ |
+| F3 | How Much Does a Spa Week Cost in Marienbad? | Guide | EN | ❌ |
+
+### 10.7 Publikační vlny
+
+**Vlna 1 (duben–květen 2026) — Nejvyšší priorita**
+
+| # | Článek | Priorita |
+|---|--------|----------|
+| E1 | Kur in Marienbad (DE pillar) | DACH trh je #1 |
+| A1 | Lázeňská léčba (CS pillar) | CZ organika |
+| E2 | Marienbad oder Karlsbad (DE comparison) | Vysoký search volume |
+| B1 | Lázeňský poukaz od lékaře (CS guide) | Vysoký intent |
+| E3 | Wieviel kostet eine Kur (DE price guide) | Konverzní |
+
+**Vlna 2 (červen–červenec 2026)**
+
+| # | Článek |
+|---|--------|
+| A3 | Pitná kúra průvodce prameny (CS) |
+| C2 | ML vs. KV srovnání (CS) |
+| A2 | Plynové injekce CO2 (CS) |
+| F1 | Marienbad Spa Guide (EN pillar) |
+| D1 | Wellness víkend pro dva (CS) |
+
+**Vlna 3 (srpen–září 2026)**
+
+| # | Článek |
+|---|--------|
+| C1 | Kompletní průvodce městem (CS) |
+| A4 | Post-covid rehabilitace (CS) |
+| E4 | Burnout Prävention (DE) |
+| E5 | Kurreise für Senioren (DE) |
+| F2 | Marienbad vs KV (EN comparison) |
+
+**Vlna 4 (říjen+ 2026)**
+
+| # | Článek |
+|---|--------|
+| A5 | Pohybový aparát (CS) |
+| A6 | Ledviny a močové cesty (CS) |
+| B2 | Cenový průvodce (CS + DE + EN) |
+| F3 | How much does a spa week cost (EN) |
+| C3 | Zpívající fontána (CS + DE + EN) |
+
+### 10.8 SEO pravidla pro články
+
+- **Poměr obsahu:** 70% nezávislý destinační obsah / 30% přirozené napojení na Ensana
+- **Primary keyword:** v H1, prvním odstavci, alespoň jednom H2, meta description, URL slug
+- **Interní odkazy:** min. 3 na jiné stránky marienbad.com
+- **Ensana odkazy:** 1–2 kontextové (nikdy reklamní), formou "Pitná kúra z Lesního pramene je dostupná přímo v lobby Centrálních Lázní"
+- **Zakázáno:** "Rezervujte si!", "Neváhejte!", urgency marketing, prodejní fráze
+- **Tón:** zkušený lokální průvodce — důvěryhodný, vřelý, bez klišé
+- **Délky:** Pillar 2000-3000 slov, Cluster 1200-1800, Guide 1500-2500, Comparison 1500-2000, FAQ 800-1200
+
+### 10.9 Statistiky obsahového plánu
+
+| Klastr | Články | Jazykové verze celkem |
+|--------|--------|----------------------|
+| A — Léčba | 6 | 24 |
+| B — Praktické | 2 | 4 |
+| C — Destinace | 3 | 10 |
+| D — Wellness | 1 | 4 |
+| E — DACH (DE) | 5 | 5 |
+| F — EN | 3 | 3 |
+| **CELKEM** | **20 článků** | **50 jazykových verzí** |
+
+---
+
 ## SOUHRNNÉ STATISTIKY
 
 | Kategorie | ✅ | ⚠️ | ❌ |
@@ -324,13 +451,32 @@
 | SEO (Fáze 7) | 13 | 0 | 2 |
 | Interaktivní (Fáze 8) | 5 | 1 | 1 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
-| **CELKEM** | **122** | **7** | **15** |
+| Obsahový plán (Fáze 10) | 4 | 0 | 50 |
+| **CELKEM** | **126** | **7** | **65** |
 
-**Celkový pokrok: ~85% hotovo (122/144 — updated 18.3.2026)**
+**Celkový pokrok: ~64% hotovo (126/198 — updated 19.3.2026)**
 
 ---
 
 ## CHANGELOG
+
+### 19. 3. 2026 — Session 4 (branch claude/plan-work-tasks-z9aPo)
+
+#### UX opravy
+- ✅ Header: poloprůhledné pozadí hned od načtení (ne jen po scrollu) — jazyk lze přepnout okamžitě
+- ✅ Quick Facts: unikátní SVG ikony (pramen, UNESCO chrám, termální lázeň, golf)
+- ✅ People of Colonnade: bg-beige-950 → bg-aubergine-900 (brandová barva)
+- ✅ Booking URLs: locale-aware ensanahotels.com/{locale}/destinace/... s UTM
+
+#### CMS rozšíření
+- ✅ Keystatic: nové kategorie (healing, springs, activities, planning, comparison, wellness)
+- ✅ Keystatic: SEO pole (primaryKeyword, secondaryKeywords, metaDescription, relatedEnsanaLink)
+- ✅ Keystatic: articleType (pillar/cluster/guide/comparison/faq)
+- ✅ Cover image zobrazení na article detail stránkách (všechny 4 locale)
+
+#### Obsahový plán
+- ✅ Fáze 10 přidána: 20 článků v 50 jazykových verzích, 4 publikační vlny
+- ✅ 6 klastrů: A (Léčba), B (Praktické), C (Destinace), D (Wellness), E (DACH/DE), F (EN)
 
 ### 18. 3. 2026 — Session 3 (branch claude/plan-work-tasks-z9aPo)
 

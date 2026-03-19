@@ -131,8 +131,11 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
 </header>
 
 <style>
-  /* Header scroll states — driven by .scrolled and .header-hidden classes */
+  /* Header — always has a visible background for readability */
   #site-header {
+    background-color: rgba(0, 79, 113, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
   }
   #site-header.scrolled {
