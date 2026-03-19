@@ -28,8 +28,8 @@ const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health S
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
       <!-- Col 1: About + wordmark + social -->
       <div class="lg:col-span-1">
-        <a href={`/${locale}`} class="inline-block mb-4">
-          <span class="font-heading text-2xl font-bold tracking-tight">marienbad</span>
+        <a href={`/${locale}`} class="inline-block mb-4" aria-label="Marienbad.com — Mariánské Lázně">
+          <img src="/images/logo-header-light.svg" alt="Marienbad" class="h-8 w-auto" />
         </a>
         <p class="text-beige-600 text-sm leading-relaxed mb-6">
           {t(locale, 'footer.aboutText')}

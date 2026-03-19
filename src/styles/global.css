@@ -235,25 +235,26 @@ h1, h2, h3, h4, h5, h6 {
 /* ─── Prose overrides for pillar pages ─── */
 .prose-marienbad h2 {
   font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 2.5vw, 2.25rem); /* 28–36px */
+  font-size: clamp(1.625rem, 2.5vw, 1.75rem); /* 26–28px per spec */
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--color-indigo-dark);
   border-bottom: 2px solid var(--color-turquoise-muted);
   padding-bottom: 0.5rem;
   margin-top: 3rem;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0;
 }
 .prose-marienbad h3 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2vw, 1.5rem); /* 20–24px */
-  line-height: 1.3;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 0.8125rem; /* 13px per spec */
+  line-height: 1.4;
+  font-weight: 500;
   color: var(--color-indigo);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
 }
 .prose-marienbad h4 {
   font-family: var(--font-heading);
@@ -266,9 +267,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .prose-marienbad p {
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.8;
   margin-bottom: 1rem;
-  max-width: 42rem;
+  max-width: 40rem;
 }
 .prose-marienbad strong {
   font-weight: 600;
@@ -309,7 +310,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .prose-marienbad li {
   margin-bottom: 0.35rem;
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 1rem;
 }
 .prose-marienbad > :first-child {

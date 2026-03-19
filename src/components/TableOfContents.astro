@@ -1,9 +1,10 @@
 ---
 interface Props {
   headings?: Array<{ text: string; slug: string; depth: number }>
+  label?: string
 }
 
-const { headings = [] } = Astro.props
+const { headings = [], label = 'Inhalt' } = Astro.props
 ---
 
 <nav
@@ -11,25 +12,25 @@ const { headings = [] } = Astro.props
   class="hidden lg:block sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto"
   aria-label="Table of Contents"
 >
-  <div class="border-l-2 border-gray-200 pl-4">
-    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
-      Inhalt
-    </p>
-    <ul id="toc-list" class="space-y-1 text-sm">
-      {headings.map((h) => (
-        <li>
-          <a
-            href={`#${h.slug}`}
-            class:list={[
-              'toc-link block py-1 transition-colors duration-200 hover:text-indigo-600',
-              h.depth === 3 ? 'pl-4 text-xs text-gray-400' : 'text-gray-500',
-            ]}
-            data-slug={h.slug}
-          >
-            {h.text}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
+  <p class="text-[10px] font-medium uppercase tracking-[0.15em] text-gray-400 mb-3">
+    {label}
+  </p>
+  <ul id="toc-list" class="space-y-0.5 text-[13px]">
+    {headings.map((h) => (
+      <li>
+        <a
+          href={`#${h.slug}`}
+          class:list={[
+            'toc-link block py-1.5 transition-colors duration-200 hover:text-indigo-600',
+            h.depth === 3
+              ? 'toc-sub pl-6 text-xs text-gray-400'
+              : 'toc-item border-l border-gray-200 pl-3 text-gray-500',
+          ]}
+          data-slug={h.slug}
+        >
+          {h.text}
+        </a>
+      </li>
+    ))}
+  </ul>
 </nav>
