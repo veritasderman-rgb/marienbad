@@ -323,97 +323,79 @@
 
 ### 10.1 KLASTR A — Léčba a zdravotní indikace
 
-| # | Článek | Typ | Jazyky | Stav |
-|---|--------|-----|--------|------|
-| A1 | Lázeňská léčba v Mariánských Lázních — kompletní průvodce | Pillar | CS, DE, EN, RU | ❌ |
-| A2 | Plynové injekce CO2 — unikátní mariánskolázeňská léčba | Cluster | CS, DE, EN, RU | ❌ |
-| A3 | Pitná kúra v Mariánských Lázních — průvodce prameny | Cluster | CS, DE, EN, RU | ❌ |
-| A4 | Rehabilitace po covidu v lázních | Cluster | CS, DE, EN, RU | ❌ |
-| A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | CS, DE, EN, RU | ❌ |
-| A6 | Léčba ledvin a močových cest | Cluster | CS, DE, EN, RU | ❌ |
+Každý článek existuje ve 4 jazykových verzích: CS, DE, EN, RU.
+
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| A1 | Lázeňská léčba — kompletní průvodce | Pillar | ❌ | ❌ | ❌ | ❌ |
+| A2 | Plynové injekce CO2 — unikátní léčba | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A3 | Pitná kúra — průvodce prameny | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A4 | Rehabilitace po covidu v lázních | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A6 | Léčba ledvin a močových cest | Cluster | ❌ | ❌ | ❌ | ❌ |
 
 ### 10.2 KLASTR B — Lázeňský pobyt (praktické info)
 
-| # | Článek | Typ | Jazyky | Stav |
-|---|--------|-----|--------|------|
-| B1 | Jak získat lázeňský poukaz od lékaře (2026) | Guide | CS | ❌ |
-| B2 | Kolik stojí týden v lázních — cenový průvodce 2026 | Guide | CS, DE, EN | ❌ |
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| B1 | Jak získat lázeňský poukaz od lékaře (2026) | Guide | ❌ | ❌ | ❌ | ❌ |
+| B2 | Kolik stojí týden v lázních — cenový průvodce 2026 | Guide | ❌ | ❌ | ❌ | ❌ |
 
 ### 10.3 KLASTR C — Destinace a kultura
 
-| # | Článek | Typ | Jazyky | Stav |
-|---|--------|-----|--------|------|
-| C1 | Mariánské Lázně — kompletní průvodce UNESCO lázeňským městem | Pillar | CS, DE, EN, RU | ❌ |
-| C2 | Mariánské Lázně vs. Karlovy Vary — který kurort vybrat? | Comparison | CS, DE, EN | ❌ |
-| C3 | Zpívající fontána — program, historie, praktické informace | Guide | CS, DE, EN | ❌ |
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| C1 | Mariánské Lázně — kompletní průvodce UNESCO městem | Pillar | ❌ | ❌ | ❌ | ❌ |
+| C2 | Mariánské Lázně vs. Karlovy Vary — který kurort? | Comparison | ❌ | ❌ | ❌ | ❌ |
+| C3 | Zpívající fontána — program, historie, info | Guide | ❌ | ❌ | ❌ | ❌ |
 
 ### 10.4 KLASTR D — Wellness a relaxace
 
-| # | Článek | Typ | Jazyky | Stav |
-|---|--------|-----|--------|------|
-| D1 | Wellness víkend pro dva v Mariánských Lázních | Guide | CS, DE, EN, RU | ❌ |
+| # | Článek | Typ | CS | DE | EN | RU |
+|---|--------|-----|----|----|----|----|
+| D1 | Wellness víkend pro dva v Mariánských Lázních | Guide | ❌ | ❌ | ❌ | ❌ |
+| D2 | Burnout prevence — proč lázeňský pobyt pomáhá | Cluster | ❌ | ❌ | ❌ | ❌ |
+| D3 | Lázeňský pobyt pro seniory — kompletní průvodce | Guide | ❌ | ❌ | ❌ | ❌ |
 
-### 10.5 KLASTR E — Německy psaný obsah (DACH priorita)
+### 10.5 Publikační vlny
 
-| # | Článek | Typ | Jazyk | Stav |
-|---|--------|-----|-------|------|
-| E1 | Kur in Marienbad — Ihr kompletter Ratgeber | Pillar | DE | ❌ |
-| E2 | Marienbad oder Karlsbad — welcher Kurort passt zu Ihnen? | Comparison | DE | ❌ |
-| E3 | Wieviel kostet eine Kur in Marienbad? | Guide | DE | ❌ |
-| E4 | Burnout Prävention — warum ein Kuraufenthalt helfen kann | Cluster | DE | ❌ |
-| E5 | Kurreise für Senioren nach Marienbad | Guide | DE | ❌ |
-
-### 10.6 KLASTR F — Anglicky psaný obsah
-
-| # | Článek | Typ | Jazyk | Stav |
-|---|--------|-----|-------|------|
-| F1 | Marienbad Spa Guide — Everything You Need to Know | Pillar | EN | ❌ |
-| F2 | Marienbad vs Karlovy Vary — Which Czech Spa Town? | Comparison | EN | ❌ |
-| F3 | How Much Does a Spa Week Cost in Marienbad? | Guide | EN | ❌ |
-
-### 10.7 Publikační vlny
+Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 
 **Vlna 1 (duben–květen 2026) — Nejvyšší priorita**
 
-| # | Článek | Priorita |
-|---|--------|----------|
-| E1 | Kur in Marienbad (DE pillar) | DACH trh je #1 |
-| A1 | Lázeňská léčba (CS pillar) | CZ organika |
-| E2 | Marienbad oder Karlsbad (DE comparison) | Vysoký search volume |
-| B1 | Lázeňský poukaz od lékaře (CS guide) | Vysoký intent |
-| E3 | Wieviel kostet eine Kur (DE price guide) | Konverzní |
+| # | Článek | Důvod priority |
+|---|--------|----------------|
+| A1 | Lázeňská léčba — kompletní průvodce (×4 jazyky) | Hlavní pillar pro organic traffic |
+| C2 | ML vs. Karlovy Vary (×4 jazyky) | Vysoký search volume ve všech jazycích |
+| B1 | Lázeňský poukaz od lékaře (×4 jazyky) | Vysoký intent — konverzní |
+| B2 | Cenový průvodce lázně (×4 jazyky) | Konverzní — srovnání s DE/AT/CH cenami |
 
 **Vlna 2 (červen–červenec 2026)**
 
 | # | Článek |
 |---|--------|
-| A3 | Pitná kúra průvodce prameny (CS) |
-| C2 | ML vs. KV srovnání (CS) |
-| A2 | Plynové injekce CO2 (CS) |
-| F1 | Marienbad Spa Guide (EN pillar) |
-| D1 | Wellness víkend pro dva (CS) |
+| A3 | Pitná kúra — průvodce prameny (×4) |
+| A2 | Plynové injekce CO2 (×4) |
+| D1 | Wellness víkend pro dva (×4) |
+| C1 | Kompletní průvodce UNESCO městem (×4) |
 
 **Vlna 3 (srpen–září 2026)**
 
 | # | Článek |
 |---|--------|
-| C1 | Kompletní průvodce městem (CS) |
-| A4 | Post-covid rehabilitace (CS) |
-| E4 | Burnout Prävention (DE) |
-| E5 | Kurreise für Senioren (DE) |
-| F2 | Marienbad vs KV (EN comparison) |
+| A4 | Post-covid rehabilitace (×4) |
+| D2 | Burnout prevence (×4) |
+| D3 | Lázeňský pobyt pro seniory (×4) |
+| C3 | Zpívající fontána (×4) |
 
 **Vlna 4 (říjen+ 2026)**
 
 | # | Článek |
 |---|--------|
-| A5 | Pohybový aparát (CS) |
-| A6 | Ledviny a močové cesty (CS) |
-| B2 | Cenový průvodce (CS + DE + EN) |
-| F3 | How much does a spa week cost (EN) |
-| C3 | Zpívající fontána (CS + DE + EN) |
+| A5 | Pohybový aparát (×4) |
+| A6 | Ledviny a močové cesty (×4) |
 
-### 10.8 SEO pravidla pro články
+### 10.6 SEO pravidla pro články
 
 - **Poměr obsahu:** 70% nezávislý destinační obsah / 30% přirozené napojení na Ensana
 - **Primary keyword:** v H1, prvním odstavci, alespoň jednom H2, meta description, URL slug
@@ -422,18 +404,17 @@
 - **Zakázáno:** "Rezervujte si!", "Neváhejte!", urgency marketing, prodejní fráze
 - **Tón:** zkušený lokální průvodce — důvěryhodný, vřelý, bez klišé
 - **Délky:** Pillar 2000-3000 slov, Cluster 1200-1800, Guide 1500-2500, Comparison 1500-2000, FAQ 800-1200
+- **Každý článek:** vždy ve všech 4 jazycích (CS, DE, EN, RU) — ne překlad, ale lokalizace s relevantními reáliemi (DE verze: vzdálenosti z DE měst, Krankenkasse; CS: pojišťovna, poukaz; EN: international traveler perspective; RU: vizum, doprava z RU/BY)
 
-### 10.9 Statistiky obsahového plánu
+### 10.7 Statistiky obsahového plánu
 
-| Klastr | Články | Jazykové verze celkem |
-|--------|--------|----------------------|
+| Klastr | Články | × 4 jazyky = verze |
+|--------|--------|---------------------|
 | A — Léčba | 6 | 24 |
-| B — Praktické | 2 | 4 |
-| C — Destinace | 3 | 10 |
-| D — Wellness | 1 | 4 |
-| E — DACH (DE) | 5 | 5 |
-| F — EN | 3 | 3 |
-| **CELKEM** | **20 článků** | **50 jazykových verzí** |
+| B — Praktické | 2 | 8 |
+| C — Destinace | 3 | 12 |
+| D — Wellness | 3 | 12 |
+| **CELKEM** | **14 článků** | **56 jazykových verzí** |
 
 ---
 
@@ -451,10 +432,10 @@
 | SEO (Fáze 7) | 13 | 0 | 2 |
 | Interaktivní (Fáze 8) | 5 | 1 | 1 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
-| Obsahový plán (Fáze 10) | 4 | 0 | 50 |
-| **CELKEM** | **126** | **7** | **65** |
+| Obsahový plán (Fáze 10) | 4 | 0 | 56 |
+| **CELKEM** | **126** | **7** | **71** |
 
-**Celkový pokrok: ~64% hotovo (126/198 — updated 19.3.2026)**
+**Celkový pokrok: ~62% hotovo (126/204 — updated 19.3.2026)**
 
 ---
 
@@ -475,8 +456,10 @@
 - ✅ Cover image zobrazení na article detail stránkách (všechny 4 locale)
 
 #### Obsahový plán
-- ✅ Fáze 10 přidána: 20 článků v 50 jazykových verzích, 4 publikační vlny
-- ✅ 6 klastrů: A (Léčba), B (Praktické), C (Destinace), D (Wellness), E (DACH/DE), F (EN)
+- ✅ Fáze 10 přidána: 14 článků × 4 jazyky = 56 jazykových verzí, 4 publikační vlny
+- ✅ 4 klastry: A (Léčba, 6 článků), B (Praktické, 2), C (Destinace, 3), D (Wellness, 3)
+- ✅ Každý článek vždy ve všech 4 jazycích (CS, DE, EN, RU) — lokalizace, ne překlad
+- ✅ Sloučeny původní klastry E (DACH) a F (EN) do hlavních klastrů — obsah D2 (Burnout) a D3 (Seniory) přesunut z E4/E5
 
 ### 18. 3. 2026 — Session 3 (branch claude/plan-work-tasks-z9aPo)
 
