@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 48" fill="none">
+  <!-- Accent line -->
+  <line x1="0" y1="6" x2="28" y2="6" stroke="#8AD8ED" stroke-width="2" stroke-linecap="round"/>
+  <!-- Wordmark: MARIENBAD -->
+  <text x="0" y="30" font-family="'Cormorant','Georgia',serif" font-size="28" font-weight="300" fill="currentColor" letter-spacing="6" style="text-transform:uppercase">MARIENBAD</text>
+  <!-- Subtitle: MARIÁNSKÉ LÁZNĚ -->
+  <text x="0" y="42" font-family="'DM Sans','Verdana',sans-serif" font-size="7" font-weight="400" fill="currentColor" letter-spacing="4" opacity="0.5" style="text-transform:uppercase">MARIÁNSKÉ LÁZNĚ</text>
+</svg>

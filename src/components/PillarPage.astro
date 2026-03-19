@@ -46,8 +46,8 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
 
 <!-- Content with TOC sidebar -->
 <section class="container-wide py-12 md:py-20">
-  <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12 max-w-4xl mx-auto">
-    <div id="pillar-content" class="prose-marienbad max-w-4xl">
+  <div class="lg:grid lg:grid-cols-[minmax(0,680px)_240px] lg:gap-12 max-w-[1024px] mx-auto">
+    <div id="pillar-content" class="prose-marienbad">
       <slot />
     </div>
     <aside class="hidden lg:block">
@@ -103,8 +103,8 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
       a.dataset.slug = item.slug
       a.className =
         item.depth === 3
-          ? 'toc-link block py-1 transition-colors duration-200 hover:text-indigo-600 pl-4 text-xs text-gray-400'
-          : 'toc-link block py-1 transition-colors duration-200 hover:text-indigo-600 text-gray-500'
+          ? 'toc-link toc-sub block py-1.5 transition-colors duration-200 hover:text-indigo-600 pl-6 text-xs text-gray-400'
+          : 'toc-link toc-item block py-1.5 transition-colors duration-200 hover:text-indigo-600 border-l border-gray-200 pl-3 text-gray-500'
       a.addEventListener('click', (e) => {
         e.preventDefault()
         const target = document.getElementById(item.slug)
@@ -142,15 +142,21 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
       tocList.querySelectorAll('.toc-link').forEach((link) => {
         const el = link as HTMLElement
         const isActive = el.dataset.slug === slug
+        const isSub = el.classList.contains('toc-sub')
         if (isActive) {
-          el.classList.remove('text-gray-500', 'text-gray-400')
-          el.classList.add('text-indigo-600', 'font-medium')
+          el.classList.remove('text-gray-500', 'text-gray-400', 'border-gray-200')
+          el.classList.add('font-medium')
+          if (isSub) {
+            el.classList.add('text-indigo-600')
+          } else {
+            el.classList.add('text-gray-900', 'border-turquoise-400', 'border-l-2')
+          }
         } else {
-          el.classList.remove('text-indigo-600', 'font-medium')
-          if (el.classList.contains('pl-4')) {
+          el.classList.remove('text-indigo-600', 'text-gray-900', 'font-medium', 'border-turquoise-400', 'border-l-2')
+          if (isSub) {
             el.classList.add('text-gray-400')
           } else {
-            el.classList.add('text-gray-500')
+            el.classList.add('text-gray-500', 'border-gray-200')
           }
         }
       })
