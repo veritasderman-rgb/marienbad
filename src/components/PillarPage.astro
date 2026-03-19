@@ -3,6 +3,7 @@ import type { Locale } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
+import PullQuote from '@/components/PullQuote.astro'
 
 interface BreadcrumbItem {
   label: string
@@ -13,10 +14,11 @@ interface Props {
   locale: Locale
   title: string
   description: string
+  pullQuote?: string
   breadcrumbs?: BreadcrumbItem[]
 }
 
-const { locale, title, description, breadcrumbs } = Astro.props
+const { locale, title, description, pullQuote, breadcrumbs } = Astro.props
 const homeLabel = t(locale, 'nav.home')
 const pathname = Astro.url.pathname.replace(/\/$/, '')
 const canonicalUrl = `https://marienbad.vercel.app${pathname}`
@@ -48,6 +50,7 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
 <section class="container-wide py-12 md:py-20">
   <div class="lg:grid lg:grid-cols-[minmax(0,680px)_240px] lg:gap-12 max-w-[1024px] mx-auto">
     <div id="pillar-content" class="prose-marienbad">
+      {pullQuote && <PullQuote text={pullQuote} />}
       <slot />
     </div>
     <aside class="hidden lg:block">

@@ -1,12 +1,113 @@
 ---
-import Markdoc from '@markdoc/markdoc'
+import Markdoc, { type RenderableTreeNode } from '@markdoc/markdoc'
 
 interface Props {
-  content: any
+  content: RenderableTreeNode
 }
 
 const { content } = Astro.props
-const html = Markdoc.renderers.html(content)
+
+/**
+ * Custom HTML renderer that handles our custom Markdoc tags:
+ * - figure: responsive image with optional caption
+ * - gallery: grid of images
+ * - gallery-image: individual image inside a gallery
+ * - pullquote: styled blockquote for editorial pull quotes
+ */
+function renderCustomHtml(node: RenderableTreeNode): string {
+  if (node === null || node === undefined) return ''
+  if (typeof node === 'string') return escapeHtml(node)
+  if (Array.isArray(node)) return node.map(renderCustomHtml).join('')
+
+  if (typeof node === 'object' && '$$mdtype' in node) {
+    const tag = node as any
+    const name = tag.name
+    const attrs = tag.attributes || {}
+    const children = tag.children || []
+
+    // Custom tag: figure
+    if (name === 'figure') {
+      const widthClass =
+        attrs.width === 'wide' ? ' figure-wide' :
+        attrs.width === 'full' ? ' figure-full' : ''
+      const caption = attrs.caption
+        ? `<figcaption class="figure-caption">${escapeHtml(attrs.caption)}</figcaption>`
+        : ''
+      return `<figure class="article-figure${widthClass}"><img src="${escapeAttr(attrs.src)}" alt="${escapeAttr(attrs.alt)}" loading="lazy" decoding="async" />${caption}</figure>`
+    }
+
+    // Custom tag: gallery
+    if (name === 'gallery') {
+      const cols = attrs.columns === 3 ? 'gallery-3' : 'gallery-2'
+      const inner = children.map(renderCustomHtml).join('')
+      const caption = attrs.caption
+        ? `<figcaption class="figure-caption">${escapeHtml(attrs.caption)}</figcaption>`
+        : ''
+      return `<div class="article-gallery ${cols}">${inner}${caption}</div>`
+    }
+
+    // Custom tag: gallery-image
+    if (name === 'gallery-image') {
+      return `<figure class="gallery-item"><img src="${escapeAttr(attrs.src)}" alt="${escapeAttr(attrs.alt)}" loading="lazy" decoding="async" /></figure>`
+    }
+
+    // Custom tag: pullquote
+    if (name === 'pullquote') {
+      const cite = attrs.cite
+        ? `<cite class="pullquote-cite">${escapeHtml(attrs.cite)}</cite>`
+        : ''
+      return `<blockquote class="article-pullquote"><p>${escapeHtml(attrs.text)}</p>${cite}</blockquote>`
+    }
+
+    // Default: render standard Markdoc tags as HTML
+    return Markdoc.renderers.html([node])
+  }
+
+  return String(node)
+}
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+function escapeAttr(str: string): string {
+  return str.replace(/"/g, '&quot;').replace(/&/g, '&amp;')
+}
+
+// For top-level, we need to handle the array of nodes
+function renderAll(content: RenderableTreeNode): string {
+  if (Array.isArray(content)) {
+    return content.map(renderCustomHtml).join('')
+  }
+  if (content && typeof content === 'object' && '$$mdtype' in content) {
+    const tag = content as any
+    // If root is an 'article' wrapper or similar, render children
+    if (tag.children) {
+      return tag.children.map(renderCustomHtml).join('')
+    }
+  }
+  return Markdoc.renderers.html(content)
+}
+
+// Check if content has any custom tags — if not, use fast path
+function hasCustomTags(node: any): boolean {
+  if (!node || typeof node !== 'object') return false
+  if ('$$mdtype' in node) {
+    const name = node.name
+    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote') return true
+    if (node.children) return node.children.some(hasCustomTags)
+  }
+  if (Array.isArray(node)) return node.some(hasCustomTags)
+  return false
+}
+
+const html = hasCustomTags(content)
+  ? renderAll(content)
+  : Markdoc.renderers.html(content)
 ---
 
 <Fragment set:html={html} />

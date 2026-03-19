@@ -10,7 +10,7 @@ const page = await getPage('en-mineral-springs')
 ---
 
 <Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
-  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <RelatedArticles locale={locale} category="health" />
   </PillarPage>

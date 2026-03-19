@@ -10,7 +10,7 @@ const page = await getPage('de-unterkunft')
 ---
 
 <Base locale={locale} section="accommodation" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
-  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     <HotelTiles locale={locale} />
     { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>

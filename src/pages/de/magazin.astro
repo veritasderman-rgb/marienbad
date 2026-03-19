@@ -11,7 +11,7 @@ const articles = await getArticles(locale)
 ---
 
 <Base locale={locale} section="magazine" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
-  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <ArticleGrid articles={articles} locale={locale} />
   </PillarPage>

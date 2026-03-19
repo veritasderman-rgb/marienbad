@@ -9,7 +9,7 @@ const page = await getPage('ru-chem-zanyatsya')
 ---
 
 <Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
-  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

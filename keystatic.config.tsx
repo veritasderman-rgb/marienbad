@@ -341,6 +341,10 @@ export default config({
             table: true,
             blockquote: true,
             divider: true,
+            image: {
+              directory: 'public/images/content/articles',
+              publicPath: '/images/content/articles/',
+            },
           },
         }),
       },
@@ -386,6 +390,7 @@ export default config({
           ],
           defaultValue: 'health',
         }),
+        pullQuote: fields.text({ label: 'Pull Quote', multiline: true, description: 'Prominent quote displayed in the article hero/intro area. Optional.' }),
         articleType: fields.select({
           label: 'Article Type',
           options: [
@@ -420,6 +425,10 @@ export default config({
             table: true,
             blockquote: true,
             divider: true,
+            image: {
+              directory: 'public/images/content/articles',
+              publicPath: '/images/content/articles/',
+            },
           },
         }),
       },
@@ -460,6 +469,7 @@ export default config({
           ],
           defaultValue: 'mineral-springs',
         }),
+        pullQuote: fields.text({ label: 'Pull Quote', multiline: true, description: 'Prominent quote displayed in the page intro area. Optional.' }),
         metaTitle: fields.text({ label: 'Meta Title (for <title> tag)' }),
         metaDescription: fields.text({
           label: 'Meta Description',
@@ -478,6 +488,10 @@ export default config({
             table: true,
             blockquote: true,
             divider: true,
+            image: {
+              directory: 'public/images/content/articles',
+              publicPath: '/images/content/articles/',
+            },
           },
         }),
       },

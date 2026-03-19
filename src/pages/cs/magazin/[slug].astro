@@ -13,7 +13,7 @@ if (!article) return Astro.redirect(`/${locale}/magazin`)
 ---
 
 <Base locale={locale} section="magazine" title={`${article.title} — Magazín Marienbad`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }}>
-  <PillarPage locale={locale} title={article.title} description={article.excerpt}>
+  <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
       <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{article.category}</span>
       <span>{article.date}</span>

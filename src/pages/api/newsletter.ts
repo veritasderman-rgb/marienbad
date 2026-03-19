@@ -77,18 +77,34 @@ export const POST: APIRoute = async ({ request }) => {
 
     const apiKey = import.meta.env.MAILERLITE_API_KEY ?? process.env.MAILERLITE_API_KEY
 
+    // Locale → MailerLite group ID mapping (env: MAILERLITE_GROUP_DE, _EN, _CS, _RU)
+    const env = (k: string) => import.meta.env[k] ?? process.env[k]
+    const localeGroupMap: Record<string, string | undefined> = {
+      de: env('MAILERLITE_GROUP_DE'),
+      en: env('MAILERLITE_GROUP_EN'),
+      cs: env('MAILERLITE_GROUP_CS'),
+      ru: env('MAILERLITE_GROUP_RU'),
+    }
+
+    const resolvedLocale = locale && locale in localeGroupMap ? locale : 'de'
+    const groupId = localeGroupMap[resolvedLocale]
+
     if (apiKey) {
-      // Forward to MailerLite API
+      const payload: Record<string, unknown> = {
+        email,
+        fields: { locale: resolvedLocale },
+      }
+      if (groupId) {
+        payload.groups = [groupId]
+      }
+
       const res = await fetch('https://connect.mailerlite.com/api/subscribers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${apiKey}`,
         },
-        body: JSON.stringify({
-          email,
-          fields: { locale: locale || 'de' },
-        }),
+        body: JSON.stringify(payload),
       })
 
       if (!res.ok) {
@@ -100,8 +116,7 @@ export const POST: APIRoute = async ({ request }) => {
         )
       }
     } else {
-      // Graceful degradation for dev / missing key
-      console.log(`[newsletter] No MAILERLITE_API_KEY set. Would subscribe: ${email} (locale: ${locale || 'de'})`)
+      console.log(`[newsletter] No MAILERLITE_API_KEY set. Would subscribe: ${email} (locale: ${resolvedLocale}, group: ${groupId || 'none'})`)
     }
 
     return new Response(
