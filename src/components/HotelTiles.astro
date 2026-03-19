@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '@/i18n/config'
 import { hotels } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
 
 interface Props {
   locale: Locale
@@ -46,7 +47,7 @@ const ctaLabel: Record<string, string> = {
     {orderedHotels.map((hotel) => {
       if (!hotel) return null
       const tagline = hotel.tagline[locale]
-      const url = hotel.bookingUrls[locale]
+      const url = withUtm(hotel.bookingUrls[locale], 'marienbad', 'hotel-tile', 'hotel-booking')
       const stars = '★'.repeat(hotel.stars)
       return (
         <a
