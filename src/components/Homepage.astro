@@ -195,7 +195,10 @@ const gradients = [
               <span class="text-white/60 text-sm absolute inset-0 flex items-center justify-center">Portrait — Foto</span>
             )}
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-2" lang={story.lang || undefined}>{story.quote}</p>
+              <p class="font-heading text-base italic text-white/90 leading-snug mb-1" lang={story.lang || undefined}>{story.quote}</p>
+              {(story as any).translation && (
+                <p class="text-xs text-white/50 leading-snug mb-1">{(story as any).translation}</p>
+              )}
               <div class="flex items-center gap-2">
                 <span class="text-white font-semibold text-sm">{story.name}</span>
                 <span class="text-white/50 text-sm">· {story.location}</span>

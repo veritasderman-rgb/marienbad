@@ -4,23 +4,50 @@
     "subtitle": "UNESCO světové dědictví · Od roku 1812 · Čtyři léčivé zdroje — Jediné lázně na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
     "ctaText": "Poznejte město",
     "ctaHref": "#discover",
-    "badges": ["UNESCO dědictví", "Od roku 1812"]
+    "badges": [
+      "UNESCO dědictví",
+      "Od roku 1812"
+    ]
   },
   "quickFacts": [
-    { "value": "40+", "label": "Minerální prameny" },
-    { "value": "UNESCO", "label": "Světové dědictví 2021" },
-    { "value": "1812", "label": "Lázeňská tradice" },
-    { "value": "Royal", "label": "Golf Club 1905" }
+    {
+      "value": "40+",
+      "label": "Minerální prameny"
+    },
+    {
+      "value": "UNESCO",
+      "label": "Světové dědictví 2021"
+    },
+    {
+      "value": "1812",
+      "label": "Lázeňská tradice"
+    },
+    {
+      "value": "Royal",
+      "label": "Golf Club 1905"
+    }
   ],
   "healingElements": {
     "sectionLabel": "Čím jsou Mariánské Lázně výjimečné",
     "title": "Čtyři přírodní léčivé zdroje",
     "description": "Jediné lázně na světě, které spojují všechny čtyři živly přírodního léčení.",
     "items": [
-      { "name": "Voda", "description": "Přes 40 minerálních pramenů s jedinečným složením — od pitných kúr po léčivé koupele." },
-      { "name": "Země", "description": "Přírodní rašelinové peloidy s protizánětlivými a analgetickými účinky." },
-      { "name": "Plyn", "description": "99,7% čistý CO₂ — ‚Mariin plyn' — prokazatelně zlepšuje periferní prokrvení." },
-      { "name": "Klima", "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly." }
+      {
+        "name": "Voda",
+        "description": "Přes 40 minerálních pramenů s jedinečným složením — od pitných kúr po léčivé koupele."
+      },
+      {
+        "name": "Země",
+        "description": "Přírodní rašelinové peloidy s protizánětlivými a analgetickými účinky."
+      },
+      {
+        "name": "Plyn",
+        "description": "99,7% čistý CO₂ — ‚Mariin plyn' — prokazatelně zlepšuje periferní prokrvení."
+      },
+      {
+        "name": "Klima",
+        "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly."
+      }
     ]
   },
   "discover": {
@@ -39,7 +66,11 @@
         "stars": 5,
         "badge": "Tip redakce",
         "description": "Historický 5hvězdičkový klenot s původními Římskými lázněmi — vlajková loď hotelů Ensana.",
-        "tags": ["Římské lázně", "CO₂ terapie", "Bazén"],
+        "tags": [
+          "Římské lázně",
+          "CO₂ terapie",
+          "Bazén"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Rezervovat pobyt"
       },
@@ -48,7 +79,11 @@
         "stars": 4,
         "badge": "",
         "description": "Přímo u kolonády — tradiční lázeňská péče v centru města s moderními procedurami.",
-        "tags": ["U kolonády", "Pitná kúra", "Wellness"],
+        "tags": [
+          "U kolonády",
+          "Pitná kúra",
+          "Wellness"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Rezervovat pobyt"
       }
@@ -65,21 +100,24 @@
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "Podvanácté",
-        "lang": "de"
+        "lang": "de",
+        "translation": "„Křížový pramen je jako starý přítel — každý rok ho přijedu navštívit.“"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
         "name": "James",
         "location": "London 🇬🇧",
         "visitLabel": "3. návštěva",
-        "lang": "en"
+        "lang": "en",
+        "translation": "Přijel jsem kvůli léčbě, ale zůstal jsem kvůli klidu."
       },
       {
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
         "name": "Наталья",
         "location": "Москва 🇷🇺",
         "visitLabel": "8. návštěva",
-        "lang": "ru"
+        "lang": "ru",
+        "translation": "Marienbad není jen lázně. Je to místo, kde odpočívá duše."
       }
     ]
   },

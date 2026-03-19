@@ -71,10 +71,53 @@ export async function getPage(slug: string) {
       metaDescription: meta.metaDescription ?? '',
       pullQuote: meta.pullQuote ?? '',
       body: content,
+      rawBody: mdocRaw as string,
     }
   } catch {
     return null
   }
+}
+
+/** Extract FAQ Q&A pairs from raw Markdoc content for FAQPage schema */
+export function extractFaqs(rawBody: string): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = []
+  const lines = rawBody.split('\n')
+  let inFaqSection = false
+  let currentQuestion = ''
+  let currentAnswer: string[] = []
+
+  for (const line of lines) {
+    // Detect FAQ section heading (## level)
+    if (/^##\s+.*(FAQ|[Čč]asto|[Hh]äufig|[Ff]requently|[Чч]асто)/i.test(line)) {
+      inFaqSection = true
+      continue
+    }
+    // If we hit another ## heading, stop collecting
+    if (inFaqSection && /^##\s+/.test(line) && !/^###/.test(line)) {
+      if (currentQuestion && currentAnswer.length) {
+        faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() })
+      }
+      inFaqSection = false
+      continue
+    }
+    if (!inFaqSection) continue
+
+    // ### is a question
+    if (/^###\s+/.test(line)) {
+      if (currentQuestion && currentAnswer.length) {
+        faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() })
+      }
+      currentQuestion = line.replace(/^###\s+/, '').trim()
+      currentAnswer = []
+    } else if (line.trim() && currentQuestion) {
+      currentAnswer.push(line.trim())
+    }
+  }
+  // Don't forget the last one
+  if (currentQuestion && currentAnswer.length) {
+    faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() })
+  }
+  return faqs
 }
 
 export interface Article {

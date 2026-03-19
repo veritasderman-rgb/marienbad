@@ -4,12 +4,18 @@ import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import SocialShare from '@/components/SocialShare.astro'
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
-import { getArticle } from '@/content/reader'
+import { getArticle, getArticles } from '@/content/reader'
+import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
 const { slug } = Astro.params
 const article = slug ? await getArticle(`${locale}-${slug}`) : null
 if (!article) return Astro.redirect(`/${locale}/magazin`)
+
+const magazineLabel = 'Magazín'
+const magazineHref = `/${locale}/magazin`
+const backLabel = 'Zpět na magazín'
+const moreArticlesLabel = 'Další články'
 
 const pageUrl = `https://marienbad.com/${locale}/magazin/${slug}`
 const articleSchema: Record<string, unknown> = {
@@ -25,11 +31,22 @@ const articleSchema: Record<string, unknown> = {
   articleSection: article.category,
 }
 if (article.coverImage) articleSchema.image = article.coverImage
+
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: magazineLabel, href: magazineHref },
+  { label: article.title },
+]
+
+const allArticles = await getArticles(locale)
+const relatedArticles = allArticles
+  .filter(a => a.slug !== `${locale}-${slug}`)
+  .slice(0, 3)
 ---
 
-<Base locale={locale} section="magazine" title={`${article.title} — Magazín Marienbad`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }}>
+<Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Magazín Marienbad`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-  <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote}>
+  <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote} breadcrumbs={breadcrumbs}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
       <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{article.category}</span>
       <span>{article.date}</span>
@@ -51,5 +68,29 @@ if (article.coverImage) articleSchema.image = article.coverImage
       />
     )}
     <SocialShare url={Astro.url.href} title={article.title} locale={locale} />
+
+    <!-- Back to magazine + related articles -->
+    <div class="mt-12 pt-10 border-t border-beige-200">
+      <a href={magazineHref} class="inline-flex items-center gap-2 text-turquoise-700 hover:text-turquoise-900 font-medium transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        {backLabel}
+      </a>
+      {relatedArticles.length > 0 && (
+        <div>
+          <h2 class="font-heading text-xl font-semibold mb-6">{moreArticlesLabel}</h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {relatedArticles.map(a => (
+              <a href={`${magazineHref}/${a.slug.replace(`${locale}-`, '')}`} class="group block p-4 rounded-xl border border-beige-200 hover:border-turquoise-300 hover:shadow-md transition-all">
+                <span class="text-xs text-turquoise-600 font-medium">{a.category}</span>
+                <h3 class="font-heading text-base font-semibold mt-1 group-hover:text-turquoise-700 transition-colors leading-snug">{a.title}</h3>
+                <p class="text-sm text-beige-600 mt-2 line-clamp-2">{a.excerpt}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   </PillarPage>
 </Base>
