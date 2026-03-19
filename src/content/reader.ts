@@ -216,6 +216,37 @@ export async function getStories(locale: Locale): Promise<Story[]> {
   return stories
 }
 
+export async function getAllStories(): Promise<Story[]> {
+  const stories: Story[] = []
+
+  for (const [path, rawYaml] of Object.entries(storyYamlFiles)) {
+    const slug = path.replace('./stories/', '').replace('/index.yaml', '')
+    const meta = yaml.load(rawYaml as string) as Record<string, string>
+
+    const mdocPath = `./stories/${slug}/content.mdoc`
+    const mdocRaw = storyMdocFiles[mdocPath]
+    if (!mdocRaw) continue
+
+    const ast = Markdoc.parse(mdocRaw as string)
+    const content = Markdoc.transform(ast, markdocConfig)
+
+    stories.push({
+      slug,
+      title: meta.title ?? '',
+      locale: meta.locale ?? '',
+      name: meta.name ?? '',
+      location: meta.location ?? '',
+      visitLabel: meta.visitLabel ?? '',
+      quote: meta.quote ?? '',
+      lang: meta.lang ?? '',
+      portrait: meta.portrait ?? '',
+      body: content,
+    })
+  }
+
+  return stories
+}
+
 export async function getStory(slug: string): Promise<Story | null> {
   try {
     const yamlPath = `./stories/${slug}/index.yaml`

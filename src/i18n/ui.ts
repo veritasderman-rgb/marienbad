@@ -37,6 +37,10 @@ const ui = {
     'common.backTo': 'Zurück',
     'common.notFound': 'Seite nicht gefunden',
     'common.tableOfContents': 'Inhaltsverzeichnis',
+    'filter.all': 'Alle',
+    'filter.byLanguage': 'Nach Sprache filtern',
+    'filter.byLocation': 'Nach Herkunft filtern',
+    'filter.noResults': 'Keine Geschichten gefunden.',
   },
   en: {
     'meta.siteName': 'Marienbad.com',
@@ -74,6 +78,10 @@ const ui = {
     'common.backTo': 'Back',
     'common.notFound': 'Page Not Found',
     'common.tableOfContents': 'Table of Contents',
+    'filter.all': 'All',
+    'filter.byLanguage': 'Filter by language',
+    'filter.byLocation': 'Filter by location',
+    'filter.noResults': 'No stories found.',
   },
   cs: {
     'meta.siteName': 'Marienbad.com',
@@ -111,6 +119,10 @@ const ui = {
     'common.backTo': 'Zpět',
     'common.notFound': 'Stránka nenalezena',
     'common.tableOfContents': 'Obsah',
+    'filter.all': 'Vše',
+    'filter.byLanguage': 'Filtrovat podle jazyka',
+    'filter.byLocation': 'Filtrovat podle lokace',
+    'filter.noResults': 'Nebyly nalezeny žádné příběhy.',
   },
   ru: {
     'meta.siteName': 'Marienbad.com',
@@ -148,6 +160,10 @@ const ui = {
     'common.backTo': 'Назад',
     'common.notFound': 'Страница не найдена',
     'common.tableOfContents': 'Содержание',
+    'filter.all': 'Все',
+    'filter.byLanguage': 'Фильтр по языку',
+    'filter.byLocation': 'Фильтр по месту',
+    'filter.noResults': 'Истории не найдены.',
   },
 } as const
 

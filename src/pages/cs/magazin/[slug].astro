@@ -10,9 +10,25 @@ const locale = 'cs' as const
 const { slug } = Astro.params
 const article = slug ? await getArticle(`${locale}-${slug}`) : null
 if (!article) return Astro.redirect(`/${locale}/magazin`)
+
+const pageUrl = `https://marienbad.com/${locale}/magazin/${slug}`
+const articleSchema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.excerpt,
+  datePublished: article.date,
+  author: { '@type': 'Organization', name: 'Marienbad.com' },
+  publisher: { '@type': 'Organization', name: 'Marienbad.com', url: 'https://marienbad.com' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+  inLanguage: locale,
+  articleSection: article.category,
+}
+if (article.coverImage) articleSchema.image = article.coverImage
 ---
 
 <Base locale={locale} section="magazine" title={`${article.title} — Magazín Marienbad`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
       <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{article.category}</span>
