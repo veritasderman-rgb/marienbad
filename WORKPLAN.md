@@ -330,7 +330,7 @@ Každý článek existuje ve 4 jazykových verzích: CS, DE, EN, RU.
 | A1 | Lázeňská léčba — kompletní průvodce | Pillar | ✅ | ✅ | ✅ | ✅ |
 | A2 | Plynové injekce CO2 — unikátní léčba | Cluster | ✅ | ✅ | ✅ | ✅ |
 | A3 | Pitná kúra — průvodce prameny | Cluster | ✅ | ✅ | ✅ | ✅ |
-| A4 | Rehabilitace po covidu v lázních | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A4 | Rehabilitace po covidu v lázních | Cluster | ✅ | ✅ | ✅ | ✅ |
 | A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | ❌ | ❌ | ❌ | ❌ |
 | A6 | Léčba ledvin a močových cest | Cluster | ❌ | ❌ | ❌ | ❌ |
 
@@ -347,15 +347,15 @@ Každý článek existuje ve 4 jazykových verzích: CS, DE, EN, RU.
 |---|--------|-----|----|----|----|----|
 | C1 | Mariánské Lázně — kompletní průvodce UNESCO městem | Pillar | ✅ | ✅ | ✅ | ✅ |
 | C2 | Mariánské Lázně vs. Karlovy Vary — který kurort? | Comparison | ✅ | ✅ | ✅ | ✅ |
-| C3 | Zpívající fontána — program, historie, info | Guide | ❌ | ❌ | ❌ | ❌ |
+| C3 | Zpívající fontána — program, historie, info | Guide | ✅ | ✅ | ✅ | ✅ |
 
 ### 10.4 KLASTR D — Wellness a relaxace
 
 | # | Článek | Typ | CS | DE | EN | RU |
 |---|--------|-----|----|----|----|----|
 | D1 | Wellness víkend pro dva v Mariánských Lázních | Guide | ✅ | ✅ | ✅ | ✅ |
-| D2 | Burnout prevence — proč lázeňský pobyt pomáhá | Cluster | ❌ | ❌ | ❌ | ❌ |
-| D3 | Lázeňský pobyt pro seniory — kompletní průvodce | Guide | ❌ | ❌ | ❌ | ❌ |
+| D2 | Burnout prevence — proč lázeňský pobyt pomáhá | Cluster | ✅ | ✅ | ✅ | ✅ |
+| D3 | Lázeňský pobyt pro seniory — kompletní průvodce | Guide | ✅ | ✅ | ✅ | ✅ |
 
 ### 10.5 Publikační vlny
 
@@ -432,14 +432,32 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 | SEO (Fáze 7) | 13 | 0 | 2 |
 | Interaktivní (Fáze 8) | 5 | 1 | 1 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
-| Obsahový plán (Fáze 10) | 36 | 0 | 24 |
-| **CELKEM** | **158** | **7** | **39** |
+| Obsahový plán (Fáze 10) | 52 | 0 | 8 |
+| **CELKEM** | **174** | **7** | **23** |
 
-**Celkový pokrok: ~77% hotovo (158/204 — updated 19.3.2026)**
+**Celkový pokrok: ~85% hotovo (174/204 — updated 19.3.2026)**
 
 ---
 
 ## CHANGELOG
+
+### 19. 3. 2026 — Session 6 (branch claude/plan-work-tasks-z9aPo)
+
+#### Wave 3 články (16 jazykových verzí)
+- ✅ A4: Rehabilitace po covidu v lázních (CS/DE/EN/RU) — cluster, healing
+- ✅ D2: Burnout prevence — proč lázeňský pobyt pomáhá (CS/DE/EN/RU) — cluster, wellness
+- ✅ D3: Lázeňský pobyt pro seniory — kompletní průvodce (CS/DE/EN/RU) — guide, wellness
+- ✅ C3: Zpívající fontána — program, historie, info (CS/DE/EN/RU) — guide, activities
+
+#### Newsletter vylepšení
+- ✅ MailerLite skupiny podle locale (DE/EN/CS/RU) — env vars MAILERLITE_GROUP_*
+
+#### Stav obsahového plánu
+- Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí
+- Vlna 2 (A3, A2, D1, C1): ✅ kompletní — 16/16 verzí
+- Vlna 3 (A4, D2, D3, C3): ✅ kompletní — 16/16 verzí
+- Vlna 4 (A5, A6): ❌ čeká
+- Celkem hotovo: 48/56 jazykových verzí (86%)
 
 ### 19. 3. 2026 — Session 5 (branch claude/plan-work-tasks-z9aPo)
 
@@ -452,9 +470,9 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 #### Stav obsahového plánu
 - Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí
 - Vlna 2 (A3, A2, D1, C1): ✅ kompletní — 16/16 verzí
-- Vlna 3 (A4, D2, D3, C3): ❌ čeká
+- Vlna 3 (A4, D2, D3, C3): ✅ kompletní — 16/16 verzí
 - Vlna 4 (A5, A6): ❌ čeká
-- Celkem hotovo: 32/56 jazykových verzí (57%)
+- Celkem hotovo: 48/56 jazykových verzí (86%)
 
 ### 19. 3. 2026 — Session 4 (branch claude/plan-work-tasks-z9aPo)
 
