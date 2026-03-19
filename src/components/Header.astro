@@ -26,11 +26,11 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
       </a>
 
       <!-- Desktop nav (center) -->
-      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-0.5">
-        {navItems.slice(0, 6).map(({ navKey, href }) => (
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
+        {navItems.slice(0, 7).map(({ navKey, href }) => (
           <a
             href={href}
-            class="px-3 py-2 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-white/80 hover:text-white transition-colors header-nav-link"
+            class="px-3 py-2 text-[0.8125rem] leading-tight font-medium text-white/80 hover:text-white transition-colors header-nav-link whitespace-nowrap"
           >
             {t(locale, navKey as any)}
           </a>
@@ -88,50 +88,50 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
       </div>
     </div>
   </div>
+</header>
 
-  <!-- Mobile nav: full-screen overlay -->
-  <div id="mobile-nav" class="hidden fixed inset-0 top-16 md:top-20 z-40 bg-indigo-700/98 backdrop-blur-md lg:hidden overflow-y-auto" aria-hidden="true">
-    <nav aria-label="Mobile navigation" class="container-wide py-8 flex flex-col gap-1">
-      {navItems.map(({ navKey, href }) => (
+<!-- Mobile nav: full-screen overlay — OUTSIDE header to avoid backdrop-filter containing block issues -->
+<div id="mobile-nav" class="hidden fixed inset-0 top-16 md:top-20 z-40 bg-indigo-700/98 backdrop-blur-md lg:hidden overflow-y-auto" aria-hidden="true">
+  <nav aria-label="Mobile navigation" class="container-wide py-8 flex flex-col gap-1">
+    {navItems.map(({ navKey, href }) => (
+      <a
+        href={href}
+        class="px-4 py-3.5 text-lg font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
+      >
+        {t(locale, navKey as any)}
+      </a>
+    ))}
+
+    <!-- Mobile language switcher -->
+    <div class="border-t border-white/10 mt-6 pt-6 flex gap-2">
+      {allLocales.map((l) => (
         <a
-          href={href}
-          class="px-4 py-3.5 text-lg font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
+          href={`/${l}`}
+          class:list={[
+            'px-4 py-2 text-sm font-medium rounded-lg transition-colors',
+            l === locale
+              ? 'text-white bg-white/20'
+              : 'text-white/60 hover:text-white hover:bg-white/10'
+          ]}
         >
-          {t(locale, navKey as any)}
+          {localeNames[l]}
         </a>
       ))}
+    </div>
 
-      <!-- Mobile language switcher -->
-      <div class="border-t border-white/10 mt-6 pt-6 flex gap-2">
-        {allLocales.map((l) => (
-          <a
-            href={`/${l}`}
-            class:list={[
-              'px-4 py-2 text-sm font-medium rounded-lg transition-colors',
-              l === locale
-                ? 'text-white bg-white/20'
-                : 'text-white/60 hover:text-white hover:bg-white/10'
-            ]}
-          >
-            {localeNames[l]}
-          </a>
-        ))}
-      </div>
-
-      <!-- Mobile CTA -->
-      <div class="mt-6">
-        <a
-          href={`${bookingUrl}?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
-          class="block w-full text-center px-6 py-3.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors"
-          target="_blank"
-          rel="noopener"
-        >
-          {bookingCta} →
-        </a>
-      </div>
-    </nav>
-  </div>
-</header>
+    <!-- Mobile CTA -->
+    <div class="mt-6">
+      <a
+        href={`${bookingUrl}?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+        class="block w-full text-center px-6 py-3.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors"
+        target="_blank"
+        rel="noopener"
+      >
+        {bookingCta} →
+      </a>
+    </div>
+  </nav>
+</div>
 
 <style>
   /* Header — always has a visible background for readability */

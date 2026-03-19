@@ -18,6 +18,7 @@ export const routes = {
   'practical-info': { de: 'praktische-infos', en: 'practical-info', cs: 'prakticke-informace', ru: 'prakticheskaya-informaciya' },
   people: { de: 'menschen', en: 'people', cs: 'lide', ru: 'lyudi' },
   magazine: { de: 'magazin', en: 'magazine', cs: 'magazin', ru: 'zhurnal' },
+  podcast: { de: 'podcast', en: 'podcast', cs: 'podcast', ru: 'podcast' },
 } as const satisfies Record<string, Record<Locale, string>>
 
 export type SectionKey = keyof typeof routes
