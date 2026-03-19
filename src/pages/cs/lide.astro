@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import StoryFilter from '@/components/StoryFilter'
+import StorySubmissionForm from '@/components/StorySubmissionForm'
 import { getPage, getAllStories } from '@/content/reader'
 import { t } from '@/i18n/ui'
 
@@ -15,6 +16,34 @@ const translations = {
   byLanguage: t(locale, 'filter.byLanguage'),
   byLocation: t(locale, 'filter.byLocation'),
   noResults: t(locale, 'filter.noResults'),
+}
+const formTranslations = {
+  formTitle: t(locale, 'storyForm.title'),
+  formSubtitle: t(locale, 'storyForm.subtitle'),
+  nameLabel: t(locale, 'storyForm.nameLabel'),
+  namePlaceholder: t(locale, 'storyForm.namePlaceholder'),
+  emailLabel: t(locale, 'storyForm.emailLabel'),
+  emailPlaceholder: t(locale, 'storyForm.emailPlaceholder'),
+  emailHint: t(locale, 'storyForm.emailHint'),
+  locationLabel: t(locale, 'storyForm.locationLabel'),
+  locationPlaceholder: t(locale, 'storyForm.locationPlaceholder'),
+  visitLabel: t(locale, 'storyForm.visitLabel'),
+  visitRecently: t(locale, 'storyForm.visitRecently'),
+  visit1to5: t(locale, 'storyForm.visit1to5'),
+  visit5to10: t(locale, 'storyForm.visit5to10'),
+  visit10plus: t(locale, 'storyForm.visit10plus'),
+  storyLabel: t(locale, 'storyForm.storyLabel'),
+  storyPlaceholder: t(locale, 'storyForm.storyPlaceholder'),
+  storyHint: t(locale, 'storyForm.storyHint'),
+  photoConsent: t(locale, 'storyForm.photoConsent'),
+  privacyConsent: t(locale, 'storyForm.privacyConsent'),
+  submitButton: t(locale, 'storyForm.submitButton'),
+  submitting: t(locale, 'storyForm.submitting'),
+  successTitle: t(locale, 'storyForm.successTitle'),
+  successMessage: t(locale, 'storyForm.successMessage'),
+  errorMessage: t(locale, 'storyForm.errorMessage'),
+  required: t(locale, 'storyForm.required'),
+  minChars: t(locale, 'storyForm.minChars'),
 }
 ---
 
@@ -33,5 +62,13 @@ const translations = {
         />
       </section>
     )}
+
+    <section class="mt-16 pt-16 border-t border-beige-300">
+      <StorySubmissionForm
+        client:visible
+        locale={locale}
+        translations={formTranslations}
+      />
+    </section>
   </PillarPage>
 </Base>
