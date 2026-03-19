@@ -331,8 +331,8 @@ Každý článek existuje ve 4 jazykových verzích: CS, DE, EN, RU.
 | A2 | Plynové injekce CO2 — unikátní léčba | Cluster | ✅ | ✅ | ✅ | ✅ |
 | A3 | Pitná kúra — průvodce prameny | Cluster | ✅ | ✅ | ✅ | ✅ |
 | A4 | Rehabilitace po covidu v lázních | Cluster | ✅ | ✅ | ✅ | ✅ |
-| A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | ❌ | ❌ | ❌ | ❌ |
-| A6 | Léčba ledvin a močových cest | Cluster | ❌ | ❌ | ❌ | ❌ |
+| A5 | Léčba pohybového aparátu bahnem a minerální vodou | Cluster | ✅ | ✅ | ✅ | ✅ |
+| A6 | Léčba ledvin a močových cest | Cluster | ✅ | ✅ | ✅ | ✅ |
 
 ### 10.2 KLASTR B — Lázeňský pobyt (praktické info)
 
@@ -432,14 +432,27 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 | SEO (Fáze 7) | 13 | 0 | 2 |
 | Interaktivní (Fáze 8) | 5 | 1 | 1 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
-| Obsahový plán (Fáze 10) | 52 | 0 | 8 |
-| **CELKEM** | **174** | **7** | **23** |
+| Obsahový plán (Fáze 10) | 60 | 0 | 0 |
+| **CELKEM** | **182** | **7** | **15** |
 
-**Celkový pokrok: ~85% hotovo (174/204 — updated 19.3.2026)**
+**Celkový pokrok: ~89% hotovo (182/204 — updated 19.3.2026)**
 
 ---
 
 ## CHANGELOG
+
+### 19. 3. 2026 — Session 7 (branch claude/plan-work-tasks-z9aPo)
+
+#### Wave 4 články (8 jazykových verzí)
+- ✅ A5: Léčba pohybového aparátu bahnem a minerální vodou (CS/DE/EN/RU) — cluster, healing
+- ✅ A6: Léčba ledvin a močových cest (CS/DE/EN/RU) — cluster, healing
+
+#### Stav obsahového plánu
+- Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí
+- Vlna 2 (A3, A2, D1, C1): ✅ kompletní — 16/16 verzí
+- Vlna 3 (A4, D2, D3, C3): ✅ kompletní — 16/16 verzí
+- Vlna 4 (A5, A6): ✅ kompletní — 8/8 verzí
+- **Celkem hotovo: 56/56 jazykových verzí (100%)**
 
 ### 19. 3. 2026 — Session 6 (branch claude/plan-work-tasks-z9aPo)
 
@@ -456,8 +469,8 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 - Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí
 - Vlna 2 (A3, A2, D1, C1): ✅ kompletní — 16/16 verzí
 - Vlna 3 (A4, D2, D3, C3): ✅ kompletní — 16/16 verzí
-- Vlna 4 (A5, A6): ❌ čeká
-- Celkem hotovo: 48/56 jazykových verzí (86%)
+- Vlna 4 (A5, A6): ✅ kompletní — 8/8 verzí (session 7)
+- Celkem hotovo: 56/56 jazykových verzí (100%)
 
 ### 19. 3. 2026 — Session 5 (branch claude/plan-work-tasks-z9aPo)
 
@@ -471,8 +484,8 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 - Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí
 - Vlna 2 (A3, A2, D1, C1): ✅ kompletní — 16/16 verzí
 - Vlna 3 (A4, D2, D3, C3): ✅ kompletní — 16/16 verzí
-- Vlna 4 (A5, A6): ❌ čeká
-- Celkem hotovo: 48/56 jazykových verzí (86%)
+- Vlna 4 (A5, A6): ✅ kompletní — 8/8 verzí (session 7)
+- Celkem hotovo: 56/56 jazykových verzí (100%)
 
 ### 19. 3. 2026 — Session 4 (branch claude/plan-work-tasks-z9aPo)
 
