@@ -84,6 +84,9 @@ export interface Article {
   date: string
   readingTime: string
   coverImage?: string
+  youtubeVideoId?: string
+  youtubeTitle?: string
+  youtubeDescription?: string
   body: any
 }
 
@@ -113,6 +116,9 @@ export async function getArticles(locale: Locale): Promise<Article[]> {
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
       coverImage: meta.coverImage ?? '',
+      youtubeVideoId: meta.youtubeVideoId ?? '',
+      youtubeTitle: meta.youtubeTitle ?? '',
+      youtubeDescription: meta.youtubeDescription ?? '',
       body: content,
     })
   }
@@ -145,6 +151,9 @@ export async function getArticle(slug: string): Promise<Article | null> {
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
       coverImage: meta.coverImage ?? '',
+      youtubeVideoId: meta.youtubeVideoId ?? '',
+      youtubeTitle: meta.youtubeTitle ?? '',
+      youtubeDescription: meta.youtubeDescription ?? '',
       body: content,
     }
   } catch {
@@ -256,6 +265,9 @@ export async function getAllArticles(): Promise<Article[]> {
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
       coverImage: meta.coverImage ?? '',
+      youtubeVideoId: meta.youtubeVideoId ?? '',
+      youtubeTitle: meta.youtubeTitle ?? '',
+      youtubeDescription: meta.youtubeDescription ?? '',
       body: content,
     })
   }

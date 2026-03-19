@@ -404,6 +404,9 @@ export default config({
         secondaryKeywords: fields.text({ label: 'Secondary Keywords (SEO)', multiline: true, description: 'Comma-separated secondary keywords' }),
         metaDescription: fields.text({ label: 'Meta Description', description: 'Max 155 chars, includes primary keyword' }),
         relatedEnsanaLink: fields.text({ label: 'Ensana Link', description: 'Contextual link to ensanahotels.com' }),
+        youtubeVideoId: fields.text({ label: 'YouTube Video ID', description: 'e.g. dQw4w9WgXcQ — shown as embedded player with podcast/video section' }),
+        youtubeTitle: fields.text({ label: 'Video/Podcast Title', description: 'Title shown above the embedded video' }),
+        youtubeDescription: fields.text({ label: 'Video/Podcast Description', multiline: true, description: 'Short description shown next to the video player' }),
         body: fields.markdoc({
           label: 'Article Content',
           options: {

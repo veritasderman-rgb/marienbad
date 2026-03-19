@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import SocialShare from '@/components/SocialShare.astro'
+import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
 import { getArticle } from '@/content/reader'
 
 const locale = 'en' as const
@@ -26,6 +27,14 @@ if (!article) return Astro.redirect(`/${locale}/magazine`)
       </div>
     )}
     <MarkdocRenderer content={article.body} />
+    {article.youtubeVideoId && (
+      <YouTubeEmbed
+        videoId={article.youtubeVideoId}
+        title={article.youtubeTitle}
+        description={article.youtubeDescription}
+        locale={locale}
+      />
+    )}
     <SocialShare url={Astro.url.href} title={article.title} locale={locale} />
   </PillarPage>
 </Base>

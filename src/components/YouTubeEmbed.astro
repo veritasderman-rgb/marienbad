@@ -1,0 +1,73 @@
+---
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  videoId: string
+  title?: string
+  description?: string
+  locale: Locale
+}
+
+const { videoId, title, description, locale } = Astro.props
+
+const sectionLabels: Record<Locale, string> = {
+  de: 'Video-Podcast',
+  en: 'Video Podcast',
+  cs: 'Video podcast',
+  ru: 'Видеоподкаст',
+}
+
+const watchLabels: Record<Locale, string> = {
+  de: 'Auf YouTube ansehen',
+  en: 'Watch on YouTube',
+  cs: 'Sledovat na YouTube',
+  ru: 'Смотреть на YouTube',
+}
+---
+
+<aside class="my-12 rounded-2xl bg-gradient-to-br from-indigo-50 to-beige-100 border border-indigo-100 overflow-hidden">
+  <!-- Header -->
+  <div class="px-6 pt-6 pb-4 flex items-center gap-3">
+    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shrink-0">
+      <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </div>
+    <div>
+      <span class="text-xs font-semibold uppercase tracking-widest text-indigo-500">{sectionLabels[locale]}</span>
+      {title && <h3 class="font-heading text-lg font-bold text-indigo-700 mt-0.5 leading-snug">{title}</h3>}
+    </div>
+  </div>
+
+  <!-- Video player with privacy-friendly lazy loading -->
+  <div class="px-6">
+    <div class="relative w-full rounded-xl overflow-hidden shadow-card" style="padding-bottom: 56.25%;">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
+        title={title || 'Video'}
+        class="absolute inset-0 w-full h-full"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- Description + YouTube link -->
+  <div class="px-6 py-5 flex flex-col md:flex-row md:items-start gap-4">
+    {description && (
+      <p class="text-sm text-beige-700 leading-relaxed flex-1">{description}</p>
+    )}
+    <a
+      href={`https://www.youtube.com/watch?v=${videoId}`}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-indigo-600 bg-white rounded-full border border-indigo-200 hover:bg-indigo-50 hover:border-indigo-300 transition-colors shrink-0"
+    >
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+      {watchLabels[locale]}
+    </a>
+  </div>
+</aside>
