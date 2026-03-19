@@ -5,18 +5,36 @@ export interface Hotel {
   yearBuilt: number
   style: string
   bookingUrl: string
+  bookingUrls: {
+    de: string
+    en: string
+    cs: string
+    ru: string
+  }
   address: string
+  tagline: {
+    de: string
+    en: string
+    cs: string
+    ru: string
+  }
   features: {
     de: string[]
     en: string[]
+    cs?: string[]
+    ru?: string[]
   }
   description: {
     de: string
     en: string
+    cs?: string
+    ru?: string
   }
   treatments: {
     de: string[]
     en: string[]
+    cs?: string[]
+    ru?: string[]
   }
 }
 
@@ -28,7 +46,19 @@ export const hotels: Hotel[] = [
     yearBuilt: 1896,
     style: 'Neorenaissance',
     bookingUrl: 'https://www.ensanahotels.com/nove-lazne',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/nove-lazne',
+      en: 'https://ensanahotels.com/en/hotels/nove-lazne',
+      cs: 'https://ensanahotels.com/cs/hotels/nove-lazne',
+      ru: 'https://ensanahotels.com/ru/hotels/nove-lazne',
+    },
     address: 'Reitenbergerova 53, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Das legendäre 5-Sterne-Kurhotel mit dem einzigen Römischen Bad Mitteleuropas',
+      en: 'The legendary 5-star spa hotel with Central Europe\'s only Roman Bath',
+      cs: 'Legendární 5hvězdičkový lázeňský hotel s jedinými Římskými lázněmi ve střední Evropě',
+      ru: 'Легендарный 5-звёздочный курортный отель с единственными Римскими банями в Центральной Европе',
+    },
     features: {
       de: [
         'Einzigartiges Römisches Bad im Originalzustand von 1896',
@@ -97,7 +127,19 @@ The 97 spacious rooms and suites blend historic charm with contemporary comfort.
     yearBuilt: 1812,
     style: 'Klassizismus',
     bookingUrl: 'https://www.ensanahotels.com/centralni-lazne',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/centralni-lazne',
+      en: 'https://ensanahotels.com/en/hotels/centralni-lazne',
+      cs: 'https://ensanahotels.com/cs/hotels/centralni-lazne',
+      ru: 'https://ensanahotels.com/ru/hotels/centralni-lazne',
+    },
     address: 'Goethovo náměstí 1, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Das traditionsreichste Kurhaus direkt am Goetheplatz seit 1812',
+      en: 'The most historically significant spa house on Goethe Square since 1812',
+      cs: 'Nejtradičnější lázeňský dům přímo na Goethově náměstí od roku 1812',
+      ru: 'Самый исторический курортный дом на площади Гёте с 1812 года',
+    },
     features: {
       de: [
         'Zentrale Lage direkt am Goetheplatz',
@@ -166,7 +208,19 @@ The 130 comfortable rooms have been carefully renovated in recent years, blendin
     yearBuilt: 1905,
     style: 'Jugendstil (Art Nouveau)',
     bookingUrl: 'https://www.ensanahotels.com/hvezda',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/hvezda',
+      en: 'https://ensanahotels.com/en/hotels/hvezda',
+      cs: 'https://ensanahotels.com/cs/hotels/hvezda',
+      ru: 'https://ensanahotels.com/ru/hotels/hvezda',
+    },
     address: 'Goethovo náměstí 7, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Jugendstil-Juwel am Goetheplatz mit Zugang zum Spa des Imperial',
+      en: 'Art Nouveau gem on Goethe Square with access to the Imperial spa',
+      cs: 'Secesní klenot na Goethově náměstí s přístupem do spa hotelu Imperial',
+      ru: 'Жемчужина модерна на площади Гёте с доступом в спа-центр отеля Imperial',
+    },
     features: {
       de: [
         'Prachtvolle Jugendstil-Architektur von 1905',
@@ -235,7 +289,19 @@ The 120 rooms of the Hvězda are tastefully furnished, blending Art Nouveau char
     yearBuilt: 2003,
     style: 'Moderne',
     bookingUrl: 'https://www.ensanahotels.com/butterfly',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/butterfly',
+      en: 'https://ensanahotels.com/en/hotels/butterfly',
+      cs: 'https://ensanahotels.com/cs/hotels/butterfly',
+      ru: 'https://ensanahotels.com/ru/hotels/butterfly',
+    },
     address: 'Hlavní třída 655, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Modernes 4-Sterne-Hotel — familienfreundlich mit Kinderbetreuung',
+      en: 'Modern 4-star hotel — family-friendly with childcare',
+      cs: 'Moderní 4hvězdičkový hotel — přátelský k rodinám s hlídáním dětí',
+      ru: 'Современный 4-звёздочный отель — для семей с присмотром за детьми',
+    },
     features: {
       de: [
         'Modernes Design mit lichtdurchflutetem Atrium',
@@ -304,7 +370,19 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
     yearBuilt: 1888,
     style: 'Neoklassizismus',
     bookingUrl: 'https://www.ensanahotels.com/splendid',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/splendid',
+      en: 'https://ensanahotels.com/en/hotels/splendid',
+      cs: 'https://ensanahotels.com/cs/hotels/splendid',
+      ru: 'https://ensanahotels.com/ru/hotels/splendid',
+    },
     address: 'Hlavní třída 630, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Gemütliches 3-Sterne-Haus mit Zugang zum Spa des Centrální Lázně',
+      en: 'Cozy 3-star hotel with access to Centrální Lázně spa facilities',
+      cs: 'Útulný 3hvězdičkový hotel s přístupem do spa Centrálních Lázní',
+      ru: 'Уютный 3-звёздочный отель с доступом в спа-центр Центральных Лазней',
+    },
     features: {
       de: [
         'Hervorragendes Preis-Leistungs-Verhältnis',
@@ -363,6 +441,387 @@ The 71 rooms are comfortable and practically furnished, providing everything nee
         'Electrotherapy',
         'Magnetic field therapy',
         'Physiotherapy and walking training',
+      ],
+      cs: [
+        'CO2 koupele (v Centrálních Lázních)',
+        'Minerální koupele (v Centrálních Lázních)',
+        'Rašelinové zábaly',
+        'Klasická masáž',
+        'Podvodní masáž',
+        'Inhalační terapie',
+        'Pitná kúra',
+        'Elektroterapie',
+        'Magnetoterapie',
+        'Fyzioterapie a nácvik chůze',
+      ],
+      ru: [
+        'CO2-ванны (в Центральных Лазнях)',
+        'Минеральные ванны (в Центральных Лазнях)',
+        'Торфяные обёртывания',
+        'Классический массаж',
+        'Подводный массаж',
+        'Ингаляционная терапия',
+        'Питьевой курс',
+        'Электротерапия',
+        'Магнитотерапия',
+        'Физиотерапия и тренировка ходьбы',
+      ],
+    },
+  },
+  {
+    slug: 'pacifik',
+    name: 'Pacifik Ensana Health Spa Hotel',
+    stars: 4,
+    yearBuilt: 1906,
+    style: 'Neobarock',
+    bookingUrl: 'https://www.ensanahotels.com/pacifik',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/pacifik',
+      en: 'https://ensanahotels.com/en/hotels/pacifik',
+      cs: 'https://ensanahotels.com/cs/hotels/pacifik',
+      ru: 'https://ensanahotels.com/ru/hotels/pacifik',
+    },
+    address: 'Mírové náměstí 84, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Elegantes 4-Sterne-Kurhotel im neobarocken Stil am Mírové náměstí',
+      en: 'Elegant 4-star spa hotel in Neo-Baroque style on Mírové Square',
+      cs: 'Elegantní 4hvězdičkový lázeňský hotel v neobarokním stylu na Mírovém náměstí',
+      ru: 'Элегантный 4-звёздочный курортный отель в необарочном стиле на площади Мира',
+    },
+    features: {
+      de: [
+        'Neobarocke Architektur von 1906',
+        'Eigenes Balneologie-Zentrum mit modernen Behandlungsräumen',
+        'Innenpool und Saunabereich',
+        'Zentrale Lage am Mírové náměstí',
+        'Restaurant mit Kurküche und Diätoptionen',
+        'Blick auf den Kurpark und die umliegenden Wälder',
+        'Fitnessraum und Aufenthaltsräume',
+        'Idealer Ausgangspunkt für Wanderungen im Slavkovský les',
+      ],
+      en: [
+        'Neo-Baroque architecture from 1906',
+        'In-house balneology center with modern treatment rooms',
+        'Indoor pool and sauna area',
+        'Central location on Mírové Square',
+        'Restaurant with spa cuisine and dietary options',
+        'Views of the spa park and surrounding forests',
+        'Fitness room and lounges',
+        'Ideal starting point for hikes in the Slavkov Forest',
+      ],
+      cs: [
+        'Neobarokní architektura z roku 1906',
+        'Vlastní balneologické centrum s moderními procedurálními místnostmi',
+        'Vnitřní bazén a saunový svět',
+        'Centrální poloha na Mírovém náměstí',
+        'Restaurace s lázeňskou kuchyní a dietními možnostmi',
+        'Výhled na lázeňský park a okolní lesy',
+        'Posilovna a společenské místnosti',
+        'Ideální výchozí bod pro túry ve Slavkovském lese',
+      ],
+      ru: [
+        'Необарочная архитектура 1906 года',
+        'Собственный бальнеологический центр с современными процедурными кабинетами',
+        'Крытый бассейн и сауна',
+        'Центральное расположение на площади Мира',
+        'Ресторан с курортной кухней и диетическими блюдами',
+        'Вид на курортный парк и окрестные леса',
+        'Фитнес-зал и гостиные',
+        'Отличная отправная точка для прогулок по Славковскому лесу',
+      ],
+    },
+    description: {
+      de: `Das Pacifik ist ein elegantes Vier-Sterne-Kurhotel im neobarocken Stil, das seit 1906 Gäste in Marienbad empfängt. Direkt am Mírové náměstí gelegen, verbindet es historische Architektur mit einem modernen Balneologie-Zentrum, das ein breites Spektrum an Kuranwendungen bietet — von CO2-Bädern und Moorpackungen bis hin zu Massagen und Elektrotherapie. Das hauseigene medizinische Team erstellt für jeden Gast einen individuellen Behandlungsplan. Mit seinem Innenpool, dem Saunabereich und dem Restaurant mit ausgewogener Kurküche bietet das Pacifik alles für einen erholsamen Kuraufenthalt in komfortablem Ambiente.`,
+      en: `The Pacifik is an elegant four-star spa hotel in Neo-Baroque style that has been welcoming guests to Marienbad since 1906. Located directly on Mírové Square, it combines historic architecture with a modern balneology center offering a wide range of spa treatments — from CO2 baths and peat wraps to massages and electrotherapy. The in-house medical team creates an individual treatment plan for each guest. With its indoor pool, sauna area, and restaurant serving balanced spa cuisine, the Pacifik provides everything for a restorative spa stay in a comfortable setting.`,
+      cs: `Pacifik je elegantní čtyřhvězdičkový lázeňský hotel v neobarokním stylu, který hostí návštěvníky Mariánských Lázní od roku 1906. Přímo na Mírovém náměstí spojuje historickou architekturu s moderním balneologickým centrem nabízejícím široké spektrum lázeňských procedur — od CO2 koupelí a rašelinových zábalů po masáže a elektroterapii. Lékařský tým sestaví každému hostovi individuální léčebný plán. S vnitřním bazénem, saunovým světem a restaurací s vyváženou lázeňskou kuchyní nabízí Pacifik vše pro ozdravný pobyt v komfortním prostředí.`,
+      ru: `Пацифик — элегантный четырёхзвёздочный курортный отель в необарочном стиле, принимающий гостей в Марианских Лазнях с 1906 года. Расположенный на площади Мира, он сочетает историческую архитектуру с современным бальнеологическим центром, предлагающим широкий спектр процедур — от CO2-ванн и торфяных обёртываний до массажей и электротерапии. Медицинская команда составляет индивидуальный план лечения для каждого гостя.`,
+    },
+    treatments: {
+      de: [
+        'CO2-Bäder (Kohlensäurebäder)',
+        'Mineralbäder',
+        'Moorpackungen',
+        'Klassische Massage und Reflexzonenmassage',
+        'Unterwassermassage',
+        'Inhalationstherapie',
+        'Trinkkur',
+        'Elektrotherapie',
+        'Magnetfeldtherapie',
+        'Physiotherapie',
+      ],
+      en: [
+        'CO2 baths (carbon dioxide baths)',
+        'Mineral baths',
+        'Peat wraps',
+        'Classic massage and reflexology',
+        'Underwater massage',
+        'Inhalation therapy',
+        'Drinking cure',
+        'Electrotherapy',
+        'Magnetic field therapy',
+        'Physiotherapy',
+      ],
+      cs: [
+        'CO2 koupele',
+        'Minerální koupele',
+        'Rašelinové zábaly',
+        'Klasická masáž a reflexní masáž',
+        'Podvodní masáž',
+        'Inhalační terapie',
+        'Pitná kúra',
+        'Elektroterapie',
+        'Magnetoterapie',
+        'Fyzioterapie',
+      ],
+      ru: [
+        'CO2-ванны',
+        'Минеральные ванны',
+        'Торфяные обёртывания',
+        'Классический и рефлексологический массаж',
+        'Подводный массаж',
+        'Ингаляционная терапия',
+        'Питьевой курс',
+        'Электротерапия',
+        'Магнитотерапия',
+        'Физиотерапия',
+      ],
+    },
+  },
+  {
+    slug: 'vltava',
+    name: 'Vltava Ensana Health Spa Hotel',
+    stars: 3,
+    yearBuilt: 1900,
+    style: 'Secese',
+    bookingUrl: 'https://www.ensanahotels.com/vltava-berounka',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/vltava-berounka',
+      en: 'https://ensanahotels.com/en/hotels/vltava-berounka',
+      cs: 'https://ensanahotels.com/cs/hotels/vltava-berounka',
+      ru: 'https://ensanahotels.com/ru/hotels/vltava-berounka',
+    },
+    address: 'Hlavní třída 438, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Preisgünstiges 3-Sterne-Haus mit eigenem Kurzentrum und Verbindung zum Pacifik',
+      en: 'Affordable 3-star hotel with its own spa center and connection to the Pacifik',
+      cs: 'Cenově dostupný 3hvězdičkový hotel s vlastním léčebným centrem a propojením s Pacifikem',
+      ru: 'Доступный 3-звёздочный отель с собственным лечебным центром и соединением с Пацификом',
+    },
+    features: {
+      de: [
+        'Verbindungsgang zum Schwesterhotel Pacifik',
+        'Eigenes Kurzentrum mit Behandlungsräumen',
+        'Innenpool im verbundenen Pacifik nutzbar',
+        'Ruhige Lage an der Hauptpromenade',
+        'Restaurant mit Halb- und Vollpension',
+        'Attraktives Preis-Leistungs-Verhältnis',
+        'Ideal für längere Kuraufenthalte',
+        'Parkplatz am Hotel verfügbar',
+      ],
+      en: [
+        'Connecting passage to sister hotel Pacifik',
+        'In-house treatment center with spa rooms',
+        'Access to indoor pool at connected Pacifik hotel',
+        'Quiet location on the main promenade',
+        'Restaurant with half-board and full-board',
+        'Attractive value for money',
+        'Ideal for extended spa stays',
+        'Parking available at the hotel',
+      ],
+      cs: [
+        'Propojení se sesterským hotelem Pacifik',
+        'Vlastní léčebné centrum s procedurálními místnostmi',
+        'Přístup k vnitřnímu bazénu v propojeném hotelu Pacifik',
+        'Klidná poloha na hlavní promenádě',
+        'Restaurace s polopenzí a plnou penzí',
+        'Atraktivní poměr cena/výkon',
+        'Ideální pro delší lázeňské pobyty',
+        'Parkování u hotelu k dispozici',
+      ],
+      ru: [
+        'Соединение с отелем-партнёром Пацифик',
+        'Собственный лечебный центр с процедурными кабинетами',
+        'Доступ к крытому бассейну в Пацифике',
+        'Тихое расположение на главной променаде',
+        'Ресторан с полупансионом и полным пансионом',
+        'Привлекательное соотношение цены и качества',
+        'Идеально для длительных курортных пребываний',
+        'Парковка при отеле',
+      ],
+    },
+    description: {
+      de: `Das Vltava ist ein gastfreundliches Drei-Sterne-Kurhotel an der Hauptpromenade von Marienbad, das sich durch ein ausgezeichnetes Preis-Leistungs-Verhältnis auszeichnet. Über einen eleganten Verbindungsgang mit dem benachbarten Hotel Pacifik verbunden, profitieren Gäste von einem erweiterten Angebot an Kuranwendungen und Einrichtungen. Das eigene Kurzentrum bietet ein breites Spektrum an Behandlungen unter ärztlicher Aufsicht. Die komfortablen Zimmer und das Restaurant mit ausgewogener Kurküche machen das Vltava zur idealen Wahl für preisbewusste Kurgäste, die Wert auf medizinische Qualität legen.`,
+      en: `The Vltava is a welcoming three-star spa hotel on the main promenade of Marienbad, distinguished by its excellent value for money. Connected to the neighboring Hotel Pacifik through an elegant passage, guests benefit from an extended range of spa treatments and facilities. The in-house treatment center offers a broad spectrum of therapies under medical supervision. Comfortable rooms and a restaurant serving balanced spa cuisine make the Vltava the ideal choice for budget-conscious spa guests who value medical quality.`,
+      cs: `Vltava je pohostinný tříhvězdičkový lázeňský hotel na hlavní promenádě Mariánských Lázní, který se vyznačuje vynikajícím poměrem cena/výkon. Propojen elegantní chodbou se sousedním hotelem Pacifik, hosté mají přístup k rozšířenému spektru lázeňských procedur a vybavení. Vlastní léčebné centrum nabízí širokou škálu procedur pod lékařským dohledem. Komfortní pokoje a restaurace s vyváženou lázeňskou kuchyní dělají z Vltavy ideální volbu pro hosty, kteří hledají kvalitní léčbu za rozumnou cenu.`,
+      ru: `Влтава — гостеприимный трёхзвёздочный курортный отель на главной променаде Марианских Лазней, отличающийся превосходным соотношением цены и качества. Соединённый с соседним отелем Пацифик элегантным переходом, гости получают доступ к расширенному спектру процедур и инфраструктуре. Собственный лечебный центр предлагает широкий выбор процедур под медицинским наблюдением.`,
+    },
+    treatments: {
+      de: [
+        'CO2-Bäder',
+        'Mineralbäder',
+        'Moorpackungen',
+        'Klassische Massage',
+        'Unterwassermassage',
+        'Inhalationstherapie',
+        'Trinkkur',
+        'Elektrotherapie',
+        'Magnetfeldtherapie',
+        'Physiotherapie',
+      ],
+      en: [
+        'CO2 baths',
+        'Mineral baths',
+        'Peat wraps',
+        'Classic massage',
+        'Underwater massage',
+        'Inhalation therapy',
+        'Drinking cure',
+        'Electrotherapy',
+        'Magnetic field therapy',
+        'Physiotherapy',
+      ],
+      cs: [
+        'CO2 koupele',
+        'Minerální koupele',
+        'Rašelinové zábaly',
+        'Klasická masáž',
+        'Podvodní masáž',
+        'Inhalační terapie',
+        'Pitná kúra',
+        'Elektroterapie',
+        'Magnetoterapie',
+        'Fyzioterapie',
+      ],
+      ru: [
+        'CO2-ванны',
+        'Минеральные ванны',
+        'Торфяные обёртывания',
+        'Классический массаж',
+        'Подводный массаж',
+        'Ингаляционная терапия',
+        'Питьевой курс',
+        'Электротерапия',
+        'Магнитотерапия',
+        'Физиотерапия',
+      ],
+    },
+  },
+  {
+    slug: 'svoboda',
+    name: 'Svoboda Ensana Health Spa Hotel',
+    stars: 3,
+    yearBuilt: 1890,
+    style: 'Neorenaissance',
+    bookingUrl: 'https://www.ensanahotels.com/svoboda',
+    bookingUrls: {
+      de: 'https://ensanahotels.com/de/hotels/svoboda',
+      en: 'https://ensanahotels.com/en/hotels/svoboda',
+      cs: 'https://ensanahotels.com/cs/hotels/svoboda',
+      ru: 'https://ensanahotels.com/ru/hotels/svoboda',
+    },
+    address: 'Chebská 543, 353 01 Mariánské Lázně, Czech Republic',
+    tagline: {
+      de: 'Ruhiges 3-Sterne-Superior-Hotel mit persönlicher Atmosphäre und Waldnähe',
+      en: 'Peaceful 3-star Superior hotel with personal atmosphere near the forest',
+      cs: 'Klidný 3hvězdičkový Superior hotel s osobní atmosférou poblíž lesa',
+      ru: 'Спокойный 3-звёздочный Superior отель с домашней атмосферой у леса',
+    },
+    features: {
+      de: [
+        'Ruhige Lage nahe dem Slavkovský les',
+        'Eigenes Kurzentrum mit Behandlungsräumen',
+        'Persönliche, familiäre Atmosphäre',
+        'Restaurant mit Kurküche und Diätoptionen',
+        'Sonnenterrasse mit Blick auf den Park',
+        'Kurze Wege zum Kurpark und zur Kolonnade',
+        'Ideal für Ruhe suchende Kurgäste',
+        'Kostenfreier Parkplatz',
+      ],
+      en: [
+        'Quiet location near the Slavkov Forest',
+        'In-house treatment center with spa rooms',
+        'Personal, familiar atmosphere',
+        'Restaurant with spa cuisine and dietary options',
+        'Sun terrace with park views',
+        'Short walks to the spa park and Colonnade',
+        'Ideal for guests seeking tranquility',
+        'Complimentary parking',
+      ],
+      cs: [
+        'Klidná poloha poblíž Slavkovského lesa',
+        'Vlastní léčebné centrum s procedurálními místnostmi',
+        'Osobní, rodinná atmosféra',
+        'Restaurace s lázeňskou kuchyní a dietními možnostmi',
+        'Sluneční terasa s výhledem na park',
+        'Krátká vzdálenost do lázeňského parku a ke Kolonádě',
+        'Ideální pro hosty hledající klid',
+        'Bezplatné parkování',
+      ],
+      ru: [
+        'Тихое расположение рядом со Славковским лесом',
+        'Собственный лечебный центр с процедурными кабинетами',
+        'Домашняя, семейная атмосфера',
+        'Ресторан с курортной кухней и диетическими блюдами',
+        'Солнечная терраса с видом на парк',
+        'Недалеко от курортного парка и Колоннады',
+        'Идеально для гостей, ищущих спокойствие',
+        'Бесплатная парковка',
+      ],
+    },
+    description: {
+      de: `Das Svoboda ist ein charmantes Drei-Sterne-Superior-Kurhotel in ruhiger Lage nahe dem Slavkovský les, das sich durch seine besonders persönliche und familiäre Atmosphäre auszeichnet. Das im Jahr 1890 erbaute Haus verbindet Neorenaissance-Architektur mit einem eigenen Kurzentrum, das ein breites Spektrum an Behandlungen unter ärztlicher Aufsicht bietet. Die Sonnenterrasse mit Parkblick und das Restaurant mit ausgewogener Kurküche schaffen ein Ambiente, das zum Verweilen einlädt. Für Kurgäste, die Ruhe, Natur und medizinische Qualität in einem unkomplizierten Rahmen suchen, ist das Svoboda die perfekte Adresse.`,
+      en: `The Svoboda is a charming three-star Superior spa hotel in a quiet location near the Slavkov Forest, distinguished by its particularly personal and familiar atmosphere. Built in 1890, the Neo-Renaissance property combines period architecture with an in-house treatment center offering a broad range of therapies under medical supervision. The sun terrace with park views and the restaurant serving balanced spa cuisine create an inviting ambiance. For spa guests seeking tranquility, nature, and medical quality in an uncomplicated setting, the Svoboda is the perfect address.`,
+      cs: `Svoboda je okouzlující tříhvězdičkový Superior lázeňský hotel v klidné poloze poblíž Slavkovského lesa, který se vyznačuje obzvláště osobní a rodinnou atmosférou. Hotel z roku 1890 spojuje neorenesanční architekturu s vlastním léčebným centrem nabízejícím široké spektrum procedur pod lékařským dohledem. Sluneční terasa s výhledem na park a restaurace s vyváženou lázeňskou kuchyní vytvářejí příjemné prostředí. Pro hosty hledající klid, přírodu a kvalitní léčbu je Svoboda ideální volbou.`,
+      ru: `Свобода — очаровательный трёхзвёздочный Superior курортный отель в тихом месте рядом со Славковским лесом, отличающийся особенно домашней и уютной атмосферой. Построенный в 1890 году, он сочетает неоренессансную архитектуру с собственным лечебным центром, предлагающим широкий спектр процедур под медицинским наблюдением. Солнечная терраса с видом на парк и ресторан со сбалансированной курортной кухней создают уютную обстановку.`,
+    },
+    treatments: {
+      de: [
+        'CO2-Bäder',
+        'Mineralbäder',
+        'Moorpackungen',
+        'Klassische Massage',
+        'Unterwassermassage',
+        'Inhalationstherapie',
+        'Trinkkur',
+        'Elektrotherapie',
+        'Magnetfeldtherapie',
+        'Physiotherapie',
+      ],
+      en: [
+        'CO2 baths',
+        'Mineral baths',
+        'Peat wraps',
+        'Classic massage',
+        'Underwater massage',
+        'Inhalation therapy',
+        'Drinking cure',
+        'Electrotherapy',
+        'Magnetic field therapy',
+        'Physiotherapy',
+      ],
+      cs: [
+        'CO2 koupele',
+        'Minerální koupele',
+        'Rašelinové zábaly',
+        'Klasická masáž',
+        'Podvodní masáž',
+        'Inhalační terapie',
+        'Pitná kúra',
+        'Elektroterapie',
+        'Magnetoterapie',
+        'Fyzioterapie',
+      ],
+      ru: [
+        'CO2-ванны',
+        'Минеральные ванны',
+        'Торфяные обёртывания',
+        'Классический массаж',
+        'Подводный массаж',
+        'Ингаляционная терапия',
+        'Питьевой курс',
+        'Электротерапия',
+        'Магнитотерапия',
+        'Физиотерапия',
       ],
     },
   },
