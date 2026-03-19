@@ -317,6 +317,100 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
+/* ─── Article Pull Quote ─── */
+.article-pullquote {
+  position: relative;
+  border-left: 3px solid var(--color-turquoise);
+  background: var(--color-beige, #F5EEE1);
+  padding: 1.5rem 2rem;
+  margin: 2.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  max-width: 40rem;
+}
+.article-pullquote p {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-indigo-dark, #004F71);
+  margin: 0;
+}
+.article-pullquote .pullquote-cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--color-warm-grey, #A19CA3);
+}
+
+/* ─── Article Figure ─── */
+.article-figure {
+  margin: 2rem 0;
+  max-width: 40rem;
+}
+.article-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  display: block;
+}
+.article-figure.figure-wide {
+  max-width: 56rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+.article-figure.figure-full {
+  max-width: none;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  border-radius: 0;
+}
+.article-figure.figure-full img {
+  border-radius: 0;
+}
+.figure-caption {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-warm-grey, #A19CA3);
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+/* ─── Article Gallery ─── */
+.article-gallery {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  max-width: 56rem;
+}
+.article-gallery.gallery-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.article-gallery.gallery-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media (max-width: 640px) {
+  .article-gallery.gallery-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.gallery-item {
+  margin: 0;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.375rem;
+  display: block;
+}
+.article-gallery > .figure-caption {
+  grid-column: 1 / -1;
+}
+
 /* ─── Button Styles ─── */
 .btn-primary {
   display: inline-flex;

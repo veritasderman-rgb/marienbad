@@ -11,7 +11,7 @@ const stories = await getStories(locale)
 ---
 
 <Base locale={locale} section="people" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
-  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
 
     { stories.length > 0 && (

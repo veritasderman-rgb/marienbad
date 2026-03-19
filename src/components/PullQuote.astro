@@ -1,0 +1,13 @@
+---
+interface Props {
+  text: string
+}
+
+const { text } = Astro.props
+---
+
+{text && (
+  <blockquote class="article-pullquote mb-10">
+    <p>{text}</p>
+  </blockquote>
+)}

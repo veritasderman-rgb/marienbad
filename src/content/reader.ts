@@ -1,6 +1,7 @@
 import Markdoc from '@markdoc/markdoc'
 import yaml from 'js-yaml'
 import type { Locale } from '@/i18n/config'
+import { markdocConfig } from '@/markdoc/config'
 
 // Homepage JSON imports (bundled at build time)
 import homepageDe from './homepage/de.json'
@@ -60,7 +61,7 @@ export async function getPage(slug: string) {
 
     const meta = yaml.load(yamlRaw as string) as Record<string, string>
     const ast = Markdoc.parse(mdocRaw as string)
-    const content = Markdoc.transform(ast)
+    const content = Markdoc.transform(ast, markdocConfig)
 
     return {
       title: meta.title ?? '',
@@ -68,6 +69,7 @@ export async function getPage(slug: string) {
       section: meta.section ?? '',
       metaTitle: meta.metaTitle ?? '',
       metaDescription: meta.metaDescription ?? '',
+      pullQuote: meta.pullQuote ?? '',
       body: content,
     }
   } catch {
@@ -80,6 +82,7 @@ export interface Article {
   title: string
   locale: string
   category: string
+  pullQuote?: string
   excerpt: string
   date: string
   readingTime: string
@@ -105,13 +108,14 @@ export async function getArticles(locale: Locale): Promise<Article[]> {
     if (!mdocRaw) continue
 
     const ast = Markdoc.parse(mdocRaw as string)
-    const content = Markdoc.transform(ast)
+    const content = Markdoc.transform(ast, markdocConfig)
 
     articles.push({
       slug,
       title: meta.title ?? '',
       locale: meta.locale ?? '',
       category: meta.category ?? '',
+      pullQuote: meta.pullQuote ?? '',
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
@@ -140,13 +144,14 @@ export async function getArticle(slug: string): Promise<Article | null> {
 
     const meta = yaml.load(yamlRaw as string) as Record<string, string>
     const ast = Markdoc.parse(mdocRaw as string)
-    const content = Markdoc.transform(ast)
+    const content = Markdoc.transform(ast, markdocConfig)
 
     return {
       slug,
       title: meta.title ?? '',
       locale: meta.locale ?? '',
       category: meta.category ?? '',
+      pullQuote: meta.pullQuote ?? '',
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
@@ -192,7 +197,7 @@ export async function getStories(locale: Locale): Promise<Story[]> {
     if (!mdocRaw) continue
 
     const ast = Markdoc.parse(mdocRaw as string)
-    const content = Markdoc.transform(ast)
+    const content = Markdoc.transform(ast, markdocConfig)
 
     stories.push({
       slug,
@@ -223,7 +228,7 @@ export async function getStory(slug: string): Promise<Story | null> {
 
     const meta = yaml.load(yamlRaw as string) as Record<string, string>
     const ast = Markdoc.parse(mdocRaw as string)
-    const content = Markdoc.transform(ast)
+    const content = Markdoc.transform(ast, markdocConfig)
 
     return {
       slug,
@@ -254,13 +259,14 @@ export async function getAllArticles(): Promise<Article[]> {
     if (!mdocRaw) continue
 
     const ast = Markdoc.parse(mdocRaw as string)
-    const content = Markdoc.transform(ast)
+    const content = Markdoc.transform(ast, markdocConfig)
 
     articles.push({
       slug,
       title: meta.title ?? '',
       locale: meta.locale ?? '',
       category: meta.category ?? '',
+      pullQuote: meta.pullQuote ?? '',
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
       readingTime: meta.readingTime ?? '',
