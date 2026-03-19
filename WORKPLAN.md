@@ -124,7 +124,7 @@
 | 2.11.2 | Newsletter form → MailerLite API (potřeba API key) | ⚠️ | Endpoint existuje s graceful degradation, chybí MAILERLITE_API_KEY env var |
 | 2.11.3 | Scroll reveal — JS IntersectionObserver | ✅ | Implementováno v Base.astro |
 | 2.11.4 | Unikátní ikony pro 4 healing elements | ✅ | Custom SVG paths |
-| 2.11.5 | Hotel booking linky s UTM parametry | ⚠️ | Linky existují, UTM TBD |
+| 2.11.5 | Hotel booking linky s UTM parametry | ✅ | withUtm() helper, hotel detail + HotelTiles + Header + BookingCtaBar |
 | 2.11.6 | Schema.org TouristDestination na homepage | ✅ | + LodgingBusiness pro 2 hotely |
 | 2.11.7 | Dynamic OG image | ✅ | /api/og endpoint generuje SVG |
 
@@ -170,8 +170,8 @@
 | 4.4 | PoC Keystatic kolekce | ✅ | Implementováno |
 | 4.5 | PoC card komponenta | ✅ | StoryCard.astro |
 | 4.6 | PoC submission formulář | ❌ | Potřebuje backend (Supabase?) |
-| 4.7 | PoC filtrování dle jazyka/tagu | ❌ | React island s filtry |
-| 4.8 | PoC RSS/JSON feed | ❌ |
+| 4.7 | PoC filtrování dle jazyka/tagu | ✅ | StoryFilter.tsx React island — jazyk + lokace filtry |
+| 4.8 | PoC RSS/JSON feed | ✅ | /stories-feed.xml — RSS 2.0 feed všech příběhů |
 | 4.9 | Reálné PoC příběhy (min. 3) | ✅ | 3 DE + 3 EN seed stories |
 
 ---
@@ -187,7 +187,7 @@
 | 5.5 | Tag systém | ✅ | Implementováno |
 | 5.6 | Reading time kalkulace | ✅ | Implementováno |
 | 5.7 | Related articles algoritmus | ✅ | RelatedArticles.astro — filtr dle kategorie |
-| 5.8 | Article Schema.org structured data | ❌ | Chybí ld+json Article markup na detail stránkách |
+| 5.8 | Article Schema.org structured data | ✅ | ld+json Article markup na detail stránkách (DE/EN/CS/RU) |
 | 5.9 | RSS feed | ✅ | /rss.xml |
 | 5.10 | Min. 3 seed články (DE + EN) | ✅ | 3 DE + 3 EN seed články |
 
@@ -229,7 +229,7 @@
 | 7.5 | Twitter Card tags | ✅ | twitter:card, twitter:title, twitter:description, twitter:image |
 | 7.6 | Schema.org: TouristDestination | ✅ | Homepage.astro |
 | 7.7 | Schema.org: LodgingBusiness | ✅ | Homepage.astro — 2 hotely |
-| 7.8 | Schema.org: Article | ❌ | Chybí na article detail stránkách |
+| 7.8 | Schema.org: Article | ✅ | ld+json na article detail stránkách (DE/EN/CS/RU) |
 | 7.9 | Schema.org: FAQPage | ✅ | Na FAQ stránkách (DE/EN/CS/RU) |
 | 7.10 | Schema.org: BreadcrumbList | ✅ | Breadcrumbs.astro |
 | 7.11 | XML sitemap | ✅ | @astrojs/sitemap |
@@ -287,17 +287,17 @@
 
 | # | Úkol | Effort |
 |---|------|--------|
-| 5.8 / 7.8 | Schema.org Article markup na article detail pages | Střední |
+| ~~5.8 / 7.8~~ | ~~Schema.org Article markup~~ | ✅ Hotovo |
 | 7.15 | Lighthouse audit + opravy | Střední |
-| 2.11.5 | UTM parametry na hotel booking links | Malý |
+| ~~2.11.5~~ | ~~UTM parametry na hotel booking links~~ | ✅ Hotovo |
 
 ### P3 — Nice to have funkce
 
 | # | Úkol | Effort |
 |---|------|--------|
 | 4.6 | PoC submission formulář | Velký (potřebuje backend) |
-| 4.7 | PoC filtrování dle jazyka/tagu | Střední |
-| 4.8 | PoC RSS/JSON feed | Malý |
+| ~~4.7~~ | ~~PoC filtrování dle jazyka/tagu~~ | ✅ Hotovo |
+| ~~4.8~~ | ~~PoC RSS/JSON feed~~ | ✅ Hotovo |
 | 8.4 | Treatment finder / quiz | Velký |
 | 3.2.6 | Hotel recommendation boxy integrovat do pillar pages | Malý |
 
@@ -424,18 +424,18 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 |-----------|----|----|-----|
 | Infrastruktura (Fáze 0) | 13 | 2 | 2 |
 | Design system (Fáze 1) | 27 | 0 | 0 |
-| Homepage (Fáze 2) | 15 | 2 | 1 |
+| Homepage (Fáze 2) | 16 | 1 | 1 |
 | Pillar pages (Fáze 3) | 12 | 1 | 0 |
-| People of Colonnade (Fáze 4) | 6 | 0 | 3 |
-| Magazín (Fáze 5) | 9 | 0 | 1 |
+| People of Colonnade (Fáze 4) | 8 | 0 | 1 |
+| Magazín (Fáze 5) | 10 | 0 | 0 |
 | Sub-stránky (Fáze 6) | 18 | 0 | 0 |
-| SEO (Fáze 7) | 13 | 0 | 2 |
+| SEO (Fáze 7) | 14 | 0 | 1 |
 | Interaktivní (Fáze 8) | 5 | 1 | 1 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
 | Obsahový plán (Fáze 10) | 60 | 0 | 0 |
-| **CELKEM** | **182** | **7** | **15** |
+| **CELKEM** | **187** | **6** | **11** |
 
-**Celkový pokrok: ~89% hotovo (182/204 — updated 19.3.2026)**
+**Celkový pokrok: ~92% hotovo (187/204 — updated 19.3.2026)**
 
 ---
 
@@ -446,6 +446,15 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 #### Wave 4 články (8 jazykových verzí)
 - ✅ A5: Léčba pohybového aparátu bahnem a minerální vodou (CS/DE/EN/RU) — cluster, healing
 - ✅ A6: Léčba ledvin a močových cest (CS/DE/EN/RU) — cluster, healing
+
+#### P2 — SEO & kvalita
+- ✅ Schema.org Article ld+json na article detail stránkách (DE/EN/CS/RU)
+- ✅ UTM parametry: withUtm() helper + hotel detail pages + HotelTiles
+
+#### P3 — Funkce
+- ✅ PoC RSS feed: /stories-feed.xml — RSS 2.0 všech příběhů
+- ✅ PoC filtrování: StoryFilter.tsx React island — jazyk + lokace filtry
+- ✅ getAllStories() v reader.ts, filter překlady v ui.ts
 
 #### Stav obsahového plánu
 - Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí
