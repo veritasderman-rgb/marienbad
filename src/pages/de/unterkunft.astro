@@ -3,13 +3,24 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import HotelTiles from '@/components/HotelTiles.astro'
-import { getPage } from '@/content/reader'
+import { getPage, extractFaqs } from '@/content/reader'
 
 const locale = 'de' as const
 const page = await getPage('de-unterkunft')
+const faqs = page?.rawBody ? extractFaqs(page.rawBody) : []
+const faqSchema = faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+} : null
 ---
 
 <Base locale={locale} section="accommodation" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     <HotelTiles locale={locale} />
     { page?.body && <MarkdocRenderer content={page.body} /> }

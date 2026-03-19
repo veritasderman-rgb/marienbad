@@ -203,7 +203,7 @@ export const episodes: PodcastEpisode[] = [
 ]
 
 export function getEpisodes() {
-  return [...episodes].sort((a, b) => b.date.localeCompare(a.date))
+  return [...episodes].sort((a, b) => a.date.localeCompare(b.date))
 }
 
 export function getThumbnail(videoId: string): string {

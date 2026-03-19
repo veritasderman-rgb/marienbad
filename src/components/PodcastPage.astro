@@ -8,6 +8,7 @@ interface Props {
 
 const { locale } = Astro.props
 const episodes = getEpisodes()
+const latestEpisode = episodes[episodes.length - 1]
 
 const labels = {
   cs: { title: 'Podcast z Mariánských Lázní', subtitle: 'Video podcasty z lázeňského města — rozhovory, tipy a příběhy', watch: 'Přehrát', allEpisodes: 'Všechny epizody', playlistLabel: 'Celý playlist na YouTube', episode: 'Epizoda' },
@@ -54,8 +55,8 @@ const t = labels[locale]
         <div class="rounded-2xl overflow-hidden shadow-card bg-gradient-to-br from-indigo-50 to-beige-50 border border-indigo-100">
           <div class="relative w-full" style="padding-bottom: 56.25%;">
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${episodes[0].videoId}?rel=0&modestbranding=1`}
-              title={episodes[0].title[locale] || episodes[0].title.en}
+              src={`https://www.youtube-nocookie.com/embed/${latestEpisode.videoId}?rel=0&modestbranding=1`}
+              title={latestEpisode.title[locale] || latestEpisode.title.en}
               class="absolute inset-0 w-full h-full"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -64,8 +65,8 @@ const t = labels[locale]
           </div>
           <div class="p-6 md:p-8">
             <span class="text-xs font-semibold uppercase tracking-widest text-indigo-500">{t.episode} {episodes.length}</span>
-            <h2 class="font-heading text-2xl font-bold text-indigo-700 mt-1 mb-2">{episodes[0].title[locale] || episodes[0].title.en}</h2>
-            <p class="text-beige-700">{episodes[0].description[locale] || episodes[0].description.en}</p>
+            <h2 class="font-heading text-2xl font-bold text-indigo-700 mt-1 mb-2">{latestEpisode.title[locale] || latestEpisode.title.en}</h2>
+            <p class="text-beige-700">{latestEpisode.description[locale] || latestEpisode.description.en}</p>
           </div>
         </div>
       </div>
@@ -97,7 +98,7 @@ const t = labels[locale]
               </div>
             </div>
             <span class="absolute top-3 left-3 px-2.5 py-1 bg-indigo-700/90 text-white text-xs font-bold rounded-lg">
-              {t.episode} {episodes.length - i}
+              {t.episode} {i + 1}
             </span>
           </div>
           <!-- Info -->

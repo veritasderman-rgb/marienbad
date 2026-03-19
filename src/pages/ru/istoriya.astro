@@ -16,6 +16,9 @@ const hotel = getHotelBySlug('nove-lazne')!
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <HotelRecommendationBox
+      locale={locale}
+       locale={locale}
+      locale={locale}
       name={hotel.name}
       stars={hotel.stars}
       badge="С 1828 года"
