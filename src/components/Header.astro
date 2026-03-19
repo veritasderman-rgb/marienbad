@@ -62,6 +62,7 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
           class="hidden lg:inline-flex items-center gap-1.5 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold rounded-full transition-all duration-200"
           target="_blank"
           rel="noopener"
+          aria-label={`${bookingCta} (opens in a new tab)`}
         >
           {bookingCta}
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -74,6 +75,8 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
           id="mobile-menu-btn"
           class="lg:hidden p-2 text-white/80 hover:text-white transition-colors"
           aria-label={t(locale, 'nav.menu')}
+          aria-expanded="false"
+          aria-controls="mobile-nav"
         >
           <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -87,7 +90,7 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
   </div>
 
   <!-- Mobile nav: full-screen overlay -->
-  <div id="mobile-nav" class="hidden fixed inset-0 top-16 md:top-20 z-40 bg-indigo-700/98 backdrop-blur-md lg:hidden overflow-y-auto">
+  <div id="mobile-nav" class="hidden fixed inset-0 top-16 md:top-20 z-40 bg-indigo-700/98 backdrop-blur-md lg:hidden overflow-y-auto" aria-hidden="true">
     <nav aria-label="Mobile navigation" class="container-wide py-8 flex flex-col gap-1">
       {navItems.map(({ navKey, href }) => (
         <a
@@ -162,6 +165,8 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
     iconOpen?.classList.toggle('hidden')
     iconClose?.classList.toggle('hidden')
     document.body.style.overflow = isOpen ? '' : 'hidden'
+    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true')
+    nav?.setAttribute('aria-hidden', isOpen ? 'true' : 'false')
   })
 
   // Smart header: compact/opaque on scroll, hide on scroll-down, show on scroll-up

@@ -4,14 +4,26 @@ import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
 import RelatedArticles from '@/components/RelatedArticles.astro'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { getHotelBySlug } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
 
 const locale = 'en' as const
 const page = await getPage('en-mineral-springs')
+const hotel = getHotelBySlug('nove-lazne')!
 ---
 
 <Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <RelatedArticles locale={locale} category="health" />
+    <HotelRecommendationBox
+      name={hotel.name}
+      stars={hotel.stars}
+      badge="Mineral Spa"
+      description="The 5-star Nové Lázně features its own mineral baths and the only Roman Bath in Central Europe — the perfect base for experiencing Marienbad's healing springs."
+      bookingUrl={withUtm(hotel.bookingUrls.en, 'marienbad', 'editorial', 'mineral-springs')}
+      bookingLabel="Book spa hotel"
+    />
   </PillarPage>
 </Base>

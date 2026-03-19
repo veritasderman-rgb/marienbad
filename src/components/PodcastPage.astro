@@ -57,7 +57,7 @@ const t = labels[locale]
               src={`https://www.youtube-nocookie.com/embed/${episodes[0].videoId}?rel=0&modestbranding=1`}
               title={episodes[0].title[locale] || episodes[0].title.en}
               class="absolute inset-0 w-full h-full"
-              loading="eager"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>

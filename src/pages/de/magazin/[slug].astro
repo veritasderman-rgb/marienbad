@@ -39,7 +39,7 @@ if (article.coverImage) articleSchema.image = article.coverImage
     </div>
     {article.coverImage && (
       <div class="rounded-xl overflow-hidden mb-10 -mx-4 md:mx-0">
-        <img src={article.coverImage} alt={article.title} class="w-full h-auto object-cover max-h-[28rem]" loading="eager" decoding="async" />
+        <img src={article.coverImage} alt={article.title} class="w-full aspect-[16/9] object-cover" loading="eager" decoding="async" />
       </div>
     )}
     <MarkdocRenderer content={article.body} />
