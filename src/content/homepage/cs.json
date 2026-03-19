@@ -8,6 +8,8 @@
       "UNESCO dědictví",
       "Od roku 1812"
     ]
+    ],
+    "image": "/images/content/hero/hero/image.jpg"
   },
   "quickFacts": [
     {
@@ -59,13 +61,14 @@
     "sectionLabel": "Ubytování",
     "title": "Kde se ubytovat v Mariánských Lázních",
     "description": "Od historických 5hvězdičkových lázeňských hotelů po útulné penziony.",
-    "allHotelsLabel": "Všech 6 hotelů →",
+    "allHotelsLabel": "Všech 7 hotelů →",
     "items": [
       {
         "name": "Nové Lázně",
         "stars": 5,
         "badge": "Tip redakce",
         "description": "Historický 5hvězdičkový klenot s původními Římskými lázněmi — vlajková loď hotelů Ensana.",
+        "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
           "Římské lázně",
           "CO₂ terapie",
@@ -77,8 +80,8 @@
       {
         "name": "Centrální Lázně",
         "stars": 4,
-        "badge": "",
         "description": "Přímo u kolonády — tradiční lázeňská péče v centru města s moderními procedurami.",
+        "image": "/images/content/hotels/hotels/items/1/image.jpg",
         "tags": [
           "U kolonády",
           "Pitná kúra",
@@ -101,7 +104,7 @@
         "location": "Hamburg 🇩🇪",
         "visitLabel": "Podvanácté",
         "lang": "de",
-        "translation": "„Křížový pramen je jako starý přítel — každý rok ho přijedu navštívit.“"
+        "portrait": "/images/content/stories/people/stories/0/portrait.png"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
@@ -109,7 +112,7 @@
         "location": "London 🇬🇧",
         "visitLabel": "3. návštěva",
         "lang": "en",
-        "translation": "Přijel jsem kvůli léčbě, ale zůstal jsem kvůli klidu."
+        "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
       {
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
@@ -117,7 +120,7 @@
         "location": "Москва 🇷🇺",
         "visitLabel": "8. návštěva",
         "lang": "ru",
-        "translation": "Marienbad není jen lázně. Je to místo, kde odpočívá duše."
+        "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
@@ -126,7 +129,8 @@
     "season": "Jaro 2026",
     "title": "Prameny se probouzejí — jarní kúra v Mariánských Lázních",
     "description": "Na jaře Mariánské Lázně rozkvétají: Skalníkovy sady hrají barvami, Zpívající fontána zahajuje novou sezónu a jemný jarní vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
-    "ctaText": "Zjistit více"
+    "ctaText": "Zjistit více",
+    "image": "/images/content/seasonal/seasonal/image.jpg"
   },
   "magazine": {
     "sectionLabel": "Magazín",
@@ -137,21 +141,24 @@
         "title": "CO₂ koupele: Co říká věda",
         "excerpt": "V klinických studiích uvádí 83 % pacientů snížení bolestí kloubů po čtrnáctidenní lázeňské kúře.",
         "date": "15. března 2026",
-        "readTime": "5 min. čtení"
+        "readTime": "5 min. čtení",
+        "image": "/images/content/articles/magazine/articles/0/image.jpg"
       },
       {
         "category": "Kultura",
         "title": "Po stopách Goetha městem",
         "excerpt": "Tytéž prameny, které Goethe roku 1823 opěvoval, dnes napájejí moderní rehabilitační programy.",
         "date": "10. března 2026",
-        "readTime": "7 min. čtení"
+        "readTime": "7 min. čtení",
+        "image": "/images/content/articles/magazine/articles/1/image.png"
       },
       {
         "category": "Tip",
         "title": "5 nejkrásnějších procházek",
         "excerpt": "Od kolonády přes Skalníkovy sady až ke Geologickému parku — nejlepší trasy pro každé roční období.",
         "date": "5. března 2026",
-        "readTime": "4 min. čtení"
+        "readTime": "4 min. čtení",
+        "image": "/images/content/articles/magazine/articles/2/image.jpg"
       }
     ]
   },

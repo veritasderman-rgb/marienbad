@@ -4,23 +4,51 @@
     "subtitle": "UNESCO World Heritage · Est. 1812 · Four Healing Elements — The only spa destination in the world combining all four natural healing resources.",
     "ctaText": "Explore the town",
     "ctaHref": "#discover",
-    "badges": ["UNESCO Heritage", "Est. 1812"]
+    "badges": [
+      "UNESCO Heritage",
+      "Est. 1812"
+    ],
+    "image": "/images/content/hero/hero/image.jpg"
   },
   "quickFacts": [
-    { "value": "40+", "label": "Mineral Springs" },
-    { "value": "UNESCO", "label": "Heritage Site 2021" },
-    { "value": "1812", "label": "Spa Tradition" },
-    { "value": "Royal", "label": "Golf Club 1905" }
+    {
+      "value": "40+",
+      "label": "Mineral Springs"
+    },
+    {
+      "value": "UNESCO",
+      "label": "Heritage Site 2021"
+    },
+    {
+      "value": "1812",
+      "label": "Spa Tradition"
+    },
+    {
+      "value": "Royal",
+      "label": "Golf Club 1905"
+    }
   ],
   "healingElements": {
     "sectionLabel": "What makes Marienbad unique",
     "title": "Four Natural Healing Resources",
     "description": "The only spa destination on earth that unites all four elements of natural healing.",
     "items": [
-      { "name": "Water", "description": "Over 40 mineral springs with unique compositions — from drinking cures to therapeutic healing baths." },
-      { "name": "Earth", "description": "Natural peat peloids with powerful anti-inflammatory and pain-relieving properties." },
-      { "name": "Gas", "description": "99.7% pure CO₂ — \"Maria's Gas\" — clinically proven to improve peripheral circulation." },
-      { "name": "Climate", "description": "Certified healing climate at 630m elevation — pure forest air enriched with natural aerosols." }
+      {
+        "name": "Water",
+        "description": "Over 40 mineral springs with unique compositions — from drinking cures to therapeutic healing baths."
+      },
+      {
+        "name": "Earth",
+        "description": "Natural peat peloids with powerful anti-inflammatory and pain-relieving properties."
+      },
+      {
+        "name": "Gas",
+        "description": "99.7% pure CO₂ — \"Maria's Gas\" — clinically proven to improve peripheral circulation."
+      },
+      {
+        "name": "Climate",
+        "description": "Certified healing climate at 630m elevation — pure forest air enriched with natural aerosols."
+      }
     ]
   },
   "discover": {
@@ -32,23 +60,32 @@
     "sectionLabel": "Accommodation",
     "title": "Where to Stay in Marienbad",
     "description": "From historic 5-star spa hotels to charming boutique guesthouses.",
-    "allHotelsLabel": "Discover all 6 hotels →",
+    "allHotelsLabel": "Discover all 7 hotels →",
     "items": [
       {
         "name": "Nové Lázně",
         "stars": 5,
         "badge": "Editor's Pick",
         "description": "A historic 5-star gem featuring an original Roman Bath — the flagship of the Ensana Spa Hotels collection.",
-        "tags": ["Roman Bath", "CO₂ Therapy", "Pool"],
+        "image": "/images/content/hotels/hotels/items/0/image.jpg",
+        "tags": [
+          "Roman Bath",
+          "CO₂ Therapy",
+          "Pool"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Book your stay"
       },
       {
         "name": "Centrální Lázně",
         "stars": 4,
-        "badge": "",
         "description": "Steps from the Colonnade — traditional spa treatments in a prime central location with modern therapy rooms.",
-        "tags": ["Colonnade Location", "Drinking Cure", "Wellness"],
+        "image": "/images/content/hotels/hotels/items/1/image.jpg",
+        "tags": [
+          "Colonnade Location",
+          "Drinking Cure",
+          "Wellness"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Book your stay"
       }
@@ -65,21 +102,24 @@
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "12th visit",
-        "lang": "de"
+        "lang": "de",
+        "portrait": "/images/content/stories/people/stories/0/portrait.png"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
         "name": "James",
         "location": "London 🇬🇧",
         "visitLabel": "3rd visit",
-        "lang": "en"
+        "lang": "en",
+        "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
       {
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
         "name": "Наталья",
         "location": "Москва 🇷🇺",
         "visitLabel": "8th visit",
-        "lang": "ru"
+        "lang": "ru",
+        "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
@@ -88,7 +128,8 @@
     "season": "Spring 2026",
     "title": "The Springs Awaken — A Springtime Cure in Marienbad",
     "description": "In spring, Marienbad comes alive: the Skalníkovy Gardens burst into colour, the Singing Fountain resumes its performances, and the gentle mountain air at 630 metres becomes nature's own remedy for the respiratory system.",
-    "ctaText": "Learn more"
+    "ctaText": "Learn more",
+    "image": "/images/content/seasonal/seasonal/image.jpg"
   },
   "magazine": {
     "sectionLabel": "Magazine",
@@ -99,21 +140,24 @@
         "title": "CO₂ Baths: What the Science Says",
         "excerpt": "In clinical studies, 83% of patients report reduced joint pain after a 14-day spa treatment course.",
         "date": "15 March 2026",
-        "readTime": "5 min read"
+        "readTime": "5 min read",
+        "image": "/images/content/articles/magazine/articles/0/image.jpg"
       },
       {
         "category": "Culture",
         "title": "In Goethe's Footsteps Through the Town",
         "excerpt": "The very springs that Goethe praised in 1823 now feed evidence-based rehabilitation programmes.",
         "date": "10 March 2026",
-        "readTime": "7 min read"
+        "readTime": "7 min read",
+        "image": "/images/content/articles/magazine/articles/1/image.png"
       },
       {
         "category": "Guide",
         "title": "The 5 Most Beautiful Walks",
         "excerpt": "From the Colonnade through Skalníkovy Park to the Geological Park — the best routes to explore.",
         "date": "5 March 2026",
-        "readTime": "4 min read"
+        "readTime": "4 min read",
+        "image": "/images/content/articles/magazine/articles/2/image.jpg"
       }
     ]
   },

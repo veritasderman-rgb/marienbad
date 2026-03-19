@@ -4,23 +4,51 @@
     "subtitle": "Всемирное наследие ЮНЕСКО · С 1812 года · Четыре целебных элемента — Единственный курорт в мире, объединяющий все четыре природных лечебных ресурса.",
     "ctaText": "Познакомиться с городом",
     "ctaHref": "#discover",
-    "badges": ["ЮНЕСКО", "С 1812 года"]
+    "badges": [
+      "ЮНЕСКО",
+      "С 1812 года"
+    ],
+    "image": "/images/content/hero/hero/image.jpg"
   },
   "quickFacts": [
-    { "value": "40+", "label": "Минеральных источников" },
-    { "value": "ЮНЕСКО", "label": "Наследие 2021" },
-    { "value": "1812", "label": "Традиция курортов" },
-    { "value": "Royal", "label": "Гольф-клуб 1905" }
+    {
+      "value": "40+",
+      "label": "Минеральных источников"
+    },
+    {
+      "value": "ЮНЕСКО",
+      "label": "Наследие 2021"
+    },
+    {
+      "value": "1812",
+      "label": "Традиция курортов"
+    },
+    {
+      "value": "Royal",
+      "label": "Гольф-клуб 1905"
+    }
   ],
   "healingElements": {
     "sectionLabel": "Что делает Мариенбад уникальным",
     "title": "Четыре природных лечебных ресурса",
     "description": "Единственный курорт в мире, объединяющий все четыре элемента природного исцеления.",
     "items": [
-      { "name": "Вода", "description": "Более 40 минеральных источников уникального состава — от питьевых курсов до целебных ванн." },
-      { "name": "Земля", "description": "Природные торфяные пелоиды с противовоспалительными и обезболивающими свойствами." },
-      { "name": "Газ", "description": "99,7% чистый CO₂ — «Газ Марии» — доказанное улучшение периферического кровообращения." },
-      { "name": "Климат", "description": "Сертифицированный лечебный климат на высоте 630 м — чистый лесной воздух с природными аэрозолями." }
+      {
+        "name": "Вода",
+        "description": "Более 40 минеральных источников уникального состава — от питьевых курсов до целебных ванн."
+      },
+      {
+        "name": "Земля",
+        "description": "Природные торфяные пелоиды с противовоспалительными и обезболивающими свойствами."
+      },
+      {
+        "name": "Газ",
+        "description": "99,7% чистый CO₂ — «Газ Марии» — доказанное улучшение периферического кровообращения."
+      },
+      {
+        "name": "Климат",
+        "description": "Сертифицированный лечебный климат на высоте 630 м — чистый лесной воздух с природными аэрозолями."
+      }
     ]
   },
   "discover": {
@@ -32,23 +60,32 @@
     "sectionLabel": "Проживание",
     "title": "Где остановиться в Мариенбаде",
     "description": "От исторических 5-звёздочных спа-отелей до уютных пансионов.",
-    "allHotelsLabel": "Все 6 отелей →",
+    "allHotelsLabel": "Все 7 отелей →",
     "items": [
       {
         "name": "Nové Lázně",
         "stars": 5,
         "badge": "Выбор редакции",
         "description": "Историческая жемчужина 5 звёзд с подлинными Римскими банями — флагман сети Ensana Spa Hotels.",
-        "tags": ["Римские бани", "CO₂ терапия", "Бассейн"],
+        "image": "/images/content/hotels/hotels/items/0/image.jpg",
+        "tags": [
+          "Римские бани",
+          "CO₂ терапия",
+          "Бассейн"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Забронировать"
       },
       {
         "name": "Centrální Lázně",
         "stars": 4,
-        "badge": "",
         "description": "Прямо у Колоннады — традиционное курортное лечение в центральном расположении с современными процедурными кабинетами.",
-        "tags": ["У Колоннады", "Питьевой курс", "Велнес"],
+        "image": "/images/content/hotels/hotels/items/1/image.jpg",
+        "tags": [
+          "У Колоннады",
+          "Питьевой курс",
+          "Велнес"
+        ],
         "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Забронировать"
       }
@@ -61,25 +98,28 @@
     "allStoriesLabel": "Все истории →",
     "stories": [
       {
+        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
+        "name": "Наталья",
+        "location": "Москва 🇷🇺",
+        "visitLabel": "8-й визит",
+        "lang": "ru",
+        "portrait": "/images/content/stories/people/stories/0/portrait.png"
+      },
+      {
         "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "12-й раз",
-        "lang": "de"
+        "lang": "de",
+        "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
         "name": "James",
         "location": "London 🇬🇧",
         "visitLabel": "3-й визит",
-        "lang": "en"
-      },
-      {
-        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
-        "name": "Наталья",
-        "location": "Москва 🇷🇺",
-        "visitLabel": "8-й визит",
-        "lang": "ru"
+        "lang": "en",
+        "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
@@ -88,7 +128,8 @@
     "season": "Весна 2026",
     "title": "Источники пробуждаются — весенний курс в Мариенбаде",
     "description": "Весной Мариенбад расцветает: сады Скальника наполняются красками, Поющий фонтан возобновляет свою работу, а мягкий весенний воздух на высоте 630 метров становится природным целебным средством для дыхательных путей.",
-    "ctaText": "Узнать больше"
+    "ctaText": "Узнать больше",
+    "image": "/images/content/seasonal/seasonal/image.jpg"
   },
   "magazine": {
     "sectionLabel": "Журнал",
@@ -99,21 +140,24 @@
         "title": "Углекислые ванны: что говорит наука",
         "excerpt": "В клинических исследованиях 83% пациентов отмечают уменьшение суставных болей после 14-дневного курса.",
         "date": "15 марта 2026",
-        "readTime": "5 мин. чтения"
+        "readTime": "5 мин. чтения",
+        "image": "/images/content/articles/magazine/articles/0/image.jpg"
       },
       {
         "category": "Культура",
         "title": "По следам Гёте через город",
         "excerpt": "Те самые источники, которые Гёте воспевал в 1823 году, сегодня питают научно обоснованные реабилитационные программы.",
         "date": "10 марта 2026",
-        "readTime": "7 мин. чтения"
+        "readTime": "7 мин. чтения",
+        "image": "/images/content/articles/magazine/articles/1/image.png"
       },
       {
         "category": "Совет",
         "title": "5 лучших прогулочных маршрутов",
         "excerpt": "От Колоннады через парк Скальника до Геологического парка — лучшие маршруты для прогулок.",
         "date": "5 марта 2026",
-        "readTime": "4 мин. чтения"
+        "readTime": "4 мин. чтения",
+        "image": "/images/content/articles/magazine/articles/2/image.jpg"
       }
     ]
   },
