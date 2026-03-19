@@ -24,6 +24,7 @@ export function getNavItems(locale: Locale) {
     { navKey: 'nav.practicalInfo', section: 'practical-info' },
     { navKey: 'nav.people', section: 'people' },
     { navKey: 'nav.magazine', section: 'magazine' },
+    { navKey: 'nav.podcast', section: 'podcast' },
   ]
 
   return sectionKeys.map(({ navKey, section }) => ({

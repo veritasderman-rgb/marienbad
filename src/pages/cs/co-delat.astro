@@ -3,13 +3,25 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { getHotelBySlug } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
 
 const locale = 'cs' as const
 const page = await getPage('cs-co-delat')
+const hotel = getHotelBySlug('centralni-lazne')!
 ---
 
 <Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <HotelRecommendationBox
+      name={hotel.name}
+      stars={hotel.stars}
+      badge="Centrální poloha"
+      description="Hotel Centrální Lázně leží přímo na Goethově náměstí v srdci Mariánských Lázní — ideální výchozí bod pro pěší objevování města, Kolonády i okolní přírody."
+      bookingUrl={withUtm(hotel.bookingUrls.cs, 'marienbad', 'editorial', 'things-to-do')}
+      bookingLabel="Rezervovat hotel"
+    />
   </PillarPage>
 </Base>

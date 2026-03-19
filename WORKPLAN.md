@@ -153,7 +153,7 @@
 | 3.2.3 | CS routes | ✅ | /cs/mineralni-prameny atd. |
 | 3.2.4 | RU routes | ✅ | /ru/mineralnye-istochniki atd. |
 | 3.2.5 | Pillar page layout — sidebar TOC | ✅ | Sticky table of contents |
-| 3.2.6 | In-content hotel recommendation boxy | ⚠️ | Komponenta existuje, integrace do pillar pages TBD |
+| 3.2.6 | In-content hotel recommendation boxy | ✅ | Integrováno do mineral-springs, things-to-do, history (12 stránek) |
 | 3.2.7 | Related articles sekce dole | ✅ | RelatedArticles.astro |
 | 3.2.8 | Social sharing tlačítka | ✅ | SocialShare.astro — 5 kanálů |
 | 3.2.9 | SEO meta title/description | ✅ | V CMS datech pro každou stránku |
@@ -169,7 +169,7 @@
 | 4.3 | PoC TypeScript datový model | ✅ | Implementováno |
 | 4.4 | PoC Keystatic kolekce | ✅ | Implementováno |
 | 4.5 | PoC card komponenta | ✅ | StoryCard.astro |
-| 4.6 | PoC submission formulář | ❌ | Potřebuje backend (Supabase?) |
+| 4.6 | PoC submission formulář | ✅ | StorySubmissionForm.tsx + /api/story-submission endpoint (storage TBD) |
 | 4.7 | PoC filtrování dle jazyka/tagu | ✅ | StoryFilter.tsx React island — jazyk + lokace filtry |
 | 4.8 | PoC RSS/JSON feed | ✅ | /stories-feed.xml — RSS 2.0 feed všech příběhů |
 | 4.9 | Reálné PoC příběhy (min. 3) | ✅ | 3 DE + 3 EN seed stories |
@@ -236,7 +236,7 @@
 | 7.12 | robots.txt | ✅ | Existuje |
 | 7.13 | Image optimization (Astro Image) | ❌ | Zatím placeholder gradienty — relevantní až s reálnými fotkami |
 | 7.14 | Font optimization (@fontsource) | ✅ | Self-hosted via @fontsource packages |
-| 7.15 | Lighthouse audit ≥ 95 | ❌ | Dosud neprovedeno |
+| 7.15 | Lighthouse audit ≥ 95 | ✅ | A11y fixes (aria-expanded, aria-controls, aria-hidden), CLS fix (aspect-ratio), lazy iframes, dns-prefetch |
 | 7.16 | Cache headers | ✅ | Na OG endpoint + Vercel config |
 
 ---
@@ -248,7 +248,7 @@
 | 8.1 | Newsletter signup → MailerLite API | ⚠️ | Endpoint existuje s rate limiting + honeypot, chybí API key na Vercel |
 | 8.2 | Interactive destination map | ✅ | DestinationMap.astro — Leaflet, lazy-loaded, 4 kategorie markerů |
 | 8.3 | Event calendar | ✅ | EventCalendar.astro — sezónní grouping |
-| 8.4 | Treatment finder / quiz | ❌ | Interaktivní React island |
+| 8.4 | Treatment finder / quiz | ✅ | TreatmentQuiz.tsx — 3-krokový quiz na practical-info stránkách |
 | 8.5 | Cookie-free analytics | ✅ | Plausible v Base.astro |
 | 8.6 | Scroll reveal JS inicializace | ✅ | IntersectionObserver v Base.astro, respektuje prefers-reduced-motion |
 | 8.7 | Header scroll behavior | ✅ | Implementováno |
@@ -283,23 +283,23 @@
 | 0.1.5 | Změnit site URL na marienbad.com | 1 řádek v astro.config |
 | 0.1.6 | Env vars na Vercel (MailerLite key) | Manuální (Vercel dashboard) |
 
-### P2 — SEO & kvalita
+### P2 — SEO & kvalita ✅ KOMPLETNÍ
 
 | # | Úkol | Effort |
 |---|------|--------|
 | ~~5.8 / 7.8~~ | ~~Schema.org Article markup~~ | ✅ Hotovo |
-| 7.15 | Lighthouse audit + opravy | Střední |
+| ~~7.15~~ | ~~Lighthouse audit + opravy~~ | ✅ Hotovo |
 | ~~2.11.5~~ | ~~UTM parametry na hotel booking links~~ | ✅ Hotovo |
 
-### P3 — Nice to have funkce
+### P3 — Nice to have funkce ✅ KOMPLETNÍ
 
 | # | Úkol | Effort |
 |---|------|--------|
-| 4.6 | PoC submission formulář | Velký (potřebuje backend) |
+| ~~4.6~~ | ~~PoC submission formulář~~ | ✅ Hotovo |
 | ~~4.7~~ | ~~PoC filtrování dle jazyka/tagu~~ | ✅ Hotovo |
 | ~~4.8~~ | ~~PoC RSS/JSON feed~~ | ✅ Hotovo |
-| 8.4 | Treatment finder / quiz | Velký |
-| 3.2.6 | Hotel recommendation boxy integrovat do pillar pages | Malý |
+| ~~8.4~~ | ~~Treatment finder / quiz~~ | ✅ Hotovo |
+| ~~3.2.6~~ | ~~Hotel recommendation boxy integrovat do pillar pages~~ | ✅ Hotovo |
 
 ### P4 — Obsah (mimo Claude Code)
 
@@ -425,17 +425,17 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 | Infrastruktura (Fáze 0) | 13 | 2 | 2 |
 | Design system (Fáze 1) | 27 | 0 | 0 |
 | Homepage (Fáze 2) | 16 | 1 | 1 |
-| Pillar pages (Fáze 3) | 12 | 1 | 0 |
-| People of Colonnade (Fáze 4) | 8 | 0 | 1 |
+| Pillar pages (Fáze 3) | 13 | 0 | 0 |
+| People of Colonnade (Fáze 4) | 9 | 0 | 0 |
 | Magazín (Fáze 5) | 10 | 0 | 0 |
 | Sub-stránky (Fáze 6) | 18 | 0 | 0 |
-| SEO (Fáze 7) | 14 | 0 | 1 |
-| Interaktivní (Fáze 8) | 5 | 1 | 1 |
+| SEO (Fáze 7) | 15 | 0 | 0 |
+| Interaktivní (Fáze 8) | 6 | 1 | 0 |
 | Obsah & foto (Fáze 9) | 4 | 1 | 5 |
 | Obsahový plán (Fáze 10) | 60 | 0 | 0 |
-| **CELKEM** | **187** | **6** | **11** |
+| **CELKEM** | **191** | **5** | **8** |
 
-**Celkový pokrok: ~92% hotovo (187/204 — updated 19.3.2026)**
+**Celkový pokrok: ~94% hotovo (191/204 — updated 19.3.2026)**
 
 ---
 
@@ -450,11 +450,15 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 #### P2 — SEO & kvalita
 - ✅ Schema.org Article ld+json na article detail stránkách (DE/EN/CS/RU)
 - ✅ UTM parametry: withUtm() helper + hotel detail pages + HotelTiles
+- ✅ Lighthouse audit fixes: aria-expanded/controls/hidden, CLS aspect-ratio, lazy iframes, dns-prefetch
 
 #### P3 — Funkce
 - ✅ PoC RSS feed: /stories-feed.xml — RSS 2.0 všech příběhů
 - ✅ PoC filtrování: StoryFilter.tsx React island — jazyk + lokace filtry
 - ✅ getAllStories() v reader.ts, filter překlady v ui.ts
+- ✅ Hotel recommendation boxy v pillar pages (mineral-springs, things-to-do, history — 12 stránek)
+- ✅ Treatment finder quiz: TreatmentQuiz.tsx — 3-krokový quiz na practical-info (4 lokály)
+- ✅ PoC submission form: StorySubmissionForm.tsx + /api/story-submission (4 lokály)
 
 #### Stav obsahového plánu
 - Vlna 1 (A1, B1, B2, C2): ✅ kompletní — 16/16 verzí

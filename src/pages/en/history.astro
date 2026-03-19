@@ -4,14 +4,26 @@ import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
 import RelatedArticles from '@/components/RelatedArticles.astro'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { getHotelBySlug } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
 
 const locale = 'en' as const
 const page = await getPage('en-history')
+const hotel = getHotelBySlug('nove-lazne')!
 ---
 
 <Base locale={locale} section="history" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <RelatedArticles locale={locale} category="history" />
+    <HotelRecommendationBox
+      name={hotel.name}
+      stars={hotel.stars}
+      badge="Since 1828"
+      description="Experience Marienbad's history first-hand at the Nové Lázně, one of Europe's most storied spa hotels. Its Roman Bath, preserved since 1896, is a living monument to the golden age of Bohemian spa culture."
+      bookingUrl={withUtm(hotel.bookingUrls.en, 'marienbad', 'editorial', 'history')}
+      bookingLabel="Book historic hotel"
+    />
   </PillarPage>
 </Base>

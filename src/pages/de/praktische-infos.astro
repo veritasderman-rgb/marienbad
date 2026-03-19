@@ -3,13 +3,58 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
+import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
+import { hotels } from '@/data/hotels'
+import { t } from '@/i18n/ui'
 
 const locale = 'de' as const
 const page = await getPage('de-praktische-infos')
+
+const quizHotels = hotels.map((h) => ({
+  slug: h.slug,
+  name: h.name,
+  stars: h.stars,
+  style: h.style,
+  bookingUrl: h.bookingUrls[locale] ?? h.bookingUrl,
+  tagline: h.tagline[locale] ?? h.tagline.de,
+  treatments: h.treatments[locale] ?? h.treatments.de,
+  features: h.features[locale] ?? h.features.de,
+}))
+
+const quizTranslations = {
+  step1Title: t(locale, 'quiz.step1Title'),
+  step2Title: t(locale, 'quiz.step2Title'),
+  resultsTitle: t(locale, 'quiz.resultsTitle'),
+  next: t(locale, 'quiz.next'),
+  back: t(locale, 'quiz.back'),
+  restart: t(locale, 'quiz.restart'),
+  yourTreatments: t(locale, 'quiz.yourTreatments'),
+  bookNow: t(locale, 'quiz.bookNow'),
+  matchingTreatments: t(locale, 'quiz.matchingTreatments'),
+  budgetComfort: t(locale, 'quiz.budgetComfort'),
+  budgetPremium: t(locale, 'quiz.budgetPremium'),
+  budgetLuxury: t(locale, 'quiz.budgetLuxury'),
+  condMusculoskeletal: t(locale, 'quiz.condMusculoskeletal'),
+  condRespiratory: t(locale, 'quiz.condRespiratory'),
+  condDigestive: t(locale, 'quiz.condDigestive'),
+  condCardiovascular: t(locale, 'quiz.condCardiovascular'),
+  condKidney: t(locale, 'quiz.condKidney'),
+  condStress: t(locale, 'quiz.condStress'),
+  condSkin: t(locale, 'quiz.condSkin'),
+  condRehab: t(locale, 'quiz.condRehab'),
+  styleClassic: t(locale, 'quiz.styleClassic'),
+  styleModern: t(locale, 'quiz.styleModern'),
+  styleMedical: t(locale, 'quiz.styleMedical'),
+  budgetLabel: t(locale, 'quiz.budgetLabel'),
+  styleLabel: t(locale, 'quiz.styleLabel'),
+  noResults: t(locale, 'quiz.noResults'),
+  starsLabel: t(locale, 'quiz.starsLabel'),
+}
 ---
 
 <Base locale={locale} section="practical-info" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
   </PillarPage>
 </Base>
