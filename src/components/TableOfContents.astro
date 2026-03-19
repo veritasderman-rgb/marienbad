@@ -1,9 +1,10 @@
 ---
 interface Props {
   headings?: Array<{ text: string; slug: string; depth: number }>
+  label?: string
 }
 
-const { headings = [] } = Astro.props
+const { headings = [], label = 'Inhalt' } = Astro.props
 ---
 
 <nav
@@ -13,7 +14,7 @@ const { headings = [] } = Astro.props
 >
   <div class="border-l-2 border-gray-200 pl-4">
     <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
-      Inhalt
+      {label}
     </p>
     <ul id="toc-list" class="space-y-1 text-sm">
       {headings.map((h) => (

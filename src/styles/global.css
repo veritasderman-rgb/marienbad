@@ -266,9 +266,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .prose-marienbad p {
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.8;
   margin-bottom: 1rem;
-  max-width: 42rem;
+  max-width: 40rem;
 }
 .prose-marienbad strong {
   font-weight: 600;
@@ -309,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .prose-marienbad li {
   margin-bottom: 0.35rem;
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 1rem;
 }
 .prose-marienbad > :first-child {

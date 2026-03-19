@@ -30,6 +30,9 @@ const defaultBreadcrumbs: BreadcrumbItem[] = [
 const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
 ---
 
+<!-- Reading Progress Bar -->
+<div id="reading-progress" class="fixed top-0 left-0 h-0.5 bg-turquoise-400 z-50 transition-[width] duration-150 ease-out" style="width: 0%"></div>
+
 <!-- Pillar Hero -->
 <section class="relative bg-indigo-700 text-white overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
@@ -43,12 +46,12 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
 
 <!-- Content with TOC sidebar -->
 <section class="container-wide py-12 md:py-20">
-  <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12 max-w-5xl mx-auto">
+  <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12 max-w-4xl mx-auto">
     <div id="pillar-content" class="prose-marienbad max-w-4xl">
       <slot />
     </div>
     <aside class="hidden lg:block">
-      <TableOfContents />
+      <TableOfContents label={t(locale, 'common.tableOfContents')} />
     </aside>
   </div>
 </section>
@@ -156,4 +159,53 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
 
   initToc()
   document.addEventListener('astro:after-swap', initToc)
+
+  function initReadingProgress() {
+    const bar = document.getElementById('reading-progress')
+    if (!bar) return
+
+    // Respect prefers-reduced-motion: remove transition so width jumps instantly
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      bar.classList.remove('transition-[width]', 'duration-150', 'ease-out')
+    }
+
+    let rafId: number | null = null
+
+    function updateProgress() {
+      rafId = null
+      const content = document.getElementById('pillar-content')
+      if (!content) {
+        bar.style.width = '0%'
+        return
+      }
+
+      const rect = content.getBoundingClientRect()
+      const contentTop = rect.top + window.scrollY
+      const contentHeight = content.offsetHeight
+      const scrolled = window.scrollY - contentTop
+      const progress = Math.min(Math.max(scrolled / (contentHeight - window.innerHeight || contentHeight), 0), 1)
+      bar.style.width = `${progress * 100}%`
+    }
+
+    function onScroll() {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updateProgress)
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    updateProgress()
+
+    // Return cleanup so we can re-run on view transitions
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (rafId !== null) cancelAnimationFrame(rafId)
+    }
+  }
+
+  let cleanupProgress = initReadingProgress()
+  document.addEventListener('astro:after-swap', () => {
+    if (cleanupProgress) cleanupProgress()
+    cleanupProgress = initReadingProgress()
+  })
 </script>
