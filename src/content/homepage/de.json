@@ -65,7 +65,7 @@
       {
         "name": "Nové Lázně",
         "stars": 5,
-        "badge": "Editor's Pick",
+        "badge": "Unsere Empfehlung",
         "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
         "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
@@ -109,7 +109,7 @@
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
         "name": "James",
         "location": "London 🇬🇧",
-        "visitLabel": "3rd visit",
+        "visitLabel": "3. Besuch",
         "lang": "en",
         "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
@@ -117,7 +117,7 @@
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
         "name": "Наталья",
         "location": "Москва 🇷🇺",
-        "visitLabel": "8-й визит",
+        "visitLabel": "8. Besuch",
         "lang": "ru",
         "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
