@@ -9,7 +9,13 @@ interface Props {
 const { locale } = Astro.props
 
 const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
-const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-republika/marianske-lazne?utm_source=marienbad&utm_medium=cta-bar&utm_campaign=mobile-sticky`
+const destinationPaths: Record<string, string> = {
+  cs: 'destinace/ceska-republika/marianske-lazne',
+  de: 'destinationen/tschechische-republik/marienbad',
+  en: 'destinations/czech-republic/marianske-lazne',
+  ru: 'destinacii/cheshskaya-respublika/marianskie-lazne',
+}
+const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[ensanaLocale]}?utm_source=marienbad&utm_medium=cta-bar&utm_campaign=mobile-sticky`
 
 const ctaLabels: Record<Locale, string> = {
   de: 'Jetzt buchen',
