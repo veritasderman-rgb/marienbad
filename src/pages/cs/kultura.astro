@@ -1,0 +1,44 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import EventCalendar from '@/components/EventCalendar.astro'
+
+const locale = 'cs' as const
+---
+
+<Base locale={locale} section="things-to-do" title="Kultura a události — Marienbad.com" description="Chopinův festival, Městské divadlo, Casino, koncerty — kulturní život v Mariánských Lázních." alternateUrls={{ de: '/de/kultur', en: '/en/culture', cs: '/cs/kultura', ru: '/ru/kultura' }}>
+  <PillarPage locale={locale} title="Kultura a události" description="Od koncertů světové úrovně po komorní divadelní představení — Mariánské Lázně nabízejí bohatý kulturní program.">
+    <h2>Mezinárodní Chopinův festival</h2>
+    <p><strong>Chopinův festival</strong> je kulturním vrcholem roku. Od roku 1960 přijíždějí každý srpen do Mariánských Lázní světově proslulí klavíristé, aby vystoupili v nejatmosféričtějších sálech města: v Casinu, v Nových Lázních a u Hlavní kolonády. Festival připomíná Chopinův pobyt v létě 1836 a vyvinul se v jeden z <strong>nejprestižnějších klavírních festivalů Evropy</strong>.</p>
+    <p>Koncerty, mistrovské kurzy, soutěže a filmové projekce tvoří týdenní program, který přitahuje milovníky hudby z celého světa. Vstupenky jsou žádané — doporučujeme včasnou rezervaci.</p>
+
+    <h2>Městské divadlo (Městské divadlo)</h2>
+    <p>Neoklasicistní Městské divadlo z roku 1868 nabízí celoroční program <strong>opery, baletu, činohry a koncertů</strong>. Komorní formát — sál pojme přibližně 400 hostů — činí z každé návštěvy divadla výjimečný zážitek. Hostování domácích i zahraničních souborů doplňuje místní program.</p>
+
+    <h2>Casino (Společenský dům)</h2>
+    <p><strong>Casino</strong> je jednou z nejkrásnějších budov města — neorenesanční mistrovské dílo sloužící jako kulturní a společenské centrum. Nádherný plesový sál hostí koncerty, plesy a výstavy. Sama atmosféra stojí za návštěvu.</p>
+
+    <h2>Zpívající fontána</h2>
+    <p><strong>Zpívající fontána</strong> před Hlavní kolonádou je nejikoničtější dominantou Mariánských Lázní. Každou lichou hodinu (7–19 hod. v sezóně) voda tančí do rytmu hudby — od Dvořáka a Chopina po populární melodie. Zvláště působivá jsou večerní představení se světelnými efekty po setmění.</p>
+
+    <h2>Muzea</h2>
+    <ul>
+      <li><strong>Městské muzeum</strong> — Dějiny Mariánských Lázní od bažinatého údolí po světový lázeňský resort. Historické lázeňské vybavení, fotografie, pamětní knihy slavných návštěvníků.</li>
+      <li><strong>Goethův dům</strong> — Vzpomínky na pobyty básníka a jeho lásku k Ulrice von Levetzow.</li>
+      <li><strong>Geologické muzeum</strong> — Věda za prameny a vulkanická historie regionu.</li>
+    </ul>
+
+    <h2>Sezónní události</h2>
+    <ul>
+      <li><strong>Jaro:</strong> Zahájení lázeňské sezóny, první koncerty pod širým nebem</li>
+      <li><strong>Léto:</strong> Chopinův festival, Zpívající fontána, koncerty pod širým nebem</li>
+      <li><strong>Podzim:</strong> Goethovy dny, vinobraní, podzimní koncerty</li>
+      <li><strong>Zima:</strong> Adventní trhy, vánoční koncerty, silvestrovský galavečer</li>
+    </ul>
+
+    <h2>Architektura</h2>
+    <p>Mariánské Lázně samy o sobě jsou muzeem architektury pod otevřeným nebem: <strong>neorenesance, neobaroko, secese a klasicismus</strong> stojí v harmonickém souladu. Komentované architektonické prohlídky nabízí Turistické informační centrum. Mezi nejvýznamnější patří: Hlavní kolonáda (1889), kostel Nanebevzetí Panny Marie, hotel Nové Lázně a secesní vily podél Třebízského ulice.</p>
+
+    <EventCalendar locale={locale} />
+  </PillarPage>
+</Base>
