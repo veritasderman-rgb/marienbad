@@ -1,0 +1,42 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+
+const locale = 'cs' as const
+---
+
+<Base locale={locale} section="history" title="Slavní návštěvníci — Marienbad.com" description="Goethe, Chopin, Edward VII., Kafka, Edison — slavní hosté, kteří proslavili Mariánské Lázně po celém světě." alternateUrls={{ de: '/de/beruehmte-gaeste', en: '/en/famous-visitors', cs: '/cs/slavni-navstevnici', ru: '/ru/znamenitye-gosti' }}>
+  <PillarPage locale={locale} title="Slavní návštěvníci" description="Od Goetha po Kafku, od Edwarda VII. po Edisona — po dvě století byly Mariánské Lázně místem setkávání evropské elity.">
+    <h2>Johann Wolfgang von Goethe (1823)</h2>
+    <p>Největší německý básník navštívil Mariánské Lázně třikrát (1821, 1822, 1823). Jeho třetí pobyt se stal legendárním: ve věku <strong>74 let</strong> se Goethe zamiloval do devatenáctileté <strong>Ulriky von Levetzow</strong>. Neopětovaná láska inspirovala <em>„Mariánskolázeňskou elegii"</em> — jedno z nejvýznamnějších lyrických děl německé literatury.</p>
+    <p>Goethův pomník stojí v lázeňském parku, nedaleko místa jeho slavných procházek. <strong>Goethův dům</strong> (Městské muzeum) uchovává vzpomínky na jeho pobyty.</p>
+
+    <h2>Frédéric Chopin (1836)</h2>
+    <p>Polský skladatel strávil léto 1836 v Mariánských Lázních, kde se setkal s <strong>Marií Wodzińskou</strong>. Romance vedla k tajnému slibu zasnoubení — který nikdy nebyl naplněn. Chopinův pobyt si každoročně v srpnu připomíná <strong>Mezinárodní Chopinův festival</strong>, jeden z nejprestižnějších klavírních festivalů v Evropě.</p>
+
+    <h2>Král Edward VII. (1897–1909)</h2>
+    <p>Britský král navštívil Mariánské Lázně devětkrát mezi lety 1897 a 1909. Proměnil město v <strong>letní centrum evropské diplomacie</strong> — důležité politické rozhovory se vedly na promenádách a v hotelech. Edward založil v roce 1905 <strong>Royal Golf Club</strong>, nejstarší golfový klub v České republice, a vtiskl městu jeho kosmopolitní charakter.</p>
+
+    <h2>Franz Kafka (1916)</h2>
+    <p>Pražský spisovatel navštívil Mariánské Lázně v létě 1916 a setkal se zde s <strong>Felice Bauerovou</strong>. Setkání bylo poznamenáno pro Kafku typickou ambivalencí — touhou a útěkem zároveň. Atmosféra města se promítla do jeho literárního díla.</p>
+
+    <h2>Thomas Alva Edison (1911)</h2>
+    <p>Americký vynálezce navštívil Mariánské Lázně v roce 1911 za účelem léčebného pobytu. Byl ohromen vědeckým přístupem k balneoterapii a technickými inovacemi v lázeňských domech.</p>
+
+    <h2>Další významní hosté</h2>
+    <ul>
+      <li><strong>Richard Wagner</strong> — Skladatel navštívil město několikrát ve 40. a 70. letech 19. století</li>
+      <li><strong>Mark Twain</strong> — Americký spisovatel přijel v roce 1892 a s humorem psal o lázeňských rituálech</li>
+      <li><strong>Sigmund Freud</strong> — Zakladatel psychoanalýzy hledal odpočinek v lázeňských parcích</li>
+      <li><strong>Gustav Mahler</strong> — Skladatel a dirigent byl pravidelným hostem</li>
+      <li><strong>Císař František Josef I.</strong> — Rakouský císař město oficiálně navštívil</li>
+      <li><strong>Nikolaj Gogol</strong> — Ruský spisovatel přijel na léčení ve 40. letech 19. století</li>
+      <li><strong>Antonín Dvořák</strong> — Český skladatel, jehož díla dnes znějí u Zpívající fontány</li>
+    </ul>
+
+    <h2>Místo setkávání</h2>
+    <p>Co spojovalo všechny tyto slavné návštěvníky, nebyla jen touha po uzdravení, ale také jedinečná atmosféra Mariánských Lázní: místo, kde hranice mezi národy, společenskými vrstvami a generacemi po dobu lázeňského pobytu mizely. Na promenádách se procházeli králové vedle básníků, vědci vedle umělců — spojeni společným rituálem pitné kúry a léčivou silou pramenů.</p>
+
+    <p>Tato tradice žije dál. I dnes jsou Mariánské Lázně místem, kde se setkávají lidé z celého světa — na cestě za zdravím, krásou a oním zvláštním druhem setkání, které je možné jen v lázeňském městě.</p>
+  </PillarPage>
+</Base>

@@ -1,0 +1,88 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
+
+const locale = 'cs' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Minerální prameny', href: `/${locale}/mineralni-prameny` },
+  { label: 'CO₂ terapie' },
+]
+---
+
+<Base locale={locale} section="mineral-springs" title="CO₂ terapie — Mariin plyn — Marienbad.com" description="Jedinečná CO₂ terapie v Mariánských Lázních: jak přírodní oxid uhličitý zlepšuje krevní oběh, krevní tlak a celkovou pohodu." alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }}>
+  <PillarPage locale={locale} title="CO₂ terapie: Mariin plyn" description="Jedinečná CO₂ terapie využívá 99,7% čistý přírodní oxid uhličitý ke zlepšení krevního oběhu a celkové pohody." breadcrumbs={breadcrumbs}>
+    <h2>Co je Mariin plyn?</h2>
+    <p>Mariánské Lázně disponují celosvětově jedinečným přírodním zdrojem: <strong>99,7% čistým oxidem uhličitým (CO₂)</strong>, který přirozeně vystupuje z vulkanického podloží Slavkovského lesa. Tento plyn, láskyplně nazývaný <em>„Mariin plyn"</em>, je jedním ze čtyř přírodních léčivých zdrojů Mariánských Lázní a tvoří základ řady vysoce účinných terapeutických procedur.</p>
+
+    <p>CO₂ terapie patří k nejlépe prozkoumaným formám balneoterapie (léčba koupelemi) a v Mariánských Lázních se systematicky provádí již více než 150 let.</p>
+
+    <TreatmentHighlightBox
+      title="Suchá plynová koupel CO₂"
+      description="Pacient je uložen do speciálního vaku naplněného přírodním CO₂. Plyn je vstřebáván pokožkou, rozšiřuje cévy a zvyšuje periferní prokrvení až o 300 %. Délka procedury: 20–30 minut."
+      icon="gas"
+    />
+
+    <h2>Jak CO₂ terapie funguje?</h2>
+    <p>Když je oxid uhličitý vstřebáván pokožkou, spouští kaskádu fyziologických reakcí:</p>
+
+    <ul>
+      <li><strong>Vazodilatace:</strong> CO₂ uvolňuje hladkou svalovinu cév, což vede k jejich výraznému rozšíření. Prokrvení v ošetřených oblastech se může ztrojnásobit.</li>
+      <li><strong>Regulace krevního tlaku:</strong> Vazodilatace snižuje periferní odpor, a tím i arteriální krevní tlak.</li>
+      <li><strong>Zlepšení okysličení:</strong> Prostřednictvím Bohrova efektu je usnadněno uvolňování kyslíku z hemoglobinu do tkání — buňky jsou lépe zásobeny kyslíkem.</li>
+      <li><strong>Úleva od bolesti:</strong> Zlepšený krevní oběh a přímý účinek CO₂ na nervová vlákna mají analgetický efekt.</li>
+      <li><strong>Hojení ran:</strong> Zvýšená mikrocirkulace podporuje regeneraci tkání a urychluje hojení.</li>
+    </ul>
+
+    <h2>Formy CO₂ terapie v Mariánských Lázních</h2>
+
+    <h3>1. Suchá plynová koupel CO₂ (Mariánskolázeňský plynový zábal)</h3>
+    <p>Nejznámější procedura: pacient leží ve speciálním plastovém vaku sahajícím po krk, který je naplněn přírodním CO₂. Procedura trvá 20–30 minut a je zcela bezbolestná — mnoho pacientů pociťuje příjemný pocit tepla a brnění.</p>
+
+    <h3>2. Uhličitá koupel (koupel s CO₂)</h3>
+    <p>Minerální koupele obohacené přírodním CO₂. Plyn je vstřebáván pokožkou a částečně i dýchacími cestami. Teplota koupele je 33–34 °C, tedy výrazně nižší než u běžné teplé koupele — přesto pacient vnímá příjemné teplo díky vazodilatačnímu účinku CO₂.</p>
+
+    <h3>3. CO₂ insuflace (plynové injekce)</h3>
+    <p>Podkožní injekce malého množství CO₂ do bolestivých kloubů nebo svalových oblastí. Tato metoda se používá cíleně při lokálních obtížích a kombinuje účinek na zlepšení prokrvení s přímým analgetickým působením.</p>
+
+    <h2>Indikace</h2>
+    <p>CO₂ terapie se úspěšně používá při:</p>
+    <ul>
+      <li>Kardiovaskulárních onemocněních (arteriální hypertenze, poruchy periferního oběhu)</li>
+      <li>Onemocněních pohybového aparátu (artróza, revmatické potíže)</li>
+      <li>Poruchách hojení ran a trofických vředech</li>
+      <li>Diabetické polyneuropatii</li>
+      <li>Pooperační rehabilitaci</li>
+      <li>Stresem podmíněných obtížích a únavových syndromech</li>
+    </ul>
+
+    <h2>Co říká věda?</h2>
+    <p>CO₂ terapie patří k nejdůkladněji prozkoumaným formám balneoterapie. Klinické zkušenosti a studie ukazují:</p>
+    <ul>
+      <li>Snížení systolického krevního tlaku až o 10–15 mmHg po dvoutýdenní léčbě</li>
+      <li>Výrazné zlepšení periferního prokrvení</li>
+      <li>Většina pacientů uvádí významné snížení bolesti u kloubních obtíží</li>
+      <li>Měřitelné zlepšení hojení ran u chronických vředů</li>
+    </ul>
+
+    <HotelRecommendationBox
+      locale={locale}
+       locale={locale}
+      locale={locale}
+      name="Ensana Nové Lázně"
+      stars={5}
+      badge="Expert na CO₂"
+      description="Nové Lázně nabízí komplexní program CO₂ terapie s využitím přírodního mariánskolázeňského plynu — včetně suchých plynových koupelí, uhličitých minerálních koupelí a plynových injekcí pod lékařským dohledem."
+      bookingUrl="https://ensanahotels.com/cs/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=co2-therapy"
+      bookingLabel="Rezervovat CO₂ terapii"
+    />
+
+    <h2>Praktické informace</h2>
+    <p>CO₂ terapie je k dispozici ve všech hotelech Ensana Spa Hotels v Mariánských Lázních. Jedna procedura trvá 20–30 minut a obvykle se provádí jednou denně po dobu 7–21 dnů. Optimální účinek se dostavuje při minimální délce léčby 14 dnů.</p>
+
+    <p>Před zahájením léčby proběhne lékařské vyšetření, při kterém je stanoven váš individuální terapeutický plán. Kontraindikace zahrnují akutní záněty, nekompenzované srdeční selhání a některá kožní onemocnění.</p>
+  </PillarPage>
+</Base>

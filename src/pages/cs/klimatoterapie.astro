@@ -1,0 +1,85 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
+import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import { t } from '@/i18n/ui'
+
+const locale = 'cs' as const
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: 'Minerální prameny', href: `/${locale}/mineralni-prameny` },
+  { label: 'Klimatoterapie' },
+]
+---
+
+<Base locale={locale} section="mineral-springs" title="Klimatoterapie — Léčivé mikroklima Mariánských Lázní — Marienbad.com" description="Klimatoterapie v Mariánských Lázních: jak jedinečné mikroklima v nadmořské výšce 630 m s lesním vzduchem a nízkým obsahem alergenů pomáhá při respiračních onemocněních." alternateUrls={{ de: '/de/klimatherapie', en: '/en/climate-therapy', cs: '/cs/klimatoterapie', ru: '/ru/klimatoterapiya' }}>
+  <PillarPage locale={locale} title="Klimatoterapie: Léčivé mikroklima Mariánských Lázní" description="Jedinečné mikroklima Mariánských Lázní v nadmořské výšce 630 m s čistým lesním vzduchem a nízkým obsahem alergenů poskytuje základ pro účinnou klimatoterapii." breadcrumbs={breadcrumbs}>
+    <h2>Jedinečné mikroklima Mariánských Lázní</h2>
+    <p>Mariánské Lázně leží v chráněné údolní kotlině v <strong>nadmořské výšce 630 metrů</strong>, obklopeny hustými lesy Slavkovského lesa (Kaiserwaldu). Tato výjimečná zeměpisná poloha vytváří <strong>jedinečné mikroklima</strong>, které je od 19. století uznáváno jako samostatný léčivý zdroj a tvoří spolu s minerálními prameny, přírodním CO₂ plynem a léčivým peloidy čtvrtý přírodní léčivý zdroj Mariánských Lázní.</p>
+
+    <p>Kombinace střední nadmořské výšky, rozsáhlých jehličnatých lesů a chráněné údolní polohy vytváří podmínky zásadně odlišné od většiny středoevropských měst: vzduch je mimořádně čistý, bohatý na <strong>fytoncidy</strong> (antibakteriální rostlinné sloučeniny) a s nízkým obsahem alergenů, jemných prachových částic a průmyslových znečišťujících látek.</p>
+
+    <TreatmentHighlightBox
+      title="Terénní kúra (klimatická stezka)"
+      description="Lékařsky předepsané procházky po speciálně navržených stezkách s definovanými sklony, délkami a převýšením. Terénní kúra kombinuje řízenou pohybovou aktivitu s terapeutickými účinky lesního vzduchu. K dispozici různé úrovně obtížnosti."
+      icon="climate"
+    />
+
+    <h2>Jak klimatoterapie funguje?</h2>
+    <p>Klimatoterapie — nazývaná také kúra na čerstvém vzduchu nebo aeroterapie — využívá přírodní klimatické podmínky jako terapeutický nástroj. Její účinky jsou založeny na několika faktorech:</p>
+
+    <ul>
+      <li><strong>Čistý lesní vzduch:</strong> Jehličnaté lesy obklopující Mariánské Lázně uvolňují fytoncidy — těkavé organické sloučeniny s antibakteriálními a imunostimulačními vlastnostmi. Studie ukazují, že pobyt v lesním vzduchu výrazně zvyšuje počet přirozených zabíječských buněk v krvi.</li>
+      <li><strong>Nízký obsah alergenů:</strong> Nadmořská výška a složení místní flóry zajišťují výrazně nižší expozici roztočům domácího prachu, pylům a plísňovým sporám ve srovnání s nížinnými oblastmi.</li>
+      <li><strong>Výšková stimulace:</strong> V nadmořské výšce 630 m je parciální tlak kyslíku mírně snížen, což vyvolává jemný výškový stimul: tělo reaguje zvýšením erytropoézy (tvorby červených krvinek) a zlepšením příjmu kyslíku.</li>
+      <li><strong>Tepelné podněty:</strong> Střídání chladného lesního a teplejšího údolního vzduchu trénuje autonomní nervový systém a posiluje termoregulaci organismu — proces známý jako „otužování".</li>
+      <li><strong>Ionizace:</strong> Vzduch v blízkosti vodopádů a hustých lesů je bohatý na záporné ionty, které mají pozitivní vliv na náladu a snižují stres.</li>
+    </ul>
+
+    <h2>Formy klimatoterapie v Mariánských Lázních</h2>
+
+    <h3>1. Terénní kúra (klimatické stezky)</h3>
+    <p>Jádro klimatoterapie v Mariánských Lázních. Po síti více než <strong>70 kilometrů</strong> značených stezek mohou pacienti podnikat lékařsky předepsané procházky a túry. Stezky jsou rozděleny do tří úrovní obtížnosti — od rovinatých promenádních cest po náročnější lesní trasy se stoupáním. Tempo, délka a trasa jsou individuálně stanoveny lázeňským lékařem.</p>
+
+    <h3>2. Kúra na čerstvém vzduchu</h3>
+    <p>Cílený odpočinek v lesním vzduchu na speciálně upravených odpočívadlech v lázeňských parcích. Tato pasivní forma klimatoterapie je obzvláště vhodná pro pacienty s omezenou pohyblivostí nebo v rekonvalescenci.</p>
+
+    <h3>3. Dechová terapie v přírodě</h3>
+    <p>Řízená dechová cvičení v čistém lesním vzduchu pod vedením vyškolených terapeutů. Kombinace vědomého dýchání a vzduchu bohatého na fytoncidy je obzvláště účinná při respiračních onemocněních.</p>
+
+    <h2>Indikace</h2>
+    <p>Klimatoterapie se úspěšně používá při:</p>
+    <ul>
+      <li>Chronických respiračních onemocněních (bronchiální astma, chronická bronchitida, CHOPN)</li>
+      <li>Alergických onemocněních (senná rýma, alergické astma)</li>
+      <li>Opakovaných respiračních infekcích u dětí i dospělých</li>
+      <li>Kardiovaskulárních onemocněních (arteriální hypertenze, ischemická choroba srdeční)</li>
+      <li>Syndromech vyčerpání a vyhoření</li>
+      <li>Poruchách spánku</li>
+      <li>Imunodeficitu a zvýšené náchylnosti k infekcím</li>
+    </ul>
+
+    <h2>Léčivé lesy Slavkovského lesa</h2>
+    <p>Slavkovský les (Kaiserwald) obklopující Mariánské Lázně je jedním z nejlépe zachovalých lesních celků ve střední Evropě. Oblast je chráněna jako <strong>chráněná krajinná oblast</strong> a zahrnuje rozsáhlé porosty smrků, borovic a buků. Kvalita vzduchu je pravidelně monitorována a splňuje kritéria pro <strong>uznávané klimatické léčebné místo</strong> — distinace, kterou v Evropě drží jen hrstka lokalit.</p>
+
+    <p>Obzvláště doporučujeme procházky lesními oblastmi severně od města, vedoucí k přírodní rezervaci Kladská — rašeliniště s unikátní flórou a výjimečně čistým vzduchem.</p>
+
+    <HotelRecommendationBox
+      locale={locale}
+       locale={locale}
+      locale={locale}
+      name="Ensana Spa Hotel Hvězda"
+      stars={4}
+      badge="Klimatoterapie"
+      description="Ensana Spa Hotel Hvězda se vyznačuje elegantní secesní architekturou a je propojen s Císařskými lázněmi krytou chodbou. Hosté mohou využít komplexní program klimatoterapie včetně lékařsky vedených terénních kúr, dechové terapie a kúr na čerstvém vzduchu v přilehlém lázeňském parku."
+      bookingUrl="https://ensanahotels.com/cs/hotels/hvezda?utm_source=marienbad&utm_medium=editorial&utm_campaign=climate-therapy"
+      bookingLabel="Rezervovat klimatoterapii"
+    />
+
+    <h2>Praktické informace</h2>
+    <p>Klimatoterapie je možná celoročně, přičemž každé roční období nabízí své výhody: jaro a podzim jsou považovány za ideální pro alergiky, léto poskytuje nejintenzivnější koncentraci fytoncidů a zima posiluje imunitní systém prostřednictvím chladových podnětů. Kúra klimatoterapie ideálně trvá 14–21 dnů pro dosažení trvalých účinků.</p>
+
+    <p>Stezky pro terénní kúru jsou přístupné celoročně a zdarma. Pro optimální terapeutický přínos je však doporučena lékařská konzultace, při které je vytvořen individuální pohybový plán zohledňující váš zdravotní stav a fyzickou kondici.</p>
+  </PillarPage>
+</Base>
