@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Discover Marienbad",
-    "subtitle": "UNESCO World Heritage · Est. 1818 · Four Healing Elements — The only spa destination in the world combining all four natural healing resources.",
+    "subtitle": "UNESCO World Heritage · Est. 1818 · Four Healing Elements — One of the few spa destinations in the world combining all four natural healing resources.",
     "ctaText": "Explore the town",
     "ctaHref": "#discover",
     "badges": [
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "What makes Marienbad unique",
     "title": "Four Natural Healing Resources",
-    "description": "The only spa destination on earth that unites all four elements of natural healing.",
+    "description": "One of the rare spa destinations that unites all four elements of natural healing.",
     "items": [
       {
         "name": "Water",
@@ -92,7 +92,7 @@
     ]
   },
   "people": {
-    "sectionLabel": "People of Colonnade",
+    "sectionLabel": "People of the Colonnade",
     "title": "Stories the Waters Tell",
     "description": "Real stories from real people — spa guests, locals, and doctors share why Marienbad is a place like no other.",
     "allStoriesLabel": "Read all stories →",

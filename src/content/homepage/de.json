@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Entdecken Sie Marienbad",
-    "subtitle": "UNESCO Welterbe · Seit 1818 · Vier Heilquellen — Das einzige Kurbad der Welt, das alle vier natürlichen Heilressourcen vereint.",
+    "subtitle": "UNESCO Welterbe · Seit 1818 · Vier Heilquellen — Eines der wenigen Kurbäder der Welt, das alle vier natürlichen Heilressourcen vereint.",
     "ctaText": "Stadt entdecken",
     "ctaHref": "#discover",
     "badges": [
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "Was Marienbad einzigartig macht",
     "title": "Vier natürliche Heilressourcen",
-    "description": "Das einzige Kurbad weltweit, das alle vier Elemente der natürlichen Heilung vereint.",
+    "description": "Eines der seltenen Kurbäder, das alle vier Elemente der natürlichen Heilung vereint.",
     "items": [
       {
         "name": "Wasser",

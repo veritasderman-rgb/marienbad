@@ -1,5 +1,22 @@
 import { routes, type Locale, type SectionKey } from './config'
 
+const localeMap: Record<Locale, string> = {
+  de: 'de-DE',
+  en: 'en-GB',
+  cs: 'cs-CZ',
+  ru: 'ru-RU',
+}
+
+/** Format a date string (ISO or Date) into a locale-appropriate long date */
+export function formatDate(locale: Locale, date: string | Date): string {
+  const d = typeof date === 'string' ? new Date(date) : date
+  return new Intl.DateTimeFormat(localeMap[locale], {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(d)
+}
+
 /** Get the localized URL for a section */
 export function localizedHref(locale: Locale, section: SectionKey): string {
   return `/${locale}/${routes[section][locale]}`

@@ -126,7 +126,7 @@ function homepageSingleton(locale: string, label: string) {
             }
           ),
         },
-        { label: 'People of Colonnade' }
+        { label: 'People of the Colonnade' }
       ),
       seasonal: fields.object(
         {

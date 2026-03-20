@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Objevte Mariánské Lázně",
-    "subtitle": "UNESCO světové dědictví · Od roku 1818 · Čtyři léčivé zdroje — Jediné lázně na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
+    "subtitle": "UNESCO světové dědictví · Od roku 1818 · Čtyři léčivé zdroje — Jedny z mála lázní na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
     "ctaText": "Poznejte město",
     "ctaHref": "#discover",
     "badges": [
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "Čím jsou Mariánské Lázně výjimečné",
     "title": "Čtyři přírodní léčivé zdroje",
-    "description": "Jediné lázně na světě, které spojují všechny čtyři živly přírodního léčení.",
+    "description": "Jedny z mála lázní na světě, které spojují všechny čtyři živly přírodního léčení.",
     "items": [
       {
         "name": "Voda",
