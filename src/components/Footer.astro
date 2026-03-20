@@ -71,6 +71,21 @@ const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health S
         </nav>
       </div>
 
+      <!-- Col 3b: Useful links (Czech only) -->
+      {locale === 'cs' && (
+        <div class="lg:col-span-1">
+          <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">Užitečné odkazy</h3>
+          <nav aria-label="Užitečné odkazy" class="flex flex-col gap-2.5">
+            <a href="https://news.lazneml.cz" target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
+              Novinky z lázní
+            </a>
+            <a href="https://www.lazneml.cz" target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
+              Oficiální web lázní
+            </a>
+          </nav>
+        </div>
+      )}
+
       <!-- Col 4: Contact & Location -->
       <div>
         <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{contactLabel}</h3>
