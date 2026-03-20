@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Откройте Мариенбад",
-    "subtitle": "Всемирное наследие ЮНЕСКО · С 1812 года · Четыре целебных элемента — Единственный курорт в мире, объединяющий все четыре природных лечебных ресурса.",
+    "subtitle": "Всемирное наследие ЮНЕСКО · С 1818 года · Четыре целебных элемента — Один из немногих курортов в мире, объединяющих все четыре природных лечебных ресурса.",
     "ctaText": "Познакомиться с городом",
     "ctaHref": "#discover",
     "badges": [
       "ЮНЕСКО",
-      "С 1812 года"
+      "С 1818 года"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Наследие 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Традиция курортов"
     },
     {
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "Что делает Мариенбад уникальным",
     "title": "Четыре природных лечебных ресурса",
-    "description": "Единственный курорт в мире, объединяющий все четыре элемента природного исцеления.",
+    "description": "Один из редких курортов, объединяющих все четыре элемента природного исцеления.",
     "items": [
       {
         "name": "Вода",
@@ -47,7 +47,7 @@
       },
       {
         "name": "Климат",
-        "description": "Сертифицированный лечебный климат на высоте 630 м — чистый лесной воздух с природными аэрозолями."
+        "description": "Сертифицированный лечебный климат на высоте 630 м — чистый лесной воздух с природными аэрозолями. С 2023 года Марианские Лазни официально носят статус климатического курорта."
       }
     ]
   },
@@ -60,7 +60,7 @@
     "sectionLabel": "Проживание",
     "title": "Где остановиться в Мариенбаде",
     "description": "От исторических 5-звёздочных спа-отелей до уютных пансионов.",
-    "allHotelsLabel": "Все 7 отелей →",
+    "allHotelsLabel": "Все отели →",
     "items": [
       {
         "name": "Nové Lázně",
@@ -73,7 +73,7 @@
           "CO₂ терапия",
           "Бассейн"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/ru/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Забронировать"
       },
       {
@@ -86,7 +86,7 @@
           "Питьевой курс",
           "Велнес"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/ru/hotels/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Забронировать"
       }
     ]
@@ -98,20 +98,12 @@
     "allStoriesLabel": "Все истории →",
     "stories": [
       {
-        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
-        "name": "Наталья",
-        "location": "Москва 🇷🇺",
-        "visitLabel": "8-й визит",
-        "lang": "ru",
-        "portrait": "/images/content/stories/people/stories/0/portrait.png"
-      },
-      {
         "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "12-й раз",
         "lang": "de",
-        "portrait": "/images/content/stories/people/stories/1/portrait.png"
+        "portrait": "/images/content/stories/people/stories/0/portrait.png"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
@@ -119,15 +111,23 @@
         "location": "London 🇬🇧",
         "visitLabel": "3-й визит",
         "lang": "en",
+        "portrait": "/images/content/stories/people/stories/1/portrait.png"
+      },
+      {
+        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
+        "name": "Наталья",
+        "location": "Москва 🇷🇺",
+        "visitLabel": "8-й визит",
+        "lang": "ru",
         "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
   "seasonal": {
-    "badge": "Этот сезон",
-    "season": "Весна 2026",
-    "title": "Источники пробуждаются — весенний курс в Мариенбаде",
-    "description": "Весной Мариенбад расцветает: сады Скальника наполняются красками, Поющий фонтан возобновляет свою работу, а мягкий весенний воздух на высоте 630 метров становится природным целебным средством для дыхательных путей.",
+    "badge": "Рекомендуем",
+    "season": "Лучшее",
+    "title": "Источники ждут вас — ваш курс в Мариенбаде",
+    "description": "В любое время года Мариенбад удивляет: сады Скальника радуют сменой красок, Поющий фонтан завораживает легендарными водными представлениями, а мягкий горный воздух на высоте 630 метров становится природным целебным средством для дыхательных путей.",
     "ctaText": "Узнать больше",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

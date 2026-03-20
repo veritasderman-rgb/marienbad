@@ -3,15 +3,23 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getStory } from '@/content/reader'
+import { t } from '@/i18n/ui'
+import { localizedHref } from '@/i18n/utils'
 
 const locale = 'cs' as const
 const { slug } = Astro.params
 const story = slug ? await getStory(slug) : null
 if (!story) return Astro.redirect(`/${locale}/lide`)
+
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.people'), href: localizedHref(locale, 'people') },
+  { label: story.name },
+]
 ---
 
 <Base locale={locale} section="people" title={`${story.name} — Lidé z Kolonády`} description={story.quote} alternateUrls={{ [locale]: Astro.url.pathname }}>
-  <PillarPage locale={locale} title={story.name} description={`${story.location} · ${story.visitLabel}`}>
+  <PillarPage locale={locale} title={story.name} description={`${story.location} · ${story.visitLabel}`} breadcrumbs={breadcrumbs}>
     <blockquote class="text-xl italic text-indigo-700 border-l-4 border-turquoise-400 pl-6 mb-8" lang={story.lang || undefined}>
       {story.quote}
     </blockquote>

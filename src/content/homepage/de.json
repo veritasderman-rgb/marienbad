@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Entdecken Sie Marienbad",
-    "subtitle": "UNESCO Welterbe · Seit 1812 · Vier Heilquellen — Das einzige Kurbad der Welt, das alle vier natürlichen Heilressourcen vereint.",
+    "subtitle": "UNESCO Welterbe · Seit 1818 · Vier Heilquellen — Eines der wenigen Kurbäder der Welt, das alle vier natürlichen Heilressourcen vereint.",
     "ctaText": "Stadt entdecken",
     "ctaHref": "#discover",
     "badges": [
       "UNESCO Welterbe",
-      "Seit 1812"
+      "Seit 1818"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Welterbe 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Kurtradition"
     },
     {
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "Was Marienbad einzigartig macht",
     "title": "Vier natürliche Heilressourcen",
-    "description": "Das einzige Kurbad weltweit, das alle vier Elemente der natürlichen Heilung vereint.",
+    "description": "Eines der seltenen Kurbäder, das alle vier Elemente der natürlichen Heilung vereint.",
     "items": [
       {
         "name": "Wasser",
@@ -47,7 +47,7 @@
       },
       {
         "name": "Klima",
-        "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen."
+        "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen. Seit 2023 trägt Marienbad offiziell den Titel eines Klimakurortes."
       }
     ]
   },
@@ -60,12 +60,12 @@
     "sectionLabel": "Unterkünfte",
     "title": "Wo übernachten in Marienbad",
     "description": "Von historischen 5-Sterne-Spa-Hotels bis zu charmanten Pensionen.",
-    "allHotelsLabel": "Alle 7 Hotels entdecken →",
+    "allHotelsLabel": "Alle Hotels entdecken →",
     "items": [
       {
         "name": "Nové Lázně",
         "stars": 5,
-        "badge": "Editor's Pick",
+        "badge": "Unsere Empfehlung",
         "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
         "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
@@ -73,7 +73,7 @@
           "CO₂ Therapie",
           "Pool"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/de/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
       },
       {
@@ -86,7 +86,7 @@
           "Trinkkur",
           "Wellness"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/de/hotels/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
       }
     ]
@@ -109,7 +109,7 @@
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
         "name": "James",
         "location": "London 🇬🇧",
-        "visitLabel": "3rd visit",
+        "visitLabel": "3. Besuch",
         "lang": "en",
         "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
@@ -117,17 +117,17 @@
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
         "name": "Наталья",
         "location": "Москва 🇷🇺",
-        "visitLabel": "8-й визит",
+        "visitLabel": "8. Besuch",
         "lang": "ru",
         "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
   "seasonal": {
-    "badge": "Diese Saison",
-    "season": "Frühling 2026",
-    "title": "Die Quellen erwachen — Frühlingskur in Marienbad",
-    "description": "Im Frühling blüht Marienbad auf: Die Skalníkovy-Gärten erstrahlen in Farben, die Singende Fontäne nimmt ihren Betrieb wieder auf, und die milde Frühlingsluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
+    "badge": "Aktuell",
+    "season": "Highlights",
+    "title": "Die Quellen erwarten Sie — Ihre Kur in Marienbad",
+    "description": "Zu jeder Jahreszeit hat Marienbad etwas Besonderes zu bieten: Die Skalníkovy-Gärten begeistern mit wechselnden Farben, die Singende Fontäne verzaubert mit ihren legendären Wasserspielen, und die milde Bergluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
     "ctaText": "Mehr erfahren",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

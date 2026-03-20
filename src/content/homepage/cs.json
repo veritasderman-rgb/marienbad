@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Objevte Mariánské Lázně",
-    "subtitle": "UNESCO světové dědictví · Od roku 1812 · Čtyři léčivé zdroje — Jediné lázně na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
+    "subtitle": "UNESCO světové dědictví · Od roku 1818 · Čtyři léčivé zdroje — Jedny z mála lázní na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
     "ctaText": "Poznejte město",
     "ctaHref": "#discover",
     "badges": [
       "UNESCO dědictví",
-      "Od roku 1812"
+      "Od roku 1818"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Světové dědictví 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Lázeňská tradice"
     },
     {
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "Čím jsou Mariánské Lázně výjimečné",
     "title": "Čtyři přírodní léčivé zdroje",
-    "description": "Jediné lázně na světě, které spojují všechny čtyři živly přírodního léčení.",
+    "description": "Jedny z mála lázní na světě, které spojují všechny čtyři živly přírodního léčení.",
     "items": [
       {
         "name": "Voda",
@@ -47,7 +47,7 @@
       },
       {
         "name": "Klima",
-        "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly."
+        "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly. Od roku 2023 nesou Mariánské Lázně oficiální označení klimatických lázní."
       }
     ]
   },
@@ -60,7 +60,7 @@
     "sectionLabel": "Ubytování",
     "title": "Kde se ubytovat v Mariánských Lázních",
     "description": "Od historických 5hvězdičkových lázeňských hotelů po útulné penziony.",
-    "allHotelsLabel": "Všech 7 hotelů →",
+    "allHotelsLabel": "Všechny hotely →",
     "items": [
       {
         "name": "Nové Lázně",
@@ -73,7 +73,7 @@
           "CO₂ terapie",
           "Bazén"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/cs/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Rezervovat pobyt"
       },
       {
@@ -86,7 +86,7 @@
           "Pitná kúra",
           "Wellness"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/cs/hotels/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Rezervovat pobyt"
       }
     ]
@@ -124,10 +124,10 @@
     ]
   },
   "seasonal": {
-    "badge": "Právě teď",
-    "season": "Jaro 2026",
-    "title": "Prameny se probouzejí — jarní kúra v Mariánských Lázních",
-    "description": "Na jaře Mariánské Lázně rozkvétají: Skalníkovy sady hrají barvami, Zpívající fontána zahajuje novou sezónu a jemný jarní vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
+    "badge": "Doporučujeme",
+    "season": "To nejlepší",
+    "title": "Prameny na vás čekají — vaše kúra v Mariánských Lázních",
+    "description": "Mariánské Lázně okouzlí v každém ročním období: Skalníkovy sady překvapují proměnlivými barvami, Zpívající fontána láká na legendární vodní představení a jemný horský vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
     "ctaText": "Zjistit více",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

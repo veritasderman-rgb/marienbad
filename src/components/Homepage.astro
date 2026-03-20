@@ -5,7 +5,7 @@ import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
 import { t } from '@/i18n/ui'
 import { localizedHref } from '@/i18n/utils'
-import { getHomepage } from '@/content/reader'
+import { getHomepage, getArticles } from '@/content/reader'
 
 interface Props {
   locale: Locale
@@ -13,6 +13,10 @@ interface Props {
 
 const { locale } = Astro.props
 const cms = await getHomepage(locale)
+
+// Dynamically fetch the 3 most recent articles (sorted by date descending in reader)
+const allArticles = await getArticles(locale)
+const latestArticles = allArticles.slice(0, 3)
 
 const gradients = [
   'linear-gradient(135deg, #3D1F3D 0%, #266782 100%)',
@@ -129,6 +133,10 @@ const gradients = [
       <SectionCard title={t(locale, 'home.springs')} description={t(locale, 'home.springsDesc')} href={localizedHref(locale, 'mineral-springs')} variant="indigo" />
       <SectionCard title={t(locale, 'home.thingsToDo')} description={t(locale, 'home.thingsToDoDesc')} href={localizedHref(locale, 'things-to-do')} variant="turquoise" />
       <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} variant="dark" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 max-w-3xl lg:max-w-[calc(66.666%+1rem)] mx-auto mt-6 lg:mt-8 reveal">
+      <SectionCard title={t(locale, 'home.podcast')} description={t(locale, 'home.podcastDesc')} href={localizedHref(locale, 'podcast')} variant="beige" />
+      <SectionCard title={t(locale, 'home.magazine')} description={t(locale, 'home.magazineDesc')} href={localizedHref(locale, 'magazine')} variant="turquoise" />
     </div>
   </div>
 </section>
@@ -252,11 +260,11 @@ const gradients = [
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3 mb-4" style="font-size: var(--text-h2);">{cms.magazine.title}</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {cms.magazine.articles.map((article) => (
-        <a href={localizedHref(locale, 'magazine')} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
-          <div class="h-44 relative overflow-hidden" class:list={[(article as any).image ? '' : 'placeholder-image-light flex items-center justify-center']}>
-            {(article as any).image ? (
-              <img src={(article as any).image} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+      {latestArticles.map((article) => (
+        <a href={localizedHref(locale, `magazine/${article.slug}`)} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
+          <div class="h-44 relative overflow-hidden" class:list={[article.coverImage ? '' : 'placeholder-image-light flex items-center justify-center']}>
+            {article.coverImage ? (
+              <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
             ) : (
               <span class="text-beige-600 text-sm">Artikelbild</span>
             )}
@@ -265,7 +273,7 @@ const gradients = [
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{article.category}</span>
             <h3 class="font-heading text-lg font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mt-1 mb-2">{article.title}</h3>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">{article.excerpt}</p>
-            <div class="mt-3 text-beige-600 text-xs">{article.date} · {article.readTime}</div>
+            <div class="mt-3 text-beige-600 text-xs"><time datetime={article.date}>{article.date}</time> · {article.readingTime}</div>
           </div>
         </a>
       ))}
@@ -305,129 +313,118 @@ const gradients = [
   </div>
 </section>
 
-<script>
+<script is:inline>
   // Set timestamp on page load for bot timing detection
-  const tsInput = document.getElementById('newsletter-ts') as HTMLInputElement
-  if (tsInput) tsInput.value = String(Date.now())
+  var tsInput = document.getElementById('newsletter-ts');
+  if (tsInput) tsInput.value = String(Date.now());
 
-  const form = document.getElementById('newsletter-form') as HTMLFormElement
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault()
+  var form = document.getElementById('newsletter-form');
+  if (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
 
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
-    const btnLabel = btn.querySelector('.btn-label') as HTMLElement
-    const btnIcon = btn.querySelector('.btn-icon') as HTMLElement
-    const btnSpinner = btn.querySelector('.btn-spinner') as HTMLElement
-    const emailInput = form.querySelector('#newsletter-email') as HTMLInputElement
-    const honeypotInput = form.querySelector('#newsletter-website') as HTMLInputElement
-    const timestampInput = form.querySelector('#newsletter-ts') as HTMLInputElement
-    const errorEl = document.getElementById('newsletter-error')!
-    const successEl = document.getElementById('newsletter-success')!
-    const disclaimerEl = document.getElementById('newsletter-disclaimer')!
+      var btn = form.querySelector('button[type="submit"]');
+      var btnLabel = btn.querySelector('.btn-label');
+      var btnIcon = btn.querySelector('.btn-icon');
+      var btnSpinner = btn.querySelector('.btn-spinner');
+      var emailInput = form.querySelector('#newsletter-email');
+      var honeypotInput = form.querySelector('#newsletter-website');
+      var timestampInput = form.querySelector('#newsletter-ts');
+      var errorEl = document.getElementById('newsletter-error');
+      var successEl = document.getElementById('newsletter-success');
+      var disclaimerEl = document.getElementById('newsletter-disclaimer');
 
-    // Store original label text
-    const originalLabel = btnLabel.textContent
+      // Store original label text
+      var originalLabel = btnLabel.textContent;
 
-    // Reset error state
-    errorEl.classList.add('hidden')
-    errorEl.textContent = ''
+      // Reset error state
+      errorEl.classList.add('hidden');
+      errorEl.textContent = '';
 
-    // Loading state
-    btn.disabled = true
-    btn.style.opacity = '0.6'
-    btnLabel.textContent = '...'
-    btnIcon.classList.add('hidden')
-    btnSpinner.classList.remove('hidden')
+      // Loading state
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+      btnLabel.textContent = '...';
+      btnIcon.classList.add('hidden');
+      btnSpinner.classList.remove('hidden');
 
-    try {
-      const res = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: emailInput.value,
-          locale: form.dataset.locale || 'de',
-          website: honeypotInput?.value || '',
-          _ts: timestampInput?.value ? Number(timestampInput.value) : undefined,
-        }),
-      })
+      try {
+        var res = await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: emailInput.value,
+            locale: form.dataset.locale || 'de',
+            website: honeypotInput ? honeypotInput.value : '',
+            _ts: timestampInput && timestampInput.value ? Number(timestampInput.value) : undefined,
+          }),
+        });
 
-      const data = await res.json()
+        var data = await res.json();
 
-      if (data.success) {
-        form.style.display = 'none'
-        successEl.classList.remove('hidden')
-        disclaimerEl.classList.add('hidden')
-      } else {
-        throw new Error(data.error || 'Subscription failed.')
+        if (data.success) {
+          form.style.display = 'none';
+          successEl.classList.remove('hidden');
+          disclaimerEl.classList.add('hidden');
+        } else {
+          throw new Error(data.error || 'Subscription failed.');
+        }
+      } catch (err) {
+        // Restore button
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btnLabel.textContent = originalLabel;
+        btnIcon.classList.remove('hidden');
+        btnSpinner.classList.add('hidden');
+
+        errorEl.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+        errorEl.classList.remove('hidden');
       }
-    } catch (err) {
-      // Restore button
-      btn.disabled = false
-      btn.style.opacity = '1'
-      btnLabel.textContent = originalLabel
-      btnIcon.classList.remove('hidden')
-      btnSpinner.classList.add('hidden')
-
-      errorEl.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
-      errorEl.classList.remove('hidden')
-    }
-  })
+    });
+  }
 </script>
 
-<!-- Schema.org: TouristDestination -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "TouristDestination",
-  "name": "Mariánské Lázně (Marienbad)",
-  "description": "UNESCO World Heritage spa town famous for over 40 mineral springs and four natural healing resources — water, earth, natural gas, and a certified healing climate.",
-  "url": "https://marienbad.vercel.app",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Mariánské Lázně",
-    "addressRegion": "Karlovarský kraj",
-    "postalCode": "353 01",
-    "addressCountry": "CZ"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 49.9644,
-    "longitude": 12.7066
-  },
-  "touristType": [
-    "Wellness & Spa Travellers",
-    "Cultural Heritage Enthusiasts",
-    "Medical Tourism Patients"
-  ],
-  "containsPlace": [
-    {
-      "@type": "LodgingBusiness",
-      "name": "Ensana Nové Lázně",
-      "url": "https://www.ensanahotels.com/nove-lazne"
+<!-- Schema.org: TouristDestination (localized) -->
+<script type="application/ld+json" set:html={JSON.stringify((() => {
+  const localizedDestination: Record<string, { name: string; description: string; touristType: string[] }> = {
+    de: {
+      name: 'Mariánské Lázně (Marienbad)',
+      description: 'UNESCO-Welterbe-Kurstadt, berühmt für über 40 Mineralquellen und vier natürliche Heilmittel — Wasser, Erde, Naturgas und ein zertifiziertes Heilklima.',
+      touristType: ['Wellness- & Kururlauber', 'Kulturerbe-Enthusiasten', 'Medizintourismus-Patienten'],
     },
-    {
-      "@type": "LodgingBusiness",
-      "name": "Ensana Centrální Lázně",
-      "url": "https://www.ensanahotels.com/centralni-lazne"
-    }
-  ]
-})} />
-
-<!-- Schema.org: LodgingBusiness entities -->
-<script type="application/ld+json" set:html={JSON.stringify([
-  {
+    en: {
+      name: 'Mariánské Lázně (Marienbad)',
+      description: 'UNESCO World Heritage spa town famous for over 40 mineral springs and four natural healing resources — water, earth, natural gas, and a certified healing climate.',
+      touristType: ['Wellness & Spa Travellers', 'Cultural Heritage Enthusiasts', 'Medical Tourism Patients'],
+    },
+    cs: {
+      name: 'Mariánské Lázně',
+      description: 'Lázeňské město zapsané na seznamu UNESCO, proslulé více než 40 minerálními prameny a čtyřmi přírodními léčivými zdroji — vodou, zeminou, přírodním plynem a certifikovaným léčivým klimatem.',
+      touristType: ['Wellness a lázeňští turisté', 'Milovníci kulturního dědictví', 'Pacienti zdravotní turistiky'],
+    },
+    ru: {
+      name: 'Марианске-Лазне (Мариенбад)',
+      description: 'Курортный город, включённый в список Всемирного наследия ЮНЕСКО, знаменитый более чем 40 минеральными источниками и четырьмя природными лечебными ресурсами — водой, землёй, природным газом и сертифицированным целебным климатом.',
+      touristType: ['Велнес и курортные туристы', 'Любители культурного наследия', 'Пациенты медицинского туризма'],
+    },
+  }
+  const dest = localizedDestination[locale] || localizedDestination.en
+  const addressRegion: Record<string, string> = {
+    de: 'Karlovarský kraj',
+    en: 'Karlovy Vary Region',
+    cs: 'Karlovarský kraj',
+    ru: 'Карловарский край',
+  }
+  return {
     "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "Ensana Nové Lázně",
-    "description": "A historic 5-star spa hotel featuring an original Roman Bath — the flagship of the Ensana Spa Hotels collection in Mariánské Lázně.",
-    "url": "https://www.ensanahotels.com/nove-lazne",
-    "starRating": {
-      "@type": "Rating",
-      "ratingValue": "5"
-    },
+    "@type": "TouristDestination",
+    "name": dest.name,
+    "description": dest.description,
+    "url": "https://marienbad.vercel.app",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Mariánské Lázně",
-      "addressRegion": "Karlovarský kraj",
+      "addressRegion": addressRegion[locale] || addressRegion.en,
       "postalCode": "353 01",
       "addressCountry": "CZ"
     },
@@ -436,38 +433,99 @@ const gradients = [
       "latitude": 49.9644,
       "longitude": 12.7066
     },
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Roman Bath", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "CO₂ Therapy", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Pool", "value": true }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "Ensana Centrální Lázně",
-    "description": "Steps from the Colonnade — traditional spa treatments in a prime central location with modern therapy rooms in Mariánské Lázně.",
-    "url": "https://www.ensanahotels.com/centralni-lazne",
-    "starRating": {
-      "@type": "Rating",
-      "ratingValue": "4"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Mariánské Lázně",
-      "addressRegion": "Karlovarský kraj",
-      "postalCode": "353 01",
-      "addressCountry": "CZ"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 49.9644,
-      "longitude": 12.7066
-    },
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Colonnade Location", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Drinking Cure", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Wellness", "value": true }
+    "touristType": dest.touristType,
+    "containsPlace": [
+      {
+        "@type": "LodgingBusiness",
+        "name": "Ensana Nové Lázně",
+        "url": `https://ensanahotels.com/${locale}/hotels/nove-lazne`
+      },
+      {
+        "@type": "LodgingBusiness",
+        "name": "Ensana Centrální Lázně",
+        "url": `https://ensanahotels.com/${locale}/hotels/centralni-lazne`
+      }
     ]
   }
-])} />
+})())} />
+
+<!-- Schema.org: LodgingBusiness entities (localized, with correct coordinates) -->
+<script type="application/ld+json" set:html={JSON.stringify((() => {
+  const hotelData: Record<string, { name: string; description: string }[]> = {
+    de: [
+      { name: 'Ensana Nové Lázně', description: 'Ein historisches 5-Sterne-Kurhotel mit originalem Römischem Bad — das Flaggschiff der Ensana Spa Hotels Kollektion in Mariánské Lázně.' },
+      { name: 'Ensana Centrální Lázně', description: 'Nur wenige Schritte von der Kolonnade entfernt — traditionelle Kuranwendungen in erstklassiger zentraler Lage mit modernen Therapieräumen in Mariánské Lázně.' },
+    ],
+    en: [
+      { name: 'Ensana Nové Lázně', description: 'A historic 5-star spa hotel featuring an original Roman Bath — the flagship of the Ensana Spa Hotels collection in Mariánské Lázně.' },
+      { name: 'Ensana Centrální Lázně', description: 'Steps from the Colonnade — traditional spa treatments in a prime central location with modern therapy rooms in Mariánské Lázně.' },
+    ],
+    cs: [
+      { name: 'Ensana Nové Lázně', description: 'Historický 5hvězdičkový lázeňský hotel s originálními Římskými lázněmi — vlajková loď kolekce Ensana Spa Hotels v Mariánských Lázních.' },
+      { name: 'Ensana Centrální Lázně', description: 'Jen pár kroků od Kolonády — tradiční lázeňské procedury v prvotřídní centrální poloze s moderními terapeutickými místnostmi v Mariánských Lázních.' },
+    ],
+    ru: [
+      { name: 'Ensana Nové Lázně', description: 'Исторический 5-звёздочный курортный отель с оригинальными Римскими банями — флагман коллекции Ensana Spa Hotels в Марианских Лазнях.' },
+      { name: 'Ensana Centrální Lázně', description: 'В нескольких шагах от Колоннады — традиционные курортные процедуры в центральном расположении с современными терапевтическими кабинетами в Марианских Лазнях.' },
+    ],
+  }
+  const hotels = hotelData[locale] || hotelData.en
+  const addressRegion: Record<string, string> = {
+    de: 'Karlovarský kraj',
+    en: 'Karlovy Vary Region',
+    cs: 'Karlovarský kraj',
+    ru: 'Карловарский край',
+  }
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": hotels[0].name,
+      "description": hotels[0].description,
+      "url": `https://ensanahotels.com/${locale}/hotels/nove-lazne`,
+      "starRating": { "@type": "Rating", "ratingValue": "5" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mariánské Lázně",
+        "addressRegion": addressRegion[locale] || addressRegion.en,
+        "postalCode": "353 01",
+        "addressCountry": "CZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.9647,
+        "longitude": 12.7011
+      },
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Roman Bath", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "CO₂ Therapy", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Pool", "value": true }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": hotels[1].name,
+      "description": hotels[1].description,
+      "url": `https://ensanahotels.com/${locale}/hotels/centralni-lazne`,
+      "starRating": { "@type": "Rating", "ratingValue": "4" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mariánské Lázně",
+        "addressRegion": addressRegion[locale] || addressRegion.en,
+        "postalCode": "353 01",
+        "addressCountry": "CZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.9658,
+        "longitude": 12.7053
+      },
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Colonnade Location", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Drinking Cure", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Wellness", "value": true }
+      ]
+    }
+  ]
+})())} />

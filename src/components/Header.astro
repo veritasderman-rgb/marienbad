@@ -14,7 +14,13 @@ const allLocales = (['de', 'en', 'cs', 'ru'] as const)
 const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Rezervovat pobyt' : locale === 'ru' ? 'Забронировать' : 'Book your stay'
 
 const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
-const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-republika/marianske-lazne`
+const destinationPaths: Record<string, string> = {
+  cs: 'destinace/ceska-republika/marianske-lazne',
+  de: 'destinationen/tschechische-republik/marienbad',
+  en: 'destinations/czech-republic/marianske-lazne',
+  ru: 'destinacii/cheshskaya-respublika/marianskie-lazne',
+}
+const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[ensanaLocale]}`
 ---
 
 <header id="site-header" class="sticky top-0 z-50 transition-all duration-300 will-change-transform" data-transparent="true">
@@ -27,7 +33,7 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/destinace/ceska-rep
 
       <!-- Desktop nav (center) -->
       <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
-        {navItems.slice(0, 7).map(({ navKey, href }) => (
+        {navItems.slice(0, 8).map(({ navKey, href }) => (
           <a
             href={href}
             class="px-3 py-2 text-[0.8125rem] leading-tight font-medium text-white/80 hover:text-white transition-colors header-nav-link whitespace-nowrap"

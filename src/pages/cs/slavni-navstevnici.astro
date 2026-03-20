@@ -1,0 +1,42 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+
+const locale = 'cs' as const
+---
+
+<Base locale={locale} section="history" title="Slavni navstevnici — Marienbad.com" description="Goethe, Chopin, Edward VII., Kafka, Edison — slavni hoste, kteri proslavili Marianky po celem svete." alternateUrls={{ de: '/de/beruehmte-gaeste', en: '/en/famous-visitors', cs: '/cs/slavni-navstevnici', ru: '/ru/znamenitye-gosti' }}>
+  <PillarPage locale={locale} title="Slavni navstevnici" description="Od Goetha po Kafku, od Edwarda VII. po Edisona — Marianske Lazne byly po dve staleti mistem setkavani evropske elity.">
+    <h2>Johann Wolfgang von Goethe (1823)</h2>
+    <p>Nejvetsi nemecky basnik navstivil Marianske Lazne trikrat (1821, 1822, 1823). Jeho treti pobyt se stal legendarnim: ve veku <strong>74 let</strong> se Goethe zamiloval do devatenactileté <strong>Ulriky von Levetzow</strong>. Neopetovana laska inspirovala <em>„Mariansko-lazenskouu elegii"</em> — jedno z nejvyznamnejsich lyrickych del nemecke literatury.</p>
+    <p>Goethuv pomnik stoji v lazenskeém parku, nedaleko mista jeho slavnych prochazek. <strong>Goethuv dum</strong> (Mestske muzeum) uchova vzpominky na jeho pobyty.</p>
+
+    <h2>Frederic Chopin (1836)</h2>
+    <p>Polsky skladatel stravil leto 1836 v Marianskych Laznich, kde se setkal s <strong>Marii Wodzinskou</strong>. Z romance vzeslo tajne zasnoubenni — ktere vsak nebylo nikdy naplneno. Chopinuv pobyt je kazdorocne pripominan v srpnu <strong>Mezinarodnim Chopinovym festivalem</strong>, jednim z nejprestiznejsich klavirnich festivalu v Evrope.</p>
+
+    <h2>Kral Edward VII. (1897–1909)</h2>
+    <p>Britsky kral navstivil Marianske Lazne devekrat mezi lety 1897 a 1909. Premenil mesto na <strong>letni centrum evropske diplomacie</strong> — dulezite politicke rozhovory se vedly na promenadach a v hotelech. Edward v roce 1905 zalozil <strong>Royal Golf Club</strong>, nejstarsi golfovy klub v Ceske republice, a vtiskl mestu jeho kosmopolitni charakter.</p>
+
+    <h2>Franz Kafka (1916)</h2>
+    <p>Prazsky spisovatel navstivil Marianske Lazne v lete 1916, kde se setkal s <strong>Felice Bauerovou</strong>. Setkani bylo poznamenano typickou kafkovskou ambivalenci — touhou i utekem zaroven. Atmosfera mesta pronikla do jeho literarniho dila.</p>
+
+    <h2>Thomas Alva Edison (1911)</h2>
+    <p>Americky vynalezce navstivil Marianske Lazne v roce 1911 kvuli lazenske kure. Byl ohromenn vedeckym pristupem k balneoterapii a technickymi inovacemi v lazennskych domech.</p>
+
+    <h2>Dalsi slavni hoste</h2>
+    <ul>
+      <li><strong>Richard Wagner</strong> — Skladatel navstivil mesto nekolikrat ve 40. a 70. letech 19. stoleti</li>
+      <li><strong>Mark Twain</strong> — Americky spisovatel prijizdel v roce 1892 a s humorem psal o lazenských ritualech</li>
+      <li><strong>Sigmund Freud</strong> — Zakladatel psychoanalyzy hledal odpoocinek v lazenskych parcich</li>
+      <li><strong>Gustav Mahler</strong> — Skladatel a dirigent byl pravidelnym hostem</li>
+      <li><strong>Cisar Frantisek Josef I.</strong> — Rakousky cisar mesto oficialane navstevoval</li>
+      <li><strong>Nikolaj Gogol</strong> — Rusky spisovatel prijel na lazeenskou kuru ve 40. letech 19. stoleti</li>
+      <li><strong>Antonin Dvorak</strong> — Cesky skladatel, jehoz dila dnes zni u Zpivajici fontany</li>
+    </ul>
+
+    <h2>Misto setkavani</h2>
+    <p>Co vsechny tyto slavne navstevniky spojovalo, nebyla pouze touha po uzdraveni, ale také jedineena atmosfera Marianskych Lazni: misto, kde se hranice mezi narody, spolecenskymi vrstvami a generacemi rozplyvaly po dobu lazenskeho pobytu. Na promenadach se potkavali kralove s basniky, vedci s umelci — spojeni spolecnym ritualem pitne kury a lecivou silou pramenu.</p>
+
+    <p>Tato tradice zije dal. I dnes zustavaji Marianske Lazne mistem, kde se setkavaji lide z celeho sveta — pri hledani zdravi, krasy a onoho zvlastniho druhu setkani, ktere je mozne jen v lazenskem meste.</p>
+  </PillarPage>
+</Base>

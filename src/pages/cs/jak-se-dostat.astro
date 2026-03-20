@@ -1,0 +1,73 @@
+---
+import Base from '@/layouts/Base.astro'
+import PillarPage from '@/components/PillarPage.astro'
+import DestinationMap from '@/components/DestinationMap.astro'
+
+const locale = 'cs' as const
+---
+
+<Base locale={locale} section="practical-info" title="Jak se dostat do Marienbadu — Marienbad.com" description="Jak se dostat do Mariánských Lázní: letadlem, vlakem, autobusem, autem. Vzdálenosti, jízdní doby a praktické tipy." alternateUrls={{ de: '/de/anreise', en: '/en/getting-there', cs: '/cs/jak-se-dostat', ru: '/ru/kak-dobratsya' }}>
+  <PillarPage locale={locale} title="Jak se dostat do Mariánských Lázní" description="Mariánské Lázně leží v západních Čechách, nedaleko německých hranic — snadno dostupné z Mnichova, Prahy i celé střední Evropy.">
+    <h2>Poloha</h2>
+    <p>Mariánské Lázně (Marienbad) leží na <strong>západním cípu České republiky</strong>, ve Slavkovském lese (Kaiserwald), pouhých 30 km od bavorských hranic. Výhodná poloha činí město snadno dostupným z Německa, Rakouska i celého regionu.</p>
+
+    <h2>Letadlem</h2>
+    <h3>Letiště Praha (PRG) — 170 km</h3>
+    <p>Mezinárodní letiště Václava Havla v Praze je hlavní branou. Z Prahy do Mariánských Lázní je to přibližně <strong>2 hodiny autem</strong> nebo <strong>3 hodiny autobusem</strong>. Několik přepravních služeb nabízí přímé transfery do lázeňských hotelů.</p>
+
+    <h3>Letiště Karlovy Vary (KLV) — 50 km</h3>
+    <p>Malé regionální letiště nabízí sezónní spojení do vybraných evropských měst. Vzdálené pouhých 50 km — přibližně <strong>45 minut</strong> autem.</p>
+
+    <h3>Letiště Mnichov (MUC) — 300 km</h3>
+    <p>Praktická varianta pro cestující z jižního Německa a pro dálkové mezinárodní lety. Přibližně <strong>3 hodiny</strong> autem po dálnicích A9/A93.</p>
+
+    <h2>Vlakem</h2>
+    <p><strong>Železniční stanice Mariánské Lázně</strong> má pravidelná spojení:</p>
+    <ul>
+      <li><strong>Z Prahy:</strong> přibližně 3 hodiny (s přestupem v Plzni). Trasa přes Slavkovský les patří k nejkrásnějším železničním cestám v České republice.</li>
+      <li><strong>Z Plzně:</strong> přibližně 1,5 hodiny přímým spojem</li>
+      <li><strong>Z Karlových Varů:</strong> přibližně 1 hodina</li>
+      <li><strong>Z Chebu:</strong> 25 minut — s návazností na mezinárodní vlaky do/z Německa</li>
+    </ul>
+    <p>Přes Cheb existují přípoje na německou železniční síť (Norimberk, Hof, Mnichov).</p>
+
+    <h2>Autobusem</h2>
+    <p><strong>FlixBus</strong> a <strong>RegioJet</strong> spojují Mariánské Lázně s:</p>
+    <ul>
+      <li>Prahou (přibližně 2,5 hodiny)</li>
+      <li>Plzní, Karlovými Vary, Chebem</li>
+    </ul>
+    <p>Autobusy nabízejí WiFi, zásuvky a občerstvení. Autobusové nádraží je pár minut chůze od centra města.</p>
+
+    <h2>Autem</h2>
+    <h3>Z Prahy (170 km, cca 2 hodiny)</h3>
+    <p>Po dálnici D5 směrem na Plzeň, poté podle značení po R21 do Mariánských Lázní. Dobře značená trasa.</p>
+
+    <h3>Z Mnichova (300 km, cca 3 hodiny)</h3>
+    <p>A9 na sever, A93 k hraničnímu přechodu Pomezí nad Ohří/Schirnding, poté pokračovat do Mariánských Lázní.</p>
+
+    <h3>Z Norimberku (200 km, cca 2,5 hodiny)</h3>
+    <p>A6/A93 k hraničnímu přechodu, poté podle značení do Mariánských Lázní.</p>
+
+    <h3>Mýtné a dálniční známka</h3>
+    <p>Pro české dálnice je vyžadována <strong>dálniční známka</strong>. Můžete ji zakoupit elektronicky na <strong>edalnice.cz</strong> nebo na hraničních přechodech a čerpacích stanicích.</p>
+
+    <h2>Tabulka vzdáleností</h2>
+
+    | Odkud | Vzdálenost | Doba jízdy |
+    |-------|-----------|-----------|
+    | Praha | 170 km | 2:00 h |
+    | Mnichov | 300 km | 3:00 h |
+    | Norimberk | 200 km | 2:30 h |
+    | Karlovy Vary | 48 km | 0:45 h |
+    | Plzeň | 80 km | 1:15 h |
+    | Drážďany | 250 km | 3:00 h |
+    | Vídeň | 380 km | 4:00 h |
+
+    <h2>Transferové služby</h2>
+    <p>Všechny <strong>hotely Ensana Spa</strong> mohou zajistit letištní transfery. Mnoho hostů si objedná soukromý transfer přímo z letiště v Praze nebo Mnichově — pohodlné a bezstarostné po dlouhé cestě.</p>
+
+    <p>Hotelová recepce může také zajistit <strong>místní taxi</strong> a <strong>půjčení auta</strong> pro výlety po okolí.</p>
+    <DestinationMap locale={locale} />
+  </PillarPage>
+</Base>

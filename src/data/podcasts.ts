@@ -40,7 +40,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 2',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Procházka po kolonádě a ochutnávka minerálních pramenů — každý má jiné složení a jedinečnou chuť.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -57,7 +57,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 3',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Rozhovor s lázeňským lékařem o tom, jak minerální vody pomáhají při léčbě trávicího ústrojí a pohybového aparátu.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -74,7 +74,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 4',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Historie Mariánských Lázní od prvních zmínek o léčivých pramenech až po rozmach lázeňského města v 19. století.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -91,7 +91,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 5',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Tipy na nejkrásnější procházky okolím — od Slavkovského lesa přes Kladskou až po vyhlídky nad městem.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -108,7 +108,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 6',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Zpívající fontána, Chopin festival a kulturní léto — co vás čeká v hlavní sezóně v Mariánských Lázních.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -125,7 +125,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 7',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Golf v Mariánských Lázních — nejstarší golfové hřiště v České republice a jeho královská historie od dob Edwarda VII.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -142,7 +142,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 8',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Jak probíhá tradiční třítýdenní lázeňská kúra a proč se hosté z celého světa vracejí rok co rok.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -159,7 +159,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 9',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'CO₂ koupele a rašelinové zábaly — věda za nejúčinnějšími lázeňskými procedurami v Mariánských Lázních.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -176,7 +176,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 10',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Mariánské Lázně jako město UNESCO — co zápis na seznam světového dědictví znamená pro budoucnost města.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',
@@ -193,7 +193,7 @@ export const episodes: PodcastEpisode[] = [
       ru: 'Подкаст из Марианских Лазне — Выпуск 11',
     },
     description: {
-      cs: 'Další díl podcastu z Mariánských Lázní.',
+      cs: 'Podzim v Mariánských Lázních — zlaté barvy Slavkovského lesa, houbaření a atmosféra města mimo hlavní sezónu.',
       de: 'Die nächste Folge unseres Marienbad-Podcasts.',
       en: 'The next episode of our Marienbad Podcast.',
       ru: 'Следующий выпуск подкаста из Марианских Лазне.',

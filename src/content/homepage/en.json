@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Discover Marienbad",
-    "subtitle": "UNESCO World Heritage · Est. 1812 · Four Healing Elements — The only spa destination in the world combining all four natural healing resources.",
+    "subtitle": "UNESCO World Heritage · Est. 1818 · Four Healing Elements — One of the few spa destinations in the world combining all four natural healing resources.",
     "ctaText": "Explore the town",
     "ctaHref": "#discover",
     "badges": [
       "UNESCO Heritage",
-      "Est. 1812"
+      "Est. 1818"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Heritage Site 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Spa Tradition"
     },
     {
@@ -31,7 +31,7 @@
   "healingElements": {
     "sectionLabel": "What makes Marienbad unique",
     "title": "Four Natural Healing Resources",
-    "description": "The only spa destination on earth that unites all four elements of natural healing.",
+    "description": "One of the rare spa destinations that unites all four elements of natural healing.",
     "items": [
       {
         "name": "Water",
@@ -43,11 +43,11 @@
       },
       {
         "name": "Gas",
-        "description": "99.7% pure CO₂ — \"Maria's Gas\" — clinically proven to improve peripheral circulation."
+        "description": "99.7% pure CO₂ — \"Maria's Gas\" — traditionally used to support peripheral circulation."
       },
       {
         "name": "Climate",
-        "description": "Certified healing climate at 630m elevation — pure forest air enriched with natural aerosols."
+        "description": "Certified healing climate at 630m elevation — pure forest air enriched with natural aerosols. Since 2023, Mariánské Lázně has held the official designation of a Climatic Spa."
       }
     ]
   },
@@ -60,7 +60,7 @@
     "sectionLabel": "Accommodation",
     "title": "Where to Stay in Marienbad",
     "description": "From historic 5-star spa hotels to charming boutique guesthouses.",
-    "allHotelsLabel": "Discover all 7 hotels →",
+    "allHotelsLabel": "Discover all hotels →",
     "items": [
       {
         "name": "Nové Lázně",
@@ -73,7 +73,7 @@
           "CO₂ Therapy",
           "Pool"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Book your stay"
       },
       {
@@ -86,13 +86,13 @@
           "Drinking Cure",
           "Wellness"
         ],
-        "bookingUrl": "https://www.ensanahotels.com/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingUrl": "https://ensanahotels.com/en/hotels/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Book your stay"
       }
     ]
   },
   "people": {
-    "sectionLabel": "People of Colonnade",
+    "sectionLabel": "People of the Colonnade",
     "title": "Stories the Waters Tell",
     "description": "Real stories from real people — spa guests, locals, and doctors share why Marienbad is a place like no other.",
     "allStoriesLabel": "Read all stories →",
@@ -124,10 +124,10 @@
     ]
   },
   "seasonal": {
-    "badge": "This Season",
-    "season": "Spring 2026",
-    "title": "The Springs Awaken — A Springtime Cure in Marienbad",
-    "description": "In spring, Marienbad comes alive: the Skalníkovy Gardens burst into colour, the Singing Fountain resumes its performances, and the gentle mountain air at 630 metres becomes nature's own remedy for the respiratory system.",
+    "badge": "Featured",
+    "season": "Highlights",
+    "title": "The Springs Await — Your Cure in Marienbad",
+    "description": "Every season, Marienbad offers something special: the Skalníkovy Gardens delight with ever-changing colours, the Singing Fountain performs its legendary water shows, and the gentle mountain air at 630 metres becomes nature's own remedy for the respiratory system.",
     "ctaText": "Learn more",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },
@@ -146,7 +146,7 @@
       {
         "category": "Culture",
         "title": "In Goethe's Footsteps Through the Town",
-        "excerpt": "The very springs that Goethe praised in 1823 now feed evidence-based rehabilitation programmes.",
+        "excerpt": "The very springs that Goethe praised in 1823 now feed medically supervised rehabilitation programmes.",
         "date": "10 March 2026",
         "readTime": "7 min read",
         "image": "/images/content/articles/magazine/articles/1/image.png"
