@@ -96,30 +96,30 @@
     "title": "Истории, которые рассказывает вода",
     "description": "Настоящие истории настоящих людей — курортные гости, местные жители и врачи рассказывают, почему Мариенбад — особенное место.",
     "allStoriesLabel": "Все истории →",
-    “stories”: [
+    "stories": [
       {
-        “quote”: “„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.””,
-        “name”: “Ingrid”,
-        “location”: “Hamburg 🇩🇪”,
-        “visitLabel”: “12-й раз”,
-        “lang”: “de”,
-        “portrait”: “/images/content/stories/people/stories/0/portrait.png”
+        "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
+        "name": "Ingrid",
+        "location": "Hamburg 🇩🇪",
+        "visitLabel": "12-й раз",
+        "lang": "de",
+        "portrait": "/images/content/stories/people/stories/0/portrait.png"
       },
       {
-        “quote”: “\”I came for the treatment, but I stayed for the peace.\””,
-        “name”: “James”,
-        “location”: “London 🇬🇧”,
-        “visitLabel”: “3-й визит”,
-        “lang”: “en”,
-        “portrait”: “/images/content/stories/people/stories/1/portrait.png”
+        "quote": "\"I came for the treatment, but I stayed for the peace.\"",
+        "name": "James",
+        "location": "London 🇬🇧",
+        "visitLabel": "3-й визит",
+        "lang": "en",
+        "portrait": "/images/content/stories/people/stories/1/portrait.png"
       },
       {
-        “quote”: “«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»”,
-        “name”: “Наталья”,
-        “location”: “Москва 🇷🇺”,
-        “visitLabel”: “8-й визит”,
-        “lang”: “ru”,
-        “portrait”: “/images/content/stories/people/stories/2/portrait.png”
+        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
+        "name": "Наталья",
+        "location": "Москва 🇷🇺",
+        "visitLabel": "8-й визит",
+        "lang": "ru",
+        "portrait": "/images/content/stories/people/stories/2/portrait.png"
       }
     ]
   },
