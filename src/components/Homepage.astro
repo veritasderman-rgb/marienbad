@@ -309,73 +309,75 @@ const gradients = [
   </div>
 </section>
 
-<script>
+<script is:inline>
   // Set timestamp on page load for bot timing detection
-  const tsInput = document.getElementById('newsletter-ts') as HTMLInputElement
-  if (tsInput) tsInput.value = String(Date.now())
+  var tsInput = document.getElementById('newsletter-ts');
+  if (tsInput) tsInput.value = String(Date.now());
 
-  const form = document.getElementById('newsletter-form') as HTMLFormElement
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault()
+  var form = document.getElementById('newsletter-form');
+  if (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
 
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
-    const btnLabel = btn.querySelector('.btn-label') as HTMLElement
-    const btnIcon = btn.querySelector('.btn-icon') as HTMLElement
-    const btnSpinner = btn.querySelector('.btn-spinner') as HTMLElement
-    const emailInput = form.querySelector('#newsletter-email') as HTMLInputElement
-    const honeypotInput = form.querySelector('#newsletter-website') as HTMLInputElement
-    const timestampInput = form.querySelector('#newsletter-ts') as HTMLInputElement
-    const errorEl = document.getElementById('newsletter-error')!
-    const successEl = document.getElementById('newsletter-success')!
-    const disclaimerEl = document.getElementById('newsletter-disclaimer')!
+      var btn = form.querySelector('button[type="submit"]');
+      var btnLabel = btn.querySelector('.btn-label');
+      var btnIcon = btn.querySelector('.btn-icon');
+      var btnSpinner = btn.querySelector('.btn-spinner');
+      var emailInput = form.querySelector('#newsletter-email');
+      var honeypotInput = form.querySelector('#newsletter-website');
+      var timestampInput = form.querySelector('#newsletter-ts');
+      var errorEl = document.getElementById('newsletter-error');
+      var successEl = document.getElementById('newsletter-success');
+      var disclaimerEl = document.getElementById('newsletter-disclaimer');
 
-    // Store original label text
-    const originalLabel = btnLabel.textContent
+      // Store original label text
+      var originalLabel = btnLabel.textContent;
 
-    // Reset error state
-    errorEl.classList.add('hidden')
-    errorEl.textContent = ''
+      // Reset error state
+      errorEl.classList.add('hidden');
+      errorEl.textContent = '';
 
-    // Loading state
-    btn.disabled = true
-    btn.style.opacity = '0.6'
-    btnLabel.textContent = '...'
-    btnIcon.classList.add('hidden')
-    btnSpinner.classList.remove('hidden')
+      // Loading state
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+      btnLabel.textContent = '...';
+      btnIcon.classList.add('hidden');
+      btnSpinner.classList.remove('hidden');
 
-    try {
-      const res = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: emailInput.value,
-          locale: form.dataset.locale || 'de',
-          website: honeypotInput?.value || '',
-          _ts: timestampInput?.value ? Number(timestampInput.value) : undefined,
-        }),
-      })
+      try {
+        var res = await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: emailInput.value,
+            locale: form.dataset.locale || 'de',
+            website: honeypotInput ? honeypotInput.value : '',
+            _ts: timestampInput && timestampInput.value ? Number(timestampInput.value) : undefined,
+          }),
+        });
 
-      const data = await res.json()
+        var data = await res.json();
 
-      if (data.success) {
-        form.style.display = 'none'
-        successEl.classList.remove('hidden')
-        disclaimerEl.classList.add('hidden')
-      } else {
-        throw new Error(data.error || 'Subscription failed.')
+        if (data.success) {
+          form.style.display = 'none';
+          successEl.classList.remove('hidden');
+          disclaimerEl.classList.add('hidden');
+        } else {
+          throw new Error(data.error || 'Subscription failed.');
+        }
+      } catch (err) {
+        // Restore button
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btnLabel.textContent = originalLabel;
+        btnIcon.classList.remove('hidden');
+        btnSpinner.classList.add('hidden');
+
+        errorEl.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+        errorEl.classList.remove('hidden');
       }
-    } catch (err) {
-      // Restore button
-      btn.disabled = false
-      btn.style.opacity = '1'
-      btnLabel.textContent = originalLabel
-      btnIcon.classList.remove('hidden')
-      btnSpinner.classList.add('hidden')
-
-      errorEl.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
-      errorEl.classList.remove('hidden')
-    }
-  })
+    });
+  }
 </script>
 
 <!-- Schema.org: TouristDestination (localized) -->
