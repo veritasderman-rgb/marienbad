@@ -1,5 +1,5 @@
 ---
-import type { Locale } from '@/i18n/config'
+import { routes, type Locale } from '@/i18n/config'
 import HeroSection from '@/components/HeroSection.astro'
 import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
@@ -261,7 +261,7 @@ const gradients = [
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {latestArticles.map((article) => (
-        <a href={localizedHref(locale, `magazine/${article.slug}`)} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
+        <a href={`/${locale}/${routes['magazine'][locale]}/${article.slug}`} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
           <div class="h-44 relative overflow-hidden" class:list={[article.coverImage ? '' : 'placeholder-image-light flex items-center justify-center']}>
             {article.coverImage ? (
               <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
