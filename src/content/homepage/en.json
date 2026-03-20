@@ -124,10 +124,10 @@
     ]
   },
   "seasonal": {
-    "badge": "This Season",
-    "season": "Spring 2026",
-    "title": "The Springs Awaken — A Springtime Cure in Marienbad",
-    "description": "In spring, Marienbad comes alive: the Skalníkovy Gardens burst into colour, the Singing Fountain resumes its performances, and the gentle mountain air at 630 metres becomes nature's own remedy for the respiratory system.",
+    "badge": "Featured",
+    "season": "Highlights",
+    "title": "The Springs Await — Your Cure in Marienbad",
+    "description": "Every season, Marienbad offers something special: the Skalníkovy Gardens delight with ever-changing colours, the Singing Fountain performs its legendary water shows, and the gentle mountain air at 630 metres becomes nature's own remedy for the respiratory system.",
     "ctaText": "Learn more",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

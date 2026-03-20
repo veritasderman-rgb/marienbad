@@ -124,10 +124,10 @@
     ]
   },
   "seasonal": {
-    "badge": "Diese Saison",
-    "season": "Frühling 2026",
-    "title": "Die Quellen erwachen — Frühlingskur in Marienbad",
-    "description": "Im Frühling blüht Marienbad auf: Die Skalníkovy-Gärten erstrahlen in Farben, die Singende Fontäne nimmt ihren Betrieb wieder auf, und die milde Frühlingsluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
+    "badge": "Aktuell",
+    "season": "Highlights",
+    "title": "Die Quellen erwarten Sie — Ihre Kur in Marienbad",
+    "description": "Zu jeder Jahreszeit hat Marienbad etwas Besonderes zu bieten: Die Skalníkovy-Gärten begeistern mit wechselnden Farben, die Singende Fontäne verzaubert mit ihren legendären Wasserspielen, und die milde Bergluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
     "ctaText": "Mehr erfahren",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

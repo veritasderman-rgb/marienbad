@@ -96,38 +96,38 @@
     "title": "Истории, которые рассказывает вода",
     "description": "Настоящие истории настоящих людей — курортные гости, местные жители и врачи рассказывают, почему Мариенбад — особенное место.",
     "allStoriesLabel": "Все истории →",
-    "stories": [
+    “stories”: [
       {
-        "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
-        "name": "Наталья",
-        "location": "Москва 🇷🇺",
-        "visitLabel": "8-й визит",
-        "lang": "ru",
-        "portrait": "/images/content/stories/people/stories/0/portrait.png"
+        “quote”: “„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.””,
+        “name”: “Ingrid”,
+        “location”: “Hamburg 🇩🇪”,
+        “visitLabel”: “12-й раз”,
+        “lang”: “de”,
+        “portrait”: “/images/content/stories/people/stories/0/portrait.png”
       },
       {
-        "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
-        "name": "Ingrid",
-        "location": "Hamburg 🇩🇪",
-        "visitLabel": "12-й раз",
-        "lang": "de",
-        "portrait": "/images/content/stories/people/stories/1/portrait.png"
+        “quote”: “\”I came for the treatment, but I stayed for the peace.\””,
+        “name”: “James”,
+        “location”: “London 🇬🇧”,
+        “visitLabel”: “3-й визит”,
+        “lang”: “en”,
+        “portrait”: “/images/content/stories/people/stories/1/portrait.png”
       },
       {
-        "quote": "\"I came for the treatment, but I stayed for the peace.\"",
-        "name": "James",
-        "location": "London 🇬🇧",
-        "visitLabel": "3-й визит",
-        "lang": "en",
-        "portrait": "/images/content/stories/people/stories/2/portrait.png"
+        “quote”: “«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»”,
+        “name”: “Наталья”,
+        “location”: “Москва 🇷🇺”,
+        “visitLabel”: “8-й визит”,
+        “lang”: “ru”,
+        “portrait”: “/images/content/stories/people/stories/2/portrait.png”
       }
     ]
   },
   "seasonal": {
-    "badge": "Этот сезон",
-    "season": "Весна 2026",
-    "title": "Источники пробуждаются — весенний курс в Мариенбаде",
-    "description": "Весной Мариенбад расцветает: сады Скальника наполняются красками, Поющий фонтан возобновляет свою работу, а мягкий весенний воздух на высоте 630 метров становится природным целебным средством для дыхательных путей.",
+    "badge": "Рекомендуем",
+    "season": "Лучшее",
+    "title": "Источники ждут вас — ваш курс в Мариенбаде",
+    "description": "В любое время года Мариенбад удивляет: сады Скальника радуют сменой красок, Поющий фонтан завораживает легендарными водными представлениями, а мягкий горный воздух на высоте 630 метров становится природным целебным средством для дыхательных путей.",
     "ctaText": "Узнать больше",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

@@ -124,10 +124,10 @@
     ]
   },
   "seasonal": {
-    "badge": "Právě teď",
-    "season": "Jaro 2026",
-    "title": "Prameny se probouzejí — jarní kúra v Mariánských Lázních",
-    "description": "Na jaře Mariánské Lázně rozkvétají: Skalníkovy sady hrají barvami, Zpívající fontána zahajuje novou sezónu a jemný jarní vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
+    "badge": "Doporučujeme",
+    "season": "To nejlepší",
+    "title": "Prameny na vás čekají — vaše kúra v Mariánských Lázních",
+    "description": "Mariánské Lázně okouzlí v každém ročním období: Skalníkovy sady překvapují proměnlivými barvami, Zpívající fontána láká na legendární vodní představení a jemný horský vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
     "ctaText": "Zjistit více",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },

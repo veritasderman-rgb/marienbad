@@ -5,7 +5,7 @@ import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
 import { t } from '@/i18n/ui'
 import { localizedHref } from '@/i18n/utils'
-import { getHomepage } from '@/content/reader'
+import { getHomepage, getArticles } from '@/content/reader'
 
 interface Props {
   locale: Locale
@@ -13,6 +13,10 @@ interface Props {
 
 const { locale } = Astro.props
 const cms = await getHomepage(locale)
+
+// Dynamically fetch the 3 most recent articles (sorted by date descending in reader)
+const allArticles = await getArticles(locale)
+const latestArticles = allArticles.slice(0, 3)
 
 const gradients = [
   'linear-gradient(135deg, #3D1F3D 0%, #266782 100%)',

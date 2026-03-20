@@ -59,6 +59,7 @@ const quizTranslations = {
 <Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
     <HotelRecommendationBox
       locale={locale}
        locale={locale}
