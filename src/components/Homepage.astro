@@ -18,6 +18,8 @@ const cms = await getHomepage(locale)
 const allArticles = await getArticles(locale)
 const latestArticles = allArticles.slice(0, 3)
 
+const ensanaHotelPath: Record<Locale, string> = { de: 'hotels', en: 'hotels', cs: 'hotely', ru: 'oteli' }
+
 const gradients = [
   'linear-gradient(135deg, #3D1F3D 0%, #266782 100%)',
   'linear-gradient(135deg, #3D1F3D 0%, #004F71 100%)',
@@ -438,12 +440,12 @@ const gradients = [
       {
         "@type": "LodgingBusiness",
         "name": "Ensana Nové Lázně",
-        "url": `https://ensanahotels.com/${locale}/hotels/nove-lazne`
+        "url": `https://ensanahotels.com/${locale}/${ensanaHotelPath[locale]}/nove-lazne`
       },
       {
         "@type": "LodgingBusiness",
         "name": "Ensana Centrální Lázně",
-        "url": `https://ensanahotels.com/${locale}/hotels/centralni-lazne`
+        "url": `https://ensanahotels.com/${locale}/${ensanaHotelPath[locale]}/centralni-lazne`
       }
     ]
   }
@@ -482,7 +484,7 @@ const gradients = [
       "@type": "LodgingBusiness",
       "name": hotels[0].name,
       "description": hotels[0].description,
-      "url": `https://ensanahotels.com/${locale}/hotels/nove-lazne`,
+      "url": `https://ensanahotels.com/${locale}/${ensanaHotelPath[locale]}/nove-lazne`,
       "starRating": { "@type": "Rating", "ratingValue": "5" },
       "address": {
         "@type": "PostalAddress",
@@ -507,7 +509,7 @@ const gradients = [
       "@type": "LodgingBusiness",
       "name": hotels[1].name,
       "description": hotels[1].description,
-      "url": `https://ensanahotels.com/${locale}/hotels/centralni-lazne`,
+      "url": `https://ensanahotels.com/${locale}/${ensanaHotelPath[locale]}/centralni-lazne`,
       "starRating": { "@type": "Rating", "ratingValue": "4" },
       "address": {
         "@type": "PostalAddress",

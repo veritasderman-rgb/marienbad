@@ -49,8 +49,8 @@ export const hotels: Hotel[] = [
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/nove-lazne',
       en: 'https://ensanahotels.com/en/hotels/nove-lazne',
-      cs: 'https://ensanahotels.com/cs/hotels/nove-lazne',
-      ru: 'https://ensanahotels.com/ru/hotels/nove-lazne',
+      cs: 'https://ensanahotels.com/cs/hotely/nove-lazne',
+      ru: 'https://ensanahotels.com/ru/oteli/nove-lazne',
     },
     address: 'Reitenbergerova 53, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -130,8 +130,8 @@ The 97 spacious rooms and suites blend historic charm with contemporary comfort.
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/centralni-lazne',
       en: 'https://ensanahotels.com/en/hotels/centralni-lazne',
-      cs: 'https://ensanahotels.com/cs/hotels/centralni-lazne',
-      ru: 'https://ensanahotels.com/ru/hotels/centralni-lazne',
+      cs: 'https://ensanahotels.com/cs/hotely/centralni-lazne',
+      ru: 'https://ensanahotels.com/ru/oteli/centralni-lazne',
     },
     address: 'Goethovo náměstí 1, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -211,8 +211,8 @@ The 130 comfortable rooms have been carefully renovated in recent years, blendin
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/hvezda',
       en: 'https://ensanahotels.com/en/hotels/hvezda',
-      cs: 'https://ensanahotels.com/cs/hotels/hvezda',
-      ru: 'https://ensanahotels.com/ru/hotels/hvezda',
+      cs: 'https://ensanahotels.com/cs/hotely/hvezda',
+      ru: 'https://ensanahotels.com/ru/oteli/hvezda',
     },
     address: 'Goethovo náměstí 7, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -292,8 +292,8 @@ The 120 rooms of the Hvězda are tastefully furnished, blending Art Nouveau char
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/butterfly',
       en: 'https://ensanahotels.com/en/hotels/butterfly',
-      cs: 'https://ensanahotels.com/cs/hotels/butterfly',
-      ru: 'https://ensanahotels.com/ru/hotels/butterfly',
+      cs: 'https://ensanahotels.com/cs/hotely/butterfly',
+      ru: 'https://ensanahotels.com/ru/oteli/butterfly',
     },
     address: 'Hlavní třída 655, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -373,8 +373,8 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/splendid',
       en: 'https://ensanahotels.com/en/hotels/splendid',
-      cs: 'https://ensanahotels.com/cs/hotels/splendid',
-      ru: 'https://ensanahotels.com/ru/hotels/splendid',
+      cs: 'https://ensanahotels.com/cs/hotely/splendid',
+      ru: 'https://ensanahotels.com/ru/oteli/splendid',
     },
     address: 'Hlavní třída 630, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -478,8 +478,8 @@ The 71 rooms are comfortable and practically furnished, providing everything nee
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/pacifik',
       en: 'https://ensanahotels.com/en/hotels/pacifik',
-      cs: 'https://ensanahotels.com/cs/hotels/pacifik',
-      ru: 'https://ensanahotels.com/ru/hotels/pacifik',
+      cs: 'https://ensanahotels.com/cs/hotely/pacifik',
+      ru: 'https://ensanahotels.com/ru/oteli/pacifik',
     },
     address: 'Mírové náměstí 84, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -597,8 +597,8 @@ The 71 rooms are comfortable and practically furnished, providing everything nee
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/vltava-berounka',
       en: 'https://ensanahotels.com/en/hotels/vltava-berounka',
-      cs: 'https://ensanahotels.com/cs/hotels/vltava-berounka',
-      ru: 'https://ensanahotels.com/ru/hotels/vltava-berounka',
+      cs: 'https://ensanahotels.com/cs/hotely/vltava-berounka',
+      ru: 'https://ensanahotels.com/ru/oteli/vltava-berounka',
     },
     address: 'Hlavní třída 438, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
@@ -716,8 +716,8 @@ The 71 rooms are comfortable and practically furnished, providing everything nee
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/svoboda',
       en: 'https://ensanahotels.com/en/hotels/svoboda',
-      cs: 'https://ensanahotels.com/cs/hotels/svoboda',
-      ru: 'https://ensanahotels.com/ru/hotels/svoboda',
+      cs: 'https://ensanahotels.com/cs/hotely/svoboda',
+      ru: 'https://ensanahotels.com/ru/oteli/svoboda',
     },
     address: 'Chebská 543, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
