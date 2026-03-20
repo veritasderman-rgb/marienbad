@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Entdecken Sie Marienbad",
-    "subtitle": "UNESCO Welterbe · Seit 1812 · Vier Heilquellen — Das einzige Kurbad der Welt, das alle vier natürlichen Heilressourcen vereint.",
+    "subtitle": "UNESCO Welterbe · Seit 1818 · Vier Heilquellen — Das einzige Kurbad der Welt, das alle vier natürlichen Heilressourcen vereint.",
     "ctaText": "Stadt entdecken",
     "ctaHref": "#discover",
     "badges": [
       "UNESCO Welterbe",
-      "Seit 1812"
+      "Seit 1818"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Welterbe 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Kurtradition"
     },
     {
@@ -60,7 +60,7 @@
     "sectionLabel": "Unterkünfte",
     "title": "Wo übernachten in Marienbad",
     "description": "Von historischen 5-Sterne-Spa-Hotels bis zu charmanten Pensionen.",
-    "allHotelsLabel": "Alle 7 Hotels entdecken →",
+    "allHotelsLabel": "Alle Hotels entdecken →",
     "items": [
       {
         "name": "Nové Lázně",

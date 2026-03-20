@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Objevte Mariánské Lázně",
-    "subtitle": "UNESCO světové dědictví · Od roku 1812 · Čtyři léčivé zdroje — Jediné lázně na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
+    "subtitle": "UNESCO světové dědictví · Od roku 1818 · Čtyři léčivé zdroje — Jediné lázně na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
     "ctaText": "Poznejte město",
     "ctaHref": "#discover",
     "badges": [
       "UNESCO dědictví",
-      "Od roku 1812"
+      "Od roku 1818"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Světové dědictví 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Lázeňská tradice"
     },
     {
@@ -60,7 +60,7 @@
     "sectionLabel": "Ubytování",
     "title": "Kde se ubytovat v Mariánských Lázních",
     "description": "Od historických 5hvězdičkových lázeňských hotelů po útulné penziony.",
-    "allHotelsLabel": "Všech 7 hotelů →",
+    "allHotelsLabel": "Všechny hotely →",
     "items": [
       {
         "name": "Nové Lázně",

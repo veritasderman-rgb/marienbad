@@ -196,7 +196,7 @@ const ui = {
     'meta.tagline': 'Váš průvodce po Mariánských Lázních',
     'meta.description': 'Objevte Mariánské Lázně – minerální prameny, lázně, kulturu, historii a Lidi z Kolonády.',
     'nav.home': 'Domů',
-    'nav.mineralSprings': 'Minerální prameny & Lázně',
+    'nav.mineralSprings': 'Léčivé prameny & Lázně',
     'nav.thingsToDo': 'Co dělat',
     'nav.accommodation': 'Ubytování',
     'nav.history': 'Historie & Kultura',

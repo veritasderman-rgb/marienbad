@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Discover Marienbad",
-    "subtitle": "UNESCO World Heritage · Est. 1812 · Four Healing Elements — The only spa destination in the world combining all four natural healing resources.",
+    "subtitle": "UNESCO World Heritage · Est. 1818 · Four Healing Elements — The only spa destination in the world combining all four natural healing resources.",
     "ctaText": "Explore the town",
     "ctaHref": "#discover",
     "badges": [
       "UNESCO Heritage",
-      "Est. 1812"
+      "Est. 1818"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
@@ -20,7 +20,7 @@
       "label": "Heritage Site 2021"
     },
     {
-      "value": "1812",
+      "value": "1818",
       "label": "Spa Tradition"
     },
     {
@@ -60,7 +60,7 @@
     "sectionLabel": "Accommodation",
     "title": "Where to Stay in Marienbad",
     "description": "From historic 5-star spa hotels to charming boutique guesthouses.",
-    "allHotelsLabel": "Discover all 7 hotels →",
+    "allHotelsLabel": "Discover all hotels →",
     "items": [
       {
         "name": "Nové Lázně",
