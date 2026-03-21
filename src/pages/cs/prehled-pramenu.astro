@@ -1,10 +1,12 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
+const page = await getPage('cs-prehled-pramenu')
 const breadcrumbs = [
   { label: t(locale, 'nav.home'), href: `/${locale}` },
   { label: 'Mineralni prameny', href: `/${locale}/mineralni-prameny` },
@@ -12,106 +14,8 @@ const breadcrumbs = [
 ]
 ---
 
-<Base locale={locale} section="mineral-springs" title="Prehled pramenu — 40+ mineralnich pramenu Marianskych Lazni — Marienbad.com" description="Podrobny pruvodce vsemi mineralnimi prameny v Marianskych Laznich: Krizovy pramen, Ferdinanduv pramen, Lesni pramen, Rudolfuv pramen a dalsi. Mineralni slozeni, teplota a doporucene pouziti." alternateUrls={{ de: '/de/quellen-uebersicht', en: '/en/springs-overview', cs: '/cs/prehled-pramenu', ru: '/ru/obzor-istochnikov' }}>
-  <PillarPage locale={locale} title="Prehled pramenu: Mineralni prameny Marianskych Lazni" description="Marianske Lazne se pyysni vice nez 40 mineralnimi prameny — kazdy s jedinecnym slozenim a terapeutickym ucinkem. Komplexni pruvodce nejdulezitejsimi lecivymi prameny." breadcrumbs={breadcrumbs}>
-    <h2>Jedinecna pramenna oblast</h2>
-    <p>Marianske Lazne (Marienbad) lezi v jedne z <strong>nejbohatssich pramennch oblasti Evropy</strong>. Vice nez 40 mineralnich pramenu vyvera na pomerne malem uzemi — kazdy s vlastnim chemickym slozenim, teplotou a terapeutickym ucinkem. Co tuto pramennou oblast cini vyjimecnou: zatimco vetssina lazenskych mest disponuje jednim typem pramene, Marianske Lazne nabizeji udivujici rozmanitost mineralnich vod pokryvajicich siroke spektrum onemocneni.</p>
-
-    <p>Prameny pochazeeji z <strong>vulkanickeho podlozi Slavkovskeho lesa</strong>. Destova voda prosak do velkych hloubek, obohacuje se o mineraly a stouppa zpet na povrch tektonickymi zlomy. Tento proces trva tisice let — voda, ktera dnes vyvera z pramenu, zacala svou podzemni cestu priblizne pred 14 000 lety.</p>
-
-    <p>Vsechny prameny maji spolecny vysoky obsah <strong>prirodniho oxidu uhliciteho (CO₂)</strong>, ktery dava mineralnim vodam jejich charakteristickou sumenivou chut. Prameny se vsak vyrazne lisi v obsahu mineralu — nekteere jsou bohate na zelezo, jine na sodik, dalsi obsahuji obzvlast vysoke hladiny vapniku nebo horciku.</p>
-
-    <TreatmentHighlightBox
-      title="Pitna kura"
-      description="Pitna kura je zakladnim kamenem marianskych lecebnych metod. Pacienti piji predepsane mnozstvi mineralni vody primo u pramene — zpravidla rano nalacno. Lazensti lekari doporucuji konkretni prameny na zaklade diagnozy kazdeho pacienta. Typicka pitna kura trva 14–21 dni."
-      icon="water"
-    />
-
-    <h2>Kolonadni prameny — Srdce lazenske ctvrti</h2>
-    <p>Prameny u Hlavni kolonady a Krizove kolonady tvori historicke centrum lazenskeho zivota. Zde se lazenssti hoste prochazeeji se svymi pitnimi poharkky a uzivaji si jedinecne atmosfery neoklasicistni architektury.</p>
-
-    <h3>Krizovy pramen</h3>
-    <p><strong>Krizovy pramen</strong> je nejslavnejsi a nejnavstevovaneejsi pramen Marianskych Lazni. Nachazi se v nadherne <strong>Krizove kolonade</strong>, novobarokni stavbe z roku 1912. Voda se vyznacuje vyjimecne vysokym obsahem CO₂ a vyvazenym mineralnim profilem.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 7–10 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 5 500 mg/l (sodnosulfatove-hydrogenkarbonatovy typ)</li>
-      <li><strong>Obsah CO₂:</strong> cca 2 800 mg/l — jedna z nejvyssich hodnot ze vsech pramenu</li>
-      <li><strong>Indikace:</strong> Onemocneni traviciho traktu, jaterni a zlucnikove potize, poruchy metabolismu, diabetes</li>
-      <li><strong>Chut:</strong> Mirne slano-mineralni s vyraznym sumenim</li>
-    </ul>
-
-    <h3>Karolinin pramen</h3>
-    <p><strong>Karolinin pramen</strong> se rovnez nachazi u Hlavni kolonady a od 19. stoleti je specialne doporucovan pri <strong>gynekologickych onemocnenich</strong>. Jeho voda obsahuje jedinecenou kombinaci mineralu, o niz se predpoklada pozitivni vliv na hormonalni rovnovahu a zanetliva onemocneni urogenitalniho traktu.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 8–10 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 4 200 mg/l (bohaty na vapnik a horcik)</li>
-      <li><strong>Indikace:</strong> Gynekologicka onemocneni, neplodnost, infekce mocovych cest, ledvinove potize</li>
-    </ul>
-
-    <h3>Ambrozuv pramen</h3>
-    <p><strong>Ambrozuv pramen</strong> je jednim z nejstarsich zdokumentovanych pramenu Marianskych Lazni, poprve zmineny v 16. stoleti. Jeho voda se pouziva predevsim pri <strong>travicich potizich</strong> a je znama svou mirnou, prijemnou chuti — coz ji cini oblast obzvlaste oblibeenou mezi lazensskymi hosty.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 9–11 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 3 800 mg/l (hydrogenkarbonatove-sodny typ)</li>
-      <li><strong>Indikace:</strong> Chronicka gastritida, zaludecni vredy, syndrom drazdiiveho tracniku, paleni zahy</li>
-    </ul>
-
-    <h2>Lesni prameny — Leciva voda v prirode</h2>
-    <p>V rozsahlych parcich a lesich obklopujicich centrum mesta se nachazeji nektere z nejslavnejssich pramenu Marianskych Lazni. Prochazka k temto pramenum je sama o sobe soucastii terapie — kombinace pohybu, cerstveho vzduchu a pitne kury zesiluje lecivvy ucinek.</p>
-
-    <h3>Lesni pramen</h3>
-    <p><strong>Lesni pramen</strong> se nachazi v budove Centralnich Lazni, kde je volne pristupny hostum hotelu i verejnosti. Je to druhy nejnavstevovanejsi pramen po Krizovem prameni.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 7–9 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 4 800 mg/l (zelezity, sulfatovy typ)</li>
-      <li><strong>Indikace:</strong> Onemocneni hornich dychacich cest, chronicka bronchitida, astma, alergicka onemocneni</li>
-      <li><strong>Poznamka:</strong> Pouziva se take pro inhalacni terapii</li>
-    </ul>
-
-    <h3>Mariin pramen</h3>
-    <p><strong>Mariin pramen</strong> — pramen, ktery dal mestu jmeno — se nachazi v tiche lesni myttine mirne stranou od centra. Jeho voda je obzvlaste bohata na rozpustene plyny a mineraly a tradicionalne se doporucuje pri onemocnenich dychacich cest.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 8–10 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 5 100 mg/l (sodne-hydrogenkarbonatovy, bohaty na plyny)</li>
-      <li><strong>Indikace:</strong> Onemocneni dychacich cest, chronicka bronchitida, astma, podpora imunitniho systemu</li>
-      <li><strong>Poznamka:</strong> Historicky prvni objeveny pramen v Marianskych Laznich</li>
-    </ul>
-
-    <h2>Parkove prameny — Mezi architekturou a prirodou</h2>
-    <p>Podeel promenad a v parkovych oblastech Marianskych Lazni se nachazeeji dalsi dulezzite prameny, umistene v okrasnych pavilonech a fontanach.</p>
-
-    <h3>Ferdinanduv pramen</h3>
-    <p><strong>Ferdinanduv pramen</strong> je jednim z nejbohatssich pramenu na zelezo v Marianskych Laznich, pojmenovany po cisari Ferdinandovi I. Jeho rezave zbarvena voda prozrazuje vysoky obsah zeleza, ktery jej cini obzvlaste cennym pro pacienty s chudokrevnosti.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 9–11 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 4 600 mg/l (vysoce zelezity, hydrogenkarbonatovy typ)</li>
-      <li><strong>Obsah zeleza:</strong> cca 20 mg/l — jedna z nejvyssich prirozeenych hladin zeleza v Evrope</li>
-      <li><strong>Indikace:</strong> Sideropenicka anemie, unavove stavy, rekonvalescence po operacich</li>
-    </ul>
-
-    <h3>Rudolfuv pramen</h3>
-    <p><strong>Rudolfuv pramen</strong> se od 19. stoleti cilene pouziva pri <strong>onemocnenich ledvin a mocovych cest</strong>. Jeho voda ma mirny diureticky ucinek a podporuje proplachovanini mocovych cest.</p>
-    <ul>
-      <li><strong>Teplota:</strong> 7–9 °C</li>
-      <li><strong>Mineralni obsah:</strong> cca 3 600 mg/l (bohaty na vapnik, mirne diureticky)</li>
-      <li><strong>Indikace:</strong> Ledvinove kameny, infekce mocovych cest, chronicke zanety ledvin, onemocneni prostaty</li>
-    </ul>
-
-    <h2>Prakticke tipy pro pitnou kuru</h2>
-    <p>Kdo chce mineralni prameny Marianskych Lazni vyuzivat terapeuticky, mel by dodrzovat nekolik dulezitych zasad:</p>
-
-    <ul>
-      <li><strong>Lekarska konzultace:</strong> Pred zahajenim pitne kury se poradte s lazenským lekarem. Ten urci, ktere prameny jsou vhodne pro vase obtize a spravne davkovani.</li>
-      <li><strong>Pitni poharek:</strong> Pouzivejte tradicni <em>lazennsky poharek</em> — plochy zobacek zajistuje, ze se mineralni voda pije pomalu a po malych dousscich.</li>
-      <li><strong>Mnozstvi:</strong> Zpravidla 100–200 ml na pramen, 2–3x denne. Pijte pomalu za chuzee.</li>
-      <li><strong>Casovani:</strong> Nejlepe rano nalacno, alespon 30 minut pred snidani.</li>
-      <li><strong>Teplota:</strong> Prameny jsou studene (7–11 °C). Je to zamerne — chlad stimuluje zaludecni cinnost.</li>
-      <li><strong>Delka:</strong> Uplna pitna kura trva nejmene 14 dni. Prvni ucinky se casto projevi po 5–7 dnech.</li>
-    </ul>
-
-    <h2>Oteviraci doba a pristup</h2>
-    <p>Vetsina pramenu je <strong>volne pristupna po cely rok</strong>. Kolonadni prameny jsou obvykle otevreny od 6:00 do 18:00 (v lete do 19:00). Nekteré prameny v lesich jsou aktivne pristupne pouze behem letni sezony (kveten–rijen).</p>
-
-    <p>Prochazka podeel vsech hlavnich pramenu trva priblizne <strong>2–3 hodiny</strong> a vede nejkrasnejsimi castmi lazenske ctvrti a parkovych oblasti — nezapomenutelny zazitek spojujici zdravi a potesenni.</p>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/quellen-uebersicht', en: '/en/springs-overview', cs: '/cs/prehled-pramenu', ru: '/ru/obzor-istochnikov' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

@@ -1,11 +1,12 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
-import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
+const page = await getPage('cs-peloidni-terapie')
 const breadcrumbs = [
   { label: t(locale, 'nav.home'), href: `/${locale}` },
   { label: 'Minerální prameny', href: `/${locale}/mineralni-prameny` },
@@ -13,76 +14,8 @@ const breadcrumbs = [
 ]
 ---
 
-<Base locale={locale} section="mineral-springs" title="Peloidní terapie — Léčivá rašelina a bahenní koupele — Marienbad.com" description="Peloidní terapie v Mariánských Lázních: jak místní rašelina a bahenní zábaly pomáhají při onemocněních kloubů, svalů a kůže." alternateUrls={{ de: '/de/peloidtherapie', en: '/en/peloid-therapy', cs: '/cs/peloidni-terapie', ru: '/ru/peloidnaya-terapiya' }}>
-  <PillarPage locale={locale} title="Peloidní terapie: Léčivá rašelina z Mariánských Lázní" description="Peloidní terapie využívá přírodní rašelinu z rašelinišť v okolí Mariánských Lázní k léčbě onemocnění kloubů, svalů a kůže." breadcrumbs={breadcrumbs}>
-    <h2>Co jsou peloidy?</h2>
-    <p>Pojem <strong>peloid</strong> pochází z řeckého <em>pelos</em> (bahno) a označuje přírodní substance jako rašelinu, slatinu, bahno a fango používané k terapeutickým účelům v balneoterapii. V Mariánských Lázních se <strong>místní ložiska rašeliny</strong> z rozsáhlých rašelinišť Slavkovského lesa používají již více než dvě století — přírodní léčivý zdroj, který spolu s minerálními prameny a přírodním CO₂ plynem tvoří jeden ze základních pilířů mariánskolázeňské lázeňské medicíny.</p>
-
-    <p>Mariánskolázeňská léčivá rašelina vyniká mimořádně vysokým obsahem <strong>huminových kyselin, minerálů a organických sloučenin</strong>. Je pečlivě těžena, zpracována a zahřáta na terapeutickou teplotu 38–42 °C před aplikací v různých léčebných formách.</p>
-
-    <TreatmentHighlightBox
-      title="Rašelinový zábal"
-      description="Teplá léčivá rašelina je aplikována jako zábal na postižené části těla. Teplo proniká hluboko do tkáně, podporuje prokrvení a uvolňuje svalové napětí. Huminové kyseliny poskytují protizánětlivý účinek. Délka procedury: 20–30 minut."
-      icon="earth"
-    />
-
-    <h2>Jak peloidní terapie funguje?</h2>
-    <p>Terapeutický účinek peloidní terapie je založen na součinnosti několika faktorů:</p>
-
-    <ul>
-      <li><strong>Tepelný účinek:</strong> Rašelina má mimořádně vysokou tepelnou kapacitu a uvolňuje naakumulované teplo pomalu a rovnoměrně do těla. Výsledkem je hluboké prohřátí tkání, které dalece přesahuje účinek běžné teplé vodní koupele.</li>
-      <li><strong>Chemický účinek:</strong> Huminové a fulvové kyseliny obsažené v rašelině jsou uznávány pro své protizánětlivé, antioxidační a antibakteriální vlastnosti. Mohou být vstřebávány pokožkou a vykazovat systémové účinky.</li>
-      <li><strong>Mechanický účinek:</strong> Jemný tlak rašelinového zábalu podporuje žilní a lymfatický návrat a napomáhá dekongesci tkání.</li>
-      <li><strong>Hormonální účinek:</strong> Hluboké prohřátí stimuluje uvolňování endorfinů a kortizolu, což přispívá k úlevě od bolesti a snížení zánětů.</li>
-    </ul>
-
-    <h2>Formy peloidní terapie v Mariánských Lázních</h2>
-
-    <h3>1. Rašelinové zábaly</h3>
-    <p>Klasická procedura: teplá léčivá rašelina (38–42 °C) je aplikována na větší plochy těla nebo cíleně na konkrétní klouby a části těla. Pacient je poté zabalen do fólií a dek k udržení tepla. Po 20–30 minutách je rašelina smyta. Mnozí pacienti pociťují hlubokou relaxaci a úlevu od bolesti již po první aplikaci.</p>
-
-    <h3>2. Rašelinové koupele</h3>
-    <p>Celotělová koupel v rašelinovo-vodní suspenzi, která umožňuje celému tělu těžit z terapeutického účinku. Teplota koupele je 37–39 °C. Rašelinové koupele jsou obzvláště vhodné při celkových obtížích pohybového aparátu a kožních onemocněních.</p>
-
-    <h3>3. Rašelinové obklady</h3>
-    <p>Lokální aplikace teplé rašeliny na konkrétní klouby nebo bolestivá místa. Tato cílená metoda je obzvláště vhodná při akutních lokálních obtížích, jako je artróza jednotlivých kloubů nebo dráždění šlachových úponů.</p>
-
-    <h2>Indikace</h2>
-    <p>Peloidní terapie se úspěšně používá při:</p>
-    <ul>
-      <li>Degenerativních onemocněních kloubů (artróza kolene, kyčle, ramene a zápěstí)</li>
-      <li>Chronických bolestech zad a obtížích s ploténkami</li>
-      <li>Revmatických onemocněních (mimo akutní ataky)</li>
-      <li>Svalovém napětí a myalgiích</li>
-      <li>Kožních onemocněních (psoriáza, atopická dermatitida, chronický ekzém)</li>
-      <li>Gynekologických obtížích (chronické pánevní záněty, neplodnost)</li>
-      <li>Poúrazových a pooperačních stavech</li>
-    </ul>
-
-    <h2>Co říká věda?</h2>
-    <p>Četné klinické studie potvrzují účinnost peloidní terapie. Výsledky výzkumů ukazují:</p>
-    <ul>
-      <li>Významné snížení bolesti kloubů u pacientů s artrózou po 14denním léčebném cyklu</li>
-      <li>Měřitelné zlepšení pohyblivosti a funkčnosti kloubů</li>
-      <li>Snížení zánětlivých markerů (CRP, IL-6) v krvi</li>
-      <li>Dlouhodobé účinky, které mohou přetrvávat až 6 měsíců po léčbě</li>
-    </ul>
-
-    <HotelRecommendationBox
-      locale={locale}
-       locale={locale}
-      locale={locale}
-      name="Ensana Centrální Lázně"
-      stars={4}
-      badge="Expert na peloidy"
-      description="Centrální Lázně nabízí komplexní program peloidní terapie s využitím přírodní mariánskolázeňské léčivé rašeliny — včetně rašelinových zábalů, rašelinových koupelí a cílených rašelinových obkladů pod odborným lékařským dohledem."
-      bookingUrl="https://ensanahotels.com/cs/hotely/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=peloid-therapy"
-      bookingLabel="Rezervovat peloidní terapii"
-    />
-
-    <h2>Praktické informace</h2>
-    <p>Peloidní procedury jsou k dispozici ve většině lázeňských hotelů v Mariánských Lázních. Jedna procedura trvá 20–30 minut plus doba odpočinku. Procedury se obvykle provádějí obden, aby tělo mělo dostatek času na regeneraci. Pro optimální výsledky lékaři doporučují sérii alespoň 8–10 aplikací v průběhu 2–3 týdnů.</p>
-
-    <p>Před zahájením léčby je provedeno lékařské vyšetření. Kontraindikace zahrnují akutní záněty, horečku, závažná kardiovaskulární onemocnění, otevřené rány a některá kožní onemocnění. Těhotným ženám se rašelinové procedury nedoporučují.</p>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/peloidtherapie', en: '/en/peloid-therapy', cs: '/cs/peloidni-terapie', ru: '/ru/peloidnaya-terapiya' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

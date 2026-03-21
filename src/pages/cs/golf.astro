@@ -1,9 +1,12 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
+const page = await getPage('cs-golf')
 const breadcrumbs = [
   { label: t(locale, 'nav.home'), href: `/${locale}` },
   { label: t(locale, 'nav.thingsToDo'), href: `/${locale}/co-delat` },
@@ -11,57 +14,8 @@ const breadcrumbs = [
 ]
 ---
 
-<Base locale={locale} section="things-to-do" title="Royal Golf Club Mariánské Lázně — Marienbad.com" description="Nejstarší golfový klub v České republice, založený v roce 1905 králem Edwardem VII. 18jamkové mistrovské hřiště ve Slavkovském lese." alternateUrls={{ de: '/de/golf', en: '/en/golf', cs: '/cs/golf', ru: '/ru/golf' }}>
-  <PillarPage locale={locale} title="Royal Golf Club Mariánské Lázně" description="Založen v roce 1905 králem Edwardem VII. — nejstarší golfový klub v České republice s 18jamkovým mistrovským hřištěm v nadmořské výšce 787 metrů." breadcrumbs={breadcrumbs}>
-    <h2>Královské dědictví</h2>
-    <p><strong>Royal Golf Club Mariánské Lázně</strong> byl založen v roce 1905 z iniciativy <strong>anglického krále Edwarda VII.</strong>, který Mariánské Lázně pravidelně navštěvoval a byl vášnivým golfistou. Klub je <strong>nejstarším golfovým klubem v České republice</strong> a jedním z nejstarších ve střední Evropě.</p>
-
-    <p>Edwardův vliv na Mariánské Lázně dalece přesahoval golf — proměnil město v letní setkávání evropské diplomacie. Golfový klub však zůstává jeho nejviditelnějším odkazem: místem, kde se sportovní excelence setkává s přírodní krásou.</p>
-
-    <h2>Hřiště</h2>
-    <p>18jamkové mistrovské hřiště leží na <strong>náhorní plošině v 787 metrech</strong> ve Slavkovském lese (Kaiserwaldu) a nabízí jedinečný herní zážitek:</p>
-
-    <ul>
-      <li><strong>Par 72</strong>, celková délka přibližně 6 100 metrů</li>
-      <li>Zasazeno mezi borovicovými lesy na mírně zvlněném terénu</li>
-      <li>Přírodní překážky: okraje lesa, vřesoviště, strategicky umístěné bunkery</li>
-      <li>Panoramatické výhledy na město a zalesněné kopce v okolí</li>
-      <li>Zvláštní výzva: nadmořská výška ovlivňuje délku letu míčku</li>
-    </ul>
-
-    <p>Hřiště je proslulé <strong>výborným stavem údržby</strong> a harmonickým zasazením do přírodní krajiny. Na rozdíl od mnoha moderních golfových areálů bylo pečlivě vkomponováno do stávajícího lesa — herní zážitek definuje ticho, příroda a rozlehlost lesa.</p>
-
-    <h2>Klubovna</h2>
-    <p>Klubovna s <strong>edwardiánským šarmem</strong> je zážitkem sama o sobě. Vkusně zrestaurované prostory uchovávají atmosféru zakladatelské éry a nabízejí:</p>
-
-    <ul>
-      <li>Restaurace s terasou a panoramatickým výhledem</li>
-      <li>Bar a salónek</li>
-      <li>Pro shop s půjčovnou vybavení</li>
-      <li>Šatny a sprchy</li>
-      <li>Historické fotografie a memorabilia</li>
-    </ul>
-
-    <h2>Hra pro hosty</h2>
-    <p>Royal Golf Club <strong>srdečně vítá návštěvníky</strong>. Co potřebujete vědět:</p>
-
-    <ul>
-      <li><strong>Sezóna:</strong> polovina dubna až konec října (závisí na počasí)</li>
-      <li><strong>Green fee:</strong> přibližně od 80 do 120 € v závislosti na sezóně a dni v týdnu</li>
-      <li><strong>Půjčení vybavení:</strong> kompletní sady (hole, vozík) k dispozici na místě</li>
-      <li><strong>Handicap:</strong> vyžaduje se průkaz handicapu; maximální handicap 36</li>
-      <li><strong>Výuka:</strong> PGA kvalifikovaní profesionálové pro individuální i skupinové lekce</li>
-      <li><strong>Rezervace:</strong> startovní časy lze rezervovat online nebo telefonicky</li>
-    </ul>
-
-    <h2>Turnaje</h2>
-    <p>Klub pořádá každoročně několik turnajů, včetně tradičního <strong>Memoriálového turnaje krále Edwarda VII.</strong>, který udržuje vzpomínku na zakladatele. Turnajová sezóna probíhá od května do září.</p>
-
-    <h2>Spojení golfu a lázní</h2>
-    <p>Mnozí návštěvníci kombinují golfovou dovolenou s lázeňským pobytem — dokonalý mix sportovní aktivity a regenerace. Ensana Spa Hotels nabízejí speciální <strong>balíčky golf a lázně</strong>, které zahrnují green fee, transfery na hřiště a denní wellness program.</p>
-
-    <blockquote>
-      <p>„Golf v Mariánských Lázních je zážitek, jaký jinde nenajdete: ticho lesa, čistý vzduch v 800 metrech, pocit, že hrajete na hřišti, které založil král."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/golf', en: '/en/golf', cs: '/cs/golf', ru: '/ru/golf' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

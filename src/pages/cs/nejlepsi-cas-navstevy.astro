@@ -1,9 +1,12 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
+const page = await getPage('cs-nejlepsi-cas-navstevy')
 const breadcrumbs = [
   { label: t(locale, 'nav.home'), href: `/${locale}` },
   { label: t(locale, 'nav.practicalInfo'), href: `/${locale}/prakticke-informace` },
@@ -11,132 +14,8 @@ const breadcrumbs = [
 ]
 ---
 
-<Base locale={locale} section="practical-info" title="Nejlepší čas pro návštěvu Mariánských Lázní — Počasí, klima a sezónní tipy — Marienbad.com" description="Kdy je nejlepší doba pro návštěvu Mariánských Lázní? Klima, počasí, akce a tipy pro každé roční období." alternateUrls={{ de: '/de/beste-reisezeit', en: '/en/best-time-to-visit', cs: '/cs/nejlepsi-cas-navstevy', ru: '/ru/luchshee-vremya' }}>
-  <PillarPage locale={locale} title="Nejlepší čas pro návštěvu Mariánských Lázní" description="Mariánské Lázně jsou přitažlivé v každém ročním období — každé má však svůj vlastní charakter. Přehled počasí, akcí a výhod i nevýhod jednotlivých období." breadcrumbs={breadcrumbs}>
-    <h2>Mariánské Lázně — Celoroční destinace</h2>
-    <p>Mariánské Lázně (Marienbad) leží v nadmořské výšce <strong>630 metrů</strong> ve Slavkovském lese a těší se mírnému podhorskému klimatu. Chráněná poloha v údolní kotlině, obklopené hustými lesy, vytváří vyrovnané mikroklima, které je od 19. století považováno za zvláště příznivé pro zdraví. Klima samo je totiž uznáváno jako jeden ze čtyř přírodních léčivých faktorů Mariánských Lázní.</p>
-
-    <p>Oficiální lázeňská sezóna trvá od <strong>května do října</strong>, ale lázeňské hotely a minerální prameny jsou otevřeny celoročně. Každé roční období nabízí své výhody — ideální doba návštěvy závisí na vašich osobních preferencích.</p>
-
-    <h2>Jaro (březen–květen): Rozkvétající nádhera</h2>
-    <p>Jaro v Mariánských Lázních je dobou probouzení. Rozsáhlé parky začínají kvést a město se probouzí ze zimního spánku. Toto období je zvláště vhodné pro cestovatele hledající <strong>klid a regeneraci</strong>.</p>
-
-    <h3>Počasí</h3>
-    <ul>
-      <li><strong>Březen:</strong> 1–8 °C, stále chladný, občas možný sníh</li>
-      <li><strong>Duben:</strong> 5–14 °C, proměnlivý, první teplé dny</li>
-      <li><strong>Květen:</strong> 9–18 °C, příjemně mírný, parky v plném květu</li>
-    </ul>
-
-    <h3>Výhody</h3>
-    <ul>
-      <li>Méně turistů — více klidu u kolonád a v parcích</li>
-      <li>Nižší ceny hotelů v předsezóně (březen–duben)</li>
-      <li>Květy magnolií a třešní v lázeňském parku (polovina dubna až květen) jsou velkolepé</li>
-      <li>Ideální pro intenzivní lázeňské kúry bez rušení</li>
-    </ul>
-
-    <h3>Co si zabalit</h3>
-    <p>Klíčem je vrstvení: teplá bunda, pláštěnka a pohodlná turistická obuv. Od května často stačí lehká bunda na večer.</p>
-
-    <h2>Léto (červen–srpen): Hlavní sezóna s kulturním programem</h2>
-    <p>Léto je <strong>nejživější období</strong> Mariánských Lázní. Město je plné kultury, hudby a života. Lázeňská zařízení jsou v plném provozu a příjemné klima zve k dlouhým procházkám a výletům.</p>
-
-    <h3>Počasí</h3>
-    <ul>
-      <li><strong>Červen:</strong> 13–22 °C, příjemně teplý, občasné bouřky</li>
-      <li><strong>Červenec:</strong> 15–24 °C, nejteplejší měsíc, občas přes 28 °C</li>
-      <li><strong>Srpen:</strong> 14–23 °C, teplý s přibývajícími dešťovými dny</li>
-    </ul>
-
-    <h3>Hlavní události</h3>
-    <ul>
-      <li><strong>Chopinův festival (srpen):</strong> Renomovaný mezinárodní klavírní festival na počest Fryderyka Chopina, který navštívil Mariánské Lázně v roce 1836</li>
-      <li><strong>Zpívající fontána:</strong> Večerní představení se světly, vodou a hudbou probíhají od května do října — v létě denně</li>
-      <li>Koncerty pod širým nebem u kolonády</li>
-      <li>Plný provoz všech pramenů, parků a výletních cílů</li>
-    </ul>
-
-    <h3>Nevýhody</h3>
-    <ul>
-      <li>Nejvyšší ceny hotelů, zejména v červenci a srpnu</li>
-      <li>Více návštěvníků — u kolonád a pramenů může být rušněji</li>
-      <li>Doporučena včasná rezervace</li>
-    </ul>
-
-    <h3>Co si zabalit</h3>
-    <p>Lehké letní oblečení, opalovací krém a lehkou bundu do deště na nečekané přeháňky. Večery v 630 m n. m. mohou být chladnější — svetr je na místě.</p>
-
-    <h2>Podzim (září–listopad): Zlatý klid</h2>
-    <p>Podzim proměňuje Mariánské Lázně ve <strong>spektákl barev</strong>. Slavkovský les září zlatem a červení, vzduch se osvěžuje a počet návštěvníků klesá. Pro mnohé stálé hosty je to nejkrásnější roční období.</p>
-
-    <h3>Počasí</h3>
-    <ul>
-      <li><strong>Září:</strong> 10–18 °C, příjemné, často slunečné dny „babího léta"</li>
-      <li><strong>Říjen:</strong> 5–12 °C, chladné, podzimní nálada, ranní mlhy</li>
-      <li><strong>Listopad:</strong> 1–6 °C, chladný až studený, možné první mrazy</li>
-    </ul>
-
-    <h3>Výhody</h3>
-    <ul>
-      <li>Velkolepé podzimní zbarvení v parcích a lesích (říjen)</li>
-      <li>Klidná, rozjímavá atmosféra — ideální pro lázeňské kúry a regeneraci</li>
-      <li>Nižší ceny od října (mimosezóna)</li>
-      <li>Vzduch je zvláště čistý a bohatý na kyslík</li>
-    </ul>
-
-    <h3>Co si zabalit</h3>
-    <p>Teplá bunda, šála, nepromokavá obuv. V září přes den často stačí lehká bunda, ale večery jsou svěží.</p>
-
-    <h2>Zima (prosinec–únor): Zimní kouzlo a vnitřní wellness</h2>
-    <p>Zima zahaluje Mariánské Lázně do <strong>tiché, zasněžené atmosféry</strong>. Zatímco kulturní program odpočívá, město se soustředí na to, co umí nejlépe: <strong>léčebné procedury a wellness</strong>. Lázeňské hotely nabízejí zimní balíčky za atraktivní ceny.</p>
-
-    <h3>Počasí</h3>
-    <ul>
-      <li><strong>Prosinec:</strong> -3 až 2 °C, často sníh, vánoční atmosféra</li>
-      <li><strong>Leden:</strong> -5 až 0 °C, nejchladnější měsíc, pravidelné sněžení</li>
-      <li><strong>Únor:</strong> -4 až 2 °C, stále zimní, ale dny se prodlužují</li>
-    </ul>
-
-    <h3>Hlavní události</h3>
-    <ul>
-      <li><strong>Vánoční trhy (prosinec):</strong> Atmosférický adventní trh u kolonády se svařákem, trdelníkem a tradičními řemesly</li>
-      <li>Zasněžené procházky zimními parky</li>
-      <li>Zaměření na vnitřní procedury: rašelinové koupele, CO₂ terapie, masáže</li>
-      <li>Silvestrovské gala večery v lázeňských hotelech</li>
-    </ul>
-
-    <h3>Výhody</h3>
-    <ul>
-      <li>Nejnižší ceny hotelů v roce (kromě Vánoc a Silvestra)</li>
-      <li>Maximální klid a soukromí</li>
-      <li>Všechny vnitřní procedury a prameny zůstávají otevřeny</li>
-      <li>Zimní krajina má zvláštní kouzlo</li>
-    </ul>
-
-    <h3>Co si zabalit</h3>
-    <p>Teplé zimní oblečení, zateplené boty s neklouzavou podrážkou, čepice a rukavice. Při teplotách pod nulou se doporučuje termoprádlo. Pro lázeňské prostory: župan a pantofle (často poskytované hotelem).</p>
-
-    <h2>Klimatická data v přehledu</h2>
-
-    | Měsíc | Prům. teplota | Prům. srážky | Slunečné hodiny |
-    |-------|-------------|-------------|----------------|
-    | Leden | -3 °C | 45 mm | 2 h |
-    | Únor | -1 °C | 40 mm | 3 h |
-    | Březen | 3 °C | 40 mm | 4 h |
-    | Duben | 8 °C | 45 mm | 5 h |
-    | Květen | 13 °C | 65 mm | 7 h |
-    | Červen | 16 °C | 80 mm | 7 h |
-    | Červenec | 18 °C | 85 mm | 7 h |
-    | Srpen | 17 °C | 80 mm | 7 h |
-    | Září | 13 °C | 55 mm | 5 h |
-    | Říjen | 8 °C | 50 mm | 4 h |
-    | Listopad | 3 °C | 50 mm | 2 h |
-    | Prosinec | -1 °C | 50 mm | 2 h |
-
-    <h2>Naše doporučení</h2>
-    <p>Pro <strong>lázeňský pobyt s bohatým kulturním programem</strong> doporučujeme období <strong>květen až září</strong>. Kdo dává přednost <strong>klidu a nižším cenám</strong>, nejlépe se mu bude líbit na <strong>jaře (duben–květen)</strong> nebo na <strong>podzim (září–říjen)</strong>. Pro <strong>čistý wellness a relaxaci</strong> nabízí <strong>zima</strong> vynikající poměr ceny a kvality s atraktivními lázeňskými balíčky.</p>
-
-    <p>Bez ohledu na roční období platí: minerální prameny tečou celoročně, lázeňské domy jsou otevřeny po celý rok a léčivá atmosféra Mariánských Lázní působí svou magií v každém období.</p>
+<Base locale={locale} section="practical-info" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/beste-reisezeit', en: '/en/best-time-to-visit', cs: '/cs/nejlepsi-cas-navstevy', ru: '/ru/luchshee-vremya' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>
