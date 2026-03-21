@@ -21,7 +21,7 @@ const pageTitle = `${hotel.name} — ${hotel.stars}-Star Spa Hotel in Marienbad`
 const pageDescription = hotel.description.en.slice(0, 155).replace(/\s+\S*$/, '') + '…'
 
 const pathname = Astro.url.pathname.replace(/\/$/, '')
-const canonicalUrl = `https://marienbad.vercel.app${pathname}`
+const canonicalUrl = `${(import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')}${pathname}`
 
 const lodgingSchema = JSON.stringify({
   '@context': 'https://schema.org',

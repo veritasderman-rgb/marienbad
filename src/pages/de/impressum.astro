@@ -1,29 +1,17 @@
 ---
 import Base from '@/layouts/Base.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'de' as const
+const page = await getPage('de-impressum')
 ---
 
-<Base locale={locale} title="Impressum — Marienbad.com" description="Impressum und Angaben zum Betreiber von marienbad.com." alternateUrls={{ de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }}>
+<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }}>
   <main class="container-wide py-16 md:py-24">
     <div class="max-w-3xl mx-auto prose-marienbad">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Impressum</h1>
-
-      <h2>Betreiber</h2>
-      <p><strong>Léčebné lázně Mariánské Lázně a.s.</strong><br/>IČO: 00206989<br/>Masarykova 22<br/>353 01 Mariánské Lázně, Tschechische Republik</p>
-      <p>Redaktionelles Projekt: Marienbad Tourism, in Zusammenarbeit mit Ensana Health Spa Hotels.</p>
-
-      <h2>Kontakt</h2>
-      <p>E-Mail: <a href="mailto:info@marienbad.com">info@marienbad.com</a><br/>Telefon: +420 354 622 474</p>
-
-      <h2>Redaktionelle Verantwortung</h2>
-      <p>Die Inhalte werden von der Redaktion von Marienbad Tourism erstellt. Für die Richtigkeit und Vollständigkeit übernehmen wir keine Gewähr.</p>
-
-      <h2>Haftungsausschluss</h2>
-      <p>Trotz sorgfältiger Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.</p>
-
-      <h2>Urheberrecht</h2>
-      <p>Die Inhalte unterliegen dem tschechischen Urheberrecht. Vervielfältigung bedarf der schriftlichen Zustimmung.</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">{page?.title}</h1>
+      { page?.body && <MarkdocRenderer content={page.body} /> }
     </div>
   </main>
 </Base>

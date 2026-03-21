@@ -1,39 +1,17 @@
 ---
 import Base from '@/layouts/Base.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'de' as const
+const page = await getPage('de-datenschutz')
 ---
 
-<Base locale={locale} title="Datenschutzerklärung — Marienbad.com" description="Datenschutzerklärung und Informationen zum Umgang mit personenbezogenen Daten auf marienbad.com." alternateUrls={{ de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }}>
+<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }}>
   <main class="container-wide py-16 md:py-24">
     <div class="max-w-3xl mx-auto prose-marienbad">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Datenschutzerklärung</h1>
-      <p class="text-beige-700 mb-6">Zuletzt aktualisiert: März 2026</p>
-
-      <h2>1. Verantwortlicher</h2>
-      <p><strong>Léčebné lázně Mariánské Lázně a.s.</strong><br/>IČO: 00206989<br/>Masarykova 22<br/>353 01 Mariánské Lázně, Tschechische Republik<br/>E-Mail: <a href="mailto:info@marienbad.com">info@marienbad.com</a></p>
-
-      <h2>2. Datenerfassung</h2>
-      <h3>Server-Log-Dateien</h3>
-      <p>Der Hosting-Provider (Vercel) erhebt automatisch Informationen in Server-Log-Dateien: Browsertyp/-version, Betriebssystem, Referrer URL, Hostname und Uhrzeit der Serveranfrage.</p>
-      <h3>Newsletter</h3>
-      <p>Wenn Sie den Newsletter abonnieren, werden Ihre E-Mail-Adresse und Sprachpräferenz an MailerLite übermittelt. Sie können den Newsletter jederzeit abbestellen.</p>
-
-      <h2>3. Cookies und Analyse</h2>
-      <p>Diese Website verwendet <strong>keine Cookies</strong> für Tracking-Zwecke. Wir nutzen <strong>Plausible Analytics</strong> — ein datenschutzfreundliches Analysetool, das keine Cookies setzt, keine personenbezogenen Daten erhebt und vollständig DSGVO-konform ist.</p>
-
-      <h2>4. Externe Dienste</h2>
-      <ul>
-        <li><strong>OpenStreetMap</strong> — interaktive Destinationskarte (Leaflet.js)</li>
-        <li><strong>Plausible Analytics</strong> — cookie-freie Webanalyse</li>
-      </ul>
-      <p>Es werden keine Daten an Google, Facebook oder andere Werbenetzwerke übermittelt.</p>
-
-      <h2>5. Ihre Rechte</h2>
-      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Kontakt: <a href="mailto:info@marienbad.com">info@marienbad.com</a>.</p>
-
-      <h2>6. Hosting</h2>
-      <p>Diese Website wird bei Vercel Inc. gehostet (Region: Frankfurt, EU).</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">{page?.title}</h1>
+      { page?.body && <MarkdocRenderer content={page.body} /> }
     </div>
   </main>
 </Base>

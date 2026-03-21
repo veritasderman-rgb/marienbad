@@ -61,11 +61,40 @@ const pullquote: Schema = {
   },
 }
 
+const treatmentBox: Schema = {
+  render: 'treatment-box',
+  selfClosing: true,
+  attributes: {
+    title: { type: String, required: true, errorLevel: 'critical' },
+    description: { type: String, required: true },
+    icon: {
+      type: String,
+      default: 'water',
+      matches: ['water', 'earth', 'gas', 'climate'],
+    },
+  },
+}
+
+const hotelBox: Schema = {
+  render: 'hotel-box',
+  selfClosing: true,
+  attributes: {
+    name: { type: String, required: true, errorLevel: 'critical' },
+    stars: { type: Number, required: true },
+    badge: { type: String },
+    description: { type: String, required: true },
+    bookingUrl: { type: String, required: true },
+    bookingLabel: { type: String, required: true },
+  },
+}
+
 export const markdocConfig: Config = {
   tags: {
     figure,
     gallery,
     'gallery-image': galleryImage,
     pullquote,
+    'treatment-box': treatmentBox,
+    'hotel-box': hotelBox,
   },
 }

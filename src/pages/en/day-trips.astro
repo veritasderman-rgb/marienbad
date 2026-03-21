@@ -1,102 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-day-trips')
 ---
 
-<Base locale={locale} section="things-to-do" title="Day Trips from Marienbad — Marienbad.com" description="The best day trips from Mariánské Lázně: Karlovy Vary, Plzeň, Loket Castle, Kladská and Teplá Monastery." alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
-  <PillarPage locale={locale} title="Day Trips from Marienbad" description="Mariánské Lázně is the ideal base for day trips to the finest destinations in western Bohemia — from hot springs to medieval castles.">
-    <h2>Discover Western Bohemia</h2>
-    <p>Mariánské Lázně sits at the heart of western Bohemia — a region of surprising variety. Within 90 minutes' drive you can reach medieval castles, world-famous breweries, UNESCO-listed architecture and pristine nature reserves. Whether by car, bus or organised tour, each of these excursions makes a comfortable day trip and adds an unforgettable dimension to your spa stay.</p>
-
-    <h2>Karlovy Vary (Carlsbad)</h2>
-    <h3>45 minutes' drive</h3>
-    <p>The most famous spa town in Bohemia is also the most popular day-trip destination from Marienbad. <strong>Karlovy Vary</strong> impresses with its monumental colonnades, colourful Art Nouveau facades and 13 hot springs reaching temperatures of up to 73°C.</p>
-    <ul>
-      <li><strong>Hot springs</strong> — Stroll along the five colonnades and sample the healing waters from traditional drinking cups (lázeňský pohárek)</li>
-      <li><strong>Moser Glass</strong> — Visit the world-renowned glassworks, founded in 1857, with its museum and workshop tour</li>
-      <li><strong>Diana Lookout Tower</strong> — Accessible by funicular railway, offering spectacular panoramic views over the Teplá valley</li>
-      <li><strong>Film Festival</strong> — In July the town transforms into an international film festival venue</li>
-    </ul>
-    <p>Tip: Pair your visit with a taste of the famous Carlsbad wafers and a glass of Becherovka — the herbal liqueur that has been produced in Karlovy Vary since 1807.</p>
-
-    <h2>Plzeň (Pilsen)</h2>
-    <h3>90 minutes' drive</h3>
-    <p><strong>Plzeň</strong> is the fourth-largest city in the Czech Republic and best known as the birthplace of Pilsner beer. But the city offers far more than beer culture.</p>
-    <ul>
-      <li><strong>Pilsner Urquell Brewery</strong> — The legendary brewery tour leads through historic cellars and concludes with a tasting of unfiltered beer straight from the oak barrel</li>
-      <li><strong>Cathedral of St Bartholomew</strong> — The tallest church spire in the Czech Republic (102.6 metres) rewards the climb of 301 steps with a breathtaking panorama</li>
-      <li><strong>Historic Underground</strong> — A fascinating labyrinth of medieval tunnels and cellars beneath the old town</li>
-      <li><strong>Great Synagogue</strong> — The third-largest synagogue in the world, a striking example of Moorish-Romanesque architecture</li>
-    </ul>
-    <p>Plzeň served as European Capital of Culture in 2015 and has since developed a lively arts and dining scene. The central square (Náměstí Republiky) is one of the largest market squares in Europe.</p>
-
-    <h2>Loket Castle</h2>
-    <h3>30 minutes' drive</h3>
-    <p><strong>Loket Castle</strong> (Hrad Loket) perches dramatically on a rock above a bend in the Ohře river and ranks among the best-preserved medieval castles in Bohemia. Goethe was enchanted by the spot and visited several times.</p>
-    <ul>
-      <li><strong>Castle museum</strong> — Romanesque and Gothic chambers with exhibitions on the castle's history, a porcelain collection and a notorious torture chamber</li>
-      <li><strong>Becherovka Museum</strong> — In the small town below the castle, a museum traces the history of the famous herbal liqueur, which was originally developed in Loket</li>
-      <li><strong>Old town</strong> — Picturesque lanes with half-timbered houses, cafés and craft shops</li>
-      <li><strong>Ohře riverbank</strong> — Idyllic walking paths along the river with views up to the castle</li>
-    </ul>
-    <p>Loket is compact enough for half a day and combines beautifully with a visit to Karlovy Vary, which is just 15 minutes away.</p>
-
-    <h2>Kladská</h2>
-    <h3>15 minutes' drive</h3>
-    <p>The <strong>Kladská Nature Reserve</strong> is a jewel on Marienbad's doorstep. An untouched raised bog with unique flora and fauna, it is one of the most valuable protected areas in western Bohemia.</p>
-    <ul>
-      <li><strong>Peat bog boardwalk</strong> — A wooden walkway leads across the bog, with informative panels explaining this fascinating ecosystem</li>
-      <li><strong>Observation tower</strong> — Offers a panoramic view over the moorland and the Slavkov Forest</li>
-      <li><strong>Hunting lodge</strong> — A picturesque Swiss-style building on the shore of the bog lake</li>
-      <li><strong>Rare species</strong> — Carnivorous plants (sundew), bog birches, rare dragonfly species and adders</li>
-    </ul>
-    <p>Kladská is especially appealing in early summer (June) and autumn (September–October). Admission is free and the circuit takes about 45 minutes. Ideal for families with children.</p>
-
-    <h2>Teplá Monastery</h2>
-    <h3>20 minutes' drive</h3>
-    <p>The <strong>Premonstratensian Monastery at Teplá</strong>, founded in 1193 by the Blessed Hroznata, is one of the most important monasteries in Bohemia and inseparably linked with the history of Marienbad — for it was the monastery physician Josef Nehr who, on the monastery's behalf, investigated the healing springs and thereby made the founding of the spa town possible.</p>
-    <ul>
-      <li><strong>Monastery library</strong> — A magnificent Baroque library housing over 100,000 volumes, including medieval manuscripts</li>
-      <li><strong>Church of the Annunciation</strong> — A Romanesque-Gothic basilica with Baroque furnishings</li>
-      <li><strong>Monastery garden</strong> — A historic garden with herb beds and ancient trees</li>
-      <li><strong>Brewery</strong> — The monastery once again brews its own beer using historical recipes</li>
-    </ul>
-
-    <h2>Practical Tips</h2>
-    <h3>Getting there</h3>
-    <ul>
-      <li><strong>Hire car</strong> — The most flexible option; parking is available at all destinations and usually inexpensive</li>
-      <li><strong>Bus</strong> — Regular services to Karlovy Vary (hourly) and Plzeň (several times daily). Loket Castle is also reachable by bus</li>
-      <li><strong>Organised tours</strong> — Several hotels and local agencies offer guided day trips with hotel pick-up</li>
-    </ul>
-
-    <h3>Opening hours</h3>
-    <p>Most attractions are open daily from <strong>April to October</strong> (approximately 9:00–17:00). During the winter season (November–March) hours are reduced — Loket Castle and Teplá Monastery often open at weekends only. Check current times before your visit.</p>
-
-    <h3>Recommended combinations</h3>
-    <ul>
-      <li><strong>Half day:</strong> Kladská + Teplá Monastery</li>
-      <li><strong>Full day:</strong> Karlovy Vary + Loket Castle</li>
-      <li><strong>Full day:</strong> Plzeň (brewery, cathedral, old town)</li>
-    </ul>
-
-    <HotelRecommendationBox
-      locale={locale}
-       locale={locale}
-      locale={locale}
-      name="Ensana Nové Lázně"
-      stars={5}
-      badge="Ideal Base"
-      description="The central location of Nové Lázně makes it the perfect starting point for day trips. The concierge team is happy to arrange transfers, car hire and guided tours to all destinations."
-      bookingUrl="https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=day-trips"
-      bookingLabel="View hotel"
-    />
-
-    <blockquote>
-      <p>"From Marienbad you have all of western Bohemia on your doorstep — medieval castles, famous breweries and scenery that takes your breath away. Every day brings a new discovery."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

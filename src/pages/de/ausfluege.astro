@@ -1,102 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'de' as const
+const page = await getPage('de-ausfluege')
 ---
 
-<Base locale={locale} section="things-to-do" title="Ausflüge ab Marienbad — Marienbad.com" description="Die besten Tagesausflüge ab Mariánské Lázně: Karlovy Vary, Plzeň, Burg Loket, Kladská und Kloster Teplá." alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
-  <PillarPage locale={locale} title="Ausflüge ab Marienbad" description="Mariánské Lázně ist der ideale Ausgangspunkt für Tagesausflüge zu den schönsten Zielen Westböhmens — von heißen Quellen bis zu mittelalterlichen Burgen.">
-    <h2>Westböhmen entdecken</h2>
-    <p>Mariánské Lázně liegt im Herzen Westböhmens — einer Region, die überraschend vielfältig ist. Innerhalb von 90 Minuten Fahrzeit erreichen Sie mittelalterliche Burgen, berühmte Brauereien, UNESCO-geschützte Architektur und unberührte Naturreservate. Ob mit dem Auto, dem Bus oder einer organisierten Tour — jeder dieser Ausflüge lässt sich bequem als Tagesausflug gestalten und bereichert Ihren Kuraufenthalt um unvergessliche Erlebnisse.</p>
-
-    <h2>Karlovy Vary (Karlsbad)</h2>
-    <h3>45 Minuten Fahrt</h3>
-    <p>Die berühmteste Kurstadt Böhmens ist zugleich das beliebteste Ausflugsziel ab Marienbad. <strong>Karlovy Vary</strong> beeindruckt mit seinen monumentalen Kolonnaden, farbenprächtigen Jugendstilfassaden und 13 heißen Quellen, die bis zu 73°C erreichen.</p>
-    <ul>
-      <li><strong>Heiße Quellen</strong> — Spazieren Sie entlang der fünf Kolonnaden und probieren Sie das Heilwasser aus traditionellen Trinktassen (Lázeňský pohárek)</li>
-      <li><strong>Moser Glasmanufaktur</strong> — Besichtigen Sie die weltberühmte Glasfabrik, gegründet 1857, mit Museum und Werkstattführung</li>
-      <li><strong>Diana-Aussichtsturm</strong> — Erreichbar mit der Standseilbahn, bietet einen spektakulären Panoramablick über das Tepla-Tal</li>
-      <li><strong>Filmfestival</strong> — Im Juli verwandelt sich die Stadt in ein internationales Filmfestival-Zentrum</li>
-    </ul>
-    <p>Tipp: Verbinden Sie den Besuch mit einer Verkostung der berühmten Karlsbader Oblaten und einem Glas Becherovka — dem Kräuterlikör, der in Karlovy Vary seit 1807 hergestellt wird.</p>
-
-    <h2>Plzeň (Pilsen)</h2>
-    <h3>90 Minuten Fahrt</h3>
-    <p><strong>Plzeň</strong> ist die viertgrößte Stadt Tschechiens und vor allem als Geburtsort des Pilsner Bieres weltbekannt. Doch die Stadt bietet weit mehr als Bierkultur.</p>
-    <ul>
-      <li><strong>Pilsner Urquell Brauerei</strong> — Die legendäre Brauereiführung führt durch historische Keller und endet mit einer Verkostung von unfiltriertem Bier direkt aus dem Eichenfass</li>
-      <li><strong>Gotische Kathedrale St. Bartholomäus</strong> — Der höchste Kirchturm Tschechiens (102,6 Meter) bietet nach 301 Stufen einen atemberaubenden Ausblick</li>
-      <li><strong>Historischer Untergrund</strong> — Ein faszinierendes Labyrinth mittelalterlicher Tunnel und Keller unter der Altstadt</li>
-      <li><strong>Große Synagoge</strong> — Die drittgrößte Synagoge der Welt, ein beeindruckendes Beispiel maurisch-romanischer Architektur</li>
-    </ul>
-    <p>Plzeň war 2015 Europäische Kulturhauptstadt und hat seitdem eine lebendige Kunst- und Gastronomieszene entwickelt. Der zentrale Platz (Náměstí Republiky) gehört zu den größten Marktplätzen Europas.</p>
-
-    <h2>Burg Loket</h2>
-    <h3>30 Minuten Fahrt</h3>
-    <p>Die <strong>Burg Loket</strong> (Burg Elbogen) thront dramatisch auf einem Felsen über einer Flussschleife der Eger und zählt zu den am besten erhaltenen mittelalterlichen Burgen Böhmens. Schon Goethe war von diesem Ort verzaubert und besuchte ihn mehrfach.</p>
-    <ul>
-      <li><strong>Burgmuseum</strong> — Romanische und gotische Räume mit Ausstellungen zur Burggeschichte, Porzellansammlung und einer berüchtigten Folterkammer</li>
-      <li><strong>Becherovka-Museum</strong> — Im Städtchen unterhalb der Burg befindet sich ein Museum zur Geschichte des berühmten Kräuterlikörs, der ursprünglich in Loket entwickelt wurde</li>
-      <li><strong>Altstadt</strong> — Malerische Gassen mit Fachwerkhäusern, Cafés und Handwerksläden</li>
-      <li><strong>Eger-Ufer</strong> — Idyllische Spazierwege entlang des Flusses mit Blick auf die Burg</li>
-    </ul>
-    <p>Loket ist kompakt genug für einen halben Tag, lässt sich aber wunderbar mit einem Besuch in Karlovy Vary kombinieren, das nur 15 Minuten entfernt liegt.</p>
-
-    <h2>Kladská (Glatzen)</h2>
-    <h3>15 Minuten Fahrt</h3>
-    <p>Das <strong>Naturreservat Kladská</strong> ist ein Juwel direkt vor den Toren Marienbads. Ein unberührtes Hochmoor mit einzigartiger Flora und Fauna, das zu den wertvollsten Naturschutzgebieten Westböhmens gehört.</p>
-    <ul>
-      <li><strong>Moorlehrpfad</strong> — Ein Holzbohlensteg führt über das Torfmoor und erschließt dieses faszinierende Ökosystem mit informativen Tafeln</li>
-      <li><strong>Aussichtsturm</strong> — Bietet einen Rundblick über die Moorlandschaft und den Slavkovský les</li>
-      <li><strong>Jagdschlösschen</strong> — Ein malerisches Gebäude im Schweizer Stil am Ufer des Moorsees</li>
-      <li><strong>Seltene Arten</strong> — Fleischfressende Pflanzen (Sonnentau), Moorbirken, seltene Libellenarten und Kreuzottern</li>
-    </ul>
-    <p>Kladská ist besonders im Frühsommer (Juni) und im Herbst (September-Oktober) reizvoll. Der Besuch ist kostenlos und der Rundweg dauert etwa 45 Minuten. Ideal für Familien mit Kindern.</p>
-
-    <h2>Kloster Teplá</h2>
-    <h3>20 Minuten Fahrt</h3>
-    <p>Das <strong>Prämonstratenser-Kloster Teplá</strong>, gegründet 1193 von dem seligen Hroznata, ist eines der bedeutendsten Klöster Böhmens und untrennbar mit der Geschichte Marienbads verbunden — denn es war der Klosterarzt Josef Nehr, der im Auftrag des Klosters die Heilquellen erforschte und damit die Gründung des Kurorts ermöglichte.</p>
-    <ul>
-      <li><strong>Klosterbibliothek</strong> — Eine prachtvolle Barockbibliothek mit über 100.000 Bänden, darunter mittelalterliche Handschriften</li>
-      <li><strong>Klosterkirche Mariä Verkündigung</strong> — Romanisch-gotische Basilika mit barocker Ausstattung</li>
-      <li><strong>Klostergarten</strong> — Historischer Garten mit Kräuterbeeten und altem Baumbestand</li>
-      <li><strong>Brauerei</strong> — Das Kloster braut wieder eigenes Bier nach historischen Rezepten</li>
-    </ul>
-
-    <h2>Praktische Tipps</h2>
-    <h3>Anreise und Transport</h3>
-    <ul>
-      <li><strong>Mietwagen</strong> — Die flexibelste Option; Parkplätze sind an allen Ausflugszielen vorhanden und meist günstig</li>
-      <li><strong>Bus</strong> — Regelmäßige Busverbindungen nach Karlovy Vary (stündlich) und Plzeň (mehrmals täglich). Burg Loket ist ebenfalls per Bus erreichbar</li>
-      <li><strong>Organisierte Touren</strong> — Mehrere Hotels und lokale Agenturen bieten geführte Tagesausflüge mit Abholung am Hotel an</li>
-    </ul>
-
-    <h3>Öffnungszeiten</h3>
-    <p>Die meisten Sehenswürdigkeiten haben von <strong>April bis Oktober</strong> täglich geöffnet (ca. 9:00–17:00 Uhr). In der Wintersaison (November–März) sind die Öffnungszeiten eingeschränkt — Burg Loket und das Kloster Teplá öffnen oft nur am Wochenende. Prüfen Sie die aktuellen Zeiten vor Ihrem Besuch.</p>
-
-    <h3>Empfohlene Kombinationen</h3>
-    <ul>
-      <li><strong>Halber Tag:</strong> Kladská + Kloster Teplá</li>
-      <li><strong>Ganzer Tag:</strong> Karlovy Vary + Burg Loket</li>
-      <li><strong>Ganzer Tag:</strong> Plzeň (Brauerei, Kathedrale, Altstadt)</li>
-    </ul>
-
-    <HotelRecommendationBox
-      locale={locale}
-       locale={locale}
-      locale={locale}
-      name="Ensana Nové Lázně"
-      stars={5}
-      badge="Idealer Ausgangspunkt"
-      description="Die zentrale Lage des Nové Lázně macht es zum perfekten Ausgangspunkt für Tagesausflüge. Die Concierge-Abteilung organisiert gerne Transfers, Mietwagen und geführte Touren zu allen Ausflugszielen."
-      bookingUrl="https://ensanahotels.com/de/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=day-trips"
-      bookingLabel="Hotel ansehen"
-    />
-
-    <blockquote>
-      <p>„Von Marienbad aus hat man ganz Westböhmen vor der Tür — mittelalterliche Burgen, berühmte Brauereien und eine Natur, die einen staunen lässt. Jeder Tag bringt eine neue Entdeckung."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

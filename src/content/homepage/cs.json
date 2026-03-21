@@ -43,7 +43,7 @@
       },
       {
         "name": "Plyn",
-        "description": "99,7% čistý CO₂ — ‚Mariin plyn' — prokazatelně zlepšuje periferní prokrvení."
+        "description": "99,7% čistý CO₂ — ‚Mariin plyn' — tradičně využívaný k podpoře periferní prokrvení."
       },
       {
         "name": "Klima",
@@ -127,7 +127,7 @@
     "badge": "Doporučujeme",
     "season": "To nejlepší",
     "title": "Prameny na vás čekají — vaše kúra v Mariánských Lázních",
-    "description": "Mariánské Lázně okouzlí v každém ročním období: Skalníkovy sady překvapují proměnlivými barvami, Zpívající fontána láká na legendární vodní představení a jemný horský vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty. Ideální víkendový únik z města — pouhé dvě hodiny z Prahy.",
+    "description": "Mariánské Lázně okouzlí v každém ročním období: Skalníkovy sady překvapují proměnlivými barvami, Zpívající fontána láká na legendární vodní představení a jemný horský vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty.",
     "ctaText": "Zjistit více",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },
@@ -138,7 +138,7 @@
       {
         "category": "Zdraví",
         "title": "CO₂ koupele: Co říká věda",
-        "excerpt": "V klinických studiích uvádí 83 % pacientů snížení bolestí kloubů po čtrnáctidenní lázeňské kúře.",
+        "excerpt": "Pacienti po čtrnáctidenní lázeňské kúře běžně uvádějí výrazné zlepšení pohyblivosti a ústup bolestí kloubů.",
         "date": "15. března 2026",
         "readTime": "5 min. čtení",
         "image": "/images/content/articles/magazine/articles/0/image.jpg"

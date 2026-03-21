@@ -1,39 +1,17 @@
 ---
 import Base from '@/layouts/Base.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-privacy')
 ---
 
-<Base locale={locale} title="Privacy Policy — Marienbad.com" description="Privacy policy and information about how we handle personal data on marienbad.com." alternateUrls={{ de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }}>
+<Base locale={locale} title={page?.metaTitle ?? "Privacy Policy"} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }}>
   <main class="container-wide py-16 md:py-24">
     <div class="max-w-3xl mx-auto prose-marienbad">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Privacy Policy</h1>
-      <p class="text-beige-700 mb-6">Last updated: March 2026</p>
-
-      <h2>1. Data Controller</h2>
-      <p><strong>Léčebné lázně Mariánské Lázně a.s.</strong><br/>Company ID (IČO): 00206989<br/>Masarykova 22<br/>353 01 Mariánské Lázně, Czech Republic<br/>Email: <a href="mailto:info@marienbad.com">info@marienbad.com</a></p>
-
-      <h2>2. Data Collection</h2>
-      <h3>Server Logs</h3>
-      <p>Our hosting provider (Vercel) automatically collects information in server log files: browser type/version, operating system, referrer URL, hostname, and time of the request.</p>
-      <h3>Newsletter</h3>
-      <p>When you subscribe to our newsletter, your email address and language preference are transmitted to MailerLite. You can unsubscribe at any time.</p>
-
-      <h2>3. Cookies and Analytics</h2>
-      <p>This website uses <strong>no tracking cookies</strong>. We use <strong>Plausible Analytics</strong>, a privacy-friendly analytics tool that sets no cookies, collects no personal data, and is fully GDPR compliant.</p>
-
-      <h2>4. Third-Party Services</h2>
-      <ul>
-        <li><strong>OpenStreetMap</strong> — interactive destination map (Leaflet.js)</li>
-        <li><strong>Plausible Analytics</strong> — cookie-free web analytics</li>
-      </ul>
-      <p>No data is transmitted to Google, Facebook, or other advertising networks.</p>
-
-      <h2>5. Your Rights</h2>
-      <p>You have the right to access, rectify, delete, and restrict the processing of your personal data. Contact: <a href="mailto:info@marienbad.com">info@marienbad.com</a>.</p>
-
-      <h2>6. Hosting</h2>
-      <p>This website is hosted by Vercel Inc. (Region: Frankfurt, EU).</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">{page?.title}</h1>
+      { page?.body && <MarkdocRenderer content={page.body} /> }
     </div>
   </main>
 </Base>

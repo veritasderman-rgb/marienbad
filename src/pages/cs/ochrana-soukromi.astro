@@ -1,26 +1,17 @@
 ---
 import Base from '@/layouts/Base.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'cs' as const
+const page = await getPage('cs-ochrana-soukromi')
 ---
 
-<Base locale={locale} title="Ochrana soukromí — Marienbad.com" description="Zásady ochrany osobních údajů na webu marienbad.com." alternateUrls={{ de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }}>
+<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }}>
   <main class="container-wide py-16 md:py-24">
     <div class="max-w-3xl mx-auto prose-marienbad">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Ochrana soukromí</h1>
-      <p class="text-beige-700 mb-6">Poslední aktualizace: březen 2026</p>
-
-      <h2>1. Správce údajů</h2>
-      <p><strong>Léčebné lázně Mariánské Lázně a.s.</strong><br/>IČO: 00206989<br/>Sídlo: Masarykova 22<br/>353 01 Mariánské Lázně, Česká republika<br/>E-mail: <a href="mailto:info@marienbad.com">info@marienbad.com</a></p>
-
-      <h2>2. Shromažďování údajů</h2>
-      <p>Náš poskytovatel hostingu (Vercel) automaticky shromažďuje informace v serverových logách. Při přihlášení k odběru newsletteru je vaše e-mailová adresa předána službě MailerLite.</p>
-
-      <h2>3. Cookies a analytika</h2>
-      <p>Tento web <strong>nepoužívá žádné sledovací cookies</strong>. Používáme <strong>Plausible Analytics</strong> — nástroj plně v souladu s GDPR, bez cookies a bez osobních údajů.</p>
-
-      <h2>4. Vaše práva</h2>
-      <p>Máte právo na přístup, opravu, výmaz a omezení zpracování vašich osobních údajů. Kontakt: <a href="mailto:info@marienbad.com">info@marienbad.com</a>.</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">{page?.title}</h1>
+      { page?.body && <MarkdocRenderer content={page.body} /> }
     </div>
   </main>
 </Base>

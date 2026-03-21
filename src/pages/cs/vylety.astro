@@ -1,102 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'cs' as const
+const page = await getPage('cs-vylety')
 ---
 
-<Base locale={locale} section="things-to-do" title="Výlety z Mariánských Lázní — Marienbad.com" description="Nejlepší jednodenní výlety z Mariánských Lázní: Karlovy Vary, Plzeň, hrad Loket, Kladská a klášter Teplá." alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
-  <PillarPage locale={locale} title="Výlety z Mariánských Lázní" description="Mariánské Lázně jsou ideálním výchozím bodem pro jednodenní výlety za nejkrásnějšími cíli západních Čech — od horkých pramenů po středověké hrady.">
-    <h2>Objevte západní Čechy</h2>
-    <p>Mariánské Lázně leží v srdci západních Čech — regionu překvapivé rozmanitosti. Do 90 minut jízdy autem se dostanete ke středověkým hradům, světově proslulým pivovarům, architektuře zapsané na seznamu UNESCO a nedotčeným přírodním rezervacím. Ať už autem, autobusem nebo organizovaným zájezdem — každý z těchto výletů pohodlně zvládnete za jeden den a obohatí váš lázeňský pobyt o nezapomenutelné zážitky.</p>
-
-    <h2>Karlovy Vary (Carlsbad)</h2>
-    <h3>45 minut jízdy</h3>
-    <p>Nejslavnější lázeňské město Čech je zároveň nejoblíbenějším výletním cílem z Mariánských Lázní. <strong>Karlovy Vary</strong> ohromí monumentálními kolonádami, barevnými secesními fasádami a 13 horkými prameny dosahujícími teploty až 73 °C.</p>
-    <ul>
-      <li><strong>Horké prameny</strong> — Procházejte se podél pěti kolonád a ochutnávejte léčivé vody z tradičních lázeňských pohárků</li>
-      <li><strong>Sklárny Moser</strong> — Navštivte světoznámou sklárnu založenou v roce 1857 s muzeem a prohlídkou dílen</li>
-      <li><strong>Rozhledna Diana</strong> — Dostupná lanovkou, nabízí velkolepý panoramatický výhled na údolí řeky Teplé</li>
-      <li><strong>Filmový festival</strong> — V červenci se město proměňuje v centrum mezinárodního filmového festivalu</li>
-    </ul>
-    <p>Tip: Spojte návštěvu s ochutnávkou slavných karlovarských oplatků a sklenkou Becherovky — bylinného likéru vyráběného v Karlových Varech od roku 1807.</p>
-
-    <h2>Plzeň</h2>
-    <h3>90 minut jízdy</h3>
-    <p><strong>Plzeň</strong> je čtvrté největší město České republiky a je známá především jako rodiště plzeňského piva. Město ale nabízí mnohem víc než jen pivní kulturu.</p>
-    <ul>
-      <li><strong>Pivovar Pilsner Urquell</strong> — Legendární prohlídka pivovaru vede historickými sklepy a končí ochutnávkou nefiltrovaného piva přímo z dubového sudu</li>
-      <li><strong>Katedrála sv. Bartoloměje</strong> — Nejvyšší kostelní věž v České republice (102,6 metru) odměňuje zdolání 301 schodů dechberoucím panoramatem</li>
-      <li><strong>Historické podzemí</strong> — Fascinující labyrint středověkých tunelů a sklepů pod starým městem</li>
-      <li><strong>Velká synagoga</strong> — Třetí největší synagoga na světě, pozoruhodný příklad maursko-románské architektury</li>
-    </ul>
-    <p>Plzeň byla Evropským hlavním městem kultury v roce 2015 a od té doby se může pochlubit živou uměleckou a gastronomickou scénou. Centrální náměstí (Náměstí Republiky) patří k největším tržním náměstím v Evropě.</p>
-
-    <h2>Hrad Loket</h2>
-    <h3>30 minut jízdy</h3>
-    <p><strong>Hrad Loket</strong> se dramaticky tyčí na skále nad ohybem řeky Ohře a patří k nejlépe zachovalým středověkým hradům v Čechách. Goethe byl tímto místem okouzlen a navštívil jej několikrát.</p>
-    <ul>
-      <li><strong>Hradní muzeum</strong> — Románské a gotické sály s výstavami o historii hradu, sbírka porcelánu a proslulá mučírna</li>
-      <li><strong>Muzeum Becherovky</strong> — V městečku pod hradem je muzeum mapující historii slavného bylinného likéru, který byl původně vyvinut právě v Lokti</li>
-      <li><strong>Staré město</strong> — Malebné uličky s hrázděnými domy, kavárny a řemeslné obchůdky</li>
-      <li><strong>Břeh Ohře</strong> — Idylické procházkové cesty podél řeky s výhledy na hrad</li>
-    </ul>
-    <p>Loket je dostatečně kompaktní na půlden a krásně se kombinuje s návštěvou Karlových Varů, které jsou pouhých 15 minut daleko.</p>
-
-    <h2>Kladská</h2>
-    <h3>15 minut jízdy</h3>
-    <p><strong>Přírodní rezervace Kladská</strong> je klenot přímo za branami Mariánských Lázní. Nedotčené vrchoviště s unikátní flórou a faunou patří k nejcennějším chráněným územím západních Čech.</p>
-    <ul>
-      <li><strong>Naučná stezka rašeliništěm</strong> — Dřevěný povalový chodník vede přes rašeliniště s informačními panely vysvětlujícími tento fascinující ekosystém</li>
-      <li><strong>Vyhlídková věž</strong> — Nabízí panoramatický rozhled po rašelinné krajině a Slavkovském lese</li>
-      <li><strong>Lovecký zámeček</strong> — Malebná stavba ve švýcarském stylu na břehu rašelinného jezera</li>
-      <li><strong>Vzácné druhy</strong> — Masožravé rostliny (rosnatka), rašelinné břízy, vzácné druhy vážek a zmije</li>
-    </ul>
-    <p>Kladská je obzvláště půvabná na počátku léta (červen) a na podzim (září–říjen). Vstup je zdarma a okruh trvá přibližně 45 minut. Ideální pro rodiny s dětmi.</p>
-
-    <h2>Klášter Teplá</h2>
-    <h3>20 minut jízdy</h3>
-    <p><strong>Premonstrátský klášter v Teplé</strong>, založený v roce 1193 blahoslaveným Hroznatou, je jedním z nejvýznamnějších klášterů v Čechách a neodmyslitelně spojený s historií Mariánských Lázní — neboť právě klášterní lékař Josef Nehr na popud kláštera prozkoumal léčivé prameny a tím umožnil založení lázeňského města.</p>
-    <ul>
-      <li><strong>Klášterní knihovna</strong> — Nádherná barokní knihovna s více než 100 000 svazky včetně středověkých rukopisů</li>
-      <li><strong>Kostel Zvěstování Panny Marie</strong> — Románsko-gotická bazilika s barokním vybavením</li>
-      <li><strong>Klášterní zahrada</strong> — Historická zahrada s bylinkářskými záhony a starými stromy</li>
-      <li><strong>Pivovar</strong> — Klášter opět vaří vlastní pivo podle historických receptur</li>
-    </ul>
-
-    <h2>Praktické tipy</h2>
-    <h3>Doprava</h3>
-    <ul>
-      <li><strong>Půjčení auta</strong> — Nejflexibilnější varianta; parkovací místa jsou k dispozici u všech cílů a obvykle levná</li>
-      <li><strong>Autobus</strong> — Pravidelné spoje do Karlových Varů (každou hodinu) a do Plzně (několikrát denně). Hrad Loket je také dosažitelný autobusem</li>
-      <li><strong>Organizované výlety</strong> — Některé hotely a místní agentury nabízejí řízené jednodenní výlety s vyzvednutím v hotelu</li>
-    </ul>
-
-    <h3>Otevírací doby</h3>
-    <p>Většina památek je otevřena denně od <strong>dubna do října</strong> (přibližně 9:00–17:00). V zimní sezóně (listopad–březen) jsou otevírací doby omezeny — hrad Loket a klášter Teplá bývají často otevřeny pouze o víkendech. Aktuální doby si ověřte před návštěvou.</p>
-
-    <h3>Doporučené kombinace</h3>
-    <ul>
-      <li><strong>Půlden:</strong> Kladská + klášter Teplá</li>
-      <li><strong>Celý den:</strong> Karlovy Vary + hrad Loket</li>
-      <li><strong>Celý den:</strong> Plzeň (pivovar, katedrála, staré město)</li>
-    </ul>
-
-    <HotelRecommendationBox
-      locale={locale}
-       locale={locale}
-      locale={locale}
-      name="Ensana Nové Lázně"
-      stars={5}
-      badge="Ideální výchozí bod"
-      description="Centrální poloha Nových Lázní z něj činí perfektní výchozí bod pro výlety. Tým concierge rád zajistí transfery, půjčení auta i řízené výlety na všechna místa."
-      bookingUrl="https://ensanahotels.com/cs/hotely/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=day-trips"
-      bookingLabel="Zobrazit hotel"
-    />
-
-    <blockquote>
-      <p>„Z Mariánských Lázní máte celé západní Čechy na dosah — středověké hrady, slavné pivovary a přírodu, z níž se tají dech. Každý den přináší nový objev."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

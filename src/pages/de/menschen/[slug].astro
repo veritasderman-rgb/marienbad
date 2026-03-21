@@ -26,6 +26,9 @@ const breadcrumbs = [
       {story.quote}
     </blockquote>
     <MarkdocRenderer content={story.body} />
+    <aside class="border-l-4 border-beige-300 bg-beige-50 rounded-r-lg px-5 py-3 my-8 text-xs text-beige-600 italic">
+      Dieser Bericht gibt persönliche Erfahrungen wieder. Individuelle Ergebnisse der Kurbehandlung können variieren. Bitte konsultieren Sie Ihren Arzt.
+    </aside>
     <SocialShare url={Astro.url.href} title={story.name} locale={locale} />
   </PillarPage>
 </Base>

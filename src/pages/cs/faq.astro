@@ -1,76 +1,42 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import { getPage, extractFaqs } from '@/content/reader'
+import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
-
-const faqs = [
-  {
-    q: 'Jaké minerální prameny se v Mariánských Lázních nacházejí?',
-    a: 'Mariánské Lázně mají více než 40 přírodních minerálních pramenů, každý s jedinečným chemickým složením. Nejznámější jsou Křížový pramen (trávení), Karolinin pramen (metabolismus), Rudolfův pramen (močové cesty) a Lesní pramen (dýchací cesty). Prameny se používají jak pro pitné kúry, tak pro léčebné koupele.',
-  },
-  {
-    q: 'Jak se dostanu do Mariánských Lázní?',
-    a: 'Z Prahy je to asi 2 hodiny autem po dálnici D5 nebo přibližně 3 hodiny vlakem (přestup v Plzni). Z Mnichova je to přibližně 300 km po dálnicích A9/A93. Nejbližší velké letiště je Praha (PRG); letiště Karlovy Vary (KLV) nabízí omezené sezónní lety.',
-  },
-  {
-    q: 'Kdy je nejlepší doba pro návštěvu Mariánských Lázní?',
-    a: 'Každé roční období má svůj půvab: jaro (duben-květen) pro kvetoucí parky, léto (červen-srpen) pro Zpívající fontánu a Chopinský festival, podzim (září-říjen) pro zlaté lesy a méně turistů, zima (listopad-březen) pro vánoční trhy a atmosférický klid. Lázeňské procedury jsou k dispozici celoročně.',
-  },
-  {
-    q: 'Potřebuji lékařský předpis pro lázeňskou léčbu?',
-    a: 'Pro léčebné lázeňské programy je lékařský předpis doporučený, ale není striktně vyžadován. Lázeňské hotely mají vlastní lékaře, kteří při příjezdu provedou vstupní vyšetření a navrhnou individuální léčebný plán. Wellness pobyty předpis nevyžadují.',
-  },
-  {
-    q: 'Kolik stojí lázeňský pobyt v Mariánských Lázních?',
-    a: 'Ceny se liší podle hotelu a programu. 7denní pobyt s polopenzí a denními procedurami ve 4hvězdičkovém hotelu začíná přibližně na 18 000-23 000 Kč za osobu. 5hvězdičkové hotely jako Nové Lázně se pohybují od 30 000 do 45 000 Kč za týden.',
-  },
-  {
-    q: 'Jakými jazyky se v Mariánských Lázních mluví?',
-    a: 'Úředním jazykem je čeština. V hotelech, restauracích a turistickém informačním centru se široce mluví anglicky a německy. Běžně se rozumí také rusky. Město má dlouhou tradici přijímání mezinárodních hostů.',
-  },
-  {
-    q: 'Co je Zpívající fontána?',
-    a: 'Zpívající fontána před Hlavní kolonádou je nejznámější atrakcí Mariánských Lázní. Každou lichou hodinu předvádí choreografické show s vodou, světly a hudbou. Repertoár zahrnuje díla Dvořáka, Chopina a Mozarta. Večerní představení po setmění jsou obzvláště velkolepá.',
-  },
-  {
-    q: 'Jsou Mariánské Lázně na seznamu UNESCO?',
-    a: 'Ano! V roce 2021 byly Mariánské Lázně zapsány na seznam světového dědictví UNESCO jako součást „Významných lázeňských měst Evropy". Ocenění uznává jedinečnou kombinaci léčivých pramenů, historické architektury a lázeňské kultury.',
-  },
-  {
-    q: 'Jaké výlety se dají podniknout z Mariánských Lázní?',
-    a: 'Oblíbené jednodenní výlety: Karlovy Vary (1 hodina), hrad Loket (40 minut), klášter Teplá (20 minut), přírodní rezervace Kladská (15 minut), Plzeň s pivovarem Pilsner Urquell (80 minut) a zámek Kynžvart (7 km).',
-  },
+const page = await getPage('cs-faq')
+const faqs = page?.rawBody ? extractFaqs(page.rawBody) : []
+const breadcrumbs = [
+  { label: t(locale, 'nav.home'), href: `/${locale}` },
+  { label: t(locale, 'nav.practicalInfo'), href: `/${locale}/prakticke-informace` },
+  { label: 'FAQ' },
 ]
-
 const faqSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: faqs.map((faq) => ({
     '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
   })),
 })
 ---
 
-<Base locale={locale} section="practical-info" title="Časté dotazy (FAQ) — Marienbad.com" description="Odpovědi na nejčastější otázky o Mariánských Lázních: doprava, ceny, procedury, jazyky a další." alternateUrls={{ de: '/de/faq', en: '/en/faq', cs: '/cs/faq', ru: '/ru/faq' }}>
+<Base locale={locale} section="practical-info" title={page?.metaTitle ?? "FAQ"} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/faq', en: '/en/faq', cs: '/cs/faq', ru: '/ru/faq' }}>
   <script type="application/ld+json" set:html={faqSchema} />
-  <PillarPage locale={locale} title="Časté dotazy" description="Odpovědi na nejčastější otázky o návštěvě Mariánských Lázní.">
+  <PillarPage locale={locale} title={page?.title ?? "FAQ"} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
     <div class="space-y-6">
       {faqs.map((faq, i) => (
         <details class="group bg-beige-200 rounded-xl overflow-hidden" open={i === 0}>
           <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 md:p-6 text-indigo-700 font-semibold hover:text-indigo-500 transition-colors list-none">
-            <span>{faq.q}</span>
+            <span>{faq.question}</span>
             <svg class="w-5 h-5 shrink-0 text-turquoise-600 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </summary>
           <div class="px-5 md:px-6 pb-5 md:pb-6 text-beige-700 leading-relaxed">
-            {faq.a}
+            {faq.answer}
           </div>
         </details>
       ))}
