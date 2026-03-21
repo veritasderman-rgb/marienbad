@@ -14,10 +14,10 @@ const year = new Date().getFullYear()
 const privacyPaths: Record<Locale, string> = { de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }
 const imprintPaths: Record<Locale, string> = { de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }
 
-const discoverLabel = locale === 'de' ? 'Entdecken' : locale === 'cs' ? 'Objevte' : locale === 'ru' ? 'Откройте' : 'Discover'
-const magazineLabel = locale === 'de' ? 'Magazin' : locale === 'cs' ? 'Magazín' : locale === 'ru' ? 'Журнал' : 'Magazine'
-const contactLabel = locale === 'de' ? 'Kontakt' : locale === 'cs' ? 'Kontakt' : locale === 'ru' ? 'Контакт' : 'Contact'
-const ensanaDisclosure = locale === 'de' ? 'Eine Destination von Ensana Health Spa Hotels' : locale === 'cs' ? 'Destinace Ensana Health Spa Hotels' : locale === 'ru' ? 'Направление Ensana Health Spa Hotels' : 'A destination by Ensana Health Spa Hotels'
+const discoverLabel = t(locale, 'footer.discover')
+const magazineLabel = t(locale, 'footer.magazine')
+const contactLabel = t(locale, 'footer.contact')
+const ensanaDisclosure = t(locale, 'footer.ensanaDisclosure')
 ---
 
 <footer class="bg-beige-950 text-white">

@@ -1,0 +1,73 @@
+---
+/**
+ * Practical Summary Box — conversion-oriented quick-reference block.
+ * Displays key facts at a glance (duration, price range, best for, season, etc.)
+ * Usage:
+ *   <PracticalSummaryBox
+ *     locale={locale}
+ *     items={[
+ *       { icon: 'clock', label: 'Duration', value: '7–21 days' },
+ *       { icon: 'euro', label: 'From', value: '€ 890 / week' },
+ *       { icon: 'calendar', label: 'Best season', value: 'May–Oct' },
+ *       { icon: 'star', label: 'Best for', value: 'Joint pain, back issues' },
+ *     ]}
+ *   />
+ */
+import type { Locale } from '@/i18n/config'
+
+type IconType = 'clock' | 'euro' | 'calendar' | 'star' | 'map' | 'check' | 'info'
+
+interface SummaryItem {
+  icon?: IconType
+  label: string
+  value: string
+}
+
+interface Props {
+  locale: Locale
+  title?: string
+  items: SummaryItem[]
+}
+
+const { locale, items } = Astro.props
+
+const defaultTitles: Record<Locale, string> = {
+  de: 'Auf einen Blick',
+  en: 'At a Glance',
+  cs: 'Přehled',
+  ru: 'Обзор',
+}
+
+const title = Astro.props.title ?? defaultTitles[locale]
+
+const iconPaths: Record<IconType, string> = {
+  clock: 'M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z',
+  euro: 'M9.75 9a3 3 0 015.035-2.218M9 15a3 3 0 005.035 2.218M7 9h7m-7 6h7',
+  calendar: 'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5',
+  star: 'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z',
+  map: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
+  check: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  info: 'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z',
+}
+---
+
+<div class="bg-white border border-beige-200 rounded-xl shadow-card my-8 overflow-hidden">
+  <div class="bg-indigo-800 px-5 py-3">
+    <h3 class="font-heading text-white text-base font-semibold m-0">{title}</h3>
+  </div>
+  <div class="divide-y divide-beige-100">
+    {items.map(({ icon, label, value }) => (
+      <div class="flex items-start gap-3 px-5 py-3">
+        {icon && (
+          <svg class="w-5 h-5 text-turquoise-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[icon]} />
+          </svg>
+        )}
+        <div>
+          <span class="text-xs font-semibold text-beige-500 uppercase tracking-wide">{label}</span>
+          <p class="text-sm text-indigo-900 mt-0.5">{value}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

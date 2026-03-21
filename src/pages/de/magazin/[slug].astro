@@ -3,6 +3,8 @@ import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import SocialShare from '@/components/SocialShare.astro'
+import EditorialNote from '@/components/EditorialNote.astro'
+import WhyTrustUs from '@/components/WhyTrustUs.astro'
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
 import { getArticle, getArticles } from '@/content/reader'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
@@ -104,6 +106,8 @@ const relatedArticles = allArticles
       </div>
     )}
     <MarkdocRenderer content={article.body} />
+    <EditorialNote locale={locale} lastReviewed="2026-03" />
+    <WhyTrustUs locale={locale} />
     {article.youtubeVideoId && (
       <YouTubeEmbed
         videoId={article.youtubeVideoId}
