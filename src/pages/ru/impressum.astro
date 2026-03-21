@@ -1,23 +1,17 @@
 ---
 import Base from '@/layouts/Base.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'ru' as const
+const page = await getPage('ru-impressum')
 ---
 
-<Base locale={locale} title="Импрессум — Marienbad.com" description="Юридическая информация об операторе сайта marienbad.com." alternateUrls={{ de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }}>
+<Base locale={locale} title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }}>
   <main class="container-wide py-16 md:py-24">
     <div class="max-w-3xl mx-auto prose-marienbad">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">Импрессум</h1>
-
-      <h2>Оператор</h2>
-      <p><strong>Léčebné lázně Mariánské Lázně a.s.</strong><br/>ИН (IČO): 00206989<br/>Masarykova 22<br/>353 01 Марианске-Лазне, Чешская Республика</p>
-      <p>Редакционный проект: Marienbad Tourism, совместно с Ensana Health Spa Hotels.</p>
-
-      <h2>Контакт</h2>
-      <p>E-mail: <a href="mailto:info@marienbad.com">info@marienbad.com</a><br/>Телефон: +420 354 622 474</p>
-
-      <h2>Отказ от ответственности</h2>
-      <p>Несмотря на тщательный контроль, мы не несем ответственности за содержание внешних ссылок.</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8">{page?.title}</h1>
+      { page?.body && <MarkdocRenderer content={page.body} /> }
     </div>
   </main>
 </Base>
