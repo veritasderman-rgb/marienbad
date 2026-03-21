@@ -1,0 +1,270 @@
+---
+import Base from '@/layouts/Base.astro'
+import { hotels } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
+
+const locale = 'cs' as const
+const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
+
+const pageTitle = '130 let Nových Lázní — Oslavy výročí 1896–2026 — Marienbad.com'
+const pageDescription = 'Nové Lázně slaví 130 let od velkolepé přestavby architektem Josefem Schafferem. Objevte historii, Římské lázně a kabinet krále Eduarda VII.'
+
+const milestones = [
+  { year: '1827', title: 'Založení Nových lázní', description: 'Opat Karl Kašpar Reitenberger nechává postavit nový lázeňský dům s koupelemi v železnatých vodách Ambrožova a Karolinina pramene.' },
+  { year: '1841', title: 'Otevření Kursálu', description: 'Počet lázeňských kabin stoupl z 10 na 14. Instalována samostatná kotelna mimo budovu. Otevřen kursální sál pro společenské události.' },
+  { year: '1893–1896', title: 'Monumentální přestavba', description: 'Architekt Josef Schaffer proměňuje budovu ve velkolepý palác v italském novorenesančním stylu. Vznikají slavné Římské lázně s mramorovými sloupy a mozaikovými podlahami.' },
+  { year: '1897', title: 'První návštěva krále Eduarda VII.', description: 'Britský král Edward VII. přijíždí poprvé do Mariánských Lázní. Z Nových lázní si učiní svou základnu — jeho osobní koupací kabinet je zachován dodnes.' },
+  { year: '1904', title: 'Setkání panovníků', description: '16. srpna 1904 se v hotelu Nové Lázně setkávají císař František Josef I. a král Eduard VII. při oficiálním jednání.' },
+  { year: '1905', title: 'Založení Royal Golf Clubu', description: 'Král Eduard VII. zakládá nejstarší golfový klub v Čechách — Royal Golf Club Mariánské Lázně.' },
+  { year: '2005', title: 'Návštěva prince Edwarda', description: 'Princ Edward, vnuk královny Alžběty II., navštěvuje Mariánské Lázně a pokračuje tak v královské tradici.' },
+  { year: '2021', title: 'UNESCO — Světové dědictví', description: 'Mariánské Lázně se stávají součástí zápisu UNESCO „Slavná lázeňská města Evropy". Nové Lázně jsou jednou z klíčových staveb chráněné zóny.' },
+  { year: '2026', title: '130 let od přestavby', description: 'Nové Lázně slaví 130. výročí monumentální přestavby Josefem Schafferem. Budova stále slouží jako pětihvězdičkový lázeňský hotel s původními interiéry.' },
+]
+
+const highlights = [
+  {
+    title: 'Římské lázně',
+    description: 'Jediné Římské lázně ve střední Evropě. Mramorové bazény, klasické sochy a minerální voda — jako v antickém Římě. Originální dlaždice z roku 1896 jsou stále na svém místě.',
+    icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
+  },
+  {
+    title: 'Královský kabinet Eduarda VII.',
+    description: 'Zachovaný osobní koupací kabinet britského krále. Eduard VII. navštívil Mariánské Lázně devětkrát (1897–1909). Každé ráno pil vodu z Křížového pramene a poté zamířil do Nových lázní.',
+    icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
+  },
+  {
+    title: 'Císařský kabinet Františka Josefa I.',
+    description: 'Historický koupací kabinet rakouského císaře — připomínka diplomatického setkání dvou mocnářů v roce 1904.',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  },
+  {
+    title: '5 900 m² lázeňský komplex',
+    description: 'Nové Lázně, Centrální lázně a Maria Spa jsou propojeny krytými promenádami v jeden obří lázeňský komplex — největší historicky původní komplex v Čechách.',
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+]
+
+const funFacts = [
+  'Ferdinandův pramen byl přiveden do Nových lázní potrubím o délce 1 700 metrů z Úšovic. Parní stroj tlačil vodu po trase stoupající o 43 metrů.',
+  'Architekt Josef Schaffer vytvořil v Mariánských Lázních řadu dalších budov, ale Nové Lázně zůstávají jeho největším dílem.',
+  'Král Eduard VII. sem přijížděl tak pravidelně, že se Mariánské Lázně v médiích označovaly jako „letní hlavní město evropské diplomacie".',
+  'Na budově jsou dodnes zachovány čtyři věžičky — symbol, který se stal ikonickým znakem hotelu.',
+  'Mark Twain navštívil Mariánské Lázně v roce 1892 a s humorem psal o zdejších lázeňských rituálech.',
+  'Nové Lázně dnes nabízejí 225 plně vybavených pokojů, Královskou restauraci, restauraci Goethe a Vídeňskou kavárnu.',
+]
+---
+
+<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription} alternateUrls={{ cs: '/cs/nove-lazne-130-let', de: `/de/hotel/${hotel.slug}`, en: `/en/hotel/${hotel.slug}` }}>
+
+  <!-- Anniversary Hero -->
+  <section class="relative bg-indigo-700 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.15)_0%,_transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(201,163,105,0.1)_0%,_transparent_50%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+
+    <div class="relative container-wide py-20 md:py-32 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-300 text-sm font-semibold mb-6">
+        <span>★</span>
+        <span>1896 — 2026</span>
+        <span>★</span>
+      </div>
+
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="font-size: clamp(2.25rem, 5vw, 4.5rem);">
+        130 let Nových Lázní
+      </h1>
+
+      <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+        Od monumentální přestavby architektem <strong class="text-white">Josefem Schafferem</strong> v roce 1896
+        po dnešní pětihvězdičkový lázeňský hotel s jedinými <strong class="text-white">Římskými lázněmi</strong> ve střední Evropě.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={withUtm(hotel.bookingUrls.cs, 'marienbad', 'anniversary', 'nove-lazne-130')}
+          class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Rezervovat pobyt
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="#milniky" class="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-lg">
+          Objevte historii
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 md:gap-10 mt-12 text-sm">
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">1896</div>
+          <div class="text-white/50 mt-1">Rok přestavby</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">★★★★★</div>
+          <div class="text-white/50 mt-1">5 hvězdiček</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">5 900 m²</div>
+          <div class="text-white/50 mt-1">Lázeňský komplex</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">UNESCO</div>
+          <div class="text-white/50 mt-1">Světové dědictví</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Grid -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="text-center mb-12">
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Co dělá Nové Lázně výjimečnými</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Unikáty, které nikde jinde nenajdete</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {highlights.map((item) => (
+        <div class="bg-beige-200 rounded-xl p-6 md:p-8 flex gap-5 items-start">
+          <div class="shrink-0 w-12 h-12 rounded-xl bg-indigo-700 flex items-center justify-center">
+            <svg class="w-6 h-6 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={item.icon} />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mb-2">{item.title}</h3>
+            <p class="text-beige-700 text-sm leading-relaxed">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Architect Section -->
+  <section class="bg-indigo-700 text-white py-16 md:py-24">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">Architekt</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer (1862–1938)</h2>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          Schaffer převzal architektonické formování Mariánských Lázní na přelomu 19. a 20. století. Přinesl velkorysejší měřítko a bohatší dekorativní slovník. Jeho mistrovské dílo — <strong class="text-white">Nové Lázně</strong> — stanovilo nové standardy pro lázeňskou architekturu v celé Evropě.
+        </p>
+        <p class="text-white/70 text-lg leading-relaxed">
+          Přestavba v letech 1893–1896 proměnila původní budovu z roku 1827 v <strong class="text-white">monumentální palác v italském novorenesančním stylu</strong>. Schaffer vytvořil prostory, které kombinovaly nejmodernější balneologickou technologii s architektonickou krásou hodnou královských hostů.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="milniky" class="container-wide py-16 md:py-24">
+    <div class="text-center mb-12">
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Cesta staletími</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Milníky Nových Lázní</h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-[27px] top-0 bottom-0 w-px bg-beige-300 hidden md:block"></div>
+
+        <div class="space-y-8">
+          {milestones.map((milestone) => (
+            <div class="flex gap-5 items-start">
+              <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-700 text-white flex items-center justify-center text-xs font-bold z-10 shadow-lg">
+                {milestone.year.includes('–') ? milestone.year.split('–')[0] : milestone.year}
+              </div>
+              <div class="pt-2">
+                <div class="text-turquoise-600 text-sm font-semibold">{milestone.year}</div>
+                <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1">{milestone.title}</h3>
+                <p class="text-beige-700 text-sm leading-relaxed mt-1">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts -->
+  <section class="bg-beige-200 py-16 md:py-24">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Věděli jste?</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Zajímavosti z historie</h2>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Fakta a příběhy z 130 let existence Nových Lázní, sesbírané z historických pramenů a archivů Hameliky.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {funFacts.map((fact, i) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-8 h-8 rounded-full bg-yellow-400 text-indigo-900 flex items-center justify-center font-bold text-sm mb-4">{i + 1}</div>
+            <p class="text-beige-800 text-sm leading-relaxed">{fact}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- King Edward Section -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-indigo-700 text-white rounded-2xl p-8 md:p-12">
+        <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Královská tradice</span>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Devět návštěv krále Eduarda VII.</h2>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Britský král Eduard VII. navštívil Mariánské Lázně <strong class="text-white">devětkrát</strong> v letech 1897–1909 a učinil z města <strong class="text-white">letní hlavní město evropské diplomacie</strong>. Významné politické rozhovory se odehrávaly na promenádách i v hotelech.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Každý jeho den sledoval ustálený rituál: <strong class="text-white">ráno pitná kúra u Křížového pramene</strong>, poté zamířil přímo do Nových lázní — do svého soukromého kabinetu na relaxační minerální koupel.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-6">
+          V roce 1905 založil <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — nejstarší golfový klub v České republice, který funguje dodnes.
+        </p>
+        <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
+          „Prodloužená čtyřvěžová budova byla připravena přijímat slavné krále a císaře. Královský kabinet byl zachován jako svědectví éry, kdy se v Mariánských Lázních psaly dějiny Evropy."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-indigo-700 text-white py-16 md:py-24">
+    <div class="container-wide text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-300 text-sm font-semibold mb-6">
+        <span>130 let — výroční pobyt</span>
+      </div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Prožijte historii na vlastní kůži</h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">
+        Rezervujte si pobyt v hotelu, kde se koupali králové a císaři. Zažijte Římské lázně, minerální koupele a atmosféru 130 let staré tradice.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={withUtm(hotel.bookingUrls.cs, 'marienbad', 'anniversary-cta', 'nove-lazne-130')}
+          class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Rezervovat výroční pobyt
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href={`/${locale}/ubytovani`} class="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-lg">
+          Všechny hotely
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="container-wide py-8 md:py-12">
+    <p class="text-beige-500 text-xs text-center">
+      Historické informace čerpány z
+      <a href="https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Mariánskolázeňských análů (Hamelika)</a>,
+      <a href="https://www.hamelika.cz/?cz_shrnuti-historie-marianskych-lazni%2C40=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Shrnutí historie (Hamelika)</a>
+      a <a href="https://www.travelfever.cz/en/articles/nove-lazne-with-the-hallmark-of-an-illustrious-history" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">TravelFever</a>.
+    </p>
+  </section>
+
+</Base>
