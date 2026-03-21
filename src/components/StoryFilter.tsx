@@ -33,9 +33,9 @@ const LOCALE_LABELS: Record<string, string> = {
 }
 
 const GRADIENTS = [
-  'linear-gradient(135deg, #1A1916 0%, #266782 100%)',
-  'linear-gradient(135deg, #1A1916 0%, #004F71 100%)',
-  'linear-gradient(135deg, #1A1916 0%, #3A8BA8 100%)',
+  'linear-gradient(135deg, var(--color-beige-950) 0%, var(--color-indigo-600) 100%)',
+  'linear-gradient(135deg, var(--color-beige-950) 0%, var(--color-indigo-800) 100%)',
+  'linear-gradient(135deg, var(--color-beige-950) 0%, var(--color-turquoise-700) 100%)',
 ]
 
 function StoryCard({ story, index }: { story: StoryData; index: number }) {
@@ -125,7 +125,7 @@ export default function StoryFilter({ stories, translations, currentLocale }: St
   }, [stories, activeLocale, effectiveLocation])
 
   const buttonBase =
-    'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 border'
+    'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 border focus:outline-none focus:ring-2 focus:ring-turquoise-400 focus:ring-offset-2'
   const buttonActive =
     'bg-indigo-700 text-white border-indigo-700'
   const buttonInactive =

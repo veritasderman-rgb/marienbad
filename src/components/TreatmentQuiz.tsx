@@ -369,7 +369,7 @@ export default function TreatmentQuiz({
                   <button
                     key={key}
                     onClick={() => toggleCondition(key)}
-                    className={`group relative text-center flex flex-col items-center gap-2.5 py-5 px-3 rounded-xl text-sm font-medium transition-all duration-200 border-2 cursor-pointer ${
+                    className={`group relative text-center flex flex-col items-center gap-2.5 py-5 px-3 rounded-xl text-sm font-medium transition-all duration-200 border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-turquoise-400 focus:ring-offset-2 ${
                       isActive
                         ? 'bg-indigo-700 text-white border-indigo-700 shadow-lg shadow-indigo-700/20'
                         : 'bg-white text-indigo-600 border-beige-200 hover:border-turquoise-300 hover:shadow-md'
@@ -392,7 +392,7 @@ export default function TreatmentQuiz({
               <button
                 onClick={() => canProceedStep1 && setStep(2)}
                 disabled={!canProceedStep1}
-                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-base transition-all duration-200 ${
+                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 ${
                   canProceedStep1
                     ? 'bg-yellow-400 text-indigo-800 hover:bg-yellow-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer'
                     : 'bg-beige-200 text-indigo-300 cursor-not-allowed'
@@ -423,7 +423,7 @@ export default function TreatmentQuiz({
                   <button
                     key={key}
                     onClick={() => setBudget(key)}
-                    className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border-2 cursor-pointer ${
+                    className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-turquoise-400 focus:ring-offset-2 ${
                       budget === key
                         ? 'bg-indigo-700 text-white border-indigo-700 shadow-md'
                         : 'bg-white text-indigo-600 border-beige-200 hover:border-turquoise-300 hover:shadow-sm'
@@ -445,7 +445,7 @@ export default function TreatmentQuiz({
                   <button
                     key={key}
                     onClick={() => setStyle(key)}
-                    className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border-2 cursor-pointer ${
+                    className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-turquoise-400 focus:ring-offset-2 ${
                       style === key
                         ? 'bg-indigo-700 text-white border-indigo-700 shadow-md'
                         : 'bg-white text-indigo-600 border-beige-200 hover:border-turquoise-300 hover:shadow-sm'
@@ -460,7 +460,7 @@ export default function TreatmentQuiz({
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => setStep(1)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm text-indigo-600 border-2 border-indigo-200 hover:border-indigo-400 transition-all hover:bg-white/60 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm text-indigo-600 border-2 border-indigo-200 hover:border-indigo-400 transition-all hover:bg-white/60 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
               >
                 <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
                 {tr.back}
@@ -468,7 +468,7 @@ export default function TreatmentQuiz({
               <button
                 onClick={() => canProceedStep2 && setStep(3)}
                 disabled={!canProceedStep2}
-                className={`inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-base transition-all duration-200 ${
+                className={`inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 ${
                   canProceedStep2
                     ? 'bg-yellow-400 text-indigo-800 hover:bg-yellow-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer'
                     : 'bg-beige-200 text-indigo-300 cursor-not-allowed'
@@ -579,14 +579,14 @@ export default function TreatmentQuiz({
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => setStep(2)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm text-indigo-600 border-2 border-indigo-200 hover:border-indigo-400 transition-all hover:bg-white/60 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm text-indigo-600 border-2 border-indigo-200 hover:border-indigo-400 transition-all hover:bg-white/60 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
               >
                 <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
                 {tr.back}
               </button>
               <button
                 onClick={handleRestart}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-indigo-700 text-white hover:bg-indigo-600 transition-all shadow-sm hover:shadow-md cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-indigo-700 text-white hover:bg-indigo-600 transition-all shadow-sm hover:shadow-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
               >
                 <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
                 {tr.restart}

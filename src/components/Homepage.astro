@@ -422,7 +422,7 @@ const gradients = [
     "@type": "TouristDestination",
     "name": dest.name,
     "description": dest.description,
-    "url": "https://marienbad.vercel.app",
+    "url": import.meta.env.SITE ?? "https://marienbad.vercel.app",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Mariánské Lázně",

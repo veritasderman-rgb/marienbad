@@ -48,8 +48,8 @@ export const GET: APIRoute = ({ url }) => {
   const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3730a3" />
-      <stop offset="100%" stop-color="#0d9488" />
+      <stop offset="0%" stop-color="#004F71" />
+      <stop offset="100%" stop-color="#266782" />
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
@@ -60,7 +60,7 @@ export const GET: APIRoute = ({ url }) => {
   <text x="60" y="80" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="white" opacity="0.9">Marienbad.com</text>
   <text x="60" y="110" font-family="Arial, sans-serif" font-size="14" fill="white" opacity="0.5" letter-spacing="3">${esc(localeLabel.toUpperCase())}</text>
   <!-- Divider line -->
-  <rect x="60" y="130" width="80" height="3" rx="1.5" fill="#2dd4bf" opacity="0.8" />
+  <rect x="60" y="130" width="80" height="3" rx="1.5" fill="#8AD8ED" opacity="0.8" />
   <!-- Title -->
   <text x="60" y="260" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="white">${titleLines}</text>
   <!-- Subtitle -->

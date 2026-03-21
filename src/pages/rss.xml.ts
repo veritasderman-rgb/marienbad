@@ -3,6 +3,7 @@ import { getAllArticles } from '@/content/reader'
 
 export const GET: APIRoute = async () => {
   const articles = await getAllArticles()
+  const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')
 
   const items = articles
     .map(
@@ -11,7 +12,7 @@ export const GET: APIRoute = async () => {
       <title><![CDATA[${article.title}]]></title>
       <description><![CDATA[${article.excerpt}]]></description>
       <pubDate>${new Date(article.date).toUTCString()}</pubDate>
-      <link>https://marienbad.vercel.app/${article.locale}/${article.locale === 'de' ? 'magazin' : article.locale === 'cs' ? 'magazin' : article.locale === 'ru' ? 'zhurnal' : 'magazine'}/${article.slug.replace(/^[a-z]{2}-/, '')}</link>
+      <link>${siteUrl}/${article.locale}/${article.locale === 'de' ? 'magazin' : article.locale === 'cs' ? 'magazin' : article.locale === 'ru' ? 'zhurnal' : 'magazine'}/${article.slug.replace(/^[a-z]{2}-/, '')}</link>
       <category>${article.category}</category>
       <dc:language>${article.locale}</dc:language>
     </item>`
@@ -23,8 +24,8 @@ export const GET: APIRoute = async () => {
   <channel>
     <title>Marienbad Magazine</title>
     <description>Stories, tips and insights from Mariánské Lázně</description>
-    <link>https://marienbad.vercel.app</link>
-    <atom:link href="https://marienbad.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>${siteUrl}</link>
+    <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     <language>de</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${items}
