@@ -1,61 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-unesco')
 ---
 
-<Base locale={locale} section="history" title="UNESCO World Heritage — Marienbad.com" description="Mariánské Lázně as part of the Great Spa Towns of Europe — UNESCO World Heritage since 2021." alternateUrls={{ de: '/de/unesco', en: '/en/unesco', cs: '/cs/unesco', ru: '/ru/unesco' }}>
-  <PillarPage locale={locale} title="UNESCO World Heritage" description="Since 2021, Mariánské Lázně has been part of the UNESCO World Heritage inscription of the Great Spa Towns of Europe.">
-    <h2>The Great Spa Towns of Europe</h2>
-    <p>On 24 July 2021, the <strong>"Great Spa Towns of Europe"</strong> were inscribed on the UNESCO World Heritage List. Mariánské Lázně is one of eleven European spa towns to receive this prestigious recognition — alongside Baden bei Wien, Spa (Belgium), Františkovy Lázně, Karlovy Vary, Vichy, Bad Ems, Baden-Baden, Bad Kissingen, Montecatini Terme and the City of Bath.</p>
-
-    <p>The inscription recognises the <strong>outstanding universal value</strong> of these towns as testimony to a unique European cultural practice: spa culture, which has intertwined medicine, architecture, landscape design and social life over centuries.</p>
-
-    <h2>Why Marienbad?</h2>
-    <p>Mariánské Lázně fulfils the UNESCO criteria in a particularly remarkable way:</p>
-
-    <ul>
-      <li><strong>Natural healing resources:</strong> Over 40 mineral springs with unique geochemical diversity — no other spa town combines water, peat, natural CO₂ and a certified healing climate in such a compact area.</li>
-      <li><strong>Architectural ensemble:</strong> The Main Colonnade (1889), the Church of the Assumption, the Neo-Renaissance spa buildings and the Art Nouveau hotels form an exceptionally well-preserved urban ensemble.</li>
-      <li><strong>Landscape architecture:</strong> The spa parks designed by Václav Skalník from 1817 are considered masterpieces of landscape design, flowing seamlessly into the surrounding Slavkov Forest.</li>
-      <li><strong>Living tradition:</strong> Drinking cures, promenades and spa rituals are practised to this day — Marienbad is not a museum but an active spa resort with medically recognised treatment programmes.</li>
-    </ul>
-
-    <h2>The Core Heritage Zone</h2>
-    <p>The UNESCO core zone encompasses the entire historic centre of Mariánské Lázně:</p>
-
-    <ul>
-      <li>The <strong>Main Colonnade</strong> with the central springs (Cross, Caroline, Rudolf)</li>
-      <li>The <strong>Skalníkovy sady</strong> (Spa Park) with the Singing Fountain</li>
-      <li>The <strong>Forest Spring</strong> and the Ambrosius Pavilion</li>
-      <li>The historic <strong>spa hotels</strong> along Hlavní třída</li>
-      <li>The <strong>Church of the Assumption</strong> on the hill above the town</li>
-      <li>The <strong>Casino</strong> and the <strong>Town Theatre</strong></li>
-    </ul>
-
-    <p>The buffer zone extends across the surrounding residential quarters and the adjacent Slavkov Forest, which protects the natural environment of the healing springs.</p>
-
-    <h2>History of the Nomination</h2>
-    <p>The nomination of the Great Spa Towns of Europe was a <strong>transnational collaborative effort</strong> involving seven European countries. The process began in 2010 and involved extensive research, documentation and international coordination.</p>
-
-    <p>For Mariánské Lázně, the inscription represents an official recognition of what the town has embodied for over 200 years: a place where healing, beauty and culture come together in a unique way.</p>
-
-    <h2>What Does It Mean for Visitors?</h2>
-    <p>UNESCO status commits the town to the <strong>preservation and sustainable development</strong> of its spa heritage. For visitors, this means:</p>
-
-    <ul>
-      <li>The historic fabric of the town is protected under international standards</li>
-      <li>New development must harmonise with the overall townscape</li>
-      <li>The quality of healing springs and natural surroundings is monitored</li>
-      <li>The living spa culture — drinking cures, promenades, concerts — is maintained as intangible heritage</li>
-    </ul>
-
-    <blockquote>
-      <p>"Mariánské Lázně embodies European spa culture in its purest form — a place where nature heals and architecture inspires."</p>
-    </blockquote>
-
-    <h2>Further Information</h2>
-    <p>The UNESCO World Heritage information centre is located in the Kursaal near the Main Colonnade. Here you can learn more about the history of the nomination, the protected areas and ongoing conservation measures. Guided tours of the World Heritage core zone are offered in English, German and Czech.</p>
+<Base locale={locale} section="history" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/unesco', en: '/en/unesco', cs: '/cs/unesco', ru: '/ru/unesco' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

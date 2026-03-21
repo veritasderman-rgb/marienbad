@@ -1,67 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import { t } from '@/i18n/ui'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
-const breadcrumbs = [
-  { label: t(locale, 'nav.home'), href: `/${locale}` },
-  { label: t(locale, 'nav.thingsToDo'), href: `/${locale}/things-to-do` },
-  { label: 'Golf' },
-]
+const page = await getPage('en-golf')
 ---
 
-<Base locale={locale} section="things-to-do" title="Royal Golf Club Mariánské Lázně — Marienbad.com" description="The oldest golf club in the Czech Republic, founded in 1905 by King Edward VII. 18-hole championship course in the Slavkov Forest." alternateUrls={{ de: '/de/golf', en: '/en/golf', cs: '/cs/golf', ru: '/ru/golf' }}>
-  <PillarPage locale={locale} title="Royal Golf Club Mariánské Lázně" description="Founded in 1905 by King Edward VII — the oldest golf club in the Czech Republic with an 18-hole championship course at 787 metres elevation." breadcrumbs={breadcrumbs}>
-    <h2>A Royal Heritage</h2>
-    <p>The <strong>Royal Golf Club Mariánské Lázně</strong> was founded in 1905 at the initiative of <strong>King Edward VII of England</strong>, who visited Marienbad regularly and was a passionate golfer. The club is the <strong>oldest golf club in the Czech Republic</strong> and one of the oldest in Central Europe.</p>
-
-    <p>Edward's influence on Marienbad extended far beyond golf — he transformed the town into the summer meeting place of European diplomacy. But the golf club remains his most visible legacy: a place where sporting excellence meets natural beauty.</p>
-
-    <h2>The Course</h2>
-    <p>The 18-hole championship course sits on a <strong>787-metre plateau</strong> in the Slavkov Forest (Kaiserwald), offering a unique playing experience:</p>
-
-    <ul>
-      <li><strong>Par 72</strong>, total length approximately 6,100 metres</li>
-      <li>Set among pine forests on gently undulating terrain</li>
-      <li>Natural hazards: forest edges, heathland, strategically placed bunkers</li>
-      <li>Panoramic views over the town and the wooded hills beyond</li>
-      <li>Special challenge: the altitude affects ball flight distances</li>
-    </ul>
-
-    <p>The course is renowned for its <strong>excellent condition</strong> and harmonious integration with the natural landscape. Unlike many modern golf facilities, it was carefully woven into the existing woodland — the playing experience is defined by silence, nature and the expanse of the forest.</p>
-
-    <h2>The Clubhouse</h2>
-    <p>The clubhouse, with its <strong>Edwardian charm</strong>, is a destination in its own right. The tastefully restored rooms preserve the atmosphere of the founding era and offer:</p>
-
-    <ul>
-      <li>Restaurant with terrace and panoramic views</li>
-      <li>Bar and lounge</li>
-      <li>Pro shop with equipment hire</li>
-      <li>Changing rooms and showers</li>
-      <li>Historical photographs and memorabilia</li>
-    </ul>
-
-    <h2>Playing as a Guest</h2>
-    <p>The Royal Golf Club <strong>warmly welcomes visitors</strong>. Here is what you need to know:</p>
-
-    <ul>
-      <li><strong>Season:</strong> Mid-April to late October (weather dependent)</li>
-      <li><strong>Green fee:</strong> From approximately €80-120 depending on season and day</li>
-      <li><strong>Equipment hire:</strong> Full rental sets (clubs, trolley) available on site</li>
-      <li><strong>Handicap:</strong> Proof of handicap required; maximum handicap 36</li>
-      <li><strong>Lessons:</strong> PGA-qualified professionals for individual and group tuition</li>
-      <li><strong>Booking:</strong> Tee times can be reserved online or by telephone</li>
-    </ul>
-
-    <h2>Tournaments</h2>
-    <p>The club hosts several tournaments annually, including the traditional <strong>King Edward VII Memorial Tournament</strong>, which keeps the memory of the founder alive. The tournament season runs from May to September.</p>
-
-    <h2>Combining Golf and Spa</h2>
-    <p>Many visitors combine a golf holiday with a spa stay — a perfect blend of sporting activity and recuperation. The Ensana Spa Hotels offer special <strong>golf-and-spa packages</strong> that combine green fees, transfers to the course and a daily wellness programme.</p>
-
-    <blockquote>
-      <p>"Golf in Marienbad is an experience unlike any other: the silence of the forest, the pure air at 800 metres, the feeling of playing a course that a king laid out."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/golf', en: '/en/golf', cs: '/cs/golf', ru: '/ru/golf' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

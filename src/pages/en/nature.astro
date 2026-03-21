@@ -1,55 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-nature')
 ---
 
-<Base locale={locale} section="things-to-do" title="Nature & Parks — Marienbad.com" description="Spa parks, Slavkov Forest, Kladská — the green side of Mariánské Lázně. Walking trails, geology and nature experiences." alternateUrls={{ de: '/de/natur', en: '/en/nature', cs: '/cs/priroda', ru: '/ru/priroda' }}>
-  <PillarPage locale={locale} title="Nature & Parks" description="Nearly half of the municipality is covered by forest. The parks and gardens of Marienbad are among the finest in Central Europe.">
-    <h2>A Green Paradise</h2>
-    <p>Mariánské Lázně is above all a <strong>green town</strong>. Nearly half of the municipality is covered by forest, and the artfully designed spa parks flow seamlessly into the natural woodland of the Slavkov Forest (Kaiserwald). This unique fusion of crafted and wild nature makes Marienbad a paradise for walkers, hikers and nature lovers.</p>
-
-    <h2>Skalníkovy sady (Spa Park)</h2>
-    <p>The central spa park was laid out from 1817 by <strong>Václav Skalník</strong> — a visionary landscape architect who transformed a marshy valley into one of the most admired parks in Europe. Skalník's naturalistic style — winding paths, picturesque sight lines, artful plantings — has been preserved to this day.</p>
-    <p>Park highlights:</p>
-    <ul>
-      <li><strong>Singing Fountain</strong> — Water, light and music in front of the Colonnade</li>
-      <li><strong>Cross Spring</strong> — The most famous mineral spring, accessible in the Colonnade</li>
-      <li><strong>Rhododendron Grove</strong> — A sea of colour in May</li>
-      <li><strong>Goethe Monument</strong> — At the site of his famous encounters</li>
-    </ul>
-
-    <h2>Geological Park</h2>
-    <p>A unique <strong>open-air museum</strong> above the town, showcasing the geological diversity of Bohemia. Large-format rock specimens from across the region are arranged along a woodland path — with informative displays explaining the volcanic and tectonic forces that created Marienbad's springs.</p>
-
-    <h2>Kladská Nature Reserve</h2>
-    <p>Just 15 minutes from Marienbad lies the <strong>Kladská Nature Reserve</strong> — a pristine peat bog with a charming Swiss-style hunting lodge at its centre. A <strong>boardwalk</strong> leads across the bog, offering a fascinating insight into this unique ecosystem: carnivorous plants, birch moorland, rare dragonflies.</p>
-    <p>Kladská is one of the region's best-kept secrets — an excursion few tourists make, but one that is unforgettable.</p>
-
-    <h2>Walking Trails</h2>
-    <p>A dense network of marked trails extends in every direction:</p>
-    <ul>
-      <li><strong>Forest Spring (Lesní pramen)</strong> — Located inside the Centrální Lázně building, freely accessible to visitors</li>
-      <li><strong>Hamelika Lookout Tower</strong> — 1.5-hour circular route with panoramic views over the town</li>
-      <li><strong>Úšovice Valley</strong> — Gentle walk along the stream, ideal for families</li>
-      <li><strong>Long-distance trails</strong> — Marienbad lies on several regional hiking routes through the Slavkov Forest</li>
-    </ul>
-
-    <h2>Cycling</h2>
-    <p>The Slavkov Forest offers cycling trails for every level — from easy family routes on paved paths to challenging mountain bike tracks. Hire shops in the town centre offer standard and e-bikes. Several hotels offer <strong>cycling packages</strong> with maps, packed lunches and luggage transfers.</p>
-
-    <h2>Flora and Fauna</h2>
-    <p>The Slavkov Forest is a <strong>protected nature reserve</strong> with remarkable biodiversity:</p>
-    <ul>
-      <li>Over 900 plant species, including rare orchids and ferns</li>
-      <li>Deer, wild boar, foxes, and occasionally lynx</li>
-      <li>Rich birdlife — black woodpecker, kingfisher, goshawk</li>
-      <li>In autumn: excellent mushroom foraging territory (porcini, chanterelles, bay boletes)</li>
-    </ul>
-
-    <blockquote>
-      <p>"Nature around Marienbad is not just scenery — it is part of the healing. The pure air, the silence of the forest, the rhythm of a walk are as therapeutic as the springs and baths."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/natur', en: '/en/nature', cs: '/cs/priroda', ru: '/ru/priroda' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

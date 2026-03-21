@@ -1,88 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
-import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
-import { t } from '@/i18n/ui'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
-const breadcrumbs = [
-  { label: t(locale, 'nav.home'), href: `/${locale}` },
-  { label: 'Healing Springs', href: `/${locale}/mineral-springs` },
-  { label: 'CO₂ Therapy' },
-]
+const page = await getPage('en-co2-therapy')
 ---
 
-<Base locale={locale} section="mineral-springs" title="CO₂ Therapy — Maria's Gas — Marienbad.com" description="The unique CO₂ therapy in Marienbad: how natural carbon dioxide improves circulation, blood pressure and wellbeing." alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }}>
-  <PillarPage locale={locale} title="CO₂ Therapy: Maria's Gas" description="The unique CO₂ therapy uses 99.7% pure natural carbon dioxide to improve circulation and overall wellbeing." breadcrumbs={breadcrumbs}>
-    <h2>What is Maria's Gas?</h2>
-    <p>Mariánské Lázně possesses a globally unique natural resource: <strong>99.7% pure carbon dioxide gas (CO₂)</strong> that rises naturally from the volcanic subsoil of the Slavkov Forest. This gas, affectionately known as <em>"Maria's Gas"</em>, is one of Marienbad's four natural healing resources and forms the basis for a range of highly effective therapeutic treatments.</p>
-
-    <p>CO₂ therapy is one of the most thoroughly researched forms of balneotherapy (the science of therapeutic bathing) and has been systematically practised in Marienbad for over 150 years.</p>
-
-    <TreatmentHighlightBox
-      title="CO₂ Dry Gas Bath"
-      description="The patient is enclosed in a special bag filled with natural CO₂. The gas is absorbed through the skin, dilating blood vessels and increasing peripheral circulation by up to 300%. Duration: 20-30 minutes."
-      icon="gas"
-    />
-
-    <h2>How Does CO₂ Therapy Work?</h2>
-    <p>When carbon dioxide is absorbed through the skin, it triggers a cascade of physiological responses:</p>
-
-    <ul>
-      <li><strong>Vasodilation:</strong> CO₂ relaxes the smooth muscles of blood vessels, leading to significant dilation. Blood flow in the treated areas can triple.</li>
-      <li><strong>Blood pressure regulation:</strong> Vasodilation reduces peripheral resistance, thereby lowering arterial blood pressure.</li>
-      <li><strong>Improved oxygenation:</strong> Through the Bohr effect, oxygen release from haemoglobin to tissues is facilitated — cells receive better oxygen supply.</li>
-      <li><strong>Pain relief:</strong> Improved circulation and the direct effect of CO₂ on nerve fibres produce an analgesic effect.</li>
-      <li><strong>Wound healing:</strong> Enhanced microcirculation promotes tissue regeneration and accelerates healing.</li>
-    </ul>
-
-    <h2>Forms of CO₂ Therapy in Marienbad</h2>
-
-    <h3>1. CO₂ Dry Gas Bath (Marienbad Gas Wrap)</h3>
-    <p>The most well-known application: the patient lies in a special plastic bag reaching to the neck, filled with natural CO₂. The treatment lasts 20-30 minutes and is completely painless — many patients experience a pleasant sensation of warmth and tingling.</p>
-
-    <h3>2. CO₂ Bath (Carbonated Mineral Bath)</h3>
-    <p>Mineral baths enriched with natural CO₂. The gas is absorbed through the skin and partially through the respiratory tract. The bath temperature is 33-34°C, well below a normal warm bath — yet the patient perceives pleasant warmth due to the vasodilating effect of CO₂.</p>
-
-    <h3>3. CO₂ Insufflation (Gas Injections)</h3>
-    <p>Subcutaneous injections of small amounts of CO₂ into painful joints or muscle areas. This method is used for targeted local complaints, combining the circulation-enhancing effect with a direct analgesic action.</p>
-
-    <h2>Indications</h2>
-    <p>CO₂ therapy is successfully used for:</p>
-    <ul>
-      <li>Cardiovascular conditions (arterial hypertension, peripheral circulation disorders)</li>
-      <li>Musculoskeletal conditions (osteoarthritis, rheumatic complaints)</li>
-      <li>Wound healing disorders and trophic ulcers</li>
-      <li>Diabetic polyneuropathy</li>
-      <li>Post-operative rehabilitation</li>
-      <li>Stress-related conditions and fatigue syndromes</li>
-    </ul>
-
-    <h2>What Does the Science Say?</h2>
-    <p>CO₂ therapy is one of the most thoroughly researched forms of balneotherapy. Clinical experience and studies suggest:</p>
-    <ul>
-      <li>A reduction in systolic blood pressure by up to 10–15 mmHg after a two-week course</li>
-      <li>A substantial improvement in peripheral circulation</li>
-      <li>A majority of patients report significant pain reduction for joint complaints</li>
-      <li>Measurable improvement in wound healing for chronic ulcers</li>
-    </ul>
-
-    <HotelRecommendationBox
-      locale={locale}
-       locale={locale}
-      locale={locale}
-      name="Ensana Nové Lázně"
-      stars={5}
-      badge="CO₂ Expert"
-      description="Nové Lázně offers a comprehensive CO₂ therapy programme using natural Marienbad gas — including dry gas baths, carbonated mineral baths and gas injections under medical supervision."
-      bookingUrl="https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=co2-therapy"
-      bookingLabel="Book CO₂ therapy"
-    />
-
-    <h2>Practical Information</h2>
-    <p>CO₂ therapy is available at all Ensana Spa Hotels in Marienbad. A single treatment lasts 20-30 minutes and is typically administered once daily over a period of 7-21 days. Optimal results develop with a minimum course of 14 days.</p>
-
-    <p>Before beginning treatment, a medical examination determines your individual therapy plan. Contraindications include acute inflammation, uncontrolled heart failure and certain skin conditions.</p>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

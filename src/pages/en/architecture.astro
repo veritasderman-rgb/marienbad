@@ -1,74 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
+const page = await getPage('en-architecture')
 ---
 
-<Base locale={locale} section="things-to-do" title="Architecture in Marienbad — Marienbad.com" description="Neo-Renaissance, Neo-Baroque, Art Nouveau — the architectural treasures of Mariánské Lázně. Colonnades, spa buildings and the UNESCO connection." alternateUrls={{ de: '/de/architektur', en: '/en/architecture', cs: '/cs/architektura', ru: '/ru/arkhitektura' }}>
-  <PillarPage locale={locale} title="Architecture in Marienbad" description="Mariánské Lázně is an open-air museum of European architecture — from Neo-Renaissance through Neo-Baroque to Art Nouveau, built in just a few decades.">
-    <h2>A Town Built as One</h2>
-    <p>What makes Mariánské Lázně architecturally unique is the <strong>coherence of its townscape</strong>. Unlike cities that evolved over centuries, Marienbad was built almost entirely in the 19th century — in a remarkably short span between 1820 and 1900. The result is a striking ensemble of spa houses, hotels, villas and public buildings that are harmonious in style and scale.</p>
-    <p>The architects who shaped Marienbad did not merely design individual buildings — they created a <strong>stage for the spa life</strong>: promenades for strolling, colonnades for drinking the healing waters, parks as green salons and hotels as palaces for visitors from across Europe.</p>
-
-    <h2>The Styles</h2>
-
-    <h3>Neo-Renaissance</h3>
-    <p>The dominant style of many of Marienbad's public buildings. Inspired by the Italian Renaissance, these structures are characterised by <strong>symmetrical facades, round-arched windows, pilasters and rich ornamental detail</strong>. The New Spa (Nové Lázně) is the outstanding example of this style in Marienbad.</p>
-
-    <h3>Neo-Baroque</h3>
-    <p>The <strong>Neo-Baroque</strong> was favoured for prestigious hotels and the Casino — a style that radiates grandeur and elegance. Curved gables, lavish stucco decoration, balconies with wrought-iron railings and monumental entrance halls define these buildings. The Neo-Baroque gave Marienbad the air of grandezza that its aristocratic guests expected.</p>
-
-    <h3>Art Nouveau (Jugendstil)</h3>
-    <p>Towards the end of the 19th century, <strong>Art Nouveau</strong> arrived — with flowing lines, floral ornaments and a union of art and craft. Individual villas and commercial buildings display this style, often in charming contrast to the older structures nearby. Particularly fine Art Nouveau details can be found on facades along Hlavní třída (Main Street).</p>
-
-    <h2>Key Buildings</h2>
-
-    <h3>Nové Lázně (New Spa)</h3>
-    <p>The <strong>Nové Lázně</strong>, built between 1893 and 1896 to designs by Josef Schaffer, is Marienbad's architectural crown jewel. The monumental Neo-Renaissance building today houses a five-star hotel operated by the Ensana group and functions simultaneously as a working spa. Its centrepiece is the <strong>Roman Bath</strong> — a magnificent room with marble basins, mosaic floors and a coffered ceiling reminiscent of the thermae of ancient Rome. King Edward VII bathed here regularly; his personal bathing cabinet has been preserved.</p>
-
-    <h3>Casino (Městské divadlo / Municipal Theatre)</h3>
-    <p>The <strong>Casino</strong>, designed by Friedrich Zíckler and opened in 1868, never served as a gambling house but as the social centre — with a ballroom, concert hall and theatre. The Neo-Baroque building with its elegant facade was where spa society gathered for the evening programme. Today the building houses the Municipal Theatre and serves as the venue for the annual Chopin Festival.</p>
-
-    <h3>Hlavní kolonáda (Main Colonnade)</h3>
-    <p>The <strong>Main Colonnade</strong>, an elegant cast-iron structure, is Marienbad's most recognisable landmark. Erected in 1888–1889, its delicate metalwork and painted ceiling panels shelter the Cross Spring and form the setting for the <strong>Singing Fountain</strong>. The cast-iron construction was cutting-edge at the time — an example of the marriage between engineering and aesthetics.</p>
-
-    <h2>The Architects</h2>
-
-    <h3>Friedrich Zíckler (1829–1906)</h3>
-    <p>Zíckler was the most formative architect of early Marienbad. As municipal architect, he designed numerous public buildings and villas and established the town's architectural character. His most important work is the <strong>Casino</strong>, but his hand can be seen on many facades in the town centre. Zíckler had a masterful ability to harmonise representative architecture with the distinctive topography of the valley.</p>
-
-    <h3>Josef Schaffer (1862–1938)</h3>
-    <p>Schaffer took over the architectural shaping of Marienbad in the next generation, introducing a grander scale and richer decorative vocabulary. His masterpiece, the <strong>Nové Lázně</strong>, set new standards for spa-house architecture across Europe. Schaffer was also responsible for the extension and redesign of several hotels and spa buildings, always preserving the stylistic unity of the townscape.</p>
-
-    <h2>The Spa Triangle</h2>
-    <p>The architectural heart of Marienbad can be described as a <strong>triangle</strong> between three key points:</p>
-    <ul>
-      <li><strong>Goethe Square (Goethovo náměstí)</strong> — The central square with the Goethe monument, surrounded by grand hotel facades. All promenades radiate from here.</li>
-      <li><strong>Cross Spring (Křížový pramen)</strong> — The most celebrated mineral spring, sheltered by the neoclassical pavilion within the Main Colonnade. For over 200 years the spiritual centre of the spa life.</li>
-      <li><strong>Main Colonnade</strong> — The architectural link between the springs and the park, and the social meeting point for the morning promenade to drink the waters.</li>
-    </ul>
-    <p>This triangle forms the natural walking route of the spa guest — morning at the spring, along the colonnade, through the park — and is the best starting point for experiencing Marienbad's architecture.</p>
-
-    <h2>The UNESCO Connection</h2>
-    <p>Since 2021 Mariánské Lázně has been part of the <strong>UNESCO World Heritage Site "Great Spa Towns of Europe"</strong> — a transnational property comprising eleven European spa towns, including Baden bei Wien, Bath and Karlovy Vary. The designation recognises the unique urban landscape in which architecture, parks, springs and the intangible heritage of spa culture form an inseparable whole.</p>
-    <p>The UNESCO inscription explicitly highlights <strong>Marienbad's architectural quality</strong>: the coherence of the ensemble, the integration into the landscape and the functional connection between spa houses, colonnades, parks and springs as the expression of a European cultural idea.</p>
-
-    <HotelRecommendationBox
-      locale={locale}
-       locale={locale}
-      locale={locale}
-      name="Ensana Nové Lázně"
-      stars={5}
-      badge="Architectural Gem"
-      description="Stay in one of Europe's finest spa buildings: Nové Lázně combines Neo-Renaissance architecture with modern five-star comfort — including the famous Roman Bath."
-      bookingUrl="https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=architecture"
-      bookingLabel="View hotel"
-    />
-
-    <blockquote>
-      <p>"Marienbad is not a town that grew — it was composed. Like a piece of music it has rhythm, harmony and a climax: the view from the colonnade across the park to the wooded horizon."</p>
-    </blockquote>
+<Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/architektur', en: '/en/architecture', cs: '/cs/architektura', ru: '/ru/arkhitektura' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>

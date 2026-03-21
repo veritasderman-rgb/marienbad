@@ -1,117 +1,15 @@
 ---
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
-import TreatmentHighlightBox from '@/components/TreatmentHighlightBox.astro'
-import { t } from '@/i18n/ui'
+import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import { getPage } from '@/content/reader'
 
 const locale = 'en' as const
-const breadcrumbs = [
-  { label: t(locale, 'nav.home'), href: `/${locale}` },
-  { label: 'Healing Springs', href: `/${locale}/mineral-springs` },
-  { label: 'Springs Overview' },
-]
+const page = await getPage('en-springs-overview')
 ---
 
-<Base locale={locale} section="mineral-springs" title="Springs Overview — Marienbad's 40+ Mineral Springs — Marienbad.com" description="Detailed guide to all mineral springs in Mariánské Lázně: Cross Spring, Ferdinand Spring, Forest Spring, Rudolf Spring and more. Mineral composition, temperature and recommended use." alternateUrls={{ de: '/de/quellen-uebersicht', en: '/en/springs-overview', cs: '/cs/prehled-pramenu', ru: '/ru/obzor-istochnikov' }}>
-  <PillarPage locale={locale} title="Springs Overview: The Mineral Springs of Marienbad" description="Mariánské Lázně boasts over 40 mineral springs — each with a unique composition and therapeutic effect. A comprehensive guide to the most important healing springs." breadcrumbs={breadcrumbs}>
-    <h2>A Unique Spring Region</h2>
-    <p>Mariánské Lázně (Marienbad) sits within one of <strong>Europe's most spring-rich areas</strong>. Over 40 mineral springs emerge across a relatively small area — each with its own chemical signature, temperature and therapeutic effect. What makes this spring region extraordinary is that while most spa towns possess a single type of spring, Marienbad offers an astonishing variety of mineral waters covering a broad spectrum of medical conditions.</p>
-
-    <p>The springs originate from the <strong>volcanic subsoil of the Slavkov Forest (Slavkovský les)</strong>. Rainwater seeps to great depths, becomes enriched with minerals and rises back to the surface through tectonic faults. This process takes thousands of years — the water flowing from the springs today began its underground journey approximately 14,000 years ago.</p>
-
-    <p>All springs share a high content of <strong>natural carbon dioxide (CO₂)</strong>, which gives the mineral waters their characteristic effervescent taste. However, the springs differ significantly in their mineral content — some are iron-rich, others sodium-rich, while others contain particularly high levels of calcium or magnesium.</p>
-
-    <TreatmentHighlightBox
-      title="Pitná kúra — The Drinking Cure"
-      description="The drinking cure (Czech: pitná kúra) is the cornerstone of Marienbad's healing methods. Patients drink prescribed amounts of mineral water directly at the spring — typically in the morning on an empty stomach. Spa physicians recommend specific springs based on each patient's diagnosis. A typical drinking cure lasts 14–21 days."
-      icon="water"
-    />
-
-    <h2>Colonnade Springs — The Heart of the Spa Quarter</h2>
-    <p>The springs at the Main Colonnade and the Cross Spring Colonnade form the historic centre of spa life. Here, spa guests stroll with their drinking cups, enjoying the unique atmosphere of the neoclassical architecture.</p>
-
-    <h3>Cross Spring (Křížový pramen)</h3>
-    <p>The <strong>Cross Spring</strong> is Marienbad's most famous and most visited spring. It is housed in the magnificent <strong>Cross Spring Colonnade</strong>, a Neo-Baroque structure dating from 1912. The water is distinguished by its exceptionally high CO₂ content and a well-balanced mineral profile.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 7–10 °C</li>
-      <li><strong>Mineral content:</strong> approx. 5,500 mg/l (sodium-sulphate-bicarbonate type)</li>
-      <li><strong>CO₂ content:</strong> approx. 2,800 mg/l — one of the highest values of all springs</li>
-      <li><strong>Indications:</strong> Digestive tract disorders, liver and gallbladder complaints, metabolic disorders, diabetes</li>
-      <li><strong>Taste:</strong> Mildly salty-mineral with a pronounced effervescence</li>
-    </ul>
-
-    <h3>Caroline Spring (Karolinin pramen)</h3>
-    <p>The <strong>Caroline Spring</strong> is also located at the Main Colonnade and has been specifically recommended for <strong>gynaecological conditions</strong> since the 19th century. Its water contains a unique combination of minerals believed to have a positive effect on hormonal balance and inflammatory conditions of the urogenital tract.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 8–10 °C</li>
-      <li><strong>Mineral content:</strong> approx. 4,200 mg/l (calcium-magnesium rich)</li>
-      <li><strong>Indications:</strong> Gynaecological conditions, infertility, urinary tract infections, kidney complaints</li>
-    </ul>
-
-    <h3>Ambrose Spring (Ambrožův pramen)</h3>
-    <p>The <strong>Ambrose Spring</strong> is one of Marienbad's oldest documented springs, first mentioned in the 16th century. Its water is primarily used for <strong>digestive complaints</strong> and is known for its mild, pleasant taste — making it especially popular among spa guests.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 9–11 °C</li>
-      <li><strong>Mineral content:</strong> approx. 3,800 mg/l (bicarbonate-sodium type)</li>
-      <li><strong>Indications:</strong> Chronic gastritis, stomach ulcers, irritable bowel syndrome, heartburn</li>
-    </ul>
-
-    <h2>Forest Springs — Healing Waters in Nature</h2>
-    <p>Nestled within the expansive parks and forests surrounding the town centre are some of Marienbad's most storied springs. The walk to these springs is itself part of the therapy — the combination of exercise, fresh air and the drinking cure enhances the healing effect.</p>
-
-    <h3>Forest Spring (Lesní pramen)</h3>
-    <p>The <strong>Forest Spring</strong> is located inside the Centrální Lázně (Central Baths) building, where it is freely accessible to hotel guests and the public. It is the second most visited spring after the Cross Spring.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 7–9 °C</li>
-      <li><strong>Mineral content:</strong> approx. 4,800 mg/l (iron-bearing, sulphate type)</li>
-      <li><strong>Indications:</strong> Upper respiratory tract conditions, chronic bronchitis, asthma, allergic conditions</li>
-      <li><strong>Special note:</strong> Also used for inhalation therapy</li>
-    </ul>
-
-    <h3>Maria Spring (Mariin pramen)</h3>
-    <p>The <strong>Maria Spring</strong> — the spring that gave the town its name — is located in a quiet forest clearing slightly removed from the centre. Its water is particularly rich in dissolved gases and minerals and has traditionally been recommended for respiratory conditions.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 8–10 °C</li>
-      <li><strong>Mineral content:</strong> approx. 5,100 mg/l (sodium-bicarbonate, gas-rich)</li>
-      <li><strong>Indications:</strong> Respiratory conditions, chronic bronchitis, asthma, immune system support</li>
-      <li><strong>Special note:</strong> Historically the first spring discovered in Marienbad</li>
-    </ul>
-
-    <h2>Park Springs — Between Architecture and Nature</h2>
-    <p>Along the promenades and throughout Marienbad's parklands, further important springs are housed in ornamental pavilions and fountain structures.</p>
-
-    <h3>Ferdinand Spring (Ferdinandův pramen)</h3>
-    <p>The <strong>Ferdinand Spring</strong> is one of Marienbad's most iron-rich springs, named after Emperor Ferdinand I. Its rust-brown-tinged water reveals the high iron content that makes it especially valuable for patients with anaemia.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 9–11 °C</li>
-      <li><strong>Mineral content:</strong> approx. 4,600 mg/l (high iron, bicarbonate type)</li>
-      <li><strong>Iron content:</strong> approx. 20 mg/l — one of the highest natural iron levels in Europe</li>
-      <li><strong>Indications:</strong> Iron-deficiency anaemia, fatigue conditions, convalescence after surgery</li>
-    </ul>
-
-    <h3>Rudolf Spring (Rudolfův pramen)</h3>
-    <p>The <strong>Rudolf Spring</strong> has been specifically used for <strong>kidney and urinary tract conditions</strong> since the 19th century. Its water has a mild diuretic effect and supports the flushing of the urinary tract.</p>
-    <ul>
-      <li><strong>Temperature:</strong> 7–9 °C</li>
-      <li><strong>Mineral content:</strong> approx. 3,600 mg/l (calcium-rich, mildly diuretic)</li>
-      <li><strong>Indications:</strong> Kidney stones, urinary tract infections, chronic kidney inflammation, prostate conditions</li>
-    </ul>
-
-    <h2>Practical Tips for the Drinking Cure</h2>
-    <p>Those wishing to use Marienbad's mineral springs therapeutically should observe several important guidelines:</p>
-
-    <ul>
-      <li><strong>Medical consultation:</strong> Consult a spa physician before beginning a drinking cure. They will determine which springs are appropriate for your condition and the correct quantities.</li>
-      <li><strong>Drinking cup:</strong> Use a traditional <em>lázeňský pohárek</em> (spa cup) — the flat spout ensures the mineral water is sipped slowly in small amounts.</li>
-      <li><strong>Quantity:</strong> Typically 100–200 ml per spring, 2–3 times daily. Drink slowly while walking.</li>
-      <li><strong>Timing:</strong> Best taken in the morning on an empty stomach, at least 30 minutes before breakfast.</li>
-      <li><strong>Temperature:</strong> The springs are cold (7–11 °C). This is intentional — the coolness stimulates gastric activity.</li>
-      <li><strong>Duration:</strong> A complete drinking cure lasts at least 14 days. Initial effects often appear after 5–7 days.</li>
-    </ul>
-
-    <h2>Opening Hours and Access</h2>
-    <p>Most springs are <strong>freely accessible year-round</strong>. The colonnade springs are generally open from 6:00 to 18:00 (summer: until 19:00). Some springs in the forests are only actively accessible during the summer season (May–October).</p>
-
-    <p>A walk along all the main springs takes approximately <strong>2–3 hours</strong> and leads through the most beautiful parts of the spa quarter and parklands — an unforgettable experience combining health and pleasure.</p>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/quellen-uebersicht', en: '/en/springs-overview', cs: '/cs/prehled-pramenu', ru: '/ru/obzor-istochnikov' }}>
+  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
 </Base>
