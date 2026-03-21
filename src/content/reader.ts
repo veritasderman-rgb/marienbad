@@ -9,12 +9,6 @@ import homepageEn from './homepage/en.json'
 import homepageCs from './homepage/cs.json'
 import homepageRu from './homepage/ru.json'
 
-// Settings JSON imports (bundled at build time)
-import settingsDe from './settings/de.json'
-import settingsEn from './settings/en.json'
-import settingsCs from './settings/cs.json'
-import settingsRu from './settings/ru.json'
-
 const homepages: Record<Locale, typeof homepageDe> = {
   de: homepageDe,
   en: homepageEn,
@@ -22,22 +16,9 @@ const homepages: Record<Locale, typeof homepageDe> = {
   ru: homepageRu,
 }
 
-const settings: Record<Locale, typeof settingsDe> = {
-  de: settingsDe,
-  en: settingsEn,
-  cs: settingsCs,
-  ru: settingsRu,
-}
-
 export async function getHomepage(locale: Locale) {
   const data = homepages[locale]
   if (!data) throw new Error(`Homepage content not found for locale: ${locale}`)
-  return data
-}
-
-export async function getSettings(locale: Locale) {
-  const data = settings[locale]
-  if (!data) throw new Error(`Settings not found for locale: ${locale}`)
   return data
 }
 
@@ -125,6 +106,7 @@ export interface Article {
   title: string
   locale: string
   category: string
+  status: 'draft' | 'published'
   pullQuote?: string
   excerpt: string
   date: string
@@ -136,15 +118,43 @@ export interface Article {
   body: any
 }
 
+/** Validate required article fields; logs warnings for missing data */
+function validateArticleMeta(slug: string, meta: Record<string, string>): string[] {
+  const warnings: string[] = []
+  if (!meta.title) warnings.push(`Article "${slug}": missing title`)
+  if (!meta.locale) warnings.push(`Article "${slug}": missing locale`)
+  if (!meta.excerpt) warnings.push(`Article "${slug}": missing excerpt`)
+  if (!meta.date) warnings.push(`Article "${slug}": missing date`)
+  if (!meta.category) warnings.push(`Article "${slug}": missing category`)
+  if (meta.date && !/^\d{4}-\d{2}-\d{2}/.test(meta.date)) {
+    warnings.push(`Article "${slug}": invalid date format "${meta.date}" (expected YYYY-MM-DD)`)
+  }
+  return warnings
+}
+
+/** Validate required story fields; logs warnings for missing data */
+function validateStoryMeta(slug: string, meta: Record<string, string>): string[] {
+  const warnings: string[] = []
+  if (!meta.title) warnings.push(`Story "${slug}": missing title`)
+  if (!meta.locale) warnings.push(`Story "${slug}": missing locale`)
+  if (!meta.name) warnings.push(`Story "${slug}": missing person name`)
+  if (!meta.quote) warnings.push(`Story "${slug}": missing quote`)
+  return warnings
+}
+
 export async function getArticles(locale: Locale): Promise<Article[]> {
   const articles: Article[] = []
 
   for (const [path, rawYaml] of Object.entries(articleYamlFiles)) {
-    // path looks like ./articles/de-co2-baeder-wissenschaft/index.yaml
     const slug = path.replace('./articles/', '').replace('/index.yaml', '')
     const meta = yaml.load(rawYaml as string) as Record<string, string>
 
     if (meta.locale !== locale) continue
+    // Skip drafts
+    if (meta.status === 'draft') continue
+
+    const warnings = validateArticleMeta(slug, meta)
+    if (warnings.length) console.warn('[content]', warnings.join('; '))
 
     const mdocPath = `./articles/${slug}/content.mdoc`
     const mdocRaw = articleMdocFiles[mdocPath]
@@ -158,6 +168,7 @@ export async function getArticles(locale: Locale): Promise<Article[]> {
       title: meta.title ?? '',
       locale: meta.locale ?? '',
       category: meta.category ?? '',
+      status: (meta.status as 'draft' | 'published') ?? 'published',
       pullQuote: meta.pullQuote ?? '',
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
@@ -170,7 +181,6 @@ export async function getArticles(locale: Locale): Promise<Article[]> {
     })
   }
 
-  // Sort by date descending
   articles.sort((a, b) => b.date.localeCompare(a.date))
   return articles
 }
@@ -186,6 +196,11 @@ export async function getArticle(slug: string): Promise<Article | null> {
     if (!yamlRaw || !mdocRaw) return null
 
     const meta = yaml.load(yamlRaw as string) as Record<string, string>
+
+    // Skip drafts (unless accessed by direct slug — still return for preview)
+    const warnings = validateArticleMeta(slug, meta)
+    if (warnings.length) console.warn('[content]', warnings.join('; '))
+
     const ast = Markdoc.parse(mdocRaw as string)
     const content = Markdoc.transform(ast, markdocConfig)
 
@@ -194,6 +209,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
       title: meta.title ?? '',
       locale: meta.locale ?? '',
       category: meta.category ?? '',
+      status: (meta.status as 'draft' | 'published') ?? 'published',
       pullQuote: meta.pullQuote ?? '',
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',
@@ -217,6 +233,7 @@ export interface Story {
   slug: string
   title: string
   locale: string
+  status: 'draft' | 'published'
   name: string
   location: string
   visitLabel: string
@@ -234,6 +251,10 @@ export async function getStories(locale: Locale): Promise<Story[]> {
     const meta = yaml.load(rawYaml as string) as Record<string, string>
 
     if (meta.locale !== locale) continue
+    if (meta.status === 'draft') continue
+
+    const warnings = validateStoryMeta(slug, meta)
+    if (warnings.length) console.warn('[content]', warnings.join('; '))
 
     const mdocPath = `./stories/${slug}/content.mdoc`
     const mdocRaw = storyMdocFiles[mdocPath]
@@ -246,6 +267,7 @@ export async function getStories(locale: Locale): Promise<Story[]> {
       slug,
       title: meta.title ?? '',
       locale: meta.locale ?? '',
+      status: (meta.status as 'draft' | 'published') ?? 'published',
       name: meta.name ?? '',
       location: meta.location ?? '',
       visitLabel: meta.visitLabel ?? '',
@@ -266,6 +288,8 @@ export async function getAllStories(): Promise<Story[]> {
     const slug = path.replace('./stories/', '').replace('/index.yaml', '')
     const meta = yaml.load(rawYaml as string) as Record<string, string>
 
+    if (meta.status === 'draft') continue
+
     const mdocPath = `./stories/${slug}/content.mdoc`
     const mdocRaw = storyMdocFiles[mdocPath]
     if (!mdocRaw) continue
@@ -277,6 +301,7 @@ export async function getAllStories(): Promise<Story[]> {
       slug,
       title: meta.title ?? '',
       locale: meta.locale ?? '',
+      status: (meta.status as 'draft' | 'published') ?? 'published',
       name: meta.name ?? '',
       location: meta.location ?? '',
       visitLabel: meta.visitLabel ?? '',
@@ -301,6 +326,10 @@ export async function getStory(slug: string): Promise<Story | null> {
     if (!yamlRaw || !mdocRaw) return null
 
     const meta = yaml.load(yamlRaw as string) as Record<string, string>
+
+    const warnings = validateStoryMeta(slug, meta)
+    if (warnings.length) console.warn('[content]', warnings.join('; '))
+
     const ast = Markdoc.parse(mdocRaw as string)
     const content = Markdoc.transform(ast, markdocConfig)
 
@@ -308,6 +337,7 @@ export async function getStory(slug: string): Promise<Story | null> {
       slug,
       title: meta.title ?? '',
       locale: meta.locale ?? '',
+      status: (meta.status as 'draft' | 'published') ?? 'published',
       name: meta.name ?? '',
       location: meta.location ?? '',
       visitLabel: meta.visitLabel ?? '',
@@ -328,6 +358,8 @@ export async function getAllArticles(): Promise<Article[]> {
     const slug = path.replace('./articles/', '').replace('/index.yaml', '')
     const meta = yaml.load(rawYaml as string) as Record<string, string>
 
+    if (meta.status === 'draft') continue
+
     const mdocPath = `./articles/${slug}/content.mdoc`
     const mdocRaw = articleMdocFiles[mdocPath]
     if (!mdocRaw) continue
@@ -340,6 +372,7 @@ export async function getAllArticles(): Promise<Article[]> {
       title: meta.title ?? '',
       locale: meta.locale ?? '',
       category: meta.category ?? '',
+      status: (meta.status as 'draft' | 'published') ?? 'published',
       pullQuote: meta.pullQuote ?? '',
       excerpt: meta.excerpt ?? '',
       date: meta.date ?? '',

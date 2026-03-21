@@ -185,94 +185,6 @@ function homepageSingleton(locale: string, label: string) {
   })
 }
 
-function settingsSingleton(locale: string, label: string) {
-  return singleton({
-    label,
-    path: `src/content/settings/${locale}`,
-    format: { data: 'json' },
-    schema: {
-      meta: fields.object(
-        {
-          siteName: fields.text({ label: 'Site Name' }),
-          tagline: fields.text({ label: 'Tagline' }),
-          description: fields.text({
-            label: 'Meta Description',
-            multiline: true,
-          }),
-        },
-        { label: 'Meta / SEO' }
-      ),
-      nav: fields.object(
-        {
-          home: fields.text({ label: 'Home' }),
-          mineralSprings: fields.text({ label: 'Mineral Springs' }),
-          thingsToDo: fields.text({ label: 'Things to Do' }),
-          accommodation: fields.text({ label: 'Accommodation' }),
-          history: fields.text({ label: 'History' }),
-          practicalInfo: fields.text({ label: 'Practical Info' }),
-          people: fields.text({ label: 'People' }),
-          magazine: fields.text({ label: 'Magazine' }),
-          menu: fields.text({ label: 'Menu' }),
-          close: fields.text({ label: 'Close' }),
-        },
-        { label: 'Navigation Labels' }
-      ),
-      home: fields.object(
-        {
-          springs: fields.text({ label: 'Springs Card Title' }),
-          springsDesc: fields.text({
-            label: 'Springs Card Description',
-            multiline: true,
-          }),
-          thingsToDo: fields.text({ label: 'Things to Do Card Title' }),
-          thingsToDoDesc: fields.text({
-            label: 'Things to Do Card Description',
-            multiline: true,
-          }),
-          accommodation: fields.text({ label: 'Accommodation Card Title' }),
-          accommodationDesc: fields.text({
-            label: 'Accommodation Card Description',
-            multiline: true,
-          }),
-          history: fields.text({ label: 'History Card Title' }),
-          historyDesc: fields.text({
-            label: 'History Card Description',
-            multiline: true,
-          }),
-          people: fields.text({ label: 'People Card Title' }),
-          peopleDesc: fields.text({
-            label: 'People Card Description',
-            multiline: true,
-          }),
-        },
-        { label: 'Homepage Card Labels' }
-      ),
-      footer: fields.object(
-        {
-          about: fields.text({ label: 'About Heading' }),
-          aboutText: fields.text({
-            label: 'About Text',
-            multiline: true,
-          }),
-          quickLinks: fields.text({ label: 'Quick Links Heading' }),
-          privacy: fields.text({ label: 'Privacy Link' }),
-          imprint: fields.text({ label: 'Imprint Link' }),
-        },
-        { label: 'Footer' }
-      ),
-      common: fields.object(
-        {
-          readMore: fields.text({ label: 'Read More' }),
-          backTo: fields.text({ label: 'Back' }),
-          notFound: fields.text({ label: 'Not Found' }),
-          tableOfContents: fields.text({ label: 'Table of Contents' }),
-        },
-        { label: 'Common Strings' }
-      ),
-    },
-  })
-}
-
 const isProd = import.meta.env.PROD
 
 export default config({
@@ -294,10 +206,6 @@ export default config({
     'homepage-en': homepageSingleton('en', 'Homepage (English)'),
     'homepage-cs': homepageSingleton('cs', 'Homepage (Čeština)'),
     'homepage-ru': homepageSingleton('ru', 'Homepage (Русский)'),
-    'settings-de': settingsSingleton('de', 'Settings (Deutsch)'),
-    'settings-en': settingsSingleton('en', 'Settings (English)'),
-    'settings-cs': settingsSingleton('cs', 'Settings (Čeština)'),
-    'settings-ru': settingsSingleton('ru', 'Settings (Русский)'),
   },
   collections: {
     stories: collection({
@@ -307,6 +215,15 @@ export default config({
       format: { contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
+        status: fields.select({
+          label: 'Status',
+          options: [
+            { label: 'Draft', value: 'draft' },
+            { label: 'Published', value: 'published' },
+          ],
+          defaultValue: 'published',
+          description: 'Only published stories appear on the site.',
+        }),
         locale: fields.select({
           label: 'Language',
           options: [
@@ -356,6 +273,15 @@ export default config({
       format: { contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
+        status: fields.select({
+          label: 'Status',
+          options: [
+            { label: 'Draft', value: 'draft' },
+            { label: 'Published', value: 'published' },
+          ],
+          defaultValue: 'published',
+          description: 'Only published articles appear on the site.',
+        }),
         locale: fields.select({
           label: 'Language',
           options: [

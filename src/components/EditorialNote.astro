@@ -1,0 +1,48 @@
+---
+/**
+ * Editorial Note — trust-building block for article pages.
+ * Displays a brief editorial disclaimer with author/review info.
+ * Usage: <EditorialNote locale={locale} lastReviewed="2026-03" />
+ */
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+  lastReviewed?: string
+}
+
+const { locale, lastReviewed } = Astro.props
+
+const labels: Record<Locale, { title: string; body: string; reviewed: string }> = {
+  de: {
+    title: 'Redaktioneller Hinweis',
+    body: 'Dieser Artikel wurde von unserem Redaktionsteam recherchiert und verfasst. Wir arbeiten unabhängig und erhalten keine Vergütung für Hotelempfehlungen. Alle Gesundheitsinformationen dienen der allgemeinen Orientierung und ersetzen keine ärztliche Beratung.',
+    reviewed: 'Zuletzt geprüft',
+  },
+  en: {
+    title: 'Editorial Note',
+    body: 'This article was researched and written by our editorial team. We work independently and receive no compensation for hotel recommendations. All health information is for general guidance and does not replace medical advice.',
+    reviewed: 'Last reviewed',
+  },
+  cs: {
+    title: 'Redakční poznámka',
+    body: 'Tento článek byl zpracován naší redakcí. Pracujeme nezávisle a nedostáváme odměnu za doporučení hotelů. Veškeré zdravotní informace slouží k obecné orientaci a nenahrazují lékařskou radu.',
+    reviewed: 'Naposledy aktualizováno',
+  },
+  ru: {
+    title: 'Редакционное примечание',
+    body: 'Эта статья была подготовлена нашей редакцией. Мы работаем независимо и не получаем вознаграждение за рекомендации отелей. Вся медицинская информация носит общий характер и не заменяет консультацию врача.',
+    reviewed: 'Последняя проверка',
+  },
+}
+
+const l = labels[locale]
+---
+
+<aside class="border-l-4 border-turquoise-400 bg-beige-50 rounded-r-lg px-5 py-4 my-8 text-sm text-beige-800">
+  <p class="font-heading font-semibold text-indigo-800 mb-1">{l.title}</p>
+  <p class="leading-relaxed">{l.body}</p>
+  {lastReviewed && (
+    <p class="mt-2 text-xs text-beige-600">{l.reviewed}: {lastReviewed}</p>
+  )}
+</aside>

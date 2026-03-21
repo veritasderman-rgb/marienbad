@@ -441,6 +441,27 @@ Každý článek se publikuje ve všech 4 jazycích najednou (CS, DE, EN, RU).
 
 ## CHANGELOG
 
+### 21. 3. 2026 — Session 8 (branch claude/review-plan-status-gPVp5)
+
+#### P2 — CMS & SEO stabilizace
+- ✅ Source-of-truth cleanup: odstraněn nepoužívaný settings singleton (Keystatic + reader.ts + 4 JSON soubory)
+- ✅ Footer.astro: hardcoded locale ternaries nahrazeny voláním t(locale, key) z i18n/ui.ts
+- ✅ 4 nové i18n klíče: footer.discover, footer.magazine, footer.contact, footer.ensanaDisclosure (DE/EN/CS/RU)
+- ✅ Publishing workflow: pole `status` (draft/published) přidáno do articles i stories v Keystatic
+- ✅ Draft filtrování: reader.ts filtruje drafty v getArticles(), getAllArticles(), getStories(), getAllStories()
+- ✅ Content schema validace: validateArticleMeta() a validateStoryMeta() kontrolují povinná pole (title, locale, excerpt, date, category/name/quote)
+- ✅ Markdoc render governance: opravena escapeAttr() (& před "), přidána dokumentace povolených tagů v markdoc/config.ts
+
+#### P3 — Trust/conversion bloky
+- ✅ EditorialNote.astro: redakční poznámka s disclaimerem (4 jazyky, lastReviewed prop)
+- ✅ WhyTrustUs.astro: credibility blok s 4 trust signály (lokální expertíza, nezávislost, aktualizace, zdravotní upozornění)
+- ✅ PracticalSummaryBox.astro: quick-reference box s ikonami (clock, euro, calendar, star, map, check, info)
+- ✅ Integrace EditorialNote + WhyTrustUs do všech 4 article detail šablon (DE/EN/CS/RU)
+
+---
+
+## CHANGELOG
+
 ### 19. 3. 2026 — Session 7 (branch claude/plan-work-tasks-z9aPo)
 
 #### Wave 4 články (8 jazykových verzí)
