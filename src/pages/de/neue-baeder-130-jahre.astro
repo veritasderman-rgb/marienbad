@@ -1,0 +1,278 @@
+---
+import Base from '@/layouts/Base.astro'
+import { hotels } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
+
+const locale = 'de' as const
+const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
+
+const pageTitle = '130 Jahre Neue Bäder — Jubiläum 1896–2026 — Marienbad.com'
+const pageDescription = 'Das Hotel Nové Lázně feiert 130 Jahre seit dem prachtvollen Umbau durch Architekt Josef Schaffer. Entdecken Sie das Römische Bad, die Königliche Kabine Eduards VII. und die Geschichte des Hauses.'
+
+const milestones = [
+  { year: '1828', title: 'Gründung des „Neubad"', description: 'Abt Karl Kaspar Reitenberger errichtet ein neues Badehaus — das Neubad. Sechzehn Badekabinen und zehn Gästezimmer für Kurgäste, die zur Eisenwasserkur an der Ambrosius- und Karolinenquelle anreisen.' },
+  { year: '1841', title: 'Erste Erweiterung', description: 'Die Zahl der Badekabinen wächst auf 14, ein eigenes Kesselhaus entsteht. Hinzu kommt ein Kursaal — die Neuen Bäder werden zum gesellschaftlichen Mittelpunkt der Stadt.' },
+  { year: '1893–1896', title: 'Verwandlung in einen Neorenaissance-Palast', description: 'Architekt Josef Schaffer baut das Neubad von Grund auf um. Aus dem schlichten klassizistischen Gebäude entsteht ein monumentaler Vierturmpalast im italienischen Neorenaissance-Stil mit Römischem Bad, Marmorsäulen, klassischen Skulpturen und Mineralbecken.' },
+  { year: '1897', title: 'König Eduard VII. erstmals in Marienbad', description: 'Der künftige britische Monarch besucht Marienbad zum ersten Mal und verliebt sich sofort in die Stadt. In den Neuen Bädern wird eigens eine private Königliche Kabine mit prachtvoller Wanne und elegantem Ruheraum im Stil der belle époque eingerichtet.' },
+  { year: '1904', title: 'Historisches Treffen zweier Herrscher', description: 'Am 16. August 1904 treffen sich Kaiser Franz Joseph I. und König Eduard VII. im Hotel Nové Lázně zu einem offiziellen diplomatischen Gespräch. Marienbad wird für einen Tag zum Mittelpunkt der europäischen Politik.' },
+  { year: '1905', title: 'Gründung des Royal Golf Club', description: 'Eduard VII. gründet den ältesten Golfclub Böhmens — den Royal Golf Club Marienbad. Der Club ist bis heute ununterbrochen in Betrieb.' },
+  { year: '1912–1913', title: 'Erweiterung unter Abt Helmer', description: 'Unter der Leitung von Abt Gilbert Helmer wird die Kabinenkapazität nahezu verdoppelt. Die Neuen Bäder reagieren auf die wachsende Nachfrage der internationalen Aristokratie.' },
+  { year: '2005', title: 'Die königliche Tradition lebt weiter', description: 'Prinz Edward, Earl of Wessex, bezieht ein Zimmer im Hotel Nové Lázně und knüpft an die Tradition der britischen Königsfamilie in Marienbad an.' },
+  { year: '2021', title: 'Aufnahme in die UNESCO-Welterbeliste', description: 'Marienbad wird Teil der transnationalen Welterbestätte „Great Spa Towns of Europe". Die Neuen Bäder gehören zu den Schlüsselbauten der geschützten Zone.' },
+  { year: '2026', title: '130 Jahre seit Schaffers Umbau', description: 'Nové Lázně feiert sein 130-jähriges Jubiläum. Das Gebäude dient nach wie vor als Fünf-Sterne-Kurhotel — mit dem originalen Römischen Bad, der Königlichen Kabine und der Kaiserlichen Kabine in vollem Betrieb.' },
+]
+
+const highlights = [
+  {
+    title: 'Römisches Bad von 1896',
+    description: 'Zwei historische Becken mit Mineralwasser zwischen mächtigen Marmorsäulen und klassischen Skulpturen — ein authentisches Interieur von 1896, das zwei Weltkriege überdauert hat. Ein drittes Becken mit Gegenstromanlage wurde bei der modernen Renovierung hinzugefügt. Zur Verfügung stehen eine Sauna (80 °C), ein Sanarium (50 °C), ein Dampfbad und eine Kneipp-Therapie.',
+    icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
+  },
+  {
+    title: 'Königliche Kabine Eduards VII.',
+    description: 'Ein privates Badegemach, das 1896 für den britischen König errichtet wurde. Die originale Wanne im Stil der belle époque, ein eleganter Ruheraum — und eine Besonderheit: ein Holzstuhl mit gedrechselten Beinen, in den eine mechanische Waage eingebaut ist. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.',
+    icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
+  },
+  {
+    title: 'Kaiserliche Kabine Franz Josephs I.',
+    description: 'Ein Baderaum mit originaler historischer Ausstattung, der dem österreichischen Kaiser vorbehalten war. Beide Kabinen — die Königliche und die Kaiserliche — dienen heute für spezielle balneotherapeutische Anwendungen, Mineralbäder und Moorpackungen.',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  },
+  {
+    title: '5 900 m² verbundener Komplex',
+    description: 'Nové Lázně, Centrální Lázně und Maria Spa sind durch überdachte Promenaden und Korridore zu einem Ganzen verbunden. Die Gäste wechseln zwischen den Gebäuden, ohne ins Freie treten zu müssen — der größte historisch erhaltene Kurkomplex Böhmens.',
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+]
+
+const funFacts = [
+  'Die Ferdinandsquelle wurde über eine 1 700 Meter lange Rohrleitung aus Auschowitz in die Neuen Bäder geleitet. Eine Dampfmaschine drückte das Wasser über einen Höhenunterschied von 43 Metern.',
+  'In der Königlichen Kabine steht ein Holzstuhl mit kunstvoll gedrechselten Beinen, in dessen Inneren sich eine mechanische Waage verbirgt. Eduard VII. kontrollierte darauf diskret sein Gewicht — auf einer gewöhnlichen Waage zu stehen wäre nicht königlich gewesen.',
+  'Eduard VII. kam so regelmäßig nach Marienbad (neunmal in zwölf Jahren), dass die europäische Presse die Stadt als „Sommerhauptstadt der europäischen Diplomatie" bezeichnete.',
+  'Auf dem Gebäude thronen bis heute die vier Türmchen aus dem Umbau von 1896 — sie wurden zum Wahrzeichen des Hotels und sind aus dem gesamten Tal sichtbar.',
+  'Zu den berühmten Gästen zählten auch Zar Nikolaus II., die Komponisten Chopin und Wagner, der Schriftsteller Franz Kafka und Mark Twain, der 1892 mit Humor die hiesigen Kurritualen beschrieb.',
+  'In den Gängen des Hotels tritt eine Mineralquelle zutage — die Gäste können sich das Wasser direkt im Gebäude abfüllen, ohne zur Kolonnade gehen zu müssen.',
+  'An das Treffen Eduards VII. mit Franz Joseph I. im Jahr 1904 erinnert eine Bronzeplastik am Goethe-Platz, die 2014 zum 110. Jahrestag enthüllt wurde.',
+  'Das Restaurant Royal, das an das Römische Bad anschließt, wurde zuletzt 2024 renoviert und bietet Platz für 180 Gäste. Es vereint böhmische und mitteleuropäische Küche.',
+]
+---
+
+<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription} alternateUrls={{ cs: '/cs/nove-lazne-130-let', de: '/de/neue-baeder-130-jahre', en: '/en/neue-baeder-130-years', ru: '/ru/novye-lazni-130-let' }}>
+
+  <!-- Anniversary Hero -->
+  <section class="relative bg-indigo-700 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.15)_0%,_transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(201,163,105,0.1)_0%,_transparent_50%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+
+    <div class="relative container-wide py-20 md:py-32 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-300 text-sm font-semibold mb-6">
+        <span>★</span>
+        <span>1896 — 2026</span>
+        <span>★</span>
+      </div>
+
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="font-size: clamp(2.25rem, 5vw, 4.5rem);">
+        130 Jahre Neue Bäder
+      </h1>
+
+      <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+        Vom monumentalen Umbau durch Architekt <strong class="text-white">Josef Schaffer</strong> im Jahr 1896
+        bis zum heutigen Fünf-Sterne-Kurhotel mit dem <strong class="text-white">Römischen Bad</strong>,
+        der <strong class="text-white">Königlichen Kabine Eduards VII.</strong> und einer Mineralquelle direkt in den Hotelgängen.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={withUtm(hotel.bookingUrls.de, 'marienbad', 'anniversary', 'nove-lazne-130')}
+          class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Aufenthalt buchen
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="#meilensteine" class="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-lg">
+          Geschichte entdecken
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 md:gap-10 mt-12 text-sm">
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">1896</div>
+          <div class="text-white/50 mt-1">Jahr des Umbaus</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">★★★★★</div>
+          <div class="text-white/50 mt-1">5 Sterne</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">5 900 m²</div>
+          <div class="text-white/50 mt-1">Kurkomplex</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">UNESCO</div>
+          <div class="text-white/50 mt-1">Welterbe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Grid -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="text-center mb-12">
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Was die Neuen Bäder einzigartig macht</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Besonderheiten, die Sie nirgendwo sonst finden</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {highlights.map((item) => (
+        <div class="bg-beige-200 rounded-xl p-6 md:p-8 flex gap-5 items-start">
+          <div class="shrink-0 w-12 h-12 rounded-xl bg-indigo-700 flex items-center justify-center">
+            <svg class="w-6 h-6 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={item.icon} />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mb-2">{item.title}</h3>
+            <p class="text-beige-700 text-sm leading-relaxed">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Architect Section -->
+  <section class="bg-indigo-700 text-white py-16 md:py-24">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">Architekt</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer (1862–1938)</h2>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          Schaffer verwandelte das schlichte klassizistische Neubad von 1828 in einen <strong class="text-white">monumentalen Vierturmpalast im italienischen Neorenaissance-Stil</strong>. Der Umbau dauerte drei Jahre (1893–1896) und das Ergebnis übertraf alle Erwartungen — Marienbad besaß mit einem Mal ein Gebäude, das sich mit den besten Kurhäusern in Karlsbad, Baden-Baden oder Vichy messen konnte.
+        </p>
+        <p class="text-white/70 text-lg leading-relaxed">
+          Schaffer entwarf das Römische Bad mit Marmorsäulen und Becken voll Mineralwasser, private Kabinen für königliche Gäste sowie die technische Infrastruktur, die die Ferdinandsquelle über eine 1,7 km lange Rohrleitung aus Auschowitz heranführte. <strong class="text-white">Die Neuen Bäder bleiben bis heute sein bedeutendstes Werk.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="meilensteine" class="container-wide py-16 md:py-24">
+    <div class="text-center mb-12">
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Durch die Jahrhunderte</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Meilensteine der Neuen Bäder</h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-[27px] top-0 bottom-0 w-px bg-beige-300 hidden md:block"></div>
+
+        <div class="space-y-8">
+          {milestones.map((milestone) => (
+            <div class="flex gap-5 items-start">
+              <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-700 text-white flex items-center justify-center text-xs font-bold z-10 shadow-lg">
+                {milestone.year.includes('–') ? milestone.year.split('–')[0] : milestone.year}
+              </div>
+              <div class="pt-2">
+                <div class="text-turquoise-600 text-sm font-semibold">{milestone.year}</div>
+                <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1">{milestone.title}</h3>
+                <p class="text-beige-700 text-sm leading-relaxed mt-1">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts -->
+  <section class="bg-beige-200 py-16 md:py-24">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Wussten Sie schon?</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Geschichten aus 130 Jahren</h2>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Anekdoten und Fakten aus der 130-jährigen Geschichte der Neuen Bäder — aus den Archiven der Hamelika, des Stadtmuseums Marienbad und der zeitgenössischen Presse.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {funFacts.map((fact, i) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-8 h-8 rounded-full bg-yellow-400 text-indigo-900 flex items-center justify-center font-bold text-sm mb-4">{i + 1}</div>
+            <p class="text-beige-800 text-sm leading-relaxed">{fact}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- King Edward Section -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-indigo-700 text-white rounded-2xl p-8 md:p-12">
+        <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Königliche Tradition</span>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Neun Besuche König Eduards VII.</h2>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Als der britische Kronprinz (und spätere König) Eduard VII. im Jahr 1897 zum ersten Mal nach Marienbad kam, war es um ihn geschehen. In den folgenden zwölf Jahren kehrte er <strong class="text-white">neunmal</strong> zurück — und jedes Mal waren die Neuen Bäder sein Quartier.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Sein Tagesablauf war stets derselbe: <strong class="text-white">morgendliche Trinkkur an der Kreuzbrunnenquelle</strong>, dann der Gang in die Neuen Bäder und ein Bad in der privaten <strong class="text-white">Königlichen Kabine</strong>. Dort steht bis heute die prachtvolle Wanne aus der belle époque und daneben ein bemerkenswertes Möbelstück — <strong class="text-white">ein eleganter Holzstuhl mit eingebauter mechanischer Waage</strong>. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Dank seiner regelmäßigen Aufenthalte wurde Marienbad zur <strong class="text-white">Sommerhauptstadt der europäischen Diplomatie</strong>. Höhepunkt war das <strong class="text-white">Treffen mit Kaiser Franz Joseph I.</strong> am 16. August 1904 — ein Ereignis, an das heute eine Bronzeplastik am Goethe-Platz erinnert.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-6">
+          1905 gründete Eduard VII. den <strong class="text-white">Royal Golf Club Marienbad</strong> — den ältesten Golfclub Böhmens, der bis heute ununterbrochen besteht. Und die königliche Tradition lebt weiter: 2005 bezog <strong class="text-white">Prinz Edward, Earl of Wessex</strong>, ein Zimmer im Hotel Nové Lázně.
+        </p>
+        <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
+          „Die Königliche Kabine mit der originalen Wanne, dem Ruheraum und dem Stuhl mit eingebauter Waage ist ein lebendiges Zeugnis jener Ära, in der in Marienbad europäische Geschichte geschrieben wurde."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-indigo-700 text-white py-16 md:py-24">
+    <div class="container-wide text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-300 text-sm font-semibold mb-6">
+        <span>130 Jahre — Jubiläumsaufenthalt</span>
+      </div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Erleben Sie Geschichte hautnah</h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">
+        Baden Sie in den Becken mit Marmorsäulen von 1896, genießen Sie ein Mineralbad in der Königlichen Kabine Eduards VII. und kosten Sie das Quellwasser direkt in den Hotelgängen.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={withUtm(hotel.bookingUrls.de, 'marienbad', 'anniversary-cta', 'nove-lazne-130')}
+          class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Jubiläumsaufenthalt buchen
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href={`/${locale}/unterkunft`} class="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-lg">
+          Alle Hotels
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="container-wide py-8 md:py-12">
+    <p class="text-beige-500 text-xs text-center">
+      Historische Informationen entnommen aus
+      <a href="https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Marienbader Annalen (Hamelika)</a>,
+      <a href="https://www.hamelika.cz/?cz_shrnuti-historie-marianskych-lazni%2C40=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Zusammenfassung der Geschichte (Hamelika)</a>,
+      <a href="https://www.e-lazne.eu/marianske-lazne/hotel-nove-lazne" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">e-lazne.eu</a>
+      und <a href="https://ensanahotels.com/de/hotels/nove-lazne" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Ensana Hotels</a>.
+    </p>
+  </section>
+
+</Base>

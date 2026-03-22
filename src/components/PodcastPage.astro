@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '@/i18n/config'
-import { getEpisodes, getThumbnail } from '@/data/podcasts'
+import { getEpisodes, getThumbnail, playlistUrl } from '@/data/podcasts'
 
 interface Props {
   locale: Locale
@@ -33,7 +33,7 @@ const t = labels[locale]
       <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4" style="font-size: var(--text-h1);">{t.title}</h1>
       <p class="text-white/70 text-lg md:text-xl mb-8">{t.subtitle}</p>
       <a
-        href="https://www.youtube.com/playlist?list=PLMj3cJtcC8RvX7WPBj3h2lUnN8xOrlmmS"
+        href={playlistUrl}
         target="_blank"
         rel="noopener"
         class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-sm font-medium transition-colors"
