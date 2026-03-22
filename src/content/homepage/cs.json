@@ -13,19 +13,23 @@
   "quickFacts": [
     {
       "value": "40+",
-      "label": "Minerální prameny"
+      "label": "Minerální prameny",
+      "href": "/cs/mineralni-prameny"
     },
     {
       "value": "UNESCO",
-      "label": "Světové dědictví 2021"
+      "label": "Světové dědictví 2021",
+      "href": "/cs/unesco"
     },
     {
       "value": "1818",
-      "label": "Lázeňská tradice"
+      "label": "Lázeňská tradice",
+      "href": "/cs/historie"
     },
     {
       "value": "Royal",
-      "label": "Golf Club 1905"
+      "label": "Golf Club 1905",
+      "href": "/cs/golf"
     }
   ],
   "healingElements": {
@@ -35,19 +39,23 @@
     "items": [
       {
         "name": "Voda",
-        "description": "Přes 40 minerálních pramenů s jedinečným složením — od pitných kúr po léčivé koupele."
+        "description": "Přes 40 minerálních pramenů s jedinečným složením — od pitných kúr po léčivé koupele.",
+        "href": "/cs/mineralni-prameny"
       },
       {
         "name": "Země",
-        "description": "Přírodní rašelinové peloidy s protizánětlivými a analgetickými účinky."
+        "description": "Přírodní rašelinové peloidy s protizánětlivými a analgetickými účinky.",
+        "href": "/cs/peloidni-terapie"
       },
       {
         "name": "Plyn",
-        "description": "99,7% čistý CO₂ — ‚Mariin plyn' — tradičně využívaný k podpoře periferní prokrvení."
+        "description": "99,7% čistý CO₂ — ‚Mariin plyn' — tradičně využívaný k podpoře periferní prokrvení.",
+        "href": "/cs/co2-terapie"
       },
       {
         "name": "Klima",
-        "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly. Od roku 2023 nesou Mariánské Lázně oficiální označení klimatických lázní."
+        "description": "Certifikované léčivé klima v 630 m n. m. — čistý lesní vzduch s přírodními aerosoly. Od roku 2023 nesou Mariánské Lázně oficiální označení klimatických lázní.",
+        "href": "/cs/klimatoterapie"
       }
     ]
   },

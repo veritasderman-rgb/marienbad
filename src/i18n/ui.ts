@@ -7,7 +7,7 @@ const ui = {
     'meta.description': 'Entdecken Sie Marienbad – Mineralquellen, Spa, Kultur, Geschichte und die Menschen der Kolonnade.',
     'nav.home': 'Startseite',
     'nav.mineralSprings': 'Mineralquellen & Spa',
-    'nav.thingsToDo': 'Unternehmungen',
+    'nav.thingsToDo': 'Aktivitäten',
     'nav.accommodation': 'Unterkunft',
     'nav.history': 'Geschichte & Kultur',
     'nav.practicalInfo': 'Praktische Infos',
