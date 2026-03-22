@@ -73,14 +73,15 @@ const gradients = [
            <circle cx="7" cy="19" r="1.2" fill="currentColor" stroke="none"/>
            <path d="M4 22c2-2 6-3 8-3s6 1 8 3" stroke-linecap="round"/>`,
         ]
+        const Tag = fact.href ? 'a' : 'div'
         return (
-          <div class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal">
-            <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600">
+          <Tag href={fact.href} class="bg-white rounded-xl shadow-card p-5 md:p-6 text-center card-hover reveal block group transition-shadow hover:shadow-lg">
+            <div class="w-10 h-10 mx-auto mb-2 text-turquoise-600 transition-transform group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10" set:html={factIcons[i % 4]} />
             </div>
             <div class="font-heading text-lg md:text-xl font-bold text-indigo-500">{fact.value}</div>
             <div class="text-sm text-beige-600">{fact.label}</div>
-          </div>
+          </Tag>
         )
       })}
     </div>
@@ -103,16 +104,17 @@ const gradients = [
           /* Gas/Bubbles */ 'M12 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm-3.5 9.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm8 1c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-3 4c.83 0 1.5.67 1.5 1.5S14.33 20.5 13.5 20.5 12 19.83 12 19s.67-1.5 1.5-1.5z',
           /* Climate/Sun */ 'M12 7a5 5 0 100 10 5 5 0 000-10zM12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42',
         ]
+        const ElTag = item.href ? 'a' : 'div'
         return (
-          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center card-hover reveal">
-            <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-turquoise-400/20 flex items-center justify-center">
+          <ElTag href={item.href} class="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center card-hover reveal block group transition-all hover:bg-white/15">
+            <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-turquoise-400/20 flex items-center justify-center transition-transform group-hover:scale-110">
               <svg class="w-6 h-6 md:w-8 md:h-8 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d={icons[i % 4]} />
               </svg>
             </div>
             <h3 class="font-heading text-base md:text-xl font-bold mb-1 md:mb-2">{item.name}</h3>
             <p class="text-white/70 text-xs md:text-sm leading-relaxed hidden md:block">{item.description}</p>
-          </div>
+          </ElTag>
         )
       })}
     </div>

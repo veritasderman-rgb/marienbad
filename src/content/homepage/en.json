@@ -13,19 +13,23 @@
   "quickFacts": [
     {
       "value": "40+",
-      "label": "Mineral Springs"
+      "label": "Mineral Springs",
+      "href": "/en/mineral-springs"
     },
     {
       "value": "UNESCO",
-      "label": "Heritage Site 2021"
+      "label": "Heritage Site 2021",
+      "href": "/en/unesco"
     },
     {
       "value": "1818",
-      "label": "Spa Tradition"
+      "label": "Spa Tradition",
+      "href": "/en/history"
     },
     {
       "value": "Royal",
-      "label": "Golf Club 1905"
+      "label": "Golf Club 1905",
+      "href": "/en/golf"
     }
   ],
   "healingElements": {
@@ -35,19 +39,23 @@
     "items": [
       {
         "name": "Water",
-        "description": "Over 40 mineral springs with unique compositions — from drinking cures to therapeutic healing baths."
+        "description": "Over 40 mineral springs with unique compositions — from drinking cures to therapeutic healing baths.",
+        "href": "/en/mineral-springs"
       },
       {
         "name": "Earth",
-        "description": "Natural peat peloids with powerful anti-inflammatory and pain-relieving properties."
+        "description": "Natural peat peloids with powerful anti-inflammatory and pain-relieving properties.",
+        "href": "/en/peloid-therapy"
       },
       {
         "name": "Gas",
-        "description": "99.7% pure CO₂ — \"Maria's Gas\" — traditionally used to support peripheral circulation."
+        "description": "99.7% pure CO₂ — \"Maria's Gas\" — traditionally used to support peripheral circulation.",
+        "href": "/en/co2-therapy"
       },
       {
         "name": "Climate",
-        "description": "Certified healing climate at 630m elevation — pure forest air enriched with natural aerosols. Since 2023, Mariánské Lázně has held the official designation of a Climatic Spa."
+        "description": "Certified healing climate at 630m elevation — pure forest air enriched with natural aerosols. Since 2023, Mariánské Lázně has held the official designation of a Climatic Spa.",
+        "href": "/en/climate-therapy"
       }
     ]
   },

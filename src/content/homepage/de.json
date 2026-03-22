@@ -13,19 +13,23 @@
   "quickFacts": [
     {
       "value": "40+",
-      "label": "Mineralquellen"
+      "label": "Mineralquellen",
+      "href": "/de/mineralquellen"
     },
     {
       "value": "UNESCO",
-      "label": "Welterbe 2021"
+      "label": "Welterbe 2021",
+      "href": "/de/unesco"
     },
     {
       "value": "1818",
-      "label": "Kurtradition"
+      "label": "Kurtradition",
+      "href": "/de/geschichte"
     },
     {
       "value": "Royal",
-      "label": "Golf Club 1905"
+      "label": "Golf Club 1905",
+      "href": "/de/golf"
     }
   ],
   "healingElements": {
@@ -35,19 +39,23 @@
     "items": [
       {
         "name": "Wasser",
-        "description": "Über 40 Mineralquellen mit einzigartiger Zusammensetzung — von Trinkkuren bis zu heilenden Bädern."
+        "description": "Über 40 Mineralquellen mit einzigartiger Zusammensetzung — von Trinkkuren bis zu heilenden Bädern.",
+        "href": "/de/mineralquellen"
       },
       {
         "name": "Erde",
-        "description": "Natürliche Torfpeloide mit entzündungshemmenden und schmerzlindernden Eigenschaften."
+        "description": "Natürliche Torfpeloide mit entzündungshemmenden und schmerzlindernden Eigenschaften.",
+        "href": "/de/peloidtherapie"
       },
       {
         "name": "Gas",
-        "description": "99,7% reines CO₂ — „Marias Gas“ — wird traditionell zur Förderung der peripheren Durchblutung eingesetzt."
+        "description": "99,7% reines CO₂ — \u201eMarias Gas\u201c — wird traditionell zur Förderung der peripheren Durchblutung eingesetzt.",
+        "href": "/de/co2-therapie"
       },
       {
         "name": "Klima",
-        "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen. Seit 2023 trägt Marienbad offiziell den Titel eines Klimakurortes."
+        "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen. Seit 2023 trägt Marienbad offiziell den Titel eines Klimakurortes.",
+        "href": "/de/klimatherapie"
       }
     ]
   },
@@ -98,7 +106,7 @@
     "allStoriesLabel": "Alle Geschichten lesen →",
     "stories": [
       {
-        "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
+        "quote": "\u201eDie Kreuzquelle ist wie ein alter Freund \u2014 jedes Jahr bringe ich ihm einen Besuch.\u201c",
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "Zum 12. Mal",
