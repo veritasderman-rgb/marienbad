@@ -10,7 +10,35 @@ export default defineConfig({
   site: 'https://marienbad.vercel.app',
   output: 'server',
   adapter: vercel(),
-  integrations: [react(), keystatic(), mdx(), sitemap()],
+  integrations: [
+    react(),
+    keystatic(),
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/admin') && !page.includes('/keystatic'),
+      serialize: (item) => {
+        const url = item.url
+        // Homepages — highest priority
+        if (url.match(/\/[a-z]{2}\/?$/)) {
+          return { ...item, changefreq: 'weekly', priority: 1.0 }
+        }
+        // Pillar pages (mineral-springs, accommodation, etc.)
+        if (url.match(/\/[a-z]{2}\/[^/]+\/?$/) && !url.includes('/magazin') && !url.includes('/magazine') && !url.includes('/zhurnal')) {
+          return { ...item, changefreq: 'weekly', priority: 0.9 }
+        }
+        // Magazine index
+        if (url.match(/\/(magazin|magazine|zhurnal)\/?$/)) {
+          return { ...item, changefreq: 'daily', priority: 0.8 }
+        }
+        // Individual articles
+        if (url.match(/\/(magazin|magazine|zhurnal)\//)) {
+          return { ...item, changefreq: 'monthly', priority: 0.7 }
+        }
+        // Everything else
+        return { ...item, changefreq: 'monthly', priority: 0.5 }
+      },
+    }),
+  ],
   image: {
     domains: ['marienbad.vercel.app', 'marienbad.com'],
   },

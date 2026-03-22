@@ -1,4 +1,6 @@
 ---
 // Redirect /admin to /keystatic (Keystatic CMS admin panel)
+// noindex: this page should never be indexed by search engines
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow')
 return Astro.redirect('/keystatic')
 ---
