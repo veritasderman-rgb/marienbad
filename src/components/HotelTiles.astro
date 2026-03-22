@@ -31,10 +31,10 @@ const sectionTitle: Record<string, string> = {
 }
 
 const ctaLabel: Record<string, string> = {
-  de: 'Mehr erfahren',
-  en: 'Learn more',
-  cs: 'Zjistit více',
-  ru: 'Узнать больше',
+  de: 'Hotel ansehen',
+  en: 'View hotel',
+  cs: 'Zobrazit hotel',
+  ru: 'Смотреть отель',
 }
 ---
 
@@ -43,40 +43,56 @@ const ctaLabel: Record<string, string> = {
     {sectionTitle[locale]}
   </h2>
 
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+  <div class="flex flex-col gap-4 md:gap-5">
     {orderedHotels.map((hotel) => {
       if (!hotel) return null
       const tagline = hotel.tagline[locale]
       const url = withUtm(hotel.bookingUrls[locale], 'marienbad', 'hotel-tile', 'hotel-booking')
       const stars = '★'.repeat(hotel.stars)
+      const features = (hotel.features[locale] ?? hotel.features.de).slice(0, 4)
+      const hotelName = hotel.name.replace(' Ensana Health Spa Hotel', '')
       return (
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          class="group relative block overflow-hidden rounded-xl bg-indigo-700 aspect-[3/4] transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
+          class="group relative block overflow-hidden rounded-xl bg-white border border-beige-200 transition-all duration-300 hover:shadow-lg hover:border-turquoise-300"
         >
-          {/* Gradient overlay for text readability */}
-          <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/90 via-indigo-900/40 to-indigo-700/20 z-10" />
+          {/* Accent line on hover */}
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-turquoise-400 to-turquoise-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 
-          {/* Decorative accent line */}
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-turquoise-400 to-turquoise-500 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div class="p-5 md:p-6 flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+            {/* Left: Hotel name, stars, tagline */}
+            <div class="md:w-1/3 shrink-0">
+              <span class="text-yellow-500 text-xs tracking-wider block mb-1">{stars}</span>
+              <h3 class="font-heading text-lg md:text-xl font-bold text-indigo-700 leading-tight mb-2">
+                {hotelName}
+              </h3>
+              <p class="text-beige-600 text-sm leading-relaxed">
+                {tagline}
+              </p>
+            </div>
 
-          {/* Content */}
-          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-20 text-white">
-            <span class="text-yellow-400 text-xs tracking-wider mb-1 block">{stars}</span>
-            <h3 class="font-heading text-sm md:text-base font-bold leading-tight mb-1.5">
-              {hotel.name.replace(' Ensana Health Spa Hotel', '')}
-            </h3>
-            <p class="text-white/70 text-xs leading-snug line-clamp-2 mb-3">
-              {tagline}
-            </p>
-            <span class="inline-flex items-center text-turquoise-300 text-xs font-medium group-hover:text-turquoise-200 transition-colors">
-              {ctaLabel[locale]}
-              <svg class="w-3 h-3 ml-1 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
+            {/* Right: USP features + CTA */}
+            <div class="flex-1 flex flex-col justify-between">
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 mb-4">
+                {features.map((feature) => (
+                  <li class="flex items-start gap-2 text-sm text-beige-700">
+                    <svg class="w-4 h-4 mt-0.5 text-turquoise-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <span class="inline-flex items-center text-turquoise-600 text-sm font-medium group-hover:text-turquoise-500 transition-colors self-start">
+                {ctaLabel[locale]}
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
           </div>
         </a>
       )

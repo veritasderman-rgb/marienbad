@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { title, description, href, variant = 'indigo' } = Astro.props
+const isExternal = href.startsWith('http')
 
 const bgMap: Record<string, string> = {
   indigo: 'from-indigo-500 to-indigo-700',
@@ -18,7 +19,7 @@ const bgMap: Record<string, string> = {
 const bgGradient = bgMap[variant] ?? bgMap.indigo
 ---
 
-<a href={href} class="group block card-hover">
+<a href={href} class="group block card-hover" {...isExternal ? { target: '_blank', rel: 'noopener' } : {}}>
   <div class={`relative overflow-hidden bg-gradient-to-br ${bgGradient} p-7 md:p-8 min-h-[220px] flex flex-col justify-end`} style={`border-radius: var(--radius-card);`}>
     <!-- Subtle decorative overlay -->
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(138,216,237,0.1)_0%,_transparent_60%)]"></div>
