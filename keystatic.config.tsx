@@ -238,7 +238,7 @@ export default config({
       label: 'Stories',
       path: 'src/content/stories/*/',
       slugField: 'title',
-      format: { contentField: 'body' },
+      format: { data: 'yaml', contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         status: fields.select({
@@ -296,7 +296,7 @@ export default config({
       label: 'Articles',
       path: 'src/content/articles/*/',
       slugField: 'title',
-      format: { contentField: 'body' },
+      format: { data: 'yaml', contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         status: fields.select({
@@ -389,7 +389,7 @@ export default config({
       label: 'Pages',
       path: 'src/content/pages/*/',
       slugField: 'title',
-      format: { contentField: 'body' },
+      format: { data: 'yaml', contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         locale: fields.select({
