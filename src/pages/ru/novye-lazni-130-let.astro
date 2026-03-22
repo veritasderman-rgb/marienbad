@@ -1,0 +1,278 @@
+---
+import Base from '@/layouts/Base.astro'
+import { hotels } from '@/data/hotels'
+import { withUtm } from '@/utils/utm'
+
+const locale = 'ru' as const
+const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
+
+const pageTitle = '130 лет Новых Лазней — Юбилей 1896–2026 — Marienbad.com'
+const pageDescription = 'Nové Lázně отмечают 130 лет со дня грандиозной перестройки архитектором Йозефом Шаффером. Откройте историю, Римские бани и Королевскую кабину короля Эдуарда VII.'
+
+const milestones = [
+  { year: '1828', title: 'Основание «Нойбада»', description: 'Аббат Карл Каспар Райтенбергер закладывает новое курортное здание — Нойбад (Новая купальня). Шестнадцать купальных кабин и десять комнат для гостей, приезжающих на курс лечения железистыми водами Амброжова и Каролинина источников.' },
+  { year: '1841', title: 'Первое расширение', description: 'Число купальных кабин увеличивается до 14, рядом со зданием появляется отдельная котельная. Открывается курзал — Новые Лазни становятся общественным центром города.' },
+  { year: '1893–1896', title: 'Преображение в неоренессансный дворец', description: 'Архитектор Йозеф Шаффер перестраивает Нойбад с нуля. Из скромного классицистического здания рождается монументальный четырёхбашенный дворец в итальянском неоренессансном стиле с Римскими банями, мраморными колоннами, классическими статуями и бассейнами с минеральной водой.' },
+  { year: '1897', title: 'Король Эдуард VII впервые в Марианских Лазнях', description: 'Будущий британский монарх приезжает впервые и мгновенно влюбляется в город. В Новых Лазнях для него создаётся личная Королевская кабина с роскошной ванной и элегантной комнатой отдыха в стиле бель эпок.' },
+  { year: '1904', title: 'Историческая встреча двух монархов', description: '16 августа 1904 года в отеле Nové Lázně встречаются император Франц Иосиф I и король Эдуард VII на официальных дипломатических переговорах. Марианские Лазни на один день становятся центром европейской политики.' },
+  { year: '1905', title: 'Основание Royal Golf Club', description: 'Эдуард VII основывает старейший гольф-клуб в Чехии — Royal Golf Club Mariánské Lázně. Клуб работает непрерывно по сей день.' },
+  { year: '1912–1913', title: 'Расширение при аббате Хельмере', description: 'Под руководством аббата Гильберта Хельмера количество купальных кабин почти удваивается. Новые Лазни отвечают на растущий спрос международной аристократии.' },
+  { year: '2005', title: 'Королевская традиция продолжается', description: 'Принц Эдвард, граф Уэссекский, останавливается в отеле Nové Lázně, продолжая традицию британской королевской семьи в Марианских Лазнях.' },
+  { year: '2021', title: 'Включение в список ЮНЕСКО', description: 'Марианские Лазни становятся частью транснациональной записи «Великие курортные города Европы». Nové Lázně — одно из ключевых зданий охраняемой зоны.' },
+  { year: '2026', title: '130 лет со дня перестройки Шаффера', description: 'Nové Lázně отмечают 130-летний юбилей. Здание по-прежнему служит пятизвёздочным курортным отелем — с оригинальными Римскими банями, Королевской и Императорской кабинами в полном рабочем состоянии.' },
+]
+
+const highlights = [
+  {
+    title: 'Римские бани 1896 года',
+    description: 'Два оригинальных бассейна с минеральной водой среди массивных мраморных колонн и классических статуй — подлинный интерьер 1896 года, переживший две мировые войны. Третий бассейн с противотоком добавлен при современной реконструкции. К услугам гостей — сауна (80 °C), санарий (50 °C), паровая баня и терапия Кнейппа.',
+    icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
+  },
+  {
+    title: 'Королевская кабина Эдуарда VII',
+    description: 'Личная купальня, созданная в 1896 году для британского короля. Оригинальная ванна в стиле бель эпок, элегантная комната отдыха — и уникальная деталь: деревянное кресло с резными ножками, в которое встроены механические весы. Король незаметно контролировал свой вес, не вставая на обычные весы.',
+    icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
+  },
+  {
+    title: 'Императорская кабина Франца Иосифа I',
+    description: 'Купальня с оригинальным историческим убранством, предназначенная для австрийского императора. Обе кабины — Королевская и Императорская — сегодня используются для специальных бальнеотерапевтических процедур, минеральных ванн и грязевых обёртываний.',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  },
+  {
+    title: '5 900 м² — единый комплекс',
+    description: 'Nové Lázně, Centrální lázně и Maria Spa соединены крытыми променадами и коридорами в единое целое. Гости перемещаются между зданиями, не выходя на улицу — крупнейший исторически подлинный курортный комплекс в Чехии.',
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+]
+
+const funFacts = [
+  'Фердинандов источник подавался в Новые Лазни по трубопроводу длиной 1 700 метров из Ушовиц. Паровой двигатель толкал воду по маршруту с перепадом высот 43 метра.',
+  'В Королевской кабине стоит деревянное кресло с резными ножками, внутри которого спрятаны механические весы. Эдуард VII незаметно контролировал на нём вес — стоять на обычных весах было бы не по-королевски.',
+  'Эдуард VII приезжал в Марианские Лазни настолько регулярно (девять раз за 12 лет), что европейская пресса называла город «летней столицей европейской дипломатии».',
+  'На здании по сей день возвышаются четыре башенки времён перестройки 1896 года — они стали символом отеля и видны из любой точки долины.',
+  'Среди знаменитых гостей были царь Николай II, композиторы Шопен и Вагнер, писатели Франц Кафка и Марк Твен, который в 1892 году с юмором описывал местные курортные ритуалы.',
+  'В коридорах отеля бьёт минеральный источник — гости могут набрать воду прямо в здании, не выходя на колоннаду.',
+  'Встречу Эдуарда VII и Франца Иосифа I в 1904 году увековечивает бронзовая скульптурная группа на площади Гёте, открытая в 2014 году к 110-летию события.',
+  'Ресторан Royal, примыкающий к Римским баням, прошёл последнюю реновацию в 2024 году и вмещает 180 гостей. Он сочетает чешскую и среднеевропейскую кухню.',
+]
+---
+
+<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription} alternateUrls={{ cs: '/cs/nove-lazne-130-let', de: '/de/neue-baeder-130-jahre', en: '/en/neue-baeder-130-years', ru: '/ru/novye-lazni-130-let' }}>
+
+  <!-- Anniversary Hero -->
+  <section class="relative bg-indigo-700 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.15)_0%,_transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(201,163,105,0.1)_0%,_transparent_50%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+
+    <div class="relative container-wide py-20 md:py-32 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-300 text-sm font-semibold mb-6">
+        <span>★</span>
+        <span>1896 — 2026</span>
+        <span>★</span>
+      </div>
+
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="font-size: clamp(2.25rem, 5vw, 4.5rem);">
+        130 лет Новых Лазней
+      </h1>
+
+      <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+        От монументальной перестройки архитектором <strong class="text-white">Йозефом Шаффером</strong> в 1896 году
+        до современного пятизвёздочного курортного отеля с <strong class="text-white">Римскими банями</strong>,
+        <strong class="text-white">Королевской кабиной Эдуарда VII</strong> и минеральным источником прямо в коридорах.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={withUtm(hotel.bookingUrls.ru, 'marienbad', 'anniversary', 'nove-lazne-130')}
+          class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Забронировать
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="#vekhi" class="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-lg">
+          Откройте историю
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 md:gap-10 mt-12 text-sm">
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">1896</div>
+          <div class="text-white/50 mt-1">Год перестройки</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">★★★★★</div>
+          <div class="text-white/50 mt-1">5 звёзд</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">5 900 м²</div>
+          <div class="text-white/50 mt-1">Курортный комплекс</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-yellow-400">ЮНЕСКО</div>
+          <div class="text-white/50 mt-1">Всемирное наследие</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Grid -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="text-center mb-12">
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Чем уникальны Новые Лазни</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">То, чего вы не найдёте больше нигде</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {highlights.map((item) => (
+        <div class="bg-beige-200 rounded-xl p-6 md:p-8 flex gap-5 items-start">
+          <div class="shrink-0 w-12 h-12 rounded-xl bg-indigo-700 flex items-center justify-center">
+            <svg class="w-6 h-6 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={item.icon} />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mb-2">{item.title}</h3>
+            <p class="text-beige-700 text-sm leading-relaxed">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Architect Section -->
+  <section class="bg-indigo-700 text-white py-16 md:py-24">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">Архитектор</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Йозеф Шаффер (1862–1938)</h2>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          Шаффер превратил скромный классицистический Нойбад 1828 года в <strong class="text-white">монументальный четырёхбашенный дворец в итальянском неоренессансном стиле</strong>. Перестройка заняла три года (1893–1896), и результат превзошёл все ожидания — Марианские Лазни получили здание, которое могло соперничать с лучшими курортными домами Карловых Вар, Баден-Бадена и Виши.
+        </p>
+        <p class="text-white/70 text-lg leading-relaxed">
+          Шаффер спроектировал Римские бани с мраморными колоннами и бассейнами с минеральной водой, личные кабины для королевских гостей и техническую инфраструктуру, позволявшую подавать Фердинандов источник по трубопроводу из Ушовиц на расстоянии 1,7 км. <strong class="text-white">Новые Лазни остаются его главным творением.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="vekhi" class="container-wide py-16 md:py-24">
+    <div class="text-center mb-12">
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Путь сквозь столетия</span>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Вехи Новых Лазней</h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-[27px] top-0 bottom-0 w-px bg-beige-300 hidden md:block"></div>
+
+        <div class="space-y-8">
+          {milestones.map((milestone) => (
+            <div class="flex gap-5 items-start">
+              <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-700 text-white flex items-center justify-center text-xs font-bold z-10 shadow-lg">
+                {milestone.year.includes('–') ? milestone.year.split('–')[0] : milestone.year}
+              </div>
+              <div class="pt-2">
+                <div class="text-turquoise-600 text-sm font-semibold">{milestone.year}</div>
+                <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1">{milestone.title}</h3>
+                <p class="text-beige-700 text-sm leading-relaxed mt-1">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts -->
+  <section class="bg-beige-200 py-16 md:py-24">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Знаете ли вы?</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Интересные факты из истории</h2>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Истории и факты из 130-летней жизни Новых Лазней — из архивов Гамелики, Городского музея Марианских Лазней и исторической прессы.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {funFacts.map((fact, i) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-8 h-8 rounded-full bg-yellow-400 text-indigo-900 flex items-center justify-center font-bold text-sm mb-4">{i + 1}</div>
+            <p class="text-beige-800 text-sm leading-relaxed">{fact}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- King Edward Section -->
+  <section class="container-wide py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-indigo-700 text-white rounded-2xl p-8 md:p-12">
+        <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Королевская традиция</span>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Девять визитов короля Эдуарда VII</h2>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Когда британский кронпринц (а впоследствии король) Эдуард VII в 1897 году впервые приехал в Марианские Лазни, он мгновенно полюбил этот город. За последующие двенадцать лет он возвращался <strong class="text-white">девять раз</strong> — и каждый раз именно Новые Лазни были его резиденцией.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Его ежедневный ритуал был неизменным: <strong class="text-white">утренний приём воды у Крестового источника</strong>, затем переход в Новые Лазни и купание в личной <strong class="text-white">Королевской кабине</strong>. В ней по сей день стоит роскошная ванна эпохи бель эпок и рядом — примечательный предмет мебели: <strong class="text-white">элегантное деревянное кресло со встроенными механическими весами</strong>. Король незаметно контролировал на нём свой вес, не вставая на обычные весы.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Благодаря его регулярным визитам Марианские Лазни стали <strong class="text-white">летней столицей европейской дипломатии</strong>. Кульминацией стала <strong class="text-white">встреча с императором Францем Иосифом I</strong> 16 августа 1904 года — событие, которое сегодня увековечивает бронзовая скульптурная группа на площади Гёте.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-6">
+          В 1905 году Эдуард VII основал <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — старейший гольф-клуб в Чехии, работающий непрерывно по сей день. Королевская традиция продолжается: в 2005 году в Новых Лазнях остановился <strong class="text-white">принц Эдвард, граф Уэссекский</strong>.
+        </p>
+        <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
+          «Королевская кабина с оригинальной ванной, комнатой отдыха и креслом со встроенными весами — живое свидетельство эпохи, когда в Марианских Лазнях писалась история Европы.»
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-indigo-700 text-white py-16 md:py-24">
+    <div class="container-wide text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-300 text-sm font-semibold mb-6">
+        <span>130 лет — юбилейное пребывание</span>
+      </div>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Проживите историю на собственном опыте</h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">
+        Искупайтесь в бассейнах с мраморными колоннами 1896 года, испытайте минеральную ванну в Королевской кабине Эдуарда VII и попробуйте воду из источника прямо в коридорах отеля.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={withUtm(hotel.bookingUrls.ru, 'marienbad', 'anniversary-cta', 'nove-lazne-130')}
+          class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Забронировать юбилейный отдых
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href={`/${locale}/prozhivanie`} class="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors text-lg">
+          Все отели
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="container-wide py-8 md:py-12">
+    <p class="text-beige-500 text-xs text-center">
+      Историческая информация получена из
+      <a href="https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Марианскоязненских анналов (Гамелика)</a>,
+      <a href="https://www.hamelika.cz/?cz_shrnuti-historie-marianskych-lazni%2C40=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Обзор истории (Гамелика)</a>,
+      <a href="https://www.e-lazne.eu/marianske-lazne/hotel-nove-lazne" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">e-lazne.eu</a>
+      и <a href="https://ensanahotels.com/ru/oteli/nove-lazne" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Ensana Hotels</a>.
+    </p>
+  </section>
+
+</Base>

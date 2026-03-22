@@ -26,6 +26,14 @@ interface Props {
 }
 
 const { locale, section, alternateUrls } = Astro.props
+
+/** OG locale mapping */
+const ogLocaleMap: Record<Locale, string> = {
+  de: 'de_DE',
+  en: 'en_US',
+  cs: 'cs_CZ',
+  ru: 'ru_RU',
+}
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
 const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
@@ -70,6 +78,8 @@ function hreflangUrl(targetLocale: Locale): string | null {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#2d2a6e" />
 
     <meta name="robots" content="index, follow" />
 
@@ -89,12 +99,51 @@ function hreflangUrl(targetLocale: Locale): string | null {
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocaleMap[locale]} />
+    {locales.filter(l => l !== locale).map(l => (
+      <meta property="og:locale:alternate" content={ogLocaleMap[l]} />
+    ))}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Structured data: Organization + TouristDestination -->
+    <script type="application/ld+json" set:html={JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Marienbad.com",
+        "url": "https://marienbad.com",
+        "logo": `${siteUrl}/favicon.svg`,
+        "description": t(locale, 'meta.description'),
+        "sameAs": [
+          "https://www.instagram.com/marienbad.com_official/",
+          "https://www.facebook.com/marienbad.com.official",
+          "https://www.youtube.com/@marienbad-com"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "TouristDestination",
+        "name": "Mariánské Lázně (Marienbad)",
+        "url": "https://marienbad.com",
+        "description": "Historic Czech spa town, part of the UNESCO Great Spa Towns of Europe. Famous for 100+ mineral springs, CO₂ therapies, and 200 years of spa culture.",
+        "touristType": ["Spa Tourism", "Wellness", "Cultural Heritage"],
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.9644,
+          "longitude": 12.7012
+        },
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Czech Republic"
+        },
+        "award": "UNESCO World Heritage Site — Great Spa Towns of Europe (2021)"
+      }
+    ])} />
 
     <!-- Cookie-free analytics (Plausible) -->
     {import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN && (

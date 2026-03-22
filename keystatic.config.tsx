@@ -206,13 +206,39 @@ export default config({
     'homepage-en': homepageSingleton('en', 'Homepage (English)'),
     'homepage-cs': homepageSingleton('cs', 'Homepage (Čeština)'),
     'homepage-ru': homepageSingleton('ru', 'Homepage (Русский)'),
+    'podcast-episodes': singleton({
+      label: 'Podcast Episodes',
+      path: 'src/content/podcasts/episodes',
+      format: { data: 'json' },
+      schema: {
+        playlistUrl: fields.url({ label: 'YouTube Playlist URL' }),
+        episodes: fields.array(
+          fields.object({
+            videoId: fields.text({ label: 'YouTube Video ID' }),
+            date: fields.text({ label: 'Date (ISO)', description: 'e.g. 2025-01-15' }),
+            titleCs: fields.text({ label: 'Title (CS)' }),
+            titleDe: fields.text({ label: 'Title (DE)' }),
+            titleEn: fields.text({ label: 'Title (EN)' }),
+            titleRu: fields.text({ label: 'Title (RU)' }),
+            descriptionCs: fields.text({ label: 'Description (CS)', multiline: true }),
+            descriptionDe: fields.text({ label: 'Description (DE)', multiline: true }),
+            descriptionEn: fields.text({ label: 'Description (EN)', multiline: true }),
+            descriptionRu: fields.text({ label: 'Description (RU)', multiline: true }),
+          }),
+          {
+            label: 'Episodes',
+            itemLabel: (props) => props.fields.titleEn.value || props.fields.videoId.value || 'Episode',
+          }
+        ),
+      },
+    }),
   },
   collections: {
     stories: collection({
       label: 'Stories',
       path: 'src/content/stories/*/',
       slugField: 'title',
-      format: { contentField: 'body' },
+      format: { data: 'yaml', contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         status: fields.select({
@@ -270,7 +296,7 @@ export default config({
       label: 'Articles',
       path: 'src/content/articles/*/',
       slugField: 'title',
-      format: { contentField: 'body' },
+      format: { data: 'yaml', contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         status: fields.select({
@@ -363,7 +389,7 @@ export default config({
       label: 'Pages',
       path: 'src/content/pages/*/',
       slugField: 'title',
-      format: { contentField: 'body' },
+      format: { data: 'yaml', contentField: 'body' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         locale: fields.select({
