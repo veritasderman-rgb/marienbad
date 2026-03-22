@@ -31,8 +31,13 @@ export function getAlternateLinks(section: SectionKey | 'home'): { locale: Local
   return locales.map((l) => ({ locale: l, href: `/${l}/${routes[section][l]}` }))
 }
 
-/** Navigation items for a given locale */
-export function getNavItems(locale: Locale) {
+/** Navigation item types */
+export type NavLink = { type: 'link'; navKey: string; href: string }
+export type NavDropdown = { type: 'dropdown'; navKey: string; children: NavLink[] }
+export type NavItem = NavLink | NavDropdown
+
+/** Flat navigation items for mobile menu */
+export function getNavItemsFlat(locale: Locale) {
   const sectionKeys: { navKey: string; section: SectionKey }[] = [
     { navKey: 'nav.mineralSprings', section: 'mineral-springs' },
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
@@ -48,4 +53,36 @@ export function getNavItems(locale: Locale) {
     navKey,
     href: `/${locale}/${routes[section][locale]}`,
   }))
+}
+
+/** Structured navigation items for desktop (with dropdowns) */
+export function getNavItems(locale: Locale): NavItem[] {
+  const link = (navKey: string, section: SectionKey): NavLink => ({
+    type: 'link',
+    navKey,
+    href: `/${locale}/${routes[section][locale]}`,
+  })
+
+  return [
+    link('nav.mineralSprings', 'mineral-springs'),
+    link('nav.thingsToDo', 'things-to-do'),
+    link('nav.accommodation', 'accommodation'),
+    {
+      type: 'dropdown',
+      navKey: 'nav.aboutTown',
+      children: [
+        link('nav.history', 'history'),
+        link('nav.practicalInfo', 'practical-info'),
+      ],
+    },
+    {
+      type: 'dropdown',
+      navKey: 'nav.stories',
+      children: [
+        link('nav.magazine', 'magazine'),
+        link('nav.podcast', 'podcast'),
+        link('nav.people', 'people'),
+      ],
+    },
+  ]
 }
