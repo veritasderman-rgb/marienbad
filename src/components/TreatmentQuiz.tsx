@@ -280,12 +280,18 @@ export default function TreatmentQuiz({
           hotel.treatments,
           selectedConditions
         )
-        const starDiff = Math.abs(hotel.stars - targetStars)
-        const score = matching.length * 10 - starDiff * 5
+        const score = matching.length * 10
 
         return { hotel, matching, score }
       })
-      .filter((r) => r.matching.length > 0)
+      .filter((r) => {
+        if (r.matching.length === 0) return false
+        // Strict star-rating filter: only show hotels matching the selected tier
+        // Exception: Luxury (5★) always includes Centrální Lázně (4★)
+        if (r.hotel.stars === targetStars) return true
+        if (targetStars === 5 && r.hotel.slug === 'centralni-lazne') return true
+        return false
+      })
       .sort((a, b) => b.score - a.score)
       .slice(0, 3)
   }, [step, hotels, selectedConditions, budget])
