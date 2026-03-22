@@ -71,20 +71,21 @@ const ensanaDisclosure = t(locale, 'footer.ensanaDisclosure')
         </nav>
       </div>
 
-      <!-- Col 3b: Useful links (Czech only) -->
-      {locale === 'cs' && (
-        <div class="lg:col-span-1">
-          <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">Užitečné odkazy</h3>
-          <nav aria-label="Užitečné odkazy" class="flex flex-col gap-2.5">
-            <a href="https://news.lazneml.cz" target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
-              Novinky z lázní
-            </a>
-            <a href="https://www.lazneml.cz" target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
-              Oficiální web lázní
-            </a>
-          </nav>
-        </div>
-      )}
+      <!-- Col 3b: Useful links -->
+      <div class="lg:col-span-1">
+        <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{{ de: 'Nützliche Links', en: 'Useful Links', cs: 'Užitečné odkazy', ru: 'Полезные ссылки' }[locale]}</h3>
+        <nav aria-label={{ de: 'Nützliche Links', en: 'Useful Links', cs: 'Užitečné odkazy', ru: 'Полезные ссылки' }[locale]} class="flex flex-col gap-2.5">
+          <a href={`https://ensanahotels.com/${locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : locale}/`} target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
+            Ensana Hotels
+          </a>
+          <a href="https://news.lazneml.cz" target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
+            {{ de: 'Neuigkeiten aus dem Kurort', en: 'Spa Town News', cs: 'Novinky z lázní', ru: 'Новости курорта' }[locale]}
+          </a>
+          <a href="https://www.lazneml.cz" target="_blank" rel="noopener" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
+            {{ de: 'Offizielle Website der Stadt', en: 'Official City Website', cs: 'Oficiální web lázní', ru: 'Официальный сайт города' }[locale]}
+          </a>
+        </nav>
+      </div>
 
       <!-- Col 4: Contact & Location -->
       <div>

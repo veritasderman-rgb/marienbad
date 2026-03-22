@@ -297,15 +297,15 @@ The 120 rooms of the Hvězda are tastefully furnished, blending Art Nouveau char
     },
     address: 'Hlavní třída 655, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
-      de: 'Modernes 4-Sterne-Hotel — familienfreundlich mit Kinderbetreuung',
-      en: 'Modern 4-star hotel — family-friendly with childcare',
-      cs: 'Moderní 4hvězdičkový hotel — přátelský k rodinám s hlídáním dětí',
-      ru: 'Современный 4-звёздочный отель — для семей с присмотром за детьми',
+      de: 'Modernes 4-Sterne-Hotel — familienfreundlich mit Spielbereich für Kinder',
+      en: 'Modern 4-star hotel — family-friendly with children\'s play corner',
+      cs: 'Moderní 4hvězdičkový hotel — přátelský k rodinám s dětským koutkem',
+      ru: 'Современный 4-звёздочный отель — для семей с детским уголком',
     },
     features: {
       de: [
         'Modernes Design mit lichtdurchflutetem Atrium',
-        'Familienfreundlich mit Kinderbetreuung und Spielbereich',
+        'Familienfreundlich mit Spielbereich für Kinder',
         'Großzügiger Wellnessbereich mit Innenpool und Saunawelt',
         'Lage an der Hauptpromenade nahe der Kolonnade',
         'Barrierefreie Zimmer und Einrichtungen',
@@ -315,7 +315,7 @@ The 120 rooms of the Hvězda are tastefully furnished, blending Art Nouveau char
       ],
       en: [
         'Modern design with light-filled atrium',
-        'Family-friendly with childcare and play area',
+        'Family-friendly with children\'s play corner',
         'Spacious wellness area with indoor pool and sauna world',
         'Located on the main promenade near the Colonnade',
         'Accessible rooms and facilities',
@@ -327,12 +327,12 @@ The 120 rooms of the Hvězda are tastefully furnished, blending Art Nouveau char
     description: {
       de: `Das Butterfly ist das modernste der Ensana Hotels in Marienbad und wurde im Jahr 2003 erbaut, um eine neue Generation von Kurgästen anzusprechen. Mit seinem markanten, zeitgenössischen Design — geprägt von einem lichtdurchfluteten Atrium, klaren Linien und großzügigen Glasfronten — setzt es einen bewussten Kontrast zu den historischen Häusern der Stadt, ohne dabei auf den Kern der Marienbader Kurtradition zu verzichten.
 
-Besonders hervorzuheben ist die Familienfreundlichkeit des Hotels. Als einziges Ensana-Haus in Marienbad bietet das Butterfly eine professionelle Kinderbetreuung und einen Spielbereich, sodass Eltern ihre Kuranwendungen in Ruhe genießen können, während die Kinder bestens versorgt sind. Der großzügige Wellnessbereich erstreckt sich über zwei Etagen und umfasst einen Innenpool, eine Saunawelt mit verschiedenen Aufgüssen, Dampfbäder und Ruhebereiche mit Blick auf den Kurpark.
+Besonders hervorzuheben ist die Familienfreundlichkeit des Hotels. Als einziges Ensana-Haus in Marienbad bietet das Butterfly einen eigenen Spielbereich für Kinder, sodass Familien ihren Kuraufenthalt entspannt genießen können. Der großzügige Wellnessbereich erstreckt sich über zwei Etagen und umfasst einen Innenpool, eine Saunawelt mit verschiedenen Aufgüssen, Dampfbäder und Ruhebereiche mit Blick auf den Kurpark.
 
 Die 120 Zimmer des Butterfly sind hell, geräumig und funktional gestaltet — ideal für Familien und Gäste, die Wert auf zeitgemäßen Komfort legen. Viele Zimmer sind barrierefrei zugänglich. Das Restaurant überrascht mit einem abwechslungsreichen Buffet und einer Live-Cooking-Station, an der Köche frische Gerichte vor den Augen der Gäste zubereiten. Die Lage an der Hauptpromenade ermöglicht kurze Wege zur Kolonnade und zu den Mineralquellen. Für alle, die einen medizinisch fundierten Kuraufenthalt in modernem Ambiente suchen und vielleicht mit der ganzen Familie anreisen, ist das Butterfly die perfekte Wahl.`,
       en: `The Butterfly is the most modern of Ensana's hotels in Marienbad, built in 2003 to appeal to a new generation of spa guests. With its distinctive contemporary design — characterized by a light-filled atrium, clean lines, and generous glass facades — it provides a deliberate contrast to the city's historic properties while staying true to the core of Marienbad's spa tradition.
 
-Particularly noteworthy is the hotel's family-friendliness. As the only Ensana property in Marienbad offering professional childcare and a dedicated play area, the Butterfly allows parents to enjoy their spa treatments in peace while children are well looked after. The spacious wellness area spans two floors and includes an indoor pool, a sauna world with various infusions, steam baths, and relaxation areas with views of the spa park.
+Particularly noteworthy is the hotel's family-friendliness. As the only Ensana property in Marienbad with a dedicated children's play corner, the Butterfly is the natural choice for families seeking a spa holiday together. The spacious wellness area spans two floors and includes an indoor pool, a sauna world with various infusions, steam baths, and relaxation areas with views of the spa park.
 
 The 120 rooms of the Butterfly are bright, spacious, and functionally designed — ideal for families and guests who value contemporary comfort. Many rooms are fully accessible. The restaurant impresses with a varied buffet and a live cooking station where chefs prepare fresh dishes in front of guests. Its location on the main promenade allows for short walks to the Colonnade and the mineral springs. For anyone seeking a medically grounded spa stay in a modern setting, perhaps traveling with the whole family, the Butterfly is the perfect choice.`,
     },
@@ -497,16 +497,14 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
     },
     address: 'Hlavní třída 438, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
-      de: 'Preisgünstiges 3-Sterne-Haus mit eigenem Kurzentrum und Verbindung zum Pacifik',
-      en: 'Affordable 3-star hotel with its own spa center and connection to the Pacifik',
-      cs: 'Cenově dostupný 3hvězdičkový hotel s vlastním léčebným centrem a propojením s Pacifikem',
-      ru: 'Доступный 3-звёздочный отель с собственным лечебным центром и соединением с Пацификом',
+      de: 'Preisgünstiges 3-Sterne-Haus mit eigenem Kurzentrum — ideal für längere Aufenthalte',
+      en: 'Affordable 3-star hotel with its own treatment center — ideal for extended stays',
+      cs: 'Cenově dostupný 3hvězdičkový hotel s vlastním léčebným centrem — ideální pro delší pobyty',
+      ru: 'Доступный 3-звёздочный отель с собственным лечебным центром — идеален для длительного пребывания',
     },
     features: {
       de: [
-        'Verbindungsgang zum Schwesterhotel Pacifik',
         'Eigenes Kurzentrum mit Behandlungsräumen',
-        'Innenpool im verbundenen Pacifik nutzbar',
         'Ruhige Lage an der Hauptpromenade',
         'Restaurant mit Halb- und Vollpension',
         'Attraktives Preis-Leistungs-Verhältnis',
@@ -514,9 +512,7 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
         'Parkplatz am Hotel verfügbar',
       ],
       en: [
-        'Connecting passage to sister hotel Pacifik',
         'In-house treatment center with spa rooms',
-        'Access to indoor pool at connected Pacifik hotel',
         'Quiet location on the main promenade',
         'Restaurant with half-board and full-board',
         'Attractive value for money',
@@ -524,9 +520,7 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
         'Parking available at the hotel',
       ],
       cs: [
-        'Propojení se sesterským hotelem Pacifik',
         'Vlastní léčebné centrum s procedurálními místnostmi',
-        'Přístup k vnitřnímu bazénu v propojeném hotelu Pacifik',
         'Klidná poloha na hlavní promenádě',
         'Restaurace s polopenzí a plnou penzí',
         'Atraktivní poměr cena/výkon',
@@ -534,9 +528,7 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
         'Parkování u hotelu k dispozici',
       ],
       ru: [
-        'Соединение с отелем-партнёром Пацифик',
         'Собственный лечебный центр с процедурными кабинетами',
-        'Доступ к крытому бассейну в Пацифике',
         'Тихое расположение на главной променаде',
         'Ресторан с полупансионом и полным пансионом',
         'Привлекательное соотношение цены и качества',
@@ -545,10 +537,10 @@ The 120 rooms of the Butterfly are bright, spacious, and functionally designed �
       ],
     },
     description: {
-      de: `Das Vltava ist ein gastfreundliches Drei-Sterne-Kurhotel an der Hauptpromenade von Marienbad, das sich durch ein ausgezeichnetes Preis-Leistungs-Verhältnis auszeichnet. Über einen eleganten Verbindungsgang mit dem benachbarten Hotel Pacifik verbunden, profitieren Gäste von einem erweiterten Angebot an Kuranwendungen und Einrichtungen. Das eigene Kurzentrum bietet ein breites Spektrum an Behandlungen unter ärztlicher Aufsicht. Die komfortablen Zimmer und das Restaurant mit ausgewogener Kurküche machen das Vltava zur idealen Wahl für preisbewusste Kurgäste, die Wert auf medizinische Qualität legen.`,
-      en: `The Vltava is a welcoming three-star spa hotel on the main promenade of Marienbad, distinguished by its excellent value for money. Connected to the neighboring Hotel Pacifik through an elegant passage, guests benefit from an extended range of spa treatments and facilities. The in-house treatment center offers a broad spectrum of therapies under medical supervision. Comfortable rooms and a restaurant serving balanced spa cuisine make the Vltava the ideal choice for budget-conscious spa guests who value medical quality.`,
-      cs: `Vltava je pohostinný tříhvězdičkový lázeňský hotel na hlavní promenádě Mariánských Lázní, který se vyznačuje vynikajícím poměrem cena/výkon. Propojen elegantní chodbou se sousedním hotelem Pacifik, hosté mají přístup k rozšířenému spektru lázeňských procedur a vybavení. Vlastní léčebné centrum nabízí širokou škálu procedur pod lékařským dohledem. Komfortní pokoje a restaurace s vyváženou lázeňskou kuchyní dělají z Vltavy ideální volbu pro hosty, kteří hledají kvalitní léčbu za rozumnou cenu.`,
-      ru: `Влтава — гостеприимный трёхзвёздочный курортный отель на главной променаде Марианских Лазней, отличающийся превосходным соотношением цены и качества. Соединённый с соседним отелем Пацифик элегантным переходом, гости получают доступ к расширенному спектру процедур и инфраструктуре. Собственный лечебный центр предлагает широкий выбор процедур под медицинским наблюдением.`,
+      de: `Das Vltava ist ein gastfreundliches Drei-Sterne-Kurhotel an der Hauptpromenade von Marienbad, das sich durch ein ausgezeichnetes Preis-Leistungs-Verhältnis auszeichnet. Das eigene Kurzentrum bietet ein breites Spektrum an Behandlungen unter ärztlicher Aufsicht. Die komfortablen Zimmer und das Restaurant mit ausgewogener Kurküche machen das Vltava zur idealen Wahl für preisbewusste Kurgäste, die Wert auf medizinische Qualität legen.`,
+      en: `The Vltava is a welcoming three-star spa hotel on the main promenade of Marienbad, distinguished by its excellent value for money. The in-house treatment center offers a broad spectrum of therapies under medical supervision. Comfortable rooms and a restaurant serving balanced spa cuisine make the Vltava the ideal choice for budget-conscious spa guests who value medical quality.`,
+      cs: `Vltava je pohostinný tříhvězdičkový lázeňský hotel na hlavní promenádě Mariánských Lázní, který se vyznačuje vynikajícím poměrem cena/výkon. Vlastní léčebné centrum nabízí širokou škálu procedur pod lékařským dohledem. Komfortní pokoje a restaurace s vyváženou lázeňskou kuchyní dělají z Vltavy ideální volbu pro hosty, kteří hledají kvalitní léčbu za rozumnou cenu.`,
+      ru: `Влтава — гостеприимный трёхзвёздочный курортный отель на главной променаде Марианских Лазней, отличающийся превосходным соотношением цены и качества. Собственный лечебный центр предлагает широкий выбор процедур под медицинским наблюдением.`,
     },
     treatments: {
       de: [
