@@ -12,7 +12,7 @@ export const localeNames: Record<Locale, string> = {
 /** Canonical section key → localized slug per locale */
 export const routes = {
   'mineral-springs': { de: 'mineralquellen', en: 'mineral-springs', cs: 'mineralni-prameny', ru: 'mineralnye-istochniki' },
-  'things-to-do': { de: 'unternehmungen', en: 'things-to-do', cs: 'co-delat', ru: 'chem-zanyatsya' },
+  'things-to-do': { de: 'aktivitaeten', en: 'things-to-do', cs: 'co-delat', ru: 'chem-zanyatsya' },
   accommodation: { de: 'unterkunft', en: 'accommodation', cs: 'ubytovani', ru: 'prozhivanie' },
   history: { de: 'geschichte', en: 'history', cs: 'historie', ru: 'istoriya' },
   'practical-info': { de: 'praktische-infos', en: 'practical-info', cs: 'prakticke-informace', ru: 'prakticheskaya-informaciya' },
