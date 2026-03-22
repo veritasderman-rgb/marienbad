@@ -7,50 +7,53 @@ const locale = 'cs' as const
 const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
 
 const pageTitle = '130 let Nových Lázní — Oslavy výročí 1896–2026 — Marienbad.com'
-const pageDescription = 'Nové Lázně slaví 130 let od velkolepé přestavby architektem Josefem Schafferem. Objevte historii, Římské lázně a kabinet krále Eduarda VII.'
+const pageDescription = 'Nové Lázně slaví 130 let od velkolepé přestavby architektem Josefem Schafferem. Objevte historii, Římské lázně a Královskou kabinu krále Eduarda VII.'
 
 const milestones = [
-  { year: '1827', title: 'Založení Nových lázní', description: 'Opat Karl Kašpar Reitenberger nechává postavit nový lázeňský dům s koupelemi v železnatých vodách Ambrožova a Karolinina pramene.' },
-  { year: '1841', title: 'Otevření Kursálu', description: 'Počet lázeňských kabin stoupl z 10 na 14. Instalována samostatná kotelna mimo budovu. Otevřen kursální sál pro společenské události.' },
-  { year: '1893–1896', title: 'Monumentální přestavba', description: 'Architekt Josef Schaffer proměňuje budovu ve velkolepý palác v italském novorenesančním stylu. Vznikají slavné Římské lázně s mramorovými sloupy a mozaikovými podlahami.' },
-  { year: '1897', title: 'První návštěva krále Eduarda VII.', description: 'Britský král Edward VII. přijíždí poprvé do Mariánských Lázní. Z Nových lázní si učiní svou základnu — jeho osobní koupací kabinet je zachován dodnes.' },
-  { year: '1904', title: 'Setkání panovníků', description: '16. srpna 1904 se v hotelu Nové Lázně setkávají císař František Josef I. a král Eduard VII. při oficiálním jednání.' },
-  { year: '1905', title: 'Založení Royal Golf Clubu', description: 'Král Eduard VII. zakládá nejstarší golfový klub v Čechách — Royal Golf Club Mariánské Lázně.' },
-  { year: '2005', title: 'Návštěva prince Edwarda', description: 'Princ Edward, vnuk královny Alžběty II., navštěvuje Mariánské Lázně a pokračuje tak v královské tradici.' },
-  { year: '2021', title: 'UNESCO — Světové dědictví', description: 'Mariánské Lázně se stávají součástí zápisu UNESCO „Slavná lázeňská města Evropy". Nové Lázně jsou jednou z klíčových staveb chráněné zóny.' },
-  { year: '2026', title: '130 let od přestavby', description: 'Nové Lázně slaví 130. výročí monumentální přestavby Josefem Schafferem. Budova stále slouží jako pětihvězdičkový lázeňský hotel s původními interiéry.' },
+  { year: '1828', title: 'Vznik „Neubadu"', description: 'Opat Karl Kašpar Reitenberger zakládá novou lázeňskou budovu — Neubad. Šestnáct koupelových kabin a deset pokojů pro hosty, kteří přijíždějí na kúry v železnatých vodách Ambrožova a Karolinina pramene.' },
+  { year: '1841', title: 'První rozšíření', description: 'Počet koupelových kabin roste na 14, u budovy vzniká samostatná kotelna. Přibývá kursální sál — Nové Lázně se stávají společenským centrem města.' },
+  { year: '1893–1896', title: 'Přerod v novorenesanční palác', description: 'Architekt Josef Schaffer přestavuje Neubad od základů. Z nenápadné klasicistní budovy se rodí monumentální čtyřvěžový palác v italském novorenesančním stylu s Římskými lázněmi, mramorovými sloupy, klasickými sochami a bazény s minerální vodou.' },
+  { year: '1897', title: 'Král Eduard VII. poprvé v Mariánských Lázních', description: 'Budoucí britský monarcha přijíždí poprvé a okamžitě si město zamiluje. V Nových Lázních pro něj vzniká soukromá Královská kabina s opulentní vanou a elegantním odpočívárnou v duchu belle époque.' },
+  { year: '1904', title: 'Historické setkání dvou mocnářů', description: '16. srpna 1904 se v hotelu Nové Lázně setkávají císař František Josef I. a král Eduard VII. při oficiálním diplomatickém jednání. Mariánské Lázně se na jeden den stávají centrem evropské politiky.' },
+  { year: '1905', title: 'Založení Royal Golf Clubu', description: 'Eduard VII. zakládá nejstarší golfový klub v Čechách — Royal Golf Club Mariánské Lázně. Klub funguje nepřetržitě dodnes.' },
+  { year: '1912–1913', title: 'Rozšíření za opata Helmera', description: 'Pod vedením opata Gilberta Helmera se kapacita koupelových kabin téměř zdvojnásobuje. Nové Lázně reagují na rostoucí poptávku mezinárodní aristokracie.' },
+  { year: '2005', title: 'Královská tradice pokračuje', description: 'Princ Edward, hrabě z Wessexu, se ubytovává v hotelu Nové Lázně a navazuje na tradici britské královské rodiny v Mariánských Lázních.' },
+  { year: '2021', title: 'Zápis na seznam UNESCO', description: 'Mariánské Lázně se stávají součástí transnacionálního zápisu „Slavná lázeňská města Evropy". Nové Lázně patří mezi klíčové stavby chráněné zóny.' },
+  { year: '2026', title: '130 let od Schafferovy přestavby', description: 'Nové Lázně slaví 130. výročí. Budova stále slouží jako pětihvězdičkový lázeňský hotel — s původními Římskými lázněmi, Královskou kabinou i Císařskou kabinou v plném provozu.' },
 ]
 
 const highlights = [
   {
-    title: 'Římské lázně',
-    description: 'Jediné Římské lázně ve střední Evropě. Mramorové bazény, klasické sochy a minerální voda — jako v antickém Římě. Originální dlaždice z roku 1896 jsou stále na svém místě.',
+    title: 'Římské lázně z roku 1896',
+    description: 'Dva původní bazény s minerální vodou zasazené mezi mohutné mramorové sloupy a klasické sochy — autentický interiér z roku 1896, který přežil dvě světové války. Třetí bazén s protiproudem byl přidán při moderní rekonstrukci. K dispozici je sauna (80 °C), sanárium (50 °C), parní lázeň a Kneippova terapie.',
     icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
   },
   {
-    title: 'Královský kabinet Eduarda VII.',
-    description: 'Zachovaný osobní koupací kabinet britského krále. Eduard VII. navštívil Mariánské Lázně devětkrát (1897–1909). Každé ráno pil vodu z Křížového pramene a poté zamířil do Nových lázní.',
+    title: 'Královská kabina Eduarda VII.',
+    description: 'Soukromá koupelna vybudovaná v roce 1896 pro britského krále. Původní vana v duchu belle époque, elegantní odpočívárna — a unikát: dřevěná židle s vyřezávanými nožkami, do které je zabudovaná mechanická váha. Král si na ní nenápadně kontroloval hmotnost, aniž by musel stát na obyčejné váze.',
     icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
   },
   {
-    title: 'Císařský kabinet Františka Josefa I.',
-    description: 'Historický koupací kabinet rakouského císaře — připomínka diplomatického setkání dvou mocnářů v roce 1904.',
+    title: 'Císařská kabina Františka Josefa I.',
+    description: 'Koupelna s původní historickou výzdobou, určená rakouskému císaři. Obě kabiny — Královská i Císařská — dnes slouží pro speciální balneoterapeutické procedury, minerální koupele a bahenní zábaly.',
     icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
   },
   {
-    title: '5 900 m² lázeňský komplex',
-    description: 'Nové Lázně, Centrální lázně a Maria Spa jsou propojeny krytými promenádami v jeden obří lázeňský komplex — největší historicky původní komplex v Čechách.',
+    title: '5 900 m² propojený komplex',
+    description: 'Nové Lázně, Centrální lázně a Maria Spa jsou spojené krytými promenádami a koridory v jeden celek. Hosté přecházejí mezi budovami, aniž by vyšli ven — největší historicky původní lázeňský komplex v Čechách.',
     icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
   },
 ]
 
 const funFacts = [
-  'Ferdinandův pramen byl přiveden do Nových lázní potrubím o délce 1 700 metrů z Úšovic. Parní stroj tlačil vodu po trase stoupající o 43 metrů.',
-  'Architekt Josef Schaffer vytvořil v Mariánských Lázních řadu dalších budov, ale Nové Lázně zůstávají jeho největším dílem.',
-  'Král Eduard VII. sem přijížděl tak pravidelně, že se Mariánské Lázně v médiích označovaly jako „letní hlavní město evropské diplomacie".',
-  'Na budově jsou dodnes zachovány čtyři věžičky — symbol, který se stal ikonickým znakem hotelu.',
-  'Mark Twain navštívil Mariánské Lázně v roce 1892 a s humorem psal o zdejších lázeňských rituálech.',
-  'Nové Lázně dnes nabízejí 225 plně vybavených pokojů, Královskou restauraci, restauraci Goethe a Vídeňskou kavárnu.',
+  'Ferdinandův pramen byl přiveden do Nových lázní potrubím o délce 1 700 metrů z Úšovic. Parní stroj tlačil vodu po trase stoupající o 43 metrů výškového rozdílu.',
+  'V Královské kabině stojí dřevěná židle s vyřezávanými nožkami, uvnitř které se skrývá mechanická váha. Eduard VII. si na ní diskrétně kontroloval váhu — stát na obyčejné váze by nebylo královské.',
+  'Eduard VII. přijížděl do Mariánských Lázní tak pravidelně (devětkrát za 12 let), že evropský tisk nazýval město „letním hlavním městem evropské diplomacie".',
+  'Na budově se dodnes tyčí čtyři věžičky z přestavby roku 1896 — staly se ikonickým znakem hotelu a jsou viditelné z celého údolí.',
+  'Mezi slavné hosty patřili i car Mikuláš II., skladatelé Chopin a Wagner, spisovatel Franz Kafka a Mark Twain, který v roce 1892 s humorem popisoval zdejší lázeňské rituály.',
+  'V chodbách hotelu vyvěrá minerální pramen — hosté si mohou nabrat vodu přímo v budově, aniž by museli na kolonádu.',
+  'Setkání Eduarda VII. a Františka Josefa I. v roce 1904 připomíná bronzové sousoší na Goethově náměstí, odhalené v roce 2014 k 110. výročí události.',
+  'Restaurace Royal, která navazuje na Římské lázně, prošla poslední renovací v roce 2024 a pojme 180 hostů. Kombinuje českou a středoevropskou kuchyni.',
 ]
 ---
 
@@ -75,7 +78,8 @@ const funFacts = [
 
       <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
         Od monumentální přestavby architektem <strong class="text-white">Josefem Schafferem</strong> v roce 1896
-        po dnešní pětihvězdičkový lázeňský hotel s jedinými <strong class="text-white">Římskými lázněmi</strong> ve střední Evropě.
+        po dnešní pětihvězdičkový lázeňský hotel s <strong class="text-white">Římskými lázněmi</strong>,
+        <strong class="text-white">Královskou kabinou Eduarda VII.</strong> a minerálním pramenem přímo v chodbách.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center">
@@ -147,10 +151,10 @@ const funFacts = [
         <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">Architekt</span>
         <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer (1862–1938)</h2>
         <p class="text-white/70 text-lg leading-relaxed mb-6">
-          Schaffer převzal architektonické formování Mariánských Lázní na přelomu 19. a 20. století. Přinesl velkorysejší měřítko a bohatší dekorativní slovník. Jeho mistrovské dílo — <strong class="text-white">Nové Lázně</strong> — stanovilo nové standardy pro lázeňskou architekturu v celé Evropě.
+          Schaffer přetvořil nenápadný klasicistní Neubad z roku 1828 v <strong class="text-white">monumentální čtyřvěžový palác v italském novorenesančním stylu</strong>. Přestavba trvala tři roky (1893–1896) a výsledek předčil všechna očekávání — Mariánské Lázně rázem měly budovu, která se mohla měřit s nejlepšími lázeňskými domy v Karlových Varech, Baden-Badenu či Vichy.
         </p>
         <p class="text-white/70 text-lg leading-relaxed">
-          Přestavba v letech 1893–1896 proměnila původní budovu z roku 1827 v <strong class="text-white">monumentální palác v italském novorenesančním stylu</strong>. Schaffer vytvořil prostory, které kombinovaly nejmodernější balneologickou technologii s architektonickou krásou hodnou královských hostů.
+          Schaffer navrhl Římské lázně s mramorovými sloupy a bazény plněnými minerální vodou, soukromé kabiny pro královské hosty i technické zázemí, které dokázalo přivést Ferdinandův pramen potrubím z 1,7 km vzdálených Úšovic. <strong class="text-white">Nové Lázně dodnes zůstávají jeho největším dílem.</strong>
         </p>
       </div>
     </div>
@@ -192,7 +196,7 @@ const funFacts = [
       <div class="text-center mb-12">
         <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Věděli jste?</span>
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Zajímavosti z historie</h2>
-        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Fakta a příběhy z 130 let existence Nových Lázní, sesbírané z historických pramenů a archivů Hameliky.</p>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Příběhy a fakta z 130 let existence Nových Lázní — z archivů Hameliky, Městského muzea Mariánské Lázně a dobového tisku.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -213,16 +217,19 @@ const funFacts = [
         <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Královská tradice</span>
         <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Devět návštěv krále Eduarda VII.</h2>
         <p class="text-white/70 leading-relaxed mb-4">
-          Britský král Eduard VII. navštívil Mariánské Lázně <strong class="text-white">devětkrát</strong> v letech 1897–1909 a učinil z města <strong class="text-white">letní hlavní město evropské diplomacie</strong>. Významné politické rozhovory se odehrávaly na promenádách i v hotelech.
+          Když britský korunní princ (a pozdější král) Eduard VII. v roce 1897 poprvé dorazil do Mariánských Lázní, okamžitě si město zamiloval. Během následujících dvanácti let se vrátil <strong class="text-white">devětkrát</strong> — a pokaždé právě Nové Lázně byly jeho základnou.
         </p>
         <p class="text-white/70 leading-relaxed mb-4">
-          Každý jeho den sledoval ustálený rituál: <strong class="text-white">ráno pitná kúra u Křížového pramene</strong>, poté zamířil přímo do Nových lázní — do svého soukromého kabinetu na relaxační minerální koupel.
+          Jeho denní rituál byl neměnný: <strong class="text-white">ranní pitná kúra u Křížového pramene</strong>, pak přesun do Nových Lázní a koupel v soukromé <strong class="text-white">Královské kabině</strong>. V ní dodnes stojí opulentní vana z doby belle époque a vedle ní pozoruhodný kus nábytku — <strong class="text-white">elegantní dřevěná židle s vestavěnou mechanickou váhou</strong>. Král si na ní diskrétně kontroloval hmotnost, aniž by musel stát na obyčejné váze.
+        </p>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Mariánské Lázně se díky jeho pravidelným pobytům staly <strong class="text-white">letním hlavním městem evropské diplomacie</strong>. Vyvrcholením bylo <strong class="text-white">setkání s císařem Františkem Josefem I.</strong> dne 16. srpna 1904 — událost, kterou dnes připomíná bronzové sousoší na Goethově náměstí.
         </p>
         <p class="text-white/70 leading-relaxed mb-6">
-          V roce 1905 založil <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — nejstarší golfový klub v České republice, který funguje dodnes.
+          V roce 1905 Eduard VII. založil <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — nejstarší golfový klub v Čechách, který funguje nepřetržitě dodnes. A královská tradice pokračuje: v roce 2005 se v Nových Lázních ubytoval <strong class="text-white">princ Edward, hrabě z Wessexu</strong>.
         </p>
         <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
-          „Prodloužená čtyřvěžová budova byla připravena přijímat slavné krále a císaře. Královský kabinet byl zachován jako svědectví éry, kdy se v Mariánských Lázních psaly dějiny Evropy."
+          „Královská kabina s původní vanou, odpočívárnou a židlí se zabudovanou váhou je živým svědectvím éry, kdy se v Mariánských Lázních psaly dějiny Evropy."
         </blockquote>
       </div>
     </div>
@@ -236,7 +243,7 @@ const funFacts = [
       </div>
       <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Prožijte historii na vlastní kůži</h2>
       <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-        Rezervujte si pobyt v hotelu, kde se koupali králové a císaři. Zažijte Římské lázně, minerální koupele a atmosféru 130 let staré tradice.
+        Vykoupejte se v bazénech s mramorovými sloupy z roku 1896, vyzkoušejte minerální koupel v Královské kabině Eduarda VII. a ochutnejte pramen přímo v chodbách hotelu.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a
@@ -262,8 +269,9 @@ const funFacts = [
     <p class="text-beige-500 text-xs text-center">
       Historické informace čerpány z
       <a href="https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Mariánskolázeňských análů (Hamelika)</a>,
-      <a href="https://www.hamelika.cz/?cz_shrnuti-historie-marianskych-lazni%2C40=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Shrnutí historie (Hamelika)</a>
-      a <a href="https://www.travelfever.cz/en/articles/nove-lazne-with-the-hallmark-of-an-illustrious-history" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">TravelFever</a>.
+      <a href="https://www.hamelika.cz/?cz_shrnuti-historie-marianskych-lazni%2C40=" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Shrnutí historie (Hamelika)</a>,
+      <a href="https://www.e-lazne.eu/marianske-lazne/hotel-nove-lazne" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">e-lazne.eu</a>
+      a <a href="https://ensanahotels.com/cs/hotely/nove-lazne" class="text-turquoise-600 hover:underline" target="_blank" rel="noopener">Ensana Hotels</a>.
     </p>
   </section>
 
