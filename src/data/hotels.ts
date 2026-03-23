@@ -41,7 +41,7 @@ export interface Hotel {
 export const hotels: Hotel[] = [
   {
     slug: 'nove-lazne',
-    name: 'Nové Lázně Ensana Health Spa Hotel',
+    name: 'Ensana Nové Lázně',
     stars: 5,
     yearBuilt: 1896,
     style: 'Neorenaissance',
@@ -192,7 +192,7 @@ The 97 spacious rooms and suites blend historic charm with contemporary comfort.
   },
   {
     slug: 'centralni-lazne',
-    name: 'Centrální Lázně Ensana Health Spa Hotel',
+    name: 'Ensana Centrální Lázně',
     stars: 4,
     yearBuilt: 1812,
     style: 'Klassizismus',
@@ -343,7 +343,7 @@ The 144 comfortable rooms have been carefully renovated in recent years, blendin
   },
   {
     slug: 'hvezda',
-    name: 'Hvězda Ensana Health Spa Hotel',
+    name: 'Ensana Hvězda',
     stars: 4,
     yearBuilt: 1905,
     style: 'Jugendstil (Art Nouveau)',
@@ -494,7 +494,7 @@ The Hvězda complex comprises three interconnected buildings — Hvězda, Imperi
   },
   {
     slug: 'butterfly',
-    name: 'Butterfly Ensana Health Spa Hotel',
+    name: 'Ensana Butterfly',
     stars: 4,
     yearBuilt: 2003,
     style: 'Moderne',
@@ -647,7 +647,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
   },
   {
     slug: 'pacifik',
-    name: 'Pacifik Ensana Health Spa Hotel',
+    name: 'Ensana Pacifik',
     stars: 4,
     yearBuilt: 1906,
     style: 'Neobarock',
@@ -786,7 +786,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
   },
   {
     slug: 'vltava',
-    name: 'Vltava Ensana Health Spa Hotel',
+    name: 'Ensana Vltava',
     stars: 3,
     yearBuilt: 1900,
     style: 'Secese',
@@ -909,7 +909,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
   },
   {
     slug: 'svoboda',
-    name: 'Svoboda Ensana Health Spa Hotel',
+    name: 'Ensana Svoboda',
     stars: 3,
     yearBuilt: 1890,
     style: 'Neorenaissance',

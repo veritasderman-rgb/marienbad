@@ -65,7 +65,7 @@ const placeholder = '/images/hotels/placeholder.svg'
       const url = withUtm(hotel.bookingUrls[locale], 'marienbad', 'hotel-tile', 'hotel-booking')
       const stars = '★'.repeat(hotel.stars)
       const features = (hotel.features[locale] ?? hotel.features.de).slice(0, 4)
-      const hotelName = hotel.name.replace(' Ensana Health Spa Hotel', '')
+      const hotelName = hotel.name
 
       // Build 5-image array: fill with gallery, pad with placeholder
       const imgs = Array.from({ length: 5 }, (_, i) => {

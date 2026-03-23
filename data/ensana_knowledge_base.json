@@ -51,8 +51,8 @@
   },
   "operator": {
     "company_name": "Léčebné lázně Mariánské Lázně a.s.",
-    "brand": "Ensana Health Spa Hotels",
-    "cluster_name": "Mariánské Lázně Ensana HSH",
+    "brand": "Ensana",
+    "cluster_name": "Mariánské Lázně Ensana",
     "address": "Masarykova 22, 353 01 Mariánské Lázně",
     "phone": "+420 354 655 501-9",
     "email_general": "marienbad@cz.ensanahotels.com",
@@ -65,7 +65,7 @@
     "total_halls_and_conference_rooms": 10,
     "head_doctor": {
       "name": "MUDr. Markéta Hovorková, Ph.D.",
-      "title": "Head Doctor of ENSANA Health Spa Hotels Mariánské Lázně"
+      "title": "Head Doctor of Ensana Mariánské Lázně"
     }
   },
   "natural_healing_resources": {
@@ -128,7 +128,7 @@
       "source": "Maria's Spring (Mariin pramen)",
       "co2_content_percent": 99.7,
       "origin": "volcanic",
-      "exclusive_to": "Ensana Health Spa Hotels Mariánské Lázně"
+      "exclusive_to": "Ensana Mariánské Lázně"
     },
     "peloids": {
       "types": [
