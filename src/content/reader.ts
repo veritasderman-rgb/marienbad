@@ -8,6 +8,7 @@ import homepageDe from './homepage/de.json'
 import homepageEn from './homepage/en.json'
 import homepageCs from './homepage/cs.json'
 import homepageRu from './homepage/ru.json'
+import itinerariesData from './itineraries/data.json'
 
 const homepages: Record<Locale, typeof homepageDe> = {
   de: homepageDe,
@@ -20,6 +21,10 @@ export async function getHomepage(locale: Locale) {
   const data = homepages[locale]
   if (!data) throw new Error(`Homepage content not found for locale: ${locale}`)
   return data
+}
+
+export function getItineraries() {
+  return itinerariesData
 }
 
 /** Split YAML frontmatter from markdoc body in a single .mdoc file */

@@ -5,7 +5,7 @@ import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
 import { t } from '@/i18n/ui'
 import { localizedHref } from '@/i18n/utils'
-import { getHomepage, getArticles } from '@/content/reader'
+import { getHomepage, getArticles, getItineraries } from '@/content/reader'
 import GoogleReviews from '@/components/GoogleReviews.tsx'
 import ItineraryFilter from '@/components/ItineraryFilter.tsx'
 
@@ -20,6 +20,7 @@ const cms = await getHomepage(locale)
 const allArticles = await getArticles(locale)
 const latestArticles = allArticles.slice(0, 3)
 
+const itineraries = getItineraries()
 const ensanaHotelPath: Record<Locale, string> = { de: 'hotels', en: 'hotels', cs: 'hotely', ru: 'oteli' }
 
 const gradients = [
@@ -146,6 +147,7 @@ const gradients = [
         treatmentLabel: t(locale, 'itinerary.treatmentLabel'),
         detailsLink: t(locale, 'itinerary.detailsLink'),
       }}
+      cmsData={itineraries}
     />
   </div>
 </section>
