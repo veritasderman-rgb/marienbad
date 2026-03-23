@@ -1,3 +1,24 @@
 ---
-return Astro.redirect('/de')
+const supported = ['de', 'en', 'cs', 'ru'] as const
+const acceptLang = Astro.request.headers.get('accept-language') || ''
+
+// Parse Accept-Language header and find best match
+let bestLocale = 'de'
+const langs = acceptLang
+  .split(',')
+  .map((part) => {
+    const [lang, q] = part.trim().split(';q=')
+    return { lang: lang.trim().toLowerCase(), q: q ? parseFloat(q) : 1.0 }
+  })
+  .sort((a, b) => b.q - a.q)
+
+for (const { lang } of langs) {
+  const prefix = lang.slice(0, 2)
+  if ((supported as readonly string[]).includes(prefix)) {
+    bestLocale = prefix
+    break
+  }
+}
+
+return Astro.redirect(`/${bestLocale}`)
 ---
