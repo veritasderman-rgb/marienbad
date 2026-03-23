@@ -9,6 +9,7 @@ import homepageEn from './homepage/en.json'
 import homepageCs from './homepage/cs.json'
 import homepageRu from './homepage/ru.json'
 import itinerariesData from './itineraries/data.json'
+import hotelGalleriesData from './hotel-galleries/data.json'
 
 const homepages: Record<Locale, typeof homepageDe> = {
   de: homepageDe,
@@ -25,6 +26,25 @@ export async function getHomepage(locale: Locale) {
 
 export function getItineraries() {
   return itinerariesData
+}
+
+export interface HotelGalleryImage {
+  image: string | null
+  alt: string
+}
+
+export interface HotelGallery {
+  slug: string
+  images: HotelGalleryImage[]
+}
+
+export function getHotelGalleries(): HotelGallery[] {
+  return (hotelGalleriesData as any).hotels ?? []
+}
+
+export function getHotelGallery(slug: string): HotelGalleryImage[] {
+  const gallery = getHotelGalleries().find((h) => h.slug === slug)
+  return gallery?.images?.filter((img) => img.image) ?? []
 }
 
 /** Split YAML frontmatter from markdoc body in a single .mdoc file */

@@ -99,6 +99,7 @@ function homepageSingleton(locale: string, label: string) {
         fields.object({
           value: fields.text({ label: 'Value' }),
           label: fields.text({ label: 'Label' }),
+          href: fields.text({ label: 'Link (optional)', description: 'e.g. /cs/mineralni-prameny' }),
         }),
         {
           label: 'Quick Facts',
@@ -117,6 +118,7 @@ function homepageSingleton(locale: string, label: string) {
                 label: 'Description',
                 multiline: true,
               }),
+              href: fields.text({ label: 'Link (optional)', description: 'e.g. /cs/co2-terapie' }),
             }),
             {
               label: 'Elements',
@@ -161,6 +163,8 @@ function homepageSingleton(locale: string, label: string) {
               }),
               bookingUrl: fields.url({ label: 'Booking URL' }),
               bookingLabel: fields.text({ label: 'Booking Button Text' }),
+              anniversaryUrl: fields.text({ label: 'Anniversary Page URL (optional)', description: 'e.g. /cs/nove-lazne-130-let' }),
+              anniversaryLabel: fields.text({ label: 'Anniversary Link Text (optional)' }),
             }),
             {
               label: 'Hotels',
@@ -363,8 +367,60 @@ export default config({
         ),
       },
     }),
-  },
-  collections: {
+    'hotel-galleries': singleton({
+      label: 'Hotel Galleries',
+      path: 'src/content/hotel-galleries/data',
+      format: { data: 'json' },
+      schema: {
+        hotels: fields.array(
+          fields.object({
+            slug: fields.select({
+              label: 'Hotel',
+              options: [
+                { label: 'Nové Lázně', value: 'nove-lazne' },
+                { label: 'Centrální Lázně', value: 'centralni-lazne' },
+                { label: 'Hvězda', value: 'hvezda' },
+                { label: 'Pacifik', value: 'pacifik' },
+                { label: 'Butterfly', value: 'butterfly' },
+                { label: 'Vltava', value: 'vltava' },
+                { label: 'Svoboda', value: 'svoboda' },
+              ],
+              defaultValue: 'nove-lazne',
+            }),
+            images: fields.array(
+              fields.object({
+                image: fields.image({
+                  label: 'Photo',
+                  directory: 'public/images/hotels',
+                  publicPath: '/images/hotels/',
+                  description: 'Recommended: 800x500px, JPG/WebP. Landscape orientation.',
+                }),
+                alt: fields.text({ label: 'Alt text' }),
+              }),
+              {
+                label: 'Photos (up to 5)',
+                itemLabel: (props) => props.fields.alt.value || 'Photo',
+              }
+            ),
+          }),
+          {
+            label: 'Hotels',
+            itemLabel: (props) => {
+              const slugLabels: Record<string, string> = {
+                'nove-lazne': 'Nové Lázně',
+                'centralni-lazne': 'Centrální Lázně',
+                'hvezda': 'Hvězda',
+                'pacifik': 'Pacifik',
+                'butterfly': 'Butterfly',
+                'vltava': 'Vltava',
+                'svoboda': 'Svoboda',
+              }
+              return slugLabels[props.fields.slug.value] || 'Hotel'
+            },
+          }
+        ),
+      },
+    }),
     stories: collection({
       label: 'Stories',
       path: 'src/content/stories/*/',

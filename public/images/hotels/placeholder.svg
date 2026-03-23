@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 533" fill="none">
+  <rect width="800" height="533" fill="#F5F0EB"/>
+  <g transform="translate(340, 200)" opacity="0.3">
+    <path d="M60 0L120 40V100H0V40L60 0Z" fill="#8B7355"/>
+    <rect x="10" y="50" width="20" height="20" fill="#F5F0EB"/>
+    <rect x="50" y="50" width="20" height="20" fill="#F5F0EB"/>
+    <rect x="90" y="50" width="20" height="20" fill="#F5F0EB"/>
+    <rect x="45" y="70" width="30" height="30" fill="#F5F0EB"/>
+  </g>
+  <text x="400" y="320" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#8B7355" opacity="0.4">Photo coming soon</text>
+</svg>
