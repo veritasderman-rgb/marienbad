@@ -99,6 +99,7 @@ function homepageSingleton(locale: string, label: string) {
         fields.object({
           value: fields.text({ label: 'Value' }),
           label: fields.text({ label: 'Label' }),
+          href: fields.text({ label: 'Link (optional)', description: 'e.g. /cs/mineralni-prameny' }),
         }),
         {
           label: 'Quick Facts',
@@ -117,6 +118,7 @@ function homepageSingleton(locale: string, label: string) {
                 label: 'Description',
                 multiline: true,
               }),
+              href: fields.text({ label: 'Link (optional)', description: 'e.g. /cs/co2-terapie' }),
             }),
             {
               label: 'Elements',
@@ -161,6 +163,8 @@ function homepageSingleton(locale: string, label: string) {
               }),
               bookingUrl: fields.url({ label: 'Booking URL' }),
               bookingLabel: fields.text({ label: 'Booking Button Text' }),
+              anniversaryUrl: fields.text({ label: 'Anniversary Page URL (optional)', description: 'e.g. /cs/nove-lazne-130-let' }),
+              anniversaryLabel: fields.text({ label: 'Anniversary Link Text (optional)' }),
             }),
             {
               label: 'Hotels',
