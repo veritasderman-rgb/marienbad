@@ -794,7 +794,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/vltava-berounka',
       en: 'https://ensanahotels.com/en/hotels/vltava-berounka',
-      cs: 'https://ensanahotels.com/cs/hotely/vltava-berounka',
+      cs: 'https://ensanahotels.com/cs/hotely/vltava',
       ru: 'https://ensanahotels.com/ru/oteli/vltava-berounka',
     },
     address: 'Hlavní třída 438, 353 01 Mariánské Lázně, Czech Republic',
