@@ -1,0 +1,32 @@
+{
+  "hotels": [
+    {
+      "slug": "nove-lazne",
+      "images": []
+    },
+    {
+      "slug": "centralni-lazne",
+      "images": []
+    },
+    {
+      "slug": "hvezda",
+      "images": []
+    },
+    {
+      "slug": "pacifik",
+      "images": []
+    },
+    {
+      "slug": "butterfly",
+      "images": []
+    },
+    {
+      "slug": "vltava",
+      "images": []
+    },
+    {
+      "slug": "svoboda",
+      "images": []
+    }
+  ]
+}

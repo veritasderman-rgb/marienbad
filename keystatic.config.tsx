@@ -367,8 +367,60 @@ export default config({
         ),
       },
     }),
-  },
-  collections: {
+    'hotel-galleries': singleton({
+      label: 'Hotel Galleries',
+      path: 'src/content/hotel-galleries/data',
+      format: { data: 'json' },
+      schema: {
+        hotels: fields.array(
+          fields.object({
+            slug: fields.select({
+              label: 'Hotel',
+              options: [
+                { label: 'Nové Lázně', value: 'nove-lazne' },
+                { label: 'Centrální Lázně', value: 'centralni-lazne' },
+                { label: 'Hvězda', value: 'hvezda' },
+                { label: 'Pacifik', value: 'pacifik' },
+                { label: 'Butterfly', value: 'butterfly' },
+                { label: 'Vltava', value: 'vltava' },
+                { label: 'Svoboda', value: 'svoboda' },
+              ],
+              defaultValue: 'nove-lazne',
+            }),
+            images: fields.array(
+              fields.object({
+                image: fields.image({
+                  label: 'Photo',
+                  directory: 'public/images/hotels',
+                  publicPath: '/images/hotels/',
+                  description: 'Recommended: 800x500px, JPG/WebP. Landscape orientation.',
+                }),
+                alt: fields.text({ label: 'Alt text' }),
+              }),
+              {
+                label: 'Photos (up to 5)',
+                itemLabel: (props) => props.fields.alt.value || 'Photo',
+              }
+            ),
+          }),
+          {
+            label: 'Hotels',
+            itemLabel: (props) => {
+              const slugLabels: Record<string, string> = {
+                'nove-lazne': 'Nové Lázně',
+                'centralni-lazne': 'Centrální Lázně',
+                'hvezda': 'Hvězda',
+                'pacifik': 'Pacifik',
+                'butterfly': 'Butterfly',
+                'vltava': 'Vltava',
+                'svoboda': 'Svoboda',
+              }
+              return slugLabels[props.fields.slug.value] || 'Hotel'
+            },
+          }
+        ),
+      },
+    }),
     stories: collection({
       label: 'Stories',
       path: 'src/content/stories/*/',
