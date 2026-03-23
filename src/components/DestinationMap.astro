@@ -40,9 +40,9 @@ const googleMapsLang: Record<Locale, string> = {
 
 const lang = googleMapsLang[locale]
 
-// Embed URL centered on Mariánské Lázně spa colonnade area (49.9779, 12.7070)
-// Using "search" mode for "Mariánské Lázně" to show the town with POIs
-const embedSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5097.5!2d12.7070!3d49.9779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a0a4e5b1c5b8d3%3A0x400af0f6614d1c0!2sMari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B!5e0!3m2!1s${lang}!2scz!4v1`
+// Embed URL centered on Mariánské Lázně spa colonnade area
+// Using search query mode with explicit place name to avoid incorrect Place ID resolution
+const embedSrc = `https://maps.google.com/maps?q=Mari%C3%A1nsk%C3%A9+L%C3%A1zn%C4%9B,+Czech+Republic&z=14&hl=${lang}&ie=UTF8&output=embed`
 ---
 
 <section class="destination-map-section my-10">
