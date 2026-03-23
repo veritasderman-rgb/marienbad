@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
 import { hotels } from '@/data/hotels'
 import { withUtm } from '@/utils/utm'
 
@@ -207,6 +208,13 @@ const funFacts = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="container-wide py-8 md:py-12">
+    <div class="max-w-3xl mx-auto">
+      <YouTubeEmbed videoId="EXfHDetR6OY" title="Nové Lázně" description="Hotel Nové Lázně — Vorstellung des Fünf-Sterne-Kurhotels mit den originalen Römischen Bädern von 1896." locale={locale} />
     </div>
   </section>
 
