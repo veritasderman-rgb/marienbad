@@ -82,7 +82,7 @@ export const hotels: Hotel[] = [
       ],
       cs: [
         'Unikátní historické Římské lázně z roku 1896',
-        'Královská kabina krále Eduarda VII.',
+        'Královská kabina krále Edwarda VII.',
         'Císařská kabina Františka Josefa I.',
         'Lázeňský komplex propojený s Centrálními Lázněmi a Maria Spa',
         'Beauty centrum a kosmetické procedury',
@@ -112,7 +112,7 @@ Die 97 großzügig geschnittenen Zimmer und Suiten verbinden historischen Charme
 The hotel is situated directly on the Colonnade, just steps from the famous Křížový pramen spring. This central location allows guests to seamlessly integrate the healing mineral springs of Marienbad into their daily routine. The in-house balneology center offers over 60 different treatments, including CO2 baths, mineral baths, peat wraps, paraffin wraps, and underwater massages — all supervised by physicians and individually tailored to each guest's needs.
 
 The 97 spacious rooms and suites blend historic charm with contemporary comfort. Many offer stunning views of the spa park or the Colonnade. The elegant dining hall serves a balanced cuisine that combines traditional Bohemian recipes with modern nutritional concepts. Whether you are visiting for a classic drinking cure, medical rehabilitation, or a luxurious wellness retreat, Nové Lázně delivers a spa experience of the highest caliber, unmatched anywhere in Europe.`,
-      cs: `Nové Lázně jsou vlajkovým pětihvězdičkovým hotelem sítě Ensana v Mariánských Lázních. Budova z roku 1896 v italském novorenesančním stylu od architekta Josefa Schaffera ukrývá unikátní Římské lázně s původními mramorovými bazény, Královskou kabinu krále Eduarda VII. a Císařskou kabinu Františka Josefa I. Hotel nabízí více než 60 balneologických procedur pod lékařským dohledem, včetně exkluzivních plynových injekcí přírodním CO₂. Propojený krytými koridory s Centrálními Lázněmi a Maria Spa tvoří největší historický lázeňský komplex v Čechách.`,
+      cs: `Nové Lázně jsou vlajkovým pětihvězdičkovým hotelem sítě Ensana v Mariánských Lázních. Budova z roku 1896 v italském novorenesančním stylu od architekta Josefa Schaffera ukrývá unikátní Římské lázně s původními mramorovými bazény, Královskou kabinu krále Edwarda VII. a Císařskou kabinu Františka Josefa I. Hotel nabízí více než 60 balneologických procedur pod lékařským dohledem, včetně exkluzivních plynových injekcí přírodním CO₂. Propojený krytými koridory s Centrálními Lázněmi a Maria Spa tvoří největší historický lázeňský komplex v Čechách.`,
       ru: `Нове Лазне — флагманский пятизвёздочный отель сети Ensana в Марианских Лазнях. Здание 1896 года в стиле итальянского неоренессанса, спроектированное архитектором Йозефом Шаффером, хранит уникальные Римские бани с оригинальными мраморными бассейнами, Королевскую кабину короля Эдуарда VII и Императорскую кабину Франца Иосифа I. Отель предлагает более 60 бальнеологических процедур под медицинским наблюдением, включая эксклюзивные газовые инъекции природным CO₂.`,
     },
     treatments: {
