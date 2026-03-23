@@ -1,4 +1,74 @@
 import { config, fields, singleton, collection } from '@keystatic/core'
+import { block, wrapper } from '@keystatic/core/content-components'
+
+const markdocComponents = {
+  figure: block({
+    label: 'Figure',
+    schema: {
+      src: fields.text({ label: 'Image path (src)', validation: { isRequired: true } }),
+      alt: fields.text({ label: 'Alt text', validation: { isRequired: true } }),
+      caption: fields.text({ label: 'Caption' }),
+      width: fields.select({
+        label: 'Width',
+        options: [
+          { label: 'Default', value: 'default' },
+          { label: 'Wide', value: 'wide' },
+          { label: 'Full', value: 'full' },
+        ],
+        defaultValue: 'default',
+      }),
+    },
+  }),
+  gallery: wrapper({
+    label: 'Gallery',
+    schema: {
+      columns: fields.integer({ label: 'Columns (2 or 3)', defaultValue: 2 }),
+      caption: fields.text({ label: 'Caption' }),
+    },
+  }),
+  'gallery-image': block({
+    label: 'Gallery Image',
+    schema: {
+      src: fields.text({ label: 'Image path (src)', validation: { isRequired: true } }),
+      alt: fields.text({ label: 'Alt text', validation: { isRequired: true } }),
+    },
+  }),
+  pullquote: block({
+    label: 'Pull Quote',
+    schema: {
+      text: fields.text({ label: 'Quote text', validation: { isRequired: true } }),
+      cite: fields.text({ label: 'Citation' }),
+    },
+  }),
+  'treatment-box': block({
+    label: 'Treatment Box',
+    schema: {
+      title: fields.text({ label: 'Title', validation: { isRequired: true } }),
+      description: fields.text({ label: 'Description', validation: { isRequired: true }, multiline: true }),
+      icon: fields.select({
+        label: 'Icon',
+        options: [
+          { label: 'Water', value: 'water' },
+          { label: 'Earth', value: 'earth' },
+          { label: 'Gas', value: 'gas' },
+          { label: 'Climate', value: 'climate' },
+        ],
+        defaultValue: 'water',
+      }),
+    },
+  }),
+  'hotel-box': block({
+    label: 'Hotel Box',
+    schema: {
+      name: fields.text({ label: 'Hotel name', validation: { isRequired: true } }),
+      stars: fields.integer({ label: 'Stars (1-5)', validation: { isRequired: true } }),
+      badge: fields.text({ label: 'Badge (optional)' }),
+      description: fields.text({ label: 'Description', validation: { isRequired: true }, multiline: true }),
+      bookingUrl: fields.text({ label: 'Booking URL', validation: { isRequired: true } }),
+      bookingLabel: fields.text({ label: 'Booking button text', validation: { isRequired: true } }),
+    },
+  }),
+}
 
 function homepageSingleton(locale: string, label: string) {
   return singleton({
@@ -334,6 +404,7 @@ export default config({
         }),
         body: fields.markdoc({
           label: 'Full Story',
+          components: markdocComponents,
           options: {
             heading: [2, 3, 4],
             bold: true,
@@ -427,6 +498,7 @@ export default config({
         youtubeDescription: fields.text({ label: 'Video/Podcast Description', multiline: true, description: 'Short description shown next to the video player' }),
         body: fields.markdoc({
           label: 'Article Content',
+          components: markdocComponents,
           options: {
             heading: [2, 3, 4],
             bold: true,
@@ -490,6 +562,7 @@ export default config({
         }),
         body: fields.markdoc({
           label: 'Page Content',
+          components: markdocComponents,
           options: {
             heading: [2, 3, 4],
             bold: true,
