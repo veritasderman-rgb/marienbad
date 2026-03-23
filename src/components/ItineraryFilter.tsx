@@ -24,7 +24,7 @@ interface Recommendation {
   title: Record<Locale, string>
   description: Record<Locale, string>
   type: 'hotel' | 'activity' | 'treatment'
-  href: string
+  href: string | Record<Locale, string>
 }
 
 const recommendations: Record<Category, Recommendation[]> = {
@@ -44,7 +44,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Семейный отель 4★ с детским бассейном и игровой зоной.',
       },
       type: 'hotel',
-      href: 'https://www.ensanahotels.com/butterfly',
+      href: {
+        de: 'https://ensanahotels.com/de/hotels/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families',
+        en: 'https://ensanahotels.com/en/hotels/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families',
+        cs: 'https://ensanahotels.com/cs/hotely/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families',
+        ru: 'https://ensanahotels.com/ru/oteli/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families',
+      },
     },
     {
       icon: 'M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
@@ -55,13 +60,18 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Детский игровой уголок',
       },
       description: {
-        de: 'Betreuter Spielbereich im Kurviertel — ideal für junge Familien.',
-        en: 'Supervised play area in the spa quarter — ideal for young families.',
-        cs: 'Hlídaný hrací koutek v lázeňské čtvrti — ideální pro mladé rodiny.',
-        ru: 'Игровая зона под присмотром в курортном квартале — идеально для молодых семей.',
+        de: 'Betreuter Spielbereich im Hotel Butterfly — dem einzigen Ensana-Hotel mit Kinderecke.',
+        en: 'Supervised play area at Hotel Butterfly — the only Ensana hotel with a kids\' corner.',
+        cs: 'Hlídaný hrací koutek v Hotelu Butterfly — jediném Ensana hotelu s dětským koutkem.',
+        ru: 'Игровая зона в отеле Butterfly — единственном отеле Ensana с детским уголком.',
       },
       type: 'activity',
-      href: '',
+      href: {
+        de: 'https://ensanahotels.com/de/hotels/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families-kids',
+        en: 'https://ensanahotels.com/en/hotels/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families-kids',
+        cs: 'https://ensanahotels.com/cs/hotely/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families-kids',
+        ru: 'https://ensanahotels.com/ru/oteli/butterfly?utm_source=marienbad&utm_medium=itinerary&utm_campaign=families-kids',
+      },
     },
     {
       icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4',
@@ -78,7 +88,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Чешские достопримечательности в миниатюре — развлечение для всей семьи.',
       },
       type: 'activity',
-      href: '',
+      href: {
+        de: '/de/natur',
+        en: '/en/nature',
+        cs: '/cs/priroda',
+        ru: '/ru/priroda',
+      },
     },
   ],
   couples: [
@@ -97,7 +112,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Исторические Королевские бани с приватной зоной для пар в 5★ спа.',
       },
       type: 'hotel',
-      href: 'https://www.ensanahotels.com/nove-lazne',
+      href: {
+        de: 'https://ensanahotels.com/de/hotels/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples',
+        en: 'https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples',
+        cs: 'https://ensanahotels.com/cs/hotely/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples',
+        ru: 'https://ensanahotels.com/ru/oteli/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples',
+      },
     },
     {
       icon: 'M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z',
@@ -114,7 +134,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Романтическое водно-световое шоу у Колоннады — ежедневно летом.',
       },
       type: 'activity',
-      href: '',
+      href: {
+        de: '/de/kolonnade',
+        en: '/en/colonnade',
+        cs: '/cs/kolonada',
+        ru: '/ru/kolonnada',
+      },
     },
     {
       icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z',
@@ -131,7 +156,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Романтический ужин в исторической атмосфере курортных домов.',
       },
       type: 'treatment',
-      href: '',
+      href: {
+        de: 'https://ensanahotels.com/de/hotels/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples-dining',
+        en: 'https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples-dining',
+        cs: 'https://ensanahotels.com/cs/hotely/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples-dining',
+        ru: 'https://ensanahotels.com/ru/oteli/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=couples-dining',
+      },
     },
   ],
   solo: [
@@ -150,7 +180,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Более 100 км размеченных троп по природному заповеднику.',
       },
       type: 'activity',
-      href: '',
+      href: {
+        de: '/de/natur',
+        en: '/en/nature',
+        cs: '/cs/priroda',
+        ru: '/ru/priroda',
+      },
     },
     {
       icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
@@ -167,7 +202,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Природные углекислые ванны для улучшения кровообращения.',
       },
       type: 'treatment',
-      href: '',
+      href: {
+        de: '/de/co2-therapie',
+        en: '/en/co2-therapy',
+        cs: '/cs/co2-terapie',
+        ru: '/ru/co2-terapiya',
+      },
     },
     {
       icon: 'M12 2v6M12 8c0 0-3 2-3 5a3 3 0 006 0c0-3-3-5-3-5zM8 20c0-2.2 1.8-4 4-4s4 1.8 4 4M6 22h12',
@@ -184,7 +224,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Индивидуальный курс у целебных источников Колоннады.',
       },
       type: 'treatment',
-      href: '',
+      href: {
+        de: '/de/mineralquellen',
+        en: '/en/mineral-springs',
+        cs: '/cs/mineralni-prameny',
+        ru: '/ru/mineralnye-istochniki',
+      },
     },
   ],
   wellness: [
@@ -203,7 +248,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Флагманский спа с историческими Королевскими банями и современным велнесом.',
       },
       type: 'hotel',
-      href: 'https://www.ensanahotels.com/nove-lazne',
+      href: {
+        de: 'https://ensanahotels.com/de/hotels/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=wellness',
+        en: 'https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=wellness',
+        cs: 'https://ensanahotels.com/cs/hotely/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=wellness',
+        ru: 'https://ensanahotels.com/ru/oteli/nove-lazne?utm_source=marienbad&utm_medium=itinerary&utm_campaign=wellness',
+      },
     },
     {
       icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
@@ -220,7 +270,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Классические курортные процедуры из природных лечебных ресурсов региона.',
       },
       type: 'treatment',
-      href: '',
+      href: {
+        de: '/de/peloidtherapie',
+        en: '/en/peloid-therapy',
+        cs: '/cs/peloidni-terapie',
+        ru: '/ru/peloidnaya-terapiya',
+      },
     },
     {
       icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
@@ -237,7 +292,12 @@ const recommendations: Record<Category, Recommendation[]> = {
         ru: 'Одно из старейших гольф-полей Европы, основанное в 1905 году.',
       },
       type: 'activity',
-      href: '',
+      href: {
+        de: '/de/golf',
+        en: '/en/golf',
+        cs: '/cs/golf',
+        ru: '/ru/golf',
+      },
     },
   ],
 }
@@ -283,6 +343,11 @@ export default function ItineraryFilter({ locale, translations }: Props) {
   }
 
   const items = recommendations[active]
+
+  function resolveHref(href: string | Record<Locale, string>): string {
+    if (typeof href === 'string') return href
+    return href[locale]
+  }
 
   return (
     <div>
@@ -360,11 +425,10 @@ export default function ItineraryFilter({ locale, translations }: Props) {
             </p>
 
             {/* Link */}
-            {item.href ? (
+            {resolveHref(item.href) ? (
               <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={resolveHref(item.href)}
+                {...(resolveHref(item.href).startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="inline-flex items-center gap-1.5 text-turquoise-700 hover:text-turquoise-900 text-sm font-semibold transition-colors"
               >
                 {translations.detailsLink}
