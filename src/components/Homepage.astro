@@ -207,6 +207,11 @@ const gradients = [
               {hotel.bookingLabel}
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
+            {(hotel as any).anniversaryUrl && (
+              <a href={(hotel as any).anniversaryUrl} class="inline-flex items-center gap-1.5 text-yellow-600 hover:text-yellow-800 text-sm font-semibold transition-colors ml-4">
+                {(hotel as any).anniversaryLabel}
+              </a>
+            )}
           </div>
         </div>
       ))}
