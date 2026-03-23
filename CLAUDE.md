@@ -113,3 +113,12 @@ src/content/
 3. **SEO** -- hreflang, canonical URLs, Schema.org structured data (TouristDestination, LodgingBusiness, FAQPage, BreadcrumbList)
 4. **Privacy** -- cookie-free analytics (Plausible), no third-party trackers
 5. **Content-driven** -- CMS-managed content, Markdoc rendering, rich typography
+
+## Knowledge Base
+
+Authoritative reference data from official Ensana marketing materials is stored in `data/ensana_knowledge_base.json`. Use this as the single source of truth for:
+- Hotel details (stars, rooms, springs, restaurants, spa areas)
+- Medical indications and contraindications
+- Mineral spring names and properties
+- Treatment descriptions
+- Historical facts and dates

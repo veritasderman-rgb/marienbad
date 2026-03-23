@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "version": "1.0",
+    "created": "2026-03-22",
+    "purpose": "Knowledge base for marienbad.com destination portal — structured content extracted from official Ensana marketing materials",
+    "sources": [
+      "02_WHY_MARIANSKE_LAZNE.pdf",
+      "03_MICE.pdf",
+      "06_HOTELS_AND_DESTINATION_INTRODUCTION.pdf",
+      "07_SPA_TREATMENT.pdf",
+      "INFOLETAK_592x210_CZ.pdf",
+      "Ensana_Svatebni_Priloha_MICE_v2.docx"
+    ]
+  },
+  "destination": {
+    "name": "Mariánské Lázně",
+    "name_de": "Marienbad",
+    "country": "Czech Republic",
+    "region": "West Bohemia",
+    "altitude_m": 630,
+    "climate": "submontane toning",
+    "climatic_spa_since": 2023,
+    "unesco": {
+      "listed_since": 2021,
+      "designation": "Great Spa Towns of Europe",
+      "designation_cz": "Slavná lázeňská města Evropy"
+    },
+    "spa_tradition_since": 1808,
+    "famous_visitors": [
+      "Johann Wolfgang Goethe",
+      "Fryderyk Chopin",
+      "King Edward VII"
+    ],
+    "key_attractions": [
+      "Singing Fountain (Zpívající fontána)",
+      "Spa colonnade",
+      "Cross Spring pavilion",
+      "Spa parks and forests",
+      "Art Nouveau and Neo-Renaissance architecture"
+    ],
+    "distances_km": {
+      "Karlovy Vary": 50,
+      "Prague": 160,
+      "Prague_centre": 180,
+      "Nuremberg": 170,
+      "Munich": 280,
+      "Frankfurt": 410,
+      "Berlin": 420,
+      "Vienna": 420
+    }
+  },
+  "operator": {
+    "company_name": "Léčebné lázně Mariánské Lázně a.s.",
+    "brand": "Ensana Health Spa Hotels",
+    "cluster_name": "Mariánské Lázně Ensana HSH",
+    "address": "Masarykova 22, 353 01 Mariánské Lázně",
+    "phone": "+420 354 655 501-9",
+    "email_general": "marienbad@cz.ensanahotels.com",
+    "email_reservations": "reservation.cz@cz.ensanahotels.com",
+    "email_conference": "conference.cz@ensanahotels.com",
+    "phone_conference": "+420 354 655 505",
+    "website": "ensanahotels.com",
+    "total_hotels": 7,
+    "total_rooms": 900,
+    "total_halls_and_conference_rooms": 10,
+    "head_doctor": {
+      "name": "MUDr. Markéta Hovorková, Ph.D.",
+      "title": "Head Doctor of ENSANA Health Spa Hotels Mariánské Lázně"
+    }
+  },
+  "natural_healing_resources": {
+    "mineral_springs": {
+      "total_in_town": 40,
+      "total_in_surroundings": 100,
+      "temperature_range_c": "7-10",
+      "type": "cold acidulous mineral springs",
+      "springs": [
+        {
+          "name": "Cross Spring (Křížový pramen)",
+          "indications": [
+            "digestive tract diseases",
+            "metabolic disorders",
+            "obesity",
+            "gout",
+            "diabetes mellitus",
+            "allergies"
+          ]
+        },
+        {
+          "name": "Rudolph Spring (Rudolfův pramen)",
+          "indications": [
+            "kidney and urinary tract disorders",
+            "osteoporosis",
+            "stress reduction"
+          ]
+        },
+        {
+          "name": "Ferdinand Spring (Ferdinandův pramen)",
+          "indications": [
+            "similar to Cross Spring"
+          ]
+        },
+        {
+          "name": "Forest Spring (Lesní pramen)",
+          "indications": [
+            "upper respiratory tract diseases",
+            "gastrointestinal diseases"
+          ]
+        },
+        {
+          "name": "Ambrose Spring (Ambrožův pramen)",
+          "indications": [
+            "anaemia",
+            "urinary tract disorders"
+          ]
+        },
+        {
+          "name": "Caroline Spring (Karolinin pramen)",
+          "indications": [
+            "kidney stones",
+            "oxalate stones"
+          ]
+        }
+      ]
+    },
+    "natural_co2_gas": {
+      "name": "Maria's gas (Mariin plyn)",
+      "source": "Maria's Spring (Mariin pramen)",
+      "co2_content_percent": 99.7,
+      "origin": "volcanic",
+      "exclusive_to": "Ensana Health Spa Hotels Mariánské Lázně"
+    },
+    "peloids": {
+      "types": [
+        "peat (rašelina)",
+        "peat mud (slatina)"
+      ],
+      "application_temp_c": "38-42"
+    },
+    "therapeutic_climate": {
+      "type": "submontane toning climate",
+      "altitude_m": 630,
+      "climatic_spa_since": 2023
+    }
+  },
+  "medical_indications": [
+    {
+      "category": "Musculoskeletal system disorders",
+      "category_cz": "Onemocnění pohybového aparátu",
+      "priority": 1
+    },
+    {
+      "category": "Kidney and urinary tract disorders",
+      "category_cz": "Onemocnění ledvin a močových cest",
+      "priority": 2
+    },
+    {
+      "category": "Respiratory tract disorders",
+      "category_cz": "Onemocnění dýchacích cest"
+    },
+    {
+      "category": "Metabolic disorders",
+      "category_cz": "Metabolická onemocnění"
+    },
+    {
+      "category": "Neurological disorders",
+      "category_cz": "Neurologická onemocnění"
+    },
+    {
+      "category": "Oncological diseases",
+      "category_cz": "Onkologická onemocnění"
+    },
+    {
+      "category": "Digestive system disorders",
+      "category_cz": "Onemocnění trávicího ústrojí"
+    },
+    {
+      "category": "Circulatory system disorders",
+      "category_cz": "Onemocnění oběhového systému"
+    },
+    {
+      "category": "Skin diseases",
+      "category_cz": "Kožní onemocnění"
+    },
+    {
+      "category": "Mental health",
+      "category_cz": "Duševní zdraví"
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Nové Lázně",
+      "stars": 5,
+      "rooms": 97,
+      "style": "Italian Neo-Renaissance",
+      "address": "Reitenbergerova 53",
+      "springs": [
+        "Forest Spring",
+        "Ambrose Spring"
+      ],
+      "restaurant": "Royal",
+      "spa_area_note": "50 cabins",
+      "highlights": [
+        "Roman baths (1896)",
+        "King Edward VII Royal Cabin",
+        "Emperor Franz Joseph I Imperial Cabin",
+        "Casino conference centre"
+      ]
+    },
+    {
+      "name": "Centrální Lázně",
+      "stars": 4,
+      "category": "Superior",
+      "rooms": 144,
+      "style": "Historical Art Nouveau",
+      "address": "Goethovo náměstí 1",
+      "springs": [
+        "Ambrose Spring",
+        "Balbín Spring",
+        "New Maria Spring"
+      ],
+      "restaurant": "Goethe",
+      "spa_area_m2": 1650,
+      "spa_cabins": 70,
+      "highlights": [
+        "Maria's gas pool",
+        "Premier Fitness",
+        "Five Concept"
+      ]
+    },
+    {
+      "name": "Hvězda",
+      "stars": 4,
+      "category": "Superior",
+      "rooms": 238,
+      "style": "Neo-Renaissance",
+      "address": "Goethovo náměstí 7",
+      "springs": [
+        "Balbín Spring"
+      ],
+      "restaurant": "Franz Josef",
+      "pool_area_m2": 2100,
+      "spa_cabins": 30,
+      "highlights": [
+        "Largest pool in town",
+        "Gallery Atrium",
+        "Café Imperial",
+        "Salt cave"
+      ]
+    },
+    {
+      "name": "Pacifik",
+      "stars": 4,
+      "category": "Superior",
+      "rooms": 96,
+      "style": "magnificent spa architecture",
+      "address": "Mírové náměstí 84",
+      "springs": [
+        "Forest Spring"
+      ],
+      "restaurant": "Primavera",
+      "spa_area_m2": 1150,
+      "spa_cabins": 20
+    },
+    {
+      "name": "Butterfly",
+      "stars": 4,
+      "rooms": 95,
+      "style": "Art Nouveau with original art interior",
+      "address": "Hlavní 655",
+      "springs": [
+        "Ferdinand Spring"
+      ],
+      "restaurant": "LaFontaine",
+      "highlights": [
+        "Children's corner",
+        "Salon Bellevue"
+      ]
+    },
+    {
+      "name": "Vltava",
+      "stars": 3,
+      "rooms": 112,
+      "address": "Anglická 475",
+      "springs": [
+        "Balbín Spring"
+      ],
+      "restaurant": "Regina"
+    },
+    {
+      "name": "Svoboda",
+      "stars": 3,
+      "rooms": 139,
+      "style": "classical spa architecture",
+      "address": "Chopinova 393",
+      "springs": [
+        "Josef Spring"
+      ],
+      "restaurant": "Carlton",
+      "spa_area_m2": 700,
+      "spa_cabins": 20
+    }
+  ],
+  "sports_and_activities": [
+    {
+      "activity": "Golf",
+      "details": "Royal Golf Club Mariánské Lázně — 18-hole course founded 1905 by King Edward VII"
+    },
+    {
+      "activity": "Tennis & Padel"
+    },
+    {
+      "activity": "Cycling, hiking & Nordic walking"
+    },
+    {
+      "activity": "Disc golf",
+      "details": "18-hole public course"
+    },
+    {
+      "activity": "Skiing",
+      "details": "Mariánky ski area"
+    }
+  ],
+  "culture": {
+    "events_and_festivals": [
+      "Commencement of the spa season",
+      "Chopin Festival",
+      "Jazz Spa",
+      "Book Spa",
+      "Marienbad Film Festival",
+      "Czech Fashion Week"
+    ]
+  }
+}
