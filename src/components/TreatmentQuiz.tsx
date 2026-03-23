@@ -63,10 +63,13 @@ const CONDITION_TREATMENT_MAP: Record<Condition, string[]> = {
     'electro', 'magnet', 'unterwasser', 'rašelin', 'masáž', 'fyzioter',
     'массаж', 'торф', 'физиотер', 'подвод', 'paraffin', 'kryother', 'cryo',
     'ultraschall', 'ultrasound', 'движ', 'gymnastik', 'gymnast',
+    'lymph', 'lymf', 'лимф', 'gasinjektion', 'gas inject', 'plynové injekce',
+    'pneumopunktur', 'пневмопунктур',
   ],
   respiratory: [
     'inhalat', 'klima', 'climate', 'co2', 'kohlensäure', 'carbon dioxide',
     'sauerstoff', 'oxygen', 'pneumo', 'ингаляц', 'кислород',
+    'salz', 'salt', 'soln', 'halo', 'солян',
   ],
   digestive: [
     'trink', 'drinking', 'mineral', 'pitná', 'питьев', 'минерал',
@@ -74,7 +77,9 @@ const CONDITION_TREATMENT_MAP: Record<Condition, string[]> = {
   ],
   cardiovascular: [
     'co2', 'kohlensäure', 'carbon dioxide', 'mineral', 'electro',
-    'magnet', 'elektro', 'минерал', 'магнит',
+    'magnet', 'elektro', 'минерал', 'магнит', 'trocken', 'dry',
+    'suchá', 'сухая', 'gasinjektion', 'gas inject', 'plynové injekce',
+    'pneumopunktur', 'пневмопунктур',
   ],
   kidney: [
     'trink', 'drinking', 'mineral', 'pitná', 'питьев', 'минерал',
@@ -82,15 +87,16 @@ const CONDITION_TREATMENT_MAP: Record<Condition, string[]> = {
   stress: [
     'massage', 'aroma', 'hot stone', 'wellness', 'sauna', 'pool',
     'roman', 'römisch', 'masáž', 'массаж', 'релакс', 'relaxa',
+    'lymph', 'lymf', 'лимф', 'salz', 'salt', 'soln', 'halo', 'солян',
   ],
   skin: [
     'moorpackung', 'peat', 'peloid', 'paraffin', 'mineral',
-    'rašelin', 'торф', 'минерал',
+    'rašelin', 'торф', 'минерал', 'co2', 'gasinjektion', 'gas inject',
   ],
   rehab: [
     'physiother', 'aqua', 'gymnastik', 'gymnast', 'bewegung', 'exercise',
     'walking', 'geh', 'underwater', 'unterwasser', 'fyzioter', 'физиотер',
-    'подвод', 'ходьб', 'nácvik',
+    'подвод', 'ходьб', 'nácvik', 'lymph', 'lymf', 'лимф',
   ],
 }
 
