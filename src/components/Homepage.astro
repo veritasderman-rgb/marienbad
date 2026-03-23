@@ -168,7 +168,7 @@ const gradients = [
       <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} variant="dark" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-6 lg:mt-8 reveal">
-      <SectionCard title={t(locale, 'home.podcast')} description={t(locale, 'home.podcastDesc')} href={localizedHref(locale, 'podcast')} variant="beige" />
+      {locale === 'cs' && <SectionCard title={t(locale, 'home.podcast')} description={t(locale, 'home.podcastDesc')} href={localizedHref(locale, 'podcast')} variant="beige" />}
       <SectionCard title={t(locale, 'home.magazine')} description={t(locale, 'home.magazineDesc')} href={localizedHref(locale, 'magazine')} variant="turquoise" />
       <SectionCard title={t(locale, 'home.events')} description={t(locale, 'home.eventsDesc')} href={locale === 'cs' ? 'https://news.lazneml.cz/' : `https://news.lazneml.cz/index.php?lang=${locale === 'de' ? 'DE' : locale === 'ru' ? 'RU' : 'EN'}&days=7&daysOffset=0`} variant="dark" />
     </div>

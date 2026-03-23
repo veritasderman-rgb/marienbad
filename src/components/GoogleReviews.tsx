@@ -199,7 +199,11 @@ export default function GoogleReviews({ locale, translations }: GoogleReviewsPro
             className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {reviews.map((review, i) => (
+            {[...reviews].sort((a, b) => {
+              const aMatch = a.lang === locale ? 0 : 1
+              const bMatch = b.lang === locale ? 0 : 1
+              return aMatch - bMatch
+            }).map((review, i) => (
               <div
                 key={i}
                 className="flex-shrink-0 w-[300px] sm:w-[340px] snap-start bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
