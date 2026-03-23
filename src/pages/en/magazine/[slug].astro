@@ -131,10 +131,17 @@ const relatedArticles = allArticles
           <h2 class="font-heading text-xl font-semibold mb-6">{moreArticlesLabel}</h2>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {relatedArticles.map(a => (
-              <a href={`${magazineHref}/${a.slug.replace(`${locale}-`, '')}`} class="group block p-4 rounded-xl border border-beige-200 hover:border-turquoise-300 hover:shadow-md transition-all">
-                <span class="text-xs text-turquoise-600 font-medium">{a.category}</span>
-                <h3 class="font-heading text-base font-semibold mt-1 group-hover:text-turquoise-700 transition-colors leading-snug">{a.title}</h3>
-                <p class="text-sm text-beige-600 mt-2 line-clamp-2">{a.excerpt}</p>
+              <a href={`${magazineHref}/${a.slug.replace(`${locale}-`, '')}`} class="group block rounded-xl border border-beige-200 hover:border-turquoise-300 hover:shadow-md transition-all overflow-hidden">
+                {a.coverImage && (
+                  <div class="aspect-[16/9] overflow-hidden">
+                    <img src={a.coverImage} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                  </div>
+                )}
+                <div class="p-4">
+                  <span class="text-xs text-turquoise-600 font-medium">{a.category}</span>
+                  <h3 class="font-heading text-base font-semibold mt-1 group-hover:text-turquoise-700 transition-colors leading-snug">{a.title}</h3>
+                  <p class="text-sm text-beige-600 mt-2 line-clamp-2">{a.excerpt}</p>
+                </div>
               </a>
             ))}
           </div>
