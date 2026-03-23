@@ -421,6 +421,8 @@ export default config({
         ),
       },
     }),
+  },
+  collections: {
     stories: collection({
       label: 'Stories',
       path: 'src/content/stories/*/',
