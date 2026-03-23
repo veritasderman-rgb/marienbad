@@ -22,27 +22,123 @@
     },
     {
       "slug": "centralni-lazne",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/1/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/1/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/1/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/1/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/1/images/4/image.jpg"
+        }
+      ]
     },
     {
       "slug": "hvezda",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/2/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/2/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/2/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/2/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/2/images/4/image.jpg"
+        }
+      ]
     },
     {
       "slug": "pacifik",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/3/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/3/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/3/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/3/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/3/images/4/image.jpg"
+        }
+      ]
     },
     {
       "slug": "butterfly",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/4/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/4/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/4/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/4/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/4/images/4/image.jpg"
+        }
+      ]
     },
     {
       "slug": "vltava",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/5/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/5/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/5/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/5/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/5/images/4/image.jpg"
+        }
+      ]
     },
     {
       "slug": "svoboda",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/6/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/6/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/6/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/6/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/6/images/4/image.jpg"
+        }
+      ]
     }
   ]
 }
