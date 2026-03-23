@@ -232,6 +232,67 @@ export default config({
         ),
       },
     }),
+    itineraries: singleton({
+      label: 'Itineraries',
+      path: 'src/content/itineraries/data',
+      format: { data: 'json' },
+      schema: {
+        categories: fields.array(
+          fields.object({
+            key: fields.select({
+              label: 'Category Key',
+              options: [
+                { label: 'Families', value: 'families' },
+                { label: 'Couples', value: 'couples' },
+                { label: 'Solo', value: 'solo' },
+                { label: 'Wellness', value: 'wellness' },
+              ],
+              defaultValue: 'families',
+            }),
+            items: fields.array(
+              fields.object({
+                icon: fields.text({ label: 'SVG Icon Path (d attribute)', multiline: true }),
+                image: fields.image({
+                  label: 'Photo',
+                  directory: 'public/images/content/itineraries',
+                  publicPath: '/images/content/itineraries/',
+                  description: 'Recommended: 800x500px, JPG/WebP. Optional — falls back to SVG icon if empty.',
+                }),
+                type: fields.select({
+                  label: 'Type',
+                  options: [
+                    { label: 'Hotel', value: 'hotel' },
+                    { label: 'Activity', value: 'activity' },
+                    { label: 'Treatment', value: 'treatment' },
+                  ],
+                  defaultValue: 'hotel',
+                }),
+                titleDe: fields.text({ label: 'Title (DE)' }),
+                titleEn: fields.text({ label: 'Title (EN)' }),
+                titleCs: fields.text({ label: 'Title (CS)' }),
+                titleRu: fields.text({ label: 'Title (RU)' }),
+                descriptionDe: fields.text({ label: 'Description (DE)', multiline: true }),
+                descriptionEn: fields.text({ label: 'Description (EN)', multiline: true }),
+                descriptionCs: fields.text({ label: 'Description (CS)', multiline: true }),
+                descriptionRu: fields.text({ label: 'Description (RU)', multiline: true }),
+                hrefDe: fields.text({ label: 'Link (DE)' }),
+                hrefEn: fields.text({ label: 'Link (EN)' }),
+                hrefCs: fields.text({ label: 'Link (CS)' }),
+                hrefRu: fields.text({ label: 'Link (RU)' }),
+              }),
+              {
+                label: 'Items',
+                itemLabel: (props) => props.fields.titleEn.value || 'Item',
+              }
+            ),
+          }),
+          {
+            label: 'Categories',
+            itemLabel: (props) => props.fields.key.value || 'Category',
+          }
+        ),
+      },
+    }),
   },
   collections: {
     stories: collection({
