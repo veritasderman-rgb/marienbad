@@ -73,11 +73,7 @@ function renderCustomHtml(node: RenderableTreeNode): string {
 
     // Custom tag: hotel-box
     if (name === 'hotel-box') {
-      const starsStr = '★'.repeat(Number(attrs.stars) || 0)
-      const badgeHtml = attrs.badge
-        ? `<span class="px-2 py-0.5 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">${escapeHtml(attrs.badge)}</span>`
-        : ''
-      return `<aside class="my-8 bg-beige-200 rounded-xl p-6 md:p-8 border-l-4 border-turquoise-400"><div class="flex items-start justify-between gap-4 mb-3"><div><span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Recommendation</span><h3 class="font-heading text-xl font-bold text-indigo-700 mt-1">${escapeHtml(attrs.name)}</h3></div><div class="flex items-center gap-2 shrink-0"><span class="text-yellow-500 text-sm">${starsStr}</span>${badgeHtml}</div></div><p class="text-beige-700 text-sm leading-relaxed mb-4">${escapeHtml(attrs.description)}</p><a href="${escapeAttr(attrs.bookingUrl)}" class="inline-flex items-center gap-1.5 text-indigo-500 hover:text-indigo-700 text-sm font-semibold transition-colors" target="_blank" rel="noopener">${escapeHtml(attrs.bookingLabel)}<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a></aside>`
+      return renderHotelBox(attrs)
     }
 
     // Default: render standard Markdoc tags as HTML
@@ -85,6 +81,42 @@ function renderCustomHtml(node: RenderableTreeNode): string {
   }
 
   return String(node)
+}
+
+function renderHotelBox(attrs: any): string {
+  const starsStr = '\u2605'.repeat(Number(attrs.stars) || 0)
+  const badgeHtml = attrs.badge
+    ? '<span class="px-2 py-0.5 bg-yellow-400 text-beige-950 text-xs font-semibold rounded-full">' + escapeHtml(attrs.badge) + '</span>'
+    : ''
+  const descRaw = escapeHtml(attrs.description)
+  const descLines = descRaw.split('\n').filter(function(l: string) { return l.trim() })
+  const mainLines: string[] = []
+  const bulletLines: string[] = []
+  descLines.forEach(function(line: string) {
+    const trimmed = line.trim()
+    if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+      bulletLines.push(trimmed.slice(2))
+    } else {
+      mainLines.push(trimmed)
+    }
+  })
+  const mainMb = bulletLines.length > 0 ? 'mb-2' : 'mb-4'
+  const mainHtml = mainLines.length > 0
+    ? '<p class="text-beige-700 text-sm leading-relaxed ' + mainMb + '">' + mainLines.join('<br>') + '</p>'
+    : ''
+  const bulletsHtml = bulletLines.length > 0
+    ? '<ul class="text-turquoise-700 text-xs leading-relaxed mb-4 space-y-1 list-disc list-inside">' + bulletLines.map(function(b: string) { return '<li>' + b + '</li>' }).join('') + '</ul>'
+    : ''
+  return '<aside class="my-8 bg-beige-200 rounded-xl p-6 md:p-8 border-l-4 border-turquoise-400">'
+    + '<div class="flex items-start justify-between gap-4 mb-3">'
+    + '<div><span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Recommendation</span>'
+    + '<h3 class="font-heading text-xl font-bold text-indigo-700 mt-1">' + escapeHtml(attrs.name) + '</h3></div>'
+    + '<div class="flex items-center gap-2 shrink-0"><span class="text-yellow-500 text-sm">' + starsStr + '</span>' + badgeHtml + '</div></div>'
+    + mainHtml + bulletsHtml
+    + '<a href="' + escapeAttr(attrs.bookingUrl) + '" class="inline-flex items-center gap-1.5 text-indigo-500 hover:text-indigo-700 text-sm font-semibold transition-colors" target="_blank" rel="noopener">'
+    + escapeHtml(attrs.bookingLabel)
+    + '<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>'
+    + '</a></aside>'
 }
 
 function escapeHtml(str: string): string {
