@@ -143,33 +143,7 @@
   },
   "magazine": {
     "sectionLabel": "Magazín",
-    "title": "Aktuality z Mariánských Lázní",
-    "articles": [
-      {
-        "category": "Zdraví",
-        "title": "CO₂ koupele: Co říká věda",
-        "excerpt": "Pacienti po čtrnáctidenní lázeňské kúře běžně uvádějí výrazné zlepšení pohyblivosti a ústup bolestí kloubů.",
-        "date": "15. března 2026",
-        "readTime": "5 min. čtení",
-        "image": "/images/content/articles/magazine/articles/0/image.jpg"
-      },
-      {
-        "category": "Kultura",
-        "title": "Po stopách Goetha městem",
-        "excerpt": "Tytéž prameny, které Goethe roku 1823 opěvoval, dnes napájejí moderní rehabilitační programy.",
-        "date": "10. března 2026",
-        "readTime": "7 min. čtení",
-        "image": "/images/content/articles/magazine/articles/1/image.png"
-      },
-      {
-        "category": "Tip",
-        "title": "5 nejkrásnějších procházek",
-        "excerpt": "Od kolonády přes Skalníkovy sady až ke Geologickému parku — nejlepší trasy pro každé roční období.",
-        "date": "5. března 2026",
-        "readTime": "4 min. čtení",
-        "image": "/images/content/articles/magazine/articles/2/image.jpg"
-      }
-    ]
+    "title": "Aktuality z Mariánských Lázní"
   },
   "newsletter": {
     "title": "Váš bezplatný průvodce po Mariánských Lázních",

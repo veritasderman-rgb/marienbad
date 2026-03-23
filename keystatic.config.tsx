@@ -222,25 +222,6 @@ function homepageSingleton(locale: string, label: string) {
         {
           sectionLabel: fields.text({ label: 'Section Label' }),
           title: fields.text({ label: 'Title' }),
-          articles: fields.array(
-            fields.object({
-              category: fields.text({ label: 'Category' }),
-              title: fields.text({ label: 'Title' }),
-              excerpt: fields.text({ label: 'Excerpt', multiline: true }),
-              date: fields.text({ label: 'Date' }),
-              readTime: fields.text({ label: 'Read Time' }),
-              image: fields.image({
-                label: 'Article Thumbnail',
-                directory: 'public/images/content/articles',
-                publicPath: '/images/content/articles/',
-                description: 'Recommended: 800x500px, JPG/WebP.',
-              }),
-            }),
-            {
-              label: 'Articles',
-              itemLabel: (props) => props.fields.title.value || 'Article',
-            }
-          ),
         },
         { label: 'Magazine Preview' }
       ),

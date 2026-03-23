@@ -311,13 +311,11 @@ const gradients = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {latestArticles.map((article) => (
         <a href={`/${locale}/${routes['magazine'][locale]}/${article.slug}`} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
-          <div class="h-44 relative overflow-hidden" class:list={[article.coverImage ? '' : 'placeholder-image-light flex items-center justify-center']}>
-            {article.coverImage ? (
+          {article.coverImage && (
+            <div class="h-44 relative overflow-hidden">
               <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
-            ) : (
-              <span class="text-beige-600 text-sm">Artikelbild</span>
-            )}
-          </div>
+            </div>
+          )}
           <div class="p-5">
             <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{article.category}</span>
             <h3 class="font-heading text-lg font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mt-1 mb-2">{article.title}</h3>

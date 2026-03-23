@@ -62,9 +62,11 @@ const allArticlesLabel = allArticlesLabels[typedLocale]
         const categoryLabel = categoryLabels[article.category]?.[typedLocale] ?? article.category
         return (
           <a href={href} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover block">
-            <div class="placeholder-image-light h-44 flex items-center justify-center">
-              <span class="text-beige-600 text-sm">{categoryLabel}</span>
-            </div>
+            {article.coverImage && (
+              <div class="h-44 relative overflow-hidden">
+                <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+              </div>
+            )}
             <div class="p-5">
               <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">{categoryLabel}</span>
               <h3 class="font-heading text-lg font-bold text-indigo-700 mt-1 mb-2 group-hover:text-turquoise-600 transition-colors">{article.title}</h3>
