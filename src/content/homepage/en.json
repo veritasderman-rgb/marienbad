@@ -143,33 +143,7 @@
   },
   "magazine": {
     "sectionLabel": "Magazine",
-    "title": "Latest from Marienbad",
-    "articles": [
-      {
-        "category": "Health",
-        "title": "CO₂ Baths: What the Science Says",
-        "excerpt": "Spa guests regularly report significant relief from joint pain after a two-week treatment programme.",
-        "date": "15 March 2026",
-        "readTime": "5 min read",
-        "image": "/images/content/articles/magazine/articles/0/image.jpg"
-      },
-      {
-        "category": "Culture",
-        "title": "In Goethe's Footsteps Through the Town",
-        "excerpt": "The very springs that Goethe praised in 1823 now feed medically supervised rehabilitation programmes.",
-        "date": "10 March 2026",
-        "readTime": "7 min read",
-        "image": "/images/content/articles/magazine/articles/1/image.png"
-      },
-      {
-        "category": "Guide",
-        "title": "The 5 Most Beautiful Walks",
-        "excerpt": "From the Colonnade through Skalníkovy Park to the Geological Park — the best routes to explore.",
-        "date": "5 March 2026",
-        "readTime": "4 min read",
-        "image": "/images/content/articles/magazine/articles/2/image.jpg"
-      }
-    ]
+    "title": "Latest from Marienbad"
   },
   "newsletter": {
     "title": "Your Free Marienbad Guide",

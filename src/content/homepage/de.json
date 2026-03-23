@@ -143,33 +143,7 @@
   },
   "magazine": {
     "sectionLabel": "Magazin",
-    "title": "Aktuelles aus Marienbad",
-    "articles": [
-      {
-        "category": "Gesundheit",
-        "title": "CO₂-Bäder: Was die Wissenschaft sagt",
-        "excerpt": "Kurgäste berichten nach einer zweiwöchigen Behandlung regelmäßig über deutliche Linderung von Gelenkbeschwerden.",
-        "date": "15. März 2026",
-        "readTime": "5 Min. Lesezeit",
-        "image": "/images/content/articles/magazine/articles/0/image.jpg"
-      },
-      {
-        "category": "Kultur",
-        "title": "Auf Goethes Spuren durch die Stadt",
-        "excerpt": "Die gleichen Quellen, die Goethe 1823 pries, speisen heute evidenzbasierte Rehabilitationsprogramme.",
-        "date": "10. März 2026",
-        "readTime": "7 Min. Lesezeit",
-        "image": "/images/content/articles/magazine/articles/1/image.jpg"
-      },
-      {
-        "category": "Tipp",
-        "title": "Die 5 schönsten Spaziergänge",
-        "excerpt": "Von der Kolonnade durch den Skalníkovy-Park bis zum Geologischen Park — die besten Routen.",
-        "date": "5. März 2026",
-        "readTime": "4 Min. Lesezeit",
-        "image": "/images/content/articles/magazine/articles/2/image.jpg"
-      }
-    ]
+    "title": "Aktuelles aus Marienbad"
   },
   "newsletter": {
     "title": "Ihr kostenloser Marienbad-Guide",
