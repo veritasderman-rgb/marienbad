@@ -73,7 +73,7 @@
       {
         "name": "Nové Lázně",
         "stars": 5,
-        "badge": "Выбор редакции",
+        "badge": "130 лет · 1896–2026",
         "description": "Историческая жемчужина 5 звёзд с подлинными Римскими банями — флагман сети Ensana Spa Hotels.",
         "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
@@ -82,7 +82,9 @@
           "Бассейн"
         ],
         "bookingUrl": "https://ensanahotels.com/ru/oteli/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
-        "bookingLabel": "Забронировать"
+        "bookingLabel": "Забронировать",
+        "anniversaryUrl": "/ru/novye-lazni-130-let",
+        "anniversaryLabel": "130 лет Нове Лазне →"
       },
       {
         "name": "Centrální Lázně",

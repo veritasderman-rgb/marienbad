@@ -73,7 +73,7 @@
       {
         "name": "Nové Lázně",
         "stars": 5,
-        "badge": "Editor's Pick",
+        "badge": "130 Years · 1896–2026",
         "description": "A historic 5-star gem featuring an original Roman Bath — the flagship of the Ensana Spa Hotels collection.",
         "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
@@ -82,7 +82,9 @@
           "Pool"
         ],
         "bookingUrl": "https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
-        "bookingLabel": "Book your stay"
+        "bookingLabel": "Book your stay",
+        "anniversaryUrl": "/en/neue-baeder-130-years",
+        "anniversaryLabel": "130 Years of Nové Lázně →"
       },
       {
         "name": "Centrální Lázně",
