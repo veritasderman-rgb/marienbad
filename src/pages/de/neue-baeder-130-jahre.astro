@@ -7,15 +7,15 @@ const locale = 'de' as const
 const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
 
 const pageTitle = '130 Jahre Neue Bäder — Jubiläum 1896–2026 — Marienbad.com'
-const pageDescription = 'Das Hotel Nové Lázně feiert 130 Jahre seit dem prachtvollen Umbau durch Architekt Josef Schaffer. Entdecken Sie das Römische Bad, die Königliche Kabine Eduards VII. und die Geschichte des Hauses.'
+const pageDescription = 'Das Hotel Nové Lázně feiert 130 Jahre seit dem prachtvollen Umbau durch Architekt Josef Schaffer. Entdecken Sie das Römische Bad, die Königliche Kabine Edwards VII. und die Geschichte des Hauses.'
 
 const milestones = [
   { year: '1828', title: 'Gründung des „Neubad"', description: 'Abt Karl Kaspar Reitenberger errichtet ein neues Badehaus — das Neubad. Sechzehn Badekabinen und zehn Gästezimmer für Kurgäste, die zur Eisenwasserkur an der Ambrosius- und Karolinenquelle anreisen.' },
   { year: '1841', title: 'Erste Erweiterung', description: 'Die Zahl der Badekabinen wächst auf 14, ein eigenes Kesselhaus entsteht. Hinzu kommt ein Kursaal — die Neuen Bäder werden zum gesellschaftlichen Mittelpunkt der Stadt.' },
   { year: '1893–1896', title: 'Verwandlung in einen Neorenaissance-Palast', description: 'Architekt Josef Schaffer baut das Neubad von Grund auf um. Aus dem schlichten klassizistischen Gebäude entsteht ein monumentaler Vierturmpalast im italienischen Neorenaissance-Stil mit Römischem Bad, Marmorsäulen, klassischen Skulpturen und Mineralbecken.' },
-  { year: '1897', title: 'König Eduard VII. erstmals in Marienbad', description: 'Der künftige britische Monarch besucht Marienbad zum ersten Mal und verliebt sich sofort in die Stadt. In den Neuen Bädern wird eigens eine private Königliche Kabine mit prachtvoller Wanne und elegantem Ruheraum im Stil der belle époque eingerichtet.' },
-  { year: '1904', title: 'Historisches Treffen zweier Herrscher', description: 'Am 16. August 1904 treffen sich Kaiser Franz Joseph I. und König Eduard VII. im Hotel Nové Lázně zu einem offiziellen diplomatischen Gespräch. Marienbad wird für einen Tag zum Mittelpunkt der europäischen Politik.' },
-  { year: '1905', title: 'Gründung des Royal Golf Club', description: 'Eduard VII. gründet den ältesten Golfclub Böhmens — den Royal Golf Club Marienbad. Der Club ist bis heute ununterbrochen in Betrieb.' },
+  { year: '1897', title: 'König Edward VII. erstmals in Marienbad', description: 'Der künftige britische Monarch besucht Marienbad zum ersten Mal und verliebt sich sofort in die Stadt. In den Neuen Bädern wird eigens eine private Königliche Kabine mit prachtvoller Wanne und elegantem Ruheraum im Stil der belle époque eingerichtet.' },
+  { year: '1904', title: 'Historisches Treffen zweier Herrscher', description: 'Am 16. August 1904 treffen sich Kaiser Franz Joseph I. und König Edward VII. im Hotel Nové Lázně zu einem offiziellen diplomatischen Gespräch. Marienbad wird für einen Tag zum Mittelpunkt der europäischen Politik.' },
+  { year: '1905', title: 'Gründung des Royal Golf Club', description: 'Edward VII. gründet den ältesten Golfclub Böhmens — den Royal Golf Club Marienbad. Der Club ist bis heute ununterbrochen in Betrieb.' },
   { year: '1912–1913', title: 'Erweiterung unter Abt Helmer', description: 'Unter der Leitung von Abt Gilbert Helmer wird die Kabinenkapazität nahezu verdoppelt. Die Neuen Bäder reagieren auf die wachsende Nachfrage der internationalen Aristokratie.' },
   { year: '2005', title: 'Die königliche Tradition lebt weiter', description: 'Prinz Edward, Earl of Wessex, bezieht ein Zimmer im Hotel Nové Lázně und knüpft an die Tradition der britischen Königsfamilie in Marienbad an.' },
   { year: '2021', title: 'Aufnahme in die UNESCO-Welterbeliste', description: 'Marienbad wird Teil der transnationalen Welterbestätte „Great Spa Towns of Europe". Die Neuen Bäder gehören zu den Schlüsselbauten der geschützten Zone.' },
@@ -29,7 +29,7 @@ const highlights = [
     icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
   },
   {
-    title: 'Königliche Kabine Eduards VII.',
+    title: 'Königliche Kabine Edwards VII.',
     description: 'Ein privates Badegemach, das 1896 für den britischen König errichtet wurde. Die originale Wanne im Stil der belle époque, ein eleganter Ruheraum — und eine Besonderheit: ein Holzstuhl mit gedrechselten Beinen, in den eine mechanische Waage eingebaut ist. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.',
     icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
   },
@@ -47,12 +47,12 @@ const highlights = [
 
 const funFacts = [
   'Die Ferdinandsquelle wurde über eine 1 700 Meter lange Rohrleitung aus Auschowitz in die Neuen Bäder geleitet. Eine Dampfmaschine drückte das Wasser über einen Höhenunterschied von 43 Metern.',
-  'In der Königlichen Kabine steht ein Holzstuhl mit kunstvoll gedrechselten Beinen, in dessen Inneren sich eine mechanische Waage verbirgt. Eduard VII. kontrollierte darauf diskret sein Gewicht — auf einer gewöhnlichen Waage zu stehen wäre nicht königlich gewesen.',
-  'Eduard VII. kam so regelmäßig nach Marienbad (neunmal in zwölf Jahren), dass die europäische Presse die Stadt als „Sommerhauptstadt der europäischen Diplomatie" bezeichnete.',
+  'In der Königlichen Kabine steht ein Holzstuhl mit kunstvoll gedrechselten Beinen, in dessen Inneren sich eine mechanische Waage verbirgt. Edward VII. kontrollierte darauf diskret sein Gewicht — auf einer gewöhnlichen Waage zu stehen wäre nicht königlich gewesen.',
+  'Edward VII. kam so regelmäßig nach Marienbad (neunmal in zwölf Jahren), dass die europäische Presse die Stadt als „Sommerhauptstadt der europäischen Diplomatie" bezeichnete.',
   'Auf dem Gebäude thronen bis heute die vier Türmchen aus dem Umbau von 1896 — sie wurden zum Wahrzeichen des Hotels und sind aus dem gesamten Tal sichtbar.',
   'Zu den berühmten Gästen zählten auch Zar Nikolaus II., die Komponisten Chopin und Wagner, der Schriftsteller Franz Kafka und Mark Twain, der 1892 mit Humor die hiesigen Kurritualen beschrieb.',
   'In den Gängen des Hotels tritt eine Mineralquelle zutage — die Gäste können sich das Wasser direkt im Gebäude abfüllen, ohne zur Kolonnade gehen zu müssen.',
-  'An das Treffen Eduards VII. mit Franz Joseph I. im Jahr 1904 erinnert eine Bronzeplastik am Goethe-Platz, die 2014 zum 110. Jahrestag enthüllt wurde.',
+  'An das Treffen Edwards VII. mit Franz Joseph I. im Jahr 1904 erinnert eine Bronzeplastik am Goethe-Platz, die 2014 zum 110. Jahrestag enthüllt wurde.',
   'Das Restaurant Royal, das an das Römische Bad anschließt, wurde zuletzt 2024 renoviert und bietet Platz für 180 Gäste. Es vereint böhmische und mitteleuropäische Küche.',
 ]
 ---
@@ -79,7 +79,7 @@ const funFacts = [
       <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
         Vom monumentalen Umbau durch Architekt <strong class="text-white">Josef Schaffer</strong> im Jahr 1896
         bis zum heutigen Fünf-Sterne-Kurhotel mit dem <strong class="text-white">Römischen Bad</strong>,
-        der <strong class="text-white">Königlichen Kabine Eduards VII.</strong> und einer Mineralquelle direkt in den Hotelgängen.
+        der <strong class="text-white">Königlichen Kabine Edwards VII.</strong> und einer Mineralquelle direkt in den Hotelgängen.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center">
@@ -215,9 +215,9 @@ const funFacts = [
     <div class="max-w-3xl mx-auto">
       <div class="bg-indigo-700 text-white rounded-2xl p-8 md:p-12">
         <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Königliche Tradition</span>
-        <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Neun Besuche König Eduards VII.</h2>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Neun Besuche König Edwards VII.</h2>
         <p class="text-white/70 leading-relaxed mb-4">
-          Als der britische Kronprinz (und spätere König) Eduard VII. im Jahr 1897 zum ersten Mal nach Marienbad kam, war es um ihn geschehen. In den folgenden zwölf Jahren kehrte er <strong class="text-white">neunmal</strong> zurück — und jedes Mal waren die Neuen Bäder sein Quartier.
+          Als der britische Kronprinz (und spätere König) Edward VII. im Jahr 1897 zum ersten Mal nach Marienbad kam, war es um ihn geschehen. In den folgenden zwölf Jahren kehrte er <strong class="text-white">neunmal</strong> zurück — und jedes Mal waren die Neuen Bäder sein Quartier.
         </p>
         <p class="text-white/70 leading-relaxed mb-4">
           Sein Tagesablauf war stets derselbe: <strong class="text-white">morgendliche Trinkkur an der Kreuzbrunnenquelle</strong>, dann der Gang in die Neuen Bäder und ein Bad in der privaten <strong class="text-white">Königlichen Kabine</strong>. Dort steht bis heute die prachtvolle Wanne aus der belle époque und daneben ein bemerkenswertes Möbelstück — <strong class="text-white">ein eleganter Holzstuhl mit eingebauter mechanischer Waage</strong>. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.
@@ -226,7 +226,7 @@ const funFacts = [
           Dank seiner regelmäßigen Aufenthalte wurde Marienbad zur <strong class="text-white">Sommerhauptstadt der europäischen Diplomatie</strong>. Höhepunkt war das <strong class="text-white">Treffen mit Kaiser Franz Joseph I.</strong> am 16. August 1904 — ein Ereignis, an das heute eine Bronzeplastik am Goethe-Platz erinnert.
         </p>
         <p class="text-white/70 leading-relaxed mb-6">
-          1905 gründete Eduard VII. den <strong class="text-white">Royal Golf Club Marienbad</strong> — den ältesten Golfclub Böhmens, der bis heute ununterbrochen besteht. Und die königliche Tradition lebt weiter: 2005 bezog <strong class="text-white">Prinz Edward, Earl of Wessex</strong>, ein Zimmer im Hotel Nové Lázně.
+          1905 gründete Edward VII. den <strong class="text-white">Royal Golf Club Marienbad</strong> — den ältesten Golfclub Böhmens, der bis heute ununterbrochen besteht. Und die königliche Tradition lebt weiter: 2005 bezog <strong class="text-white">Prinz Edward, Earl of Wessex</strong>, ein Zimmer im Hotel Nové Lázně.
         </p>
         <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
           „Die Königliche Kabine mit der originalen Wanne, dem Ruheraum und dem Stuhl mit eingebauter Waage ist ein lebendiges Zeugnis jener Ära, in der in Marienbad europäische Geschichte geschrieben wurde."
@@ -243,7 +243,7 @@ const funFacts = [
       </div>
       <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Erleben Sie Geschichte hautnah</h2>
       <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-        Baden Sie in den Becken mit Marmorsäulen von 1896, genießen Sie ein Mineralbad in der Königlichen Kabine Eduards VII. und kosten Sie das Quellwasser direkt in den Hotelgängen.
+        Baden Sie in den Becken mit Marmorsäulen von 1896, genießen Sie ein Mineralbad in der Königlichen Kabine Edwards VII. und kosten Sie das Quellwasser direkt in den Hotelgängen.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a
