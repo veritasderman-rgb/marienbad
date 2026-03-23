@@ -2,7 +2,23 @@
   "hotels": [
     {
       "slug": "nove-lazne",
-      "images": []
+      "images": [
+        {
+          "image": "/images/hotels/hotels/0/images/0/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/0/images/1/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/0/images/2/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/0/images/3/image.jpg"
+        },
+        {
+          "image": "/images/hotels/hotels/0/images/4/image.jpg"
+        }
+      ]
     },
     {
       "slug": "centralni-lazne",
