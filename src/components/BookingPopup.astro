@@ -28,7 +28,7 @@ const msg = messages[locale]
 
 <div
   id="booking-popup"
-  class="fixed left-4 right-4 bottom-[4.5rem] sm:left-auto sm:right-6 sm:max-w-xs md:bottom-8 z-50 opacity-0 translate-y-3 sm:translate-y-0 sm:translate-x-4 pointer-events-none transition-all duration-500 ease-out"
+  class="fixed left-4 right-4 top-1/2 -translate-y-1/2 sm:left-auto sm:right-6 sm:max-w-xs sm:top-1/2 sm:-translate-y-1/2 md:top-1/2 md:-translate-y-1/2 z-50 opacity-0 scale-95 pointer-events-none transition-all duration-500 ease-out"
   role="dialog"
   aria-label={msg.text}
 >
@@ -93,22 +93,32 @@ const msg = messages[locale]
     const timerBar = document.getElementById('booking-popup-timer')
 
     function show() {
-      popup.classList.remove('opacity-0', 'translate-y-3', 'sm:translate-x-4', 'pointer-events-none')
-      popup.classList.add('opacity-100', 'translate-y-0', 'sm:translate-x-0', 'pointer-events-auto')
+      popup.classList.remove('opacity-0', 'scale-95', 'pointer-events-none')
+      popup.classList.add('opacity-100', 'scale-100', 'pointer-events-auto')
       if (timerBar) timerBar.style.animationPlayState = 'running'
       autoCloseTimer = setTimeout(hide, 10000)
     }
 
     function hide() {
-      popup.classList.add('opacity-0', 'translate-y-3', 'sm:translate-x-4', 'pointer-events-none')
-      popup.classList.remove('opacity-100', 'translate-y-0', 'sm:translate-x-0', 'pointer-events-auto')
+      popup.classList.add('opacity-0', 'scale-95', 'pointer-events-none')
+      popup.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto')
       clearTimeout(autoCloseTimer)
       sessionStorage.setItem('booking-popup-dismissed', '1')
     }
 
     closeBtn.addEventListener('click', hide)
 
-    // Show after 5s of page load
-    setTimeout(show, 5000)
+    // Show when user scrolls to 50% of the page
+    let shown = false
+    function checkScroll() {
+      if (shown) return
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
+      if (scrollPercent >= 0.5) {
+        shown = true
+        show()
+        window.removeEventListener('scroll', checkScroll)
+      }
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true })
   })()
 </script>
