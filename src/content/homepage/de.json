@@ -113,7 +113,7 @@
         "location": "Hamburg 🇩🇪",
         "visitLabel": "Zum 12. Mal",
         "lang": "de",
-        "portrait": "/images/content/stories/people/stories/0/portrait.png"
+        "portrait": "/images/content/stories/people/stories/0/portrait.jpg"
       },
       {
         "quote": "\"I came for the treatment, but I stayed for the peace.\"",
@@ -121,7 +121,7 @@
         "location": "London 🇬🇧",
         "visitLabel": "3. Besuch",
         "lang": "en",
-        "portrait": "/images/content/stories/people/stories/1/portrait.png"
+        "portrait": "/images/content/stories/people/stories/1/portrait.jpg"
       },
       {
         "quote": "«Мариенбад — это не просто курорт. Это место, где душа отдыхает.»",
@@ -129,7 +129,7 @@
         "location": "Москва 🇷🇺",
         "visitLabel": "8. Besuch",
         "lang": "ru",
-        "portrait": "/images/content/stories/people/stories/2/portrait.png"
+        "portrait": "/images/content/stories/people/stories/2/portrait.jpg"
       }
     ]
   },
