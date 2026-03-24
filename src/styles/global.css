@@ -262,6 +262,18 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+/* Reset prose h3 overrides inside treatment-box cards */
+.prose-marienbad aside h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.25;
+  font-weight: 700;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
 .prose-marienbad h4 {
   font-family: var(--font-heading);
   font-size: 1.125rem; /* 18px */
