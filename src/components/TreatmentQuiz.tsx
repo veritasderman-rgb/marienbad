@@ -293,7 +293,7 @@ export default function TreatmentQuiz({
       .filter((r) => {
         if (r.matching.length === 0) return false
         // Strict star-rating filter: only show hotels matching the selected tier
-        // Exception: Luxury (5★) always includes Centrální Lázně (4★)
+        // Exception: Luxury (5★) always includes Ensana Centrální Lázně (4★)
         if (r.hotel.stars === targetStars) return true
         if (targetStars === 5 && r.hotel.slug === 'centralni-lazne') return true
         return false
