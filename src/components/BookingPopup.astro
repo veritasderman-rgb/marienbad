@@ -108,7 +108,17 @@ const msg = messages[locale]
 
     closeBtn.addEventListener('click', hide)
 
-    // Show after 5s of page load
-    setTimeout(show, 5000)
+    // Show when user scrolls to 50% of the page
+    let shown = false
+    function checkScroll() {
+      if (shown) return
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
+      if (scrollPercent >= 0.5) {
+        shown = true
+        show()
+        window.removeEventListener('scroll', checkScroll)
+      }
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true })
   })()
 </script>
