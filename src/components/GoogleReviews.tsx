@@ -161,7 +161,7 @@ export default function GoogleReviews({ locale, translations }: GoogleReviewsPro
                 <StarRating rating={Math.round(OVERALL_RATING)} />
                 <span className="text-sm text-beige-600">
                   {TOTAL_REVIEWS.toLocaleString(locale === 'de' ? 'de-DE' : locale === 'cs' ? 'cs-CZ' : locale === 'ru' ? 'ru-RU' : 'en-US')}{' '}
-                  {locale === 'de' ? 'Bewertungen' : locale === 'cs' ? 'hodnoceni' : locale === 'ru' ? 'otzyvy' : 'reviews'}
+                  {locale === 'de' ? 'Bewertungen' : locale === 'cs' ? 'hodnocení' : locale === 'ru' ? 'отзывов' : 'reviews'}
                 </span>
               </div>
             </div>
