@@ -23,6 +23,17 @@ const latestArticles = allArticles.slice(0, 3)
 const itineraries = getItineraries()
 const ensanaHotelPath: Record<Locale, string> = { de: 'hotels', en: 'hotels', cs: 'hotely', ru: 'oteli' }
 
+const categoryLabels: Record<string, Record<Locale, string>> = {
+  health: { de: 'Gesundheit', en: 'Health', cs: 'Zdraví', ru: 'Здоровье' },
+  wellness: { de: 'Wellness', en: 'Wellness', cs: 'Wellness', ru: 'Велнес' },
+  planning: { de: 'Planung', en: 'Planning', cs: 'Plánování', ru: 'Планирование' },
+  culture: { de: 'Kultur', en: 'Culture', cs: 'Kultura', ru: 'Культура' },
+  tip: { de: 'Tipp', en: 'Tip', cs: 'Tip', ru: 'Совет' },
+  nature: { de: 'Natur', en: 'Nature', cs: 'Příroda', ru: 'Природа' },
+  history: { de: 'Geschichte', en: 'History', cs: 'Historie', ru: 'История' },
+  food: { de: 'Genuss', en: 'Food', cs: 'Jídlo', ru: 'Еда' },
+}
+
 const gradients = [
   'linear-gradient(135deg, #3D1F3D 0%, #266782 100%)',
   'linear-gradient(135deg, #3D1F3D 0%, #004F71 100%)',
@@ -36,9 +47,28 @@ const gradients = [
   subtitle={cms.hero.subtitle}
   ctaText={cms.hero.ctaText}
   ctaHref={cms.hero.ctaHref}
+  ctaText2={(cms.hero as any).ctaText2}
+  ctaHref2={(cms.hero as any).ctaHref2}
   badges={cms.hero.badges}
   image={(cms.hero as any).image}
 />
+
+<!-- 1b. EMOTIONAL BLOCK -->
+{(cms as any).emotionalBlock && (
+  <section class="py-12 md:py-16 bg-beige-100 text-center">
+    <div class="container-wide max-w-3xl mx-auto reveal">
+      <p class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4 leading-snug" style="font-size: var(--text-h3);">
+        {(cms as any).emotionalBlock.headline}
+      </p>
+      <p class="text-beige-700 text-lg leading-relaxed mb-6">
+        {(cms as any).emotionalBlock.text}
+      </p>
+      <p class="text-beige-500 text-sm font-medium tracking-wide">
+        {(cms as any).emotionalBlock.proof}
+      </p>
+    </div>
+  </section>
+)}
 
 <!-- 2. QUICK FACTS STRIP -->
 <section class="relative z-10 -mt-16 md:-mt-20 reveal">
@@ -318,7 +348,7 @@ const gradients = [
           )}
           <div class="p-5">
             <h3 class="font-heading text-xl font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mb-2">{article.title}</h3>
-            <span class="text-beige-500 text-[0.6875rem] font-medium uppercase tracking-wider">{article.category}</span>
+            <span class="text-beige-500 text-[0.6875rem] font-medium uppercase tracking-wider">{categoryLabels[article.category]?.[locale] ?? article.category}</span>
             <p class="text-beige-700 text-sm leading-relaxed line-clamp-2">{article.excerpt}</p>
             <div class="mt-3 text-beige-600 text-xs">{article.readingTime}</div>
           </div>
@@ -345,7 +375,7 @@ const gradients = [
         </div>
         <!-- Timestamp for timing-based bot detection -->
         <input type="hidden" id="newsletter-ts" name="_ts" value="" />
-        <label for="newsletter-email" class="sr-only">E-Mail</label>
+        <label for="newsletter-email" class="sr-only">{cms.newsletter.placeholder}</label>
         <input id="newsletter-email" type="email" placeholder={cms.newsletter.placeholder} required class="flex-1 px-5 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-turquoise-400 focus:ring-1 focus:ring-turquoise-400 transition-colors" />
         <button type="submit" class="btn-primary whitespace-nowrap">
           <span class="btn-label">{cms.newsletter.buttonText}</span>

@@ -1,14 +1,23 @@
 {
   "hero": {
-    "title": "Discover Marienbad",
-    "subtitle": "UNESCO World Heritage · Est. 1818 · Four Healing Elements — One of the few spa destinations in the world combining all four natural healing resources.",
-    "ctaText": "Explore the town",
+    "title": "Marienbad: Healing Springs, Serenity and a Stay That Restores Body and Mind",
+    "subtitle": "Whether you seek wellness, medical treatments, architecture or a weekend in nature — find everything you need in one place.",
+    "ctaText": "Plan your stay",
     "ctaHref": "#discover",
+    "ctaText2": "Choose accommodation",
+    "ctaHref2": "/en/accommodation",
     "badges": [
       "UNESCO Heritage",
-      "Est. 1818"
+      "40+ Springs",
+      "4 Healing Elements",
+      "4.8 ★ Google"
     ],
     "image": "/images/content/hero/hero/image.jpg"
+  },
+  "emotionalBlock": {
+    "headline": "You come for the treatments. You return for the calm.",
+    "text": "Marienbad is more than a spa town — it is days of slowing down, breathing deeply and finding your balance again.",
+    "proof": "UNESCO World Heritage · 40+ Mineral Springs · 4 Natural Healing Elements · 4.8/5 Google"
   },
   "quickFacts": [
     {

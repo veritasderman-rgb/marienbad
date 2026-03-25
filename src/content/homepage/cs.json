@@ -1,14 +1,23 @@
 {
   "hero": {
-    "title": "Objevte Mariánské Lázně",
-    "subtitle": "UNESCO světové dědictví · Od roku 1818 · Čtyři léčivé zdroje — Jedny z mála lázní na světě, které spojují všechny čtyři přírodní léčivé zdroje.",
-    "ctaText": "Poznejte město",
+    "title": "Mariánské Lázně: léčivé prameny, klid a pobyt, který obnoví tělo i hlavu",
+    "subtitle": "Ať jedete za wellness, léčbou, architekturou nebo víkendem v přírodě — tady najdete vše důležité na jednom místě.",
+    "ctaText": "Naplánovat pobyt",
     "ctaHref": "#discover",
+    "ctaText2": "Vybrat ubytování",
+    "ctaHref2": "/cs/ubytovani",
     "badges": [
       "UNESCO dědictví",
-      "Od roku 1818"
+      "40+ pramenů",
+      "4 léčivé zdroje",
+      "4,8 ★ Google"
     ],
     "image": "/images/content/hero/hero/image.jpg"
+  },
+  "emotionalBlock": {
+    "headline": "Přijedete kvůli procedurám. Vrátíte se kvůli klidu.",
+    "text": "Mariánské Lázně nejsou jen místo léčby — jsou to dny, kdy zpomalíte, nadechnete se a znovu se srovnáte.",
+    "proof": "UNESCO světové dědictví · 40+ minerálních pramenů · 4 přírodní léčivé zdroje · 4,8/5 Google"
   },
   "quickFacts": [
     {

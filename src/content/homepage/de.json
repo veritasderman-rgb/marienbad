@@ -1,14 +1,23 @@
 {
   "hero": {
-    "title": "Entdecken Sie Marienbad",
-    "subtitle": "UNESCO Welterbe · Seit 1818 · Vier Heilquellen — Eines der wenigen Kurbäder der Welt, das alle vier natürlichen Heilressourcen vereint.",
-    "ctaText": "Stadt entdecken",
+    "title": "Marienbad: Heilquellen, Ruhe und ein Aufenthalt, der Körper und Geist erneuert",
+    "subtitle": "Ob Wellness, Kur, Architektur oder ein Wochenende in der Natur — hier finden Sie alles Wichtige an einem Ort.",
+    "ctaText": "Aufenthalt planen",
     "ctaHref": "#discover",
+    "ctaText2": "Unterkunft wählen",
+    "ctaHref2": "/de/unterkunft",
     "badges": [
       "UNESCO Welterbe",
-      "Seit 1818"
+      "40+ Quellen",
+      "4 Heilressourcen",
+      "4,8 ★ Google"
     ],
     "image": "/images/content/hero/hero/image.jpg"
+  },
+  "emotionalBlock": {
+    "headline": "Sie kommen wegen der Behandlung. Sie kehren zurück wegen der Ruhe.",
+    "text": "Marienbad ist mehr als ein Kurort — es sind Tage, an denen Sie langsamer werden, durchatmen und wieder zu sich finden.",
+    "proof": "UNESCO Welterbe · 40+ Mineralquellen · 4 natürliche Heilressourcen · 4,8/5 Google"
   },
   "quickFacts": [
     {
