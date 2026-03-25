@@ -337,7 +337,7 @@ const gradients = [
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {latestArticles.map((article) => (
-        <a href={`/${locale}/${routes['magazine'][locale]}/${article.slug}`} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
+        <a href={`/${locale}/${routes['magazine'][locale]}/${article.slug.replace(/^[a-z]{2}-/, '')}`} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
           {article.coverImage && (
             <div class="h-44 relative overflow-hidden">
               <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
