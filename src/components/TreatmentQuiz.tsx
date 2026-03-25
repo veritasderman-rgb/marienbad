@@ -22,6 +22,7 @@ interface TreatmentQuizProps {
     restart: string
     yourTreatments: string
     bookNow: string
+    disclaimer: string
     matchingTreatments: string
     budgetComfort: string
     budgetPremium: string
@@ -585,6 +586,7 @@ export default function TreatmentQuiz({
                     </span>
                   ))}
                 </div>
+                <p className="mt-3 text-xs text-beige-500 leading-relaxed">{tr.disclaimer}</p>
               </div>
             )}
 
