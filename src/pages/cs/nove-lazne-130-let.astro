@@ -11,27 +11,32 @@ const pageTitle = '130 let Nových Lázní — Oslavy výročí 1896–2026 — 
 const pageDescription = 'Ensana Nové Lázně slaví 130 let od velkolepé přestavby architektem Josefem Schafferem. Objevte historii, Římské lázně a Královskou kabinu krále Edwarda VII.'
 
 const milestones = [
-  { year: '1828', title: 'Vznik „Neubadu"', description: 'Opat Karl Kašpar Reitenberger zakládá novou lázeňskou budovu — Neubad. Šestnáct koupelových kabin a deset pokojů pro hosty, kteří přijíždějí na kúry v železnatých vodách Ambrožova a Karolinina pramene.' },
-  { year: '1841', title: 'První rozšíření', description: 'Počet koupelových kabin roste na 14, u budovy vzniká samostatná kotelna. Přibývá kursální sál — Ensana Nové Lázně se stávají společenským centrem města.' },
-  { year: '1893–1896', title: 'Přerod v novorenesanční palác', description: 'Architekt Josef Schaffer přestavuje Neubad od základů. Z nenápadné klasicistní budovy se rodí monumentální čtyřvěžový palác v italském novorenesančním stylu s Římskými lázněmi, mramorovými sloupy, klasickými sochami a bazény s minerální vodou.' },
-  { year: '1897', title: 'Král Edward VII. poprvé v Mariánských Lázních', description: 'Budoucí britský monarcha přijíždí poprvé a okamžitě si město zamiluje. V Nových Lázních pro něj vzniká soukromá Královská kabina s opulentní vanou a elegantním odpočívárnou v duchu belle époque.' },
-  { year: '1904', title: 'Historické setkání dvou mocnářů', description: '16. srpna 1904 se v hotelu Ensana Nové Lázně setkávají císař František Josef I. a král Edward VII. při oficiálním diplomatickém jednání. Mariánské Lázně se na jeden den stávají centrem evropské politiky.' },
+  { year: '1808', title: 'První lázeňská sezóna', description: 'Do nehostinné krajiny dorazilo osmdesát hostů. Chyběly upravené cesty i základní služby — hosté si přiváželi vlastní postele a zásoby jídla. Přesto minerální prameny rychle získávaly věhlas.' },
+  { year: '1820', title: 'Éra inovací', description: 'Zavedeny parní a sprchové koupele, krátce poté slatinné zábaly a plynové koupele využívající oxid uhličitý z Mariina pramene — procedura, která je dodnes považována za místní unikát.' },
+  { year: '1828', title: 'Vznik „Neubadu"', description: 'Opat Karl Kašpar Reitenberger zakládá novou lázeňskou budovu — Neubad. Šestnáct koupelových kabin a deset pokojů pro hosty přijíždějící na kúry v železnatých vodách Ambrožova a Karolinina pramene.' },
+  { year: '1841', title: 'První rozšíření', description: 'Počet koupelových kabin roste na 14, u budovy vzniká samostatná kotelna. Přibývá kursální sál — Nové Lázně se stávají společenským centrem města.' },
+  { year: '1872', title: 'Příjezd prvního vlaku', description: 'Díky železnici se město otevřelo Evropě a návštěvnost prudce vzrostla. Původní kapacity přestaly stačit a bylo nutné přistoupit k velkorysé přestavbě.' },
+  { year: '1890', title: '„Ocelové koupele"', description: 'Staré Nové Lázně disponovaly 42 kabinami pro tzv. ocelové koupele (Stahlbäder) — koupel v Ambrožově prameni. Voda byla tak železitá, že zbarvila vanu do rezava a slibovala pacientům „ocelové zdraví".' },
+  { year: '1892–1896', title: 'Schafferova přestavba', description: 'Opat Alfred Clemens rozhodl o přestavbě, zajistil financování a vtiskl projektu jasnou vizi. Jeho iniciály A.C. a A.T. (Abbas Teplensis) jsou dodnes vytesány ve štítu budovy. Architekt Josef Schaffer, mariánskolázeňský rodák inspirovaný cestami po Benátkách, Boloni a Florencii, přeměnil Neubad v monumentální novorenesanční palác. Výstavba trvala čtyři roky a probíhala vždy v zimě, aby nebyl narušen lázeňský provoz. Slavnostní otevření proběhlo 1. června 1896.' },
+  { year: '1897', title: 'Král Edward VII. poprvé', description: 'Budoucí britský monarcha přijíždí a okamžitě si město zamiluje. V Nových Lázních pro něj vzniká soukromá Královská kabina — dveře do lodžie zdobí původní malby na skle od slavné tyrolské dílny Geyling, kachličky jsou luxusní majolika a na stěnách visí obrazy s ptáky. Pobyt měl evokovat atmosféru zahradního pavilonu uprostřed přírody.' },
+  { year: '1904', title: 'Setkání dvou mocnářů', description: '16. srpna 1904 se v hotelu setkávají císař František Josef I. a král Edward VII. při oficiálním diplomatickém jednání. Mariánské Lázně se na jeden den stávají centrem evropské politiky.' },
   { year: '1905', title: 'Založení Royal Golf Clubu', description: 'Edward VII. zakládá nejstarší golfový klub v Čechách — Royal Golf Club Mariánské Lázně. Klub funguje nepřetržitě dodnes.' },
-  { year: '1912–1913', title: 'Rozšíření za opata Helmera', description: 'Pod vedením opata Gilberta Helmera se kapacita koupelových kabin téměř zdvojnásobuje. Ensana Nové Lázně reagují na rostoucí poptávku mezinárodní aristokracie.' },
-  { year: '2005', title: 'Královská tradice pokračuje', description: 'Princ Edward, hrabě z Wessexu, se ubytovává v hotelu Ensana Nové Lázně a navazuje na tradici britské královské rodiny v Mariánských Lázních.' },
-  { year: '2021', title: 'Zápis na seznam UNESCO', description: 'Mariánské Lázně se stávají součástí transnacionálního zápisu „Slavná lázeňská města Evropy". Ensana Nové Lázně patří mezi klíčové stavby chráněné zóny.' },
-  { year: '2026', title: '130 let od Schafferovy přestavby', description: 'Ensana Nové Lázně slaví 130. výročí. Budova stále slouží jako pětihvězdičkový lázeňský hotel — s původními Římskými lázněmi, Královskou kabinou i Císařskou kabinou v plném provozu.' },
+  { year: '1912–1913', title: 'Rozšíření za opata Helmera', description: 'Pod vedením opata Gilberta Helmera se kapacita koupelových kabin téměř zdvojnásobuje. Nové Lázně reagují na rostoucí poptávku mezinárodní aristokracie.' },
+  { year: '2005', title: 'Královská tradice pokračuje', description: 'Princ Edward, hrabě z Wessexu, se ubytovává v hotelu a navazuje na tradici britské královské rodiny v Mariánských Lázních.' },
+  { year: '2021', title: 'Zápis na seznam UNESCO', description: 'Mariánské Lázně se stávají součástí transnacionálního zápisu „Slavná lázeňská města Evropy". Nové Lázně patří mezi klíčové stavby chráněné zóny.' },
+  { year: '2023', title: 'Statut klimatických lázní', description: 'Mariánské Lázně získávají statut klimatických lázní — potvrzení, že zdejší mikroklima je samo o sobě léčivým zdrojem.' },
+  { year: '2026', title: '130 let od slavnostního otevření', description: '1. června 2026 slaví Nové Lázně 130. výročí. Budova stále slouží jako pětihvězdičkový lázeňský hotel — největší historický balneoprovoz v České republice, s původními Římskými lázněmi, Královskou kabinou i Císařskou kabinou v plném provozu.' },
 ]
 
 const highlights = [
   {
     title: 'Římské lázně z roku 1896',
-    description: 'Dva původní bazény s minerální vodou zasazené mezi mohutné mramorové sloupy a klasické sochy — autentický interiér z roku 1896, který přežil dvě světové války. Třetí bazén s protiproudem byl přidán při moderní rekonstrukci. K dispozici je sauna (80 °C), sanárium (50 °C), parní lázeň a Kneippova terapie.',
+    description: 'Prosklený strop zaplavuje interiér měkkým denním světlem. Klenbu nese jednadvacet vznosných sloupů z tmavě červeného salcburského mramoru s hlavicemi z bílého carrarského kamene. Dva původní bazény s minerální vodou, pozlacené chrliče ve tvaru lvích hlav a barevné kachličky evokují noblesu antických lázní. Třetí bazén s protiproudem byl přidán při moderní rekonstrukci.',
     icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
   },
   {
     title: 'Královská kabina Edwarda VII.',
-    description: 'Soukromá koupelna vybudovaná v roce 1896 pro britského krále. Původní vana v duchu belle époque, elegantní odpočívárna — a unikát: dřevěná židle s vyřezávanými nožkami, do které je zabudovaná mechanická váha. Král si na ní nenápadně kontroloval hmotnost, aniž by musel stát na obyčejné váze.',
+    description: 'Soukromá koupelna vybudovaná pro britského krále. Dveře do lodžie zdobí původní malby na skle od slavné tyrolské dílny Geyling, které ve slunečním svitu hrají všemi barvami. Kachličky jsou luxusní majolika, na stěnách visí obrazy s ptáky — pobyt měl evokovat atmosféru zahradního pavilonu. V kabině dodnes stojí dřevěná židle se zabudovanou mechanickou váhou.',
     icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
   },
   {
@@ -47,14 +52,15 @@ const highlights = [
 ]
 
 const funFacts = [
-  'Ferdinandův pramen byl přiveden do Nových lázní potrubím o délce 1 700 metrů z Úšovic. Parní stroj tlačil vodu po trase stoupající o 43 metrů výškového rozdílu.',
+  'Ve štítu budovy jsou dodnes vytesány iniciály A.C. a A.T. (Abbas Teplensis) — připomínka opata Alfreda Clemence, který přestavbu inicioval a financoval.',
+  'Klenbu Římských lázní nese 21 vznosných sloupů z tmavě červeného salcburského mramoru s hlavicemi z bílého carrarského kamene. Pozlacené chrliče ve tvaru lvích hlav dotváří atmosféru antických lázní.',
+  'Dveře do lodžie v Královské kabině zdobí původní malby na skle od slavné tyrolské dílny Geyling. Ve slunečním svitu hrají všemi barvami — kabina měla evokovat zahradní pavilon uprostřed přírody.',
   'V Královské kabině stojí dřevěná židle s vyřezávanými nožkami, uvnitř které se skrývá mechanická váha. Edward VII. si na ní diskrétně kontroloval váhu — stát na obyčejné váze by nebylo královské.',
-  'Edward VII. přijížděl do Mariánských Lázní tak pravidelně (devětkrát za 12 let), že evropský tisk nazýval město „letním hlavním městem evropské diplomacie".',
-  'Na budově se dodnes tyčí čtyři věžičky z přestavby roku 1896 — staly se ikonickým znakem hotelu a jsou viditelné z celého údolí.',
-  'Mezi slavné hosty patřili i car Mikuláš II., skladatelé Chopin a Wagner, spisovatel Franz Kafka a Mark Twain, který v roce 1892 s humorem popisoval zdejší lázeňské rituály.',
-  'V chodbách hotelu vyvěrá minerální pramen — hosté si mohou nabrat vodu přímo v budově, aniž by museli na kolonádu.',
-  'Setkání Edwarda VII. a Františka Josefa I. v roce 1904 připomíná bronzové sousoší na Goethově náměstí, odhalené v roce 2014 k 110. výročí události.',
-  'Restaurace Royal, která navazuje na Římské lázně, prošla poslední renovací v roce 2024 a pojme 180 hostů. Kombinuje českou a středoevropskou kuchyni.',
+  'V první lázeňské sezóně roku 1808 dorazilo do nehostinné krajiny přibližně 80 hostů. Chyběly cesty i služby — hosté si přiváželi vlastní postele a zásoby jídla.',
+  'Před Schafferovou přestavbou nabízely staré Nové Lázně 42 kabin pro „ocelové koupele" (Stahlbäder). Voda z Ambrožova pramene byla tak železitá, že zbarvila vanu do rezava.',
+  'Ferdinandův pramen byl přiveden do Nových lázní potrubím o délce 1 700 metrů z Úšovic. Parní stroj tlačil vodu po trase stoupající o 43 metrů výškového rozdílu.',
+  'Edward VII. přijížděl do Mariánských Lázní devětkrát za 12 let. Evropský tisk nazýval město „letním hlavním městem evropské diplomacie".',
+  'Již v roce 1820 zde byly zavedeny parní a sprchové koupele, krátce poté slatinné zábaly a plynové koupele využívající CO₂ z Mariina pramene — procedura unikátní dodnes.',
 ]
 ---
 
@@ -78,9 +84,7 @@ const funFacts = [
       </h1>
 
       <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
-        Od monumentální přestavby architektem <strong class="text-white">Josefem Schafferem</strong> v roce 1896
-        po dnešní pětihvězdičkový lázeňský hotel s <strong class="text-white">Římskými lázněmi</strong>,
-        <strong class="text-white">Královskou kabinou Edwarda VII.</strong> a minerálním pramenem přímo v chodbách.
+        Slavnostně otevřen <strong class="text-white">1. června 1896</strong> — perla lázeňské architektury navržená mariánskolázeňským rodákem <strong class="text-white">Josefem Schafferem</strong> podle italských renesančních vzorů. Dnes <strong class="text-white">největší historický balneoprovoz v České republice</strong> s <strong class="text-white">Římskými lázněmi</strong>, <strong class="text-white">Královskou kabinou Edwarda VII.</strong> a minerálním pramenem přímo v chodbách.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center">
@@ -150,12 +154,15 @@ const funFacts = [
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center">
         <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">Architekt</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer (1862–1938)</h2>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer — mariánskolázeňský rodák</h2>
         <p class="text-white/70 text-lg leading-relaxed mb-6">
-          Schaffer přetvořil nenápadný klasicistní Neubad z roku 1828 v <strong class="text-white">monumentální čtyřvěžový palác v italském novorenesančním stylu</strong>. Přestavba trvala tři roky (1893–1896) a výsledek předčil všechna očekávání — Mariánské Lázně rázem měly budovu, která se mohla měřit s nejlepšími lázeňskými domy v Karlových Varech, Baden-Badenu či Vichy.
+          Impuls ke vzniku Nových Lázní dal <strong class="text-white">opat Alfred Clemens</strong>, který rozhodl o jejich výstavbě, zajistil financování a vtiskl projektu jasnou vizi. Jeho iniciály A.C. a A.T. (Abbas Teplensis) jsou dodnes vytesány ve štítu budovy.
+        </p>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          Architektonickou podobu navrhl <strong class="text-white">mariánskolázeňský rodák Josef Schaffer</strong>. Inspiraci čerpal během svých cest po Itálii — zejména v <strong class="text-white">Benátkách, Boloni a Florencii</strong>. Prvky italské renesance vtiskly stavbě její velkolepý a nadčasový charakter. Výstavba trvala čtyři roky a probíhala vždy v zimě mimo hlavní sezonu, aby nebyl narušen lázeňský provoz. Slavnostní otevření proběhlo <strong class="text-white">1. června 1896</strong>.
         </p>
         <p class="text-white/70 text-lg leading-relaxed">
-          Schaffer navrhl Římské lázně s mramorovými sloupy a bazény plněnými minerální vodou, soukromé kabiny pro královské hosty i technické zázemí, které dokázalo přivést Ferdinandův pramen potrubím z 1,7 km vzdálených Úšovic. <strong class="text-white">Ensana Nové Lázně dodnes zůstávají jeho největším dílem.</strong>
+          Nové Lázně jsou dnes <strong class="text-white">největším historickým balneoprovozem v České republice</strong>. Minerální prameny Lesní a Ambrožův jsou přivedeny přímo do budovy a tvoří základ komplexní lázeňské péče, rehabilitace i moderní diagnostiky včetně oxygenoterapie. Mariánské Lázně jsou od roku 2021 součástí <strong class="text-white">světového dědictví UNESCO</strong> a od roku 2023 nesou <strong class="text-white">statut klimatických lázní</strong>.
         </p>
       </div>
     </div>
