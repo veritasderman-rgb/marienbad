@@ -1,13 +1,26 @@
 import type { APIRoute } from 'astro'
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/
 const VALID_LOCALES = ['de', 'en', 'cs', 'ru']
 const VALID_VISIT_PERIODS = ['recently', '1-5', '5-10', '10+']
 
 const ALLOWED_ORIGINS = ['https://marienbad.com', 'https://www.marienbad.com', 'https://marienbad.vercel.app']
 function getAllowedOrigin(url: string): string {
-  const origin = new URL(url).origin
-  return ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+  try {
+    const origin = new URL(url).origin
+    if (ALLOWED_ORIGINS.includes(origin)) return origin
+  } catch {}
+  return ''
+}
+
+/** Extract client IP — on Vercel, use the rightmost non-private IP from x-forwarded-for */
+function getClientIp(request: Request): string {
+  const xff = request.headers.get('x-forwarded-for')
+  if (xff) {
+    const ips = xff.split(',').map(s => s.trim())
+    return ips[ips.length - 1] || 'unknown'
+  }
+  return request.headers.get('x-real-ip') || 'unknown'
 }
 
 // --- Rate limiting (in-memory, limited on serverless — consider Vercel KV for production) ---
@@ -33,10 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // --- Rate limiting by IP ---
-  const ip =
-    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    request.headers.get('x-real-ip') ||
-    'unknown'
+  const ip = getClientIp(request)
 
   if (isRateLimited(ip)) {
     return new Response(
@@ -68,16 +78,9 @@ export const POST: APIRoute = async ({ request }) => {
       )
     }
 
-    // --- Timing check ---
-    if (_ts) {
-      const elapsed = Date.now() - _ts
-      if (elapsed < 3000) {
-        // Submitted too fast (likely a bot) — return fake success
-        return new Response(
-          JSON.stringify({ success: true }),
-          { status: 200, headers },
-        )
-      }
+    // --- Timing check (required — bots skip this field) ---
+    if (!_ts || typeof _ts !== 'number' || Date.now() - _ts < 5000) {
+      return new Response(JSON.stringify({ success: true }), { status: 200, headers })
     }
 
     // --- Validation ---
@@ -87,7 +90,7 @@ export const POST: APIRoute = async ({ request }) => {
       errors.push('Name is required.')
     }
 
-    if (!email || !EMAIL_RE.test(email)) {
+    if (!email || typeof email !== 'string' || email.length > 254 || !EMAIL_RE.test(email)) {
       errors.push('A valid email address is required.')
     }
 
@@ -99,7 +102,7 @@ export const POST: APIRoute = async ({ request }) => {
       errors.push('A valid visit period is required.')
     }
 
-    if (!story || story.trim().length < 50) {
+    if (!story || typeof story !== 'string' || story.trim().length < 50) {
       errors.push('Story must be at least 50 characters.')
     }
 
@@ -142,6 +145,7 @@ export const OPTIONS: APIRoute = ({ request }) => {
       'Access-Control-Allow-Origin': getAllowedOrigin(request.url),
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Max-Age': '86400',
     },
   })
 }
