@@ -90,7 +90,7 @@ const relatedArticles = allArticles
   .slice(0, 3)
 ---
 
-<Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Marienbad Magazine`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }}>
+<Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Marienbad Magazine`} description={article.excerpt} alternateUrls={{ de: '/de/magazin', en: '/en/magazine', cs: '/cs/magazin', ru: '/ru/zhurnal', [locale]: Astro.url.pathname }}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote} breadcrumbs={breadcrumbs}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
