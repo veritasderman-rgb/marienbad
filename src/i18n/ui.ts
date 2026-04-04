@@ -260,7 +260,7 @@ const ui = {
     'home.thingsToDo': 'Co dělat',
     'home.thingsToDoDesc': 'Od Zpívající fontány po Královský golf – zažijte to nejlepší.',
     'home.accommodation': 'Kde bydlet',
-    'home.accommodationDesc': 'Najděte ideální ubytování – od historických lázeňských hotelů po útulné penziony.',
+    'home.accommodationDesc': 'Najděte ideální ubytování – od historických 5hvězdičkových lázeňských hotelů po skvělé 3hvězdičkové hotely.',
     'home.history': 'Historie & Kultura',
     'home.historyDesc': 'UNESCO dědictví, slavní návštěvníci a fascinující architektura.',
     'home.podcast': 'Podcast',

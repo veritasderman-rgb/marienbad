@@ -67,6 +67,11 @@ function hreflangUrl(targetLocale: Locale): string | null {
   const path = pathname.replace(/^\/[a-z]{2}/, `/${targetLocale}`)
   return `${siteUrl}${path}`
 }
+
+/** Language switcher URLs — same page in each locale */
+const langSwitcherUrls = Object.fromEntries(
+  locales.map(l => [l, hreflangUrl(l)?.replace(siteUrl, '') ?? `/${l}`])
+) as Record<Locale, string>
 ---
 
 <!doctype html>
@@ -155,7 +160,7 @@ function hreflangUrl(targetLocale: Locale): string | null {
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-yellow-400 focus:text-black focus:rounded-lg focus:font-semibold">
       Skip to content
     </a>
-    <Header locale={locale} />
+    <Header locale={locale} langUrls={langSwitcherUrls} />
     <main id="main-content" class="flex-1">
       <slot />
     </main>
