@@ -2,7 +2,13 @@ import type { APIRoute } from 'astro'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-// --- Rate limiting (in-memory) ---
+const ALLOWED_ORIGINS = ['https://marienbad.com', 'https://www.marienbad.com', 'https://marienbad.vercel.app']
+function getAllowedOrigin(url: string): string {
+  const origin = new URL(url).origin
+  return ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+}
+
+// --- Rate limiting (in-memory, limited on serverless — consider Vercel KV for production) ---
 const rateLimitMap = new Map<string, number[]>()
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
 const RATE_LIMIT_MAX = 3
@@ -22,7 +28,7 @@ function isRateLimited(ip: string): boolean {
 export const POST: APIRoute = async ({ request }) => {
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': new URL(request.url).origin,
+    'Access-Control-Allow-Origin': getAllowedOrigin(request.url),
   }
 
   // --- Rate limiting by IP ---
@@ -75,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
       )
     }
 
-    const apiKey = import.meta.env.MAILERLITE_API_KEY ?? process.env.MAILERLITE_API_KEY
+    const apiKey = process.env.MAILERLITE_API_KEY
 
     // Locale → MailerLite group ID mapping (env: MAILERLITE_GROUP_DE, _EN, _CS, _RU)
     const env = (k: string) => import.meta.env[k] ?? process.env[k]
@@ -116,7 +122,7 @@ export const POST: APIRoute = async ({ request }) => {
         )
       }
     } else {
-      console.log(`[newsletter] No MAILERLITE_API_KEY set. Would subscribe: ${email} (locale: ${resolvedLocale}, group: ${groupId || 'none'})`)
+      console.log(`[newsletter] No MAILERLITE_API_KEY configured. Dry run for locale: ${resolvedLocale}`)
     }
 
     return new Response(
@@ -136,7 +142,7 @@ export const OPTIONS: APIRoute = ({ request }) => {
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': new URL(request.url).origin,
+      'Access-Control-Allow-Origin': getAllowedOrigin(request.url),
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },

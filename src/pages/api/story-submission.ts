@@ -4,7 +4,13 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const VALID_LOCALES = ['de', 'en', 'cs', 'ru']
 const VALID_VISIT_PERIODS = ['recently', '1-5', '5-10', '10+']
 
-// --- Rate limiting (in-memory) ---
+const ALLOWED_ORIGINS = ['https://marienbad.com', 'https://www.marienbad.com', 'https://marienbad.vercel.app']
+function getAllowedOrigin(url: string): string {
+  const origin = new URL(url).origin
+  return ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+}
+
+// --- Rate limiting (in-memory, limited on serverless — consider Vercel KV for production) ---
 const rateLimitMap = new Map<string, number[]>()
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000 // 1 hour
 const RATE_LIMIT_MAX = 3
@@ -23,7 +29,7 @@ function isRateLimited(ip: string): boolean {
 export const POST: APIRoute = async ({ request }) => {
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': new URL(request.url).origin,
+    'Access-Control-Allow-Origin': getAllowedOrigin(request.url),
   }
 
   // --- Rate limiting by IP ---
@@ -114,7 +120,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // TODO: Store submission in Supabase database.
     // For now, log the submission and return success.
-    console.log(`[story-submission] New story from ${name} (${email}), locale: ${locale}, location: ${location}, visitPeriod: ${visitPeriod}, photoConsent: ${!!photoConsent}, story length: ${story!.trim().length}`)
+    console.log(`[story-submission] New story received, locale: ${locale}, location: ${location}, visitPeriod: ${visitPeriod}, story length: ${story!.trim().length}`)
 
     return new Response(
       JSON.stringify({ success: true }),
@@ -133,7 +139,7 @@ export const OPTIONS: APIRoute = ({ request }) => {
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': new URL(request.url).origin,
+      'Access-Control-Allow-Origin': getAllowedOrigin(request.url),
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },

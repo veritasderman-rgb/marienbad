@@ -117,7 +117,7 @@ function renderHotelBox(attrs: any): string {
     + '<h3 class="font-heading text-xl font-bold text-indigo-700 mt-1">' + escapeHtml(attrs.name) + '</h3></div>'
     + '<div class="flex items-center gap-2 shrink-0"><span class="text-yellow-500 text-sm">' + starsStr + '</span>' + badgeHtml + '</div></div>'
     + mainHtml + bulletsHtml
-    + '<a href="' + escapeAttr(attrs.bookingUrl) + '" class="inline-flex items-center gap-1.5 text-indigo-500 hover:text-indigo-700 text-sm font-semibold transition-colors" target="_blank" rel="noopener">'
+    + '<a href="' + escapeAttr(attrs.bookingUrl) + '" class="inline-flex items-center gap-1.5 text-indigo-500 hover:text-indigo-700 text-sm font-semibold transition-colors" target="_blank" rel="noopener noreferrer">'
     + escapeHtml(attrs.bookingLabel)
     + '<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>'
     + '</a></aside>'
