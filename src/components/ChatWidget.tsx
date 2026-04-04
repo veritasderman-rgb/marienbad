@@ -14,59 +14,78 @@ interface Props {
 interface Message {
   role: 'user' | 'assistant'
   text: string
+  link?: string
+}
+
+const links: Record<string, Record<Locale, string>> = {
+  springs: { cs: '/cs/mineralni-prameny', de: '/de/mineralquellen', en: '/en/mineral-springs', ru: '/ru/mineralnye-istochniki' },
+  hotels: { cs: '/cs/ubytovani', de: '/de/unterkunft', en: '/en/accommodation', ru: '/ru/prozhivanie' },
+  treatments: { cs: '/cs/mineralni-prameny', de: '/de/mineralquellen', en: '/en/mineral-springs', ru: '/ru/mineralnye-istochniki' },
+  getting_there: { cs: '/cs/prakticke-informace', de: '/de/praktische-infos', en: '/en/practical-info', ru: '/ru/prakticheskaya-informaciya' },
+  insurance: { cs: '/cs/prakticke-informace', de: '/de/praktische-infos', en: '/en/practical-info', ru: '/ru/prakticheskaya-informaciya' },
+  unesco: { cs: '/cs/historie', de: '/de/geschichte', en: '/en/history', ru: '/ru/istoriya' },
+  booking: { cs: '/cs/ubytovani', de: '/de/unterkunft', en: '/en/accommodation', ru: '/ru/prozhivanie' },
+  activities: { cs: '/cs/co-delat', de: '/de/aktivitaeten', en: '/en/things-to-do', ru: '/ru/chem-zanyatsya' },
+  magazine: { cs: '/cs/magazin', de: '/de/magazin', en: '/en/magazine', ru: '/ru/zhurnal' },
 }
 
 const faq: Record<string, Record<Locale, { q: string[]; a: string }>> = {
   springs: {
-    cs: { q: ['prameny', 'pramen', 'kolik pramenů', 'minerální'], a: 'V Mariánských Lázních vyvěrá přes 40 minerálních pramenů s teplotou 7–10 °C, bohatých na CO₂. Nejznámější jsou Křížový, Ferdinandův, Rudolfův a Karolinin pramen. Lázeňský lékař vám sestaví individuální pitný plán.' },
+    cs: { q: ['prameny', 'pramen', 'kolik pramenů', 'minerální'], a: 'V Mariánských Lázních vyvěrá přes 40 minerálních pramenů s teplotou 7–10 °C, bohatých na CO₂. Nejznámější jsou Křížový, Ferdinandův, Rudolfův a Karolinin pramen.' },
     de: { q: ['quellen', 'quelle', 'mineralquellen', 'wie viele quellen'], a: 'In Marienbad gibt es über 40 Mineralquellen mit einer Temperatur von 7–10 °C, reich an CO₂. Die bekanntesten sind die Kreuzquelle, Ferdinandsquelle, Rudolfsquelle und Karolinenquelle.' },
-    en: { q: ['springs', 'spring', 'how many springs', 'mineral'], a: 'Marienbad has over 40 mineral springs at 7–10 °C, rich in CO₂. The most famous are the Cross Spring, Ferdinand Spring, Rudolf Spring and Caroline Spring. A spa physician will create your individual drinking plan.' },
-    ru: { q: ['источники', 'источник', 'сколько источников', 'минеральн'], a: 'В Марианских Лазнях более 40 минеральных источников с температурой 7–10 °C, богатых CO₂. Самые известные — Крестовый, Фердинандов, Рудольфов и Каролинин источники.' },
+    en: { q: ['springs', 'spring', 'how many springs', 'mineral'], a: 'Marienbad has over 40 mineral springs at 7–10 °C, rich in CO₂. The most famous are the Cross Spring, Ferdinand Spring, Rudolf Spring and Caroline Spring.' },
+    ru: { q: ['источники', 'источник', 'сколько источников', 'минеральн'], a: 'В Марианских Лазнях более 40 минеральных источников с температурой 7–10 °C, богатых CO₂.' },
   },
   hotels: {
-    cs: { q: ['hotel', 'ubytování', 'kde bydlet', 'kolik hotelů', 'ensana'], a: 'Ensana provozuje 7 lázeňských hotelů v Mariánských Lázních — od 5hvězdičkového Nové Lázně po 3hvězdičkové hotely Vltava a Svoboda. Všechny nabízejí přístup k lázeňským procedurám. Více na stránce Ubytování.' },
-    de: { q: ['hotel', 'unterkunft', 'übernacht', 'ensana'], a: 'Ensana betreibt 7 Kurhotels in Marienbad — vom 5-Sterne-Hotel Nové Lázně bis zu 3-Sterne-Hotels Vltava und Svoboda. Alle bieten Zugang zu Kuranwendungen.' },
-    en: { q: ['hotel', 'accommodation', 'where to stay', 'ensana'], a: 'Ensana operates 7 spa hotels in Marienbad — from the 5-star Nové Lázně to 3-star hotels Vltava and Svoboda. All offer access to spa treatments. See our Accommodation page for details.' },
-    ru: { q: ['отель', 'проживание', 'где остановиться', 'ensana'], a: 'Ensana управляет 7 курортными отелями в Марианских Лазнях — от 5-звёздочного Нове Лазне до 3-звёздочных Влтава и Свобода.' },
+    cs: { q: ['hotel', 'ubytování', 'kde bydlet', 'kolik hotelů', 'ensana'], a: 'Ensana provozuje 7 lázeňských hotelů — od 5hvězdičkového Nové Lázně po 3hvězdičkové Vltava a Svoboda.' },
+    de: { q: ['hotel', 'unterkunft', 'übernacht', 'ensana'], a: 'Ensana betreibt 7 Kurhotels — vom 5-Sterne-Hotel Nové Lázně bis zu 3-Sterne-Hotels Vltava und Svoboda.' },
+    en: { q: ['hotel', 'accommodation', 'where to stay', 'ensana'], a: 'Ensana operates 7 spa hotels — from the 5-star Nové Lázně to 3-star hotels Vltava and Svoboda.' },
+    ru: { q: ['отель', 'проживание', 'где остановиться', 'ensana'], a: 'Ensana управляет 7 курортными отелями — от 5-звёздочного Нове Лазне до 3-звёздочных Влтава и Свобода.' },
   },
   treatments: {
-    cs: { q: ['procedury', 'léčba', 'kúra', 'co2', 'uhličit', 'rašelin'], a: 'Hlavní procedury zahrnují uhličité koupele (CO₂), rašelinové zábaly, pitnou kúru a klimatoterapii. Konkrétní procedury vždy konzultujte s lázeňským lékařem. Více na stránce Léčivé prameny & Lázně.' },
-    de: { q: ['behandlung', 'kur', 'therapie', 'co2', 'moor'], a: 'Zu den Hauptanwendungen gehören Kohlensäurebäder (CO₂), Moorpackungen, Trinkkur und Klimatherapie. Individuelle Behandlungen werden vom Kurarzt verordnet.' },
-    en: { q: ['treatment', 'therapy', 'cure', 'co2', 'peat'], a: 'Main treatments include carbonated baths (CO₂), peat wraps, drinking cure and climate therapy. Specific treatments should always be discussed with a spa physician.' },
-    ru: { q: ['процедуры', 'лечение', 'курс', 'co2', 'торф'], a: 'Основные процедуры: углекислые ванны (CO₂), торфяные обёртывания, питьевой курс и климатотерапия. Конкретные процедуры назначает курортный врач.' },
+    cs: { q: ['procedury', 'léčba', 'kúra', 'co2', 'uhličit', 'rašelin'], a: 'Hlavní procedury: uhličité koupele (CO₂), rašelinové zábaly, pitná kúra a klimatoterapie. Konkrétní procedury vždy konzultujte s lázeňským lékařem.' },
+    de: { q: ['behandlung', 'kur', 'therapie', 'co2', 'moor'], a: 'Hauptanwendungen: Kohlensäurebäder (CO₂), Moorpackungen, Trinkkur und Klimatherapie. Individuelle Behandlungen verordnet der Kurarzt.' },
+    en: { q: ['treatment', 'therapy', 'cure', 'co2', 'peat'], a: 'Main treatments: carbonated baths (CO₂), peat wraps, drinking cure and climate therapy. Always consult a spa physician.' },
+    ru: { q: ['процедуры', 'лечение', 'курс', 'co2', 'торф'], a: 'Основные процедуры: углекислые ванны (CO₂), торфяные обёртывания, питьевой курс и климатотерапия.' },
   },
   getting_there: {
-    cs: { q: ['doprava', 'jak se dostat', 'vlak', 'auto', 'vzdálenost', 'praha'], a: 'Mariánské Lázně jsou 2 hodiny autem z Prahy, 1 hodinu z Plzně a 3 hodiny z Mnichova. Jede sem přímý vlak i autobus. Více na stránce Plánování cesty.' },
-    de: { q: ['anreise', 'wie komme ich', 'zug', 'auto', 'entfernung', 'münchen'], a: 'Marienbad liegt 2 Stunden von Prag, 1 Stunde von Pilsen und 3 Stunden von München entfernt. Es gibt direkte Zug- und Busverbindungen.' },
-    en: { q: ['get there', 'travel', 'train', 'car', 'distance', 'prague'], a: 'Marienbad is 2 hours from Prague, 1 hour from Pilsen and 3 hours from Munich by car. Direct train and bus connections are available.' },
-    ru: { q: ['добраться', 'транспорт', 'поезд', 'машина', 'расстояние', 'прага'], a: 'Марианские Лазни — 2 часа от Праги, 1 час от Пльзени и 3 часа от Мюнхена на машине. Есть прямые поезда и автобусы.' },
+    cs: { q: ['doprava', 'jak se dostat', 'vlak', 'auto', 'vzdálenost', 'praha'], a: 'Mariánské Lázně: 2 h z Prahy, 1 h z Plzně, 3 h z Mnichova. Přímý vlak i autobus.' },
+    de: { q: ['anreise', 'wie komme ich', 'zug', 'auto', 'entfernung', 'münchen'], a: 'Marienbad: 2 Std. von Prag, 1 Std. von Pilsen, 3 Std. von München. Direkte Zug- und Busverbindungen.' },
+    en: { q: ['get there', 'travel', 'train', 'car', 'distance', 'prague'], a: 'Marienbad: 2h from Prague, 1h from Pilsen, 3h from Munich. Direct train and bus connections available.' },
+    ru: { q: ['добраться', 'транспорт', 'поезд', 'машина', 'расстояние', 'прага'], a: 'Марианские Лазни: 2 ч от Праги, 1 ч от Пльзени, 3 ч от Мюнхена. Прямые поезда и автобусы.' },
   },
   insurance: {
-    cs: { q: ['pojišťovna', 'hradí', 'poukaz', 'příspěvek'], a: 'České zdravotní pojišťovny v mnoha případech hradí část nákladů na lékařsky indikovaný lázeňský pobyt. Více informací najdete na lazneml.cz/lazenska-pece.' },
-    de: { q: ['versicherung', 'krankenkasse', 'kur auf rezept', 'kostenübernahme'], a: 'Deutsche und österreichische Krankenkassen übernehmen in vielen Fällen einen Teil der Kosten für ärztlich verordnete Kuraufenthalte. Fragen Sie Ihren Arzt.' },
-    en: { q: ['insurance', 'cover', 'cost', 'pay'], a: 'Health insurance may cover part of medically prescribed spa stays. Consult your physician and insurance provider for details.' },
-    ru: { q: ['страховка', 'покрывает', 'стоимость', 'оплата'], a: 'Медицинская страховка может покрыть часть расходов на санаторно-курортное лечение по назначению врача.' },
+    cs: { q: ['pojišťovna', 'hradí', 'poukaz', 'příspěvek'], a: 'České pojišťovny v mnoha případech hradí část nákladů na lázeňský pobyt. Více na lazneml.cz.' },
+    de: { q: ['versicherung', 'krankenkasse', 'kur auf rezept', 'kostenübernahme'], a: 'Deutsche/österreichische Krankenkassen übernehmen oft einen Teil der Kosten für Kuraufenthalte.' },
+    en: { q: ['insurance', 'cover', 'cost', 'pay'], a: 'Health insurance may cover part of medically prescribed spa stays. Ask your physician.' },
+    ru: { q: ['страховка', 'покрывает', 'стоимость', 'оплата'], a: 'Страховка может покрыть часть расходов на курортное лечение по назначению врача.' },
   },
   unesco: {
-    cs: { q: ['unesco', 'dědictví', 'světové'], a: 'Mariánské Lázně jsou od roku 2021 součástí světového dědictví UNESCO jako součást „Slavných lázeňských měst Evropy". Od roku 2023 mají statut klimatických lázní.' },
-    de: { q: ['unesco', 'welterbe', 'weltkulturerbe'], a: 'Marienbad gehört seit 2021 zum UNESCO-Welterbe als Teil der „Great Spa Towns of Europe". Seit 2023 trägt es den Status eines Klimakurortes.' },
-    en: { q: ['unesco', 'heritage', 'world heritage'], a: 'Marienbad has been a UNESCO World Heritage Site since 2021 as part of the "Great Spa Towns of Europe". Since 2023 it holds climate spa status.' },
-    ru: { q: ['юнеско', 'наследие', 'всемирное'], a: 'Марианские Лазни — объект Всемирного наследия ЮНЕСКО с 2021 года в составе «Великих курортных городов Европы». С 2023 года имеют статус климатического курорта.' },
+    cs: { q: ['unesco', 'dědictví', 'světové'], a: 'Od 2021 součást UNESCO „Slavná lázeňská města Evropy". Od 2023 statut klimatických lázní.' },
+    de: { q: ['unesco', 'welterbe', 'weltkulturerbe'], a: 'Seit 2021 UNESCO-Welterbe „Great Spa Towns of Europe". Seit 2023 Klimakurort.' },
+    en: { q: ['unesco', 'heritage', 'world heritage'], a: 'UNESCO World Heritage since 2021 ("Great Spa Towns of Europe"). Climate spa since 2023.' },
+    ru: { q: ['юнеско', 'наследие', 'всемирное'], a: 'Объект ЮНЕСКО с 2021 («Великие курортные города Европы»). Климатический курорт с 2023.' },
   },
   booking: {
-    cs: { q: ['rezerv', 'objedn', 'ceník', 'cena', 'kolik stojí'], a: 'Rezervace ubytování a lázeňských pobytů probíhá přes ensanahotels.com. Ceny se liší podle sezóny a typu hotelu. Podrobný cenový průvodce najdete v našem magazínu.' },
-    de: { q: ['buchen', 'reservier', 'preis', 'kosten'], a: 'Buchungen erfolgen über ensanahotels.com. Die Preise variieren je nach Saison und Hotel. Einen detaillierten Preisführer finden Sie in unserem Magazin.' },
-    en: { q: ['book', 'reserv', 'price', 'cost', 'how much'], a: 'Bookings are made through ensanahotels.com. Prices vary by season and hotel type. Find our detailed price guide in the Magazine section.' },
-    ru: { q: ['бронир', 'заказ', 'цена', 'стоимость', 'сколько стоит'], a: 'Бронирование — через ensanahotels.com. Цены зависят от сезона и типа отеля. Подробный ценовой гид — в нашем журнале.' },
+    cs: { q: ['rezerv', 'objedn', 'ceník', 'cena', 'kolik stojí'], a: 'Rezervace přes ensanahotels.com. Ceny se liší podle sezóny a hotelu.' },
+    de: { q: ['buchen', 'reservier', 'preis', 'kosten'], a: 'Buchungen über ensanahotels.com. Preise variieren nach Saison und Hotel.' },
+    en: { q: ['book', 'reserv', 'price', 'cost', 'how much'], a: 'Book through ensanahotels.com. Prices vary by season and hotel.' },
+    ru: { q: ['бронир', 'заказ', 'цена', 'стоимость', 'сколько стоит'], a: 'Бронирование через ensanahotels.com. Цены зависят от сезона и отеля.' },
+  },
+  activities: {
+    cs: { q: ['co dělat', 'aktivit', 'výlet', 'fontán', 'golf', 'kolonád'], a: 'Zpívající fontána, Hlavní kolonáda, Royal Golf Club (1905), Park Boheminium, Kladská a desítky dalších atrakcí.' },
+    de: { q: ['was tun', 'aktivität', 'ausflug', 'fontäne', 'golf', 'kolonnade'], a: 'Singende Fontäne, Hauptkolonnade, Royal Golf Club (1905), Park Boheminium, Kladská u.v.m.' },
+    en: { q: ['what to do', 'activit', 'trip', 'fountain', 'golf', 'colonnade'], a: 'Singing Fountain, Main Colonnade, Royal Golf Club (1905), Boheminium Park, Kladská and more.' },
+    ru: { q: ['чем заняться', 'активност', 'экскурси', 'фонтан', 'гольф', 'колоннад'], a: 'Поющий фонтан, Главная колоннада, Royal Golf Club (1905), парк Богеминиум, Кладска.' },
   },
 }
 
-function findAnswer(query: string, locale: Locale): string | null {
+function findAnswer(query: string, locale: Locale): { text: string; link?: string } | null {
   const q = query.toLowerCase()
-  for (const topic of Object.values(faq)) {
+  for (const [key, topic] of Object.entries(faq)) {
     const localeData = topic[locale]
     if (localeData && localeData.q.some(keyword => q.includes(keyword))) {
-      return localeData.a
+      return { text: localeData.a, link: links[key]?.[locale] }
     }
   }
   return null
@@ -94,8 +113,10 @@ export default function ChatWidget({ locale, translations: tr }: Props) {
     if (!q) return
 
     const userMsg: Message = { role: 'user', text: q }
-    const answer = findAnswer(q, locale) ?? fallbacks[locale]
-    const botMsg: Message = { role: 'assistant', text: answer }
+    const result = findAnswer(q, locale)
+    const botMsg: Message = result
+      ? { role: 'assistant', text: result.text, link: result.link }
+      : { role: 'assistant', text: fallbacks[locale] }
 
     setMessages(prev => [...prev, userMsg, botMsg])
     setInput('')
@@ -145,6 +166,12 @@ export default function ChatWidget({ locale, translations: tr }: Props) {
                 : 'bg-beige-100 text-beige-800 rounded-bl-sm'
             }`}>
               {msg.text}
+              {msg.link && (
+                <a href={msg.link} className="block mt-1.5 text-xs font-medium text-turquoise-600 hover:underline">
+                  {'→ '}
+                  {locale === 'cs' ? 'Více informací' : locale === 'de' ? 'Mehr erfahren' : locale === 'ru' ? 'Подробнее' : 'Learn more'}
+                </a>
+              )}
             </div>
           </div>
         ))}
