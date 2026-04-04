@@ -39,6 +39,7 @@ const gallery: Schema = {
   render: 'gallery',
   attributes: {
     columns: { type: Number, default: 2, matches: [2, 3] },
+    layout: { type: String, default: 'grid', matches: ['grid', 'scroll'] },
     caption: { type: String },
   },
 }

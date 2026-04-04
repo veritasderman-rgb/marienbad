@@ -38,11 +38,15 @@ function renderCustomHtml(node: RenderableTreeNode): string {
 
     // Custom tag: gallery
     if (name === 'gallery') {
+      const isScroll = attrs.layout === 'scroll'
       const cols = attrs.columns === 3 ? 'gallery-3' : 'gallery-2'
       const inner = children.map(renderCustomHtml).join('')
       const caption = attrs.caption
         ? `<figcaption class="figure-caption">${escapeHtml(attrs.caption)}</figcaption>`
         : ''
+      if (isScroll) {
+        return `<div class="article-gallery-scroll"><div class="gallery-scroll-track">${inner}</div>${caption}</div>`
+      }
       return `<div class="article-gallery ${cols}">${inner}${caption}</div>`
     }
 
