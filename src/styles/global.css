@@ -301,6 +301,29 @@ h1, h2, h3, h4, h5, h6 {
 .prose-marienbad a:hover {
   color: var(--color-link-hover);
 }
+/* CTA button style for bold links like [**→ Rezervovat**](url) */
+.prose-marienbad a:has(> strong) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-cta);
+  color: var(--color-indigo-dark) !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.prose-marienbad a:has(> strong):hover {
+  background-color: color-mix(in srgb, var(--color-cta) 85%, white);
+  color: var(--color-indigo-dark) !important;
+  transform: translateY(-1px);
+}
+.prose-marienbad a:has(> strong) strong {
+  font-weight: inherit;
+  color: inherit;
+}
 .prose-marienbad blockquote {
   border-left: 3px solid var(--color-turquoise);
   background: var(--color-off-white);
