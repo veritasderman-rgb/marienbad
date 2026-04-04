@@ -1,13 +1,18 @@
 import type { APIRoute } from 'astro'
 
 export const GET: APIRoute = ({ url }) => {
-  const title = url.searchParams.get('title') || 'Marienbad.com'
-  const subtitle = url.searchParams.get('subtitle') || 'UNESCO World Heritage Spa Town'
-  const locale = url.searchParams.get('locale') || 'de'
+  // Sanitize + limit input length to prevent abuse
+  const raw = (key: string, fallback: string, max = 200) => {
+    const v = url.searchParams.get(key)
+    return v ? v.slice(0, max) : fallback
+  }
+  const title = raw('title', 'Marienbad.com')
+  const subtitle = raw('subtitle', 'UNESCO World Heritage Spa Town')
+  const locale = raw('locale', 'de', 5)
 
-  // Escape XML special characters
+  // Escape XML/SVG special characters (prevents injection into tspan elements)
   const esc = (s: string) =>
-    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
 
   // Wrap long text into multiple tspan lines (~40 chars per line)
   function wrapText(text: string, x: number, startY: number, lineHeight: number, maxChars: number): string {
@@ -74,6 +79,7 @@ export const GET: APIRoute = ({ url }) => {
     status: 200,
     headers: {
       'Content-Type': 'image/svg+xml',
+      'X-Content-Type-Options': 'nosniff',
       'Cache-Control': 'public, max-age=86400, s-maxage=86400',
     },
   })
