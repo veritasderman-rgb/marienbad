@@ -328,12 +328,6 @@ export const chatFaq: Record<string, FaqEntry> = {
     en: { q: ['what to do', 'activit', 'things to do', 'see', 'visit', 'sightseeing', 'attraction'], a: 'Singing Fountain, Main Colonnade, Royal Golf Club (1905), Boheminium Park, Kladská, Hamelika viewpoint, City Theatre and more.' },
     ru: { q: ['чем заняться', 'активност', 'экскурси', 'что посмотреть', 'что посетить', 'достопримечательност'], a: 'Поющий фонтан, Главная колоннада, Royal Golf Club (1905), парк Богеминиум, Кладска, смотровая Гамелика.' },
   },
-  co2_bath: {
-    cs: { q: ['co2', 'uhličit', 'plynov', 'koupel'], a: 'CO₂ uhličité koupele jsou specialitou Mariánských Lázní. Přírodní oxid uhličitý se vstřebává přes pokožku, rozšiřuje cévy a zlepšuje prokrvení. Teplota vody je příjemných 34 °C.' },
-    de: { q: ['co2', 'kohlensäure', 'gasbad'], a: 'CO₂-Kohlensäurebäder sind die Spezialität von Marienbad. Das natürliche CO₂ wird über die Haut aufgenommen, erweitert die Gefäße und verbessert die Durchblutung. Wassertemperatur: 34 °C.' },
-    en: { q: ['co2', 'carbon', 'gas bath'], a: 'CO₂ carbonated baths are Marienbad\'s specialty. Natural CO₂ is absorbed through the skin, dilates blood vessels and improves circulation. Water temperature: 34 °C.' },
-    ru: { q: ['co2', 'углекисл', 'газов'], a: 'Углекислые ванны — специальность Марианских Лазней. Природный CO₂ впитывается через кожу, расширяет сосуды и улучшает кровообращение. Температура: 34 °C.' },
-  },
   booking: {
     cs: { q: ['rezerv', 'objedn', 'ceník', 'cena', 'kolik stojí', 'jak zarezervovat'], a: 'Rezervace přes ensanahotels.com. Ceny se liší podle sezóny, hotelu a typu pobytu. Doporučujeme minimálně 7 nocí pro účinnou kúru.' },
     de: { q: ['buchen', 'reservier', 'preis', 'kosten', 'wie buchen'], a: 'Buchungen über ensanahotels.com. Preise variieren nach Saison, Hotel und Aufenthaltsart. Mindestens 7 Nächte empfohlen.' },
@@ -351,24 +345,6 @@ export const chatFaq: Record<string, FaqEntry> = {
     de: { q: ['familie', 'kinder', 'kind', 'familien'], a: 'Für Familien empfehlen wir Ensana Butterfly oder Ensana Hvězda — beide mit Kinderecke. Butterfly bietet Innenbecken und barrierefreie Zimmer.' },
     en: { q: ['family', 'children', 'kids', 'child'], a: 'For families we recommend Ensana Butterfly or Ensana Hvězda — both have kids\' corners. Butterfly offers an indoor pool and accessible rooms.' },
     ru: { q: ['семья', 'дети', 'ребёнок', 'детский', 'семейн'], a: 'Для семей рекомендуем Ensana Butterfly или Ensana Гвезда — оба с детским уголком. Butterfly предлагает крытый бассейн.' },
-  },
-  duration_2days: {
-    cs: { q: ['2 dny', 'víkend', 'na dva dny', 'prodloužený víkend'], a: 'Za 2 dny stihnete: pitná kúra u pramenů, procházka kolonádou, Zpívající fontána, jedna procedura (uhličitá koupel) a večeře v lázeňské restauraci.' },
-    de: { q: ['2 tage', 'wochenende', 'kurzurlaub'], a: 'In 2 Tagen: Trinkkur, Kolonnade, Singende Fontäne, eine Behandlung (Kohlensäurebad) und Abendessen im Kurrestaurant.' },
-    en: { q: ['2 day', 'weekend', 'short stay'], a: 'In 2 days: drinking cure, colonnade walk, Singing Fountain, one treatment (carbonated bath) and dinner at a spa restaurant.' },
-    ru: { q: ['2 дня', 'выходные', 'короткий'], a: 'За 2 дня: питьевой курс, прогулка по колоннаде, Поющий фонтан, одна процедура (углекислая ванна) и ужин.' },
-  },
-  duration_3days: {
-    cs: { q: ['3 dny', 'na tři dny', 'prodloužený'], a: 'Za 3 dny: pitná kúra, 2–3 procedury, výlet na Kladskou, Zpívající fontána, prohlídka města a ochutnávka oplatek.' },
-    de: { q: ['3 tage', 'drei tage', 'verlängertes'], a: '3 Tage: Trinkkur, 2–3 Behandlungen, Ausflug zur Kladská, Singende Fontäne, Stadtbesichtigung und Oblaten-Verkostung.' },
-    en: { q: ['3 day', 'three day', 'long weekend'], a: '3 days: drinking cure, 2–3 treatments, Kladská trip, Singing Fountain, town tour and wafer tasting.' },
-    ru: { q: ['3 дня', 'три дня'], a: '3 дня: питьевой курс, 2–3 процедуры, поездка на Кладску, Поющий фонтан, осмотр города.' },
-  },
-  duration_5days: {
-    cs: { q: ['5 dní', 'na pět dní', 'pětidenní', 'na týden'], a: 'Za 5 dní: kompletní lázeňský program s denními procedurami, pitnou kúrou, výletem do okolí (Loket, Bečov), terénní kúrou a relaxací v sauně.' },
-    de: { q: ['5 tage', 'fünf tage', 'eine woche'], a: '5 Tage: vollständiges Kurprogramm mit täglichen Anwendungen, Trinkkur, Ausflug (Loket, Bečov), Terrainkur und Sauna.' },
-    en: { q: ['5 day', 'five day', 'a week'], a: '5 days: complete spa programme with daily treatments, drinking cure, day trip (Loket, Bečov), terrain cure and sauna.' },
-    ru: { q: ['5 дней', 'пять дней', 'на неделю'], a: '5 дней: полная курортная программа с ежедневными процедурами, питьевым курсом, экскурсией (Локет, Бечов) и сауной.' },
   },
   magazine: {
     cs: { q: ['magazín', 'články', 'blog', 'čtení'], a: 'V našem magazínu najdete tipy na wellness, léčebné průvodce, příběhy z Mariánských Lázní a praktické rady pro plánování pobytu.' },
