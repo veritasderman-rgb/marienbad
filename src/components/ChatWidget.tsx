@@ -40,6 +40,7 @@ const fallbacks: Record<Locale, string> = {
 
 export default function ChatWidget({ locale, translations: tr }: Props) {
   const [isOpen, setIsOpen] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -47,6 +48,15 @@ export default function ChatWidget({ locale, translations: tr }: Props) {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  useEffect(() => {
+    function onScroll() {
+      setVisible(window.scrollY > 300)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   function handleSend() {
     const q = input.trim()
@@ -63,11 +73,12 @@ export default function ChatWidget({ locale, translations: tr }: Props) {
   }
 
   if (!isOpen) {
+    if (!visible) return null
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-20 left-6 z-50 md:bottom-8 w-14 h-14 rounded-full text-white shadow-lg hover:scale-105 transition-all flex items-center justify-center cursor-pointer"
-        style={{ backgroundColor: '#a7336d' }}
+        className="fixed bottom-20 left-6 z-50 md:bottom-8 w-14 h-14 rounded-full text-white shadow-lg hover:scale-105 transition-all flex items-center justify-center cursor-pointer opacity-0 animate-fade-in"
+        style={{ backgroundColor: '#a7336d', animation: 'fadeIn 0.3s ease forwards' }}
         aria-label={tr.title}
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
