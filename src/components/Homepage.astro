@@ -154,32 +154,6 @@ const gradients = [
 
 <WaveDivider variant="white-on-indigo" />
 
-<!-- 3b. PERSONALIZED ITINERARIES -->
-<section class="py-16 md:py-24 bg-beige-100">
-  <div class="container-wide reveal">
-    <div class="divider-ornament mb-6">
-      <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{t(locale, 'itinerary.title')}</span>
-    </div>
-    <ItineraryFilter
-      client:visible
-      locale={locale}
-      translations={{
-        title: t(locale, 'itinerary.title'),
-        subtitle: t(locale, 'itinerary.subtitle'),
-        families: t(locale, 'itinerary.families'),
-        couples: t(locale, 'itinerary.couples'),
-        solo: t(locale, 'itinerary.solo'),
-        wellness: t(locale, 'itinerary.wellness'),
-        hotelLabel: t(locale, 'itinerary.hotelLabel'),
-        activitiesLabel: t(locale, 'itinerary.activitiesLabel'),
-        treatmentLabel: t(locale, 'itinerary.treatmentLabel'),
-        detailsLink: t(locale, 'itinerary.detailsLink'),
-      }}
-      cmsData={itineraries}
-    />
-  </div>
-</section>
-
 <!-- 4. DISCOVER THE TOWN -->
 <section id="discover" class="py-16 md:py-24 bg-white">
   <div class="container-wide">
@@ -249,6 +223,32 @@ const gradients = [
     <div class="text-center mt-8">
       <a href={localizedHref(locale, 'accommodation')} class="btn-ghost">{cms.hotels.allHotelsLabel}</a>
     </div>
+  </div>
+</section>
+
+<!-- 5b. PERSONALIZED ITINERARIES -->
+<section class="py-16 md:py-24 bg-beige-100">
+  <div class="container-wide reveal">
+    <div class="divider-ornament mb-6">
+      <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{t(locale, 'itinerary.title')}</span>
+    </div>
+    <ItineraryFilter
+      client:visible
+      locale={locale}
+      translations={{
+        title: t(locale, 'itinerary.title'),
+        subtitle: t(locale, 'itinerary.subtitle'),
+        families: t(locale, 'itinerary.families'),
+        couples: t(locale, 'itinerary.couples'),
+        solo: t(locale, 'itinerary.solo'),
+        wellness: t(locale, 'itinerary.wellness'),
+        hotelLabel: t(locale, 'itinerary.hotelLabel'),
+        activitiesLabel: t(locale, 'itinerary.activitiesLabel'),
+        treatmentLabel: t(locale, 'itinerary.treatmentLabel'),
+        detailsLink: t(locale, 'itinerary.detailsLink'),
+      }}
+      cmsData={itineraries}
+    />
   </div>
 </section>
 
