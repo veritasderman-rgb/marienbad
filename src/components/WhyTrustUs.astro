@@ -56,8 +56,8 @@ const iconPaths: Record<string, string> = {
 }
 ---
 
-<aside class="bg-beige-50 border border-beige-200 rounded-xl p-6 my-10">
-  <h3 class="font-heading text-lg font-semibold text-indigo-800 mb-4">{c.title}</h3>
+<aside class="bg-beige-100 border border-beige-300 rounded-2xl p-6 md:p-8 my-10 max-w-none">
+  <h3 class="font-heading text-xl font-bold text-indigo-700 mb-4" style="text-transform: none; font-size: 1.25rem; letter-spacing: 0;">{c.title}</h3>
   <ul class="space-y-3">
     {c.points.map(({ icon, text }) => (
       <li class="flex items-start gap-3">
