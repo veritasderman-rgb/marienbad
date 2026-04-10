@@ -77,8 +77,8 @@ export default function ChatWidget({ locale, translations: tr }: Props) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-20 left-6 z-50 md:bottom-8 w-14 h-14 rounded-full text-white shadow-lg hover:scale-105 transition-all flex items-center justify-center cursor-pointer opacity-0 animate-fade-in"
-        style={{ backgroundColor: '#a7336d', animation: 'fadeIn 0.3s ease forwards' }}
+        className="fixed bottom-20 left-6 z-50 md:bottom-8 w-14 h-14 rounded-full text-white shadow-lg hover:scale-105 transition-all flex items-center justify-center cursor-pointer"
+        style={{ backgroundColor: '#a7336d' }}
         aria-label={tr.title}
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
