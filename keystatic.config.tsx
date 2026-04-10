@@ -82,6 +82,8 @@ function homepageSingleton(locale: string, label: string) {
           subtitle: fields.text({ label: 'Subtitle', multiline: true }),
           ctaText: fields.text({ label: 'CTA Button Text' }),
           ctaHref: fields.text({ label: 'CTA Link' }),
+          ctaText2: fields.text({ label: 'Secondary CTA Text (optional)' }),
+          ctaHref2: fields.text({ label: 'Secondary CTA Link (optional)' }),
           badges: fields.array(fields.text({ label: 'Badge' }), {
             label: 'Badges',
             itemLabel: (props) => props.value || 'Badge',
@@ -94,6 +96,14 @@ function homepageSingleton(locale: string, label: string) {
           }),
         },
         { label: 'Hero Section' }
+      ),
+      emotionalBlock: fields.object(
+        {
+          headline: fields.text({ label: 'Headline' }),
+          text: fields.text({ label: 'Text', multiline: true }),
+          proof: fields.text({ label: 'Proof Strip (optional)', description: 'E.g. UNESCO · 40+ springs · 4.8 Google' }),
+        },
+        { label: 'Emotional Block (below hero)' }
       ),
       quickFacts: fields.array(
         fields.object({
