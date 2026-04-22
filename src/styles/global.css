@@ -278,8 +278,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
 }
-/* Reset prose h3 overrides inside treatment-box cards */
-.prose-marienbad aside h3 {
+/* Reset prose h3 overrides inside treatment-box cards (dark indigo bg) */
+.prose-marienbad aside.bg-indigo-700 h3 {
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   line-height: 1.25;
