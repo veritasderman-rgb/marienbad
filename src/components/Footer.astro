@@ -28,8 +28,8 @@ const ensanaDisclosure = t(locale, 'footer.ensanaDisclosure')
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
       <!-- Col 1: About + wordmark + social -->
       <div class="lg:col-span-1">
-        <a href={`/${locale}`} class="inline-block mb-4" aria-label="Marienbad.com — Mariánské Lázně">
-          <img src="/images/logo-header-light.svg" alt="Marienbad" class="h-8 w-auto" />
+        <a href={`/${locale}`} class="inline-block mb-4 font-bold text-white text-2xl tracking-[-0.01em] leading-none hover:opacity-80 transition-opacity" aria-label="Marienbad.com — Mariánské Lázně">
+          marienbad<span class="text-turquoise-300">.</span>com
         </a>
         <p class="text-beige-600 text-sm leading-relaxed mb-6">
           {t(locale, 'footer.aboutText')}
