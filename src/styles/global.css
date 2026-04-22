@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* ─── Branding font (Latinotype) ─── */
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Thin.otf") format("opentype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-ThinItalic.otf") format("opentype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Light.otf") format("opentype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-LightItalic.otf") format("opentype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Semilight.otf") format("opentype"); font-weight: 350; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-SemilightItalic.otf") format("opentype"); font-weight: 350; font-style: italic; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Medium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-MediumItalic.otf") format("opentype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Semibold.otf") format("opentype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-SemiboldItalic.otf") format("opentype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Bold.otf") format("opentype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-BoldItalic.otf") format("opentype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Black.otf") format("opentype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-BlackItalic.otf") format("opentype"); font-weight: 900; font-style: italic; font-display: swap; }
+
 @theme {
   /* ─── Ensana Primary: Indigo ─── */
   --color-indigo-50: #e8f4f8;
@@ -67,8 +83,8 @@
   --color-beige-950: #1A1916;
 
   /* ─── Typography ─── */
-  --font-heading: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
-  --font-body: 'DM Sans', 'Verdana', 'Arial', sans-serif;
+  --font-heading: 'Branding', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-body: 'Branding', 'Helvetica Neue', Arial, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* ─── Type Scale ─── */
