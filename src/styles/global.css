@@ -87,6 +87,13 @@
   --font-body: 'Branding', 'Helvetica Neue', Arial, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
+  /* Map Tailwind's built-in font utilities to Branding so font-sans, font-serif,
+     and the default on every element use it. Without these overrides Tailwind 4
+     keeps its system-ui default which visibly leaks into the nav and buttons. */
+  --font-sans: 'Branding', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-serif: 'Branding', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --default-font-family: 'Branding', 'Helvetica Neue', Arial, system-ui, sans-serif;
+
   /* ─── Type Scale ─── */
   --text-hero: clamp(2.25rem, 5vw, 4.5rem);
   --text-h1: clamp(2.25rem, 3.5vw, 3rem);
