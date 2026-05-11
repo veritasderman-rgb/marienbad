@@ -1,6 +1,7 @@
 ---
 import { routes, type Locale } from '@/i18n/config'
 import BookingPopup from '@/components/BookingPopup.astro'
+import PromoPopup from '@/components/PromoPopup.astro'
 import HeroSection from '@/components/HeroSection.astro'
 import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
@@ -604,6 +605,9 @@ const gradients = [
     }
   ]
 })())} />
+
+<!-- Promo Popup — RODINA15 campaign (CS only, May 11–15 2026) -->
+{locale === 'cs' && <PromoPopup />}
 
 <!-- Booking Popup — homepage only, desktop only -->
 <div class="hidden sm:block">
