@@ -55,9 +55,9 @@ const categoryColors: Record<string, string> = {
 export default function MagazineFilter({ articles, locale, magazineSlug, translations: tr }: Props) {
   const [activeCategory, setActiveCategory] = useState<string>('all')
 
-  // Get unique categories from articles
-  const categories = Array.from(new Set(articles.map(a => a.category)))
-    .filter(c => c) // remove empty
+  // Get unique categories from articles (merge health+healing)
+  const categories = Array.from(new Set(articles.map(a => a.category === 'healing' ? 'health' : a.category)))
+    .filter(c => c)
     .sort()
 
   const filtered = activeCategory === 'all'
@@ -133,13 +133,18 @@ export default function MagazineFilter({ articles, locale, magazineSlug, transla
                   </div>
                 )}
                 <div className="p-6">
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-2 group-hover:text-turquoise-600 transition-colors leading-tight">
+                  <h3 className="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3 group-hover:text-turquoise-600 transition-colors leading-tight">
                     {article.title}
                   </h3>
-                  <p className="text-beige-700 text-sm leading-relaxed line-clamp-2 mb-3">{article.excerpt}</p>
-                  <div className="flex items-center justify-between text-xs text-beige-500">
-                    <span>{article.readingTime}</span>
-                    <span className="text-turquoise-600 font-medium group-hover:underline">{tr.readMore}</span>
+                  <p className="text-beige-700 text-sm leading-relaxed line-clamp-2 mb-5">{article.excerpt}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-beige-100">
+                    <span className="text-xs text-beige-500">{article.readingTime}</span>
+                    <span className="inline-flex items-center gap-1 text-sm text-turquoise-600 font-semibold group-hover:text-turquoise-700">
+                      {tr.readMore}
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
                   </div>
                 </div>
               </a>
@@ -176,10 +181,15 @@ export default function MagazineFilter({ articles, locale, magazineSlug, transla
                   <h3 className="font-heading text-lg font-bold text-indigo-700 mb-2 group-hover:text-turquoise-600 transition-colors leading-snug">
                     {article.title}
                   </h3>
-                  <p className="text-beige-700 text-sm leading-relaxed line-clamp-2">{article.excerpt}</p>
-                  <div className="mt-3 flex items-center justify-between text-xs text-beige-500">
-                    <span>{article.readingTime}</span>
-                    <span className="text-turquoise-600 font-medium group-hover:underline">{tr.readMore}</span>
+                  <p className="text-beige-700 text-sm leading-relaxed line-clamp-2 mb-4">{article.excerpt}</p>
+                  <div className="flex items-center justify-between pt-3 border-t border-beige-100">
+                    <span className="text-xs text-beige-500">{article.readingTime}</span>
+                    <span className="inline-flex items-center gap-1 text-sm text-turquoise-600 font-semibold group-hover:text-turquoise-700">
+                      {tr.readMore}
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
                   </div>
                 </div>
               </a>
