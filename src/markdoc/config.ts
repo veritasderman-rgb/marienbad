@@ -76,6 +76,15 @@ const treatmentBox: Schema = {
   },
 }
 
+const youtube: Schema = {
+  render: 'youtube',
+  selfClosing: true,
+  attributes: {
+    videoId: { type: String, required: true, errorLevel: 'critical' },
+    title: { type: String },
+  },
+}
+
 const hotelBox: Schema = {
   render: 'hotel-box',
   selfClosing: true,
@@ -97,5 +106,6 @@ export const markdocConfig: Config = {
     pullquote,
     'treatment-box': treatmentBox,
     'hotel-box': hotelBox,
+    youtube,
   },
 }
