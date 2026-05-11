@@ -253,43 +253,11 @@ const gradients = [
   </div>
 </section>
 
-<!-- 6. PEOPLE OF COLONNADE -->
+<!-- 6. PEOPLE OF COLONNADE — hidden until content is ready
 <section class="bg-aubergine-900 text-white py-20 md:py-28">
-  <div class="container-wide">
-    <div class="max-w-3xl mx-auto text-center mb-14 reveal">
-      <span class="text-turquoise-400 text-sm font-medium tracking-widest uppercase">{cms.people.sectionLabel}</span>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-4" style="font-size: var(--text-h2);">{cms.people.title}</h2>
-      <p class="text-beige-600 text-lg">{cms.people.description}</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {cms.people.stories.map((story, i) => (
-        <div class="group bg-white/5 rounded-xl overflow-hidden card-hover reveal">
-          <div class="h-64 relative overflow-hidden" style={`${!(story as any).portrait ? `background: ${gradients[i % 3]};` : ''}`} class:list={[(story as any).portrait ? '' : 'placeholder-image']}>
-            {(story as any).portrait ? (
-              <img src={(story as any).portrait} alt={story.name} class="w-full h-full object-cover" loading="lazy" decoding="async" />
-            ) : (
-              <span class="text-white/60 text-sm absolute inset-0 flex items-center justify-center">Portrait — Foto</span>
-            )}
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p class="font-heading text-base italic text-white/90 leading-snug mb-1" lang={story.lang || undefined}>{story.quote}</p>
-              {(story as any).translation && (
-                <p class="text-xs text-white/50 leading-snug mb-1">{(story as any).translation}</p>
-              )}
-              <div class="flex items-center gap-2">
-                <span class="text-white font-semibold text-sm">{story.name}</span>
-                <span class="text-white/50 text-sm">· {story.location}</span>
-                <span class="px-2 py-0.5 bg-turquoise-400/30 text-turquoise-300 text-xs rounded-full ml-auto">{story.visitLabel}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-    <div class="text-center mt-10">
-      <a href={localizedHref(locale, 'people')} class="btn-ghost text-white border-white/30 hover:bg-white hover:text-beige-950">{cms.people.allStoriesLabel}</a>
-    </div>
-  </div>
+  ...
 </section>
+-->
 
 <!-- GOOGLE REVIEWS -->
 <GoogleReviews
