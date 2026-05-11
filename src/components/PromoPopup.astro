@@ -6,8 +6,112 @@
  * Hotels: Ensana Hvězda & Ensana Butterfly
  * Valid for stays until 31 Aug 2026
  */
+import type { Locale } from '@/i18n/config'
 
-const bookingUrl = 'https://ensanahotels.com/cs/hotely/hvezda/nabidky?utm_source=marienbad&utm_medium=popup&utm_campaign=rodina15'
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
+const hotelPaths: Record<string, string> = {
+  cs: 'hotely/hvezda/nabidky',
+  de: 'hotels/hvezda/angebote',
+  en: 'hotels/hvezda/offers',
+  ru: 'oteli/hvezda/predlozheniya',
+}
+const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${hotelPaths[ensanaLocale]}?utm_source=marienbad&utm_medium=popup&utm_campaign=rodina15`
+
+const i18n: Record<Locale, {
+  ariaLabel: string
+  teaserDate: string
+  headline: string
+  teaserText: string
+  countdown: string
+  countdownDone: string
+  teaserCta: string
+  teaserFooter: string
+  activeDate: string
+  activeText: string
+  codeLabel: string
+  activeCta: string
+  activeFooter1: string
+  activeFooter2: string
+  closeLabel: string
+}> = {
+  cs: {
+    ariaLabel: 'Speciální nabídka',
+    teaserDate: 'Již 15. května',
+    headline: 'Rodinná dovolená\nse slevou 15 %',
+    teaserText: 'Chystáme pro vás speciální slevový kód na balíček Rodinná dovolená v hotelech Ensana Hvězda a Ensana Butterfly. Pobyt do 31. srpna — ideální na letní prázdniny s dětmi.',
+    countdown: 'Odpočítávání',
+    countdownDone: 'Už je to tady!',
+    teaserCta: 'Zobrazit nabídky Ensana Hvězda',
+    teaserFooter: 'Hotely Hvězda a Butterfly • Prázdniny 2026',
+    activeDate: 'Jen 15. května',
+    activeText: '15. května celý den platí kód RODINA15 na balíček Rodinná dovolená v hotelech Hvězda a Butterfly. Pobyt si vyberte kdykoli do 31. srpna — ideální termín na letní prázdniny s dětmi.',
+    codeLabel: 'Slevový kód',
+    activeCta: 'Rezervovat pobyt',
+    activeFooter1: 'Platnost kódu: 15. 5. 2026, 0:00–23:59',
+    activeFooter2: 'Pobyt do 31. 8. 2026 • Hotely Hvězda a Butterfly',
+    closeLabel: 'Zavřít',
+  },
+  de: {
+    ariaLabel: 'Sonderangebot',
+    teaserDate: 'Am 15. Mai',
+    headline: 'Familienurlaub\nmit 15 % Rabatt',
+    teaserText: 'Wir bereiten einen speziellen Rabattcode für das Paket Familienurlaub in den Hotels Ensana Hvězda und Ensana Butterfly vor. Aufenthalt bis 31. August — ideal für die Sommerferien mit Kindern.',
+    countdown: 'Countdown',
+    countdownDone: 'Es ist soweit!',
+    teaserCta: 'Angebote Ensana Hvězda ansehen',
+    teaserFooter: 'Hotels Hvězda und Butterfly • Sommer 2026',
+    activeDate: 'Nur am 15. Mai',
+    activeText: 'Am 15. Mai gilt den ganzen Tag der Code RODINA15 für das Paket Familienurlaub in den Hotels Hvězda und Butterfly. Wählen Sie Ihren Aufenthalt bis 31. August — perfekt für die Sommerferien mit Kindern.',
+    codeLabel: 'Rabattcode',
+    activeCta: 'Aufenthalt buchen',
+    activeFooter1: 'Code gültig: 15. 5. 2026, 0:00–23:59',
+    activeFooter2: 'Aufenthalt bis 31. 8. 2026 • Hotels Hvězda und Butterfly',
+    closeLabel: 'Schließen',
+  },
+  en: {
+    ariaLabel: 'Special offer',
+    teaserDate: 'Coming May 15',
+    headline: 'Family vacation\n15 % off',
+    teaserText: 'We\'re preparing a special discount code for the Family Vacation package at Ensana Hvězda and Ensana Butterfly hotels. Stays until August 31 — perfect for a summer holiday with kids.',
+    countdown: 'Countdown',
+    countdownDone: 'It\'s here!',
+    teaserCta: 'View Ensana Hvězda offers',
+    teaserFooter: 'Hotels Hvězda and Butterfly • Summer 2026',
+    activeDate: 'May 15 only',
+    activeText: 'All day on May 15, use code RODINA15 for the Family Vacation package at Hvězda and Butterfly hotels. Choose your stay anytime until August 31 — ideal for a summer holiday with kids.',
+    codeLabel: 'Discount code',
+    activeCta: 'Book your stay',
+    activeFooter1: 'Code valid: May 15, 2026, 0:00–23:59',
+    activeFooter2: 'Stays until Aug 31, 2026 • Hotels Hvězda and Butterfly',
+    closeLabel: 'Close',
+  },
+  ru: {
+    ariaLabel: 'Специальное предложение',
+    teaserDate: 'Уже 15 мая',
+    headline: 'Семейный отдых\nсо скидкой 15 %',
+    teaserText: 'Мы готовим специальный промокод на пакет «Семейный отдых» в отелях Ensana Hvězda и Ensana Butterfly. Проживание до 31 августа — идеально для летних каникул с детьми.',
+    countdown: 'Обратный отсчёт',
+    countdownDone: 'Уже доступно!',
+    teaserCta: 'Смотреть предложения Ensana Hvězda',
+    teaserFooter: 'Отели Hvězda и Butterfly • Лето 2026',
+    activeDate: 'Только 15 мая',
+    activeText: '15 мая весь день действует код RODINA15 на пакет «Семейный отдых» в отелях Hvězda и Butterfly. Выберите проживание до 31 августа — идеальный вариант для летних каникул с детьми.',
+    codeLabel: 'Промокод',
+    activeCta: 'Забронировать',
+    activeFooter1: 'Код действует: 15. 5. 2026, 0:00–23:59',
+    activeFooter2: 'Проживание до 31. 8. 2026 • Отели Hvězda и Butterfly',
+    closeLabel: 'Закрыть',
+  },
+}
+
+const txt = i18n[locale]
+const headlineParts = txt.headline.split('\n')
 ---
 
 <div
@@ -15,25 +119,24 @@ const bookingUrl = 'https://ensanahotels.com/cs/hotely/hvezda/nabidky?utm_source
   class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
   role="dialog"
   aria-modal="true"
-  aria-label="Speciální nabídka"
+  aria-label={txt.ariaLabel}
+  data-countdown-done={txt.countdownDone}
 >
   <!-- TEASER CARD (May 11–14) -->
   <div id="promo-teaser" class="hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
     <div class="px-6 pt-8 pb-10 text-center text-white relative" style="background: linear-gradient(135deg, #004F71 0%, #3199b3 100%);">
-      <button class="promo-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label="Zavřít">
+      <button class="promo-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={txt.closeLabel}>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Již 15. května</p>
-      <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">Rodinná dovolená<br/>se slevou 15 %</h2>
+      <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{txt.teaserDate}</p>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">{headlineParts[0]}<br/>{headlineParts[1]}</h2>
     </div>
     <div class="px-6 py-6 text-center">
-      <p class="text-beige-700 text-base leading-relaxed mb-6">
-        Chystáme pro vás speciální slevový kód na balíček Rodinná dovolená v hotelech Ensana Hvězda a Ensana Butterfly. Pobyt do 31. srpna — ideální na letní prázdniny s dětmi.
-      </p>
+      <p class="text-beige-700 text-base leading-relaxed mb-6">{txt.teaserText}</p>
       <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-4 px-6 mb-5">
-        <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">Odpočítávání</p>
+        <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">{txt.countdown}</p>
         <p id="promo-countdown" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
       </div>
       <a
@@ -42,29 +145,27 @@ const bookingUrl = 'https://ensanahotels.com/cs/hotely/hvezda/nabidky?utm_source
         rel="noopener noreferrer"
         class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
       >
-        Zobrazit nabídky Ensana Hvězda
+        {txt.teaserCta}
       </a>
-      <p class="text-beige-500 text-xs mt-4">Hotely Hvězda a Butterfly &bull; Prázdniny 2026</p>
+      <p class="text-beige-500 text-xs mt-4">{txt.teaserFooter}</p>
     </div>
   </div>
 
   <!-- ACTIVE CARD (May 15) -->
   <div id="promo-active" class="hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
     <div class="px-6 pt-8 pb-10 text-center text-white relative" style="background: linear-gradient(135deg, #004F71 0%, #3199b3 100%);">
-      <button class="promo-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label="Zavřít">
+      <button class="promo-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={txt.closeLabel}>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Jen 15. května</p>
-      <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">Rodinná dovolená<br/>se slevou 15 %</h2>
+      <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{txt.activeDate}</p>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">{headlineParts[0]}<br/>{headlineParts[1]}</h2>
     </div>
     <div class="px-6 py-6 text-center">
-      <p class="text-beige-700 text-base leading-relaxed mb-5">
-        15. května celý den platí kód RODINA15 na balíček Rodinná dovolená v hotelech Hvězda a Butterfly. Pobyt si vyberte kdykoli do 31. srpna — ideální termín na letní prázdniny s dětmi.
-      </p>
+      <p class="text-beige-700 text-base leading-relaxed mb-5">{txt.activeText}</p>
       <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-4 px-6 mb-5">
-        <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">Slevový kód</p>
+        <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">{txt.codeLabel}</p>
         <p class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 tracking-wider select-all">RODINA15</p>
       </div>
       <a
@@ -73,11 +174,11 @@ const bookingUrl = 'https://ensanahotels.com/cs/hotely/hvezda/nabidky?utm_source
         rel="noopener noreferrer"
         class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
       >
-        Rezervovat pobyt
+        {txt.activeCta}
       </a>
       <p class="text-beige-500 text-xs mt-4">
-        Platnost kódu: 15. 5. 2026, 0:00–23:59<br/>
-        Pobyt do 31. 8. 2026 &bull; Hotely Hvězda a Butterfly
+        {txt.activeFooter1}<br/>
+        {txt.activeFooter2}
       </p>
     </div>
   </div>
@@ -105,21 +206,20 @@ const bookingUrl = 'https://ensanahotels.com/cs/hotely/hvezda/nabidky?utm_source
     var storageKey = 'promo-rodina15-' + phase + '-dismissed';
     if (localStorage.getItem(storageKey)) return;
 
-    // Suppress the regular BookingPopup
     sessionStorage.setItem('booking-popup-dismissed', '1');
 
     var card = phase === 'teaser' ? teaser : active;
     card.classList.remove('hidden');
 
-    // Countdown for teaser phase
     if (phase === 'teaser') {
       var countdownEl = document.getElementById('promo-countdown');
+      var doneText = overlay.getAttribute('data-countdown-done') || 'Ready!';
       if (countdownEl) {
         var target = new Date(2026, 4, 15, 0, 0, 0);
         function updateCountdown() {
           var diff = target.getTime() - Date.now();
           if (diff <= 0) {
-            countdownEl.textContent = 'Už je to tady!';
+            countdownEl.textContent = doneText;
             return;
           }
           var days = Math.floor(diff / 86400000);

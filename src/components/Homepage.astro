@@ -574,8 +574,8 @@ const gradients = [
   ]
 })())} />
 
-<!-- Promo Popup — RODINA15 campaign (CS only, May 11–15 2026) -->
-{locale === 'cs' && <PromoPopup />}
+<!-- Promo Popup — RODINA15 campaign (all locales, May 11–15 2026) -->
+<PromoPopup locale={locale} />
 
 <!-- Booking Popup — homepage only, desktop only -->
 <div class="hidden sm:block">
