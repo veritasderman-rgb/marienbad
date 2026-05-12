@@ -114,6 +114,12 @@ src/content/
 4. **Privacy** -- cookie-free analytics (Plausible), no third-party trackers
 5. **Content-driven** -- CMS-managed content, Markdoc rendering, rich typography
 
+## Workflow
+
+- After each completed task or logical group of changes, **create a new PR** so content can be reviewed and merged into the main branch incrementally.
+- Commit with clear, descriptive messages. Push to the designated feature branch.
+- Always run `pnpm build` before committing to verify nothing is broken.
+
 ## Knowledge Base
 
 Authoritative reference data from official Ensana marketing materials is stored in `data/ensana_knowledge_base.json`. Use this as the single source of truth for:
