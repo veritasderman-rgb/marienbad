@@ -1,0 +1,85 @@
+name: Weekly Article Generation
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'   # Every Sunday at 03:00 UTC
+  workflow_dispatch:        # Allow manual trigger for testing
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10.28.0'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Configure git
+        run: |
+          git config user.name "claude-weekly-bot"
+          git config user.email "claude-weekly-bot@users.noreply.github.com"
+          BRANCH="weekly-article-$(date +%Y-%m-%d)"
+          git checkout -b "$BRANCH"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+      - name: Generate weekly article
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          PROMPT=$(cat .claude/commands/weekly-article.md)
+          claude --dangerously-skip-permissions -p "${PROMPT}
+
+          DŮLEŽITÉ (CI režim): Vytvoř soubory a ověř build pomocí pnpm build.
+          NEcommituj a NEpushuj — git operace zajistí CI pipeline."
+
+      - name: Commit generated articles
+        run: |
+          git add src/content/articles/
+          if git diff --staged --quiet; then
+            echo "No new articles generated."
+            exit 1
+          fi
+          git commit -m "feat: weekly articles $(date +%Y-%m-%d) [automated]"
+
+      - name: Push branch
+        run: git push origin "$BRANCH"
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Týdenní články — $(date +%d.%m.%Y)" \
+            --body "$(cat <<'BODY'
+          ## Automaticky generované články
+
+          Vygenerováno každou neděli v 03:00 UTC.
+
+          ### Před publikací:
+          1. Otevři Keystatic a doplň **coverImage** pro každou jazykovou mutaci
+          2. Přepni **status** z `draft` na `published`
+          3. Zkontroluj obsah a mergni PR
+          BODY
+          )" \
+            --base ${{ github.ref_name }}
