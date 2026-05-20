@@ -7,31 +7,36 @@ import { withUtm } from '@/utils/utm'
 const locale = 'de' as const
 const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
 
-const pageTitle = '130 Jahre Neue Bäder — Jubiläum 1896–2026 — Marienbad.com'
-const pageDescription = 'Das Hotel Ensana Nové Lázně feiert 130 Jahre seit dem prachtvollen Umbau durch Architekt Josef Schaffer. Entdecken Sie das Römische Bad, die Königliche Kabine Edwards VII. und die Geschichte des Hauses.'
+const pageTitle = '130 Jahre Nové Lázně — Jubiläumsfeier 1896–2026 — Marienbad.com'
+const pageDescription = 'Nové Lázně feiern 130 Jahre seit dem prachtvollen Umbau durch Architekt Josef Schaffer. Entdecken Sie die Geschichte, die Römischen Bäder und die Königliche Kabine von König Edward VII.'
 
 const milestones = [
-  { year: '1828', title: 'Gründung des „Neubad"', description: 'Abt Karl Kaspar Reitenberger errichtet ein neues Badehaus — das Neubad. Sechzehn Badekabinen und zehn Gästezimmer für Kurgäste, die zur Eisenwasserkur an der Ambrosius- und Karolinenquelle anreisen.' },
-  { year: '1841', title: 'Erste Erweiterung', description: 'Die Zahl der Badekabinen wächst auf 14, ein eigenes Kesselhaus entsteht. Hinzu kommt ein Kursaal — die Neuen Bäder werden zum gesellschaftlichen Mittelpunkt der Stadt.' },
-  { year: '1893–1896', title: 'Verwandlung in einen Neorenaissance-Palast', description: 'Architekt Josef Schaffer baut das Neubad von Grund auf um. Aus dem schlichten klassizistischen Gebäude entsteht ein monumentaler Vierturmpalast im italienischen Neorenaissance-Stil mit Römischem Bad, Marmorsäulen, klassischen Skulpturen und Mineralbecken.' },
-  { year: '1897', title: 'König Edward VII. erstmals in Marienbad', description: 'Der künftige britische Monarch besucht Marienbad zum ersten Mal und verliebt sich sofort in die Stadt. In den Neuen Bädern wird eigens eine private Königliche Kabine mit prachtvoller Wanne und elegantem Ruheraum im Stil der belle époque eingerichtet.' },
-  { year: '1904', title: 'Historisches Treffen zweier Herrscher', description: 'Am 16. August 1904 treffen sich Kaiser Franz Joseph I. und König Edward VII. im Hotel Ensana Nové Lázně zu einem offiziellen diplomatischen Gespräch. Marienbad wird für einen Tag zum Mittelpunkt der europäischen Politik.' },
-  { year: '1905', title: 'Gründung des Royal Golf Club', description: 'Edward VII. gründet den ältesten Golfclub Böhmens — den Royal Golf Club Marienbad. Der Club ist bis heute ununterbrochen in Betrieb.' },
-  { year: '1912–1913', title: 'Erweiterung unter Abt Helmer', description: 'Unter der Leitung von Abt Gilbert Helmer wird die Kabinenkapazität nahezu verdoppelt. Die Neuen Bäder reagieren auf die wachsende Nachfrage der internationalen Aristokratie.' },
-  { year: '2005', title: 'Die königliche Tradition lebt weiter', description: 'Prinz Edward, Earl of Wessex, bezieht ein Zimmer im Hotel Ensana Nové Lázně und knüpft an die Tradition der britischen Königsfamilie in Marienbad an.' },
-  { year: '2021', title: 'Aufnahme in die UNESCO-Welterbeliste', description: 'Marienbad wird Teil der transnationalen Welterbestätte „Great Spa Towns of Europe". Die Neuen Bäder gehören zu den Schlüsselbauten der geschützten Zone.' },
-  { year: '2026', title: '130 Jahre seit Schaffers Umbau', description: 'Ensana Nové Lázně feiert sein 130-jähriges Jubiläum. Das Gebäude dient nach wie vor als Fünf-Sterne-Kurhotel — mit dem originalen Römischen Bad, der Königlichen Kabine und der Kaiserlichen Kabine in vollem Betrieb.' },
+  { year: '1808', title: 'Erste Kursaison', description: 'In die unwirtliche Gegend kamen achtzig Gäste. Es fehlte an befestigten Wegen und grundlegenden Dienstleistungen — die Gäste brachten eigene Betten und Lebensmittelvorräte mit. Dennoch erlangten die Mineralquellen rasch Bekanntheit.' },
+  { year: '1820', title: 'Ära der Innovationen', description: 'Dampf- und Duschbäder werden eingeführt, kurz darauf Moorpackungen und Gasbäder, die das Kohlendioxid der Marienquelle nutzen — eine Behandlung, die bis heute als lokale Besonderheit gilt.' },
+  { year: '1828', title: 'Gründung des „Neubad"', description: 'Abt Karl Kaspar Reitenberger gründet ein neues Badehaus — das Neubad. Sechzehn Badekabinen und zehn Gästezimmer für Kurgäste, die zur Kur an den eisenhaltigen Wässern der Ambrosius- und Karolinenquelle anreisen.' },
+  { year: '1841', title: 'Erste Erweiterung', description: 'Die Zahl der Badekabinen wächst auf 14, neben dem Gebäude entsteht ein eigenes Kesselhaus. Ein Kursaal kommt hinzu — Nové Lázně werden zum gesellschaftlichen Mittelpunkt der Stadt.' },
+  { year: '1872', title: 'Ankunft des ersten Zuges', description: 'Dank der Eisenbahn öffnete sich die Stadt nach Europa, und die Besucherzahlen stiegen rasant. Die bisherigen Kapazitäten reichten nicht mehr aus, und ein großzügiger Umbau wurde notwendig.' },
+  { year: '1890', title: 'Die „Stahlbäder"', description: 'Die alten Nové Lázně verfügten über 42 Kabinen für sogenannte „Stahlbäder" — ein Bad in der Ambrosiusquelle. Das Wasser war so eisenhaltig, dass es die Wanne rostrot färbte und den Patienten „stählerne Gesundheit" versprach.' },
+  { year: '1892–1896', title: 'Schaffers Umbau', description: 'Abt Alfred Clemens beschloss den Umbau, sicherte die Finanzierung und verlieh dem Projekt eine klare Vision. Seine Initialen A.C. und A.T. (Abbas Teplensis) sind bis heute im Giebel des Gebäudes eingemeißelt. Der Architekt Josef Schaffer, ein gebürtiger Marienbader, inspiriert von seinen Reisen nach Venedig, Bologna und Florenz, verwandelte das Neubad in einen monumentalen Neorenaissance-Palast. Der Bau dauerte vier Jahre und fand stets im Winter statt, um den Kurbetrieb nicht zu stören. Die feierliche Eröffnung erfolgte am 1. Juni 1896.' },
+  { year: '1897', title: 'König Edward VII. zum ersten Mal', description: 'Der künftige britische Monarch reist an und verliebt sich sofort in die Stadt. In Nové Lázně entsteht für ihn eine private Königliche Kabine — die Türen zur Loggia schmücken originale Glasmalereien der berühmten Tiroler Werkstatt Geyling, die Kacheln sind luxuriöse Majolika und an den Wänden hängen Gemälde mit Vögeln. Der Aufenthalt sollte die Atmosphäre eines Gartenpavillons inmitten der Natur evozieren.' },
+  { year: '1904', title: 'Treffen zweier Herrscher', description: 'Am 16. August 1904 treffen sich Kaiser Franz Joseph I. und König Edward VII. im Hotel zu einem offiziellen diplomatischen Gespräch. Marienbad wird für einen Tag zum Mittelpunkt der europäischen Politik.' },
+  { year: '1905', title: 'Gründung des Royal Golf Club', description: 'Edward VII. gründet den ältesten Golfclub Böhmens — den Royal Golf Club Mariánské Lázně. Der Club ist bis heute ununterbrochen in Betrieb.' },
+  { year: '1912–1913', title: 'Erweiterung unter Abt Helmer', description: 'Unter der Leitung von Abt Gilbert Helmer wird die Kapazität der Badekabinen nahezu verdoppelt. Nové Lázně reagieren auf die wachsende Nachfrage der internationalen Aristokratie.' },
+  { year: '2005', title: 'Die königliche Tradition lebt weiter', description: 'Prinz Edward, Earl of Wessex, übernachtet im Hotel und knüpft an die Tradition der britischen Königsfamilie in Marienbad an.' },
+  { year: '2021', title: 'Aufnahme in die UNESCO-Welterbeliste', description: 'Marienbad wird Teil der transnationalen Welterbestätte „Great Spa Towns of Europe". Nové Lázně gehören zu den Schlüsselbauten der geschützten Zone.' },
+  { year: '2023', title: 'Status eines Klimakurortes', description: 'Marienbad erhält den Status eines Klimakurortes — die Bestätigung, dass das hiesige Mikroklima selbst eine Heilquelle ist.' },
+  { year: '2026', title: '130 Jahre seit der feierlichen Eröffnung', description: 'Am 1. Juni 2026 feiern Nové Lázně ihr 130-jähriges Jubiläum. Das Gebäude dient nach wie vor als Fünf-Sterne-Kurhotel — der größte historische Balneobetrieb der Tschechischen Republik, mit den originalen Römischen Bädern, der Königlichen und der Kaiserlichen Kabine in vollem Betrieb.' },
 ]
 
 const highlights = [
   {
-    title: 'Römisches Bad von 1896',
-    description: 'Zwei historische Becken mit Mineralwasser zwischen mächtigen Marmorsäulen und klassischen Skulpturen — ein authentisches Interieur von 1896, das zwei Weltkriege überdauert hat. Ein drittes Becken mit Gegenstromanlage wurde bei der modernen Renovierung hinzugefügt. Zur Verfügung stehen eine Sauna (80 °C), ein Sanarium (50 °C), ein Dampfbad und eine Kneipp-Therapie.',
+    title: 'Römische Bäder von 1896',
+    description: 'Die verglaste Decke durchflutet das Interieur mit weichem Tageslicht. Das Gewölbe tragen einundzwanzig elegante Säulen aus dunkelrotem Salzburger Marmor mit Kapitellen aus weißem Carrara-Stein. Zwei originale Becken mit Mineralwasser, vergoldete Wasserspeier in Form von Löwenköpfen und farbige Kacheln evozieren die Noblesse antiker Bäder. Ein drittes Becken mit Gegenstromanlage wurde bei der modernen Rekonstruktion hinzugefügt.',
     icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
   },
   {
     title: 'Königliche Kabine Edwards VII.',
-    description: 'Ein privates Badegemach, das 1896 für den britischen König errichtet wurde. Die originale Wanne im Stil der belle époque, ein eleganter Ruheraum — und eine Besonderheit: ein Holzstuhl mit gedrechselten Beinen, in den eine mechanische Waage eingebaut ist. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.',
+    description: 'Ein privates Badegemach, das für den britischen König errichtet wurde. Die Türen zur Loggia schmücken originale Glasmalereien der berühmten Tiroler Werkstatt Geyling, die im Sonnenlicht in allen Farben erstrahlen. Die Kacheln sind luxuriöse Majolika, an den Wänden hängen Gemälde mit Vögeln — der Aufenthalt sollte die Atmosphäre eines Gartenpavillons evozieren. In der Kabine steht bis heute ein Holzstuhl mit eingebauter mechanischer Waage.',
     icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
   },
   {
@@ -41,20 +46,21 @@ const highlights = [
   },
   {
     title: '5 900 m² verbundener Komplex',
-    description: 'Ensana Nové Lázně, Ensana Centrální Lázně und Maria Spa sind durch überdachte Promenaden und Korridore zu einem Ganzen verbunden. Die Gäste wechseln zwischen den Gebäuden, ohne ins Freie treten zu müssen — der größte historisch erhaltene Kurkomplex Böhmens.',
+    description: 'Nové Lázně, Centrální Lázně und Maria Spa sind durch überdachte Promenaden und Korridore zu einem Ganzen verbunden. Die Gäste wechseln zwischen den Gebäuden, ohne ins Freie treten zu müssen — der größte historisch erhaltene Kurkomplex Böhmens.',
     icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
   },
 ]
 
 const funFacts = [
-  'Die Ferdinandsquelle wurde über eine 1 700 Meter lange Rohrleitung aus Auschowitz in die Neuen Bäder geleitet. Eine Dampfmaschine drückte das Wasser über einen Höhenunterschied von 43 Metern.',
-  'In der Königlichen Kabine steht ein Holzstuhl mit kunstvoll gedrechselten Beinen, in dessen Inneren sich eine mechanische Waage verbirgt. Edward VII. kontrollierte darauf diskret sein Gewicht — auf einer gewöhnlichen Waage zu stehen wäre nicht königlich gewesen.',
-  'Edward VII. kam so regelmäßig nach Marienbad (neunmal in zwölf Jahren), dass die europäische Presse die Stadt als „Sommerhauptstadt der europäischen Diplomatie" bezeichnete.',
-  'Auf dem Gebäude thronen bis heute die vier Türmchen aus dem Umbau von 1896 — sie wurden zum Wahrzeichen des Hotels und sind aus dem gesamten Tal sichtbar.',
-  'Zu den berühmten Gästen zählten auch Zar Nikolaus II., die Komponisten Chopin und Wagner, der Schriftsteller Franz Kafka und Mark Twain, der 1892 mit Humor die hiesigen Kurritualen beschrieb.',
-  'In den Gängen des Hotels tritt eine Mineralquelle zutage — die Gäste können sich das Wasser direkt im Gebäude abfüllen, ohne zur Kolonnade gehen zu müssen.',
-  'An das Treffen Edwards VII. mit Franz Joseph I. im Jahr 1904 erinnert eine Bronzeplastik am Goethe-Platz, die 2014 zum 110. Jahrestag enthüllt wurde.',
-  'Das Restaurant Royal, das an das Römische Bad anschließt, wurde zuletzt 2024 renoviert und bietet Platz für 180 Gäste. Es vereint böhmische und mitteleuropäische Küche.',
+  'Im Giebel des Gebäudes sind bis heute die Initialen A.C. und A.T. (Abbas Teplensis) eingemeißelt — eine Erinnerung an Abt Alfred Clemens, der den Umbau veranlasste und finanzierte.',
+  'Das Gewölbe der Römischen Bäder tragen 21 elegante Säulen aus dunkelrotem Salzburger Marmor mit Kapitellen aus weißem Carrara-Stein. Vergoldete Wasserspeier in Form von Löwenköpfen vervollständigen die Atmosphäre antiker Bäder.',
+  'Die Türen zur Loggia in der Königlichen Kabine schmücken originale Glasmalereien der berühmten Tiroler Werkstatt Geyling. Im Sonnenlicht erstrahlen sie in allen Farben — die Kabine sollte einen Gartenpavillon inmitten der Natur evozieren.',
+  'In der Königlichen Kabine steht ein Holzstuhl mit geschnitzten Beinen, in dessen Inneren sich eine mechanische Waage verbirgt. Edward VII. kontrollierte darauf diskret sein Gewicht — auf einer gewöhnlichen Waage zu stehen wäre eines Königs nicht würdig gewesen.',
+  'In der ersten Kursaison des Jahres 1808 kamen etwa 80 Gäste in die unwirtliche Gegend. Es fehlte an Wegen und Dienstleistungen — die Gäste brachten eigene Betten und Lebensmittelvorräte mit.',
+  'Vor Schaffers Umbau boten die alten Nové Lázně 42 Kabinen für „Stahlbäder". Das Wasser der Ambrosiusquelle war so eisenhaltig, dass es die Wanne rostrot färbte.',
+  'Die Ferdinandsquelle wurde über eine 1 700 Meter lange Rohrleitung aus Auschowitz nach Nové Lázně geleitet. Eine Dampfmaschine drückte das Wasser über eine Strecke mit 43 Metern Höhenunterschied.',
+  'Edward VII. reiste neunmal in 12 Jahren nach Marienbad. Die europäische Presse nannte die Stadt die „Sommerhauptstadt der europäischen Diplomatie".',
+  'Bereits 1820 wurden hier Dampf- und Duschbäder eingeführt, kurz darauf Moorpackungen und Gasbäder, die das CO₂ der Marienquelle nutzten — eine bis heute einzigartige Behandlung.',
 ]
 ---
 
@@ -74,13 +80,11 @@ const funFacts = [
       </div>
 
       <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="font-size: clamp(2.25rem, 5vw, 4.5rem);">
-        130 Jahre Neue Bäder
+        130 Jahre Nové Lázně
       </h1>
 
       <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
-        Vom monumentalen Umbau durch Architekt <strong class="text-white">Josef Schaffer</strong> im Jahr 1896
-        bis zum heutigen Fünf-Sterne-Kurhotel mit dem <strong class="text-white">Römischen Bad</strong>,
-        der <strong class="text-white">Königlichen Kabine Edwards VII.</strong> und einer Mineralquelle direkt in den Hotelgängen.
+        Feierlich eröffnet am <strong class="text-white">1. Juni 1896</strong> — eine Perle der Kurarchitektur, entworfen vom gebürtigen Marienbader <strong class="text-white">Josef Schaffer</strong> nach italienischen Renaissance-Vorbildern. Heute der <strong class="text-white">größte historische Balneobetrieb der Tschechischen Republik</strong> mit den <strong class="text-white">Römischen Bädern</strong>, der <strong class="text-white">Königlichen Kabine Edwards VII.</strong> und einer Mineralquelle direkt in den Gängen.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center">
@@ -127,12 +131,12 @@ const funFacts = [
       <div class="text-center mb-12">
         <span class="text-yellow-600 text-xs font-semibold uppercase tracking-wider">★ Jubiläumsangebot ★</span>
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Wir haben das Beste für Sie vorbereitet</h2>
-        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Feiern Sie 130 Jahre Neue Bäder mit speziellen Paketen, die Geschichte, Behandlung und ein unvergessliches Erlebnis vereinen.</p>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Feiern Sie 130 Jahre Nové Lázně mit speziellen Paketen, die Geschichte, Behandlung und ein unvergessliches Erlebnis vereinen.</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-center">
         <div class="rounded-2xl overflow-hidden shadow-lg">
-          <img src="/images/content/anniversary/illustration.jpg" alt="Neue Bäder — Illustration 2026" class="w-full h-auto" loading="lazy" decoding="async" />
+          <img src="/images/content/anniversary/illustration.jpg" alt="Nové Lázně — Illustration 2026" class="w-full h-auto" loading="lazy" decoding="async" />
         </div>
 
         <div class="flex flex-col gap-6">
@@ -147,7 +151,7 @@ const funFacts = [
               <span class="text-beige-500 text-sm">Jubiläumsaufenthalt</span>
             </div>
             <h3 class="font-heading text-xl font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mb-2">Anniversary Stay — Wochenenderlebnis</h3>
-            <p class="text-beige-700 text-sm leading-relaxed mb-3">Kurzaufenthalt mit Zugang zum Römischen Bad, Kohlensäurebad und Trinkkur. Ideal für ein verlängertes Wochenende.</p>
+            <p class="text-beige-700 text-sm leading-relaxed mb-3">Kurzaufenthalt mit Zugang zu den Römischen Bädern, Kohlensäurebad und Trinkkur. Ideal für ein verlängertes Wochenende.</p>
             <span class="text-turquoise-600 text-sm font-semibold group-hover:underline">Angebot ansehen →</span>
           </a>
 
@@ -173,7 +177,7 @@ const funFacts = [
   <!-- Highlights Grid -->
   <section class="container-wide py-16 md:py-24">
     <div class="text-center mb-12">
-      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Was die Neuen Bäder einzigartig macht</span>
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Was Nové Lázně einzigartig macht</span>
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Besonderheiten, die Sie nirgendwo sonst finden</h2>
     </div>
 
@@ -199,12 +203,15 @@ const funFacts = [
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center">
         <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">Architekt</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer (1862–1938)</h2>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer — gebürtiger Marienbader</h2>
         <p class="text-white/70 text-lg leading-relaxed mb-6">
-          Schaffer verwandelte das schlichte klassizistische Neubad von 1828 in einen <strong class="text-white">monumentalen Vierturmpalast im italienischen Neorenaissance-Stil</strong>. Der Umbau dauerte drei Jahre (1893–1896) und das Ergebnis übertraf alle Erwartungen — Marienbad besaß mit einem Mal ein Gebäude, das sich mit den besten Kurhäusern in Karlsbad, Baden-Baden oder Vichy messen konnte.
+          Den Anstoß zur Entstehung von Nové Lázně gab <strong class="text-white">Abt Alfred Clemens</strong>, der ihren Bau beschloss, die Finanzierung sicherte und dem Projekt eine klare Vision verlieh. Seine Initialen A.C. und A.T. (Abbas Teplensis) sind bis heute im Giebel des Gebäudes eingemeißelt.
+        </p>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          Die architektonische Gestalt entwarf der <strong class="text-white">gebürtige Marienbader Josef Schaffer</strong>. Inspiration fand er auf seinen Reisen durch Italien — besonders in <strong class="text-white">Venedig, Bologna und Florenz</strong>. Elemente der italienischen Renaissance verliehen dem Bau seinen großartigen und zeitlosen Charakter. Der Bau dauerte vier Jahre und fand stets im Winter außerhalb der Hauptsaison statt, um den Kurbetrieb nicht zu stören. Die feierliche Eröffnung erfolgte am <strong class="text-white">1. Juni 1896</strong>.
         </p>
         <p class="text-white/70 text-lg leading-relaxed">
-          Schaffer entwarf das Römische Bad mit Marmorsäulen und Becken voll Mineralwasser, private Kabinen für königliche Gäste sowie die technische Infrastruktur, die die Ferdinandsquelle über eine 1,7 km lange Rohrleitung aus Auschowitz heranführte. <strong class="text-white">Die Neuen Bäder bleiben bis heute sein bedeutendstes Werk.</strong>
+          Nové Lázně sind heute der <strong class="text-white">größte historische Balneobetrieb der Tschechischen Republik</strong>. Die Mineralquellen Waldquelle und Ambrosiusquelle werden direkt ins Gebäude geleitet und bilden die Grundlage einer umfassenden Kurbehandlung, Rehabilitation und modernen Diagnostik einschließlich Oxygenotherapie. Marienbad gehört seit 2021 zum <strong class="text-white">UNESCO-Welterbe</strong> und trägt seit 2023 den <strong class="text-white">Status eines Klimakurortes</strong>.
         </p>
       </div>
     </div>
@@ -214,7 +221,7 @@ const funFacts = [
   <section id="meilensteine" class="container-wide py-16 md:py-24">
     <div class="text-center mb-12">
       <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Durch die Jahrhunderte</span>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Meilensteine der Neuen Bäder</h2>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Meilensteine von Nové Lázně</h2>
     </div>
 
     <div class="max-w-3xl mx-auto">
@@ -245,8 +252,8 @@ const funFacts = [
     <div class="container-wide">
       <div class="text-center mb-12">
         <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Wussten Sie schon?</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Geschichten aus 130 Jahren</h2>
-        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Anekdoten und Fakten aus der 130-jährigen Geschichte der Neuen Bäder — aus den Archiven der Hamelika, des Stadtmuseums Marienbad und der zeitgenössischen Presse.</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Wissenswertes aus der Geschichte</h2>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Geschichten und Fakten aus 130 Jahren Nové Lázně — aus den Archiven der Hamelika, des Stadtmuseums Mariánské Lázně und der zeitgenössischen Presse.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -263,7 +270,7 @@ const funFacts = [
   <!-- Video -->
   <section class="container-wide py-8 md:py-12">
     <div class="max-w-3xl mx-auto">
-      <YouTubeEmbed videoId="EXfHDetR6OY" title="Ensana Nové Lázně" description="Hotel Ensana Nové Lázně — Vorstellung des Fünf-Sterne-Kurhotels mit den originalen Römischen Bädern von 1896." locale={locale} />
+      <YouTubeEmbed videoId="EXfHDetR6OY" title="Nové Lázně" description="Hotel Nové Lázně — Vorstellung des Fünf-Sterne-Kurhotels mit den originalen Römischen Bädern von 1896." locale={locale} />
     </div>
   </section>
 
@@ -274,16 +281,16 @@ const funFacts = [
         <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Königliche Tradition</span>
         <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">Neun Besuche König Edwards VII.</h2>
         <p class="text-white/70 leading-relaxed mb-4">
-          Als der britische Kronprinz (und spätere König) Edward VII. im Jahr 1897 zum ersten Mal nach Marienbad kam, war es um ihn geschehen. In den folgenden zwölf Jahren kehrte er <strong class="text-white">neunmal</strong> zurück — und jedes Mal waren die Neuen Bäder sein Quartier.
+          Als der britische Kronprinz (und spätere König) Edward VII. im Jahr 1897 zum ersten Mal nach Marienbad kam, verliebte er sich sofort in die Stadt. In den folgenden zwölf Jahren kehrte er <strong class="text-white">neunmal</strong> zurück — und jedes Mal waren Nové Lázně sein Quartier.
         </p>
         <p class="text-white/70 leading-relaxed mb-4">
-          Sein Tagesablauf war stets derselbe: <strong class="text-white">morgendliche Trinkkur an der Kreuzbrunnenquelle</strong>, dann der Gang in die Neuen Bäder und ein Bad in der privaten <strong class="text-white">Königlichen Kabine</strong>. Dort steht bis heute die prachtvolle Wanne aus der belle époque und daneben ein bemerkenswertes Möbelstück — <strong class="text-white">ein eleganter Holzstuhl mit eingebauter mechanischer Waage</strong>. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.
+          Sein Tagesablauf war unveränderlich: <strong class="text-white">morgendliche Trinkkur am Kreuzbrunnen</strong>, dann der Gang nach Nové Lázně und ein Bad in der privaten <strong class="text-white">Königlichen Kabine</strong>. Dort steht bis heute die opulente Wanne aus der Belle Époque und daneben ein bemerkenswertes Möbelstück — ein <strong class="text-white">eleganter Holzstuhl mit eingebauter mechanischer Waage</strong>. Der König kontrollierte darauf diskret sein Gewicht, ohne auf einer gewöhnlichen Waage stehen zu müssen.
         </p>
         <p class="text-white/70 leading-relaxed mb-4">
-          Dank seiner regelmäßigen Aufenthalte wurde Marienbad zur <strong class="text-white">Sommerhauptstadt der europäischen Diplomatie</strong>. Höhepunkt war das <strong class="text-white">Treffen mit Kaiser Franz Joseph I.</strong> am 16. August 1904 — ein Ereignis, an das heute eine Bronzeplastik am Goethe-Platz erinnert.
+          Dank seiner regelmäßigen Aufenthalte wurde Marienbad zur <strong class="text-white">Sommerhauptstadt der europäischen Diplomatie</strong>. Höhepunkt war das <strong class="text-white">Treffen mit Kaiser Franz Joseph I.</strong> am 16. August 1904 — ein Ereignis, an das heute eine Bronzeskulpturengruppe am Goetheplatz erinnert.
         </p>
         <p class="text-white/70 leading-relaxed mb-6">
-          1905 gründete Edward VII. den <strong class="text-white">Royal Golf Club Marienbad</strong> — den ältesten Golfclub Böhmens, der bis heute ununterbrochen besteht. Und die königliche Tradition lebt weiter: 2005 bezog <strong class="text-white">Prinz Edward, Earl of Wessex</strong>, ein Zimmer im Hotel Ensana Nové Lázně.
+          Im Jahr 1905 gründete Edward VII. den <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — den ältesten Golfclub Böhmens, der bis heute ununterbrochen besteht. Und die königliche Tradition setzt sich fort: 2005 übernachtete <strong class="text-white">Prinz Edward, Earl of Wessex</strong>, in Nové Lázně.
         </p>
         <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
           „Die Königliche Kabine mit der originalen Wanne, dem Ruheraum und dem Stuhl mit eingebauter Waage ist ein lebendiges Zeugnis jener Ära, in der in Marienbad europäische Geschichte geschrieben wurde."

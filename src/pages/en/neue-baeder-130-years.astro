@@ -7,54 +7,60 @@ import { withUtm } from '@/utils/utm'
 const locale = 'en' as const
 const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
 
-const pageTitle = '130 Years of Ensana Nové Lázně — Anniversary 1896–2026 — Marienbad.com'
-const pageDescription = 'Ensana Nové Lázně celebrates 130 years since architect Josef Schaffer\'s grand transformation. Discover the history, the Roman Baths, and the Royal Cabin of King Edward VII.'
+const pageTitle = '130 Years of Nové Lázně — Anniversary 1896–2026 — Marienbad.com'
+const pageDescription = 'Nové Lázně celebrates 130 years since the grand reconstruction by architect Josef Schaffer. Discover the history, the Roman Baths, and the Royal Cabin of King Edward VII.'
 
 const milestones = [
-  { year: '1828', title: 'The birth of Neubad (New Bath)', description: 'Abbot Karl Kašpar Reitenberger founds a new bathhouse — the Neubad. Sixteen bathing cabins and ten guest rooms welcome visitors arriving to take the iron-rich waters of the Ambrosius and Caroline springs.' },
-  { year: '1841', title: 'First expansion', description: 'The number of bathing cabins grows to fourteen, and a separate boiler house is built alongside the main structure. A new Kursaal hall is added — Ensana Nové Lázně becomes the social heart of the town.' },
-  { year: '1893–1896', title: 'Reborn as a Neo-Renaissance palace', description: 'Architect Josef Schaffer rebuilds the Neubad from the ground up. The modest Classicist building is transformed into a monumental four-towered palace in the Italian Neo-Renaissance style, complete with Roman Baths, marble columns, classical statuary, and pools filled with mineral water.' },
-  { year: '1897', title: 'King Edward VII first visits Marienbad', description: 'The future British monarch arrives for the first time and immediately falls in love with the town. A private Royal Cabin is created for him at Ensana Nové Lázně, featuring an opulent bathtub and an elegant resting room in the spirit of the belle époque.' },
-  { year: '1904', title: 'A historic meeting of two sovereigns', description: 'On 16 August 1904, Emperor Franz Joseph I and King Edward VII meet at the Ensana Nové Lázně hotel for an official diplomatic conference. For one day, Marienbad becomes the centre of European politics.' },
-  { year: '1905', title: 'Founding of the Royal Golf Club', description: 'Edward VII founds the oldest golf club in Bohemia — the Royal Golf Club Mariánské Lázně. The club has operated continuously ever since.' },
-  { year: '1912–1913', title: 'Expansion under Abbot Helmer', description: 'Under Abbot Gilbert Helmer, the capacity of bathing cabins nearly doubles. Ensana Nové Lázně responds to growing demand from the international aristocracy.' },
-  { year: '2005', title: 'The royal tradition continues', description: 'Prince Edward, Earl of Wessex, stays at the Ensana Nové Lázně hotel, continuing the tradition of the British Royal Family in Marienbad.' },
-  { year: '2021', title: 'Inscribed on the UNESCO World Heritage List', description: 'Mariánské Lázně becomes part of the transnational inscription "The Great Spa Towns of Europe". Ensana Nové Lázně is among the key buildings in the protected zone.' },
-  { year: '2026', title: '130 years since Schaffer\'s transformation', description: 'Ensana Nové Lázně celebrates its 130th anniversary. The building continues to serve as a five-star spa hotel — with the original Roman Baths, the Royal Cabin, and the Imperial Cabin all in full operation.' },
+  { year: '1808', title: 'The first spa season', description: 'Eighty guests arrived in the inhospitable landscape. Paved roads and basic services were lacking — guests brought their own beds and food supplies. Even so, the mineral springs were rapidly gaining renown.' },
+  { year: '1820', title: 'An era of innovation', description: 'Steam and shower baths are introduced, followed shortly by peat wraps and gas baths using the carbon dioxide of the Maria Spring — a treatment still considered a local speciality today.' },
+  { year: '1828', title: 'The birth of the Neubad', description: 'Abbot Karl Kašpar Reitenberger founds a new bathhouse — the Neubad. Sixteen bathing cabins and ten guest rooms for visitors arriving to take the iron-rich waters of the Ambrose and Caroline springs.' },
+  { year: '1841', title: 'The first expansion', description: 'The number of bathing cabins grows to 14, and a separate boiler house is built beside the building. A Kursaal hall is added — Nové Lázně becomes the social centre of the town.' },
+  { year: '1872', title: 'Arrival of the first train', description: 'Thanks to the railway, the town opened up to Europe and visitor numbers surged. Existing capacities were no longer sufficient, and a major reconstruction became necessary.' },
+  { year: '1890', title: 'The "steel baths"', description: 'The old Nové Lázně had 42 cabins for so-called steel baths (Stahlbäder) — a bath in the Ambrose Spring. The water was so iron-rich that it stained the tub rust-red and promised patients "steely health".' },
+  { year: '1892–1896', title: "Schaffer's reconstruction", description: "Abbot Alfred Clemens decided on the reconstruction, secured the financing and gave the project a clear vision. His initials A.C. and A.T. (Abbas Teplensis) are still carved into the building's pediment. Architect Josef Schaffer, a native of Marienbad inspired by his travels to Venice, Bologna and Florence, transformed the Neubad into a monumental Neo-Renaissance palace. Construction took four years and always took place in winter so as not to disrupt the spa operations. The ceremonial opening took place on 1 June 1896." },
+  { year: '1897', title: "King Edward VII's first visit", description: 'The future British monarch arrives and immediately falls in love with the town. A private Royal Cabin is created for him at Nové Lázně — the doors to the loggia are adorned with original painted glass from the famous Tyrolean Geyling workshop, the tiles are luxurious majolica and paintings of birds hang on the walls. The setting was meant to evoke the atmosphere of a garden pavilion amidst nature.' },
+  { year: '1904', title: 'A meeting of two monarchs', description: 'On 16 August 1904, Emperor Franz Joseph I and King Edward VII meet at the hotel for an official diplomatic conference. For one day, Marienbad becomes the centre of European politics.' },
+  { year: '1905', title: 'Founding of the Royal Golf Club', description: 'Edward VII founds the oldest golf club in Bohemia — the Royal Golf Club Mariánské Lázně. The club has operated continuously to this day.' },
+  { year: '1912–1913', title: 'Expansion under Abbot Helmer', description: 'Under the leadership of Abbot Gilbert Helmer, the capacity of bathing cabins nearly doubles. Nové Lázně responds to the growing demand of the international aristocracy.' },
+  { year: '2005', title: 'The royal tradition continues', description: 'Prince Edward, Earl of Wessex, stays at the hotel, continuing the tradition of the British Royal Family in Marienbad.' },
+  { year: '2021', title: 'Inscription on the UNESCO List', description: 'Marienbad becomes part of the transnational inscription "The Great Spa Towns of Europe". Nové Lázně is among the key buildings of the protected zone.' },
+  { year: '2023', title: 'Climatic spa status', description: 'Marienbad is awarded the status of a climatic spa — confirmation that the local microclimate is itself a healing resource.' },
+  { year: '2026', title: '130 years since the ceremonial opening', description: 'On 1 June 2026, Nové Lázně celebrates its 130th anniversary. The building still serves as a five-star spa hotel — the largest historical balneotherapy facility in the Czech Republic, with the original Roman Baths, the Royal Cabin and the Imperial Cabin in full operation.' },
 ]
 
 const highlights = [
   {
     title: 'Roman Baths from 1896',
-    description: 'Two original mineral-water pools set among massive marble columns and classical statues — an authentic 1896 interior that survived two world wars. A third pool with a counter-current jet was added during the modern renovation. Guests also enjoy a sauna (80 °C), sanarium (50 °C), steam bath, and Kneipp therapy.',
+    description: 'The glazed ceiling floods the interior with soft daylight. The vault is supported by twenty-one soaring columns of dark-red Salzburg marble with capitals of white Carrara stone. Two original mineral-water pools, gilded gargoyles in the shape of lion heads and coloured tiles evoke the grandeur of ancient baths. A third pool with a counter-current was added during the modern reconstruction.',
     icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
   },
   {
-    title: 'Royal Cabin of King Edward VII',
-    description: 'A private bathing suite built in 1896 for the British king. The original belle époque bathtub, an elegant resting room — and a true curiosity: a carved wooden chair with a hidden mechanical scale built into its frame. The king would discreetly check his weight while seated, sparing himself the indignity of standing on an ordinary scale.',
+    title: 'Royal Cabin of Edward VII',
+    description: 'A private bathing room built for the British king. The doors to the loggia are adorned with original painted glass from the famous Tyrolean Geyling workshop, which shimmer in every colour in the sunlight. The tiles are luxurious majolica and paintings of birds hang on the walls — the setting was meant to evoke the atmosphere of a garden pavilion. A wooden chair with a built-in mechanical scale still stands in the cabin today.',
     icon: 'M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 2a5 5 0 110 10 5 5 0 010-10z',
   },
   {
-    title: 'Imperial Cabin of Emperor Franz Joseph I',
-    description: 'A bathing suite with its original historic décor, created for the Austrian emperor. Both the Royal and Imperial Cabins are still used today for specialist balneotherapy treatments, mineral baths, and mud wraps.',
+    title: 'Imperial Cabin of Franz Joseph I',
+    description: 'A bathing room with original historical décor, reserved for the Austrian emperor. Both cabins — the Royal and the Imperial — are used today for specialist balneotherapy treatments, mineral baths and mud wraps.',
     icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
   },
   {
     title: '5,900 m² interconnected complex',
-    description: 'Ensana Nové Lázně, Ensana Centrální Lázně, and Maria Spa are linked by covered promenades and corridors into a single complex. Guests move between buildings without stepping outside — the largest historically original spa complex in Bohemia.',
+    description: 'Nové Lázně, Centrální Lázně and Maria Spa are joined into a single whole by covered promenades and corridors. Guests move between the buildings without stepping outside — the largest historically original spa complex in Bohemia.',
     icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
   },
 ]
 
 const funFacts = [
-  'The Ferdinand Spring was piped to Ensana Nové Lázně through a 1,700-metre conduit from Úšovice. A steam engine pushed the water along a route climbing 43 metres in elevation.',
-  'In the Royal Cabin stands a carved wooden chair with a mechanical scale hidden inside its frame. Edward VII used it to discreetly check his weight — standing on an ordinary scale would not have been very regal.',
-  'Edward VII visited Marienbad so regularly (nine times in twelve years) that the European press dubbed the town "the summer capital of European diplomacy".',
-  'Four turrets from the 1896 reconstruction still crown the building today — they have become the hotel\'s iconic silhouette, visible from across the valley.',
-  'Distinguished guests have included Tsar Nicholas II, composers Chopin and Wagner, the writer Franz Kafka, and Mark Twain, who in 1892 wrote with characteristic wit about the local spa rituals.',
-  'A mineral spring rises in the corridors of the hotel itself — guests can fill their cup without ever stepping out to the colonnade.',
-  'The 1904 meeting between Edward VII and Emperor Franz Joseph I is commemorated by a bronze sculpture group on Goethe Square, unveiled in 2014 on the 110th anniversary of the event.',
-  'The Royal Restaurant, which adjoins the Roman Baths, was last renovated in 2024 and seats 180 guests. It serves a menu blending Czech and Central European cuisine.',
+  "The initials A.C. and A.T. (Abbas Teplensis) are still carved into the building's pediment — a reminder of Abbot Alfred Clemens, who initiated and financed the reconstruction.",
+  'The vault of the Roman Baths is supported by 21 soaring columns of dark-red Salzburg marble with capitals of white Carrara stone. Gilded gargoyles in the shape of lion heads complete the atmosphere of ancient baths.',
+  'The doors to the loggia in the Royal Cabin are adorned with original painted glass from the famous Tyrolean Geyling workshop. They shimmer in every colour in the sunlight — the cabin was meant to evoke a garden pavilion amidst nature.',
+  'A wooden chair with carved legs stands in the Royal Cabin, with a mechanical scale concealed inside. Edward VII used it to discreetly check his weight — standing on an ordinary scale would not have befitted a king.',
+  'In the first spa season of 1808, around 80 guests arrived in the inhospitable landscape. Roads and services were lacking — guests brought their own beds and food supplies.',
+  'Before Schaffer\'s reconstruction, the old Nové Lázně offered 42 cabins for "steel baths" (Stahlbäder). The water of the Ambrose Spring was so iron-rich that it stained the tub rust-red.',
+  'The Ferdinand Spring was piped to Nové Lázně through a 1,700-metre conduit from Úšovice. A steam engine pushed the water along a route climbing 43 metres in elevation.',
+  'Edward VII travelled to Marienbad nine times in 12 years. The European press called the town "the summer capital of European diplomacy".',
+  'As early as 1820, steam and shower baths were introduced here, followed shortly by peat wraps and gas baths using CO₂ from the Maria Spring — a treatment unique to this day.',
 ]
 ---
 
@@ -74,13 +80,11 @@ const funFacts = [
       </div>
 
       <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="font-size: clamp(2.25rem, 5vw, 4.5rem);">
-        130 Years of Ensana Nové Lázně
+        130 Years of Nové Lázně
       </h1>
 
       <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
-        From the monumental transformation by architect <strong class="text-white">Josef Schaffer</strong> in 1896
-        to today's five-star spa hotel with the <strong class="text-white">Roman Baths</strong>,
-        the <strong class="text-white">Royal Cabin of King Edward VII</strong>, and a mineral spring flowing right through the corridors.
+        Ceremonially opened on <strong class="text-white">1 June 1896</strong> — a jewel of spa architecture designed by Marienbad-born <strong class="text-white">Josef Schaffer</strong> after Italian Renaissance models. Today the <strong class="text-white">largest historical balneotherapy facility in the Czech Republic</strong> with the <strong class="text-white">Roman Baths</strong>, the <strong class="text-white">Royal Cabin of Edward VII</strong> and a mineral spring right in the corridors.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center">
@@ -103,7 +107,7 @@ const funFacts = [
       <div class="flex flex-wrap justify-center gap-6 md:gap-10 mt-12 text-sm">
         <div class="text-center">
           <div class="text-2xl md:text-3xl font-bold text-yellow-400">1896</div>
-          <div class="text-white/50 mt-1">Year of transformation</div>
+          <div class="text-white/50 mt-1">Year of reconstruction</div>
         </div>
         <div class="text-center">
           <div class="text-2xl md:text-3xl font-bold text-yellow-400">★★★★★</div>
@@ -147,7 +151,7 @@ const funFacts = [
               <span class="text-beige-500 text-sm">Anniversary Stay</span>
             </div>
             <h3 class="font-heading text-xl font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mb-2">Anniversary Stay — weekend experience</h3>
-            <p class="text-beige-700 text-sm leading-relaxed mb-3">A short stay with access to the Roman Bath, carbonated bath and drinking cure. Perfect for an extended weekend.</p>
+            <p class="text-beige-700 text-sm leading-relaxed mb-3">A short stay with access to the Roman Baths, a carbonic bath and a drinking cure. Perfect for an extended weekend.</p>
             <span class="text-turquoise-600 text-sm font-semibold group-hover:underline">View offer →</span>
           </a>
 
@@ -162,7 +166,7 @@ const funFacts = [
               <span class="text-beige-500 text-sm">Anniversary Cure</span>
             </div>
             <h3 class="font-heading text-xl font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors mb-2">Anniversary Stay — complete spa week</h3>
-            <p class="text-beige-700 text-sm leading-relaxed mb-3">A full week with comprehensive spa treatments, the Royal Cabin experience, therapies and medical consultation.</p>
+            <p class="text-beige-700 text-sm leading-relaxed mb-3">A week-long programme with full spa care, the Royal Cabin, treatments and a medical consultation.</p>
             <span class="text-turquoise-600 text-sm font-semibold group-hover:underline">View offer →</span>
           </a>
         </div>
@@ -173,7 +177,7 @@ const funFacts = [
   <!-- Highlights Grid -->
   <section class="container-wide py-16 md:py-24">
     <div class="text-center mb-12">
-      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">What makes Ensana Nové Lázně extraordinary</span>
+      <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">What makes Nové Lázně extraordinary</span>
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Treasures you won't find anywhere else</h2>
     </div>
 
@@ -199,12 +203,15 @@ const funFacts = [
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center">
         <span class="text-turquoise-400 text-xs font-semibold uppercase tracking-wider">The Architect</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer (1862–1938)</h2>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mt-3 mb-6">Josef Schaffer — a native of Marienbad</h2>
         <p class="text-white/70 text-lg leading-relaxed mb-6">
-          Schaffer transformed the modest Classicist Neubad of 1828 into a <strong class="text-white">monumental four-towered palace in the Italian Neo-Renaissance style</strong>. The reconstruction took three years (1893–1896), and the result surpassed all expectations — Marienbad suddenly possessed a building that could rival the finest bathhouses in Karlovy Vary, Baden-Baden, or Vichy.
+          The impetus for the creation of Nové Lázně came from <strong class="text-white">Abbot Alfred Clemens</strong>, who decided on its construction, secured the financing and gave the project a clear vision. His initials A.C. and A.T. (Abbas Teplensis) are still carved into the building's pediment.
+        </p>
+        <p class="text-white/70 text-lg leading-relaxed mb-6">
+          The architectural design was drawn up by <strong class="text-white">Marienbad-born Josef Schaffer</strong>. He drew inspiration during his travels through Italy — particularly in <strong class="text-white">Venice, Bologna and Florence</strong>. Elements of the Italian Renaissance lent the building its magnificent and timeless character. Construction took four years and always took place in winter outside the main season so as not to disrupt the spa operations. The ceremonial opening took place on <strong class="text-white">1 June 1896</strong>.
         </p>
         <p class="text-white/70 text-lg leading-relaxed">
-          Schaffer designed the Roman Baths with marble columns and pools fed by mineral water, private cabins for royal guests, and the engineering infrastructure to pipe the Ferdinand Spring through 1.7 km of conduit from the village of Úšovice. <strong class="text-white">Ensana Nové Lázně remains his greatest masterpiece to this day.</strong>
+          Nové Lázně is today the <strong class="text-white">largest historical balneotherapy facility in the Czech Republic</strong>. The Forest Spring and Ambrose Spring are piped directly into the building and form the foundation of comprehensive spa care, rehabilitation and modern diagnostics, including oxygen therapy. Marienbad has been part of the <strong class="text-white">UNESCO World Heritage</strong> since 2021 and has held <strong class="text-white">climatic spa status</strong> since 2023.
         </p>
       </div>
     </div>
@@ -214,7 +221,7 @@ const funFacts = [
   <section id="milestones" class="container-wide py-16 md:py-24">
     <div class="text-center mb-12">
       <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">A journey through the centuries</span>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Milestones of Ensana Nové Lázně</h2>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Milestones of Nové Lázně</h2>
     </div>
 
     <div class="max-w-3xl mx-auto">
@@ -245,8 +252,8 @@ const funFacts = [
     <div class="container-wide">
       <div class="text-center mb-12">
         <span class="text-turquoise-600 text-xs font-semibold uppercase tracking-wider">Did you know?</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Fascinating facts from the archives</h2>
-        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Stories and curiosities from 130 years of Ensana Nové Lázně — drawn from the archives of the Hamelika journal, the Mariánské Lázně Municipal Museum, and the period press.</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3">Fascinating facts from history</h2>
+        <p class="text-beige-700 mt-3 max-w-2xl mx-auto">Stories and facts from 130 years of Nové Lázně — drawn from the archives of the Hamelika journal, the Mariánské Lázně Municipal Museum and the period press.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -263,7 +270,7 @@ const funFacts = [
   <!-- Video -->
   <section class="container-wide py-8 md:py-12">
     <div class="max-w-3xl mx-auto">
-      <YouTubeEmbed videoId="EXfHDetR6OY" title="Ensana Nové Lázně" description="Hotel Ensana Nové Lázně — introducing the five-star spa hotel with original Roman Baths from 1896." locale={locale} />
+      <YouTubeEmbed videoId="EXfHDetR6OY" title="Nové Lázně" description="Hotel Nové Lázně — introducing the five-star spa hotel with original Roman Baths from 1896." locale={locale} />
     </div>
   </section>
 
@@ -274,19 +281,19 @@ const funFacts = [
         <span class="text-yellow-400 text-xs font-semibold uppercase tracking-wider">A royal tradition</span>
         <h2 class="font-heading text-2xl md:text-3xl font-bold mt-3 mb-6">The nine visits of King Edward VII</h2>
         <p class="text-white/70 leading-relaxed mb-4">
-          When the British Crown Prince (and future King) Edward VII first arrived in Marienbad in 1897, he fell in love with the town at once. Over the following twelve years he returned <strong class="text-white">nine times</strong> — and on every occasion, Ensana Nové Lázně was his home base.
+          When the British Crown Prince (and future King) Edward VII first arrived in Marienbad in 1897, he fell in love with the town at once. Over the following twelve years he returned <strong class="text-white">nine times</strong> — and on every occasion Nové Lázně was his base.
         </p>
         <p class="text-white/70 leading-relaxed mb-4">
-          His daily ritual never varied: a <strong class="text-white">morning drinking cure at the Cross Spring</strong>, then a short walk to Ensana Nové Lázně for a bath in the private <strong class="text-white">Royal Cabin</strong>. Inside it stands an opulent belle époque bathtub, and beside it a remarkable piece of furniture — an <strong class="text-white">elegant carved wooden chair with a built-in mechanical scale</strong>. The king would discreetly check his weight while seated, sparing himself the indignity of standing on an ordinary scale.
+          His daily ritual never varied: a <strong class="text-white">morning drinking cure at the Cross Spring</strong>, then the move to Nové Lázně and a bath in the private <strong class="text-white">Royal Cabin</strong>. An opulent belle époque bathtub still stands inside it, and beside it a remarkable piece of furniture — an <strong class="text-white">elegant wooden chair with a built-in mechanical scale</strong>. The king used it to discreetly check his weight without having to stand on an ordinary scale.
         </p>
         <p class="text-white/70 leading-relaxed mb-4">
-          Thanks to his regular sojourns, Marienbad became known as the <strong class="text-white">summer capital of European diplomacy</strong>. The crowning moment was the <strong class="text-white">meeting with Emperor Franz Joseph I</strong> on 16 August 1904 — an event now commemorated by a bronze sculpture group on Goethe Square.
+          Thanks to his regular sojourns, Marienbad became the <strong class="text-white">summer capital of European diplomacy</strong>. The culmination was the <strong class="text-white">meeting with Emperor Franz Joseph I</strong> on 16 August 1904 — an event commemorated today by a bronze sculpture group on Goethe Square.
         </p>
         <p class="text-white/70 leading-relaxed mb-6">
-          In 1905, Edward VII founded the <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — the oldest golf club in Bohemia, still in continuous operation today. And the royal tradition lives on: in 2005, <strong class="text-white">Prince Edward, Earl of Wessex</strong>, stayed at Ensana Nové Lázně.
+          In 1905, Edward VII founded the <strong class="text-white">Royal Golf Club Mariánské Lázně</strong> — the oldest golf club in Bohemia, in continuous operation to this day. And the royal tradition continues: in 2005, <strong class="text-white">Prince Edward, Earl of Wessex</strong>, stayed at Nové Lázně.
         </p>
         <blockquote class="border-l-4 border-yellow-400 pl-5 text-white/80 italic">
-          "The Royal Cabin — with its original bathtub, resting room, and chair concealing a hidden scale — is a living testament to the era when the history of Europe was being written in Marienbad."
+          "The Royal Cabin, with its original bathtub, resting room and chair with a built-in scale, is a living testament to the era when the history of Europe was being written in Marienbad."
         </blockquote>
       </div>
     </div>
@@ -300,7 +307,7 @@ const funFacts = [
       </div>
       <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Experience history for yourself</h2>
       <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-        Bathe in marble-columned pools dating from 1896, try a mineral bath in the Royal Cabin of King Edward VII, and taste spring water drawn right in the corridors of the hotel.
+        Bathe in pools with marble columns from 1896, try a mineral bath in the Royal Cabin of Edward VII, and taste spring water right in the corridors of the hotel.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a
