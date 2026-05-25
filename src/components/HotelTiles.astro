@@ -2,7 +2,7 @@
 import type { Locale } from '@/i18n/config'
 import { hotels } from '@/data/hotels'
 import { getHotelGallery } from '@/content/reader'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 interface Props {
   locale: Locale
@@ -62,7 +62,7 @@ const placeholder = '/images/hotels/placeholder.svg'
     {orderedHotels.map((hotel) => {
       if (!hotel) return null
       const tagline = hotel.tagline[locale]
-      const url = withUtm(hotel.bookingUrls[locale], 'marienbad', 'hotel-tile', 'hotel-booking')
+      const url = exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale, utmMedium: 'hotel-tile', utmCampaign: hotel.slug })
       const stars = '★'.repeat(hotel.stars)
       const features = (hotel.features[locale] ?? hotel.features.de).slice(0, 4)
       const hotelName = hotel.name

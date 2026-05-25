@@ -6,7 +6,7 @@ import { getPage, extractFaqs } from '@/content/reader'
 import RelatedArticles from '@/components/RelatedArticles.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'de' as const
 const page = await getPage('de-geschichte')
@@ -34,7 +34,7 @@ const hotel = getHotelBySlug('nove-lazne')!
       stars={hotel.stars}
       badge="Seit 1828"
       description="Erleben Sie Marienbads Geschichte hautnah im Ensana Nové Lázně, einem der traditionsreichsten Kurhotels Europas. Das Römische Bad, im Originalzustand von 1896 erhalten, ist ein lebendiges Denkmal der böhmischen Bäderkultur."
-      bookingUrl={withUtm(hotel.bookingUrls.de, 'marienbad', 'editorial', 'history')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'de', utmMedium: 'editorial', utmCampaign: 'history' })}
       bookingLabel="Historisches Hotel buchen"
     />
   </PillarPage>

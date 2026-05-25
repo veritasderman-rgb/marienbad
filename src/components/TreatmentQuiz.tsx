@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 interface TreatmentQuizProps {
   locale: 'de' | 'en' | 'cs' | 'ru'
@@ -9,6 +9,7 @@ interface TreatmentQuizProps {
     stars: number
     style: string
     bookingUrl: string
+    exelyHotelId: number
     tagline: string
     treatments: string[]
     features: string[]
@@ -535,7 +536,7 @@ export default function TreatmentQuiz({
                         </p>
                       </div>
                       <a
-                        href={withUtm(hotel.bookingUrl, 'marienbad', 'quiz', 'treatment-finder')}
+                        href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale, utmMedium: 'quiz', utmCampaign: 'treatment-finder' })}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-2.5 bg-yellow-400 text-indigo-800 font-semibold rounded-full hover:bg-yellow-300 transition-all hover:shadow-md hover:-translate-y-0.5 whitespace-nowrap no-underline text-sm"

@@ -5,7 +5,7 @@ import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'ru' as const
 const page = await getPage('ru-chem-zanyatsya')
@@ -21,7 +21,7 @@ const hotel = getHotelBySlug('centralni-lazne')!
       stars={hotel.stars}
       badge="Центральное расположение"
       description="Отель Ensana Centrální Lázně расположен на площади Гёте в самом сердце Марианских Лазней — идеальная отправная точка для пеших прогулок по городу, к Колоннаде и окружающей природе."
-      bookingUrl={withUtm(hotel.bookingUrls.ru, 'marienbad', 'editorial', 'things-to-do')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'ru', utmMedium: 'editorial', utmCampaign: 'things-to-do' })}
       bookingLabel="Забронировать отель"
     />
   </PillarPage>

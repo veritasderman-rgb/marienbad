@@ -16,6 +16,7 @@ const quizHotels = hotels.map((h) => ({
   stars: h.stars,
   style: h.style,
   bookingUrl: h.bookingUrls[locale] ?? h.bookingUrl,
+  exelyHotelId: h.exelyHotelId,
   tagline: h.tagline[locale] ?? h.tagline.de,
   treatments: h.treatments[locale] ?? h.treatments.de,
   features: h.features[locale] ?? h.features.de,
