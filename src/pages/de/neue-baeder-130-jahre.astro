@@ -2,7 +2,7 @@
 import Base from '@/layouts/Base.astro'
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
 import { hotels } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'de' as const
 const hotel = hotels.find((h) => h.slug === 'nove-lazne')!
@@ -89,7 +89,7 @@ const funFacts = [
 
       <div class="flex flex-wrap gap-4 justify-center">
         <a
-          href={withUtm(hotel.bookingUrls.de + '/angebote', 'marienbad', 'anniversary', 'nove-lazne-130')}
+          href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'de', utmMedium: 'anniversary', utmCampaign: 'nove-lazne-130' })}
           class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
           target="_blank"
           rel="noopener noreferrer"
@@ -311,7 +311,7 @@ const funFacts = [
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a
-          href={withUtm(hotel.bookingUrls.de + '/angebote', 'marienbad', 'anniversary-cta', 'nove-lazne-130')}
+          href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'de', utmMedium: 'anniversary-cta', utmCampaign: 'nove-lazne-130' })}
           class="inline-flex items-center gap-2 px-8 py-4 bg-yellow-400 text-indigo-900 rounded-lg font-bold hover:bg-yellow-300 transition-colors text-lg"
           target="_blank"
           rel="noopener noreferrer"
