@@ -1,9 +1,19 @@
+export const EXELY_CHAIN_ID = 33735
+
+export const EXELY_LOCALE_MAP = {
+  cs: 'cs-CZ',
+  de: 'de-DE',
+  en: 'en-US',
+  ru: 'ru-RU',
+} as const
+
 export interface Hotel {
   slug: string
   name: string
   stars: number
   yearBuilt: number
   style: string
+  exelyHotelId: number
   bookingUrl: string
   bookingUrls: {
     de: string
@@ -45,6 +55,7 @@ export const hotels: Hotel[] = [
     stars: 5,
     yearBuilt: 1896,
     style: 'Neorenaissance',
+    exelyHotelId: 50110,
     bookingUrl: 'https://www.ensanahotels.com/nove-lazne',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/nove-lazne',
@@ -196,6 +207,7 @@ The 97 spacious rooms and suites blend historic charm with contemporary comfort.
     stars: 4,
     yearBuilt: 1812,
     style: 'Klassizismus',
+    exelyHotelId: 50092,
     bookingUrl: 'https://www.ensanahotels.com/centralni-lazne',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/centralni-lazne',
@@ -347,6 +359,7 @@ The 144 comfortable rooms have been carefully renovated in recent years, blendin
     stars: 4,
     yearBuilt: 1905,
     style: 'Jugendstil (Art Nouveau)',
+    exelyHotelId: 50093,
     bookingUrl: 'https://www.ensanahotels.com/hvezda',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/hvezda',
@@ -498,6 +511,7 @@ The HvÄ›zda complex comprises three interconnected buildings â€” HvÄ›zda, Imperi
     stars: 4,
     yearBuilt: 2003,
     style: 'Moderne',
+    exelyHotelId: 50095,
     bookingUrl: 'https://www.ensanahotels.com/butterfly',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/butterfly',
@@ -651,6 +665,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed â€
     stars: 4,
     yearBuilt: 1906,
     style: 'Neobarock',
+    exelyHotelId: 50094,
     bookingUrl: 'https://www.ensanahotels.com/pacifik',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/pacifik',
@@ -790,6 +805,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed â€
     stars: 3,
     yearBuilt: 1900,
     style: 'Secese',
+    exelyHotelId: 50096,
     bookingUrl: 'https://www.ensanahotels.com/vltava-berounka',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/vltava-berounka',
@@ -913,6 +929,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed â€
     stars: 3,
     yearBuilt: 1890,
     style: 'Neorenaissance',
+    exelyHotelId: 50097,
     bookingUrl: 'https://www.ensanahotels.com/svoboda',
     bookingUrls: {
       de: 'https://ensanahotels.com/de/hotels/svoboda',
