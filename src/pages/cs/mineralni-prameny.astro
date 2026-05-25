@@ -7,7 +7,7 @@ import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { getHotelBySlug } from '@/data/hotels'
 import { hotels } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
@@ -20,6 +20,7 @@ const quizHotels = hotels.map((h) => ({
   stars: h.stars,
   style: h.style,
   bookingUrl: h.bookingUrls[locale] ?? h.bookingUrl,
+  exelyHotelId: h.exelyHotelId,
   tagline: h.tagline[locale] ?? h.tagline.de,
   treatments: h.treatments[locale] ?? h.treatments.de,
   features: h.features[locale] ?? h.features.de,
@@ -79,7 +80,7 @@ const faqSchema = faqs.length > 0 ? {
       stars={hotel.stars}
       badge="Římské lázně"
       description="Historický komplex s jedinými Římskými lázněmi ve střední Evropě — pětihvězdičkový hotel Ensana Nové Lázně je ideální místo pro zážitek z mariánskolázeňských léčivých pramenů."
-      bookingUrl={withUtm(hotel.bookingUrls.cs, 'marienbad', 'editorial', 'mineral-springs')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'cs', utmMedium: 'editorial', utmCampaign: 'mineral-springs' })}
       bookingLabel="Rezervovat hotel"
     />
   </PillarPage>

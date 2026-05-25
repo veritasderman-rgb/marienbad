@@ -7,7 +7,7 @@ import RelatedArticles from '@/components/RelatedArticles.astro'
 import DestinationMap from '@/components/DestinationMap.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'de' as const
 const page = await getPage('de-aktivitaeten')
@@ -24,7 +24,7 @@ const hotel = getHotelBySlug('centralni-lazne')!
       stars={hotel.stars}
       badge="Zentrale Lage"
       description="Direkt am Goetheplatz im Herzen Marienbads gelegen, ist das Ensana Centrální Lázně der ideale Ausgangspunkt, um die Sehenswürdigkeiten, die Kolonnade und die umliegende Natur zu Fuß zu erkunden."
-      bookingUrl={withUtm(hotel.bookingUrls.de, 'marienbad', 'editorial', 'things-to-do')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'de', utmMedium: 'editorial', utmCampaign: 'things-to-do' })}
       bookingLabel="Hotel buchen"
     />
     <DestinationMap locale={locale} />

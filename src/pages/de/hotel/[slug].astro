@@ -2,7 +2,7 @@
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import { hotels, type Hotel } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 export const prerender = true
 
@@ -113,7 +113,7 @@ const lodgingSchema = JSON.stringify({
       </p>
       <div class="flex flex-wrap gap-4">
         <a
-          href={withUtm(hotel.bookingUrls.de, 'marienbad', 'hotel-detail', 'hotel-booking')}
+          href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'de', utmMedium: 'hotel-detail', utmCampaign: hotel.slug })}
           class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
           target="_blank"
           rel="noopener noreferrer"

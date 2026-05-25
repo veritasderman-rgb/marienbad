@@ -6,7 +6,7 @@ import { getPage } from '@/content/reader'
 import RelatedArticles from '@/components/RelatedArticles.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'en' as const
 const page = await getPage('en-history')
@@ -23,7 +23,7 @@ const hotel = getHotelBySlug('nove-lazne')!
       stars={hotel.stars}
       badge="Since 1828"
       description="Experience Marienbad's history first-hand at the Ensana Nové Lázně, one of Europe's most storied spa hotels. Its Roman Bath, preserved since 1896, is a living monument to the golden age of Bohemian spa culture."
-      bookingUrl={withUtm(hotel.bookingUrls.en, 'marienbad', 'editorial', 'history')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'en', utmMedium: 'editorial', utmCampaign: 'history' })}
       bookingLabel="Book historic hotel"
     />
   </PillarPage>

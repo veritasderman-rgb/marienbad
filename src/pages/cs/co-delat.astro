@@ -5,7 +5,7 @@ import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'cs' as const
 const page = await getPage('cs-co-delat')
@@ -21,7 +21,7 @@ const hotel = getHotelBySlug('centralni-lazne')!
       stars={hotel.stars}
       badge="Centrální poloha"
       description="Hotel Ensana Centrální Lázně leží přímo na Goethově náměstí v srdci Mariánských Lázní — ideální výchozí bod pro pěší objevování města, Kolonády i okolní přírody."
-      bookingUrl={withUtm(hotel.bookingUrls.cs, 'marienbad', 'editorial', 'things-to-do')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'cs', utmMedium: 'editorial', utmCampaign: 'things-to-do' })}
       bookingLabel="Rezervovat hotel"
     />
   </PillarPage>

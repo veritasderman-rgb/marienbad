@@ -5,7 +5,7 @@ import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage, extractFaqs } from '@/content/reader'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
-import { withUtm } from '@/utils/utm'
+import { exelyBookingUrl } from '@/utils/booking'
 
 const locale = 'cs' as const
 const page = await getPage('cs-historie')
@@ -33,7 +33,7 @@ const faqSchema = faqs.length > 0 ? {
       stars={hotel.stars}
       badge="Od roku 1828"
       description="Prožijte historii Mariánských Lázní na vlastní kůži v hotelu Ensana Nové Lázně, jednom z nejslavnějších lázeňských hotelů Evropy. Římské lázně, zachované v původním stavu z roku 1896, jsou živou památkou české lázeňské kultury."
-      bookingUrl={withUtm(hotel.bookingUrls.cs, 'marienbad', 'editorial', 'history')}
+      bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'cs', utmMedium: 'editorial', utmCampaign: 'history' })}
       bookingLabel="Rezervovat historický hotel"
     />
   </PillarPage>
