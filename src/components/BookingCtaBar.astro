@@ -8,14 +8,13 @@ interface Props {
 
 const { locale } = Astro.props
 
-const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
-const destinationPaths: Record<string, string> = {
-  cs: 'destinace/ceska-republika/marianske-lazne',
-  de: 'destinationen/tschechische-republik/marienbad',
-  en: 'destinations/czech-republic/marianske-lazne',
-  ru: 'napravleniya/cheshskaya-respublika/marienbad',
+const accommodationPaths: Record<Locale, string> = {
+  cs: 'ubytovani',
+  de: 'unterkunft',
+  en: 'accommodation',
+  ru: 'prozhivanie',
 }
-const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[ensanaLocale]}?utm_source=marienbad&utm_medium=cta-bar&utm_campaign=mobile-sticky`
+const bookingUrl = `/${locale}/${accommodationPaths[locale]}`
 
 const ctaLabels: Record<Locale, string> = {
   de: 'Jetzt buchen',
@@ -37,8 +36,6 @@ const ctaLabels: Record<Locale, string> = {
     <a
       href={bookingUrl}
       class="btn-primary text-sm py-2 px-5 whitespace-nowrap"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       {ctaLabels[locale]}
     </a>
