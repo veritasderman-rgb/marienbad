@@ -70,7 +70,7 @@ export async function getPage(slug: string) {
 
     const { meta, body: rawBody } = splitFrontmatter(raw as string)
     const ast = Markdoc.parse(rawBody)
-    const content = Markdoc.transform(ast, markdocConfig)
+    const content = Markdoc.transform(ast, { ...markdocConfig, variables: { locale: meta.locale ?? '' } })
 
     return {
       title: meta.title ?? '',
@@ -175,7 +175,7 @@ function parseArticle(slug: string, raw: string): Article | null {
   if (!rawBody) return null
 
   const ast = Markdoc.parse(rawBody)
-  const content = Markdoc.transform(ast, markdocConfig)
+  const content = Markdoc.transform(ast, { ...markdocConfig, variables: { locale: meta.locale ?? '' } })
 
   return {
     slug,
@@ -251,7 +251,7 @@ function parseStory(slug: string, raw: string): Story | null {
   if (!rawBody) return null
 
   const ast = Markdoc.parse(rawBody)
-  const content = Markdoc.transform(ast, markdocConfig)
+  const content = Markdoc.transform(ast, { ...markdocConfig, variables: { locale: meta.locale ?? '' } })
 
   return {
     slug,
