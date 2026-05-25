@@ -1,5 +1,7 @@
 ---
 import Markdoc, { type RenderableTreeNode } from '@markdoc/markdoc'
+import { getHotelBySlug, EXELY_LOCALE_MAP } from '@/data/hotels'
+import { exelyBookingUrl } from '@/utils/booking'
 
 interface Props {
   content: RenderableTreeNode
@@ -87,6 +89,11 @@ function renderCustomHtml(node: RenderableTreeNode): string {
       return renderHotelBox(attrs)
     }
 
+    // Custom tag: book-cta
+    if (name === 'book-cta') {
+      return renderBookCta(attrs)
+    }
+
     // Default: render standard Markdoc tags as HTML
     return Markdoc.renderers.html([node])
   }
@@ -130,6 +137,22 @@ function renderHotelBox(attrs: any): string {
     + '</a></aside>'
 }
 
+function renderBookCta(attrs: any): string {
+  const hotel = getHotelBySlug(String(attrs.hotel ?? ''))
+  const locale = String(attrs.locale ?? '')
+  if (!hotel || !(locale in EXELY_LOCALE_MAP)) return ''
+  const url = exelyBookingUrl({
+    hotelId: hotel.exelyHotelId,
+    locale: locale as keyof typeof EXELY_LOCALE_MAP,
+    utmMedium: 'pillar-page',
+    utmCampaign: 'hotel-booking-cta',
+  })
+  return '<p class="my-6"><a href="' + escapeAttr(url) + '" class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors no-underline" target="_blank" rel="noopener noreferrer">'
+    + escapeHtml(String(attrs.label ?? ''))
+    + '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>'
+    + '</a></p>'
+}
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -162,7 +185,7 @@ function hasCustomTags(node: any): boolean {
   if (!node || typeof node !== 'object') return false
   if ('$$mdtype' in node) {
     const name = node.name
-    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote' || name === 'treatment-box' || name === 'hotel-box' || name === 'youtube') return true
+    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote' || name === 'treatment-box' || name === 'hotel-box' || name === 'book-cta' || name === 'youtube') return true
     if (node.children) return node.children.some(hasCustomTags)
   }
   if (Array.isArray(node)) return node.some(hasCustomTags)

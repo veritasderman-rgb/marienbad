@@ -98,6 +98,16 @@ const hotelBox: Schema = {
   },
 }
 
+const bookCta: Schema = {
+  render: 'book-cta',
+  selfClosing: true,
+  attributes: {
+    hotel: { type: String, required: true, errorLevel: 'critical' },
+    locale: { type: String, required: true, errorLevel: 'critical' },
+    label: { type: String, required: true, errorLevel: 'critical' },
+  },
+}
+
 export const markdocConfig: Config = {
   tags: {
     figure,
@@ -106,6 +116,7 @@ export const markdocConfig: Config = {
     pullquote,
     'treatment-box': treatmentBox,
     'hotel-box': hotelBox,
+    'book-cta': bookCta,
     youtube,
   },
 }
