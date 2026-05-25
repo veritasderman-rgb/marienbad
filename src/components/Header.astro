@@ -15,14 +15,13 @@ const navItemsFlat = getNavItemsFlat(locale)
 const allLocales = (['de', 'en', 'cs', 'ru'] as const)
 const bookingCta = locale === 'de' ? 'Aufenthalt buchen' : locale === 'cs' ? 'Rezervovat pobyt' : locale === 'ru' ? 'Забронировать' : 'Book your stay'
 
-const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
-const destinationPaths: Record<string, string> = {
-  cs: 'destinace/ceska-republika/marianske-lazne',
-  de: 'destinationen/tschechische-republik/marienbad',
-  en: 'destinations/czech-republic/marianske-lazne',
-  ru: 'napravleniya/cheshskaya-respublika/marienbad',
+const accommodationPaths: Record<Locale, string> = {
+  cs: 'ubytovani',
+  de: 'unterkunft',
+  en: 'accommodation',
+  ru: 'prozhivanie',
 }
-const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[ensanaLocale]}`
+const bookingUrl = `/${locale}/${accommodationPaths[locale]}`
 ---
 
 <header id="site-header" class="sticky top-0 z-50 transition-all duration-300 will-change-transform" data-transparent="true">
@@ -95,11 +94,8 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[
 
         <!-- CTA Button (yellow pill) -->
         <a
-          href={`${bookingUrl}?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+          href={bookingUrl}
           class="hidden lg:inline-flex items-center gap-1.5 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold rounded-full transition-all duration-200"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${bookingCta} (opens in a new tab)`}
         >
           {bookingCta}
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -159,10 +155,8 @@ const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[
     <!-- Mobile CTA -->
     <div class="mt-6">
       <a
-        href={`${bookingUrl}?utm_source=marienbad&utm_medium=editorial&utm_campaign=header-cta`}
+        href={bookingUrl}
         class="block w-full text-center px-6 py-3.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         {bookingCta} →
       </a>
