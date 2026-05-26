@@ -1,0 +1,43 @@
+{
+  "popupEnabled": true,
+  "jubilee": {
+    "teaserStart": "2026-05-25",
+    "saleStart": "2026-06-01",
+    "saleEnd": "2026-06-06",
+    "eyebrow": "130 лет Nové Lázně",
+    "headline": "Юбилейное предложение\n−25 %",
+    "teaserText": "1 июня 2026 года отель Nové Lázně отмечает 130 лет. К юбилею готовим 130-часовое окно со скидкой 25 % на избранные пребывания.",
+    "saleText": "С 1 по 6 июня 2026 года — ровно 130 часов — мы празднуем 130 лет исторического отеля Nové Lázně скидкой 25 % на избранные пребывания. Прикоснитесь к курортной истории.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Смотреть юбилейное предложение",
+    "ctaUrl": "https://ensanahotels.com/ru/oteli/nove-lazne/130-let-hotelu-nove-lazne?utm_source=marienbad&utm_medium=popup&utm_campaign=jubilee-130",
+    "footnote": "Nové Lázně 1896–2026 • 130 часов, скидка 25 %"
+  },
+  "summerSale": {
+    "teaserStart": "2026-06-04",
+    "saleStart": "2026-06-09",
+    "saleEnd": "2026-06-17",
+    "stayPeriod": "10. 6. 2026 – 16. 3. 2027",
+    "eyebrow": "Летняя распродажа 2026",
+    "headline": "Летнее предложение\n−25 %",
+    "teaserText": "Скоро стартует летняя распродажа — 25 % на проживание в отелях Ensana в Марианских Лазнях. Период проживания — до 16 марта 2027 года. Бронирование с 9 по 17 июня 2026 года.",
+    "saleText": "25 % скидка на проживание в отелях Ensana в Марианских Лазнях. Бронируйте с 9 по 17 июня 2026 года для проживания в любую дату до 16 марта 2027 года.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Забронировать проживание",
+    "ctaUrl": "https://ensanahotels.com/ru/predlozheniya?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "conditions": [
+      "50 % невозвратная предоплата",
+      "50 % штраф за отмену",
+      "1 бесплатное изменение бронирования"
+    ],
+    "footnote": "Окно продаж: 9–17. 6. 2026 • Проживание до 16. 3. 2027",
+    "landingPageTitle": "Летняя распродажа 2026 — −25 % в Марианских Лазнях — Marienbad.com",
+    "landingPageDescription": "Летняя распродажа 2026 в отелях Ensana в Марианских Лазнях. 25 % скидка на проживание с 10 июня 2026 по 16 марта 2027. Окно продаж: 9–17 июня 2026.",
+    "landingHeroEyebrow": "Летняя распродажа 2026",
+    "landingKeyInfoTitle": "Ключевая информация",
+    "landingConditionsTitle": "Условия бронирования",
+    "landingSalePeriodLabel": "Период продаж",
+    "landingStayPeriodLabel": "Период проживания",
+    "landingDiscountLabel": "Скидка"
+  }
+}

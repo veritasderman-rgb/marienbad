@@ -250,6 +250,66 @@ function homepageSingleton(locale: string, label: string) {
   })
 }
 
+function campaignSingleton(locale: string, label: string) {
+  return singleton({
+    label,
+    path: `src/content/campaigns/${locale}`,
+    format: { data: 'json' },
+    schema: {
+      popupEnabled: fields.checkbox({
+        label: 'Popup enabled (master switch)',
+        defaultValue: true,
+        description: 'When off, no campaign popup is shown for this locale.',
+      }),
+      jubilee: fields.object(
+        {
+          teaserStart: fields.text({ label: 'Teaser start (YYYY-MM-DD)', description: 'e.g. 2026-05-25' }),
+          saleStart: fields.text({ label: 'Sale start (YYYY-MM-DD)', description: 'e.g. 2026-06-01' }),
+          saleEnd: fields.text({ label: 'Sale end (YYYY-MM-DD inclusive)', description: 'e.g. 2026-06-06' }),
+          eyebrow: fields.text({ label: 'Eyebrow / small label' }),
+          headline: fields.text({ label: 'Headline (use \\n for line break)' }),
+          teaserText: fields.text({ label: 'Teaser body text', multiline: true }),
+          saleText: fields.text({ label: 'Sale body text', multiline: true }),
+          discountLabel: fields.text({ label: 'Discount label', description: 'e.g. −25 %' }),
+          ctaLabel: fields.text({ label: 'CTA button label' }),
+          ctaUrl: fields.text({ label: 'CTA URL (Ensana landing)', description: 'Full URL incl. UTM params' }),
+          footnote: fields.text({ label: 'Footnote / small print' }),
+        },
+        { label: 'Jubilee Sale (130 years Nové Lázně)' }
+      ),
+      summerSale: fields.object(
+        {
+          teaserStart: fields.text({ label: 'Teaser start (YYYY-MM-DD)', description: 'e.g. 2026-06-04' }),
+          saleStart: fields.text({ label: 'Sale start (YYYY-MM-DD)', description: 'e.g. 2026-06-09' }),
+          saleEnd: fields.text({ label: 'Sale end (YYYY-MM-DD inclusive)', description: 'e.g. 2026-06-17' }),
+          stayPeriod: fields.text({ label: 'Stay period (display text)', description: 'e.g. 10. 6. 2026 – 16. 3. 2027' }),
+          eyebrow: fields.text({ label: 'Eyebrow / small label' }),
+          headline: fields.text({ label: 'Headline (use \\n for line break)' }),
+          teaserText: fields.text({ label: 'Teaser body text', multiline: true }),
+          saleText: fields.text({ label: 'Sale body text', multiline: true }),
+          discountLabel: fields.text({ label: 'Discount label', description: 'e.g. −25 %' }),
+          ctaLabel: fields.text({ label: 'CTA button label' }),
+          ctaUrl: fields.text({ label: 'CTA URL (Ensana offer page — placeholder until final from HQ)' }),
+          conditions: fields.array(fields.text({ label: 'Condition' }), {
+            label: 'Booking conditions (50% prepayment, etc.)',
+            itemLabel: (props) => props.value || 'Condition',
+          }),
+          footnote: fields.text({ label: 'Footnote / small print' }),
+          landingPageTitle: fields.text({ label: 'Landing page <title> tag' }),
+          landingPageDescription: fields.text({ label: 'Landing page meta description', multiline: true }),
+          landingHeroEyebrow: fields.text({ label: 'Landing page hero eyebrow' }),
+          landingKeyInfoTitle: fields.text({ label: 'Landing page "Key info" section title' }),
+          landingConditionsTitle: fields.text({ label: 'Landing page "Conditions" section title' }),
+          landingSalePeriodLabel: fields.text({ label: 'Label for sale window', description: 'e.g. Sale period' }),
+          landingStayPeriodLabel: fields.text({ label: 'Label for stay period' }),
+          landingDiscountLabel: fields.text({ label: 'Label for discount' }),
+        },
+        { label: 'Summer Sale' }
+      ),
+    },
+  })
+}
+
 const isProd = import.meta.env.PROD
 
 export default config({
@@ -271,6 +331,10 @@ export default config({
     'homepage-en': homepageSingleton('en', 'Homepage (English)'),
     'homepage-cs': homepageSingleton('cs', 'Homepage (Čeština)'),
     'homepage-ru': homepageSingleton('ru', 'Homepage (Русский)'),
+    'campaigns-de': campaignSingleton('de', 'Campaigns (Deutsch)'),
+    'campaigns-en': campaignSingleton('en', 'Campaigns (English)'),
+    'campaigns-cs': campaignSingleton('cs', 'Campaigns (Čeština)'),
+    'campaigns-ru': campaignSingleton('ru', 'Campaigns (Русский)'),
     'podcast-episodes': singleton({
       label: 'Podcast Episodes',
       path: 'src/content/podcasts/episodes',

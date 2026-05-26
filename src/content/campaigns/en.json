@@ -1,0 +1,43 @@
+{
+  "popupEnabled": true,
+  "jubilee": {
+    "teaserStart": "2026-05-25",
+    "saleStart": "2026-06-01",
+    "saleEnd": "2026-06-06",
+    "eyebrow": "130 years of Nové Lázně",
+    "headline": "Jubilee offer\n−25 %",
+    "teaserText": "On June 1, 2026, Hotel Nové Lázně celebrates 130 years. To mark the anniversary we're preparing a 130-hour window with 25 % off selected stays.",
+    "saleText": "From June 1 to 6, 2026 — exactly 130 hours — we celebrate 130 years of the historic Hotel Nové Lázně with 25 % off selected stays. Treat yourself to a piece of spa history.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "View jubilee offer",
+    "ctaUrl": "https://ensanahotels.com/en/hotels/nove-lazne/130-let-hotelu-nove-lazne?utm_source=marienbad&utm_medium=popup&utm_campaign=jubilee-130",
+    "footnote": "Nové Lázně 1896–2026 • 130 hours, 25 % off"
+  },
+  "summerSale": {
+    "teaserStart": "2026-06-04",
+    "saleStart": "2026-06-09",
+    "saleEnd": "2026-06-17",
+    "stayPeriod": "10 Jun 2026 – 16 Mar 2027",
+    "eyebrow": "Summer Sale 2026",
+    "headline": "Summer offer\n−25 %",
+    "teaserText": "Summer Sale is coming — 25 % off stays at Ensana hotels in Marienbad. Travel period until March 16, 2027. Book between June 9 and June 17, 2026.",
+    "saleText": "25 % off stays at Ensana hotels in Marienbad. Book between June 9 and June 17, 2026 for any stay until March 16, 2027.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Book your stay",
+    "ctaUrl": "https://ensanahotels.com/en/offers?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "conditions": [
+      "50 % non-refundable prepayment",
+      "50 % cancellation fee",
+      "1 free reservation change"
+    ],
+    "footnote": "Sale window: Jun 9–17, 2026 • Stay until Mar 16, 2027",
+    "landingPageTitle": "Summer Sale 2026 — 25 % off in Marienbad — Marienbad.com",
+    "landingPageDescription": "Summer Sale 2026 at Ensana hotels in Marienbad. 25 % off stays from June 10, 2026 to March 16, 2027. Sale window: June 9–17, 2026.",
+    "landingHeroEyebrow": "Summer Sale 2026",
+    "landingKeyInfoTitle": "Key information",
+    "landingConditionsTitle": "Booking conditions",
+    "landingSalePeriodLabel": "Sale period",
+    "landingStayPeriodLabel": "Stay period",
+    "landingDiscountLabel": "Discount"
+  }
+}
