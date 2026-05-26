@@ -1,0 +1,24 @@
+---
+import Base from '@/layouts/Base.astro'
+import SummerSaleLanding from '@/components/SummerSaleLanding.astro'
+import { getCampaign } from '@/lib/campaign'
+
+const locale = 'en' as const
+const data = getCampaign(locale).summerSale
+const beforeSale = new Date() < new Date(data.saleStart)
+---
+
+<Base
+  locale={locale}
+  title={data.landingPageTitle}
+  description={data.landingPageDescription}
+  noindex={beforeSale}
+  alternateUrls={{
+    de: '/de/sommer-sale-2026',
+    en: '/en/summer-sale-2026',
+    cs: '/cs/letni-sleva-2026',
+    ru: '/ru/letnyaya-rasprodazha-2026',
+  }}
+>
+  <SummerSaleLanding locale={locale} />
+</Base>

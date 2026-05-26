@@ -1,0 +1,43 @@
+{
+  "popupEnabled": true,
+  "jubilee": {
+    "teaserStart": "2026-05-25",
+    "saleStart": "2026-06-01",
+    "saleEnd": "2026-06-06",
+    "eyebrow": "130 Jahre Nové Lázně",
+    "headline": "Jubiläumsangebot\n−25 %",
+    "teaserText": "Am 1. Juni 2026 feiern die Hotel Nové Lázně 130 Jahre. Zum Jubiläum bereiten wir 130 Stunden lang ein einzigartiges Angebot mit 25 % Rabatt auf Ihren Aufenthalt vor.",
+    "saleText": "Vom 1. bis 6. Juni 2026 — genau 130 Stunden lang — feiern wir 130 Jahre des historischen Hotels Nové Lázně mit 25 % Rabatt auf ausgewählte Aufenthalte. Schenken Sie sich ein Stück Spa-Geschichte.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Jubiläumsangebot ansehen",
+    "ctaUrl": "https://ensanahotels.com/de/hotels/nove-lazne/130-let-hotelu-nove-lazne?utm_source=marienbad&utm_medium=popup&utm_campaign=jubilee-130",
+    "footnote": "Nové Lázně 1896–2026 • 130 Stunden, 25 % Rabatt"
+  },
+  "summerSale": {
+    "teaserStart": "2026-06-04",
+    "saleStart": "2026-06-09",
+    "saleEnd": "2026-06-17",
+    "stayPeriod": "10. 6. 2026 – 16. 3. 2027",
+    "eyebrow": "Summer Sale 2026",
+    "headline": "Sommerangebot\n−25 %",
+    "teaserText": "Bald startet der Summer Sale — 25 % Rabatt auf Aufenthalte in den Ensana Hotels in Marienbad. Aufenthalt bis 16. März 2027. Buchen Sie vom 9. bis 17. Juni 2026.",
+    "saleText": "25 % Rabatt auf Aufenthalte in den Ensana Hotels in Marienbad. Buchen Sie zwischen dem 9. und 17. Juni 2026 für jeden Aufenthalt bis 16. März 2027.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Aufenthalt buchen",
+    "ctaUrl": "https://ensanahotels.com/de/angebote?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "conditions": [
+      "50 % nicht erstattbare Anzahlung",
+      "50 % Stornogebühr",
+      "1 kostenlose Umbuchung pro Reservierung"
+    ],
+    "footnote": "Verkaufsfenster: 9.–17. 6. 2026 • Aufenthalt bis 16. 3. 2027",
+    "landingPageTitle": "Summer Sale 2026 — 25 % Rabatt in Marienbad — Marienbad.com",
+    "landingPageDescription": "Summer Sale 2026 in den Ensana Hotels in Marienbad. 25 % Rabatt auf Aufenthalte vom 10. Juni 2026 bis 16. März 2027. Buchungsfenster: 9.–17. Juni 2026.",
+    "landingHeroEyebrow": "Summer Sale 2026",
+    "landingKeyInfoTitle": "Wichtige Informationen",
+    "landingConditionsTitle": "Buchungsbedingungen",
+    "landingSalePeriodLabel": "Verkaufszeitraum",
+    "landingStayPeriodLabel": "Aufenthaltszeitraum",
+    "landingDiscountLabel": "Rabatt"
+  }
+}

@@ -1,0 +1,273 @@
+---
+/**
+ * CampaignPopup — site-wide promo popup for Jubilee Sale (1.–6. 6. 2026, −25 %)
+ * and Summer Sale (9.–17. 6. 2026, −25 %).
+ *
+ * Phases (priority: jubilee > summer when overlapping):
+ *  - jubilee-teaser:   teaserStart .. dayBefore(saleStart)
+ *  - jubilee-active:   saleStart   .. saleEnd
+ *  - summer-teaser:    teaserStart .. dayBefore(saleStart)   (skipped if jubilee-active)
+ *  - summer-active:    saleStart   .. saleEnd
+ *  - none:             outside all windows → component renders empty
+ *
+ * All dates/copy come from src/content/campaigns/{locale}.json (Keystatic-managed).
+ * Per-phase dismissal in localStorage so closing one phase doesn't hide the next.
+ */
+import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import { getCampaign } from '@/lib/campaign'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const campaign = getCampaign(locale)
+
+const labels = {
+  close: t(locale, 'campaign.popup.close'),
+  countdown: t(locale, 'campaign.popup.countdown'),
+  countdownDone: t(locale, 'campaign.popup.countdownDone'),
+}
+
+const jubileeHeadlineParts = campaign.jubilee.headline.split('\n')
+const summerHeadlineParts = campaign.summerSale.headline.split('\n')
+---
+
+{campaign.popupEnabled && (
+  <div
+    id="campaign-popup-overlay"
+    class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+    data-jubilee-teaser-start={campaign.jubilee.teaserStart}
+    data-jubilee-sale-start={campaign.jubilee.saleStart}
+    data-jubilee-sale-end={campaign.jubilee.saleEnd}
+    data-summer-teaser-start={campaign.summerSale.teaserStart}
+    data-summer-sale-start={campaign.summerSale.saleStart}
+    data-summer-sale-end={campaign.summerSale.saleEnd}
+    data-countdown-done={labels.countdownDone}
+  >
+    {/* ============== JUBILEE — TEASER ============== */}
+    <div data-card="jubilee-teaser" class="campaign-card hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
+      <div class="px-6 pt-8 pb-10 text-center text-white relative" style="background: linear-gradient(135deg, #004F71 0%, #3199b3 100%);">
+        <button class="campaign-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={labels.close}>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{campaign.jubilee.eyebrow}</p>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">
+          {jubileeHeadlineParts[0]}{jubileeHeadlineParts[1] && (<><br/>{jubileeHeadlineParts[1]}</>)}
+        </h2>
+      </div>
+      <div class="px-6 py-6 text-center">
+        <p class="text-beige-700 text-base leading-relaxed mb-6">{campaign.jubilee.teaserText}</p>
+        <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-4 px-6 mb-5">
+          <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">{labels.countdown}</p>
+          <p data-countdown="jubilee" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
+        </div>
+        <a
+          href={campaign.jubilee.ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+        >
+          {campaign.jubilee.ctaLabel}
+        </a>
+        <p class="text-beige-500 text-xs mt-4">{campaign.jubilee.footnote}</p>
+      </div>
+    </div>
+
+    {/* ============== JUBILEE — ACTIVE ============== */}
+    <div data-card="jubilee-active" class="campaign-card hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
+      <div class="px-6 pt-8 pb-10 text-center text-white relative" style="background: linear-gradient(135deg, #004F71 0%, #3199b3 100%);">
+        <button class="campaign-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={labels.close}>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{campaign.jubilee.eyebrow}</p>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">
+          {jubileeHeadlineParts[0]}{jubileeHeadlineParts[1] && (<><br/>{jubileeHeadlineParts[1]}</>)}
+        </h2>
+      </div>
+      <div class="px-6 py-6 text-center">
+        <p class="text-beige-700 text-base leading-relaxed mb-5">{campaign.jubilee.saleText}</p>
+        <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-5 px-6 mb-5">
+          <p class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 tracking-wider">{campaign.jubilee.discountLabel}</p>
+        </div>
+        <a
+          href={campaign.jubilee.ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+        >
+          {campaign.jubilee.ctaLabel}
+        </a>
+        <p class="text-beige-500 text-xs mt-4">{campaign.jubilee.footnote}</p>
+      </div>
+    </div>
+
+    {/* ============== SUMMER — TEASER ============== */}
+    <div data-card="summer-teaser" class="campaign-card hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
+      <div class="px-6 pt-8 pb-10 text-center text-white relative" style="background: linear-gradient(135deg, #004F71 0%, #3199b3 100%);">
+        <button class="campaign-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={labels.close}>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{campaign.summerSale.eyebrow}</p>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">
+          {summerHeadlineParts[0]}{summerHeadlineParts[1] && (<><br/>{summerHeadlineParts[1]}</>)}
+        </h2>
+      </div>
+      <div class="px-6 py-6 text-center">
+        <p class="text-beige-700 text-base leading-relaxed mb-6">{campaign.summerSale.teaserText}</p>
+        <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-4 px-6 mb-5">
+          <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">{labels.countdown}</p>
+          <p data-countdown="summer" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
+        </div>
+        <a
+          href={campaign.summerSale.ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+        >
+          {campaign.summerSale.ctaLabel}
+        </a>
+        <p class="text-beige-500 text-xs mt-4">{campaign.summerSale.footnote}</p>
+      </div>
+    </div>
+
+    {/* ============== SUMMER — ACTIVE ============== */}
+    <div data-card="summer-active" class="campaign-card hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
+      <div class="px-6 pt-8 pb-10 text-center text-white relative" style="background: linear-gradient(135deg, #004F71 0%, #3199b3 100%);">
+        <button class="campaign-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={labels.close}>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{campaign.summerSale.eyebrow}</p>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">
+          {summerHeadlineParts[0]}{summerHeadlineParts[1] && (<><br/>{summerHeadlineParts[1]}</>)}
+        </h2>
+      </div>
+      <div class="px-6 py-6 text-center">
+        <p class="text-beige-700 text-base leading-relaxed mb-5">{campaign.summerSale.saleText}</p>
+        <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-5 px-6 mb-5">
+          <p class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 tracking-wider">{campaign.summerSale.discountLabel}</p>
+        </div>
+        <a
+          href={campaign.summerSale.ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+        >
+          {campaign.summerSale.ctaLabel}
+        </a>
+        <p class="text-beige-500 text-xs mt-4">{campaign.summerSale.footnote}</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var overlay = document.getElementById('campaign-popup-overlay');
+      if (!overlay) return;
+
+      function parseDate(s) {
+        var parts = s.split('-');
+        return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+      }
+      function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+      function endOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999); }
+
+      var jubileeTeaserStart = startOfDay(parseDate(overlay.dataset.jubileeTeaserStart));
+      var jubileeSaleStart = startOfDay(parseDate(overlay.dataset.jubileeSaleStart));
+      var jubileeSaleEnd = endOfDay(parseDate(overlay.dataset.jubileeSaleEnd));
+      var summerTeaserStart = startOfDay(parseDate(overlay.dataset.summerTeaserStart));
+      var summerSaleStart = startOfDay(parseDate(overlay.dataset.summerSaleStart));
+      var summerSaleEnd = endOfDay(parseDate(overlay.dataset.summerSaleEnd));
+
+      var now = new Date();
+      var phase = null;
+      var countdownTarget = null;
+
+      if (now >= jubileeSaleStart && now <= jubileeSaleEnd) {
+        phase = 'jubilee-active';
+      } else if (now >= summerSaleStart && now <= summerSaleEnd) {
+        phase = 'summer-active';
+      } else if (now >= jubileeTeaserStart && now < jubileeSaleStart) {
+        phase = 'jubilee-teaser';
+        countdownTarget = jubileeSaleStart;
+      } else if (now >= summerTeaserStart && now < summerSaleStart) {
+        phase = 'summer-teaser';
+        countdownTarget = summerSaleStart;
+      }
+
+      if (!phase) return;
+
+      var storageKey = 'campaign-' + phase + '-dismissed';
+      try { if (localStorage.getItem(storageKey)) return; } catch (e) {}
+
+      try { sessionStorage.setItem('booking-popup-dismissed', '1'); } catch (e) {}
+
+      var card = overlay.querySelector('[data-card="' + phase + '"]');
+      if (!card) return;
+      card.classList.remove('hidden');
+
+      if (countdownTarget) {
+        var countdownKey = phase.indexOf('jubilee') === 0 ? 'jubilee' : 'summer';
+        var countdownEl = card.querySelector('[data-countdown="' + countdownKey + '"]');
+        var doneText = overlay.dataset.countdownDone || 'Ready!';
+        if (countdownEl) {
+          var update = function () {
+            var diff = countdownTarget.getTime() - Date.now();
+            if (diff <= 0) { countdownEl.textContent = doneText; return; }
+            var days = Math.floor(diff / 86400000);
+            var hours = Math.floor((diff % 86400000) / 3600000);
+            var mins = Math.floor((diff % 3600000) / 60000);
+            var secs = Math.floor((diff % 60000) / 1000);
+            var parts = [];
+            if (days > 0) parts.push(days + 'd');
+            parts.push(hours + 'h');
+            parts.push(mins + 'm');
+            parts.push(secs + 's');
+            countdownEl.textContent = parts.join(' ');
+          };
+          update();
+          setInterval(update, 1000);
+        }
+      }
+
+      function show() {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100', 'pointer-events-auto');
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+      }
+
+      function hide() {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100', 'pointer-events-auto');
+        try { localStorage.setItem(storageKey, '1'); } catch (e) {}
+      }
+
+      var closeButtons = card.querySelectorAll('.campaign-close');
+      for (var i = 0; i < closeButtons.length; i++) {
+        closeButtons[i].addEventListener('click', hide);
+      }
+
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) hide();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') hide();
+      });
+
+      setTimeout(show, 2500);
+    })();
+  </script>
+)}

@@ -1,0 +1,43 @@
+{
+  "popupEnabled": true,
+  "jubilee": {
+    "teaserStart": "2026-05-25",
+    "saleStart": "2026-06-01",
+    "saleEnd": "2026-06-06",
+    "eyebrow": "130 let Nových Lázní",
+    "headline": "Jubilejní nabídka\n−25 %",
+    "teaserText": "1. června 2026 oslaví hotel Nové Lázně 130 let. K výročí připravujeme 130hodinové okno s 25% slevou na vybrané pobyty.",
+    "saleText": "Od 1. do 6. června 2026 — přesně 130 hodin — slavíme 130 let historického hotelu Nové Lázně 25% slevou na vybrané pobyty. Dopřejte si kus lázeňské historie.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Zobrazit jubilejní nabídku",
+    "ctaUrl": "https://ensanahotels.com/cs/hotely/nove-lazne/130-let-hotelu-nove-lazne?utm_source=marienbad&utm_medium=popup&utm_campaign=jubilee-130",
+    "footnote": "Nové Lázně 1896–2026 • 130 hodin, 25 % sleva"
+  },
+  "summerSale": {
+    "teaserStart": "2026-06-04",
+    "saleStart": "2026-06-09",
+    "saleEnd": "2026-06-17",
+    "stayPeriod": "10. 6. 2026 – 16. 3. 2027",
+    "eyebrow": "Letní sleva 2026",
+    "headline": "Letní nabídka\n−25 %",
+    "teaserText": "Brzy startuje letní sleva — 25 % na pobyty v hotelech Ensana v Mariánských Lázních. Pobyt až do 16. března 2027. Rezervujte od 9. do 17. června 2026.",
+    "saleText": "25 % sleva na pobyty v hotelech Ensana v Mariánských Lázních. Rezervujte od 9. do 17. června 2026 pro pobyt kdykoli do 16. března 2027.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Rezervovat pobyt",
+    "ctaUrl": "https://ensanahotels.com/cs/nabidky?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "conditions": [
+      "50% nevratná záloha",
+      "50% storno poplatek",
+      "1 změna rezervace zdarma"
+    ],
+    "footnote": "Prodejní okno: 9.–17. 6. 2026 • Pobyt do 16. 3. 2027",
+    "landingPageTitle": "Letní sleva 2026 — 25 % v Mariánských Lázních — Marienbad.com",
+    "landingPageDescription": "Letní sleva 2026 v hotelech Ensana v Mariánských Lázních. 25 % sleva na pobyty od 10. června 2026 do 16. března 2027. Prodejní okno: 9.–17. června 2026.",
+    "landingHeroEyebrow": "Letní sleva 2026",
+    "landingKeyInfoTitle": "Klíčové informace",
+    "landingConditionsTitle": "Podmínky rezervace",
+    "landingSalePeriodLabel": "Prodejní období",
+    "landingStayPeriodLabel": "Termín pobytu",
+    "landingDiscountLabel": "Sleva"
+  }
+}

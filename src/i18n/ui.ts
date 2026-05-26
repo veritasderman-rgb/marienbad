@@ -121,6 +121,10 @@ const ui = {
     'itinerary.activitiesLabel': 'Aktivität',
     'itinerary.treatmentLabel': 'Behandlung',
     'itinerary.detailsLink': 'Mehr erfahren',
+    'campaign.popup.close': 'Schließen',
+    'campaign.popup.countdown': 'Countdown',
+    'campaign.popup.countdownDone': 'Es ist soweit!',
+    'campaign.popup.openLandingPage': 'Mehr erfahren',
   },
   en: {
     'meta.siteName': 'Marienbad.com',
@@ -242,6 +246,10 @@ const ui = {
     'itinerary.activitiesLabel': 'Activity',
     'itinerary.treatmentLabel': 'Treatment',
     'itinerary.detailsLink': 'Learn more',
+    'campaign.popup.close': 'Close',
+    'campaign.popup.countdown': 'Countdown',
+    'campaign.popup.countdownDone': 'It\'s here!',
+    'campaign.popup.openLandingPage': 'Learn more',
   },
   cs: {
     'meta.siteName': 'Marienbad.com',
@@ -366,6 +374,10 @@ const ui = {
     'itinerary.activitiesLabel': 'Aktivita',
     'itinerary.treatmentLabel': 'Procedura',
     'itinerary.detailsLink': 'Zjistit více',
+    'campaign.popup.close': 'Zavřít',
+    'campaign.popup.countdown': 'Odpočítávání',
+    'campaign.popup.countdownDone': 'Už je to tady!',
+    'campaign.popup.openLandingPage': 'Zjistit více',
   },
   ru: {
     'meta.siteName': 'Marienbad.com',
@@ -487,6 +499,10 @@ const ui = {
     'itinerary.activitiesLabel': 'Активность',
     'itinerary.treatmentLabel': 'Процедура',
     'itinerary.detailsLink': 'Подробнее',
+    'campaign.popup.close': 'Закрыть',
+    'campaign.popup.countdown': 'Обратный отсчёт',
+    'campaign.popup.countdownDone': 'Уже доступно!',
+    'campaign.popup.openLandingPage': 'Подробнее',
   },
 } as const
 
