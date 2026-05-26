@@ -274,6 +274,13 @@ function campaignSingleton(locale: string, label: string) {
           ctaLabel: fields.text({ label: 'CTA button label' }),
           ctaUrl: fields.text({ label: 'CTA URL (Ensana landing)', description: 'Full URL incl. UTM params' }),
           footnote: fields.text({ label: 'Footnote / small print' }),
+          image: fields.image({
+            label: 'Campaign image (optional)',
+            directory: 'public/images/content/campaigns',
+            publicPath: '/images/content/campaigns/',
+            description: 'Banner image shown at the top of the popup card. Recommended ~1200×270 px, JPG/PNG/WebP. Leave empty for solid gradient header.',
+          }),
+          imageAlt: fields.text({ label: 'Image alt text (for accessibility)' }),
         },
         { label: 'Jubilee Sale (130 years Nové Lázně)' }
       ),
@@ -303,6 +310,13 @@ function campaignSingleton(locale: string, label: string) {
           landingSalePeriodLabel: fields.text({ label: 'Label for sale window', description: 'e.g. Sale period' }),
           landingStayPeriodLabel: fields.text({ label: 'Label for stay period' }),
           landingDiscountLabel: fields.text({ label: 'Label for discount' }),
+          image: fields.image({
+            label: 'Campaign image (optional)',
+            directory: 'public/images/content/campaigns',
+            publicPath: '/images/content/campaigns/',
+            description: 'Banner image shown at the top of the popup card and on the landing page hero. Recommended ~1200×270 px (popup) / 1920×800 (landing hero). Leave empty for solid gradient.',
+          }),
+          imageAlt: fields.text({ label: 'Image alt text (for accessibility)' }),
         },
         { label: 'Summer Sale' }
       ),

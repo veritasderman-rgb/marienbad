@@ -16,6 +16,8 @@ export interface JubileeData {
   ctaLabel: string
   ctaUrl: string
   footnote: string
+  image?: string | null
+  imageAlt?: string
 }
 
 export interface SummerSaleData {
@@ -40,6 +42,8 @@ export interface SummerSaleData {
   landingSalePeriodLabel: string
   landingStayPeriodLabel: string
   landingDiscountLabel: string
+  image?: string | null
+  imageAlt?: string
 }
 
 export interface CampaignData {
