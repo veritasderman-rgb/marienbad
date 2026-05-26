@@ -22,9 +22,21 @@ const dateFormatter = new Intl.DateTimeFormat(
   { day: 'numeric', month: 'long', year: 'numeric' }
 )
 const salePeriodDisplay = `${dateFormatter.format(saleStart)} – ${dateFormatter.format(saleEnd)}`
+
+const heroStyle = data.image
+  ? `background: linear-gradient(135deg, rgba(45,42,110,0.75) 0%, rgba(0,79,113,0.7) 50%, rgba(49,153,179,0.65) 100%), url('${data.image}') center / cover no-repeat;`
+  : undefined
+const heroAlt = data.imageAlt ?? data.eyebrow
 ---
 
-<section class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-turquoise-500 text-white py-20 md:py-28">
+<section
+  class={data.image
+    ? 'text-white py-20 md:py-28 relative'
+    : 'bg-gradient-to-br from-indigo-700 via-indigo-600 to-turquoise-500 text-white py-20 md:py-28'}
+  style={heroStyle}
+  role={data.image ? 'img' : undefined}
+  aria-label={data.image ? heroAlt : undefined}
+>
   <div class="container-wide">
     <div class="max-w-3xl mx-auto text-center">
       <p class="text-turquoise-100 text-sm font-semibold tracking-[0.25em] uppercase mb-5">{data.landingHeroEyebrow}</p>
