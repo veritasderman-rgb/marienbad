@@ -11,7 +11,8 @@
     "discountLabel": "−25 %",
     "ctaLabel": "Смотреть юбилейное предложение",
     "ctaUrl": "https://ensanahotels.com/ru/oteli/nove-lazne/130-let-hotelu-nove-lazne?utm_source=marienbad&utm_medium=popup&utm_campaign=jubilee-130",
-    "footnote": "Nové Lázně 1896–2026 • 130 часов, скидка 25 %"
+    "footnote": "Nové Lázně 1896–2026 • 130 часов, скидка 25 %",
+    "image": "/images/content/campaigns/jubilee/image.jpg"
   },
   "summerSale": {
     "teaserStart": "2026-06-04",
@@ -38,6 +39,7 @@
     "landingConditionsTitle": "Условия бронирования",
     "landingSalePeriodLabel": "Период продаж",
     "landingStayPeriodLabel": "Период проживания",
-    "landingDiscountLabel": "Скидка"
+    "landingDiscountLabel": "Скидка",
+    "image": "/images/content/campaigns/summerSale/image.jpg"
   }
 }
