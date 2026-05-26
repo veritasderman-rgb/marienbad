@@ -11,7 +11,8 @@
     "discountLabel": "−25 %",
     "ctaLabel": "Zobrazit jubilejní nabídku",
     "ctaUrl": "https://ensanahotels.com/cs/hotely/nove-lazne/130-let-hotelu-nove-lazne?utm_source=marienbad&utm_medium=popup&utm_campaign=jubilee-130",
-    "footnote": "Nové Lázně 1896–2026 • 130 hodin, 25 % sleva"
+    "footnote": "Nové Lázně 1896–2026 • 130 hodin, 25 % sleva",
+    "image": "/images/content/campaigns/jubilee/image.jpg"
   },
   "summerSale": {
     "teaserStart": "2026-06-04",
@@ -38,6 +39,7 @@
     "landingConditionsTitle": "Podmínky rezervace",
     "landingSalePeriodLabel": "Prodejní období",
     "landingStayPeriodLabel": "Termín pobytu",
-    "landingDiscountLabel": "Sleva"
+    "landingDiscountLabel": "Sleva",
+    "image": "/images/content/campaigns/summerSale/image.jpg"
   }
 }
