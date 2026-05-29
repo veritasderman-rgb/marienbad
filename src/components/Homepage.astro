@@ -334,7 +334,7 @@ const gradients = [
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4" style="font-size: var(--text-h2);">{cms.newsletter.title}</h2>
       <p class="text-white/70 text-lg mb-8">{cms.newsletter.description}</p>
-      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST" data-locale={locale}>
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" action="#" method="POST" data-locale={locale} data-ga-form="newsletter">
         <!-- Honeypot field (hidden from real users, bots will fill it) -->
         <div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;overflow:hidden;">
           <label for="newsletter-website">Website</label>

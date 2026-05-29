@@ -137,7 +137,7 @@ export default function StorySubmissionForm({ locale, translations }: StorySubmi
           </div>
         )}
 
-        <form onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit} noValidate data-ga-form="story">
           {/* Honeypot field — hidden from real users */}
           <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
             <label htmlFor="website">Website</label>

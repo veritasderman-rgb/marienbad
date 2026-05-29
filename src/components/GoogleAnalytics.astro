@@ -1,0 +1,107 @@
+---
+/**
+ * GoogleAnalytics — GA4 (gtag.js) for marienbad.com.
+ *
+ * Loaded site-wide from Base.astro <head>. The measurement ID resolves from
+ * the PUBLIC_GA_MEASUREMENT_ID env var, falling back to the project's GA4
+ * property so it works out of the box; set the env var to override per
+ * environment (e.g. a separate dev/staging property) or to an empty string
+ * to disable.
+ *
+ * GA4 Enhanced Measurement (page_view, scroll, outbound click, site search,
+ * file download, video engagement) is enabled by default in the GA4 admin
+ * and needs no code here. On top of that we add explicit conversion events
+ * that matter for this tourism site:
+ *   - `book_now`       — clicks on any ensanahotels.com link (booking intent),
+ *                        enriched with campaign/source/hotel/locale.
+ *   - `select_promotion` — clicks inside the campaign popup (Jubilee / Summer).
+ *   - `generate_lead`  — newsletter / story form submissions.
+ * A `locale` user property is set so reports can be segmented by language.
+ */
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const GA_MEASUREMENT_ID =
+  import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? 'G-QCH8PW51VM'
+---
+
+{GA_MEASUREMENT_ID && (
+  <Fragment>
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    {/* Google tag (gtag.js) */}
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script is:inline define:vars={{ GA_MEASUREMENT_ID, locale }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID, {
+        anonymize_ip: true,
+        // Segment all reports by site language
+        custom_map: { dimension1: 'locale' },
+      });
+      gtag('set', 'user_properties', { locale: locale });
+      gtag('event', 'page_locale', { locale: locale });
+
+      (function () {
+        function findAnchor(el) {
+          while (el && el !== document.body) {
+            if (el.tagName === 'A' && el.href) return el;
+            el = el.parentElement;
+          }
+          return null;
+        }
+
+        document.addEventListener('click', function (e) {
+          var a = findAnchor(e.target);
+          if (!a) return;
+
+          var href = a.href;
+          var url;
+          try { url = new URL(href, window.location.href); } catch (err) { return; }
+
+          // Booking intent: any link to ensanahotels.com
+          if (/(^|\.)ensanahotels\.com$/.test(url.hostname)) {
+            var params = url.searchParams;
+            var pathParts = url.pathname.split('/').filter(Boolean);
+            gtag('event', 'book_now', {
+              link_url: href,
+              link_domain: url.hostname,
+              campaign: params.get('utm_campaign') || '(not set)',
+              source: params.get('utm_source') || '(direct)',
+              medium: params.get('utm_medium') || '(none)',
+              // ensanahotels.com paths look like /{locale}/hotels/{hotel}/...
+              hotel: pathParts[2] || '(not set)',
+              locale: locale,
+            });
+          }
+
+          // Campaign popup CTA → select_promotion
+          var popup = a.closest('#campaign-popup-overlay');
+          if (popup) {
+            var card = a.closest('[data-card]');
+            gtag('event', 'select_promotion', {
+              promotion_name: card ? card.getAttribute('data-card') : 'campaign',
+              link_url: href,
+              locale: locale,
+            });
+          }
+        }, true);
+
+        // Newsletter / story form submissions → generate_lead
+        document.addEventListener('submit', function (e) {
+          var form = e.target;
+          if (!form || form.tagName !== 'FORM') return;
+          var kind = form.getAttribute('data-ga-form');
+          if (!kind) return;
+          gtag('event', 'generate_lead', { form: kind, locale: locale });
+        }, true);
+      })();
+    </script>
+  </Fragment>
+)}
