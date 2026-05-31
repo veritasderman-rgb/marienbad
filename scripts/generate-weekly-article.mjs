@@ -38,7 +38,7 @@ const TOPIC_BACKLOG = [
     articleType: 'cluster',
     graphicType: 'timeline',
     graphicNote:
-      'Horizontal CSS timeline (no JS required): Chopin\'s 1836 first visit → 1844 Mazurka composition → 1959 international festival founding → present annual programme.',
+      'Horizontal CSS timeline (no JS required): 28 July 1836 — Chopin arrives in Mariánské Lázně, where Maria Wodzińska\'s family is staying → August 1836 — musical meetings and walks at the colonnade → 9 September 1836 Dresden — Chopin proposes; Maria accepts conditionally; he gives her the Farewell Waltz Op. 69 No. 1 → summer 1837 — Wodzińska family quietly breaks off the secret engagement → 6 June 1959 — Fryderyk Chopin Society founded, first international festival held → annual August festival to the present day. Note: Waltz Op. 34 No. 1 was composed in Děčín in 1835, unrelated to the 1836 Marienbad visit.',
     titles: {
       cs: 'Chopin a Mariánské Lázně — hudební dědictví velkého romantika',
       de: 'Chopin und Marienbad — das musikalische Erbe des großen Romantikers',
