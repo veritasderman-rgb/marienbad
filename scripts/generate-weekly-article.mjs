@@ -38,7 +38,7 @@ const TOPIC_BACKLOG = [
     articleType: 'cluster',
     graphicType: 'timeline',
     graphicNote:
-      'Horizontal CSS timeline (no JS required): Chopin\'s 1836 first visit → 1844 Mazurka composition → 1959 international festival founding → present annual programme.',
+      'Horizontal CSS timeline (no JS required): Chopin\'s single visit July–August 1836 (met Maria Wodzińska, composed Waltz in A♭ Op. 34 No. 1 associated with this stay) → August 1836 Dresden — marriage proposal rejected → 6 June 1959 Fryderyk Chopin Society founded, first festival held → annual August festival to the present day.',
     titles: {
       cs: 'Chopin a Mariánské Lázně — hudební dědictví velkého romantika',
       de: 'Chopin und Marienbad — das musikalische Erbe des großen Romantikers',
