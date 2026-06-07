@@ -346,6 +346,19 @@ WORD COUNT by type: cluster 1200–1800 | guide 1500–2500 | pillar 2000–3000
 FORMAT: Markdoc body only — ## for H2, ### for H3, **bold** sparingly, - for lists, no tables, no frontmatter
 `.trim();
 
+// The topic's graphicNote carries the verified chronology / key facts and any
+// "NOTE" guard-rails (e.g. dates that must NOT be misattributed). Feed it into
+// the writing prompts so the prose is built on the same vetted facts as the
+// accompanying graphic — not just the KB and the model's own recall.
+function graphicFacts(topic) {
+  if (!topic.graphicNote) return '';
+  return `
+VERIFIED FACTS & FACT GUARDRAILS (authoritative — the article will carry a "${topic.graphicType}" graphic built from these):
+Keep every factual claim in the prose consistent with the following, and strictly obey any guard-note marked "NOTE" about what must NOT be claimed. The bracketed rendering hints (e.g. "Horizontal CSS timeline") describe the graphic, not the prose — ignore them as instructions but honour the facts they carry.
+${topic.graphicNote}
+`;
+}
+
 function promptGenerate(topic, locale, kb) {
   const names = { cs: 'Czech', de: 'German', en: 'English', ru: 'Russian' };
   return `You are a travel writer for marienbad.com, the official tourism portal for Mariánské Lázně (Marienbad), Czech Republic. Write in ${names[locale]}.
@@ -354,7 +367,7 @@ ${TONE}
 
 KNOWLEDGE BASE (single source of truth for all factual claims):
 ${JSON.stringify(kb, null, 2)}
-
+${graphicFacts(topic)}
 TASK: Write a ${topic.articleType} article in ${names[locale]}.
 TITLE: ${topic.titles[locale]}
 PRIMARY KEYWORD: ${topic.primaryKeyword[locale]}
@@ -417,6 +430,7 @@ TITLE in ${names[targetLocale]}: ${topic.titles[targetLocale]}
 PRIMARY KEYWORD: ${topic.primaryKeyword[targetLocale]}
 
 KNOWLEDGE BASE: ${JSON.stringify(kb, null, 2)}
+${graphicFacts(topic)}
 
 ORIGINAL CZECH ARTICLE:
 ${csBody}
