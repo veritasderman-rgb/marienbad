@@ -38,7 +38,7 @@ const TOPIC_BACKLOG = [
     articleType: 'cluster',
     graphicType: 'timeline',
     graphicNote:
-      'Horizontal CSS timeline (no JS required): 28 July 1836 — Chopin arrives in Mariánské Lázně, where Maria Wodzińska\'s family is staying → August 1836 — musical meetings and walks at the colonnade → 9 September 1836 Dresden — Chopin proposes; Maria accepts conditionally; he gives her the Farewell Waltz Op. 69 No. 1 → summer 1837 — Wodzińska family quietly breaks off the secret engagement → 6 June 1959 — Fryderyk Chopin Society founded, first international festival held → annual August festival to the present day. Note: Waltz Op. 34 No. 1 was composed in Děčín in 1835, unrelated to the 1836 Marienbad visit.',
+      'Horizontal CSS timeline (no JS required): September 1835, Dresden — Chopin gives Maria Wodzińska the autograph "Pour Mlle Marie" of the "Farewell" Waltz in A♭, Op. 69 No. 1 ("L\'Adieu") → 28 July 1836 — Chopin arrives in Mariánské Lázně to join the Wodziński family (there since 9 July), lodging at the "White Swan" inn until 24 August → August 1836 — a month together: music-making and walks by the springs and spa promenade (the cast-iron Main Colonnade did not yet exist — it was built 1888–89) → 9 September 1836, Dresden — Chopin proposes; Maria accepts on the condition he safeguard his fragile health (a secret engagement) → 1837 — the Wodziński family quietly lets the engagement lapse → 6 June 1959 — Fryderyk Chopin Society founded in Mariánské Lázně, first festival held → International Chopin Festival held annually since, in the third week of August. NOTE for the writer: the "Farewell" Waltz Op. 69 No. 1 was gifted in 1835, NOT at the 1836 proposal; Waltz Op. 34 No. 1 was composed at Děčín (Tetschen) in 1835 — neither belongs to the August 1836 Marienbad stay; and do NOT call the 1836 promenade "the colonnade" (that structure dates to 1888–89).',
     titles: {
       cs: 'Chopin a Mariánské Lázně — hudební dědictví velkého romantika',
       de: 'Chopin und Marienbad — das musikalische Erbe des großen Romantikers',
@@ -346,6 +346,19 @@ WORD COUNT by type: cluster 1200–1800 | guide 1500–2500 | pillar 2000–3000
 FORMAT: Markdoc body only — ## for H2, ### for H3, **bold** sparingly, - for lists, no tables, no frontmatter
 `.trim();
 
+// The topic's graphicNote carries the verified chronology / key facts and any
+// "NOTE" guard-rails (e.g. dates that must NOT be misattributed). Feed it into
+// the writing prompts so the prose is built on the same vetted facts as the
+// accompanying graphic — not just the KB and the model's own recall.
+function graphicFacts(topic) {
+  if (!topic.graphicNote) return '';
+  return `
+VERIFIED FACTS & FACT GUARDRAILS (authoritative — the article will carry a "${topic.graphicType}" graphic built from these):
+Keep every factual claim in the prose consistent with the following, and strictly obey any guard-note marked "NOTE" about what must NOT be claimed. The bracketed rendering hints (e.g. "Horizontal CSS timeline") describe the graphic, not the prose — ignore them as instructions but honour the facts they carry.
+${topic.graphicNote}
+`;
+}
+
 function promptGenerate(topic, locale, kb) {
   const names = { cs: 'Czech', de: 'German', en: 'English', ru: 'Russian' };
   return `You are a travel writer for marienbad.com, the official tourism portal for Mariánské Lázně (Marienbad), Czech Republic. Write in ${names[locale]}.
@@ -354,7 +367,7 @@ ${TONE}
 
 KNOWLEDGE BASE (single source of truth for all factual claims):
 ${JSON.stringify(kb, null, 2)}
-
+${graphicFacts(topic)}
 TASK: Write a ${topic.articleType} article in ${names[locale]}.
 TITLE: ${topic.titles[locale]}
 PRIMARY KEYWORD: ${topic.primaryKeyword[locale]}
@@ -417,6 +430,7 @@ TITLE in ${names[targetLocale]}: ${topic.titles[targetLocale]}
 PRIMARY KEYWORD: ${topic.primaryKeyword[targetLocale]}
 
 KNOWLEDGE BASE: ${JSON.stringify(kb, null, 2)}
+${graphicFacts(topic)}
 
 ORIGINAL CZECH ARTICLE:
 ${csBody}
