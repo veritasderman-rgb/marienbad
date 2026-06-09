@@ -13,12 +13,16 @@ export function getStaticPaths() {
   }))
 }
 
-const locale = 'en' as const
+const locale = 'ru' as const
 const { hotel } = Astro.props as { hotel: Hotel }
 
+const description = hotel.description.ru ?? hotel.description.en
+const features = hotel.features.ru ?? hotel.features.en
+const treatments = hotel.treatments.ru ?? hotel.treatments.en
+
 const starsDisplay = '★'.repeat(hotel.stars) + '☆'.repeat(5 - hotel.stars)
-const pageTitle = `${hotel.name} — ${hotel.stars}-Star Spa Hotel in Marienbad`
-const pageDescription = hotel.description.en.slice(0, 155).replace(/\s+\S*$/, '') + '…'
+const pageTitle = `${hotel.name} — ${hotel.stars}-звёздочный спа-отель в Марианских Лазнях`
+const pageDescription = description.slice(0, 155).replace(/\s+\S*$/, '') + '…'
 
 const pathname = Astro.url.pathname.replace(/\/$/, '')
 const canonicalUrl = `${(import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')}${pathname}`
@@ -27,7 +31,7 @@ const lodgingSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
   name: hotel.name,
-  description: hotel.description.en.slice(0, 300),
+  description: description.slice(0, 300),
   url: canonicalUrl,
   address: {
     '@type': 'PostalAddress',
@@ -42,7 +46,7 @@ const lodgingSchema = JSON.stringify({
     ratingValue: hotel.stars,
     bestRating: 5,
   },
-  amenityFeature: hotel.features.en.map((f) => ({
+  amenityFeature: features.map((f) => ({
     '@type': 'LocationFeatureSpecification',
     name: f,
     value: true,
@@ -60,25 +64,25 @@ const lodgingSchema = JSON.stringify({
   <PillarPage locale={locale} title={hotel.name} description={pageDescription}>
     <!-- Star Rating & Year -->
     <div class="flex flex-wrap items-center gap-4 mb-8 text-sm">
-      <span class="text-yellow-500 text-lg tracking-wide" aria-label={`${hotel.stars} out of 5 stars`}>{starsDisplay}</span>
-      <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{hotel.stars} Stars</span>
-      <span class="text-beige-600">Built {hotel.yearBuilt}</span>
+      <span class="text-yellow-500 text-lg tracking-wide" aria-label={`${hotel.stars} из 5 звёзд`}>{starsDisplay}</span>
+      <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{hotel.stars} звёзд</span>
+      <span class="text-beige-600">Построен {hotel.yearBuilt}</span>
       <span class="text-beige-600">·</span>
       <span class="text-beige-600">{hotel.style}</span>
     </div>
 
     <!-- Description -->
     <div class="prose-marienbad mb-12">
-      {hotel.description.en.split('\n\n').map((paragraph) => (
+      {description.split('\n\n').map((paragraph) => (
         <p>{paragraph}</p>
       ))}
     </div>
 
     <!-- Features -->
     <div class="mb-12">
-      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Features & Highlights</h2>
+      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Оснащение и особенности</h2>
       <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {hotel.features.en.map((feature) => (
+        {features.map((feature) => (
           <li class="flex items-start gap-3 text-beige-800">
             <svg class="w-5 h-5 text-turquoise-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -91,9 +95,9 @@ const lodgingSchema = JSON.stringify({
 
     <!-- Treatments -->
     <div class="mb-12">
-      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Available Treatments</h2>
+      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Доступные процедуры</h2>
       <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {hotel.treatments.en.map((treatment) => (
+        {treatments.map((treatment) => (
           <li class="flex items-start gap-3 text-beige-800">
             <svg class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
@@ -107,27 +111,27 @@ const lodgingSchema = JSON.stringify({
 
     <!-- Booking CTA -->
     <aside class="bg-beige-200 rounded-xl p-6 md:p-8 border-l-4 border-turquoise-400">
-      <h2 class="font-heading text-xl font-bold text-indigo-700 mb-3">Book Your Stay at {hotel.name}</h2>
+      <h2 class="font-heading text-xl font-bold text-indigo-700 mb-3">Забронировать проживание в {hotel.name}</h2>
       <p class="text-beige-700 text-sm leading-relaxed mb-5">
-        Plan your spa retreat at {hotel.name} in Marienbad. Experience the combination of medical expertise and {hotel.stars === 5 ? 'luxurious' : hotel.stars === 3 ? 'comfortable' : 'upscale'} surroundings.
+        Спланируйте курортный отдых в {hotel.name} в Марианских Лазнях. Воспользуйтесь сочетанием медицинской экспертизы и {hotel.stars === 5 ? 'роскошной' : hotel.stars === 3 ? 'комфортной' : 'высококлассной'} атмосферы.
       </p>
       <div class="flex flex-wrap gap-4">
         <a
-          href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'en', utmMedium: 'hotel-detail', utmCampaign: hotel.slug })}
+          href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'ru', utmMedium: 'hotel-detail', utmCampaign: hotel.slug })}
           class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Check Availability
+          Проверить наличие
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
         <a
-          href={`/${locale}/accommodation`}
+          href={`/${locale}/prozhivanie`}
           class="inline-flex items-center gap-2 px-6 py-3 border border-indigo-300 text-indigo-700 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
         >
-          Compare All Hotels
+          Сравнить все отели
         </a>
       </div>
     </aside>
