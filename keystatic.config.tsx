@@ -314,9 +314,16 @@ function campaignSingleton(locale: string, label: string) {
             label: 'Campaign image (optional)',
             directory: 'public/images/content/campaigns',
             publicPath: '/images/content/campaigns/',
-            description: 'Banner image shown at the top of the popup card and on the landing page hero. Recommended ~1200×270 px (popup) / 1920×800 (landing hero). Leave empty for solid gradient.',
+            description: 'Hero image for the landing page. Recommended ~1920×800 px. Leave empty for solid gradient.',
           }),
           imageAlt: fields.text({ label: 'Image alt text (for accessibility)' }),
+          popupImage: fields.image({
+            label: 'Popup creative (optional, per-locale square banner)',
+            directory: 'public/images/content/campaigns/summer-sale',
+            publicPath: '/images/content/campaigns/summer-sale/',
+            description: 'Square social creative (1080×1080) shown as the full popup visual. All headline/discount text is baked into the image. Leave empty to fall back to the gradient + text card.',
+          }),
+          popupImageAlt: fields.text({ label: 'Popup creative alt text (for accessibility)' }),
         },
         { label: 'Summer Sale' }
       ),

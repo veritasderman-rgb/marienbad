@@ -44,6 +44,8 @@ export interface SummerSaleData {
   landingDiscountLabel: string
   image?: string | null
   imageAlt?: string
+  popupImage?: string | null
+  popupImageAlt?: string
 }
 
 export interface CampaignData {

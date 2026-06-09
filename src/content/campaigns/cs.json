@@ -25,7 +25,7 @@
     "saleText": "25 % sleva na pobyty v hotelech Ensana v Mariánských Lázních. Rezervujte od 9. do 17. června 2026 pro pobyt kdykoli do 16. března 2027.",
     "discountLabel": "−25 %",
     "ctaLabel": "Rezervovat pobyt",
-    "ctaUrl": "https://ensanahotels.com/cs/nabidky?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "ctaUrl": "https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne/nejlepsi-nabidky?utm_source=marienbad&utm_medium=website&utm_campaign=summer-sale-2026",
     "conditions": [
       "50% nevratná záloha",
       "50% storno poplatek",
@@ -40,6 +40,8 @@
     "landingSalePeriodLabel": "Prodejní období",
     "landingStayPeriodLabel": "Termín pobytu",
     "landingDiscountLabel": "Sleva",
-    "image": "/images/content/campaigns/summerSale/image.jpg"
+    "image": "/images/content/campaigns/summerSale/image.jpg",
+    "popupImage": "/images/content/campaigns/summer-sale/cs.jpg",
+    "popupImageAlt": "Summer Sale — sleva 25 % na společné pobyty v hotelech Ensana"
   }
 }

@@ -25,7 +25,7 @@
     "saleText": "25 % Rabatt auf Aufenthalte in den Ensana Hotels in Marienbad. Buchen Sie zwischen dem 9. und 17. Juni 2026 für jeden Aufenthalt bis 16. März 2027.",
     "discountLabel": "−25 %",
     "ctaLabel": "Aufenthalt buchen",
-    "ctaUrl": "https://ensanahotels.com/de/angebote?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "ctaUrl": "https://ensanahotels.com/de/destinationen/tschechien/marienbad/best-offers?utm_source=marienbad&utm_medium=website&utm_campaign=summer-sale-2026",
     "conditions": [
       "50 % nicht erstattbare Anzahlung",
       "50 % Stornogebühr",
@@ -40,6 +40,8 @@
     "landingSalePeriodLabel": "Verkaufszeitraum",
     "landingStayPeriodLabel": "Aufenthaltszeitraum",
     "landingDiscountLabel": "Rabatt",
-    "image": "/images/content/campaigns/summerSale/image.jpg"
+    "image": "/images/content/campaigns/summerSale/image.jpg",
+    "popupImage": "/images/content/campaigns/summer-sale/de.jpg",
+    "popupImageAlt": "Summer Sale — 25 % Rabatt für eine Auszeit zu zweit in den Ensana Hotels"
   }
 }
