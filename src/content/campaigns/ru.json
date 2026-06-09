@@ -25,7 +25,7 @@
     "saleText": "25 % скидка на проживание в отелях Ensana в Марианских Лазнях. Бронируйте с 9 по 17 июня 2026 года для проживания в любую дату до 16 марта 2027 года.",
     "discountLabel": "−25 %",
     "ctaLabel": "Забронировать проживание",
-    "ctaUrl": "https://ensanahotels.com/ru/predlozheniya?utm_source=marienbad&utm_medium=landing&utm_campaign=summer-sale-2026",
+    "ctaUrl": "https://ensanahotels.com/ru/napravleniya/cheshskaya-respublika/marienbad/best-offers?utm_source=marienbad&utm_medium=website&utm_campaign=summer-sale-2026",
     "conditions": [
       "50 % невозвратная предоплата",
       "50 % штраф за отмену",
@@ -40,6 +40,8 @@
     "landingSalePeriodLabel": "Период продаж",
     "landingStayPeriodLabel": "Период проживания",
     "landingDiscountLabel": "Скидка",
-    "image": "/images/content/campaigns/summerSale/image.jpg"
+    "image": "/images/content/campaigns/summerSale/image.jpg",
+    "popupImage": "/images/content/campaigns/summer-sale/ru.jpg",
+    "popupImageAlt": "Summer Sale — −25% на отдых для двоих в отелях Ensana"
   }
 }
