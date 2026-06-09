@@ -48,6 +48,14 @@ const summerImgAlt = campaign.summerSale.imageAlt ?? campaign.summerSale.eyebrow
 // render image-forward (full banner + CTA) instead of the gradient + text card.
 const summerPopupImage = campaign.summerSale.popupImage
 const summerPopupAlt = campaign.summerSale.popupImageAlt ?? summerImgAlt
+// Accessible text equivalent for the image-forward popup: the creative bakes
+// the headline/discount into the image, so expose the offer specifics (stay
+// period, sale window, booking conditions) as sr-only copy for screen readers
+// and image-load-failure fallback.
+const summerStayLine = campaign.summerSale.landingStayPeriodLabel && campaign.summerSale.stayPeriod
+  ? `${campaign.summerSale.landingStayPeriodLabel}: ${campaign.summerSale.stayPeriod}`
+  : (campaign.summerSale.stayPeriod ?? '')
+const summerConditions = campaign.summerSale.conditions ?? []
 ---
 
 {campaign.popupEnabled && (
@@ -135,6 +143,16 @@ const summerPopupAlt = campaign.summerSale.popupImageAlt ?? summerImgAlt
             </svg>
           </button>
           <img src={summerPopupImage} alt={summerPopupAlt} class="block w-full h-auto" width="1080" height="1080" />
+          <div class="sr-only">
+            <p>{campaign.summerSale.eyebrow}</p>
+            <p>{summerHeadlineParts.join(' ')} — {campaign.summerSale.discountLabel}</p>
+            <p>{campaign.summerSale.teaserText}</p>
+            {summerStayLine && <p>{summerStayLine}</p>}
+            {summerConditions.length > 0 && (
+              <ul>{summerConditions.map((c) => <li>{c}</li>)}</ul>
+            )}
+            <p>{campaign.summerSale.footnote}</p>
+          </div>
           <div class="px-6 py-5 text-center">
             <a
               href={campaign.summerSale.ctaUrl}
@@ -190,6 +208,16 @@ const summerPopupAlt = campaign.summerSale.popupImageAlt ?? summerImgAlt
             </svg>
           </button>
           <img src={summerPopupImage} alt={summerPopupAlt} class="block w-full h-auto" width="1080" height="1080" />
+          <div class="sr-only">
+            <p>{campaign.summerSale.eyebrow}</p>
+            <p>{summerHeadlineParts.join(' ')} — {campaign.summerSale.discountLabel}</p>
+            <p>{campaign.summerSale.saleText}</p>
+            {summerStayLine && <p>{summerStayLine}</p>}
+            {summerConditions.length > 0 && (
+              <ul>{summerConditions.map((c) => <li>{c}</li>)}</ul>
+            )}
+            <p>{campaign.summerSale.footnote}</p>
+          </div>
           <div class="px-6 py-5 text-center">
             <a
               href={campaign.summerSale.ctaUrl}
