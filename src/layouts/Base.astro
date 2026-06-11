@@ -19,11 +19,15 @@ interface Props {
   section?: SectionKey | 'home'
   /** Explicit locale→URL map for hreflang tags. Overrides automatic generation. Locales not present are skipped. */
   alternateUrls?: Partial<Record<Locale, string>>
+  /** Locale→URL map for the header language switcher only (no hreflang). Useful when a page has no
+   *  true translations (hreflang must not point to non-equivalent pages) but the switcher should
+   *  still lead somewhere sensible, e.g. the magazine index. Falls back to hreflang URLs. */
+  switcherUrls?: Partial<Record<Locale, string>>
   /** Emit `<meta name="robots" content="noindex, follow">` instead of the default `index, follow`. */
   noindex?: boolean
 }
 
-const { locale, section, alternateUrls, noindex } = Astro.props
+const { locale, section, alternateUrls, switcherUrls, noindex } = Astro.props
 
 /** OG locale mapping */
 const ogLocaleMap: Record<Locale, string> = {
@@ -35,12 +39,13 @@ const ogLocaleMap: Record<Locale, string> = {
 const title = Astro.props.title ?? `${t(locale, 'meta.siteName')} — ${t(locale, 'meta.tagline')}`
 const description = Astro.props.description ?? t(locale, 'meta.description')
 const pathname = Astro.url.pathname.replace(/\/$/, '') || `/${locale}`
-const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
 const canonicalUrl = `${siteUrl}${pathname}`
 
-/** Dynamic OG image — use static prop if provided, otherwise generate via API */
+/** Dynamic OG image — use static prop if provided (absolutized), otherwise generate via API */
 const ogImageUrl = Astro.props.ogImage
-  ?? `${siteUrl}/api/og?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description.slice(0, 100))}&locale=${locale}`
+  ? (Astro.props.ogImage.startsWith('/') ? `${siteUrl}${Astro.props.ogImage}` : Astro.props.ogImage)
+  : `${siteUrl}/api/og?title=${encodeURIComponent(title)}&subtitle=${encodeURIComponent(description.slice(0, 100))}&locale=${locale}`
 
 /** Build hreflang URL for a given locale from current pathname.
  *  Returns null if alternateUrls is provided but has no entry for the target locale. */
@@ -67,7 +72,7 @@ function hreflangUrl(targetLocale: Locale): string | null {
 
 /** Language switcher URLs — same page in each locale */
 const langSwitcherUrls = Object.fromEntries(
-  locales.map(l => [l, hreflangUrl(l)?.replace(siteUrl, '') ?? `/${l}`])
+  locales.map(l => [l, switcherUrls?.[l] ?? hreflangUrl(l)?.replace(siteUrl, '') ?? `/${l}`])
 ) as Record<Locale, string>
 ---
 
@@ -82,6 +87,7 @@ const langSwitcherUrls = Object.fromEntries(
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Marienbad Magazine" href={`${siteUrl}/rss.xml`} />
     <meta name="theme-color" content="#2d2a6e" />
 
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
@@ -113,14 +119,22 @@ const langSwitcherUrls = Object.fromEntries(
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <!-- Structured data: Organization + TouristDestination -->
+    <!-- Structured data: WebSite + Organization + TouristDestination -->
     <script type="application/ld+json" set:html={JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Marienbad.com",
+        "url": siteUrl,
+        "inLanguage": locales,
+        "publisher": { "@type": "Organization", "name": "Marienbad.com", "url": siteUrl }
+      },
       {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Marienbad.com",
         "url": "https://marienbad.com",
-        "logo": `${siteUrl}/favicon.svg`,
+        "logo": `${siteUrl}/apple-touch-icon.png`,
         "description": t(locale, 'meta.description'),
         "sameAs": [
           "https://www.instagram.com/marienbad.com_official/",

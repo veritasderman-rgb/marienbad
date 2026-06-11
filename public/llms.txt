@@ -1,0 +1,46 @@
+# Marienbad.com
+
+> Official tourism portal for Mariánské Lázně (Marienbad), the historic Czech spa town
+> and UNESCO World Heritage Site (Great Spa Towns of Europe, listed 2021). The site helps
+> visitors plan a spa holiday: mineral springs, traditional Kur treatments, spa hotels,
+> things to do, history and practical travel information.
+
+Content is available in four languages with locale-prefixed URLs:
+German (default, /de/), English (/en/), Czech (/cs/), Russian (/ru/).
+
+## Key facts
+
+- Mariánské Lázně lies at 630 m altitude in West Bohemia, Czech Republic; spa tradition since 1808, climatic spa with 200+ years of history.
+- Around 40 cold acidulous mineral springs rise in the town itself and roughly 100 in the surroundings (7–10 °C). Best known: Cross Spring, Rudolph Spring, Ferdinand Spring, Forest Spring, Ambrose Spring, Caroline Spring.
+- Natural healing resources: mineral water drinking cures, natural CO₂ gas (dry gas baths, gas injections), peloids (mud), therapeutic climate.
+- Treated indications include musculoskeletal, kidney and urinary tract, respiratory, metabolic, neurological, oncological aftercare, digestive, circulatory, skin and mental health conditions.
+- Spa hotels operated by Ensana: Nové Lázně, Centrální Lázně, Hvězda, Pacifik, Butterfly, Vltava, Svoboda.
+- Famous historical visitors include Goethe, Chopin and King Edward VII; landmarks include the cast-iron Spa Colonnade and the Singing Fountain.
+
+## Main sections (English URLs; equivalents exist in de/cs/ru)
+
+- [Mineral Springs](https://marienbad.com/en/mineral-springs): springs, drinking cures, spring overview
+- [Things to Do](https://marienbad.com/en/things-to-do): golf, nature, culture, day trips, colonnade
+- [History](https://marienbad.com/en/history): UNESCO, architecture, famous visitors
+- [Accommodation](https://marienbad.com/en/accommodation): spa hotel profiles and booking guidance
+- [Practical Info](https://marienbad.com/en/practical-info): getting there, best time to visit, FAQ
+- [Magazine](https://marienbad.com/en/magazine): articles on spa medicine, treatments and town life
+- [People of the Colonnade](https://marienbad.com/en/people): personal guest stories
+
+## Treatments
+
+- [CO2 Therapy](https://marienbad.com/en/co2-therapy)
+- [Peloid Therapy](https://marienbad.com/en/peloid-therapy)
+- [Climate Therapy](https://marienbad.com/en/climate-therapy)
+
+## Feeds and sitemaps
+
+- RSS (magazine): https://marienbad.com/rss.xml
+- Sitemap (pages): https://marienbad.com/sitemap-index.xml
+- Sitemap (articles & stories): https://marienbad.com/sitemap-content.xml
+
+## Notes for AI agents
+
+- Medical content is informational, not medical advice; spa treatment requires consultation with a physician.
+- Hotel and treatment facts come from official Ensana marketing materials.
+- Booking is handled by the hotel operator at ensanahotels.com; marienbad.com is the destination guide.

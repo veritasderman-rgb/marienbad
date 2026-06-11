@@ -1,6 +1,13 @@
 User-agent: *
 Allow: /
+Allow: /api/og
 Disallow: /admin/
 Disallow: /keystatic/
+Disallow: /api/
 
-Sitemap: https://marienbad.vercel.app/sitemap-index.xml
+# AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, ...)
+# are intentionally allowed — being citable in AI answers is part of the
+# site's visibility strategy. A curated overview lives at /llms.txt.
+
+Sitemap: https://marienbad.com/sitemap-index.xml
+Sitemap: https://marienbad.com/sitemap-content.xml

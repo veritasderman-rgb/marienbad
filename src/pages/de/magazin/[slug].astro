@@ -14,27 +14,29 @@ const locale = 'de' as const
 const { slug } = Astro.params
 
 const article = slug ? await getArticle(`${locale}-${slug}`) : null
-if (!article) return Astro.redirect(`/${locale}/magazin`)
+if (!article) return new Response(null, { status: 404 })
 
 const magazineLabel = 'Magazin'
 const magazineHref = `/${locale}/magazin`
 const backLabel = 'Zurück zum Magazin'
 const moreArticlesLabel = 'Weitere Artikel'
 
-const pageUrl = `https://marienbad.com/${locale}/magazin/${slug}`
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
+const pageUrl = `${siteUrl}/${locale}/magazin/${slug}`
 const articleSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: article.title,
   description: article.excerpt,
   datePublished: article.date,
+  dateModified: article.date,
   author: { '@type': 'Organization', name: 'Marienbad.com' },
   publisher: { '@type': 'Organization', name: 'Marienbad.com', url: 'https://marienbad.com' },
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
   inLanguage: locale,
   articleSection: article.category,
 }
-if (article.coverImage) articleSchema.image = article.coverImage
+if (article.coverImage) articleSchema.image = article.coverImage.startsWith('/') ? `${siteUrl}${article.coverImage}` : article.coverImage
 
 const breadcrumbs = [
   { label: t(locale, 'nav.home'), href: `/${locale}` },
@@ -91,7 +93,7 @@ const relatedArticles = allArticles
   .slice(0, 3)
 ---
 
-<Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Marienbad Magazin`} description={article.excerpt} alternateUrls={{ de: '/de/magazin', en: '/en/magazine', cs: '/cs/magazin', ru: '/ru/zhurnal', [locale]: Astro.url.pathname }}>
+<Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Marienbad Magazin`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }} switcherUrls={{ de: '/de/magazin', en: '/en/magazine', cs: '/cs/magazin', ru: '/ru/zhurnal' }} ogImage={article.coverImage || undefined}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote} breadcrumbs={breadcrumbs}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
