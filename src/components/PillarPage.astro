@@ -21,7 +21,7 @@ interface Props {
 const { locale, title, description, pullQuote, breadcrumbs } = Astro.props
 const homeLabel = t(locale, 'nav.home')
 const pathname = Astro.url.pathname.replace(/\/$/, '')
-const canonicalUrl = `${(import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')}${pathname}`
+const canonicalUrl = `${(import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')}${pathname}`
 const homeUrl = `/${locale}`
 
 const defaultBreadcrumbs: BreadcrumbItem[] = [

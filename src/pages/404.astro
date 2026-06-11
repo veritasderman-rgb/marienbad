@@ -1,0 +1,55 @@
+---
+import Base from '@/layouts/Base.astro'
+import { locales, type Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+
+// Localize the 404 page based on the locale prefix of the requested URL
+const prefix = Astro.url.pathname.split('/')[1]
+const locale: Locale = (locales as readonly string[]).includes(prefix) ? (prefix as Locale) : 'de'
+
+const messages: Record<Locale, { lead: string; home: string; magazine: string }> = {
+  de: {
+    lead: 'Diese Seite existiert nicht oder wurde verschoben. Vielleicht finden Sie auf der Startseite oder im Magazin, was Sie suchen.',
+    home: 'Zur Startseite',
+    magazine: 'Zum Magazin',
+  },
+  en: {
+    lead: 'This page does not exist or has been moved. You may find what you are looking for on the homepage or in the magazine.',
+    home: 'Go to homepage',
+    magazine: 'Browse the magazine',
+  },
+  cs: {
+    lead: 'Tato stránka neexistuje nebo byla přesunuta. Zkuste začít na úvodní stránce nebo v magazínu.',
+    home: 'Na úvodní stránku',
+    magazine: 'Do magazínu',
+  },
+  ru: {
+    lead: 'Эта страница не существует или была перемещена. Попробуйте начать с главной страницы или журнала.',
+    home: 'На главную',
+    magazine: 'В журнал',
+  },
+}
+
+const magazineSlug: Record<Locale, string> = { de: 'magazin', en: 'magazine', cs: 'magazin', ru: 'zhurnal' }
+const m = messages[locale]
+
+Astro.response.status = 404
+---
+
+<Base locale={locale} title={`404 — ${t(locale, 'common.notFound')}`} noindex alternateUrls={{ [locale]: Astro.url.pathname }}>
+  <section class="bg-indigo-900 text-white">
+    <div class="max-w-3xl mx-auto px-4 py-24 md:py-36 text-center">
+      <p class="font-heading text-7xl md:text-8xl font-semibold text-turquoise-300 mb-6">404</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-semibold mb-4">{t(locale, 'common.notFound')}</h1>
+      <p class="text-white/80 text-lg mb-10">{m.lead}</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={`/${locale}`} class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-300 transition-colors">
+          {m.home}
+        </a>
+        <a href={`/${locale}/${magazineSlug[locale]}`} class="px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors">
+          {m.magazine}
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

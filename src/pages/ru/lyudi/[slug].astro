@@ -9,7 +9,7 @@ import { localizedHref } from '@/i18n/utils'
 const locale = 'ru' as const
 const { slug } = Astro.params
 const story = slug ? await getStory(slug) : null
-if (!story) return Astro.redirect(`/${locale}/lyudi`)
+if (!story) return new Response(null, { status: 404 })
 
 const breadcrumbs = [
   { label: t(locale, 'nav.home'), href: `/${locale}` },

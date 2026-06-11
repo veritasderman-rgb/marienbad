@@ -3,7 +3,7 @@ import { getAllArticles } from '@/content/reader'
 
 export const GET: APIRoute = async () => {
   const articles = await getAllArticles()
-  const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')
+  const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
 
   const items = articles
     .map(

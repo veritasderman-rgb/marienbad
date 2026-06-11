@@ -11,7 +11,7 @@ interface Props {
 
 const { items, locale } = Astro.props
 
-const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.vercel.app').replace(/\/$/, '')
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
 
 const breadcrumbSchema = JSON.stringify({
   '@context': 'https://schema.org',

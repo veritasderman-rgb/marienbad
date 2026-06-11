@@ -6,8 +6,12 @@ import react from '@astrojs/react'
 import keystatic from '@keystatic/astro'
 import tailwindcss from '@tailwindcss/vite'
 
+/** Noindexed campaign landing pages — kept out of the sitemap to match their robots meta */
+const NOINDEXED_PATHS = ['sommer-sale-2026', 'summer-sale-2026', 'letni-sleva-2026', 'letnyaya-rasprodazha-2026']
+
 export default defineConfig({
-  site: 'https://marienbad.vercel.app',
+  site: 'https://marienbad.com',
+  trailingSlash: 'never',
   output: 'server',
   adapter: vercel(),
   integrations: [
@@ -15,7 +19,12 @@ export default defineConfig({
     keystatic(),
     mdx(),
     sitemap({
-      filter: (page) => !page.includes('/admin') && !page.includes('/keystatic'),
+      filter: (page) =>
+        !page.includes('/admin') &&
+        !page.includes('/keystatic') &&
+        // root "/" only redirects by Accept-Language — not an indexable page
+        new URL(page).pathname !== '/' &&
+        !NOINDEXED_PATHS.some((p) => page.includes(`/${p}`)),
       serialize: (item) => {
         const url = item.url
         // Homepages — highest priority
@@ -40,7 +49,7 @@ export default defineConfig({
     }),
   ],
   image: {
-    domains: ['marienbad.vercel.app', 'marienbad.com'],
+    domains: ['marienbad.com', 'marienbad.vercel.app'],
   },
   security: {
     allowedDomains: [
