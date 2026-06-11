@@ -13,6 +13,7 @@ const year = new Date().getFullYear()
 
 const privacyPaths: Record<Locale, string> = { de: '/de/datenschutz', en: '/en/privacy', cs: '/cs/ochrana-soukromi', ru: '/ru/politika-konfidencialnosti' }
 const imprintPaths: Record<Locale, string> = { de: '/de/impressum', en: '/en/imprint', cs: '/cs/impressum', ru: '/ru/impressum' }
+const cookieSettingsLabel: Record<Locale, string> = { de: 'Cookie-Einstellungen', en: 'Cookie settings', cs: 'Nastavení cookies', ru: 'Настройки cookies' }
 
 const discoverLabel = t(locale, 'footer.discover')
 const magazineLabel = t(locale, 'footer.magazine')
@@ -121,6 +122,7 @@ const ensanaDisclosure = t(locale, 'footer.ensanaDisclosure')
         <span class="text-beige-700 text-xs">&copy; {year} Marienbad.com</span>
         <a href={privacyPaths[locale]} class="text-beige-600 hover:text-turquoise-300 transition-colors">{t(locale, 'footer.privacy')}</a>
         <a href={imprintPaths[locale]} class="text-beige-600 hover:text-turquoise-300 transition-colors">{t(locale, 'footer.imprint')}</a>
+        <button type="button" onclick="window.mlOpenCookieSettings && window.mlOpenCookieSettings()" class="text-beige-600 hover:text-turquoise-300 transition-colors cursor-pointer">{cookieSettingsLabel[locale]}</button>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
@@ -9,6 +10,7 @@ const page = await getPage('de-beste-reisezeit')
 ---
 
 <Base locale={locale} section="practical-info" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/beste-reisezeit', en: '/en/best-time-to-visit' }}>
+  <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>

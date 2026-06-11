@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import SocialShare from '@/components/SocialShare.astro'
@@ -95,6 +96,7 @@ const relatedArticles = allArticles
 
 <Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Marienbad Magazin`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }} switcherUrls={{ de: '/de/magazin', en: '/en/magazine', cs: '/cs/magazin', ru: '/ru/zhurnal' }} ogImage={article.coverImage || undefined}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <FaqSchema rawBody={article.rawBody} />
   <PillarPage locale={locale} title={article.title} description={article.excerpt} pullQuote={article.pullQuote} breadcrumbs={breadcrumbs}>
     <div class="flex items-center gap-3 text-sm text-beige-600 mb-8">
       <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{article.category}</span>

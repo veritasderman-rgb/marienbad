@@ -87,7 +87,18 @@ export async function getPage(slug: string) {
   }
 }
 
-/** Extract FAQ Q&A pairs from raw Markdoc content for FAQPage schema */
+/** Strip markdown links and bold markers so FAQ schema/UI text stays plain */
+function cleanFaqText(s: string): string {
+  return s
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/\*\*/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/** Extract FAQ Q&A pairs from raw Markdoc content for FAQPage schema.
+ *  Questions are either `### Heading` lines (pillar pages) or standalone
+ *  `**bold**` lines (magazine articles) inside the FAQ section. */
 export function extractFaqs(rawBody: string): { question: string; answer: string }[] {
   const faqs: { question: string; answer: string }[] = []
   const lines = rawBody.split('\n')
@@ -111,12 +122,12 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
     }
     if (!inFaqSection) continue
 
-    // ### is a question
-    if (/^###\s+/.test(line)) {
+    // `### Heading` or a standalone `**bold**` line is a question
+    if (/^###\s+/.test(line) || /^\*\*[^*]+\*\*\s*$/.test(line.trim())) {
       if (currentQuestion && currentAnswer.length) {
-        faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() })
+        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')) })
       }
-      currentQuestion = line.replace(/^###\s+/, '').trim()
+      currentQuestion = cleanFaqText(line.replace(/^###\s+/, ''))
       currentAnswer = []
     } else if (line.trim() && currentQuestion) {
       currentAnswer.push(line.trim())
@@ -124,7 +135,7 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
   }
   // Don't forget the last one
   if (currentQuestion && currentAnswer.length) {
-    faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() })
+    faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')) })
   }
   return faqs
 }
@@ -144,6 +155,7 @@ export interface Article {
   youtubeTitle?: string
   youtubeDescription?: string
   body: any
+  rawBody: string
 }
 
 /** Validate required article fields; logs warnings for missing data */
@@ -192,6 +204,7 @@ function parseArticle(slug: string, raw: string): Article | null {
     youtubeTitle: meta.youtubeTitle ?? '',
     youtubeDescription: meta.youtubeDescription ?? '',
     body: content,
+    rawBody,
   }
 }
 
