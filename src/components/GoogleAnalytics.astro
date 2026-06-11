@@ -52,11 +52,14 @@ const GA_MEASUREMENT_ID =
     });
 
     var gaLoaded = false;
+    var consentGranted = false;
     function loadGA() {
+      consentGranted = true;
+      window['ga-disable-' + GA_MEASUREMENT_ID] = false;
+      gtag('consent', 'update', { analytics_storage: 'granted' });
       if (gaLoaded) return;
       gaLoaded = true;
 
-      gtag('consent', 'update', { analytics_storage: 'granted' });
       gtag('js', new Date());
       gtag('config', GA_MEASUREMENT_ID, {
         anonymize_ip: true,
@@ -72,10 +75,31 @@ const GA_MEASUREMENT_ID =
       document.head.appendChild(s);
     }
 
+    // Withdrawal must take effect immediately, not on the next page load:
+    // stop our event listeners, flip Consent Mode back to denied, disable
+    // the loaded tag, and remove GA cookies (best effort across domains).
+    function revokeGA() {
+      consentGranted = false;
+      gtag('consent', 'update', { analytics_storage: 'denied' });
+      window['ga-disable-' + GA_MEASUREMENT_ID] = true;
+
+      var expiry = '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      var hostParts = location.hostname.split('.');
+      document.cookie.split(';').forEach(function (c) {
+        var name = c.split('=')[0].trim();
+        if (name.indexOf('_ga') !== 0) return;
+        document.cookie = name + expiry;
+        for (var i = 0; i < hostParts.length - 1; i++) {
+          document.cookie = name + expiry + '; domain=.' + hostParts.slice(i).join('.');
+        }
+      });
+    }
+
     var stored = null;
     try { stored = localStorage.getItem('ml-consent'); } catch (e) { /* ignore */ }
     if (stored === 'granted') loadGA();
     document.addEventListener('ml:consent-granted', loadGA);
+    document.addEventListener('ml:consent-denied', revokeGA);
 
     (function () {
       function findAnchor(el) {
@@ -87,6 +111,9 @@ const GA_MEASUREMENT_ID =
       }
 
       document.addEventListener('click', function (e) {
+        // Without consent, do not even queue events into dataLayer — queued
+        // hits would be replayed to gtag.js if the visitor accepts later.
+        if (!consentGranted) return;
         var a = findAnchor(e.target);
         if (!a) return;
 
@@ -124,6 +151,7 @@ const GA_MEASUREMENT_ID =
 
       // Newsletter / story form submissions → generate_lead
       document.addEventListener('submit', function (e) {
+        if (!consentGranted) return;
         var form = e.target;
         if (!form || form.tagName !== 'FORM') return;
         var kind = form.getAttribute('data-ga-form');
