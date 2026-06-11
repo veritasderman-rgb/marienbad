@@ -1,0 +1,122 @@
+---
+/**
+ * ConsentBanner — GDPR consent for Google Analytics 4.
+ *
+ * Plausible and Vercel Analytics are cookie-free and run without consent;
+ * GA4 sets cookies, so gtag.js is loaded only after the visitor accepts
+ * (see GoogleAnalytics.astro, which listens for the `ml:consent-granted`
+ * event and checks the stored choice).
+ *
+ * The choice is stored in localStorage under `ml-consent` ('granted' |
+ * 'denied'). The banner shows only while no choice is stored; the footer
+ * "Cookie settings" button reopens it via `window.mlOpenCookieSettings()`
+ * so consent can be withdrawn as easily as it was given.
+ */
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const texts: Record<Locale, { message: string; accept: string; decline: string; privacy: string }> = {
+  de: {
+    message:
+      'Dürfen wir Cookies für anonymisierte Besuchsstatistiken (Google Analytics) verwenden? Wenn Sie ablehnen, bleibt nur cookielose Messung aktiv.',
+    accept: 'Akzeptieren',
+    decline: 'Ablehnen',
+    privacy: 'Datenschutz',
+  },
+  en: {
+    message:
+      'May we use cookies for anonymised visitor statistics (Google Analytics)? If you decline, only cookie-free measurement stays active.',
+    accept: 'Accept',
+    decline: 'Decline',
+    privacy: 'Privacy policy',
+  },
+  cs: {
+    message:
+      'Můžeme používat cookies pro anonymizované statistiky návštěvnosti (Google Analytics)? Pokud odmítnete, zůstane aktivní jen měření bez cookies.',
+    accept: 'Přijmout',
+    decline: 'Odmítnout',
+    privacy: 'Ochrana soukromí',
+  },
+  ru: {
+    message:
+      'Можем ли мы использовать cookies для анонимной статистики посещений (Google Analytics)? Если вы откажетесь, останется только измерение без cookies.',
+    accept: 'Принять',
+    decline: 'Отклонить',
+    privacy: 'Конфиденциальность',
+  },
+}
+
+const privacyPaths: Record<Locale, string> = {
+  de: '/de/datenschutz',
+  en: '/en/privacy',
+  cs: '/cs/ochrana-soukromi',
+  ru: '/ru/politika-konfidencialnosti',
+}
+
+const tx = texts[locale]
+---
+
+<div
+  id="consent-banner"
+  class="hidden fixed bottom-0 inset-x-0 z-[95] bg-indigo-900/97 backdrop-blur-sm text-white border-t border-white/10 shadow-2xl"
+  role="dialog"
+  aria-modal="false"
+  aria-label="Cookie consent"
+>
+  <div class="max-w-5xl mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row md:items-center gap-4">
+    <p class="text-sm text-white/85 flex-1">
+      {tx.message}
+      <a href={privacyPaths[locale]} class="underline text-turquoise-300 hover:text-turquoise-200 whitespace-nowrap ml-1">{tx.privacy}</a>
+    </p>
+    <div class="flex items-center gap-3 shrink-0">
+      <button
+        type="button"
+        data-consent-decline
+        class="px-5 py-2.5 rounded-lg border border-white/30 text-white/90 text-sm font-semibold hover:bg-white/10 transition-colors cursor-pointer"
+      >
+        {tx.decline}
+      </button>
+      <button
+        type="button"
+        data-consent-accept
+        class="px-5 py-2.5 rounded-lg bg-yellow-400 text-black text-sm font-semibold hover:bg-yellow-300 transition-colors cursor-pointer"
+      >
+        {tx.accept}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const KEY = 'ml-consent'
+    const banner = document.getElementById('consent-banner')
+    if (!banner) return
+
+    const show = () => banner.classList.remove('hidden')
+    const hide = () => banner.classList.add('hidden')
+
+    const choose = (value: 'granted' | 'denied') => {
+      try { localStorage.setItem(KEY, value) } catch { /* storage unavailable — treat as session-only choice */ }
+      hide()
+      if (value === 'granted') {
+        document.dispatchEvent(new CustomEvent('ml:consent-granted'))
+      }
+    }
+
+    banner.querySelector('[data-consent-accept]')?.addEventListener('click', () => choose('granted'))
+    banner.querySelector('[data-consent-decline]')?.addEventListener('click', () => choose('denied'))
+
+    // Allow reopening from the footer "Cookie settings" link
+    ;(window as any).mlOpenCookieSettings = show
+
+    let stored: string | null = null
+    try { stored = localStorage.getItem(KEY) } catch { /* ignore */ }
+    if (stored !== 'granted' && stored !== 'denied') show()
+  })()
+</script>
