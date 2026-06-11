@@ -122,6 +122,17 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
     }
     if (!inFaqSection) continue
 
+    // A horizontal rule ends the FAQ section (used before closing disclaimers)
+    if (/^-{3,}\s*$/.test(line)) {
+      if (currentQuestion && currentAnswer.length) {
+        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')) })
+      }
+      inFaqSection = false
+      currentQuestion = ''
+      currentAnswer = []
+      continue
+    }
+
     // `### Heading` or a standalone `**bold**` line is a question
     if (/^###\s+/.test(line) || /^\*\*[^*]+\*\*\s*$/.test(line.trim())) {
       if (currentQuestion && currentAnswer.length) {
