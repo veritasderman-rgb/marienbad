@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import FaqSchema from '@/components/FaqSchema.astro'
 import MagazineFilter from '@/components/MagazineFilter.tsx'
 import { getPage, getArticles } from '@/content/reader'
 import { routes } from '@/i18n/config'
@@ -33,6 +34,7 @@ const categoryLabels: Record<string, string> = {
 ---
 
 <Base locale={locale} section="magazine" title={page?.metaTitle ?? "Журнал — Marienbad.com"} description={page?.metaDescription ?? ""}>
+  <FaqSchema rawBody={page?.rawBody} />
 
   <!-- Magazine Hero: Featured Article -->
   {featured && (

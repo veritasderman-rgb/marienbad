@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import DestinationMap from '@/components/DestinationMap.astro'
@@ -10,6 +11,7 @@ const page = await getPage('cs-jak-se-dostat')
 ---
 
 <Base locale={locale} section="practical-info" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/anreise', en: '/en/getting-there', cs: '/cs/jak-se-dostat', ru: '/ru/kak-dobratsya' }}>
+  <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <DestinationMap locale={locale} />

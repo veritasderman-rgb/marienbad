@@ -1,0 +1,30 @@
+---
+/**
+ * FaqSchema — emits FAQPage JSON-LD when the given raw Markdoc body contains
+ * a FAQ section (a `## FAQ / Často / Häufig / Frequently / Часто` heading
+ * with `###` questions, parsed by extractFaqs). Renders nothing otherwise,
+ * so it is safe to include on every CMS-driven page: adding a FAQ section
+ * in Keystatic automatically produces the schema.
+ */
+import { extractFaqs } from '@/content/reader'
+
+interface Props {
+  rawBody?: string | null
+}
+
+const faqs = Astro.props.rawBody ? extractFaqs(Astro.props.rawBody) : []
+
+const faqSchema = faqs.length > 0
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    })
+  : null
+---
+
+{faqSchema && <script type="application/ld+json" set:html={faqSchema} />}

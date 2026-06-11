@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import HotelTiles from '@/components/HotelTiles.astro'
@@ -10,6 +11,7 @@ const page = await getPage('en-accommodation')
 ---
 
 <Base locale={locale} section="accommodation" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
+  <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     <HotelTiles locale={locale} />
     { page?.body && <MarkdocRenderer content={page.body} /> }
