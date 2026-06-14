@@ -14,7 +14,7 @@ import { t } from '@/i18n/ui'
 const locale = 'ru' as const
 const { slug } = Astro.params
 const article = slug ? await getArticle(`${locale}-${slug}`) : null
-if (!article) return new Response(null, { status: 404 })
+if (!article || (article.status === 'draft' && import.meta.env.PROD)) return new Response(null, { status: 404 })
 
 const magazineLabel = 'Журнал'
 const magazineHref = `/${locale}/zhurnal`
