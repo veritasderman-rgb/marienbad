@@ -1,0 +1,48 @@
+---
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+// Currently a Czech-market cultural partnership. Rendered only on the CS homepage.
+const veoliaUrl = 'https://www.vecr.cz/o-nas/spolecnosti-skupiny/veolia-energie-marianske-lazne/'
+const articleHref = `/${locale}/magazin/orchestriste-kolonada`
+---
+
+<section class="bg-beige-100 py-14 md:py-20" aria-labelledby="partner-heading">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <span id="partner-heading" class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">Partner kulturního života</span>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mt-3 mb-5" style="font-size: var(--text-h3);">
+        Hudbu na kolonádě podporuje Veolia
+      </h2>
+      <p class="text-beige-700 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+        Děkujeme společnosti Veolia Energie Mariánské Lázně za podporu obnovy orchestřiště na Hlavní
+        kolonádě — místa, kde už dvě stě let zní hudba nejstaršího symfonického orchestru v zemi.
+      </p>
+      <a
+        href={veoliaUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block rounded-xl overflow-hidden shadow-card ring-1 ring-black/5 hover:shadow-lg transition-shadow"
+        aria-label="Veolia Energie Mariánské Lázně — web partnera (otevře se v novém okně)"
+      >
+        <img
+          src="/images/partners/veolia-energie-ml.png"
+          alt="Veolia Energie Mariánské Lázně — hrdý partner výjimečných hudebních zážitků"
+          width="900"
+          height="597"
+          class="w-full max-w-sm h-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <div class="mt-7">
+        <a href={articleHref} class="btn-ghost">Přečíst příběh</a>
+      </div>
+    </div>
+  </div>
+</section>

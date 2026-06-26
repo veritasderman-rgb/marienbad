@@ -5,6 +5,7 @@ import PromoPopup from '@/components/PromoPopup.astro'
 import HeroSection from '@/components/HeroSection.astro'
 import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
+import PartnerStrip from '@/components/PartnerStrip.astro'
 import { t } from '@/i18n/ui'
 import { localizedHref } from '@/i18n/utils'
 import { getHomepage, getArticles, getItineraries } from '@/content/reader'
@@ -327,6 +328,9 @@ const gradients = [
     </div>
   </div>
 </section>
+
+<!-- 8b. PARTNER STRIP (CS only) -->
+{locale === 'cs' && <PartnerStrip locale={locale} />}
 
 <!-- 9. EMAIL CAPTURE -->
 <section class="py-16 md:py-24 reveal" style="background: linear-gradient(135deg, #004F71 0%, #1A1916 100%);">
