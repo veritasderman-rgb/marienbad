@@ -77,6 +77,28 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
+/** Draw a random option order for every question. Pure chance puts the correct
+ *  answer on top in ~25% of questions, which players read as "the first answer
+ *  is always right" — so cap correct-on-top at two questions in a row. */
+function drawOptionOrders(questions: EventQuizQuestion[]): Record<string, string[]> {
+  const order: Record<string, string[]> = {}
+  let correctFirstStreak = 0
+  for (const q of questions) {
+    if (!q.options?.length) continue
+    const ids = shuffle(q.options.map((o) => o.id))
+    const correctId = q.options.find((o) => o.correct)?.id
+    if (correctId) {
+      if (ids[0] === correctId && correctFirstStreak >= 2 && ids.length > 1) {
+        const j = 1 + Math.floor(Math.random() * (ids.length - 1))
+        ;[ids[0], ids[j]] = [ids[j], ids[0]]
+      }
+      correctFirstStreak = ids[0] === correctId ? correctFirstStreak + 1 : 0
+    }
+    order[q.id] = ids
+  }
+  return order
+}
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function EventQuiz({
@@ -97,13 +119,7 @@ export default function EventQuiz({
   // Random display order of options, drawn once per visitor. Only the intro
   // screen is server-rendered, so the client-side draw can't cause a
   // hydration mismatch.
-  const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>(() => {
-    const order: Record<string, string[]> = {}
-    for (const q of questions) {
-      if (q.options?.length) order[q.id] = shuffle(q.options.map((o) => o.id))
-    }
-    return order
-  })
+  const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>(() => drawOptionOrders(questions))
   /** Selected option before confirming (single questions) */
   const [selected, setSelected] = useState<string | null>(null)
   /** Whether the current single question has been confirmed (feedback visible) */
@@ -217,13 +233,7 @@ export default function EventQuiz({
     setConfirmed(false)
     setOpenText('')
     // Draw a fresh option order for the next run
-    setOptionOrder(() => {
-      const order: Record<string, string[]> = {}
-      for (const q of questions) {
-        if (q.options?.length) order[q.id] = shuffle(q.options.map((o) => o.id))
-      }
-      return order
-    })
+    setOptionOrder(drawOptionOrders(questions))
     setStep({ screen: 'intro' })
   }
 
@@ -521,9 +531,23 @@ export default function EventQuiz({
         </div>
       )}
 
-      <button type="button" className="mt-6 text-sm text-beige-700 underline hover:text-turquoise-700" onClick={restart}>
-        {t.restart}
-      </button>
+      <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-beige-700">
+        <button type="button" className="underline hover:text-turquoise-700" onClick={restart}>
+          {t.restart}
+        </button>
+        <span aria-hidden="true">·</span>
+        {termsPath && (
+          <>
+            <a href={termsPath} className="underline hover:text-turquoise-700">
+              {t.termsLink}
+            </a>
+            <span aria-hidden="true">·</span>
+          </>
+        )}
+        <a href={privacyPath} className="underline hover:text-turquoise-700">
+          {t.privacy}
+        </a>
+      </div>
     </div>
   )
 }
