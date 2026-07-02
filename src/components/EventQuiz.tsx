@@ -131,7 +131,6 @@ export default function EventQuiz({
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [consent, setConsent] = useState(false)
-  const [honeypot, setHoneypot] = useState('')
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [formError, setFormError] = useState('')
   const mountTs = useRef<number>(0)
@@ -265,7 +264,6 @@ export default function EventQuiz({
           score,
           scoreTotal: scoredQuestions.length,
           openAnswers,
-          hp: honeypot,
           _ts: mountTs.current,
         }),
       })
@@ -450,22 +448,6 @@ export default function EventQuiz({
           <h3 className="font-heading text-2xl font-semibold text-indigo-900 mb-2">{emailGate.heading}</h3>
           <p className="mb-5">{emailGate.text}</p>
           <form onSubmit={submitEmail} noValidate>
-            {/* Honeypot — hidden from real users. The name must NOT look like a
-                real contact field ("website", "url", …): browser autofill and
-                password managers fill those even when hidden, which silently
-                disqualified real entrants. */}
-            <div className="absolute -left-[9999px]" aria-hidden="true">
-              <input
-                type="text"
-                name="xq_field_7"
-                tabIndex={-1}
-                autoComplete="off"
-                data-lpignore="true"
-                data-1p-ignore="true"
-                value={honeypot}
-                onChange={(e) => setHoneypot(e.target.value)}
-              />
-            </div>
             <div className="grid gap-3 sm:grid-cols-2 mb-3">
               <label className="block">
                 <span className="text-sm font-medium text-indigo-900">{t.firstName}</span>

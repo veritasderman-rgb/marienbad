@@ -71,7 +71,10 @@ export const POST: APIRoute = async ({ request }) => {
       _ts?: number
     }
 
-    // --- Honeypot check (log the silent drop so real-user false positives are debuggable) ---
+    // --- Honeypot check. The quiz form no longer renders a honeypot field —
+    // browser autofill kept filling it (regardless of name or ignore hints)
+    // and silently disqualified real entrants. Direct-POST bots that replay
+    // an old payload with `hp` are still dropped here. ---
     if (hp) {
       console.log(`[quiz-submission] honeypot triggered — dropping silently (quiz: ${quiz}, locale: ${locale})`)
       return new Response(JSON.stringify({ success: true }), { status: 200, headers })
