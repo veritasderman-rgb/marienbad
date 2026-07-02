@@ -1,6 +1,6 @@
 import Markdoc from '@markdoc/markdoc'
 import yaml from 'js-yaml'
-import { routes, type Locale } from '@/i18n/config'
+import { routes, quizTermsSlugs, type Locale } from '@/i18n/config'
 import { markdocConfig } from '@/markdoc/config'
 
 // Homepage JSON imports (bundled at build time)
@@ -399,6 +399,8 @@ export interface Quiz {
   intro: { badge: string; text: string; prize: string; drawNote: string; startLabel: string }
   questions: QuizQuestion[]
   results: QuizResultBand[]
+  /** Competition terms page content (page is not rendered when absent) */
+  terms?: { heading: string; body: string }
   emailGate: { heading: string; text: string; consentLabel: string; successTitle: string; successText: string }
 }
 
@@ -454,6 +456,19 @@ export function getQuizAlternatePaths(quizId: string): Partial<Record<Locale, st
     if (!quiz || quiz.quizId !== quizId || !quiz.active) continue
     const prefix = routes.quiz[quiz.locale]
     alternates[quiz.locale] = `/${quiz.locale}/${prefix}/${quiz.slug}`
+  }
+  return alternates
+}
+
+/** Locale → localized URL path of the competition-terms page, for locales
+ *  where the quiz exists, is active, and has terms content */
+export function getQuizTermsAlternatePaths(quizId: string): Partial<Record<Locale, string>> {
+  const alternates: Partial<Record<Locale, string>> = {}
+  for (const [path, mod] of Object.entries(quizFiles)) {
+    const quiz = toQuiz(path, mod)
+    if (!quiz || quiz.quizId !== quizId || !quiz.active || !quiz.terms?.body) continue
+    const prefix = routes.quiz[quiz.locale]
+    alternates[quiz.locale] = `/${quiz.locale}/${prefix}/${quiz.slug}/${quizTermsSlugs[quiz.locale]}`
   }
   return alternates
 }

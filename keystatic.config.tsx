@@ -414,6 +414,17 @@ function quizCollection(locale: string, label: string) {
           itemLabel: (props) => props.fields.title.value || 'Band',
         },
       ),
+      terms: fields.object(
+        {
+          heading: fields.text({ label: 'Terms page heading' }),
+          body: fields.text({
+            label: 'Terms text',
+            multiline: true,
+            description: 'Numbered paragraphs separated by blank lines. Leave empty to disable the terms page.',
+          }),
+        },
+        { label: 'Competition terms (legal page)' },
+      ),
       emailGate: fields.object(
         {
           heading: fields.text({ label: 'Heading' }),

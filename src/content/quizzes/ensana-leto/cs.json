@@ -88,12 +88,12 @@
       "type": "single",
       "text": "Čím se pyšní hotel Ensana Hvězda, kde na vítěze soutěže čeká pobyt?",
       "options": [
-        { "id": "a", "text": "Největším bazénem ve městě", "correct": true },
+        { "id": "a", "text": "Největším hotelovým bazénem ve městě", "correct": true },
         { "id": "b", "text": "Hvězdárnou na střeše" },
         { "id": "c", "text": "Nejstarším výtahem v Evropě" },
         { "id": "d", "text": "Vlastní sjezdovkou" }
       ],
-      "explanation": "Bazénový svět hotelu Hvězda má rozlohu 2 100 m² — největší ve městě. K tomu solná jeskyně a kavárna Imperial."
+      "explanation": "Hotel Hvězda se pyšní největším hotelovým bazénem v Mariánských Lázních — a k němu několika saunami a solnou jeskyní."
     },
     {
       "id": "roman-baths",
@@ -144,6 +144,10 @@
       "message": "Nevadí! Tohle všechno se nejlíp doučí přímo na kolonádě. A do osudí míříte tak jako tak."
     }
   ],
+  "terms": {
+    "heading": "Pravidla soutěže „Léto s Ensanou v Mariánských Lázních“",
+    "body": "1. Pořadatelem soutěže je společnost Léčebné lázně Mariánské Lázně a.s., Masarykova 22, 353 01 Mariánské Lázně, Česká republika, provozovatel hotelů Ensana v Mariánských Lázních (dále jen „pořadatel“).\n\n2. Soutěž probíhá na webu marienbad.com do 31. 8. 2026 (23:59 SEČ). Slosování proběhne 1. 9. 2026.\n\n3. Soutěže se může zúčastnit každá fyzická osoba starší 18 let, která vyplní soutěžní kvíz, uvede své jméno, příjmení a e-mailovou adresu a potvrdí souhlas se zpracováním osobních údajů. Každý účastník se může soutěže zúčastnit pouze jednou; rozhodující je první registrace dané e-mailové adresy. Ze soutěže jsou vyloučeni zaměstnanci pořadatele.\n\n4. Výhrou v soutěži je poukaz (voucher) na pobyt pro 2 osoby na 2 noci s lázeňským balíčkem Minikúra v hotelu Ensana Hvězda v Mariánských Lázních, dle aktuální podoby balíčku v nabídce hotelu.\n\n5. Platnost voucheru je do 30. 6. 2027. Voucher nelze uplatnit v období od 20. 12. 2026 do 6. 1. 2027. Termín pobytu podléhá dostupnosti hotelu a je nutné jej rezervovat předem.\n\n6. Výherce bude vylosován 1. 9. 2026 a vyrozuměn e-mailem na adresu uvedenou v soutěžním formuláři. Pokud výherce na výzvu neodpoví do 14 dnů, bude vylosován náhradník.\n\n7. Výhru nelze směnit za peníze.\n\n8. Osobní údaje účastníků (jméno, příjmení, e-mail) zpracovává pořadatel pro účely pořádání soutěže a — na základě uděleného souhlasu — pro zasílání novinek e-mailem. Souhlas lze kdykoli odvolat. Podrobnosti naleznete v zásadách ochrany osobních údajů.\n\n9. Pořadatel si vyhrazuje právo pravidla soutěže v odůvodněných případech změnit, případně soutěž přerušit či zrušit. Na výhru není právní nárok."
+  },
   "emailGate": {
     "heading": "Jste v cíli — teď do osudí!",
     "text": "Zanechte nám jméno a e-mail a jste ve slosování o pobyt v hotelu Ensana Hvězda: 2 noci pro 2 osoby s programem Minikúra. Vítěze vylosujeme 1. září a dáme mu vědět e-mailem.",

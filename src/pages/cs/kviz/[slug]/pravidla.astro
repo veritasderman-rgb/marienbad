@@ -1,0 +1,40 @@
+---
+import Base from '@/layouts/Base.astro'
+import { getQuizBySlug, getQuizTermsAlternatePaths } from '@/content/reader'
+import { routes, quizTermsSlugs } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+
+const locale = 'cs' as const
+const { slug } = Astro.params
+const quiz = slug ? getQuizBySlug(locale, slug) : null
+if (!quiz || !quiz.terms?.body || (!quiz.active && import.meta.env.PROD)) return new Response(null, { status: 404 })
+
+const alternateUrls = getQuizTermsAlternatePaths(quiz.quizId)
+const quizUrl = `/${locale}/${routes.quiz[locale]}/${quiz.slug}`
+const paragraphs = quiz.terms.body.split(/\n\n+/)
+---
+
+<Base
+  locale={locale}
+  title={`${quiz.terms.heading} — Marienbad.com`}
+  description={quiz.metaDescription}
+  alternateUrls={alternateUrls}
+>
+  <section class="bg-beige-50 py-14 sm:py-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="font-heading text-3xl sm:text-4xl font-semibold text-indigo-900 mb-8">{quiz.terms.heading}</h1>
+      <div class="bg-white rounded-2xl shadow-lg border border-beige-200 p-6 sm:p-10 space-y-4">
+        {paragraphs.map((p) => <p class="leading-relaxed text-beige-900">{p}</p>)}
+      </div>
+      <a
+        href={quizUrl}
+        class="inline-flex items-center gap-2 mt-8 text-turquoise-700 hover:text-turquoise-900 font-medium transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        {t(locale, 'eventQuiz.backToQuiz')}
+      </a>
+    </div>
+  </section>
+</Base>

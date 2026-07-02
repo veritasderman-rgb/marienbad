@@ -88,12 +88,12 @@
       "type": "single",
       "text": "Womit glänzt das Hotel Ensana Hvězda, in dem der Gewinnaufenthalt wartet?",
       "options": [
-        { "id": "a", "text": "Mit dem größten Pool der Stadt", "correct": true },
+        { "id": "a", "text": "Mit dem größten Hotelpool der Stadt", "correct": true },
         { "id": "b", "text": "Mit einer Sternwarte auf dem Dach" },
         { "id": "c", "text": "Mit dem ältesten Aufzug Europas" },
         { "id": "d", "text": "Mit einer eigenen Skipiste" }
       ],
-      "explanation": "Die Poolwelt des Hotels Hvězda misst 2 100 m² — die größte der Stadt. Dazu Salzgrotte und Café Imperial."
+      "explanation": "Das Hotel Hvězda besitzt den größten Hotelpool in Marienbad — dazu mehrere Saunen und eine Salzgrotte."
     },
     {
       "id": "roman-baths",
@@ -144,6 +144,10 @@
       "message": "Kein Problem! All das lernt man am besten direkt auf der Kolonnade. Und im Lostopf landen Sie so oder so."
     }
   ],
+  "terms": {
+    "heading": "Teilnahmebedingungen des Gewinnspiels „Sommer mit Ensana in Marienbad“",
+    "body": "1. Veranstalter des Gewinnspiels ist die Gesellschaft Léčebné lázně Mariánské Lázně a.s., Masarykova 22, 353 01 Mariánské Lázně, Tschechische Republik, Betreiberin der Ensana-Hotels in Marienbad (nachfolgend „Veranstalter“).\n\n2. Das Gewinnspiel läuft auf marienbad.com bis zum 31. 8. 2026 (23:59 MEZ). Die Verlosung findet am 1. 9. 2026 statt.\n\n3. Teilnahmeberechtigt ist jede natürliche Person über 18 Jahre, die das Quiz ausfüllt, Vor- und Nachname sowie E-Mail-Adresse angibt und der Verarbeitung personenbezogener Daten zustimmt. Jede Person kann nur einmal teilnehmen; maßgeblich ist die erste Registrierung der jeweiligen E-Mail-Adresse. Mitarbeiter des Veranstalters sind von der Teilnahme ausgeschlossen.\n\n4. Der Gewinn ist ein Gutschein (Voucher) für einen Aufenthalt für 2 Personen für 2 Nächte mit dem Kurpaket Minikur im Hotel Ensana Hvězda in Marienbad, entsprechend dem jeweils aktuellen Angebot des Hotels.\n\n5. Der Gutschein ist gültig bis zum 30. 6. 2027. Er kann nicht im Zeitraum vom 20. 12. 2026 bis zum 6. 1. 2027 eingelöst werden. Der Aufenthaltstermin unterliegt der Verfügbarkeit des Hotels und muss im Voraus reserviert werden.\n\n6. Der Gewinner wird am 1. 9. 2026 ausgelost und per E-Mail an die im Formular angegebene Adresse benachrichtigt. Antwortet der Gewinner nicht innerhalb von 14 Tagen, wird ein Ersatzgewinner ausgelost.\n\n7. Der Gewinn kann nicht in bar ausgezahlt werden.\n\n8. Die personenbezogenen Daten der Teilnehmer (Vorname, Nachname, E-Mail) verarbeitet der Veranstalter zur Durchführung des Gewinnspiels und — auf Grundlage der erteilten Einwilligung — zum Versand von Neuigkeiten per E-Mail. Die Einwilligung kann jederzeit widerrufen werden. Einzelheiten finden Sie in der Datenschutzerklärung.\n\n9. Der Veranstalter behält sich das Recht vor, die Teilnahmebedingungen in begründeten Fällen zu ändern oder das Gewinnspiel zu unterbrechen bzw. abzusagen. Ein Rechtsanspruch auf den Gewinn besteht nicht."
+  },
   "emailGate": {
     "heading": "Geschafft — jetzt in den Lostopf!",
     "text": "Hinterlassen Sie uns Name und E-Mail-Adresse und Sie nehmen an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil: 2 Nächte für 2 Personen mit Minikur. Der Gewinner wird am 1. September ausgelost und per E-Mail benachrichtigt.",

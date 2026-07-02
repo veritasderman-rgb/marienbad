@@ -88,12 +88,12 @@
       "type": "single",
       "text": "What is the Ensana Hvězda hotel — home of our grand prize — famous for?",
       "options": [
-        { "id": "a", "text": "The largest pool in town", "correct": true },
+        { "id": "a", "text": "The largest hotel pool in town", "correct": true },
         { "id": "b", "text": "A rooftop observatory" },
         { "id": "c", "text": "The oldest lift in Europe" },
         { "id": "d", "text": "Its own ski slope" }
       ],
-      "explanation": "The Hvězda pool world covers 2,100 m² — the largest in town. Plus a salt cave and Café Imperial."
+      "explanation": "The Hvězda hotel boasts the largest hotel pool in Marienbad — plus several saunas and a salt cave."
     },
     {
       "id": "roman-baths",
@@ -144,6 +144,10 @@
       "message": "No worries! All of this is best learnt right on the colonnade. And you're in the draw either way."
     }
   ],
+  "terms": {
+    "heading": "Terms of the “Summer with Ensana in Marienbad” competition",
+    "body": "1. The competition is organised by Léčebné lázně Mariánské Lázně a.s., Masarykova 22, 353 01 Mariánské Lázně, Czech Republic, operator of the Ensana hotels in Marienbad (the “Organiser”).\n\n2. The competition runs on marienbad.com until 31 August 2026 (23:59 CET). The draw takes place on 1 September 2026.\n\n3. Any natural person over 18 may enter by completing the quiz, providing their first name, last name and email address, and confirming consent to the processing of personal data. Each person may enter only once; the first registration of a given email address counts. Employees of the Organiser are excluded from the competition.\n\n4. The prize is a voucher for a stay for 2 persons for 2 nights with the Mini Spa Break (Minikúra) package at the Ensana Hvězda hotel in Marienbad, as per the hotel's current offer.\n\n5. The voucher is valid until 30 June 2027. It cannot be redeemed between 20 December 2026 and 6 January 2027. The stay is subject to hotel availability and must be booked in advance.\n\n6. The winner will be drawn on 1 September 2026 and notified by email at the address provided in the entry form. If the winner does not respond within 14 days, a substitute winner will be drawn.\n\n7. The prize cannot be exchanged for cash.\n\n8. Participants' personal data (first name, last name, email) are processed by the Organiser to run the competition and — based on the given consent — to send news by email. Consent may be withdrawn at any time. See the privacy policy for details.\n\n9. The Organiser reserves the right to amend these terms in justified cases or to suspend or cancel the competition. The prize is not legally enforceable."
+  },
   "emailGate": {
     "heading": "You made it — now into the draw!",
     "text": "Leave us your name and email and you'll be entered into the draw for a stay at the Ensana Hvězda hotel: 2 nights for 2 with a Mini Spa Break. The winner will be drawn on 1 September and notified by email.",

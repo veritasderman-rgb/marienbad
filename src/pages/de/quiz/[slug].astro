@@ -2,7 +2,7 @@
 import Base from '@/layouts/Base.astro'
 import EventQuiz from '@/components/EventQuiz.tsx'
 import { getQuizBySlug, getQuizAlternatePaths } from '@/content/reader'
-import { privacyPaths } from '@/i18n/config'
+import { privacyPaths, quizTermsSlugs, routes } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 
 const locale = 'de' as const
@@ -11,6 +11,9 @@ const quiz = slug ? getQuizBySlug(locale, slug) : null
 if (!quiz || (!quiz.active && import.meta.env.PROD)) return new Response(null, { status: 404 })
 
 const alternateUrls = getQuizAlternatePaths(quiz.quizId)
+const termsPath = quiz.terms?.body
+  ? `/${locale}/${routes.quiz[locale]}/${quiz.slug}/${quizTermsSlugs[locale]}`
+  : undefined
 
 const translations = {
   progress: t(locale, 'eventQuiz.progress'),
@@ -31,6 +34,7 @@ const translations = {
   errorRequired: t(locale, 'eventQuiz.errorRequired'),
   errorGeneric: t(locale, 'eventQuiz.errorGeneric'),
   restart: t(locale, 'eventQuiz.restart'),
+  termsLink: t(locale, 'eventQuiz.termsLink'),
 }
 ---
 
@@ -56,6 +60,7 @@ const translations = {
         results={quiz.results}
         emailGate={quiz.emailGate}
         privacyPath={privacyPaths[locale]}
+        termsPath={termsPath}
         translations={translations}
       />
     </div>

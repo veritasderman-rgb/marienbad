@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 import { getAllArticles, getAllStories, getAllQuizzes } from '@/content/reader'
-import { routes, type Locale } from '@/i18n/config'
+import { routes, quizTermsSlugs, type Locale } from '@/i18n/config'
 
 /**
  * Sitemap for CMS-driven content (magazine articles + People of Colonnade
@@ -38,6 +38,9 @@ export const GET: APIRoute = async ({ site }) => {
     if (!quiz.active) continue
     const quizPrefix = routes.quiz[quiz.locale]
     entries.push({ loc: `${siteUrl}/${quiz.locale}/${quizPrefix}/${quiz.slug}` })
+    if (quiz.terms?.body) {
+      entries.push({ loc: `${siteUrl}/${quiz.locale}/${quizPrefix}/${quiz.slug}/${quizTermsSlugs[quiz.locale]}` })
+    }
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

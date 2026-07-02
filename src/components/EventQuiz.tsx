@@ -31,6 +31,8 @@ interface EventQuizProps {
   results: EventQuizResultBand[]
   emailGate: { heading: string; text: string; consentLabel: string; successTitle: string; successText: string }
   privacyPath: string
+  /** Optional link to the competition terms page */
+  termsPath?: string
   translations: {
     progress: string
     confirm: string
@@ -50,6 +52,7 @@ interface EventQuizProps {
     errorRequired: string
     errorGeneric: string
     restart: string
+    termsLink: string
   }
 }
 
@@ -61,6 +64,17 @@ interface StoredState {
   /** Original quiz start time — must survive reloads so the server-side
    *  timing check doesn't mistake a restored session for a bot */
   startedAt?: number
+  /** Shuffled option display order per question — kept stable across reloads */
+  optionOrder?: Record<string, string[]>
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -73,12 +87,23 @@ export default function EventQuiz({
   results,
   emailGate,
   privacyPath,
+  termsPath,
   translations: t,
 }: EventQuizProps) {
   const storageKey = `event-quiz-${quizId}-${locale}`
 
   const [step, setStep] = useState<Step>({ screen: 'intro' })
   const [answers, setAnswers] = useState<Record<string, string>>({})
+  // Random display order of options, drawn once per visitor. Only the intro
+  // screen is server-rendered, so the client-side draw can't cause a
+  // hydration mismatch.
+  const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>(() => {
+    const order: Record<string, string[]> = {}
+    for (const q of questions) {
+      if (q.options?.length) order[q.id] = shuffle(q.options.map((o) => o.id))
+    }
+    return order
+  })
   /** Selected option before confirming (single questions) */
   const [selected, setSelected] = useState<string | null>(null)
   /** Whether the current single question has been confirmed (feedback visible) */
@@ -106,6 +131,7 @@ export default function EventQuiz({
         if (typeof stored.startedAt === 'number' && stored.startedAt <= Date.now()) {
           mountTs.current = stored.startedAt
         }
+        if (stored.optionOrder) setOptionOrder((prev) => ({ ...prev, ...stored.optionOrder }))
         setAnswers(stored.answers)
         setStep(stored.step)
         if (stored.step.screen === 'question') {
@@ -119,7 +145,10 @@ export default function EventQuiz({
 
   function persist(nextStep: Step, nextAnswers: Record<string, string>) {
     try {
-      sessionStorage.setItem(storageKey, JSON.stringify({ step: nextStep, answers: nextAnswers, startedAt: mountTs.current }))
+      sessionStorage.setItem(
+        storageKey,
+        JSON.stringify({ step: nextStep, answers: nextAnswers, startedAt: mountTs.current, optionOrder }),
+      )
     } catch {}
   }
 
@@ -187,6 +216,14 @@ export default function EventQuiz({
     setSelected(null)
     setConfirmed(false)
     setOpenText('')
+    // Draw a fresh option order for the next run
+    setOptionOrder(() => {
+      const order: Record<string, string[]> = {}
+      for (const q of questions) {
+        if (q.options?.length) order[q.id] = shuffle(q.options.map((o) => o.id))
+      }
+      return order
+    })
     setStep({ screen: 'intro' })
   }
 
@@ -257,6 +294,14 @@ export default function EventQuiz({
           <p className="text-sm text-beige-700 mt-1">{intro.drawNote}</p>
         </div>
         <p className="text-sm text-beige-600 mb-6">
+          {termsPath && (
+            <>
+              <a href={termsPath} className="underline hover:text-turquoise-700">
+                {t.termsLink}
+              </a>
+              {' · '}
+            </>
+          )}
           <a href={privacyPath} className="underline hover:text-turquoise-700">
             {t.privacy}
           </a>
@@ -277,6 +322,12 @@ export default function EventQuiz({
     const correctOption = q.options?.find((o) => o.correct)
     const answeredCorrectly = confirmed && selected === correctOption?.id
 
+    // Show options in the visitor's shuffled order (fall back to authored order)
+    const opts = q.options ?? []
+    const byId = new Map(opts.map((o) => [o.id, o]))
+    const ordered = (optionOrder[q.id] ?? []).map((id) => byId.get(id)).filter((o): o is EventQuizOption => !!o)
+    const displayOptions = ordered.length === opts.length ? ordered : opts
+
     return (
       <div className={cardClass}>
         {/* Progress */}
@@ -296,7 +347,7 @@ export default function EventQuiz({
 
         {q.type === 'single' && (
           <div className="grid gap-3 mb-6">
-            {q.options?.map((o) => {
+            {displayOptions.map((o) => {
               let optionClass = 'border-beige-300 hover:border-turquoise-400'
               if (confirmed) {
                 if (o.correct) optionClass = 'border-turquoise-600 bg-turquoise-50'
@@ -445,6 +496,14 @@ export default function EventQuiz({
               />
               <span className="text-sm text-beige-800">
                 {emailGate.consentLabel}{' '}
+                {termsPath && (
+                  <>
+                    <a href={termsPath} className="underline hover:text-turquoise-700" target="_blank" rel="noopener">
+                      {t.termsLink}
+                    </a>
+                    {' · '}
+                  </>
+                )}
                 <a href={privacyPath} className="underline hover:text-turquoise-700" target="_blank" rel="noopener">
                   {t.privacy}
                 </a>
