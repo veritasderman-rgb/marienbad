@@ -24,6 +24,14 @@ export const routes = {
 
 export type SectionKey = keyof typeof routes
 
+/** Localized URL suffix of the quiz competition-terms page: /{locale}/{quiz}/{slug}/{termsSlug} */
+export const quizTermsSlugs: Record<Locale, string> = {
+  de: 'teilnahmebedingungen',
+  en: 'terms',
+  cs: 'pravidla',
+  ru: 'pravila',
+}
+
 /** Localized privacy policy page per locale (used by footer and consent forms) */
 export const privacyPaths: Record<Locale, string> = {
   de: '/de/datenschutz',
