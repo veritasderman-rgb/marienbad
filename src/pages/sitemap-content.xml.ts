@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro'
-import { getAllArticles, getAllStories } from '@/content/reader'
+import { getAllArticles, getAllStories, getAllQuizzes } from '@/content/reader'
 import { routes, type Locale } from '@/i18n/config'
 
 /**
@@ -32,6 +32,12 @@ export const GET: APIRoute = async ({ site }) => {
     const peopleSlug = routes.people[locale]
     if (!peopleSlug) continue
     entries.push({ loc: `${siteUrl}/${locale}/${peopleSlug}/${story.slug}` })
+  }
+
+  for (const quiz of getAllQuizzes()) {
+    if (!quiz.active) continue
+    const quizPrefix = routes.quiz[quiz.locale]
+    entries.push({ loc: `${siteUrl}/${quiz.locale}/${quizPrefix}/${quiz.slug}` })
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

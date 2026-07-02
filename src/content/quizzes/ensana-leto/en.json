@@ -1,0 +1,154 @@
+{
+  "slug": "ensana-summer",
+  "title": "Summer with Ensana in Marienbad",
+  "metaDescription": "Join the Ensana summer competition: 10 fun questions about Marienbad and a prize draw for a stay for two at the Hvězda hotel.",
+  "active": true,
+  "intro": {
+    "badge": "Summer competition",
+    "text": "We've prepared a summer competition for you. Ten questions about Marienbad await — some test your memory, others your imagination. Everyone who reaches the end and leaves us their email enters the draw for a stay at the Ensana Hvězda hotel.",
+    "prize": "Grand prize: 2 nights for 2 — a Mini Spa Break (Minikúra) at the Ensana Hvězda hotel",
+    "drawNote": "The draw takes place on 1 September.",
+    "startLabel": "Let's go"
+  },
+  "questions": [
+    {
+      "id": "springs-count",
+      "type": "single",
+      "text": "How many mineral springs rise directly in Marienbad?",
+      "options": [
+        { "id": "a", "text": "Four — one per season" },
+        { "id": "b", "text": "About fifteen" },
+        { "id": "c", "text": "Around forty", "correct": true },
+        { "id": "d", "text": "Over two hundred" }
+      ],
+      "explanation": "Around 40 springs rise in the town itself, with roughly 100 more in the surroundings. One stay won't be enough to taste them all."
+    },
+    {
+      "id": "royal-guest",
+      "type": "single",
+      "text": "Which crowned guest loved Marienbad so much that he still has his own spa cabin here?",
+      "options": [
+        { "id": "a", "text": "King Edward VII of England", "correct": true },
+        { "id": "b", "text": "Emperor Napoleon III of France" },
+        { "id": "c", "text": "King Gustav of Sweden" },
+        { "id": "d", "text": "Tsar Nicholas II of Russia" }
+      ],
+      "explanation": "King Edward VII — you can still find his Royal Cabin at the Ensana Nové Lázně hotel."
+    },
+    {
+      "id": "festival",
+      "type": "single",
+      "text": "Which composer gives his name to the town's famous music festival?",
+      "options": [
+        { "id": "a", "text": "Frédéric Chopin", "correct": true },
+        { "id": "b", "text": "W. A. Mozart" },
+        { "id": "c", "text": "Ludwig van Beethoven" },
+        { "id": "d", "text": "Antonín Dvořák" }
+      ],
+      "explanation": "The Chopin Festival — Chopin, like Goethe, was one of the town's famous visitors."
+    },
+    {
+      "id": "unesco",
+      "type": "single",
+      "text": "Marienbad has been UNESCO-listed since 2021. Under what title?",
+      "options": [
+        { "id": "a", "text": "Great Spa Towns of Europe", "correct": true },
+        { "id": "b", "text": "Pearls of the Habsburg Empire" },
+        { "id": "c", "text": "European Cities of Fountains" },
+        { "id": "d", "text": "Garden Cities of the World" }
+      ],
+      "explanation": "Together with other renowned spas, Marienbad has been part of the UNESCO series “Great Spa Towns of Europe” since 2021."
+    },
+    {
+      "id": "fountain",
+      "type": "single",
+      "text": "What does the famous fountain by the colonnade do that keeps drawing the crowds?",
+      "options": [
+        { "id": "a", "text": "It sings — it plays music", "correct": true },
+        { "id": "b", "text": "Its water sparkles like champagne" },
+        { "id": "c", "text": "It changes colour with the weather" },
+        { "id": "d", "text": "It fires a 30-metre jet every hour" }
+      ],
+      "explanation": "The Singing Fountain is one of the town's landmarks — its water display comes alive with music."
+    },
+    {
+      "id": "maria-gas",
+      "type": "single",
+      "text": "Maria's Spring doesn't produce water, but something else. What?",
+      "options": [
+        { "id": "a", "text": "A healing natural gas (CO₂)", "correct": true },
+        { "id": "b", "text": "Hot steam" },
+        { "id": "c", "text": "Healing mud" },
+        { "id": "d", "text": "Nothing — it's just a legend" }
+      ],
+      "explanation": "Maria's gas is 99.7% carbon dioxide of volcanic origin, used for gas injections and dry gas baths."
+    },
+    {
+      "id": "hvezda",
+      "type": "single",
+      "text": "What is the Ensana Hvězda hotel — home of our grand prize — famous for?",
+      "options": [
+        { "id": "a", "text": "The largest pool in town", "correct": true },
+        { "id": "b", "text": "A rooftop observatory" },
+        { "id": "c", "text": "The oldest lift in Europe" },
+        { "id": "d", "text": "Its own ski slope" }
+      ],
+      "explanation": "The Hvězda pool world covers 2,100 m² — the largest in town. Plus a salt cave and Café Imperial."
+    },
+    {
+      "id": "roman-baths",
+      "type": "single",
+      "text": "In which hotel can you bathe in the historic Roman Baths of 1896?",
+      "options": [
+        { "id": "a", "text": "Ensana Nové Lázně", "correct": true },
+        { "id": "b", "text": "Ensana Hvězda" },
+        { "id": "c", "text": "Ensana Pacifik" },
+        { "id": "d", "text": "Ensana Butterfly" }
+      ],
+      "explanation": "The Roman Baths at the five-star Nové Lázně hotel have welcomed guests since 1896."
+    },
+    {
+      "id": "tradition",
+      "type": "single",
+      "text": "How long is Marienbad's spa tradition?",
+      "options": [
+        { "id": "a", "text": "Over 200 years — since 1808", "correct": true },
+        { "id": "b", "text": "Exactly 100 years" },
+        { "id": "c", "text": "Since the Middle Ages" },
+        { "id": "d", "text": "Since 1948" }
+      ],
+      "explanation": "The spa tradition dates back to 1808. Since 2023, Marienbad has also been an official climatic spa."
+    },
+    {
+      "id": "dream-summer",
+      "type": "open",
+      "text": "And finally, no tricks this time: what does your dream spa summer look like? Tell us in a few words.",
+      "placeholder": "E.g. a morning cup at the spring, afternoons by the pool…",
+      "maxLength": 500
+    }
+  ],
+  "results": [
+    {
+      "minPercent": 85,
+      "title": "Spa connoisseur!",
+      "message": "Brilliant! You could be giving tours of the colonnade. Only one thing left — come and enjoy summer with Ensana in person."
+    },
+    {
+      "minPercent": 50,
+      "title": "Almost a local",
+      "message": "Great effort! Marienbad still keeps a few secrets from you — best uncovered right at the springs."
+    },
+    {
+      "minPercent": 0,
+      "title": "One more reason to visit",
+      "message": "No worries! All of this is best learnt right on the colonnade. And you're in the draw either way."
+    }
+  ],
+  "emailGate": {
+    "heading": "You made it — now into the draw!",
+    "text": "Leave us your name and email and you'll be entered into the draw for a stay at the Ensana Hvězda hotel: 2 nights for 2 with a Mini Spa Break. The winner will be drawn on 1 September and notified by email.",
+    "consentLabel": "I consent to the processing of my personal data for the purposes of this competition and to receiving news from Marienbad by email. You can unsubscribe at any time.",
+    "successTitle": "Done — you're in the draw!",
+    "successText": "Fingers crossed — the draw takes place on 1 September. Until then, see you at the springs."
+  }
+}

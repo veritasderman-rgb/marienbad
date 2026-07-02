@@ -1,0 +1,154 @@
+{
+  "slug": "ensana-sommer",
+  "title": "Sommer mit Ensana in Marienbad",
+  "metaDescription": "Machen Sie mit beim Ensana-Sommergewinnspiel: 10 unterhaltsame Fragen über Marienbad und Verlosung eines Aufenthalts für 2 Personen im Hotel Hvězda.",
+  "active": true,
+  "intro": {
+    "badge": "Sommer-Gewinnspiel",
+    "text": "Wir haben ein Sommer-Gewinnspiel für Sie vorbereitet. Es erwarten Sie 10 Fragen über Marienbad — einige testen Ihr Gedächtnis, andere Ihre Fantasie. Wer bis zum Ende durchhält und uns seine E-Mail-Adresse hinterlässt, nimmt an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil.",
+    "prize": "Hauptgewinn: 2 Nächte für 2 Personen — Minikur im Hotel Ensana Hvězda",
+    "drawNote": "Die Verlosung findet am 1. September statt.",
+    "startLabel": "Los geht's"
+  },
+  "questions": [
+    {
+      "id": "springs-count",
+      "type": "single",
+      "text": "Wie viele Mineralquellen entspringen direkt in Marienbad?",
+      "options": [
+        { "id": "a", "text": "Vier — wie die Jahreszeiten" },
+        { "id": "b", "text": "Etwa fünfzehn" },
+        { "id": "c", "text": "Rund vierzig", "correct": true },
+        { "id": "d", "text": "Über zweihundert" }
+      ],
+      "explanation": "Direkt in der Stadt entspringen rund 40 Quellen, im nahen Umland etwa 100 weitere. Um alle zu verkosten, reicht ein Aufenthalt kaum aus."
+    },
+    {
+      "id": "royal-guest",
+      "type": "single",
+      "text": "Welcher gekrönte Gast liebte Marienbad so sehr, dass er hier bis heute eine eigene Kurkabine hat?",
+      "options": [
+        { "id": "a", "text": "Der englische König Edward VII.", "correct": true },
+        { "id": "b", "text": "Der französische Kaiser Napoleon III." },
+        { "id": "c", "text": "Der schwedische König Gustav" },
+        { "id": "d", "text": "Der russische Zar Nikolaus II." }
+      ],
+      "explanation": "König Edward VII. — seine königliche Kabine finden Sie bis heute im Hotel Ensana Nové Lázně."
+    },
+    {
+      "id": "festival",
+      "type": "single",
+      "text": "Nach welchem Komponisten ist das berühmte Musikfestival der Stadt benannt?",
+      "options": [
+        { "id": "a", "text": "Frédéric Chopin", "correct": true },
+        { "id": "b", "text": "W. A. Mozart" },
+        { "id": "c", "text": "Ludwig van Beethoven" },
+        { "id": "d", "text": "Antonín Dvořák" }
+      ],
+      "explanation": "Das Chopin-Festival — Frédéric Chopin gehörte ebenso wie Goethe zu den berühmten Gästen der Stadt."
+    },
+    {
+      "id": "unesco",
+      "type": "single",
+      "text": "Seit 2021 steht Marienbad auf der UNESCO-Liste. Unter welchem Titel?",
+      "options": [
+        { "id": "a", "text": "Bedeutende Kurstädte Europas", "correct": true },
+        { "id": "b", "text": "Perlen der Habsburgermonarchie" },
+        { "id": "c", "text": "Europäische Städte der Fontänen" },
+        { "id": "d", "text": "Gartenstädte der Welt" }
+      ],
+      "explanation": "Gemeinsam mit weiteren berühmten Kurorten bildet Marienbad seit 2021 die UNESCO-Serie „Bedeutende Kurstädte Europas“."
+    },
+    {
+      "id": "fountain",
+      "type": "single",
+      "text": "Was kann die berühmte Fontäne vor der Kolonnade, das immer wieder Menschenmengen anzieht?",
+      "options": [
+        { "id": "a", "text": "Sie singt — sie spielt Musik", "correct": true },
+        { "id": "b", "text": "Ihr Wasser perlt wie Champagner" },
+        { "id": "c", "text": "Sie wechselt die Farbe je nach Wetter" },
+        { "id": "d", "text": "Sie schießt stündlich einen 30-Meter-Geysir in die Höhe" }
+      ],
+      "explanation": "Die Singende Fontäne ist eines der Wahrzeichen der Stadt — ihr Wasserspiel erklingt zu Musik."
+    },
+    {
+      "id": "maria-gas",
+      "type": "single",
+      "text": "Aus der Marienquelle sprudelt kein Wasser, sondern etwas anderes. Was?",
+      "options": [
+        { "id": "a", "text": "Heilsames natürliches Gas (CO₂)", "correct": true },
+        { "id": "b", "text": "Heißer Dampf" },
+        { "id": "c", "text": "Heilschlamm" },
+        { "id": "d", "text": "Nichts — alles nur Legende" }
+      ],
+      "explanation": "Das Mariengas besteht zu 99,7 % aus Kohlendioxid vulkanischen Ursprungs und wird für Gasinjektionen und trockene Gasbäder genutzt."
+    },
+    {
+      "id": "hvezda",
+      "type": "single",
+      "text": "Womit glänzt das Hotel Ensana Hvězda, in dem der Gewinnaufenthalt wartet?",
+      "options": [
+        { "id": "a", "text": "Mit dem größten Pool der Stadt", "correct": true },
+        { "id": "b", "text": "Mit einer Sternwarte auf dem Dach" },
+        { "id": "c", "text": "Mit dem ältesten Aufzug Europas" },
+        { "id": "d", "text": "Mit einer eigenen Skipiste" }
+      ],
+      "explanation": "Die Poolwelt des Hotels Hvězda misst 2 100 m² — die größte der Stadt. Dazu Salzgrotte und Café Imperial."
+    },
+    {
+      "id": "roman-baths",
+      "type": "single",
+      "text": "In welchem Hotel baden Sie in den historischen Römischen Bädern von 1896?",
+      "options": [
+        { "id": "a", "text": "Ensana Nové Lázně", "correct": true },
+        { "id": "b", "text": "Ensana Hvězda" },
+        { "id": "c", "text": "Ensana Pacifik" },
+        { "id": "d", "text": "Ensana Butterfly" }
+      ],
+      "explanation": "Die Römischen Bäder im Fünf-Sterne-Hotel Nové Lázně empfangen Gäste seit 1896."
+    },
+    {
+      "id": "tradition",
+      "type": "single",
+      "text": "Wie lang ist die Kurtradition von Marienbad?",
+      "options": [
+        { "id": "a", "text": "Über 200 Jahre — seit 1808", "correct": true },
+        { "id": "b", "text": "Genau 100 Jahre" },
+        { "id": "c", "text": "Seit dem Mittelalter" },
+        { "id": "d", "text": "Seit 1948" }
+      ],
+      "explanation": "Die Kurtradition reicht bis ins Jahr 1808 zurück. Seit 2023 ist Marienbad zudem offiziell ein klimatischer Kurort."
+    },
+    {
+      "id": "dream-summer",
+      "type": "open",
+      "text": "Und zum Schluss ganz ohne Fallen: Wie sieht Ihr Traumsommer im Kurort aus? Verraten Sie es uns in ein paar Worten.",
+      "placeholder": "Z. B. morgens ein Becher an der Quelle, nachmittags am Pool…",
+      "maxLength": 500
+    }
+  ],
+  "results": [
+    {
+      "minPercent": 85,
+      "title": "Kurort-Kenner!",
+      "message": "Großartig! Sie könnten glatt Führungen über die Kolonnade geben. Jetzt fehlt nur noch eins — den Sommer mit Ensana live zu erleben."
+    },
+    {
+      "minPercent": 50,
+      "title": "Fast wie ein Einheimischer",
+      "message": "Starke Leistung! Ein paar Geheimnisse hält Marienbad noch für Sie bereit — am besten lüften Sie sie direkt an den Quellen."
+    },
+    {
+      "minPercent": 0,
+      "title": "Ein Grund mehr zu kommen",
+      "message": "Kein Problem! All das lernt man am besten direkt auf der Kolonnade. Und im Lostopf landen Sie so oder so."
+    }
+  ],
+  "emailGate": {
+    "heading": "Geschafft — jetzt in den Lostopf!",
+    "text": "Hinterlassen Sie uns Name und E-Mail-Adresse und Sie nehmen an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil: 2 Nächte für 2 Personen mit Minikur. Der Gewinner wird am 1. September ausgelost und per E-Mail benachrichtigt.",
+    "consentLabel": "Ich willige in die Verarbeitung meiner personenbezogenen Daten für das Gewinnspiel und in den Erhalt von Neuigkeiten aus Marienbad per E-Mail ein. Die Abmeldung ist jederzeit möglich.",
+    "successTitle": "Fertig — Sie sind im Lostopf!",
+    "successText": "Drücken Sie die Daumen — die Verlosung findet am 1. September statt. Bis dahin: auf Wiedersehen, vielleicht an den Quellen."
+  }
+}

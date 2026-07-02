@@ -1,6 +1,6 @@
 import Markdoc from '@markdoc/markdoc'
 import yaml from 'js-yaml'
-import type { Locale } from '@/i18n/config'
+import { routes, type Locale } from '@/i18n/config'
 import { markdocConfig } from '@/markdoc/config'
 
 // Homepage JSON imports (bundled at build time)
@@ -359,4 +359,101 @@ export async function getAllArticles(): Promise<Article[]> {
 
   articles.sort((a, b) => b.date.localeCompare(a.date))
   return articles
+}
+
+// ---------------------------------------------------------------------------
+// Quizzes (event competitions) — src/content/quizzes/<quizId>/<locale>.json
+// ---------------------------------------------------------------------------
+
+export interface QuizOption {
+  id: string
+  text: string
+  correct?: boolean
+}
+
+export interface QuizQuestion {
+  id: string
+  type: 'single' | 'open'
+  text: string
+  options?: QuizOption[]
+  explanation?: string
+  placeholder?: string
+  maxLength?: number
+}
+
+export interface QuizResultBand {
+  minPercent: number
+  title: string
+  message: string
+}
+
+export interface Quiz {
+  /** Canonical quiz id (folder name), identical across locales */
+  quizId: string
+  locale: Locale
+  /** Localized URL slug */
+  slug: string
+  title: string
+  metaDescription: string
+  active: boolean
+  intro: { badge: string; text: string; prize: string; drawNote: string; startLabel: string }
+  questions: QuizQuestion[]
+  results: QuizResultBand[]
+  emailGate: { heading: string; text: string; consentLabel: string; successTitle: string; successText: string }
+}
+
+const quizFiles = import.meta.glob('./quizzes/*/*.json', { eager: true })
+
+function parseQuizPath(path: string): { quizId: string; locale: Locale } | null {
+  const m = path.match(/^\.\/quizzes\/([^/]+)\/(de|en|cs|ru)\.json$/)
+  if (!m) return null
+  return { quizId: m[1], locale: m[2] as Locale }
+}
+
+function toQuiz(path: string, mod: unknown): Quiz | null {
+  const parsed = parseQuizPath(path)
+  if (!parsed) return null
+  const data = (mod as { default?: Record<string, unknown> }).default ?? mod
+  return { quizId: parsed.quizId, locale: parsed.locale, ...(data as Omit<Quiz, 'quizId' | 'locale'>) }
+}
+
+/** All quiz locale variants (one Quiz per existing locale file) */
+export function getAllQuizzes(): Quiz[] {
+  const quizzes: Quiz[] = []
+  for (const [path, mod] of Object.entries(quizFiles)) {
+    const quiz = toQuiz(path, mod)
+    if (quiz) quizzes.push(quiz)
+  }
+  return quizzes
+}
+
+/** Find a quiz by its localized slug for the given locale */
+export function getQuizBySlug(locale: Locale, slug: string): Quiz | null {
+  for (const [path, mod] of Object.entries(quizFiles)) {
+    const quiz = toQuiz(path, mod)
+    if (quiz && quiz.locale === locale && quiz.slug === slug) return quiz
+  }
+  return null
+}
+
+/** Find a quiz by canonical id and locale */
+export function getQuiz(quizId: string, locale: Locale): Quiz | null {
+  for (const [path, mod] of Object.entries(quizFiles)) {
+    const quiz = toQuiz(path, mod)
+    if (quiz && quiz.locale === locale && quiz.quizId === quizId) return quiz
+  }
+  return null
+}
+
+/** Locale → localized URL path for all existing locale variants of a quiz
+ *  (for hreflang alternateUrls and the language switcher) */
+export function getQuizAlternatePaths(quizId: string): Partial<Record<Locale, string>> {
+  const alternates: Partial<Record<Locale, string>> = {}
+  for (const [path, mod] of Object.entries(quizFiles)) {
+    const quiz = toQuiz(path, mod)
+    if (!quiz || quiz.quizId !== quizId || !quiz.active) continue
+    const prefix = routes.quiz[quiz.locale]
+    alternates[quiz.locale] = `/${quiz.locale}/${prefix}/${quiz.slug}`
+  }
+  return alternates
 }

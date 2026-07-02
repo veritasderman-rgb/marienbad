@@ -331,6 +331,103 @@ function campaignSingleton(locale: string, label: string) {
   })
 }
 
+/** Event quiz collection, one per locale — entries share a folder (Quiz ID) across languages */
+function quizCollection(locale: string, label: string) {
+  return collection({
+    label,
+    path: `src/content/quizzes/*/${locale}` as `src/content/quizzes/*/de`,
+    slugField: 'title',
+    format: { data: 'json' },
+    schema: {
+      title: fields.slug({
+        name: { label: 'Title' },
+        slug: {
+          label: 'Quiz ID (folder)',
+          description: 'Canonical quiz id — must be identical in all four language versions, e.g. "ensana-leto".',
+        },
+      }),
+      slug: fields.text({
+        label: 'URL slug (localized)',
+        description: 'Slug used in the page URL for this language, e.g. "ensana-leto" → /cs/kviz/ensana-leto',
+        validation: { isRequired: true },
+      }),
+      metaDescription: fields.text({ label: 'Meta Description', multiline: true }),
+      active: fields.checkbox({
+        label: 'Active',
+        defaultValue: true,
+        description: 'Inactive quizzes return 404 in production (switch off after the event ends).',
+      }),
+      intro: fields.object(
+        {
+          badge: fields.text({ label: 'Badge (e.g. "Letní soutěž")' }),
+          text: fields.text({ label: 'Intro text', multiline: true }),
+          prize: fields.text({ label: 'Prize highlight', multiline: true }),
+          drawNote: fields.text({ label: 'Draw note (e.g. date of the draw)' }),
+          startLabel: fields.text({ label: 'Start button label' }),
+        },
+        { label: 'Intro screen' },
+      ),
+      questions: fields.array(
+        fields.object({
+          id: fields.text({
+            label: 'Question ID',
+            description: 'Stable id, identical across languages (used to pair answers).',
+            validation: { isRequired: true },
+          }),
+          type: fields.select({
+            label: 'Type',
+            options: [
+              { label: 'Single choice', value: 'single' },
+              { label: 'Open (free text)', value: 'open' },
+            ],
+            defaultValue: 'single',
+          }),
+          text: fields.text({ label: 'Question', multiline: true, validation: { isRequired: true } }),
+          options: fields.array(
+            fields.object({
+              id: fields.text({ label: 'Option ID (a, b, c…)' }),
+              text: fields.text({ label: 'Answer text' }),
+              correct: fields.checkbox({ label: 'Correct answer' }),
+            }),
+            {
+              label: 'Options (single choice only)',
+              itemLabel: (props) => props.fields.text.value || props.fields.id.value || 'Option',
+            },
+          ),
+          explanation: fields.text({ label: 'Explanation (shown after answering)', multiline: true }),
+          placeholder: fields.text({ label: 'Placeholder (open question only)' }),
+          maxLength: fields.integer({ label: 'Max answer length (open question)', defaultValue: 500 }),
+        }),
+        {
+          label: 'Questions (5–30)',
+          itemLabel: (props) => props.fields.text.value || props.fields.id.value || 'Question',
+        },
+      ),
+      results: fields.array(
+        fields.object({
+          minPercent: fields.integer({ label: 'From score (%)', description: 'Band applies from this percentage of correct answers up.' }),
+          title: fields.text({ label: 'Result title' }),
+          message: fields.text({ label: 'Result message', multiline: true }),
+        }),
+        {
+          label: 'Result bands',
+          itemLabel: (props) => props.fields.title.value || 'Band',
+        },
+      ),
+      emailGate: fields.object(
+        {
+          heading: fields.text({ label: 'Heading' }),
+          text: fields.text({ label: 'Text', multiline: true }),
+          consentLabel: fields.text({ label: 'Consent checkbox label', multiline: true }),
+          successTitle: fields.text({ label: 'Success title' }),
+          successText: fields.text({ label: 'Success text', multiline: true }),
+        },
+        { label: 'Email form (prize draw entry)' },
+      ),
+    },
+  })
+}
+
 const isProd = import.meta.env.PROD
 
 export default config({
@@ -716,5 +813,9 @@ export default config({
         }),
       },
     }),
+    'quizzes-de': quizCollection('de', 'Quizzes (Deutsch)'),
+    'quizzes-en': quizCollection('en', 'Quizzes (English)'),
+    'quizzes-cs': quizCollection('cs', 'Quizzes (Čeština)'),
+    'quizzes-ru': quizCollection('ru', 'Quizzes (Русский)'),
   },
 })

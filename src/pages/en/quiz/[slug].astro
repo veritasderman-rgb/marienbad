@@ -1,0 +1,63 @@
+---
+import Base from '@/layouts/Base.astro'
+import EventQuiz from '@/components/EventQuiz.tsx'
+import { getQuizBySlug, getQuizAlternatePaths } from '@/content/reader'
+import { privacyPaths } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+
+const locale = 'en' as const
+const { slug } = Astro.params
+const quiz = slug ? getQuizBySlug(locale, slug) : null
+if (!quiz || (!quiz.active && import.meta.env.PROD)) return new Response(null, { status: 404 })
+
+const alternateUrls = getQuizAlternatePaths(quiz.quizId)
+
+const translations = {
+  progress: t(locale, 'eventQuiz.progress'),
+  confirm: t(locale, 'eventQuiz.confirm'),
+  next: t(locale, 'eventQuiz.next'),
+  back: t(locale, 'eventQuiz.back'),
+  correct: t(locale, 'eventQuiz.correct'),
+  incorrect: t(locale, 'eventQuiz.incorrect'),
+  correctAnswerWas: t(locale, 'eventQuiz.correctAnswerWas'),
+  showResult: t(locale, 'eventQuiz.showResult'),
+  scoreLabel: t(locale, 'eventQuiz.scoreLabel'),
+  firstName: t(locale, 'eventQuiz.firstName'),
+  lastName: t(locale, 'eventQuiz.lastName'),
+  email: t(locale, 'eventQuiz.email'),
+  submit: t(locale, 'eventQuiz.submit'),
+  sending: t(locale, 'eventQuiz.sending'),
+  privacy: t(locale, 'eventQuiz.privacy'),
+  errorRequired: t(locale, 'eventQuiz.errorRequired'),
+  errorGeneric: t(locale, 'eventQuiz.errorGeneric'),
+  restart: t(locale, 'eventQuiz.restart'),
+}
+---
+
+<Base
+  locale={locale}
+  title={`${quiz.title} — Marienbad.com`}
+  description={quiz.metaDescription}
+  alternateUrls={alternateUrls}
+>
+  <section class="bg-indigo-900 text-white">
+    <div class="max-w-3xl mx-auto px-4 pt-14 pb-24 sm:pt-20 sm:pb-28 text-center">
+      <h1 class="font-heading text-4xl sm:text-5xl font-semibold leading-tight">{quiz.title}</h1>
+    </div>
+  </section>
+  <section class="bg-beige-50 pb-16 sm:pb-24">
+    <div class="max-w-3xl mx-auto px-4 -mt-14 sm:-mt-16">
+      <EventQuiz
+        client:load
+        locale={locale}
+        quizId={quiz.quizId}
+        intro={quiz.intro}
+        questions={quiz.questions}
+        results={quiz.results}
+        emailGate={quiz.emailGate}
+        privacyPath={privacyPaths[locale]}
+        translations={translations}
+      />
+    </div>
+  </section>
+</Base>
