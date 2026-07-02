@@ -57,7 +57,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json()
-    const { firstName, lastName, email, consent, locale, quiz, score, scoreTotal, openAnswers, website, _ts } = body as {
+    const { firstName, lastName, email, consent, locale, quiz, score, scoreTotal, openAnswers, hp, _ts } = body as {
       firstName?: string
       lastName?: string
       email?: string
@@ -67,17 +67,19 @@ export const POST: APIRoute = async ({ request }) => {
       score?: number
       scoreTotal?: number
       openAnswers?: Record<string, string>
-      website?: string
+      hp?: string
       _ts?: number
     }
 
-    // --- Honeypot check ---
-    if (website) {
+    // --- Honeypot check (log the silent drop so real-user false positives are debuggable) ---
+    if (hp) {
+      console.log(`[quiz-submission] honeypot triggered — dropping silently (quiz: ${quiz}, locale: ${locale})`)
       return new Response(JSON.stringify({ success: true }), { status: 200, headers })
     }
 
     // --- Timing check (a quiz takes far longer than 10 seconds) ---
     if (!_ts || typeof _ts !== 'number' || Date.now() - _ts < 10000) {
+      console.log(`[quiz-submission] timing check failed — dropping silently (quiz: ${quiz}, locale: ${locale}, _ts: ${_ts})`)
       return new Response(JSON.stringify({ success: true }), { status: 200, headers })
     }
 
