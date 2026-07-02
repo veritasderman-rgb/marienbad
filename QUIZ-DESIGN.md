@@ -57,7 +57,9 @@ Podle vzoru `routes` v `src/i18n/config.ts` přibude sekce `quiz`:
 | cs | `kviz` | `/cs/kviz/130-let-nove-lazne` |
 | ru | `viktorina` | `/ru/viktorina/130-let-novye-bany` |
 
-Implementace: dynamické routy `src/pages/{de,en,cs,ru}/{quiz|kviz|viktorina}/[slug].astro` (SSR, obsah čtený přes `src/content/reader.ts`). Volitelně i přehledová stránka `/cs/kviz/` se seznamem aktivních kvízů. Hreflang mezi mutacemi zajistí stávající mechanismus v `Base.astro`.
+Implementace: dynamické routy `src/pages/{de,en,cs,ru}/{quiz|kviz|viktorina}/[slug].astro` (SSR, obsah čtený přes `src/content/reader.ts`). Volitelně i přehledová stránka `/cs/kviz/` se seznamem aktivních kvízů.
+
+**Hreflang — pozor:** automatika v `Base.astro` (`hreflangUrl`, řádky 53–72) umí odvodit alternativy jen pro sekce z `routes` a jinak jen prohodí locale prefix — lokalizované slugy detailu kvízu by tak vedly na špatné URL. Detailová stránka kvízu proto **musí sestavit `alternateUrls`** (načíst slugy ze všech 4 locale souborů kvízu) a předat je do `Base.astro` explicitně, stejně jako `switcherUrls` pro přepínač jazyků. Pokud některá mutace neexistuje, hreflang pro ni vynechat.
 
 ### 3.2 Obsahový model (Keystatic kolekce `quizzes`)
 
@@ -145,7 +147,7 @@ create table quiz_submissions (
 
 ### 3.5 GDPR
 
-- Souhlas: samostatný, nepředvyplněný checkbox s odkazem na `/…/datenschutz` (existuje ve všech jazycích); text souhlasu per-locale v obsahu kvízu
+- Souhlas: samostatný, nepředvyplněný checkbox s odkazem na stránku ochrany údajů — cesty jsou per-locale (`/de/datenschutz`, `/en/privacy`, `/cs/ochrana-soukromi`, `/ru/politika-konfidencialnosti`, viz `privacyPaths` v `Footer.astro`; mapování vytáhnout do sdíleného modulu, např. `src/i18n/config.ts`); text souhlasu per-locale v obsahu kvízu
 - Ukládat `consent_at` (timestamp) — prokazatelnost souhlasu; double opt-in v MailerLite jako druhá vrstva
 - Otevřené odpovědi: pokyn v UI „neuvádějte osobní ani zdravotní údaje“ (zdravotní údaje = zvláštní kategorie, těm se vyhnout)
 - Bez cookies — konzistentní s privacy-first přístupem webu (Plausible)
