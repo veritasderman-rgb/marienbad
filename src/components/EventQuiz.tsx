@@ -58,6 +58,9 @@ type Step = { screen: 'intro' } | { screen: 'question'; index: number } | { scre
 interface StoredState {
   step: Step
   answers: Record<string, string>
+  /** Original quiz start time — must survive reloads so the server-side
+   *  timing check doesn't mistake a restored session for a bot */
+  startedAt?: number
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -100,6 +103,9 @@ export default function EventQuiz({
       if (!raw) return
       const stored = JSON.parse(raw) as StoredState
       if (stored && stored.step && stored.answers) {
+        if (typeof stored.startedAt === 'number' && stored.startedAt <= Date.now()) {
+          mountTs.current = stored.startedAt
+        }
         setAnswers(stored.answers)
         setStep(stored.step)
         if (stored.step.screen === 'question') {
@@ -113,7 +119,7 @@ export default function EventQuiz({
 
   function persist(nextStep: Step, nextAnswers: Record<string, string>) {
     try {
-      sessionStorage.setItem(storageKey, JSON.stringify({ step: nextStep, answers: nextAnswers }))
+      sessionStorage.setItem(storageKey, JSON.stringify({ step: nextStep, answers: nextAnswers, startedAt: mountTs.current }))
     } catch {}
   }
 
@@ -176,6 +182,7 @@ export default function EventQuiz({
     try {
       sessionStorage.removeItem(storageKey)
     } catch {}
+    mountTs.current = Date.now()
     setAnswers({})
     setSelected(null)
     setConfirmed(false)
