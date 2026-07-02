@@ -1,0 +1,154 @@
+{
+  "slug": "ensana-leto",
+  "title": "Léto s Ensanou v Mariánských Lázních",
+  "metaDescription": "Zapojte se do letní soutěže Ensana: 10 zábavných otázek o Mariánských Lázních a slosování o pobyt v hotelu Hvězda pro 2 osoby.",
+  "active": true,
+  "intro": {
+    "badge": "Letní soutěž",
+    "text": "Připravili jsme si pro vás letní soutěž. Čeká vás 10 otázek o Mariánských Lázních — některé prověří paměť, jiné fantazii. Každý, kdo dojde na konec a zanechá nám e-mail, bude zařazen do slosování o pobyt v hotelu Ensana Hvězda.",
+    "prize": "Hlavní výhra: 2 noci pro 2 osoby — Minikúra v hotelu Ensana Hvězda",
+    "drawNote": "Slosování proběhne 1. září.",
+    "startLabel": "Jdeme na to"
+  },
+  "questions": [
+    {
+      "id": "springs-count",
+      "type": "single",
+      "text": "Kolik minerálních pramenů vyvěrá přímo v Mariánských Lázních?",
+      "options": [
+        { "id": "a", "text": "Čtyři — jako roční období" },
+        { "id": "b", "text": "Kolem patnácti" },
+        { "id": "c", "text": "Kolem čtyřiceti", "correct": true },
+        { "id": "d", "text": "Přes dvě stě" }
+      ],
+      "explanation": "Přímo ve městě vyvěrá kolem 40 pramenů a v nejbližším okolí dalších zhruba 100. Na ochutnávku všech jeden pobyt stačit nebude."
+    },
+    {
+      "id": "royal-guest",
+      "type": "single",
+      "text": "Který korunovaný host si Mariánské Lázně oblíbil natolik, že tu má dodnes vlastní lázeňskou kabinu?",
+      "options": [
+        { "id": "a", "text": "Anglický král Edward VII.", "correct": true },
+        { "id": "b", "text": "Francouzský císař Napoleon III." },
+        { "id": "c", "text": "Švédský král Gustav" },
+        { "id": "d", "text": "Ruský car Mikuláš II." }
+      ],
+      "explanation": "Anglický král Edward VII. Jeho královskou kabinu najdete v hotelu Ensana Nové Lázně dodnes."
+    },
+    {
+      "id": "festival",
+      "type": "single",
+      "text": "Po kterém skladateli je pojmenován slavný zdejší hudební festival?",
+      "options": [
+        { "id": "a", "text": "Fryderyk Chopin", "correct": true },
+        { "id": "b", "text": "W. A. Mozart" },
+        { "id": "c", "text": "Ludwig van Beethoven" },
+        { "id": "d", "text": "Antonín Dvořák" }
+      ],
+      "explanation": "Chopinův festival — Fryderyk Chopin patřil ke slavným hostům města, stejně jako Goethe."
+    },
+    {
+      "id": "unesco",
+      "type": "single",
+      "text": "Od roku 2021 jsou Mariánské Lázně zapsány na seznamu UNESCO. Pod jakou hlavičkou?",
+      "options": [
+        { "id": "a", "text": "Slavná lázeňská města Evropy", "correct": true },
+        { "id": "b", "text": "Perly habsburské monarchie" },
+        { "id": "c", "text": "Evropská města fontán" },
+        { "id": "d", "text": "Zahradní města světa" }
+      ],
+      "explanation": "Spolu s dalšími významnými lázněmi tvoří Mariánské Lázně od roku 2021 sérii UNESCO „Slavná lázeňská města Evropy“."
+    },
+    {
+      "id": "fountain",
+      "type": "single",
+      "text": "Co umí slavná fontána před kolonádou, kvůli čemu se u ní scházejí davy?",
+      "options": [
+        { "id": "a", "text": "Zpívá — hraje hudbu", "correct": true },
+        { "id": "b", "text": "Voda v ní perlí jako šampaňské" },
+        { "id": "c", "text": "Mění barvu podle počasí" },
+        { "id": "d", "text": "Jednou za hodinu vystřelí gejzír do výšky 30 metrů" }
+      ],
+      "explanation": "Zpívající fontána je jedním ze symbolů města — vodní hra se rozeznívá hudbou."
+    },
+    {
+      "id": "maria-gas",
+      "type": "single",
+      "text": "Z Mariina pramene nevyvěrá voda, ale něco jiného. Co?",
+      "options": [
+        { "id": "a", "text": "Léčivý přírodní plyn (CO₂)", "correct": true },
+        { "id": "b", "text": "Horká pára" },
+        { "id": "c", "text": "Léčivé bahno" },
+        { "id": "d", "text": "Nic — je to jen legenda" }
+      ],
+      "explanation": "Mariin plyn obsahuje 99,7 % oxidu uhličitého sopečného původu a využívá se při plynových injekcích a suchých koupelích."
+    },
+    {
+      "id": "hvezda",
+      "type": "single",
+      "text": "Čím se pyšní hotel Ensana Hvězda, kde na vítěze soutěže čeká pobyt?",
+      "options": [
+        { "id": "a", "text": "Největším bazénem ve městě", "correct": true },
+        { "id": "b", "text": "Hvězdárnou na střeše" },
+        { "id": "c", "text": "Nejstarším výtahem v Evropě" },
+        { "id": "d", "text": "Vlastní sjezdovkou" }
+      ],
+      "explanation": "Bazénový svět hotelu Hvězda má rozlohu 2 100 m² — největší ve městě. K tomu solná jeskyně a kavárna Imperial."
+    },
+    {
+      "id": "roman-baths",
+      "type": "single",
+      "text": "Ve kterém hotelu se můžete koupat v historických Římských lázních z roku 1896?",
+      "options": [
+        { "id": "a", "text": "Ensana Nové Lázně", "correct": true },
+        { "id": "b", "text": "Ensana Hvězda" },
+        { "id": "c", "text": "Ensana Pacifik" },
+        { "id": "d", "text": "Ensana Butterfly" }
+      ],
+      "explanation": "Římské lázně v pětihvězdičkovém hotelu Nové Lázně slouží hostům od roku 1896."
+    },
+    {
+      "id": "tradition",
+      "type": "single",
+      "text": "Jak dlouhá je zdejší lázeňská tradice?",
+      "options": [
+        { "id": "a", "text": "Přes 200 let — od roku 1808", "correct": true },
+        { "id": "b", "text": "Přesně 100 let" },
+        { "id": "c", "text": "Od středověku" },
+        { "id": "d", "text": "Od roku 1948" }
+      ],
+      "explanation": "Lázeňská tradice sahá do roku 1808. Od roku 2023 jsou Mariánské Lázně navíc oficiálně klimatickými lázněmi."
+    },
+    {
+      "id": "dream-summer",
+      "type": "open",
+      "text": "A poslední otázka, tentokrát bez chytáků: Jak vypadá vaše vysněné léto v lázních? Napište nám to pár slovy.",
+      "placeholder": "Např. ranní sklenka od pramene, odpoledne u bazénu…",
+      "maxLength": 500
+    }
+  ],
+  "results": [
+    {
+      "minPercent": 85,
+      "title": "Lázeňský znalec!",
+      "message": "Skvělé! Vy byste mohli po kolonádě provázet. Teď už zbývá jen jediné — přijet si léto s Ensanou užít naživo."
+    },
+    {
+      "minPercent": 50,
+      "title": "Skoro jako místní",
+      "message": "Slušný výkon! Pár tajemství vám ještě Mariánské Lázně schovávají — nejlépe je odhalíte přímo u pramenů."
+    },
+    {
+      "minPercent": 0,
+      "title": "Důvod navíc přijet",
+      "message": "Nevadí! Tohle všechno se nejlíp doučí přímo na kolonádě. A do osudí míříte tak jako tak."
+    }
+  ],
+  "emailGate": {
+    "heading": "Jste v cíli — teď do osudí!",
+    "text": "Zanechte nám jméno a e-mail a jste ve slosování o pobyt v hotelu Ensana Hvězda: 2 noci pro 2 osoby s programem Minikúra. Vítěze vylosujeme 1. září a dáme mu vědět e-mailem.",
+    "consentLabel": "Souhlasím se zpracováním osobních údajů pro účely soutěže a se zasíláním novinek z Mariánských Lázní e-mailem. Odhlásit se lze kdykoli.",
+    "successTitle": "Hotovo, jste v osudí!",
+    "successText": "Držte si palce — losujeme 1. září. Do té doby na viděnou třeba u pramenů."
+  }
+}

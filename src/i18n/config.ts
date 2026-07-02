@@ -19,6 +19,15 @@ export const routes = {
   people: { de: 'menschen', en: 'people', cs: 'lide', ru: 'lyudi' },
   magazine: { de: 'magazin', en: 'magazine', cs: 'magazin', ru: 'zhurnal' },
   podcast: { cs: 'podcast' },
+  quiz: { de: 'quiz', en: 'quiz', cs: 'kviz', ru: 'viktorina' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>
 
 export type SectionKey = keyof typeof routes
+
+/** Localized privacy policy page per locale (used by footer and consent forms) */
+export const privacyPaths: Record<Locale, string> = {
+  de: '/de/datenschutz',
+  en: '/en/privacy',
+  cs: '/cs/ochrana-soukromi',
+  ru: '/ru/politika-konfidencialnosti',
+}
