@@ -10,7 +10,7 @@ Připravili jsme si pro vás letní soutěž. Čeká vás 10 otázek o Mariánsk
 ## Jak se zapojit
 
 1. Zakroužkujte u každé otázky odpověď, kterou považujete za správnou.
-2. Vyplňte své kontaktní údaje a podepište souhlas.
+2. Vyplňte své kontaktní údaje a zaškrtněte souhlasy.
 3. Vyplněný lístek odevzdejte na recepci hotelu.
 
 ---
@@ -94,7 +94,9 @@ Jméno: ______________________________  Příjmení: ___________________________
 
 E-mail: ______________________________________________
 
-☐ Souhlasím, aby společnost Léčebné lázně Mariánské Lázně a.s. (IČO 45359113) zpracovávala mé osobní údaje (jméno, příjmení, e-mail) pro účast v soutěži a pro zasílání newsletteru e-mailem. Pro rozesílání newsletteru mohou být mé údaje předány zpracovatelům (např. MailerLite a VirtualZoom). Souhlas je dobrovolný a lze jej kdykoli bezplatně odvolat.
+☐ Souhlasím s pravidly soutěže a se zpracováním svých osobních údajů (jméno, příjmení, e-mail) za účelem účasti v soutěži a kontaktování výherců. (povinné)
+
+☐ Souhlasím se zasíláním obchodních sdělení (newsletteru) společnosti Léčebné lázně Mariánské Lázně a.s. na uvedenou e-mailovou adresu. Souhlas mohu kdykoli odvolat prostřednictvím odkazu v každém e-mailu nebo na adrese webmaster.cz@ensanahotels.com. (nepovinné)
 
 Datum: ________________     Podpis: ______________________________
 

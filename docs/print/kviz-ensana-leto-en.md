@@ -10,7 +10,7 @@ We've prepared a summer competition for you. Ten questions about Marienbad await
 ## How to take part
 
 1. Circle the answer you think is correct for each question.
-2. Fill in your contact details and sign the consent.
+2. Fill in your contact details and tick the consents.
 3. Hand the completed slip in at the hotel reception.
 
 ---
@@ -94,7 +94,9 @@ First name: ______________________________  Last name: _________________________
 
 Email: ______________________________________________
 
-☐ I consent to Léčebné lázně Mariánské Lázně a.s. (ID No. 45359113) processing my personal data (first name, last name, email) to enter the competition and to send me its newsletter by email. For newsletter delivery my data may be shared with processors (e.g. MailerLite and VirtualZoom). Consent is voluntary and may be withdrawn free of charge at any time.
+☐ I agree to the competition terms and to the processing of my personal data (first name, last name, email) to take part in the competition and to contact winners. (required)
+
+☐ I agree to receive commercial communications (the newsletter) from Léčebné lázně Mariánské Lázně a.s. at the email address provided. I can withdraw this consent at any time via the link in every email or at webmaster.cz@ensanahotels.com. (optional)
 
 Date: ________________     Signature: ______________________________
 

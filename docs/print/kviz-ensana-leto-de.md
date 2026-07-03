@@ -10,7 +10,7 @@ Wir haben ein Sommer-Gewinnspiel für Sie vorbereitet. Es erwarten Sie 10 Fragen
 ## So machen Sie mit
 
 1. Kreisen Sie bei jeder Frage die Antwort ein, die Sie für richtig halten.
-2. Füllen Sie Ihre Kontaktdaten aus und unterschreiben Sie die Einwilligung.
+2. Füllen Sie Ihre Kontaktdaten aus und kreuzen Sie die Einwilligungen an.
 3. Geben Sie den ausgefüllten Zettel an der Hotelrezeption ab.
 
 ---
@@ -94,7 +94,9 @@ Vorname: ______________________________  Nachname: _____________________________
 
 E-Mail: ______________________________________________
 
-☐ Ich willige ein, dass die Léčebné lázně Mariánské Lázně a.s. (IČO 45359113) meine personenbezogenen Daten (Vorname, Nachname, E-Mail) für die Teilnahme am Gewinnspiel und für den Newsletter-Versand per E-Mail verarbeitet. Für den Newsletter-Versand können meine Daten an Auftragsverarbeiter (z. B. MailerLite und VirtualZoom) weitergegeben werden. Die Einwilligung ist freiwillig und jederzeit kostenlos widerruflich.
+☐ Ich stimme den Teilnahmebedingungen zu und willige in die Verarbeitung meiner personenbezogenen Daten (Vorname, Nachname, E-Mail) zur Teilnahme am Gewinnspiel und zur Kontaktaufnahme mit den Gewinnern ein. (erforderlich)
+
+☐ Ich willige ein, dass mir die Léčebné lázně Mariánské Lázně a.s. kommerzielle Mitteilungen (Newsletter) an die angegebene E-Mail-Adresse sendet. Die Einwilligung kann ich jederzeit über den Link in jeder E-Mail oder unter webmaster.cz@ensanahotels.com widerrufen. (optional)
 
 Datum: ________________     Unterschrift: ______________________________
 
