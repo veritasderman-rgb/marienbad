@@ -93,7 +93,7 @@
         { "id": "c", "text": "The oldest lift in Europe" },
         { "id": "d", "text": "Its own ski slope" }
       ],
-      "explanation": "The Hvězda hotel boasts the largest hotel pool in Marienbad — plus several saunas and a salt cave."
+      "explanation": "The Hvězda hotel boasts the largest hotel pool in Marienbad (18 × 8 metres) — plus several saunas and a salt cave."
     },
     {
       "id": "roman-baths",
@@ -123,7 +123,7 @@
       "id": "dream-summer",
       "type": "open",
       "text": "And finally, no tricks this time: what does your dream spa summer look like? Tell us in a few words.",
-      "placeholder": "E.g. a morning cup at the spring, afternoons by the pool…",
+      "placeholder": "A morning taste of the fresh spring on the colonnade, afternoons by the pool, evenings over a glass of wine — and you?",
       "maxLength": 500
     }
   ],

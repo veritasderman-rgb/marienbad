@@ -93,7 +93,7 @@
         { "id": "c", "text": "Nejstarším výtahem v Evropě" },
         { "id": "d", "text": "Vlastní sjezdovkou" }
       ],
-      "explanation": "Hotel Hvězda se pyšní největším hotelovým bazénem v Mariánských Lázních — a k němu několika saunami a solnou jeskyní."
+      "explanation": "Hotel Hvězda se pyšní největším hotelovým bazénem v Mariánských Lázních (18 × 8 metrů) — a k němu několika saunami a solnou jeskyní."
     },
     {
       "id": "roman-baths",
@@ -123,7 +123,7 @@
       "id": "dream-summer",
       "type": "open",
       "text": "A poslední otázka, tentokrát bez chytáků: Jak vypadá vaše vysněné léto v lázních? Napište nám to pár slovy.",
-      "placeholder": "Např. ranní sklenka od pramene, odpoledne u bazénu…",
+      "placeholder": "Zajít ráno ochutnat čerstvý pramen přímo na kolonádu, odpoledne u bazénu, večer na skleničce vína, a co vy?",
       "maxLength": 500
     }
   ],
