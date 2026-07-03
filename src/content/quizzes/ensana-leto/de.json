@@ -93,7 +93,7 @@
         { "id": "c", "text": "Mit dem ältesten Aufzug Europas" },
         { "id": "d", "text": "Mit einer eigenen Skipiste" }
       ],
-      "explanation": "Das Hotel Hvězda besitzt den größten Hotelpool in Marienbad — dazu mehrere Saunen und eine Salzgrotte."
+      "explanation": "Das Hotel Hvězda besitzt den größten Hotelpool in Marienbad (18 × 8 Meter) — dazu mehrere Saunen und eine Salzgrotte."
     },
     {
       "id": "roman-baths",
@@ -123,7 +123,7 @@
       "id": "dream-summer",
       "type": "open",
       "text": "Und zum Schluss ganz ohne Fallen: Wie sieht Ihr Traumsommer im Kurort aus? Verraten Sie es uns in ein paar Worten.",
-      "placeholder": "Z. B. morgens ein Becher an der Quelle, nachmittags am Pool…",
+      "placeholder": "Morgens frisch von der Quelle auf der Kolonnade kosten, nachmittags am Pool, abends bei einem Glas Wein – und Sie?",
       "maxLength": 500
     }
   ],
