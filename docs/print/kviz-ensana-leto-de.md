@@ -4,7 +4,7 @@
 
 Wir haben ein Sommer-Gewinnspiel für Sie vorbereitet. Es erwarten Sie 10 Fragen über Marienbad — einige testen Ihr Gedächtnis, andere Ihre Fantasie. Wer bis zum Ende durchhält und uns seine E-Mail-Adresse hinterlässt, nimmt an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil.
 
-> Hauptgewinn: 2 Nächte für 2 Personen — Minikur im Hotel Ensana Hvězda
+> Hauptgewinn: 2 Nächte für 2 Personen — Healthy in im Hotel Ensana Hvězda
 > Die Verlosung findet am 1. September statt.
 
 ## So machen Sie mit
