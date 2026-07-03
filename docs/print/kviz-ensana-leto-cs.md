@@ -4,7 +4,7 @@
 
 Připravili jsme si pro vás letní soutěž. Čeká vás 10 otázek o Mariánských Lázních — některé prověří paměť, jiné fantazii. Každý, kdo dojde na konec a zanechá nám e-mail, bude zařazen do slosování o pobyt v hotelu Ensana Hvězda.
 
-> Hlavní výhra: 2 noci pro 2 osoby — Minikúra v hotelu Ensana Hvězda
+> Hlavní výhra: 2 noci pro 2 osoby — Healthy In v hotelu Ensana Hvězda
 > Slosování proběhne 1. září.
 
 ## Jak se zapojit

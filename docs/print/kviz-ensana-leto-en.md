@@ -4,7 +4,7 @@
 
 We've prepared a summer competition for you. Ten questions about Marienbad await — some test your memory, others your imagination. Everyone who reaches the end and leaves us their email enters the draw for a stay at the Ensana Hvězda hotel.
 
-> Grand prize: 2 nights for 2 — a Mini Spa Break (Minikúra) at the Ensana Hvězda hotel
+> Grand prize: 2 nights for 2 — a Healthy In stay at the Ensana Hvězda hotel
 > The draw takes place on 1 September.
 
 ## How to take part

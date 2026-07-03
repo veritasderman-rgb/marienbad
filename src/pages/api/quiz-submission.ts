@@ -140,12 +140,16 @@ export const POST: APIRoute = async ({ request }) => {
       if (typeof score === 'number' && typeof scoreTotal === 'number' && scoreTotal > 0) {
         fields.quiz_score = `${Math.max(0, Math.min(score, scoreTotal))}/${scoreTotal}`
       }
-      // Record the marketing-consent decision on the contact
-      fields.newsletter = wantsNewsletter ? 'yes' : 'no'
+      // Record marketing consent ONLY when it is granted. This endpoint upserts
+      // by email, so writing 'no' would overwrite an existing subscriber's prior
+      // opt-in and silently downgrade their consent. The quiz can only ADD
+      // consent; withdrawal happens exclusively via the unsubscribe link.
+      if (wantsNewsletter) fields.newsletter = 'yes'
 
       // Everyone who enters goes into the per-quiz group (used to run the draw).
       // The locale newsletter group is added ONLY with explicit newsletter consent —
-      // marketing campaigns target the locale groups, never the quiz group.
+      // marketing campaigns target the locale groups, never the quiz group. We never
+      // remove groups here, so a returning subscriber keeps any prior newsletter opt-in.
       const groups = [quizGroupId]
       if (wantsNewsletter) groups.unshift(localeGroupMap[resolvedLocale])
       const groupIds = groups.filter(Boolean)
