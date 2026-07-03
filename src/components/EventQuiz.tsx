@@ -29,7 +29,16 @@ interface EventQuizProps {
   intro: { badge: string; text: string; prize: string; drawNote: string; startLabel: string }
   questions: EventQuizQuestion[]
   results: EventQuizResultBand[]
-  emailGate: { heading: string; text: string; consentLabel: string; successTitle: string; successText: string }
+  emailGate: {
+    heading: string
+    text: string
+    /** Required consent to take part (competition — contract basis) */
+    consentCompetitionLabel: string
+    /** Optional, opt-in consent to receive the newsletter (marketing) */
+    consentNewsletterLabel: string
+    successTitle: string
+    successText: string
+  }
   privacyPath: string
   /** Optional link to the competition terms page */
   termsPath?: string
@@ -130,7 +139,10 @@ export default function EventQuiz({
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
-  const [consent, setConsent] = useState(false)
+  // Two separate consents: taking part is required; the newsletter is optional
+  // and must never be pre-ticked (Art. 7 GDPR — freely given consent).
+  const [consentCompetition, setConsentCompetition] = useState(false)
+  const [consentNewsletter, setConsentNewsletter] = useState(false)
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [formError, setFormError] = useState('')
   const mountTs = useRef<number>(0)
@@ -238,7 +250,7 @@ export default function EventQuiz({
 
   async function submitEmail(e: React.FormEvent) {
     e.preventDefault()
-    if (!firstName.trim() || !lastName.trim() || !EMAIL_RE.test(email) || !consent) {
+    if (!firstName.trim() || !lastName.trim() || !EMAIL_RE.test(email) || !consentCompetition) {
       setFormError(t.errorRequired)
       setFormState('error')
       return
@@ -258,7 +270,8 @@ export default function EventQuiz({
           firstName: firstName.trim(),
           lastName: lastName.trim(),
           email: email.trim(),
-          consent,
+          consentCompetition,
+          consentNewsletter,
           locale,
           quiz: quizId,
           score,
@@ -483,29 +496,40 @@ export default function EventQuiz({
                 className="mt-1 w-full border-2 border-beige-300 focus:border-turquoise-500 focus:outline-none rounded-xl px-4 py-3"
               />
             </label>
-            <label className="flex items-start gap-3 mb-5 cursor-pointer">
+            {/* Consent 1 — taking part (required) */}
+            <label className="flex items-start gap-3 mb-3 cursor-pointer">
               <input
                 type="checkbox"
                 required
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
+                checked={consentCompetition}
+                onChange={(e) => setConsentCompetition(e.target.checked)}
                 className="mt-1 h-5 w-5 shrink-0 accent-turquoise-600"
               />
-              <span className="text-sm text-beige-800">
-                {emailGate.consentLabel}{' '}
-                {termsPath && (
-                  <>
-                    <a href={termsPath} className="underline hover:text-turquoise-700" target="_blank" rel="noopener">
-                      {t.termsLink}
-                    </a>
-                    {' · '}
-                  </>
-                )}
-                <a href={privacyPath} className="underline hover:text-turquoise-700" target="_blank" rel="noopener">
-                  {t.privacy}
-                </a>
-              </span>
+              <span className="text-sm text-beige-800">{emailGate.consentCompetitionLabel}</span>
             </label>
+            {/* Consent 2 — newsletter (optional, never pre-ticked) */}
+            <label className="flex items-start gap-3 mb-4 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={consentNewsletter}
+                onChange={(e) => setConsentNewsletter(e.target.checked)}
+                className="mt-1 h-5 w-5 shrink-0 accent-turquoise-600"
+              />
+              <span className="text-sm text-beige-800">{emailGate.consentNewsletterLabel}</span>
+            </label>
+            <p className="text-xs text-beige-600 mb-5">
+              {termsPath && (
+                <>
+                  <a href={termsPath} className="underline hover:text-turquoise-700" target="_blank" rel="noopener">
+                    {t.termsLink}
+                  </a>
+                  {' · '}
+                </>
+              )}
+              <a href={privacyPath} className="underline hover:text-turquoise-700" target="_blank" rel="noopener">
+                {t.privacy}
+              </a>
+            </p>
             {formState === 'error' && formError && (
               <p className="text-sm text-red-700 mb-4" role="alert">
                 {formError}

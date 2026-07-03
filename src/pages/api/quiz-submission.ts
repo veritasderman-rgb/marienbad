@@ -57,11 +57,12 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json()
-    const { firstName, lastName, email, consent, locale, quiz, score, scoreTotal, openAnswers, hp, _ts } = body as {
+    const { firstName, lastName, email, consentCompetition, consentNewsletter, locale, quiz, score, scoreTotal, openAnswers, hp, _ts } = body as {
       firstName?: string
       lastName?: string
       email?: string
-      consent?: boolean
+      consentCompetition?: boolean
+      consentNewsletter?: boolean
       locale?: string
       quiz?: string
       score?: number
@@ -95,9 +96,12 @@ export const POST: APIRoute = async ({ request }) => {
     ) {
       return new Response(JSON.stringify({ success: false, error: 'Name is required.' }), { status: 400, headers })
     }
-    if (consent !== true) {
-      return new Response(JSON.stringify({ success: false, error: 'Consent is required.' }), { status: 400, headers })
+    // Taking part is required (acceptance of the rules); the newsletter is
+    // a separate, optional opt-in. Entering must not require newsletter consent.
+    if (consentCompetition !== true) {
+      return new Response(JSON.stringify({ success: false, error: 'Competition consent is required.' }), { status: 400, headers })
     }
+    const wantsNewsletter = consentNewsletter === true
 
     const resolvedLocale: Locale =
       typeof locale === 'string' && (VALID_LOCALES as readonly string[]).includes(locale) ? (locale as Locale) : 'de'
@@ -136,10 +140,17 @@ export const POST: APIRoute = async ({ request }) => {
       if (typeof score === 'number' && typeof scoreTotal === 'number' && scoreTotal > 0) {
         fields.quiz_score = `${Math.max(0, Math.min(score, scoreTotal))}/${scoreTotal}`
       }
+      // Record the marketing-consent decision on the contact
+      fields.newsletter = wantsNewsletter ? 'yes' : 'no'
 
-      const groups = [localeGroupMap[resolvedLocale], quizGroupId].filter(Boolean)
+      // Everyone who enters goes into the per-quiz group (used to run the draw).
+      // The locale newsletter group is added ONLY with explicit newsletter consent —
+      // marketing campaigns target the locale groups, never the quiz group.
+      const groups = [quizGroupId]
+      if (wantsNewsletter) groups.unshift(localeGroupMap[resolvedLocale])
+      const groupIds = groups.filter(Boolean)
       const payload: Record<string, unknown> = { email, fields }
-      if (groups.length) payload.groups = groups
+      if (groupIds.length) payload.groups = groupIds
 
       const res = await fetch('https://connect.mailerlite.com/api/subscribers', {
         method: 'POST',
@@ -159,7 +170,7 @@ export const POST: APIRoute = async ({ request }) => {
         )
       }
     } else {
-      console.log(`[quiz-submission] No MAILERLITE_API_KEY configured. Dry run for quiz: ${quiz}, locale: ${resolvedLocale}`)
+      console.log(`[quiz-submission] No MAILERLITE_API_KEY configured. Dry run for quiz: ${quiz}, locale: ${resolvedLocale}, newsletter: ${wantsNewsletter}`)
     }
 
     return new Response(JSON.stringify({ success: true }), { status: 200, headers })

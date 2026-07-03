@@ -429,7 +429,16 @@ function quizCollection(locale: string, label: string) {
         {
           heading: fields.text({ label: 'Heading' }),
           text: fields.text({ label: 'Text', multiline: true }),
-          consentLabel: fields.text({ label: 'Consent checkbox label', multiline: true }),
+          consentCompetitionLabel: fields.text({
+            label: 'Consent 1 — competition (required checkbox)',
+            multiline: true,
+            description: 'Required to enter the draw. Do not bundle the newsletter consent here.',
+          }),
+          consentNewsletterLabel: fields.text({
+            label: 'Consent 2 — newsletter (optional checkbox)',
+            multiline: true,
+            description: 'Separate, opt-in marketing consent. Never pre-ticked.',
+          }),
           successTitle: fields.text({ label: 'Success title' }),
           successText: fields.text({ label: 'Success text', multiline: true }),
         },

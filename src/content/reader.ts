@@ -401,7 +401,14 @@ export interface Quiz {
   results: QuizResultBand[]
   /** Competition terms page content (page is not rendered when absent) */
   terms?: { heading: string; body: string }
-  emailGate: { heading: string; text: string; consentLabel: string; successTitle: string; successText: string }
+  emailGate: {
+    heading: string
+    text: string
+    consentCompetitionLabel: string
+    consentNewsletterLabel: string
+    successTitle: string
+    successText: string
+  }
 }
 
 const quizFiles = import.meta.glob('./quizzes/*/*.json', { eager: true })
