@@ -9,7 +9,6 @@ import GoogleAnalytics from '@/components/GoogleAnalytics.astro'
 import ChatWidget from '@/components/ChatWidget.tsx'
 import { type Locale, locales, routes, type SectionKey } from '@/i18n/config'
 import { t } from '@/i18n/ui'
-import Analytics from '@vercel/analytics/astro'
 
 interface Props {
   title?: string
@@ -29,6 +28,9 @@ interface Props {
 }
 
 const { locale, section, alternateUrls, switcherUrls, noindex } = Astro.props
+
+// CDN edge caching: all Base-rendered pages are anonymous content pages (no auth/session)
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=3600')
 
 /** OG locale mapping */
 const ogLocaleMap: Record<Locale, string> = {
@@ -82,7 +84,6 @@ const langSwitcherUrls = Object.fromEntries(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="dns-prefetch" href="https://plausible.io" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -163,15 +164,10 @@ const langSwitcherUrls = Object.fromEntries(
       }
     ])} />
 
-    <!-- Branding font preload (critical weights) -->
-    <link rel="preload" href="/fonts/Branding-Medium.otf" as="font" type="font/otf" crossorigin />
-    <link rel="preload" href="/fonts/Branding-Bold.otf" as="font" type="font/otf" crossorigin />
-    <link rel="preload" href="/fonts/Branding-Semilight.otf" as="font" type="font/otf" crossorigin />
-
-    <!-- Cookie-free analytics (Plausible) -->
-    {import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN && (
-      <script defer data-domain={import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js"></script>
-    )}
+    <!-- Branding font preload (critical weights). Semilight is deliberately not
+         preloaded: no CSS rule requests weight 350, so the file would never be used. -->
+    <link rel="preload" href="/fonts/Branding-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Branding-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Google Analytics 4 (gtag.js) -->
     <GoogleAnalytics locale={locale} />
@@ -198,7 +194,6 @@ const langSwitcherUrls = Object.fromEntries(
         disclaimer: t(locale, 'chat.disclaimer'),
       }}
     />
-    <Analytics />
 
     <!-- Scroll-to-top button -->
     <button

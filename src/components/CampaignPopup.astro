@@ -303,6 +303,14 @@ const summerConditions = campaign.summerSale.conditions ?? []
       var storageKey = 'campaign-' + phase + '-dismissed';
       try { if (localStorage.getItem(storageKey)) return; } catch (e) {}
 
+      // Shared one-modal-per-session lock. Claim it eagerly (before the show
+      // delay) so the campaign wins over PromoPopup/BookingPopup, whose scripts
+      // only check the lock right before showing.
+      try {
+        if (sessionStorage.getItem('ml-modal-shown')) return;
+        sessionStorage.setItem('ml-modal-shown', '1');
+      } catch (e) {}
+
       try { sessionStorage.setItem('booking-popup-dismissed', '1'); } catch (e) {}
 
       var card = overlay.querySelector('[data-card="' + phase + '"]');
@@ -359,7 +367,7 @@ const summerConditions = campaign.summerSale.conditions ?? []
         if (e.key === 'Escape') hide();
       });
 
-      setTimeout(show, 2500);
+      setTimeout(show, 8000);
     })();
   </script>
 )}

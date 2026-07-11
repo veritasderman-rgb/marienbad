@@ -3,6 +3,7 @@ import type { Locale } from '@/i18n/config'
 import { hotels } from '@/data/hotels'
 import { getHotelGallery } from '@/content/reader'
 import { exelyBookingUrl } from '@/utils/booking'
+import Pic from '@/components/Pic.astro'
 
 interface Props {
   locale: Locale
@@ -82,20 +83,20 @@ const placeholder = '/images/hotels/placeholder.svg'
           <div class="grid grid-cols-4 grid-rows-2 gap-1 md:gap-1.5 h-56 sm:h-64 md:h-80 lg:h-96" data-lightbox>
             {/* Hero image — spans 2 cols + 2 rows */}
             <div class="col-span-2 row-span-2 relative overflow-hidden cursor-pointer" data-img={0}>
-              <img
+              <Pic
                 src={imgs[0].src}
                 alt={imgs[0].alt}
-                loading="lazy"
+                sizes="(max-width: 768px) 50vw, 33vw"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             {/* 4 smaller images */}
             {imgs.slice(1).map((img, i) => (
               <div class="relative overflow-hidden cursor-pointer" data-img={i + 1}>
-                <img
+                <Pic
                   src={img.src}
                   alt={img.alt}
-                  loading="lazy"
+                  sizes="(max-width: 768px) 25vw, 15vw"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* "All photos" overlay on last thumbnail */}

@@ -93,6 +93,10 @@ const msg = messages[locale]
     const timerBar = document.getElementById('booking-popup-timer')
 
     function show() {
+      // Shared one-modal-per-session lock: yield if another popup (campaign or
+      // promo) has already claimed this visit's modal slot.
+      if (sessionStorage.getItem('ml-modal-shown')) return
+      sessionStorage.setItem('ml-modal-shown', '1')
       popup.classList.remove('opacity-0', 'scale-95', 'pointer-events-none')
       popup.classList.add('opacity-100', 'scale-100', 'pointer-events-auto')
       if (timerBar) timerBar.style.animationPlayState = 'running'
@@ -109,6 +113,6 @@ const msg = messages[locale]
     closeBtn.addEventListener('click', hide)
 
     // Show after short delay on page load
-    setTimeout(show, 2000)
+    setTimeout(show, 8000)
   })()
 </script>

@@ -1,4 +1,6 @@
 ---
+import { lookup } from '@/lib/imageOptim'
+
 interface Props {
   title: string
   subtitle: string
@@ -12,20 +14,38 @@ interface Props {
 
 const { title, subtitle, ctaText, ctaHref, ctaText2, ctaHref2, badges = [], image } = Astro.props
 const hasImage = image && image.trim().length > 0
+const optim = hasImage ? lookup(image) : {}
 ---
 
 <section class="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
   <!-- Background: real image or gradient placeholder with Ken Burns animation -->
   <div class="absolute inset-0 animate-ken-burns">
     {hasImage ? (
-      <img
-        src={image}
-        alt={title}
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-      />
+      optim.webpSrcset ? (
+        <picture>
+          <source type="image/webp" srcset={optim.webpSrcset} sizes="100vw" />
+          <img
+            src={image}
+            alt={title}
+            width={optim.width}
+            height={optim.height}
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            sizes="100vw"
+          />
+        </picture>
+      ) : (
+        <img
+          src={image}
+          alt={title}
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      )
     ) : (
       <div class="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-500 to-indigo-900"></div>
     )}

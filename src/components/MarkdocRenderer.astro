@@ -2,6 +2,7 @@
 import Markdoc, { type RenderableTreeNode } from '@markdoc/markdoc'
 import { getHotelBySlug, EXELY_LOCALE_MAP } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
+import { lookup } from '@/lib/imageOptim'
 
 interface Props {
   content: RenderableTreeNode
@@ -35,7 +36,13 @@ function renderCustomHtml(node: RenderableTreeNode): string {
       const caption = attrs.caption
         ? `<figcaption class="figure-caption">${escapeHtml(attrs.caption)}</figcaption>`
         : ''
-      return `<figure class="article-figure${widthClass}"><img src="${escapeAttr(attrs.src)}" alt="${escapeAttr(attrs.alt)}" loading="lazy" decoding="async" />${caption}</figure>`
+      const figOptim = lookup(attrs.src ?? '')
+      const figDims = figOptim.width ? ` width="${figOptim.width}" height="${figOptim.height}"` : ''
+      const figImg = `<img src="${escapeAttr(attrs.src)}" alt="${escapeAttr(attrs.alt)}"${figDims} loading="lazy" decoding="async" />`
+      const figMedia = figOptim.webpSrcset
+        ? `<picture style="display:contents"><source type="image/webp" srcset="${escapeAttr(figOptim.webpSrcset)}" sizes="(max-width: 768px) 100vw, 768px" />${figImg}</picture>`
+        : figImg
+      return `<figure class="article-figure${widthClass}">${figMedia}${caption}</figure>`
     }
 
     // Custom tag: gallery

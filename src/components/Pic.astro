@@ -1,0 +1,40 @@
+---
+import { lookup } from '@/lib/imageOptim'
+
+/**
+ * Drop-in <img> replacement that serves a pre-generated WebP variant via
+ * <picture> when the manifest has one (see `pnpm images`), falling back to a
+ * plain <img> otherwise. The <picture> wrapper uses `display: contents` so
+ * w-full/h-full utility classes on the <img> keep sizing against the outer
+ * container, not the wrapper.
+ */
+interface Props {
+  src: string
+  alt: string
+  class?: string
+  loading?: 'lazy' | 'eager'
+  sizes?: string
+  fetchpriority?: 'high' | 'low' | 'auto'
+}
+
+const { src, alt, class: className, loading = 'lazy', sizes = '100vw', fetchpriority } = Astro.props
+const optim = lookup(src)
+---
+
+{optim.webpSrcset ? (
+  <picture class="contents">
+    <source type="image/webp" srcset={optim.webpSrcset} sizes={sizes} />
+    <img
+      src={src}
+      alt={alt}
+      class={className}
+      width={optim.width}
+      height={optim.height}
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchpriority}
+    />
+  </picture>
+) : (
+  <img src={src} alt={alt} class={className} loading={loading} decoding="async" fetchpriority={fetchpriority} />
+)}

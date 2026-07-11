@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
+import Pic from '@/components/Pic.astro'
 import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
@@ -104,7 +105,7 @@ const relatedArticles = allArticles
     </div>
     {article.coverImage && (
       <div class="rounded-xl overflow-hidden mb-10 -mx-4 md:mx-0">
-        <img src={article.coverImage} alt={article.title} class="w-full aspect-[16/9] object-cover" loading="eager" decoding="async" />
+        <Pic src={article.coverImage} alt={article.title} class="w-full aspect-[16/9] object-cover" loading="eager" fetchpriority="high" sizes="(max-width: 768px) 100vw, 768px" />
       </div>
     )}
     <MarkdocRenderer content={article.body} />
@@ -137,7 +138,7 @@ const relatedArticles = allArticles
               <a href={`${magazineHref}/${a.slug.replace(`${locale}-`, '')}`} class="group block rounded-xl border border-beige-200 hover:border-turquoise-300 hover:shadow-md transition-all overflow-hidden">
                 {a.coverImage && (
                   <div class="aspect-[16/9] overflow-hidden">
-                    <img src={a.coverImage} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                    <Pic src={a.coverImage} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width: 640px) 100vw, 33vw" />
                   </div>
                 )}
                 <div class="p-4">
