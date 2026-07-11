@@ -3,6 +3,7 @@ import type { Locale } from '@/i18n/config'
 import { localeNames } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import { getNavItems, getNavItemsFlat } from '@/i18n/utils'
+import SiteSearch from '@/components/SiteSearch.tsx'
 
 interface Props {
   locale: Locale
@@ -22,6 +23,16 @@ const accommodationPaths: Record<Locale, string> = {
   ru: 'prozhivanie',
 }
 const bookingUrl = `/${locale}/${accommodationPaths[locale]}`
+
+const searchTranslations = {
+  open: t(locale, 'search.open'),
+  placeholder: t(locale, 'search.placeholder'),
+  noResults: t(locale, 'search.noResults'),
+  close: t(locale, 'search.close'),
+  typeArticle: t(locale, 'search.typeArticle'),
+  typeStory: t(locale, 'search.typeStory'),
+  typePage: t(locale, 'search.typePage'),
+}
 ---
 
 <header id="site-header" class="sticky top-0 z-50 transition-all duration-300 will-change-transform" data-transparent="true">
@@ -73,9 +84,10 @@ const bookingUrl = `/${locale}/${accommodationPaths[locale]}`
         ))}
       </nav>
 
-      <div class="flex items-center gap-3">
-        <!-- Language switcher: always visible -->
-        <div class="flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider" role="navigation" aria-label="Language">
+      <div class="flex items-center gap-1 sm:gap-3">
+        <!-- Language switcher: inline from ~400px up; below that it lives in the
+             mobile menu (with full language names), so the row fits on 320px phones -->
+        <div class="hidden min-[400px]:flex items-center gap-0.5 text-xs font-medium uppercase tracking-wider" role="navigation" aria-label="Language">
           {allLocales.map((l) => (
             <a
               href={langUrls?.[l] ?? `/${l}`}
@@ -91,6 +103,9 @@ const bookingUrl = `/${locale}/${accommodationPaths[locale]}`
             </a>
           ))}
         </div>
+
+        <!-- Site search: always visible (desktop: next to CTA, mobile: next to menu button) -->
+        <SiteSearch client:idle locale={locale} translations={searchTranslations} />
 
         <!-- CTA Button (yellow pill) -->
         <a
