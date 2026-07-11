@@ -2,6 +2,8 @@
 import Base from '@/layouts/Base.astro'
 import FaqSchema from '@/components/FaqSchema.astro'
 import MagazineFilter from '@/components/MagazineFilter.tsx'
+import { lookup } from '@/lib/imageOptim'
+import Pic from '@/components/Pic.astro'
 import { getPage, getArticles } from '@/content/reader'
 import { routes } from '@/i18n/config'
 import { t } from '@/i18n/ui'
@@ -22,6 +24,9 @@ const articleData = articles.slice(1).map(a => ({
   category: a.category,
   excerpt: a.excerpt,
   coverImage: a.coverImage,
+  coverWebpSrcset: a.coverImage ? lookup(a.coverImage).webpSrcset : undefined,
+  coverWidth: a.coverImage ? lookup(a.coverImage).width : undefined,
+  coverHeight: a.coverImage ? lookup(a.coverImage).height : undefined,
   readingTime: a.readingTime,
   date: a.date,
 }))
@@ -40,7 +45,7 @@ const categoryLabels: Record<string, string> = {
   {featured && (
     <section class="relative bg-indigo-700 text-white overflow-hidden">
       {featured.coverImage && (
-        <img
+        <Pic
           src={featured.coverImage}
           alt={featured.title}
           class="absolute inset-0 w-full h-full object-cover opacity-40"

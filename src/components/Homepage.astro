@@ -3,12 +3,14 @@ import { routes, type Locale } from '@/i18n/config'
 import BookingPopup from '@/components/BookingPopup.astro'
 import PromoPopup from '@/components/PromoPopup.astro'
 import HeroSection from '@/components/HeroSection.astro'
+import Pic from '@/components/Pic.astro'
 import SectionCard from '@/components/SectionCard.astro'
 import WaveDivider from '@/components/WaveDivider.astro'
 import PartnerStrip from '@/components/PartnerStrip.astro'
 import { t } from '@/i18n/ui'
 import { localizedHref } from '@/i18n/utils'
 import { getHomepage, getArticles, getItineraries } from '@/content/reader'
+import { getCampaign } from '@/lib/campaign'
 import GoogleReviews from '@/components/GoogleReviews.tsx'
 import ItineraryFilter from '@/components/ItineraryFilter.tsx'
 
@@ -22,6 +24,18 @@ const cms = await getHomepage(locale)
 // Dynamically fetch the 3 most recent articles (sorted by date descending in reader)
 const allArticles = await getArticles(locale)
 const latestArticles = allArticles.slice(0, 3)
+
+// Popup coordination: CampaignPopup (rendered site-wide from Base.astro) takes
+// priority over the homepage-only PromoPopup/BookingPopup. Mirror its phase
+// windows (teaserStart..saleEnd per campaign) so we don't stack two modals.
+const campaign = getCampaign(locale)
+const campaignFrom = (s: string) => new Date(`${s}T00:00:00`)
+const campaignUntil = (s: string) => new Date(`${s}T23:59:59.999`)
+const now = new Date()
+const campaignPopupActive = campaign.popupEnabled && (
+  (now >= campaignFrom(campaign.jubilee.teaserStart) && now <= campaignUntil(campaign.jubilee.saleEnd)) ||
+  (now >= campaignFrom(campaign.summerSale.teaserStart) && now <= campaignUntil(campaign.summerSale.saleEnd))
+)
 
 const itineraries = getItineraries()
 const ensanaHotelPath: Record<Locale, string> = { de: 'hotels', en: 'hotels', cs: 'hotely', ru: 'oteli' }
@@ -192,7 +206,7 @@ const gradients = [
         <div class="bg-white rounded-xl overflow-hidden shadow-card card-hover reveal">
           <div class="h-48 relative overflow-hidden" class:list={[(hotel as any).image ? '' : 'placeholder-image']}>
             {(hotel as any).image ? (
-              <img src={(hotel as any).image} alt={hotel.name} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+              <Pic src={(hotel as any).image} alt={hotel.name} class="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             ) : (
               <span class="text-white/80 text-sm absolute inset-0 flex items-center justify-center">{hotel.name} — Foto</span>
             )}
@@ -276,7 +290,7 @@ const gradients = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal">
       <div class="rounded-xl h-72 lg:h-96 relative overflow-hidden" class:list={[(cms.seasonal as any).image ? '' : 'placeholder-image']}>
         {(cms.seasonal as any).image ? (
-          <img src={(cms.seasonal as any).image} alt={cms.seasonal.title} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          <Pic src={(cms.seasonal as any).image} alt={cms.seasonal.title} class="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
         ) : (
           <span class="text-white/80 text-sm absolute inset-0 flex items-center justify-center">Seasonal — Foto</span>
         )}
@@ -311,7 +325,7 @@ const gradients = [
         <a href={`/${locale}/${routes['magazine'][locale]}/${article.slug.replace(/^[a-z]{2}-/, '')}`} class="group bg-white rounded-xl overflow-hidden shadow-card card-hover reveal block">
           {article.coverImage && (
             <div class="h-44 relative overflow-hidden">
-              <img src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+              <Pic src={article.coverImage} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
             </div>
           )}
           <div class="p-5">
@@ -579,9 +593,12 @@ const gradients = [
 })())} />
 
 <!-- Promo Popup — RODINA15 campaign (all locales, May 11–15 2026) -->
-<PromoPopup locale={locale} />
+<!-- Suppressed while a CampaignPopup phase is active (campaign > promo > booking) -->
+{!campaignPopupActive && <PromoPopup locale={locale} />}
 
 <!-- Booking Popup — homepage only, desktop only -->
-<div class="hidden sm:block">
-  <BookingPopup locale={locale} />
-</div>
+{!campaignPopupActive && (
+  <div class="hidden sm:block">
+    <BookingPopup locale={locale} />
+  </div>
+)}

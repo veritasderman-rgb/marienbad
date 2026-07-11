@@ -239,6 +239,12 @@ const headlineParts = txt.headline.split('\n')
     }
 
     function show() {
+      // Shared one-modal-per-session lock: yield if another popup (e.g. the
+      // site-wide CampaignPopup) has already claimed this visit's modal slot.
+      try {
+        if (sessionStorage.getItem('ml-modal-shown')) return;
+        sessionStorage.setItem('ml-modal-shown', '1');
+      } catch (e) {}
       overlay.classList.remove('opacity-0', 'pointer-events-none');
       overlay.classList.add('opacity-100', 'pointer-events-auto');
       card.classList.remove('scale-95');
@@ -264,6 +270,6 @@ const headlineParts = txt.headline.split('\n')
       if (e.key === 'Escape') hide();
     });
 
-    setTimeout(show, 2500);
+    setTimeout(show, 8500);
   })();
 </script>

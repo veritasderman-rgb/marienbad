@@ -1,4 +1,6 @@
 ---
+import { lookup } from '@/lib/imageOptim'
+
 interface Props {
   src: string
   alt: string
@@ -18,15 +20,36 @@ const {
   loading = 'lazy',
   sizes = '100vw',
 } = Astro.props
+
+const optim = lookup(src)
+// Fall back to intrinsic dimensions from the WebP manifest to prevent CLS
+const imgWidth = width ?? optim.width
+const imgHeight = height ?? optim.height
 ---
 
-<img
-  src={src}
-  alt={alt}
-  width={width}
-  height={height}
-  loading={loading}
-  decoding="async"
-  sizes={sizes}
-  class:list={['transition-opacity duration-300', className]}
-/>
+{optim.webpSrcset ? (
+  <picture>
+    <source type="image/webp" srcset={optim.webpSrcset} sizes={sizes} />
+    <img
+      src={src}
+      alt={alt}
+      width={imgWidth}
+      height={imgHeight}
+      loading={loading}
+      decoding="async"
+      sizes={sizes}
+      class:list={['transition-opacity duration-300', className]}
+    />
+  </picture>
+) : (
+  <img
+    src={src}
+    alt={alt}
+    width={imgWidth}
+    height={imgHeight}
+    loading={loading}
+    decoding="async"
+    sizes={sizes}
+    class:list={['transition-opacity duration-300', className]}
+  />
+)}

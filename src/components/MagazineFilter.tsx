@@ -7,8 +7,39 @@ interface ArticleData {
   category: string
   excerpt: string
   coverImage?: string
+  /** Pre-computed WebP srcset from the server (see src/lib/imageOptim.ts) */
+  coverWebpSrcset?: string
+  coverWidth?: number
+  coverHeight?: number
   readingTime: string
   date: string
+}
+
+/** Cover image with optional WebP <source>; picture uses display:contents so
+ *  the img keeps sizing against the card container. */
+function CoverImage({ article, className }: { article: ArticleData; className: string }) {
+  const img = (
+    <img
+      src={article.coverImage}
+      alt={article.title}
+      width={article.coverWidth}
+      height={article.coverHeight}
+      className={className}
+      loading="lazy"
+      decoding="async"
+    />
+  )
+  if (!article.coverWebpSrcset) return img
+  return (
+    <picture className="contents">
+      <source
+        type="image/webp"
+        srcSet={article.coverWebpSrcset}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      />
+      {img}
+    </picture>
+  )
 }
 
 interface Props {
@@ -80,6 +111,7 @@ export default function MagazineFilter({ articles, locale, magazineSlug, transla
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             <button
               onClick={() => setActiveCategory('all')}
+              aria-pressed={activeCategory === 'all'}
               className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 activeCategory === 'all'
                   ? 'bg-indigo-700 text-white'
@@ -92,6 +124,7 @@ export default function MagazineFilter({ articles, locale, magazineSlug, transla
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
                 className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-indigo-700 text-white'
@@ -118,12 +151,9 @@ export default function MagazineFilter({ articles, locale, magazineSlug, transla
               >
                 {article.coverImage && (
                   <div className="h-56 md:h-64 relative overflow-hidden">
-                    <img
-                      src={article.coverImage}
-                      alt={article.title}
+                    <CoverImage
+                      article={article}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                      decoding="async"
                     />
                     <div className="absolute top-4 left-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getColor(article.category)}`}>
@@ -163,12 +193,9 @@ export default function MagazineFilter({ articles, locale, magazineSlug, transla
               >
                 {article.coverImage && (
                   <div className="h-44 relative overflow-hidden">
-                    <img
-                      src={article.coverImage}
-                      alt={article.title}
+                    <CoverImage
+                      article={article}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                      decoding="async"
                     />
                     <div className="absolute top-3 left-3">
                       <span className={`px-2.5 py-0.5 rounded-full text-[0.6875rem] font-semibold ${getColor(article.category)}`}>

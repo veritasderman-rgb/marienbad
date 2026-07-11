@@ -11,7 +11,7 @@
 - **CMS:** Keystatic CMS (local + GitHub API mode)
 - **UI Islands:** React 19 (`@astrojs/react`)
 - **Hosting:** Vercel (region `fra1`)
-- **Other:** MDX, Sitemap, Plausible Analytics (cookie-free)
+- **Other:** MDX, Sitemap, GA4 analytics (consent-gated via ConsentBanner)
 
 ## Brand Colors (Ensana Palette)
 
@@ -27,9 +27,8 @@ Defined as Tailwind 4 `@theme` color scales in `src/styles/global.css`.
 
 ## Typography
 
-- **Headings:** Cormorant Garamond (weights 400-700, italic variants) -- elegant serif evoking the spa town's heritage
-- **Body:** DM Sans (variable) -- clean, modern, highly readable sans-serif
-- Loaded via `@fontsource` (self-hosted, no external requests)
+- **Primary family (headings + body):** Branding (Latinotype) -- weights 100-900 incl. italics
+- Self-hosted WOFF2 files in `public/fonts/`, declared via `@font-face` in `src/styles/global.css` (no external requests); critical weights preloaded in `Base.astro`
 - Fluid type scale using `clamp()` values
 
 ## Tone of Voice
@@ -104,14 +103,14 @@ src/content/
 
 | Variable | Purpose |
 |----------|---------|
-| `PUBLIC_PLAUSIBLE_DOMAIN` | Plausible Analytics domain (e.g., `marienbad.com`). If unset, analytics script is not loaded. |
+| `PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID override (falls back to the built-in property; set to an empty string to disable GA4). |
 
 ## Design Principles
 
 1. **Performance first** -- self-hosted fonts, minimal JS, server-rendered
 2. **Accessibility** -- skip-to-content link, `prefers-reduced-motion` support, semantic HTML
 3. **SEO** -- hreflang, canonical URLs, Schema.org structured data (TouristDestination, LodgingBusiness, FAQPage, BreadcrumbList)
-4. **Privacy** -- cookie-free analytics (Plausible), no third-party trackers
+4. **Privacy** -- GA4 analytics loaded only after user consent (ConsentBanner), no other third-party trackers
 5. **Content-driven** -- CMS-managed content, Markdoc rendering, rich typography
 
 ## Workflow
@@ -128,3 +127,7 @@ Authoritative reference data from official Ensana marketing materials is stored 
 - Mineral spring names and properties
 - Treatment descriptions
 - Historical facts and dates
+
+## Images
+
+New images added under `public/images/` require running `pnpm images` to generate WebP siblings.

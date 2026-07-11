@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
 import { events, type MarienbadEvent } from '@/data/events'
 
 interface Props {
@@ -14,7 +15,7 @@ type Season = 'spring' | 'summer' | 'autumn' | 'winter'
 
 interface SeasonConfig {
   id: Season
-  label: { de: string; en: string }
+  label: string
   months: number[]
   borderColor: string
   bgColor: string
@@ -25,7 +26,7 @@ interface SeasonConfig {
 const seasons: SeasonConfig[] = [
   {
     id: 'spring',
-    label: { de: 'Frühling', en: 'Spring' },
+    label: t(locale, 'eventCalendar.spring'),
     months: [3, 4, 5],
     borderColor: 'border-l-green-500',
     bgColor: 'bg-green-50',
@@ -34,7 +35,7 @@ const seasons: SeasonConfig[] = [
   },
   {
     id: 'summer',
-    label: { de: 'Sommer', en: 'Summer' },
+    label: t(locale, 'eventCalendar.summer'),
     months: [6, 7, 8],
     borderColor: 'border-l-yellow-500',
     bgColor: 'bg-yellow-50',
@@ -43,7 +44,7 @@ const seasons: SeasonConfig[] = [
   },
   {
     id: 'autumn',
-    label: { de: 'Herbst', en: 'Autumn' },
+    label: t(locale, 'eventCalendar.autumn'),
     months: [9, 10, 11],
     borderColor: 'border-l-orange-500',
     bgColor: 'bg-orange-50',
@@ -52,7 +53,7 @@ const seasons: SeasonConfig[] = [
   },
   {
     id: 'winter',
-    label: { de: 'Winter', en: 'Winter' },
+    label: t(locale, 'eventCalendar.winter'),
     months: [12, 1, 2],
     borderColor: 'border-l-blue-500',
     bgColor: 'bg-blue-50',
@@ -93,12 +94,44 @@ for (const event of events) {
   eventsBySeason.get(season)!.push(event)
 }
 
-const sectionTitle = locale === 'de' ? 'Veranstaltungskalender' : 'Event Calendar'
-const currentLabel = locale === 'de' ? 'Aktuelle Saison' : 'Current Season'
+const sectionTitle = t(locale, 'eventCalendar.title')
+const currentLabel = t(locale, 'eventCalendar.currentSeason')
 
 function loc(obj: { de: string; en: string }): string {
   return (obj as Record<string, string>)[locale] ?? obj.en
 }
+
+// The events are recurring/seasonal — the data holds no concrete calendar
+// dates, so recurrence is expressed via eventSchedule (byMonth) rather than
+// fabricated startDate/endDate values.
+const eventListSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: events.map((event, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Event',
+      name: loc(event.name),
+      description: loc(event.description),
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      eventSchedule: {
+        '@type': 'Schedule',
+        repeatFrequency: 'P1Y',
+        byMonth: event.months,
+      },
+      location: {
+        '@type': 'Place',
+        name: 'Mariánské Lázně',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Mariánské Lázně',
+          addressCountry: 'CZ',
+        },
+      },
+    },
+  })),
+})
 ---
 
 <div class="my-12">
@@ -113,7 +146,7 @@ function loc(obj: { de: string; en: string }): string {
         <div>
           <div class="flex items-center gap-3 mb-4">
             <h3 class={`text-xl font-semibold ${season.textColor} m-0`}>
-              {loc(season.label)}
+              {season.label}
             </h3>
             {isCurrent && (
               <span class={`text-xs font-medium px-2 py-0.5 rounded-full ${season.badgeColor}`}>
@@ -146,3 +179,5 @@ function loc(obj: { de: string; en: string }): string {
     })}
   </div>
 </div>
+
+<script type="application/ld+json" set:html={eventListSchema} />

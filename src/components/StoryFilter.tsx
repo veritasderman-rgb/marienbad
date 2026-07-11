@@ -139,6 +139,7 @@ export default function StoryFilter({ stories, translations, currentLocale }: St
         <div className="inline-flex flex-wrap gap-2 mt-1">
           <button
             className={`${buttonBase} ${activeLocale === 'all' ? buttonActive : buttonInactive}`}
+            aria-pressed={activeLocale === 'all'}
             onClick={() => {
               setActiveLocale('all')
               setActiveLocation('all')
@@ -150,6 +151,7 @@ export default function StoryFilter({ stories, translations, currentLocale }: St
             <button
               key={locale}
               className={`${buttonBase} ${activeLocale === locale ? buttonActive : buttonInactive}`}
+              aria-pressed={activeLocale === locale}
               onClick={() => {
                 setActiveLocale(locale)
                 setActiveLocation('all')
@@ -168,6 +170,7 @@ export default function StoryFilter({ stories, translations, currentLocale }: St
           <div className="inline-flex flex-wrap gap-2 mt-1">
             <button
               className={`${buttonBase} ${effectiveLocation === 'all' ? buttonActive : buttonInactive}`}
+              aria-pressed={effectiveLocation === 'all'}
               onClick={() => setActiveLocation('all')}
             >
               {translations.all}
@@ -176,6 +179,7 @@ export default function StoryFilter({ stories, translations, currentLocale }: St
               <button
                 key={loc}
                 className={`${buttonBase} ${effectiveLocation === loc ? buttonActive : buttonInactive}`}
+                aria-pressed={effectiveLocation === loc}
                 onClick={() => setActiveLocation(loc)}
               >
                 {loc}

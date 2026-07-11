@@ -1,0 +1,812 @@
+{
+  "/images/content/anniversary/86829183-9775-4000-9791-57fac72fa1c7.jpeg": {
+    "webp": true,
+    "w800": false,
+    "width": 605,
+    "height": 394
+  },
+  "/images/content/anniversary/illustration.jpg": {
+    "webp": true,
+    "w800": false,
+    "width": 605,
+    "height": 394
+  },
+  "/images/content/articles/cs-130-let-novych-lazni/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-14denni-lazenska-kura-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-burnout-prevence-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-cena-lazenskeho-pobytu/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-ceska-lazenska-kuchyne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-co2-koupele-veda/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-den-mozku-nervovy-system/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 2604,
+    "height": 1930
+  },
+  "/images/content/articles/cs-historie-kolonady/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-idealni-den-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-imunita-prevence-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-jak-do-lazni-s-pojistovnou/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-klasicka-tritydenni-kura-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-kralovský-golf-rozhovor-katina/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lazenska-lecba-koznich-onemocneni/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lazenska-lecba-pruvodce/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lazensky-pobyt-pro-seniory/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lazensky-poukaz-pruvodce/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lazne-civilizacni-choroby/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lecba-ledvin-mocovych-cest/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lecba-pohyboveho-aparatu/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lecba-raselinou-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-lesni-koupel-mindfulness-slavkovsky-les/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-marianske-lazne-s-detmi/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-marianske-lazne-srdce-evropy/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-marianske-lazne-vs-karlovy-vary/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-mice-konference-firmy-lazne/CASINO_mice_Marble hall_16A7211.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/articles/cs-mice-konference-firmy-lazne/CASINO_mice_Mirror hall_16A5529.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/articles/cs-mice-konference-firmy-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-mice-konference-firmy-lazne/HOTEL NOVE LAZNE_pool_Roman baths_16A3580.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/articles/cs-nejkrasnejsi-prochazky/07_prameny.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 3872,
+    "height": 2592
+  },
+  "/images/content/articles/cs-nejkrasnejsi-prochazky/COLONNADE_Singing Fountain_16A4729.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/content/articles/cs-nejkrasnejsi-prochazky/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-nejkrasnejsi-prochazky/Goethe_(Stieler_1828).jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1972,
+    "height": 2432
+  },
+  "/images/content/articles/cs-nejkrasnejsi-prochazky/IMG_2656.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 2400,
+    "height": 1600
+  },
+  "/images/content/articles/cs-nejkrasnejsi-prochazky/IMG_8737.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 2784,
+    "height": 1856
+  },
+  "/images/content/articles/cs-nejlepsi-restaurace-kavarny/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-orchestriste-kolonada/coverImage.png": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 720
+  },
+  "/images/content/articles/cs-pitna-kura-pruvodce/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-pivo-a-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-plynove-injekce-co2/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-po-stopach-goetha/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-pohyb-v-laznich-prodluzuje-zivot/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-postonkologicky-lazensky-program/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-prevence-novy-luxus-v-laznich/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-proc-marianske-lazne-unesco/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-pruvodce-lazenskym-savoir-vivre/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-pruvodce-mineralni-prameny/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-pruvodce-unesco-mesto/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-rehabilitace-po-covidu/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-romanticky-vikend-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-saunove-ritualy-ensana-hotely/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-secesni-architektura-prochazka/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-slavni-hoste-marianskych-lazni/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-svatba-v-laznich/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-turisticke-stezky-priroda/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-vlakem-do-mariansk-lazni/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-vylety-z-marianskych-lazni/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-wellness-tyden-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-wellness-vikend-pro-dva/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-zima-v-marianskych-laznich/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-zpivajici-fontana/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/de-marienbad-herz-europas/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/de-mit-dem-zug-nach-marienbad/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/en-marienbad-heart-of-europe/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/en-train-to-marienbad/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/magazine/articles/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/magazine/articles/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/magazine/articles/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/ru-marianske-lazne-serdce-evropy/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/ru-na-poezde-v-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/campaigns/jubilee/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 260
+  },
+  "/images/content/campaigns/jubilee/image.png": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 260
+  },
+  "/images/content/campaigns/summer-sale/cs.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/content/campaigns/summer-sale/de.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/content/campaigns/summer-sale/en.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/content/campaigns/summer-sale/ru.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/content/campaigns/summerSale/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/content/hero/hero/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/hotels/hotels/items/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/hotels/hotels/items/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-architektura/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-co-delat/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-co2-terapie/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-faq/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-golf/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-historie/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-jak-se-dostat/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-klimatoterapie/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-kolonada/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-kultura/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/pages/cs-lide/featuredImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/seasonal/seasonal/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/stories/en-james-london/portrait.png": {
+    "webp": true,
+    "w800": true,
+    "width": 1536,
+    "height": 1024
+  },
+  "/images/content/stories/people/stories/0/portrait.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/stories/people/stories/1/portrait.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/stories/people/stories/2/portrait.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/0/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/0/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/0/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/0/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/0/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/1/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/1/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/1/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/1/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/1/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/2/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/2/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/2/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/2/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/2/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/3/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/3/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/3/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/3/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/3/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/4/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/4/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/4/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/4/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/4/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/5/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/5/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/5/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/5/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/5/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/6/images/0/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/6/images/1/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/6/images/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/6/images/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/hotels/hotels/6/images/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/image (6) (1).png": {
+    "webp": true,
+    "w800": true,
+    "width": 1203,
+    "height": 798
+  },
+  "/images/partners/veolia-energie-ml.png": {
+    "webp": true,
+    "w800": true,
+    "width": 900,
+    "height": 597
+  }
+}

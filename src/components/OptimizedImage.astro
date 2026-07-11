@@ -9,7 +9,10 @@
  *
  * Images stored in public/images/ are served by Vercel's CDN with caching.
  * Width/height are set to prevent CLS (Cumulative Layout Shift).
+ * When a pre-generated WebP variant exists (see scripts/optimize-images.mjs),
+ * the <img> is wrapped in <picture> with a WebP <source>.
  */
+import { lookup } from '@/lib/imageOptim'
 
 interface Props {
   src?: string | null
@@ -60,20 +63,37 @@ const aspectClass = aspectClasses[aspect] ?? aspectClasses.card
 const placeholderClass = placeholder === 'light' ? 'placeholder-image-light' : 'placeholder-image'
 
 const hasImage = src && src.trim().length > 0
+const optim = hasImage ? lookup(src) : {}
 ---
 
 {hasImage ? (
   <div class:list={['optimized-image-wrapper overflow-hidden', aspectClass, className]}>
-    <img
-      src={src}
-      alt={alt}
-      width={imgWidth}
-      height={imgHeight}
-      loading={loading}
-      decoding="async"
-      sizes={sizes}
-      class="w-full h-full object-cover transition-opacity duration-300"
-    />
+    {optim.webpSrcset ? (
+      <picture>
+        <source type="image/webp" srcset={optim.webpSrcset} sizes={sizes} />
+        <img
+          src={src}
+          alt={alt}
+          width={imgWidth}
+          height={imgHeight}
+          loading={loading}
+          decoding="async"
+          sizes={sizes}
+          class="w-full h-full object-cover transition-opacity duration-300"
+        />
+      </picture>
+    ) : (
+      <img
+        src={src}
+        alt={alt}
+        width={imgWidth}
+        height={imgHeight}
+        loading={loading}
+        decoding="async"
+        sizes={sizes}
+        class="w-full h-full object-cover transition-opacity duration-300"
+      />
+    )}
   </div>
 ) : (
   <div class:list={[placeholderClass, aspectClass, className]}>
