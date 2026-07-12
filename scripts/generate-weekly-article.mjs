@@ -58,7 +58,7 @@ const TOPIC_BACKLOG = [
     articleType: 'cluster',
     graphicType: 'counter',
     graphicNote:
-      'Animated stat counter (IntersectionObserver, reuses existing .reveal pattern): "7 dní bez notifikací" / "42 km procházek" / "28 litrů minerální vody" — fade-up numbers triggered on scroll.',
+      'Animated stat counter (IntersectionObserver, reuses existing .reveal pattern): "7 dní bez notifikací" / "42 km procházek" / "21 sklenek od pramene" (3 servings of 200-300 ml per day — matches the published drinking-cure guidance; do NOT quote litres of mineral water per day) — fade-up numbers triggered on scroll.',
     titles: {
       cs: 'Digitální detox v lázních — jak se skutečně odpojit od světa',
       de: 'Digitaler Detox im Kurort — wie man wirklich abschaltet',
@@ -98,7 +98,7 @@ const TOPIC_BACKLOG = [
     articleType: 'guide',
     graphicType: 'counter',
     graphicNote:
-      'Animated block with 3 key numbers: "21 dní" (recommended stay length) / "8 000 kroků/den" (colonnade walking cure target) / "3 litry" (daily mineral water intake). Simple, factual, reassuring.',
+      'Animated block with 3 key numbers: "21 dní" (recommended stay length) / "8 000 kroků/den" (colonnade walking cure target) / "3× 200 ml" (daily drinking-cure servings, prescribed by the spa physician — mineral water is medicine here, NOT a hydration drink; never suggest litres of it per day). Simple, factual, reassuring.',
     titles: {
       cs: 'Hubnutí a metabolická léčba v lázních — jak funguje lázeňská kúra na váhu',
       de: 'Gewichtsmanagement im Kurort — wie die Kur den Stoffwechsel reguliert',
