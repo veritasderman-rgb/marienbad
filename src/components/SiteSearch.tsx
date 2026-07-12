@@ -23,9 +23,11 @@ interface SiteSearchProps {
   translations: Translations
 }
 
-/** Case- and diacritics-insensitive normalization for matching */
+/** Case- and diacritics-insensitive normalization for matching. NFKD (not NFD)
+ *  so compatibility characters decompose too — e.g. the subscript in "CO₂"
+ *  becomes "2", letting the ASCII query "co2" match CO₂ therapy content. */
 function normalize(s: string): string {
-  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
+  return s.normalize('NFKD').replace(/\p{Diacritic}/gu, '').toLowerCase()
 }
 
 function scoreEntry(entry: SearchEntry, query: string): number {
