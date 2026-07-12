@@ -1,20 +1,13 @@
 @import "tailwindcss";
 
 /* ─── Branding font (Latinotype) ─── */
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-Thin.woff2") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-ThinItalic.woff2") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-LightItalic.woff2") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-Semilight.woff2") format("woff2"); font-weight: 350; font-style: normal; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-SemilightItalic.woff2") format("woff2"); font-weight: 350; font-style: italic; font-display: swap; }
+/* Pruned unused weights 100/300/350/900 (Thin, Light, Semilight, Black + italics); weight-400 requests intentionally resolve to Medium (500) via CSS font-matching. */
 @font-face { font-family: "Branding"; src: url("/fonts/Branding-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
 @font-face { font-family: "Branding"; src: url("/fonts/Branding-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
 @font-face { font-family: "Branding"; src: url("/fonts/Branding-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 @font-face { font-family: "Branding"; src: url("/fonts/Branding-SemiboldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
 @font-face { font-family: "Branding"; src: url("/fonts/Branding-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face { font-family: "Branding"; src: url("/fonts/Branding-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Branding"; src: url("/fonts/Branding-BlackItalic.woff2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
 
 @theme {
   /* ─── Ensana Primary: Indigo ─── */
@@ -75,8 +68,8 @@
   --color-beige-200: #F5EEE1;
   --color-beige-300: #F3EDE4;
   --color-beige-400: #e4d8c7;
-  --color-beige-500: #c9b99f;
-  --color-beige-600: #A19CA3;
+  --color-beige-500: #716B60; /* was #c9b99f (1.92:1); 5.28:1 on white, 4.58:1 on beige-200 (WCAG AA) */
+  --color-beige-600: #6E6875; /* was #A19CA3 (2.69:1); 5.38:1 on white, 5.04:1 on beige-100 (WCAG AA) */
   --color-beige-700: #7d7880;
   --color-beige-800: #5a565c;
   --color-beige-900: #3a3740;
@@ -121,7 +114,7 @@
   /* Accent */
   --color-yellow: #F6BA00;
   --color-aubergine: #800048;
-  --color-warm-grey: #A19CA3;
+  --color-warm-grey: #6E6875; /* was #A19CA3 (2.69:1); 5.38:1 on white, matches --color-text-secondary */
 
   /* Neutrals */
   --color-beige: #F5EEE1;
@@ -146,6 +139,15 @@
   /* Transitions */
   --transition-default: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* text-beige-600 doubles as muted light text on the dark footer (bg-beige-950,
+   #1A1916). The AA-darkened token above would drop that to 3.26:1, so keep the
+   pre-darkening value in dark beige-950 scopes (6.53:1 on #1A1916). Tailwind 4
+   utilities resolve colors via var(), so scoping the variable is enough and
+   hover utilities keep working. */
+.bg-beige-950 {
+  --color-beige-600: #A19CA3;
 }
 
 /* ─── Base ─── */
@@ -413,7 +415,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-body);
   font-size: 0.8125rem;
   font-style: normal;
-  color: var(--color-warm-grey, #A19CA3);
+  color: var(--color-warm-grey, #6E6875);
 }
 
 /* ─── Article Figure ─── */
@@ -445,7 +447,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-body);
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: var(--color-warm-grey, #A19CA3);
+  color: var(--color-warm-grey, #6E6875);
   margin-top: 0.5rem;
   padding-left: 0.25rem;
 }

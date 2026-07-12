@@ -87,6 +87,32 @@ export async function getPage(slug: string) {
   }
 }
 
+export interface PageIndexEntry {
+  /** Slug without the locale prefix (matches src/pages/{locale}/{slug}.astro) */
+  slug: string
+  title: string
+  metaDescription: string
+  section: string
+}
+
+/** Lightweight frontmatter-only listing of all CMS pages for a locale
+ *  (content folders are named {locale}-{slug}) */
+export function getPagesIndex(locale: Locale): PageIndexEntry[] {
+  const entries: PageIndexEntry[] = []
+  for (const [path, raw] of Object.entries(pageMdocFiles)) {
+    const folder = path.replace('./pages/', '').replace('/index.mdoc', '')
+    if (!folder.startsWith(`${locale}-`)) continue
+    const { meta } = splitFrontmatter(raw as string)
+    entries.push({
+      slug: folder.slice(locale.length + 1),
+      title: meta.title ?? '',
+      metaDescription: meta.metaDescription ?? '',
+      section: meta.section ?? '',
+    })
+  }
+  return entries
+}
+
 /** Strip markdown links and bold markers so FAQ schema/UI text stays plain */
 function cleanFaqText(s: string): string {
   return s

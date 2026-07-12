@@ -58,7 +58,7 @@ const TOPIC_BACKLOG = [
     articleType: 'cluster',
     graphicType: 'counter',
     graphicNote:
-      'Animated stat counter (IntersectionObserver, reuses existing .reveal pattern): "7 dní bez notifikací" / "42 km procházek" / "28 litrů minerální vody" — fade-up numbers triggered on scroll.',
+      'Animated stat counter (IntersectionObserver, reuses existing .reveal pattern): "7 dní bez notifikací" / "42 km procházek" / "21 sklenek od pramene" (3 servings of 200-300 ml per day — matches the published drinking-cure guidance; do NOT quote litres of mineral water per day) — fade-up numbers triggered on scroll.',
     titles: {
       cs: 'Digitální detox v lázních — jak se skutečně odpojit od světa',
       de: 'Digitaler Detox im Kurort — wie man wirklich abschaltet',
