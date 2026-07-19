@@ -12,6 +12,8 @@ import type { Config, Schema } from '@markdoc/markdoc'
  *   gallery     — grid of images (columns: 2|3, caption)
  *   gallery-image — single image inside a gallery (src, alt)
  *   pullquote   — styled editorial blockquote (text, cite)
+ *   stat-counter — grid of animated key figures (columns: 2|3|4, caption)
+ *   stat        — a single figure inside stat-counter (value, prefix, suffix, label)
  *
  * Raw HTML is NOT allowed — Markdoc strips it by default.
  * All custom tag attributes are escaped (escapeHtml/escapeAttr) in MarkdocRenderer.
@@ -76,6 +78,25 @@ const treatmentBox: Schema = {
   },
 }
 
+const statCounter: Schema = {
+  render: 'stat-counter',
+  attributes: {
+    caption: { type: String },
+    columns: { type: Number, default: 3, matches: [2, 3, 4] },
+  },
+}
+
+const stat: Schema = {
+  render: 'stat',
+  selfClosing: true,
+  attributes: {
+    value: { type: String, required: true, errorLevel: 'critical' },
+    prefix: { type: String },
+    suffix: { type: String },
+    label: { type: String, required: true, errorLevel: 'critical' },
+  },
+}
+
 const youtube: Schema = {
   render: 'youtube',
   selfClosing: true,
@@ -115,6 +136,8 @@ export const markdocConfig: Config = {
     'gallery-image': galleryImage,
     pullquote,
     'treatment-box': treatmentBox,
+    'stat-counter': statCounter,
+    stat,
     'hotel-box': hotelBox,
     'book-cta': bookCta,
     youtube,

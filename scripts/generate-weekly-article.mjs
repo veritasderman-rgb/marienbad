@@ -232,35 +232,18 @@ Add new marker entries in \`src/data/mapMarkers.ts\`.`,
 \`\`\``,
   },
   counter: {
-    name: 'Animated Stat Counter (IntersectionObserver)',
-    snippet: `\`\`\`astro
-<!-- StatCounter.astro — reuses existing .reveal + IntersectionObserver from Base.astro -->
-<div class="stat-grid grid grid-cols-3 gap-6 text-center">
-  {stats.map(s => (
-    <div class="stat-item reveal">
-      <span class="stat-number font-heading text-5xl text-indigo-900"
-            data-target={s.value}>0</span>
-      <span class="stat-suffix text-turquoise-600">{s.suffix}</span>
-      <p class="stat-label text-sm text-aubergine-600 mt-1">{s.label}</p>
-    </div>
-  ))}
-</div>
+    name: 'Animated Stat Counter (Markdoc {% stat-counter %} tag)',
+    snippet: `Drop this straight into the Markdoc body — the \`stat-counter\` / \`stat\` tags
+are wired into \`src/markdoc/config.ts\` + \`MarkdocRenderer.astro\` and count up on
+scroll (IntersectionObserver, \`prefers-reduced-motion\` aware). Whole numbers
+animate; non-numeric values such as \`¾\` or \`30 %\` render statically.
 
-<script>
-  // Trigger once element is visible — integrates with existing IntersectionObserver
-  document.querySelectorAll('.stat-number').forEach(el => {
-    el.closest('.reveal')?.addEventListener('animationend', () => {
-      const target = +el.dataset.target;
-      let count = 0;
-      const step = Math.ceil(target / 50);
-      const id = setInterval(() => {
-        count = Math.min(count + step, target);
-        el.textContent = count.toLocaleString();
-        if (count >= target) clearInterval(id);
-      }, 30);
-    }, { once: true });
-  });
-</script>
+\`\`\`markdoc
+{% stat-counter caption="Lázeňská kúra v číslech" columns=3 %}
+{% stat value="21" suffix=" dní" label="klasická délka lázeňské kúry" /%}
+{% stat value="8 000" suffix=" kroků/den" label="reálný cíl chůze na kolonádě (obecné wellness doporučení, ne lékařský předpis)" /%}
+{% stat value="¾" suffix=" litru denně" label="orientační objem pitné kúry ze sirných pramenů — vždy individuálně dle lékaře" /%}
+{% /stat-counter %}
 \`\`\``,
   },
   'season-wheel': {

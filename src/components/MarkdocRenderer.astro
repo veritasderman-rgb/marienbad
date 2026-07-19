@@ -84,6 +84,33 @@ function renderCustomHtml(node: RenderableTreeNode): string {
       return `<aside class="my-10 bg-indigo-700 text-white rounded-2xl p-8 md:p-10"><div class="flex items-center gap-4 mb-4"><div class="shrink-0 w-11 h-11 rounded-xl bg-turquoise-400/20 flex items-center justify-center"><svg class="w-5 h-5 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="${iconPath}" /></svg></div><h3>${escapeHtml(attrs.title)}</h3></div><p class="text-white/80 leading-relaxed max-w-none">${escapeHtml(attrs.description)}</p></aside>`
     }
 
+    // Custom tag: stat-counter (grid container for animated key figures)
+    if (name === 'stat-counter') {
+      const cols =
+        attrs.columns === 2 ? 'stat-grid-2' :
+        attrs.columns === 4 ? 'stat-grid-4' : 'stat-grid-3'
+      const inner = children.map(renderCustomHtml).join('')
+      const caption = attrs.caption
+        ? `<p class="stat-grid-caption">${escapeHtml(attrs.caption)}</p>`
+        : ''
+      return `<div class="article-stat-counter">${caption}<div class="stat-grid ${cols}">${inner}</div></div>`
+    }
+
+    // Custom tag: stat (single figure inside stat-counter)
+    if (name === 'stat') {
+      const raw = String(attrs.value ?? '')
+      // Only whole numbers (optionally with space/comma/dot grouping) animate;
+      // anything else (e.g. "¾", "30 %") renders as-is, static.
+      const numeric = /^\d[\d\s.,]*$/.test(raw.trim())
+      const target = numeric ? raw.replace(/[\s.,]/g, '') : ''
+      const dataAttr = numeric ? ` data-stat-target="${escapeAttr(target)}" data-stat-final="${escapeAttr(raw)}"` : ''
+      const prefix = attrs.prefix
+        ? `<span class="stat-affix stat-prefix">${escapeHtml(attrs.prefix)}</span>` : ''
+      const suffix = attrs.suffix
+        ? `<span class="stat-affix stat-suffix">${escapeHtml(attrs.suffix)}</span>` : ''
+      return `<div class="stat-item"><p class="stat-value">${prefix}<span class="stat-number"${dataAttr}>${escapeHtml(raw)}</span>${suffix}</p><p class="stat-label">${escapeHtml(attrs.label)}</p></div>`
+    }
+
     // Custom tag: youtube
     if (name === 'youtube') {
       const vid = escapeAttr(attrs.videoId)
@@ -192,7 +219,7 @@ function hasCustomTags(node: any): boolean {
   if (!node || typeof node !== 'object') return false
   if ('$$mdtype' in node) {
     const name = node.name
-    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote' || name === 'treatment-box' || name === 'hotel-box' || name === 'book-cta' || name === 'youtube') return true
+    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote' || name === 'treatment-box' || name === 'stat-counter' || name === 'stat' || name === 'hotel-box' || name === 'book-cta' || name === 'youtube') return true
     if (node.children) return node.children.some(hasCustomTags)
   }
   if (Array.isArray(node)) return node.some(hasCustomTags)
@@ -205,3 +232,56 @@ const html = hasCustomTags(content)
 ---
 
 <Fragment set:html={html} />
+
+<script>
+  // Animated count-up for {% stat-counter %} figures.
+  // Reuses the same IntersectionObserver + reduced-motion contract as .reveal.
+  (() => {
+    const numbers = document.querySelectorAll<HTMLElement>('.stat-number[data-stat-target]')
+    if (!numbers.length) return
+
+    const settle = (el: HTMLElement) => {
+      el.textContent = el.dataset.statFinal ?? el.dataset.statTarget ?? el.textContent
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      numbers.forEach(settle)
+      return
+    }
+
+    const run = (el: HTMLElement) => {
+      const target = Number(el.dataset.statTarget)
+      if (!Number.isFinite(target)) { settle(el); return }
+      const duration = 1400
+      let start: number | null = null
+      const tick = (ts: number) => {
+        if (start === null) start = ts
+        const progress = Math.min((ts - start) / duration, 1)
+        // easeOutCubic
+        const eased = 1 - Math.pow(1 - progress, 3)
+        el.textContent = Math.round(eased * target).toLocaleString('cs-CZ')
+        if (progress < 1) requestAnimationFrame(tick)
+        else settle(el)
+      }
+      requestAnimationFrame(tick)
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            run(entry.target as HTMLElement)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+
+    numbers.forEach((el) => {
+      el.textContent = '0'
+      observer.observe(el)
+    })
+  })()
+</script>
