@@ -99,10 +99,14 @@ function renderCustomHtml(node: RenderableTreeNode): string {
     // Custom tag: stat (single figure inside stat-counter)
     if (name === 'stat') {
       const raw = String(attrs.value ?? '')
-      // Only whole numbers (optionally with space/comma/dot grouping) animate;
-      // anything else (e.g. "¾", "30 %") renders as-is, static.
-      const numeric = /^\d[\d\s.,]*$/.test(raw.trim())
-      const target = numeric ? raw.replace(/[\s.,]/g, '') : ''
+      // Only whole numbers with optional space thousands-grouping animate
+      // (e.g. "21", "8 000"). A value containing "." or "," is treated as a
+      // decimal/grouped number and rendered statically — otherwise "2,5" or
+      // "1.5" would be mis-read as 25 / 15. Non-numeric text ("¾", "30 %")
+      // is static too. Spaces are unambiguous grouping in all supported locales.
+      const trimmed = raw.trim()
+      const numeric = /^\d[\d\s]*$/.test(trimmed)
+      const target = numeric ? trimmed.replace(/\s/g, '') : ''
       const dataAttr = numeric ? ` data-stat-target="${escapeAttr(target)}" data-stat-final="${escapeAttr(raw)}"` : ''
       const prefix = attrs.prefix
         ? `<span class="stat-affix stat-prefix">${escapeHtml(attrs.prefix)}</span>` : ''
