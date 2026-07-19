@@ -532,6 +532,69 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 1rem;
 }
 
+/* ─── Article Stat Counter (animated key figures) ─── */
+.article-stat-counter {
+  margin: 2.5rem 0;
+  max-width: 56rem;
+}
+.stat-grid-caption {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-turquoise, #00A6A6);
+  margin: 0 0 1rem;
+}
+.stat-grid {
+  display: grid;
+  gap: 1rem;
+}
+.stat-grid.stat-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.stat-grid.stat-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.stat-grid.stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 768px) {
+  .stat-grid.stat-grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 640px) {
+  .stat-grid.stat-grid-3 { grid-template-columns: 1fr; }
+}
+.stat-item {
+  background: var(--color-beige, #F5EEE1);
+  border-radius: 0.75rem;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  border-bottom: 3px solid var(--color-turquoise, #00A6A6);
+}
+.stat-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2em;
+  margin: 0;
+  line-height: 1.1;
+}
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-indigo-dark, #004F71);
+  font-variant-numeric: tabular-nums;
+}
+.stat-affix {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-indigo-dark, #004F71);
+}
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-warm-grey, #6E6875);
+  margin: 0.6rem 0 0;
+}
+
 /* ─── Button Styles ─── */
 .btn-primary {
   display: inline-flex;
