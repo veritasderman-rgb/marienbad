@@ -305,7 +305,11 @@ const linkClass =
             {gallery.map((img) => (
               <figure class="relative rounded-xl overflow-hidden shadow-card">
                 <picture>
-                  <source srcset={img.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                  <source
+                    srcset={`${img.src.replace(/\.jpg$/, '-800w.webp')} 800w, ${img.src.replace(/\.jpg$/, '.webp')} 1200w`}
+                    sizes="(min-width: 1024px) 330px, (min-width: 640px) 50vw, 100vw"
+                    type="image/webp"
+                  />
                   <img src={img.src} alt={name} class="w-full h-56 object-cover" loading="lazy" decoding="async" />
                 </picture>
                 <a

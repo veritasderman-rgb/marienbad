@@ -321,7 +321,7 @@ export const tripGalleries: Record<string, GalleryImage[]> = {
     },
     {
       src: "/images/trips/gallery/chodovar-2.jpg",
-      author: "I would appreciate being notified if you use my work outside Wikimedia.\nMore of my work can be found",
+      author: "Aktron",
       license: "CC BY-SA 4.0",
       licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Chodov%C3%A1_Plan%C3%A1,_pivovar_II.jpg",
