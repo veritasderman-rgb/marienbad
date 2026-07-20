@@ -490,6 +490,10 @@ export default function TripExplorer({ locale }: Props) {
       {/* Map view — schematic distance map, no external tiles */}
       {view === 'map' && filtered.length > 0 && (
         <div>
+          <style>{`
+            .trip-dot:focus-visible { outline: 2px solid var(--color-turquoise-600); outline-offset: 2px; }
+            .trip-dot:focus-visible circle { stroke: var(--color-turquoise-600); stroke-width: 0.7; }
+          `}</style>
           <div className="bg-white rounded-xl shadow-card p-4 md:p-6">
             <svg
               viewBox="-40 -36 80 74"
@@ -533,7 +537,7 @@ export default function TripExplorer({ locale }: Props) {
                         setSelectedId(isSelected ? null : trip.id)
                       }
                     }}
-                    className="cursor-pointer focus:outline-none"
+                    className="trip-dot cursor-pointer"
                   >
                     <title>{trip.name[locale]}</title>
                     <circle
