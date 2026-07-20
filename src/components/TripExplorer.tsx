@@ -282,7 +282,9 @@ function TripPhoto({ trip, locale, t }: { trip: DayTrip; locale: Locale; t: UiSt
   return (
     <div className="h-44 relative overflow-hidden">
       <picture>
-        <source srcSet={img.src.replace(/\.jpg$/, '-800w.webp')} type="image/webp" />
+        {/* The plain .webp sibling exists for every source image; the -800w variant
+            is only generated for sources wider than 800px, so it can't be assumed. */}
+        <source srcSet={img.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
         <img
           src={img.src}
           alt={trip.name[locale]}
