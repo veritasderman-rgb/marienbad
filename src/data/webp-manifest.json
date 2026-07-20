@@ -809,6 +809,18 @@
     "width": 900,
     "height": 597
   },
+  "/images/trips/andelska-hora.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/barnau.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 661
+  },
   "/images/trips/becov.jpg": {
     "webp": true,
     "w800": true,
@@ -827,6 +839,12 @@
     "width": 1200,
     "height": 670
   },
+  "/images/trips/chlum-svate-mari.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
   "/images/trips/chodovar.jpg": {
     "webp": true,
     "w800": true,
@@ -839,11 +857,29 @@
     "width": 1200,
     "height": 1801
   },
+  "/images/trips/falkenberg.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1600
+  },
+  "/images/trips/farska-kyselka.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 799
+  },
   "/images/trips/frantiskovy-lazne.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
     "height": 715
+  },
+  "/images/trips/gutstejn.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 854
   },
   "/images/trips/hamelika.jpg": {
     "webp": true,
@@ -851,11 +887,41 @@
     "width": 1200,
     "height": 1801
   },
+  "/images/trips/hartenberg.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 794
+  },
+  "/images/trips/horni-slavkov.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/jachymov.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 799
+  },
+  "/images/trips/kappl.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
   "/images/trips/karlovy-vary.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
     "height": 802
+  },
+  "/images/trips/kladruby.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
   },
   "/images/trips/kladska.jpg": {
     "webp": true,
@@ -863,11 +929,23 @@
     "width": 1200,
     "height": 960
   },
+  "/images/trips/komorni-hurka.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
   "/images/trips/konstantinovy-lazne.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
     "height": 900
+  },
+  "/images/trips/kosi-potok.jpg": {
+    "webp": true,
+    "w800": false,
+    "width": 800,
+    "height": 600
   },
   "/images/trips/krasikov.jpg": {
     "webp": true,
@@ -887,7 +965,43 @@
     "width": 1200,
     "height": 601
   },
+  "/images/trips/kyselka.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
   "/images/trips/loket.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 900
+  },
+  "/images/trips/manetin.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 900
+  },
+  "/images/trips/marianska-tynice.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 873
+  },
+  "/images/trips/parkstein.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1800
+  },
+  "/images/trips/plana.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 713
+  },
+  "/images/trips/plzen.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
@@ -904,6 +1018,18 @@
     "w800": true,
     "width": 1200,
     "height": 800
+  },
+  "/images/trips/rabstejn.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 519
+  },
+  "/images/trips/seeberg.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 801
   },
   "/images/trips/sibyllenbad.jpg": {
     "webp": true,
@@ -923,11 +1049,23 @@
     "width": 1200,
     "height": 800
   },
+  "/images/trips/stribro.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
   "/images/trips/svatosske-skaly.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
     "height": 800
+  },
+  "/images/trips/tachov.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 900
   },
   "/images/trips/tepla.jpg": {
     "webp": true,
@@ -940,6 +1078,18 @@
     "w800": true,
     "width": 1200,
     "height": 800
+  },
+  "/images/trips/vildstejn.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1056
+  },
+  "/images/trips/volfstejn.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 900
   },
   "/images/trips/waldsassen.jpg": {
     "webp": true,
