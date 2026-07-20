@@ -10,6 +10,7 @@ import { t } from '@/i18n/ui'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import { dayTrips, TRIP_ORIGIN, tripDifficultyOrder, type DayTrip, type TripCategory, type TripDifficulty, type TripTag } from '@/data/dayTrips'
 import { articlesForTrip } from '@/data/tripArticles'
+import { tripLongDescriptions, tripGalleries } from '@/data/tripDetails'
 
 interface Props {
   locale: Locale
@@ -38,6 +39,8 @@ const ui: Record<Locale, Record<string, string>> = {
     mapLink: 'Auf Mapy.com öffnen',
     website: 'Offizielle Webseite',
     mapTitle: 'Karte',
+    about: 'Über den Ort',
+    gallery: 'Galerie',
     nearby: 'In der Nähe',
     nearbyAway: 'entfernt',
     reading: 'Zum Weiterlesen',
@@ -59,6 +62,8 @@ const ui: Record<Locale, Record<string, string>> = {
     mapLink: 'Open on Mapy.com',
     website: 'Official website',
     mapTitle: 'Map',
+    about: 'About the place',
+    gallery: 'Gallery',
     nearby: 'Nearby destinations',
     nearbyAway: 'away',
     reading: 'Further reading',
@@ -80,6 +85,8 @@ const ui: Record<Locale, Record<string, string>> = {
     mapLink: 'Otevřít na Mapy.com',
     website: 'Oficiální web',
     mapTitle: 'Mapa',
+    about: 'O místě',
+    gallery: 'Galerie',
     nearby: 'V okolí',
     nearbyAway: 'odsud',
     reading: 'Čtěte dál',
@@ -101,6 +108,8 @@ const ui: Record<Locale, Record<string, string>> = {
     mapLink: 'Открыть на Mapy.com',
     website: 'Официальный сайт',
     mapTitle: 'Карта',
+    about: 'О месте',
+    gallery: 'Галерея',
     nearby: 'Рядом',
     nearbyAway: 'отсюда',
     reading: 'Читайте также',
@@ -153,6 +162,8 @@ const nearby = dayTrips
   .slice(0, 3)
 
 const relatedArticles = articlesForTrip(trip.id)
+const longDescription = tripLongDescriptions[trip.id]?.[locale]
+const gallery = tripGalleries[trip.id] ?? []
 
 const formatHours = (v: number) => (locale === 'en' ? String(v) : String(v).replace('.', ','))
 const visitLabel = `${formatHours(trip.visitHoursMin)}–${formatHours(trip.visitHoursMax)} ${s.hours}`
@@ -275,6 +286,41 @@ const linkClass =
         <a href={mapyUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>{s.mapLink}</a>
         {trip.website && <a href={trip.website} target="_blank" rel="noopener noreferrer" class={linkClass}>{s.website}</a>}
       </div>
+
+      {longDescription && (
+        <div class="mb-10">
+          <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.about}</h2>
+          <div class="prose-marienbad max-w-none">
+            {longDescription.map((para) => (
+              <p class="text-gray-700 leading-relaxed mb-4">{para}</p>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {gallery.length > 0 && (
+        <div class="mb-10">
+          <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.gallery}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {gallery.map((img) => (
+              <figure class="relative rounded-xl overflow-hidden shadow-card">
+                <picture>
+                  <source srcset={img.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                  <img src={img.src} alt={name} class="w-full h-56 object-cover" loading="lazy" decoding="async" />
+                </picture>
+                <a
+                  href={img.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="absolute bottom-0 right-0 px-1.5 py-0.5 bg-black/50 text-white/90 hover:text-white text-[10px] leading-tight rounded-tl-md"
+                >
+                  © {img.author} · {img.license}
+                </a>
+              </figure>
+            ))}
+          </div>
+        </div>
+      )}
 
       <!-- Map -->
       <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.mapTitle}</h2>
