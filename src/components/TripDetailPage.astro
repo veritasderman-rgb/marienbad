@@ -1,0 +1,341 @@
+---
+/**
+ * Detail page body for a single day-trip destination: photo hero, key facts,
+ * map, nearby destinations and related magazine articles. Rendered by the
+ * prerendered /{locale}/{day-trips}/{id} routes.
+ */
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import { dayTrips, TRIP_ORIGIN, tripDifficultyOrder, type DayTrip, type TripCategory, type TripDifficulty, type TripTag } from '@/data/dayTrips'
+import { articlesForTrip } from '@/data/tripArticles'
+
+interface Props {
+  locale: Locale
+  trip: DayTrip
+}
+
+const { locale, trip } = Astro.props
+
+const catalogHref = `/${locale}/${routes['day-trips'][locale]}`
+const magazineBase = `/${locale}/${routes.magazine[locale]}`
+const detailHref = (id: string) => `${catalogHref}/${id}`
+
+const ui: Record<Locale, Record<string, string>> = {
+  de: {
+    catalog: 'Ausflüge',
+    facts: 'Auf einen Blick',
+    drive: 'Fahrzeit',
+    driveValue: 'Min. mit dem Auto',
+    onFoot: 'zu Fuß von der Kolonnade',
+    distance: 'Entfernung',
+    visit: 'Zeit vor Ort',
+    hours: 'Std.',
+    difficulty: 'Anspruch',
+    goodFor: 'Geeignet für',
+    route: 'Route planen',
+    mapLink: 'Auf Mapy.com öffnen',
+    website: 'Offizielle Webseite',
+    mapTitle: 'Karte',
+    nearby: 'In der Nähe',
+    nearbyAway: 'entfernt',
+    reading: 'Zum Weiterlesen',
+    backToCatalog: 'Alle 48 Ausflugsziele entdecken',
+    photoBy: 'Foto',
+  },
+  en: {
+    catalog: 'Day Trips',
+    facts: 'At a glance',
+    drive: 'Drive time',
+    driveValue: 'min by car',
+    onFoot: 'on foot from the colonnade',
+    distance: 'Distance',
+    visit: 'Time on site',
+    hours: 'h',
+    difficulty: 'Effort',
+    goodFor: 'Good for',
+    route: 'Plan the route',
+    mapLink: 'Open on Mapy.com',
+    website: 'Official website',
+    mapTitle: 'Map',
+    nearby: 'Nearby destinations',
+    nearbyAway: 'away',
+    reading: 'Further reading',
+    backToCatalog: 'Explore all 48 destinations',
+    photoBy: 'Photo',
+  },
+  cs: {
+    catalog: 'Výlety',
+    facts: 'V kostce',
+    drive: 'Doba jízdy',
+    driveValue: 'min autem',
+    onFoot: 'pěšky od kolonády',
+    distance: 'Vzdálenost',
+    visit: 'Na místě',
+    hours: 'h',
+    difficulty: 'Náročnost',
+    goodFor: 'Vhodné pro',
+    route: 'Naplánovat trasu',
+    mapLink: 'Otevřít na Mapy.com',
+    website: 'Oficiální web',
+    mapTitle: 'Mapa',
+    nearby: 'V okolí',
+    nearbyAway: 'odsud',
+    reading: 'Čtěte dál',
+    backToCatalog: 'Prozkoumat všech 48 cílů',
+    photoBy: 'Foto',
+  },
+  ru: {
+    catalog: 'Экскурсии',
+    facts: 'Коротко',
+    drive: 'Время в пути',
+    driveValue: 'мин на машине',
+    onFoot: 'пешком от колоннады',
+    distance: 'Расстояние',
+    visit: 'На месте',
+    hours: 'ч',
+    difficulty: 'Сложность',
+    goodFor: 'Подходит',
+    route: 'Построить маршрут',
+    mapLink: 'Открыть на Mapy.com',
+    website: 'Официальный сайт',
+    mapTitle: 'Карта',
+    nearby: 'Рядом',
+    nearbyAway: 'отсюда',
+    reading: 'Читайте также',
+    backToCatalog: 'Все 48 направлений',
+    photoBy: 'Фото',
+  },
+}
+
+const categories: Record<Locale, Record<TripCategory, string>> = {
+  de: { castles: 'Burgen & Klöster', towns: 'Städte & Kurorte', nature: 'Natur', lookouts: 'Aussichtspunkte', experiences: 'Erlebnisse' },
+  en: { castles: 'Castles & monasteries', towns: 'Towns & spas', nature: 'Nature', lookouts: 'Lookouts', experiences: 'Experiences' },
+  cs: { castles: 'Hrady & kláštery', towns: 'Města & lázně', nature: 'Příroda', lookouts: 'Rozhledy', experiences: 'Zážitky' },
+  ru: { castles: 'Замки и монастыри', towns: 'Города и курорты', nature: 'Природа', lookouts: 'Смотровые площадки', experiences: 'Впечатления' },
+}
+
+const difficulties: Record<Locale, Record<TripDifficulty, string>> = {
+  de: { easy: 'leicht', moderate: 'mittel', demanding: 'anspruchsvoll' },
+  en: { easy: 'easy', moderate: 'moderate', demanding: 'demanding' },
+  cs: { easy: 'lehká', moderate: 'střední', demanding: 'náročná' },
+  ru: { easy: 'лёгкая', moderate: 'средняя', demanding: 'сложная' },
+}
+
+const tags: Record<Locale, Record<TripTag, string>> = {
+  de: { noCar: 'Ohne Auto', stroller: 'Mit Kinderwagen', dog: 'Mit Hund', indoor: 'Auch bei Regen', winter: 'Auch im Winter', food: 'Einkehr möglich' },
+  en: { noCar: 'No car needed', stroller: 'Stroller-friendly', dog: 'Dog-friendly', indoor: 'Rainy-day option', winter: 'Good in winter', food: 'Food available' },
+  cs: { noCar: 'Bez auta', stroller: 'S kočárkem', dog: 'Se psem', indoor: 'I za deště', winter: 'I v zimě', food: 'Občerstvení' },
+  ru: { noCar: 'Без машины', stroller: 'С коляской', dog: 'С собакой', indoor: 'И в дождь', winter: 'И зимой', food: 'Есть кафе' },
+}
+
+const s = ui[locale]
+const name = trip.name[locale]
+const description = trip.description[locale]
+
+function haversineKm(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const R = 6371
+  const dLat = ((b.lat - a.lat) * Math.PI) / 180
+  const dLng = ((b.lng - a.lng) * Math.PI) / 180
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((a.lat * Math.PI) / 180) * Math.cos((b.lat * Math.PI) / 180) * Math.sin(dLng / 2) ** 2
+  return 2 * R * Math.asin(Math.sqrt(h))
+}
+
+const distanceKm = Math.round(haversineKm(TRIP_ORIGIN, trip))
+
+const nearby = dayTrips
+  .filter((other) => other.id !== trip.id)
+  .map((other) => ({ trip: other, km: haversineKm(trip, other) }))
+  .sort((a, b) => a.km - b.km)
+  .slice(0, 3)
+
+const relatedArticles = articlesForTrip(trip.id)
+
+const formatHours = (v: number) => (locale === 'en' ? String(v) : String(v).replace('.', ','))
+const visitLabel = `${formatHours(trip.visitHoursMin)}–${formatHours(trip.visitHoursMax)} ${s.hours}`
+const driveLabel = trip.driveMin === 0 ? s.onFoot : `~${trip.driveMin} ${s.driveValue}`
+
+const routeUrl = `https://www.google.com/maps/dir/?api=1&origin=Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B&destination=${trip.lat},${trip.lng}`
+const mapyUrl = `https://mapy.com/turisticka?q=${encodeURIComponent(trip.name.cs)}`
+const embedSrc = `https://maps.google.com/maps?q=${trip.lat},${trip.lng}&z=13&hl=${locale}&ie=UTF8&output=embed`
+
+const homeLabel = t(locale, 'nav.home')
+const breadcrumbItems = [
+  { label: homeLabel, href: `/${locale}` },
+  { label: s.catalog, href: catalogHref },
+  { label: name },
+]
+
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
+const attractionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name,
+  description,
+  url: `${siteUrl}${detailHref(trip.id)}`,
+  geo: { '@type': 'GeoCoordinates', latitude: trip.lat, longitude: trip.lng },
+  ...(trip.image ? { image: `${siteUrl}${trip.image.src}` } : {}),
+  ...(trip.website ? { sameAs: trip.website } : {}),
+}
+
+const linkClass =
+  'inline-flex items-center gap-1.5 text-turquoise-700 hover:text-turquoise-900 font-semibold transition-colors'
+---
+
+<!-- Photo hero -->
+<section class="relative bg-indigo-900 text-white overflow-hidden">
+  {trip.image && (
+    <>
+      <picture>
+        <source srcset={trip.image.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+        <img
+          src={trip.image.src}
+          alt={name}
+          class="absolute inset-0 w-full h-full object-cover opacity-50"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+      <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/90 via-indigo-950/40 to-indigo-950/30"></div>
+    </>
+  )}
+  <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-20">
+    <Breadcrumbs items={breadcrumbItems} locale={locale} />
+    <span class="inline-block px-3 py-1 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+      {categories[locale][trip.category]}
+    </span>
+    <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight" style="font-size: var(--text-h1);">{name}</h1>
+    <p class="text-white/85 text-lg md:text-xl max-w-2xl leading-relaxed">{description}</p>
+    {trip.image && (
+      <a
+        href={trip.image.sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="absolute bottom-2 right-3 text-[11px] text-white/50 hover:text-white/80 transition-colors"
+      >
+        {s.photoBy}: {trip.image.author} · {trip.image.license}
+      </a>
+    )}
+  </div>
+</section>
+
+<section class="container-wide py-12 md:py-16">
+  <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
+    <div>
+      <!-- Facts -->
+      <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.facts}</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-beige-100 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">{s.drive}</p>
+          <p class="font-semibold text-indigo-900">{driveLabel}</p>
+        </div>
+        <div class="bg-beige-100 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">{s.distance}</p>
+          <p class="font-semibold text-indigo-900">~{distanceKm} km</p>
+        </div>
+        <div class="bg-beige-100 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">{s.visit}</p>
+          <p class="font-semibold text-indigo-900">{visitLabel}</p>
+        </div>
+        <div class="bg-beige-100 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">{s.difficulty}</p>
+          <p class="font-semibold text-indigo-900 flex items-center gap-1.5">
+            <span class="inline-flex items-center gap-1">
+              {[0, 1, 2].map((i) => (
+                <span class={`w-1.5 h-1.5 rounded-full ${i <= tripDifficultyOrder.indexOf(trip.difficulty) ? 'bg-indigo-600' : 'bg-gray-300'}`}></span>
+              ))}
+            </span>
+            {difficulties[locale][trip.difficulty]}
+          </p>
+        </div>
+      </div>
+
+      {trip.tags.length > 0 && (
+        <div class="mb-8">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-2">{s.goodFor}</p>
+          <div class="flex flex-wrap gap-2">
+            {trip.tags.map((tag) => (
+              <span class="px-3 py-1 bg-turquoise-50 text-turquoise-900 text-sm font-medium rounded-full border border-turquoise-200">
+                {tags[locale][tag]}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Links -->
+      <div class="flex flex-wrap gap-x-6 gap-y-2 mb-10 text-sm">
+        <a href={routeUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+          {s.route}
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href={mapyUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>{s.mapLink}</a>
+        {trip.website && <a href={trip.website} target="_blank" rel="noopener noreferrer" class={linkClass}>{s.website}</a>}
+      </div>
+
+      <!-- Map -->
+      <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.mapTitle}</h2>
+      <div class="rounded-xl overflow-hidden border border-beige-200 shadow-card mb-4">
+        <iframe
+          src={embedSrc}
+          width="100%"
+          height="380"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title={`${s.mapTitle}: ${name}`}
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="mt-12 lg:mt-0">
+      <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.nearby}</h2>
+      <div class="space-y-4 mb-10">
+        {nearby.map(({ trip: other, km }) => (
+          <a href={detailHref(other.id)} class="flex gap-4 bg-white rounded-xl shadow-card overflow-hidden card-hover group">
+            {other.image && (
+              <picture class="shrink-0">
+                <source srcset={other.image.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                <img src={other.image.src} alt={other.name[locale]} class="w-24 h-24 object-cover" loading="lazy" decoding="async" />
+              </picture>
+            )}
+            <div class="py-3 pr-4 min-w-0">
+              <p class="font-heading font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{other.name[locale]}</p>
+              <p class="text-xs text-gray-500 mt-1">~{Math.round(km)} km {s.nearbyAway}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {relatedArticles.length > 0 && (
+        <>
+          <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.reading}</h2>
+          <ul class="space-y-3 mb-10">
+            {relatedArticles.map((group) => (
+              <li>
+                <a href={`${magazineBase}/${group.slugs[locale]}`} class="text-turquoise-800 hover:text-turquoise-900 font-medium leading-snug transition-colors">
+                  {group.titles[locale]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      <a
+        href={catalogHref}
+        class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors"
+      >
+        {s.backToCatalog}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(attractionSchema)} />

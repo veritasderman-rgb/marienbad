@@ -1,0 +1,29 @@
+---
+import Base from '@/layouts/Base.astro'
+import TripDetailPage from '@/components/TripDetailPage.astro'
+import { dayTrips, type DayTrip } from '@/data/dayTrips'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return dayTrips.map((trip) => ({ params: { id: trip.id }, props: { trip } }))
+}
+
+const locale = 'en' as const
+const { trip } = Astro.props as { trip: DayTrip }
+
+const pageTitle = `${trip.name.en} — Day Trip from Marienbad`
+const description = trip.description.en
+const pageDescription = description.length > 155 ? description.slice(0, 155).replace(/\s+\S*$/, '') + '…' : description
+
+const alternateUrls = {
+  de: `/de/ausfluege/${trip.id}`,
+  en: `/en/day-trips/${trip.id}`,
+  cs: `/cs/vylety/${trip.id}`,
+  ru: `/ru/ekskursii/${trip.id}`,
+}
+---
+
+<Base locale={locale} section="things-to-do" title={pageTitle} description={pageDescription} alternateUrls={alternateUrls}>
+  <TripDetailPage locale={locale} trip={trip} />
+</Base>
