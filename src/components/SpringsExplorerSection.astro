@@ -1,0 +1,40 @@
+---
+/**
+ * Interactive springs guide — full-width band with the filterable springs
+ * explorer, appended below the CMS content of the springs-overview pages.
+ */
+import type { Locale } from '@/i18n/config'
+import { springs } from '@/data/springs'
+import SpringsExplorer from '@/components/SpringsExplorer.tsx'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const count = springs.length
+
+const heading: Record<Locale, string> = {
+  de: 'Welche Quelle ist die richtige für Sie?',
+  en: 'Which spring is right for you?',
+  cs: 'Který pramen je ten pravý pro vás?',
+  ru: 'Какой источник подходит именно вам?',
+}
+
+const subtitle: Record<Locale, string> = {
+  de: `${count} Quellen im interaktiven Überblick — filtern Sie danach, wobei das Wasser helfen soll und wo es entspringt.`,
+  en: `${count} springs at an interactive glance — filter by what the water should help with and where it rises.`,
+  cs: `${count} pramenů v interaktivním přehledu — filtrujte podle toho, s čím má voda pomoci a kde vyvěrá.`,
+  ru: `${count} источников в интерактивном обзоре — фильтруйте по тому, при чём должна помочь вода и где она бьёт.`,
+}
+---
+
+<section class="bg-beige-100 py-16 md:py-20">
+  <div class="container-wide">
+    <div class="max-w-2xl mb-10">
+      <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-800 mb-3">{heading[locale]}</h2>
+      <p class="text-gray-600 leading-relaxed">{subtitle[locale]}</p>
+    </div>
+    <SpringsExplorer client:visible locale={locale} />
+  </div>
+</section>
