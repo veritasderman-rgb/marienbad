@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro'
 import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import DayTripsTeaser from '@/components/DayTripsTeaser.astro'
 import { getPage } from '@/content/reader'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
@@ -27,4 +28,5 @@ const hotel = getHotelBySlug('centralni-lazne')!
       bookingLabel="Забронировать отель"
     />
   </PillarPage>
+  <DayTripsTeaser locale={locale} />
 </Base>

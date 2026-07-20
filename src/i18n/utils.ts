@@ -41,6 +41,7 @@ export function getNavItemsFlat(locale: Locale) {
   const sectionKeys: { navKey: string; section: SectionKey }[] = [
     { navKey: 'nav.mineralSprings', section: 'mineral-springs' },
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
+    { navKey: 'nav.dayTrips', section: 'day-trips' },
     { navKey: 'nav.accommodation', section: 'accommodation' },
     { navKey: 'nav.history', section: 'history' },
     { navKey: 'nav.practicalInfo', section: 'practical-info' },
@@ -63,7 +64,17 @@ export function getNavItems(locale: Locale): NavItem[] {
 
   return [
     link('nav.mineralSprings', 'mineral-springs'),
-    link('nav.thingsToDo', 'things-to-do'),
+    {
+      type: 'dropdown',
+      navKey: 'nav.thingsToDo',
+      children: [
+        link('nav.overview', 'things-to-do'),
+        link('nav.dayTrips', 'day-trips'),
+        link('nav.golf', 'golf'),
+        link('nav.culture', 'culture'),
+        link('nav.nature', 'nature'),
+      ],
+    },
     link('nav.accommodation', 'accommodation'),
     {
       type: 'dropdown',

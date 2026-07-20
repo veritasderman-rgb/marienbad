@@ -1,0 +1,60 @@
+---
+/**
+ * Compact promo band for the day-trips explorer, shown on the "Things to Do"
+ * pillar pages. Links to the localized day-trips page where the full
+ * filterable catalogue (TripExplorer) lives.
+ */
+import type { Locale } from '@/i18n/config'
+import { localizedHref } from '@/i18n/utils'
+import { dayTrips } from '@/data/dayTrips'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const count = dayTrips.length
+const href = localizedHref(locale, 'day-trips')
+
+const heading: Record<Locale, string> = {
+  de: 'Ausflugsziele im Umkreis',
+  en: 'Day-trip destinations nearby',
+  cs: 'Výletní cíle v okolí',
+  ru: 'Куда съездить из Марианских Лазней',
+}
+
+const text: Record<Locale, string> = {
+  de: `${count} handverlesene Ausflüge ab der Kolonnade — von Burgen und Bäderstädten bis zu Moorlandschaften. Filtern Sie nach Art, Anspruch oder danach, ob Sie ohne Auto unterwegs sind.`,
+  en: `${count} hand-picked trips from the colonnade — from castles and spa towns to peat-bog trails. Filter by type, effort, or whether you are travelling without a car.`,
+  cs: `${count} pečlivě vybraných výletů od kolonády — od hradů a lázeňských měst po rašeliniště. Filtrujte podle typu, náročnosti i toho, zda cestujete bez auta.`,
+  ru: `${count} тщательно отобранных маршрутов от колоннады — от замков и курортных городов до болотных троп. Фильтруйте по типу, сложности и наличию машины.`,
+}
+
+const cta: Record<Locale, string> = {
+  de: 'Alle Ziele entdecken',
+  en: 'Explore all destinations',
+  cs: 'Prozkoumat všechny cíle',
+  ru: 'Смотреть все направления',
+}
+---
+
+<section class="container-wide pb-16 md:pb-20">
+  <div class="relative overflow-hidden rounded-2xl bg-indigo-700 text-white p-8 md:p-12">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.15)_0%,_transparent_60%)]"></div>
+    <div class="relative md:flex items-center justify-between gap-8">
+      <div class="max-w-2xl">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold mb-3">{heading[locale]}</h2>
+        <p class="text-white/80 leading-relaxed">{text[locale]}</p>
+      </div>
+      <a
+        href={href}
+        class="mt-6 md:mt-0 shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors"
+      >
+        {cta[locale]}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
