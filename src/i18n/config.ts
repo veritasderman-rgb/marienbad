@@ -13,6 +13,10 @@ export const localeNames: Record<Locale, string> = {
 export const routes = {
   'mineral-springs': { de: 'mineralquellen', en: 'mineral-springs', cs: 'mineralni-prameny', ru: 'mineralnye-istochniki' },
   'things-to-do': { de: 'aktivitaeten', en: 'things-to-do', cs: 'co-delat', ru: 'chem-zanyatsya' },
+  'day-trips': { de: 'ausfluege', en: 'day-trips', cs: 'vylety', ru: 'ekskursii' },
+  golf: { de: 'golf', en: 'golf', cs: 'golf', ru: 'golf' },
+  culture: { de: 'kultur', en: 'culture', cs: 'kultura', ru: 'kultura' },
+  nature: { de: 'natur', en: 'nature', cs: 'priroda', ru: 'priroda' },
   accommodation: { de: 'unterkunft', en: 'accommodation', cs: 'ubytovani', ru: 'prozhivanie' },
   history: { de: 'geschichte', en: 'history', cs: 'historie', ru: 'istoriya' },
   'practical-info': { de: 'praktische-infos', en: 'practical-info', cs: 'prakticke-informace', ru: 'prakticheskaya-informaciya' },
