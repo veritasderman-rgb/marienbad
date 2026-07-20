@@ -276,6 +276,44 @@ function TripMeta({ trip, locale, t }: { trip: DayTrip; locale: Locale; t: UiStr
   )
 }
 
+function TripPhoto({ trip, locale, t }: { trip: DayTrip; locale: Locale; t: UiStrings }) {
+  const img = trip.image
+  if (!img) return null
+  return (
+    <div className="h-44 relative overflow-hidden">
+      <picture>
+        <source srcSet={img.src.replace(/\.jpg$/, '-800w.webp')} type="image/webp" />
+        <img
+          src={img.src}
+          alt={trip.name[locale]}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <span className="absolute top-3 left-3">
+        <span
+          className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full backdrop-blur-sm ${categoryBadgeClass[trip.category]}`}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+            <path strokeLinecap="round" strokeLinejoin="round" d={categoryIcon[trip.category]} />
+          </svg>
+          {t.categories[trip.category]}
+        </span>
+      </span>
+      <a
+        href={img.sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-0 right-0 px-1.5 py-0.5 bg-black/50 text-white/90 hover:text-white text-[10px] leading-tight rounded-tl-md"
+        title={`${img.author} — ${img.license}, Wikimedia Commons`}
+      >
+        © {img.author} · {img.license}
+      </a>
+    </div>
+  )
+}
+
 function TripLinks({ trip, t }: { trip: DayTrip; t: UiStrings }) {
   const linkClass =
     'inline-flex items-center gap-1 text-turquoise-700 hover:text-turquoise-900 text-sm font-semibold transition-colors'
@@ -456,17 +494,21 @@ export default function TripExplorer({ locale }: Props) {
       {view === 'list' && filtered.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((trip) => (
-            <article key={trip.id} className="bg-white rounded-xl shadow-card p-6 flex flex-col card-hover">
-              <div className="flex items-center justify-between mb-3">
-                <span
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full ${categoryBadgeClass[trip.category]}`}
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={categoryIcon[trip.category]} />
-                  </svg>
-                  {t.categories[trip.category]}
-                </span>
-              </div>
+            <article key={trip.id} className="bg-white rounded-xl shadow-card overflow-hidden flex flex-col card-hover">
+              <TripPhoto trip={trip} locale={locale} t={t} />
+              <div className="p-6 flex flex-col flex-1">
+              {!trip.image && (
+                <div className="flex items-center justify-between mb-3">
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full ${categoryBadgeClass[trip.category]}`}
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={categoryIcon[trip.category]} />
+                    </svg>
+                    {t.categories[trip.category]}
+                  </span>
+                </div>
+              )}
               <h3 className="font-heading font-bold text-lg text-indigo-900 mb-2">{trip.name[locale]}</h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">{trip.description[locale]}</p>
               <div className="mb-3">
@@ -482,6 +524,7 @@ export default function TripExplorer({ locale }: Props) {
                 </div>
               )}
               <TripLinks trip={trip} t={t} />
+              </div>
             </article>
           ))}
         </div>
@@ -572,20 +615,25 @@ export default function TripExplorer({ locale }: Props) {
 
           {/* Selected destination detail */}
           {selected && (
-            <div className="mt-4 bg-white rounded-xl shadow-card p-6">
-              <div className="flex items-center gap-2 mb-2">
-                <span
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full ${categoryBadgeClass[selected.category]}`}
-                >
-                  {t.categories[selected.category]}
-                </span>
-              </div>
+            <div className="mt-4 bg-white rounded-xl shadow-card overflow-hidden">
+              <TripPhoto trip={selected} locale={locale} t={t} />
+              <div className="p-6">
+              {!selected.image && (
+                <div className="flex items-center gap-2 mb-2">
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full ${categoryBadgeClass[selected.category]}`}
+                  >
+                    {t.categories[selected.category]}
+                  </span>
+                </div>
+              )}
               <h3 className="font-heading font-bold text-lg text-indigo-900 mb-2">{selected.name[locale]}</h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-3">{selected.description[locale]}</p>
               <div className="mb-3">
                 <TripMeta trip={selected} locale={locale} t={t} />
               </div>
               <TripLinks trip={selected} t={t} />
+              </div>
             </div>
           )}
         </div>

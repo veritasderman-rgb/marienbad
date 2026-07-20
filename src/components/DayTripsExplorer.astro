@@ -47,6 +47,9 @@ const itemListSchema = {
         latitude: trip.lat,
         longitude: trip.lng,
       },
+      ...(trip.image
+        ? { image: `${(import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')}${trip.image.src}` }
+        : {}),
       ...(trip.website ? { url: trip.website } : {}),
     },
   })),

@@ -28,6 +28,15 @@ export interface DayTrip {
   name: Record<Locale, string>
   description: Record<Locale, string>
   website?: string
+  /** Photo from Wikimedia Commons; JPG under public/images/trips, WebP siblings via `pnpm images` */
+  image?: {
+    src: string
+    author: string
+    license: string
+    licenseUrl?: string
+    /** Commons file description page (attribution link) */
+    sourceUrl: string
+  }
 }
 
 /** Colonnade of Mariánské Lázně — origin for all distances */
@@ -36,6 +45,13 @@ export const TRIP_ORIGIN = { lat: 49.9646, lng: 12.7011 }
 export const dayTrips: DayTrip[] = [
   {
     id: 'hamelika',
+    image: {
+      src: '/images/trips/hamelika.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Rozhledna_Hamelika_(3).jpg',
+    },
     category: 'lookouts',
     difficulty: 'moderate',
     tags: ['noCar', 'dog', 'winter'],
@@ -59,6 +75,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'boheminium',
+    image: {
+      src: '/images/trips/boheminium.jpg',
+      author: 'Mojmir Churavy',
+      license: 'CC0',
+      licenseUrl: 'http://creativecommons.org/publicdomain/zero/1.0/deed.en',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Vstup_Park_Bohemium_Marianske_L.jpg',
+    },
     category: 'experiences',
     difficulty: 'easy',
     tags: ['noCar', 'stroller', 'winter', 'food'],
@@ -83,6 +106,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'smradoch',
+    image: {
+      src: '/images/trips/smradoch.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:PR_Smra%C4%8Foch_%C5%99%C3%ADjen_2024_(2).jpg',
+    },
     category: 'nature',
     difficulty: 'easy',
     tags: ['dog', 'winter'],
@@ -106,6 +136,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'chodovar',
+    image: {
+      src: '/images/trips/chodovar.jpg',
+      author: 'Stanislav Dusík',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Chodov%C3%A1_Plan%C3%A1,_pivovar_Chodovar.jpg',
+    },
     category: 'experiences',
     difficulty: 'easy',
     tags: ['noCar', 'indoor', 'winter', 'food'],
@@ -130,6 +167,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'kynzvart',
+    image: {
+      src: '/images/trips/kynzvart.jpg',
+      author: 'VitVit',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Z%C3%A1mek_Kyn%C5%BEvart_celek_1.jpg',
+    },
     category: 'castles',
     difficulty: 'easy',
     tags: ['noCar', 'stroller', 'dog', 'indoor', 'food'],
@@ -154,6 +198,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'podhorni-vrch',
+    image: {
+      src: '/images/trips/podhorni-vrch.jpg',
+      author: 'Johannes Baier',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Podhorn.JPG',
+    },
     category: 'lookouts',
     difficulty: 'moderate',
     tags: ['dog', 'winter'],
@@ -177,6 +228,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'kladska',
+    image: {
+      src: '/images/trips/kladska.jpg',
+      author: 'Petr Štefek',
+      license: 'CC BY 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:20070925_Kladska.jpg',
+    },
     category: 'nature',
     difficulty: 'easy',
     tags: ['stroller', 'dog', 'winter', 'food'],
@@ -200,6 +258,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'tepla',
+    image: {
+      src: '/images/trips/tepla.jpg',
+      author: 'VitVit',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Kl%C3%A1%C5%A1ter_Tepl%C3%A1_celek_2.jpg',
+    },
     category: 'castles',
     difficulty: 'easy',
     tags: ['noCar', 'indoor', 'food'],
@@ -224,6 +289,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'sibyllenbad',
+    image: {
+      src: '/images/trips/sibyllenbad.jpg',
+      author: 'Richard Huber',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Sibyllenbad_Eingangsbereich.jpg',
+    },
     category: 'experiences',
     difficulty: 'easy',
     tags: ['indoor', 'winter', 'food'],
@@ -248,6 +320,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'dylen',
+    image: {
+      src: '/images/trips/dylen.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Dyle%C5%88_z%C3%A1%C5%99%C3%AD_2020_(1).jpg',
+    },
     category: 'nature',
     difficulty: 'demanding',
     tags: ['dog'],
@@ -271,6 +350,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'becov',
+    image: {
+      src: '/images/trips/becov.jpg',
+      author: 'Lucie Krotilova',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Be%C4%8Dov_nad_Teplou,_hrad_a_z%C3%A1mek.jpg',
+    },
     category: 'castles',
     difficulty: 'moderate',
     tags: ['noCar', 'indoor', 'food'],
@@ -295,6 +381,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'cheb',
+    image: {
+      src: '/images/trips/cheb.jpg',
+      author: 'VitVit',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cheb_n%C3%A1m%C4%9Bst%C3%AD_celek_4.jpg',
+    },
     category: 'towns',
     difficulty: 'easy',
     tags: ['noCar', 'stroller', 'indoor', 'winter', 'food'],
@@ -318,6 +411,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'utery',
+    image: {
+      src: '/images/trips/utery.jpg',
+      author: 'Petr Kinšt',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:%C3%9Ater%C3%BD_-_N%C3%A1m%C4%9Bst%C3%AD_se_sloupem_se_sochou_Panny_Marie_a_ka%C5%A1nou.jpg',
+    },
     category: 'towns',
     difficulty: 'easy',
     tags: ['dog'],
@@ -341,6 +441,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'krasno',
+    image: {
+      src: '/images/trips/krasno.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Kr%C3%A1sensk%C3%BD_vrch_(3).jpg',
+    },
     category: 'lookouts',
     difficulty: 'easy',
     tags: ['dog', 'winter'],
@@ -364,6 +471,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'waldsassen',
+    image: {
+      src: '/images/trips/waldsassen.jpg',
+      author: 'Aconcagua',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Kloster_Waldsassen.jpg',
+    },
     category: 'castles',
     difficulty: 'easy',
     tags: ['stroller', 'indoor', 'winter', 'food'],
@@ -387,6 +501,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'krasikov',
+    image: {
+      src: '/images/trips/krasikov.jpg',
+      author: 'Levap75',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Hrad_Kras%C3%ADkov_02.JPG',
+    },
     category: 'castles',
     difficulty: 'moderate',
     tags: ['dog', 'winter'],
@@ -410,6 +531,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'konstantinovy-lazne',
+    image: {
+      src: '/images/trips/konstantinovy-lazne.jpg',
+      author: 'Ondrej.konicek',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'http://creativecommons.org/licenses/by-sa/3.0/',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Prusikuv_pramen_v_Konstantinovych_Laznich.jpg',
+    },
     category: 'towns',
     difficulty: 'easy',
     tags: ['stroller', 'food'],
@@ -433,6 +561,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'loket',
+    image: {
+      src: '/images/trips/loket.jpg',
+      author: 'Pakos',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Loket0809.JPG',
+    },
     category: 'castles',
     difficulty: 'easy',
     tags: ['dog', 'indoor', 'food'],
@@ -457,6 +592,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'frantiskovy-lazne',
+    image: {
+      src: '/images/trips/frantiskovy-lazne.jpg',
+      author: 'Zipacna1',
+      license: 'CC BY 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/3.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Franti%C5%A1kovy_L%C3%A1zn%C4%9B_2020-08-01.jpg',
+    },
     category: 'towns',
     difficulty: 'easy',
     tags: ['noCar', 'stroller', 'winter', 'food'],
@@ -480,6 +622,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'karlovy-vary',
+    image: {
+      src: '/images/trips/karlovy-vary.jpg',
+      author: 'rboed*',
+      license: 'CC BY 2.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/2.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Karlovy_Vary_-_2021_2.jpg',
+    },
     category: 'towns',
     difficulty: 'easy',
     tags: ['noCar', 'stroller', 'indoor', 'winter', 'food'],
@@ -504,6 +653,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'svatosske-skaly',
+    image: {
+      src: '/images/trips/svatosske-skaly.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Svato%C5%A1sk%C3%A9_sk%C3%A1ly_%C3%BAnor_2023.jpg',
+    },
     category: 'nature',
     difficulty: 'easy',
     tags: ['stroller', 'dog', 'winter', 'food'],
@@ -527,6 +683,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'soos',
+    image: {
+      src: '/images/trips/soos.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:NPR_Soos_b%C5%99ezen_2024_(4).jpg',
+    },
     category: 'nature',
     difficulty: 'easy',
     tags: ['stroller', 'dog'],
@@ -550,6 +713,13 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'primda',
+    image: {
+      src: '/images/trips/primda.jpg',
+      author: 'Petr Kinšt',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:P%C5%99imda_-_n%C3%A1dvo%C5%99%C3%AD.jpg',
+    },
     category: 'castles',
     difficulty: 'moderate',
     tags: ['dog'],
