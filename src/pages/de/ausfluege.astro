@@ -1,9 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro'
-import FaqSchema from '@/components/FaqSchema.astro'
-import PillarPage from '@/components/PillarPage.astro'
-import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
-import DayTripsExplorer from '@/components/DayTripsExplorer.astro'
+import DayTripsPage from '@/components/DayTripsPage.astro'
 import { getPage } from '@/content/reader'
 
 const locale = 'de' as const
@@ -11,9 +8,5 @@ const page = await getPage('de-ausfluege')
 ---
 
 <Base locale={locale} section="things-to-do" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/ausfluege', en: '/en/day-trips', cs: '/cs/vylety', ru: '/ru/ekskursii' }}>
-  <FaqSchema rawBody={page?.rawBody} />
-  <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
-    { page?.body && <MarkdocRenderer content={page.body} /> }
-  </PillarPage>
-  <DayTripsExplorer locale={locale} />
+  <DayTripsPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} />
 </Base>

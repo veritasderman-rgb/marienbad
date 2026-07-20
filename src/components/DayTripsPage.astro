@@ -1,0 +1,33 @@
+---
+/**
+ * Standalone day-trips page body: indigo hero (breadcrumbs + title + intro)
+ * followed directly by the filterable photo catalogue. Replaces the former
+ * CMS-prose pillar layout on the day-trips pages.
+ */
+import type { Locale } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import DayTripsExplorer from '@/components/DayTripsExplorer.astro'
+
+interface Props {
+  locale: Locale
+  title: string
+  description: string
+}
+
+const { locale, title, description } = Astro.props
+const homeLabel = t(locale, 'nav.home')
+const breadcrumbItems = [{ label: homeLabel, href: `/${locale}` }, { label: title }]
+---
+
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+  <div class="relative container-wide pt-28 pb-16 md:pt-36 md:pb-20">
+    <Breadcrumbs items={breadcrumbItems} locale={locale} />
+    <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{title}</h1>
+    <p class="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">{description}</p>
+  </div>
+</section>
+
+<DayTripsExplorer locale={locale} standalone />
