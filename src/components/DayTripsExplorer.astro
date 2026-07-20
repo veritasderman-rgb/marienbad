@@ -1,0 +1,66 @@
+---
+/**
+ * Day-trips explorer section — filterable catalogue of destinations around
+ * Mariánské Lázně (list + schematic distance map), rendered as a full-width
+ * band below the pillar-page prose. Emits an ItemList of TouristAttraction
+ * entries as JSON-LD for SEO.
+ */
+import type { Locale } from '@/i18n/config'
+import { dayTrips } from '@/data/dayTrips'
+import TripExplorer from '@/components/TripExplorer.tsx'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const count = dayTrips.length
+
+const heading: Record<Locale, string> = {
+  de: 'Ausflugsziele im Umkreis',
+  en: 'Day-trip destinations nearby',
+  cs: 'Výletní cíle v okolí',
+  ru: 'Куда съездить из Марианских Лазней',
+}
+
+const subtitle: Record<Locale, string> = {
+  de: `${count} handverlesene Ausflüge ab Marienbad — filtern Sie nach Art, Anspruch und danach, ob Sie ohne Auto unterwegs sind. Fahrzeiten gelten ab der Kolonnade.`,
+  en: `${count} hand-picked trips from Marienbad — filter by type, effort and whether you are travelling without a car. Drive times are measured from the colonnade.`,
+  cs: `${count} pečlivě vybraných výletů z Mariánských Lázní — filtrujte podle typu, náročnosti i toho, zda cestujete bez auta. Doby jízdy počítáme od kolonády.`,
+  ru: `${count} тщательно отобранных маршрутов из Марианских Лазней — фильтруйте по типу, сложности и тому, путешествуете ли вы без машины. Время в пути указано от колоннады.`,
+}
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: heading[locale],
+  numberOfItems: count,
+  itemListElement: dayTrips.map((trip, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'TouristAttraction',
+      name: trip.name[locale],
+      description: trip.description[locale],
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: trip.lat,
+        longitude: trip.lng,
+      },
+      ...(trip.website ? { url: trip.website } : {}),
+    },
+  })),
+}
+---
+
+<section class="bg-beige-100 py-16 md:py-20">
+  <div class="container-wide">
+    <div class="max-w-2xl mb-10">
+      <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-800 mb-3">{heading[locale]}</h2>
+      <p class="text-gray-600 leading-relaxed">{subtitle[locale]}</p>
+    </div>
+    <TripExplorer client:visible locale={locale} />
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
