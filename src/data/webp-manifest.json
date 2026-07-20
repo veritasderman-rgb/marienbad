@@ -808,5 +808,143 @@
     "w800": true,
     "width": 900,
     "height": 597
+  },
+  "/images/trips/becov.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 797
+  },
+  "/images/trips/boheminium.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 675
+  },
+  "/images/trips/cheb.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 670
+  },
+  "/images/trips/chodovar.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1800
+  },
+  "/images/trips/dylen.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1801
+  },
+  "/images/trips/frantiskovy-lazne.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 715
+  },
+  "/images/trips/hamelika.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1801
+  },
+  "/images/trips/karlovy-vary.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 802
+  },
+  "/images/trips/kladska.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 960
+  },
+  "/images/trips/konstantinovy-lazne.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 900
+  },
+  "/images/trips/krasikov.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 795
+  },
+  "/images/trips/krasno.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/kynzvart.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 601
+  },
+  "/images/trips/loket.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 900
+  },
+  "/images/trips/podhorni-vrch.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 898
+  },
+  "/images/trips/primda.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/sibyllenbad.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 774
+  },
+  "/images/trips/smradoch.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/soos.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/svatosske-skaly.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/tepla.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 549
+  },
+  "/images/trips/utery.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 800
+  },
+  "/images/trips/waldsassen.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 813
   }
 }
