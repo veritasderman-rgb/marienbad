@@ -539,16 +539,16 @@ export default function TripExplorer({ locale }: Props) {
           `}</style>
           <div className="bg-white rounded-xl shadow-card p-4 md:p-6">
             <svg
-              viewBox="-40 -36 80 74"
+              viewBox="-50 -48 110 86"
               role="img"
               aria-label={t.mapHint}
               className="w-full max-w-3xl mx-auto block"
             >
               {/* Distance rings */}
-              {[10, 20, 30].map((r) => (
+              {[10, 20, 30, 40].map((r) => (
                 <g key={r}>
-                  <circle cx="0" cy="0" r={r} fill="none" stroke="var(--color-beige-200)" strokeWidth="0.3" strokeDasharray="1.2 1" />
-                  <text x="0" y={-r - 1} textAnchor="middle" fontSize="2.2" fill="var(--color-beige-500)">
+                  <circle cx="0" cy="0" r={r} fill="none" stroke="var(--color-beige-200)" strokeWidth="0.35" strokeDasharray="1.2 1" />
+                  <text x="0" y={-r - 1.2} textAnchor="middle" fontSize="2.6" fill="var(--color-beige-500)">
                     {r} km
                   </text>
                 </g>
@@ -556,8 +556,8 @@ export default function TripExplorer({ locale }: Props) {
 
               {/* Origin: Mariánské Lázně */}
               <g>
-                <circle cx="0" cy="0" r="1.6" fill="var(--color-yellow-400)" stroke="white" strokeWidth="0.4" />
-                <text x="0" y="3.6" textAnchor="middle" fontSize="2.4" fontWeight="700" fill="var(--color-indigo-800)">
+                <circle cx="0" cy="0" r="1.8" fill="var(--color-yellow-400)" stroke="white" strokeWidth="0.45" />
+                <text x="0" y="4.2" textAnchor="middle" fontSize="2.8" fontWeight="700" fill="var(--color-indigo-800)">
                   {t.origin}
                 </text>
               </g>
@@ -586,13 +586,13 @@ export default function TripExplorer({ locale }: Props) {
                     <circle
                       cx={x}
                       cy={y}
-                      r={isSelected ? 2.4 : 1.7}
+                      r={isSelected ? 2.7 : 1.9}
                       fill={categoryDotColor[trip.category]}
                       stroke={isSelected ? 'var(--color-indigo-900)' : 'white'}
-                      strokeWidth={isSelected ? 0.5 : 0.35}
+                      strokeWidth={isSelected ? 0.55 : 0.4}
                     />
                     {isSelected && (
-                      <text x={x} y={y - 3.2} textAnchor="middle" fontSize="2.4" fontWeight="700" fill="var(--color-indigo-900)">
+                      <text x={x} y={y - 3.6} textAnchor="middle" fontSize="2.8" fontWeight="700" fill="var(--color-indigo-900)">
                         {trip.name[locale]}
                       </text>
                     )}
