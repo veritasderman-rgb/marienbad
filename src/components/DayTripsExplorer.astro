@@ -11,9 +11,11 @@ import TripExplorer from '@/components/TripExplorer.tsx'
 
 interface Props {
   locale: Locale
+  /** When true, the section is the page's main content — the page hero already carries the heading */
+  standalone?: boolean
 }
 
-const { locale } = Astro.props
+const { locale, standalone = false } = Astro.props
 const count = dayTrips.length
 
 const heading: Record<Locale, string> = {
@@ -58,10 +60,12 @@ const itemListSchema = {
 
 <section class="bg-beige-100 py-16 md:py-20">
   <div class="container-wide">
-    <div class="max-w-2xl mb-10">
-      <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-800 mb-3">{heading[locale]}</h2>
-      <p class="text-gray-600 leading-relaxed">{subtitle[locale]}</p>
-    </div>
+    {!standalone && (
+      <div class="max-w-2xl mb-10">
+        <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-800 mb-3">{heading[locale]}</h2>
+        <p class="text-gray-600 leading-relaxed">{subtitle[locale]}</p>
+      </div>
+    )}
     <TripExplorer client:visible locale={locale} />
   </div>
 </section>
