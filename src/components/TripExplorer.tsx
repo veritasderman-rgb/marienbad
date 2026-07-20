@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { routes } from '@/i18n/config'
 import {
   dayTrips,
   tripCategoryOrder,
@@ -276,23 +277,29 @@ function TripMeta({ trip, locale, t }: { trip: DayTrip; locale: Locale; t: UiStr
   )
 }
 
+function detailHref(locale: Locale, trip: DayTrip): string {
+  return `/${locale}/${routes['day-trips'][locale]}/${trip.id}`
+}
+
 function TripPhoto({ trip, locale, t }: { trip: DayTrip; locale: Locale; t: UiStrings }) {
   const img = trip.image
   if (!img) return null
   return (
     <div className="h-44 relative overflow-hidden">
-      <picture>
-        {/* The plain .webp sibling exists for every source image; the -800w variant
-            is only generated for sources wider than 800px, so it can't be assumed. */}
-        <source srcSet={img.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
-        <img
-          src={img.src}
-          alt={trip.name[locale]}
-          className="w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
+      <a href={detailHref(locale, trip)} aria-hidden="true" tabIndex={-1}>
+        <picture>
+          {/* The plain .webp sibling exists for every source image; the -800w variant
+              is only generated for sources wider than 800px, so it can't be assumed. */}
+          <source srcSet={img.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+          <img
+            src={img.src}
+            alt={trip.name[locale]}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </a>
       <span className="absolute top-3 left-3">
         <span
           className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full backdrop-blur-sm ${categoryBadgeClass[trip.category]}`}
@@ -511,7 +518,11 @@ export default function TripExplorer({ locale }: Props) {
                   </span>
                 </div>
               )}
-              <h3 className="font-heading font-bold text-lg text-indigo-900 mb-2">{trip.name[locale]}</h3>
+              <h3 className="font-heading font-bold text-lg mb-2">
+                <a href={detailHref(locale, trip)} className="text-indigo-900 hover:text-turquoise-800 transition-colors">
+                  {trip.name[locale]}
+                </a>
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">{trip.description[locale]}</p>
               <div className="mb-3">
                 <TripMeta trip={trip} locale={locale} t={t} />
@@ -629,7 +640,11 @@ export default function TripExplorer({ locale }: Props) {
                   </span>
                 </div>
               )}
-              <h3 className="font-heading font-bold text-lg text-indigo-900 mb-2">{selected.name[locale]}</h3>
+              <h3 className="font-heading font-bold text-lg mb-2">
+                <a href={detailHref(locale, selected)} className="text-indigo-900 hover:text-turquoise-800 transition-colors">
+                  {selected.name[locale]}
+                </a>
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-3">{selected.description[locale]}</p>
               <div className="mb-3">
                 <TripMeta trip={selected} locale={locale} t={t} />
