@@ -217,42 +217,70 @@ export default function SpringsExplorer({ locale }: Props) {
       {filtered.length === 0 && <p className="text-center text-gray-500 py-10">{t.noResults}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filtered.map((spring) => (
-          <article key={spring.id} className="bg-white rounded-xl shadow-card p-6 flex flex-col">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span
-                className={`px-2.5 py-1 text-xs font-medium rounded-full ${locationBadgeClass[spring.location]}`}
-              >
-                {t.locations[spring.location]}
-              </span>
-              {spring.type === 'gas' && (
-                <span className="px-2.5 py-1 text-xs font-medium rounded-full bg-yellow-50 text-yellow-700 border border-yellow-200">
-                  {t.gasBadge}
-                </span>
+        {filtered.map((spring) => {
+          const detailHref = `/${locale}/${routes['springs-overview'][locale]}/${spring.id}`
+          const webp = spring.image?.src.replace(/\.jpg$/, '.webp')
+          const webp800 = spring.image?.src.replace(/\.jpg$/, '-800w.webp')
+          return (
+            <article
+              key={spring.id}
+              className="bg-white rounded-xl shadow-card overflow-hidden flex flex-col"
+            >
+              {spring.image && (
+                <a href={detailHref} className="block relative aspect-[16/10] overflow-hidden bg-beige-100 group">
+                  <picture>
+                    <source
+                      srcSet={`${webp800} 800w, ${webp} 1200w`}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 520px"
+                      type="image/webp"
+                    />
+                    <img
+                      src={spring.image.src}
+                      alt={spring.name[locale]}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </picture>
+                  <span className="absolute bottom-0 right-0 bg-black/45 text-white/85 text-[10px] leading-tight px-1.5 py-0.5 rounded-tl">
+                    © {spring.image.author} · {spring.image.license}
+                  </span>
+                </a>
               )}
-            </div>
-            <h3 className="font-heading font-bold text-lg mb-1">
-              <a
-                href={`/${locale}/${routes['springs-overview'][locale]}/${spring.id}`}
-                className="text-indigo-900 hover:text-turquoise-800 transition-colors"
-              >
-                {spring.name[locale]}
-              </a>
-            </h3>
-            <p className="text-sm font-medium text-turquoise-800 mb-3">{spring.character[locale]}</p>
-            <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">{spring.description[locale]}</p>
-            <div className="flex flex-wrap gap-1.5">
-              {spring.indications.map((key) => (
-                <span
-                  key={key}
-                  className="px-2 py-0.5 bg-beige-50 text-beige-800 text-[11px] font-medium rounded-full border border-beige-200"
-                >
-                  {t.indications[key]}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span
+                    className={`px-2.5 py-1 text-xs font-medium rounded-full ${locationBadgeClass[spring.location]}`}
+                  >
+                    {t.locations[spring.location]}
+                  </span>
+                  {spring.type === 'gas' && (
+                    <span className="px-2.5 py-1 text-xs font-medium rounded-full bg-yellow-50 text-yellow-700 border border-yellow-200">
+                      {t.gasBadge}
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-heading font-bold text-lg mb-1">
+                  <a href={detailHref} className="text-indigo-900 hover:text-turquoise-800 transition-colors">
+                    {spring.name[locale]}
+                  </a>
+                </h3>
+                <p className="text-sm font-medium text-turquoise-800 mb-3">{spring.character[locale]}</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">{spring.description[locale]}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {spring.indications.map((key) => (
+                    <span
+                      key={key}
+                      className="px-2 py-0.5 bg-beige-50 text-beige-800 text-[11px] font-medium rounded-full border border-beige-200"
+                    >
+                      {t.indications[key]}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          )
+        })}
       </div>
 
       <p className="text-xs text-beige-600 mt-8">{t.disclaimer}</p>

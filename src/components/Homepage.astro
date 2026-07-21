@@ -49,8 +49,13 @@ const currentSeason = seasons.find((s) => s.id === seasonByMonth[now.getMonth()]
 const seasonHref = `/${locale}/${currentSeason.slugs[locale]}`
 
 // Curated day-trip listicles surfaced on the homepage (indexes into tripArticleGroups):
-// 5 with kids, 7 castles & ruins, 5 sleeping volcanoes.
-const tripTipGroups = [2, 1, 4].map((i) => tripArticleGroups[i]).filter(Boolean)
+// 5 with kids, 7 castles & ruins, 5 sleeping volcanoes. Each card reuses the
+// article's magazine cover image (matched by slug); falls back to a gradient.
+const coverBySlug = new Map(allArticles.map((a) => [a.slug.replace(/^[a-z]{2}-/, ''), a.coverImage]))
+const tripTipGroups = [2, 1, 4]
+  .map((i) => tripArticleGroups[i])
+  .filter(Boolean)
+  .map((group) => ({ ...group, coverImage: coverBySlug.get(group.slugs[locale]) }))
 const magazineBase = `/${locale}/${routes.magazine[locale]}`
 const dayTripsHref = localizedHref(locale, 'day-trips')
 
@@ -342,11 +347,19 @@ const gradients = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
         {tripTipGroups.map((group, i) => (
           <a href={`${magazineBase}/${group.slugs[locale]}`} class="group block card-hover">
-            <div class="relative overflow-hidden p-7 md:p-8 min-h-[200px] flex flex-col justify-end text-white" style={`border-radius: var(--radius-card); background-image: ${gradients[i % gradients.length]};`}>
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
-              <div class="relative">
+            <div class="relative overflow-hidden min-h-[220px] flex flex-col justify-end text-white" style={`border-radius: var(--radius-card); background-image: ${gradients[i % gradients.length]};`}>
+              {group.coverImage && (
+                <Pic
+                  src={group.coverImage}
+                  alt={group.titles[locale]}
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              )}
+              <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/85 via-indigo-950/35 to-transparent"></div>
+              <div class="relative p-7 md:p-8">
                 <h3 class="font-heading text-xl md:text-2xl font-bold group-hover:text-turquoise-300 transition-colors duration-300 leading-snug">{group.titles[locale]}</h3>
-                <div class="flex items-center gap-2 text-turquoise-300/80 group-hover:text-turquoise-200 group-hover:gap-3 transition-all duration-300 text-sm font-medium mt-4">
+                <div class="flex items-center gap-2 text-turquoise-300/90 group-hover:text-turquoise-200 group-hover:gap-3 transition-all duration-300 text-sm font-medium mt-4">
                   <span class="h-px w-6 bg-current group-hover:w-10 transition-all duration-300"></span>
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </div>
