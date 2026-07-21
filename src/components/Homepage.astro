@@ -11,6 +11,8 @@ import { t } from '@/i18n/ui'
 import { localizedHref } from '@/i18n/utils'
 import { getHomepage, getArticles, getItineraries } from '@/content/reader'
 import { getCampaign } from '@/lib/campaign'
+import { seasons } from '@/data/seasons'
+import { tripArticleGroups } from '@/data/tripArticles'
 import GoogleReviews from '@/components/GoogleReviews.tsx'
 import ItineraryFilter from '@/components/ItineraryFilter.tsx'
 
@@ -39,6 +41,18 @@ const campaignPopupActive = campaign.popupEnabled && (
 
 const itineraries = getItineraries()
 const ensanaHotelPath: Record<Locale, string> = { de: 'hotels', en: 'hotels', cs: 'hotely', ru: 'oteli' }
+
+// Point the seasonal highlight block at the matching seasonal landing page.
+// Dec–Feb → christmas/winter, Mar–May → spring, Jun–Aug → summer, Sep–Nov → autumn.
+const seasonByMonth = ['christmas', 'christmas', 'spring', 'spring', 'spring', 'summer', 'summer', 'summer', 'autumn', 'autumn', 'autumn', 'christmas']
+const currentSeason = seasons.find((s) => s.id === seasonByMonth[now.getMonth()]) ?? seasons[0]
+const seasonHref = `/${locale}/${currentSeason.slugs[locale]}`
+
+// Curated day-trip listicles surfaced on the homepage (indexes into tripArticleGroups):
+// 5 with kids, 7 castles & ruins, 5 sleeping volcanoes.
+const tripTipGroups = [2, 1, 4].map((i) => tripArticleGroups[i]).filter(Boolean)
+const magazineBase = `/${locale}/${routes.magazine[locale]}`
+const dayTripsHref = localizedHref(locale, 'day-trips')
 
 const categoryLabels: Record<string, Record<Locale, string>> = {
   health: { de: 'Gesundheit', en: 'Health', cs: 'Zdraví', ru: 'Здоровье' },
@@ -180,10 +194,11 @@ const gradients = [
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-4" style="font-size: var(--text-h2);">{cms.discover.title}</h2>
       <p class="text-beige-700 text-lg leading-relaxed">{cms.discover.description}</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 reveal">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 reveal">
       <SectionCard title={t(locale, 'home.springs')} description={t(locale, 'home.springsDesc')} href={localizedHref(locale, 'mineral-springs')} icon="springs" variant="indigo" />
-      <SectionCard title={t(locale, 'home.thingsToDo')} description={t(locale, 'home.thingsToDoDesc')} href={localizedHref(locale, 'things-to-do')} icon="activities" variant="turquoise" />
-      <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} icon="history" variant="dark" />
+      <SectionCard title={t(locale, 'home.springsGuide')} description={t(locale, 'home.springsGuideDesc')} href={`/${locale}/${routes['springs-overview'][locale]}`} icon="springs" variant="turquoise" />
+      <SectionCard title={t(locale, 'home.thingsToDo')} description={t(locale, 'home.thingsToDoDesc')} href={localizedHref(locale, 'things-to-do')} icon="activities" variant="dark" />
+      <SectionCard title={t(locale, 'home.history')} description={t(locale, 'home.historyDesc')} href={localizedHref(locale, 'history')} icon="history" variant="indigo" />
     </div>
     <div class={`grid grid-cols-1 md:grid-cols-2 ${locale === 'cs' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6 lg:gap-8 mt-6 lg:mt-8 reveal`}>
       <SectionCard title={t(locale, 'home.dayTrips')} description={t(locale, 'home.dayTripsDesc')} href={localizedHref(locale, 'day-trips')} icon="daytrips" variant="indigo" />
@@ -303,7 +318,7 @@ const gradients = [
         <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{cms.seasonal.season}</span>
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mt-3 mb-4" style="font-size: var(--text-h3);">{cms.seasonal.title}</h2>
         <p class="text-beige-700 text-lg leading-relaxed mb-6">{cms.seasonal.description}</p>
-        <a href={localizedHref(locale, 'things-to-do')} class="btn-secondary">
+        <a href={seasonHref} class="btn-secondary">
           {cms.seasonal.ctaText}
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
         </a>
@@ -311,6 +326,38 @@ const gradients = [
     </div>
   </div>
 </section>
+
+<!-- 7b. DAY-TRIP TIPS -->
+{tripTipGroups.length > 0 && (
+  <section class="py-16 md:py-24 bg-beige-100">
+    <div class="container-wide">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 reveal">
+        <div>
+          <span class="text-turquoise-600 text-sm font-medium tracking-widest uppercase">{t(locale, 'home.tripTips')}</span>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mt-3" style="font-size: var(--text-h2);">{t(locale, 'home.dayTrips')}</h2>
+          <p class="text-beige-700 text-lg mt-3 max-w-2xl">{t(locale, 'home.tripTipsDesc')}</p>
+        </div>
+        <a href={dayTripsHref} class="btn-ghost shrink-0">{t(locale, 'home.tripTipsCta')}</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+        {tripTipGroups.map((group, i) => (
+          <a href={`${magazineBase}/${group.slugs[locale]}`} class="group block card-hover">
+            <div class="relative overflow-hidden p-7 md:p-8 min-h-[200px] flex flex-col justify-end text-white" style={`border-radius: var(--radius-card); background-image: ${gradients[i % gradients.length]};`}>
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+              <div class="relative">
+                <h3 class="font-heading text-xl md:text-2xl font-bold group-hover:text-turquoise-300 transition-colors duration-300 leading-snug">{group.titles[locale]}</h3>
+                <div class="flex items-center gap-2 text-turquoise-300/80 group-hover:text-turquoise-200 group-hover:gap-3 transition-all duration-300 text-sm font-medium mt-4">
+                  <span class="h-px w-6 bg-current group-hover:w-10 transition-all duration-300"></span>
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
 <WaveDivider variant="beige-on-white" />
 
