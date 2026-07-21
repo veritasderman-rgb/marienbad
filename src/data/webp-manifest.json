@@ -827,6 +827,12 @@
     "width": 1200,
     "height": 797
   },
+  "/images/trips/bedrichuv-kamen.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 960
+  },
   "/images/trips/boheminium.jpg": {
     "webp": true,
     "w800": true,
@@ -850,6 +856,12 @@
     "w800": true,
     "width": 1200,
     "height": 1800
+  },
+  "/images/trips/dum-chopin.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
   },
   "/images/trips/dylen.jpg": {
     "webp": true,
@@ -995,6 +1007,12 @@
     "width": 1200,
     "height": 662
   },
+  "/images/trips/geologicky-park.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 499
+  },
   "/images/trips/gutstejn.jpg": {
     "webp": true,
     "w800": true,
@@ -1013,6 +1031,12 @@
     "width": 1200,
     "height": 794
   },
+  "/images/trips/horni-hrad.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 960
+  },
   "/images/trips/horni-slavkov.jpg": {
     "webp": true,
     "w800": true,
@@ -1025,6 +1049,12 @@
     "width": 1200,
     "height": 799
   },
+  "/images/trips/kaplicka-lasky.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 1932
+  },
   "/images/trips/kappl.jpg": {
     "webp": true,
     "w800": true,
@@ -1036,6 +1066,12 @@
     "w800": true,
     "width": 1200,
     "height": 802
+  },
+  "/images/trips/karluv-kriz.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 1707
   },
   "/images/trips/kladruby.jpg": {
     "webp": true,
@@ -1067,6 +1103,24 @@
     "width": 800,
     "height": 600
   },
+  "/images/trips/kostel-nanebevzeti-panny-marie.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
+  },
+  "/images/trips/kostel-svateho-antonina.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 964
+  },
+  "/images/trips/kral-smrku.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
+  },
   "/images/trips/krasikov.jpg": {
     "webp": true,
     "w800": true,
@@ -1091,6 +1145,12 @@
     "width": 1200,
     "height": 800
   },
+  "/images/trips/lanovka-krakonos.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 960
+  },
   "/images/trips/loket.jpg": {
     "webp": true,
     "w800": true,
@@ -1108,6 +1168,36 @@
     "w800": true,
     "width": 1200,
     "height": 873
+  },
+  "/images/trips/mestske-muzeum.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
+  },
+  "/images/trips/mytsky-rybnik.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
+  },
+  "/images/trips/pansky-vrch.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 1920
+  },
+  "/images/trips/park-prelat.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 960
+  },
+  "/images/trips/park-u-ferdinandova-pramene.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
   },
   "/images/trips/parkstein.jpg": {
     "webp": true,
@@ -1193,6 +1283,18 @@
     "width": 1200,
     "height": 549
   },
+  "/images/trips/tri-krizky.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 960
+  },
+  "/images/trips/upolinova-louka.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 529
+  },
   "/images/trips/utery.jpg": {
     "webp": true,
     "w800": true,
@@ -1216,5 +1318,17 @@
     "w800": true,
     "width": 1200,
     "height": 813
+  },
+  "/images/trips/waldstejnuv-monument.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 1707
+  },
+  "/images/trips/zpivajici-fontana.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
   }
 }
