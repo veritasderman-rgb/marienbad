@@ -1,0 +1,278 @@
+---
+/**
+ * B2B partner / travel-trade introduction page — marienbad.com/introduce
+ *
+ * Deliberately unlisted: not linked from the homepage or navigation, kept out
+ * of the sitemap (see astro.config NOINDEXED_PATHS) and marked noindex. Reachable
+ * only via a direct link shared with partners and travel agencies.
+ *
+ * Purpose: give partners everything they need to add Marienbad to their CRM and
+ * sales toolkit — copy-ready company facts, a downloadable vCard, and all
+ * official destination / hotel / spa presentations as PDFs.
+ */
+import Base from '@/layouts/Base.astro'
+
+export const prerender = true
+
+const PDF = '/partners'
+
+// Copy-ready company record for a partner's CRM / supplier database.
+const facts: { label: string; value: string }[] = [
+  { label: 'Legal name', value: 'Léčebné lázně Mariánské Lázně a.s.' },
+  { label: 'Brand', value: 'Ensana (Mariánské Lázně Ensana)' },
+  { label: 'Registration No. (IČO)', value: '45359113' },
+  { label: 'VAT No. (DIČ)', value: 'CZ45359113' },
+  { label: 'Address', value: 'Masarykova 22/5, 353 01 Mariánské Lázně, Czech Republic' },
+  { label: 'Destination', value: 'Mariánské Lázně (Marienbad), West Bohemia, Czech Republic' },
+  { label: 'Category', value: 'Medical spa & wellness destination' },
+  { label: 'Portfolio', value: '7 spa hotels · ~900 rooms · 10 conference rooms' },
+  { label: 'Website', value: 'https://marienbad.com' },
+  { label: 'Languages', value: 'EN · DE · CS · RU' },
+]
+
+const shortDescription =
+  'Mariánské Lázně (Marienbad) is a historic Czech spa town in the UNESCO Great Spa Towns of Europe, famous for 100+ mineral springs, natural CO₂ therapies and 200 years of spa tradition. Its seven Ensana spa hotels offer medical spa, wellness and MICE facilities, two hours from Prague.'
+
+const stats: { value: string; label: string }[] = [
+  { value: '100+', label: 'Mineral springs in the region' },
+  { value: '200+', label: 'Years of spa tradition (since 1808)' },
+  { value: 'UNESCO', label: 'World Heritage since 2021' },
+  { value: '7', label: 'Ensana spa hotels · ~900 rooms' },
+  { value: '10', label: 'Conference & meeting rooms' },
+  { value: '~2 h', label: 'From Prague · 50 km Karlovy Vary' },
+]
+
+interface Material {
+  title: string
+  desc: string
+  file: string
+  size: string
+  media?: boolean
+}
+const groups: { group: string; note?: string; items: Material[] }[] = [
+  {
+    group: 'Destination presentations',
+    items: [
+      { title: 'Introduction of the destination', desc: 'Full visual presentation of Mariánské Lázně for partners and agencies.', file: 'introduction-of-destination.pdf', size: '9.6 MB' },
+      { title: 'Why Mariánské Lázně', desc: 'The key selling points — reasons to send your clients to Marienbad.', file: 'why-marianske-lazne.pdf', size: '3.7 MB' },
+      { title: 'Two-page destination fact sheet', desc: 'A concise overview — ideal as a quick hand-out or e-mail attachment.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB' },
+    ],
+  },
+  {
+    group: 'Hotels, spa & product',
+    items: [
+      { title: 'Hotels & destination introduction', desc: 'The seven Ensana spa hotels and what each of them offers.', file: 'hotels-and-destination.pdf', size: '11.1 MB' },
+      { title: 'Spa treatment', desc: 'Medical spa programmes, therapies and treatment overview.', file: 'spa-treatment.pdf', size: '1.2 MB' },
+      { title: 'Mineral springs', desc: 'The famous springs of Marienbad and how they are used.', file: 'mineral-springs.pdf', size: '1.7 MB' },
+      { title: 'MICE — meetings & events', desc: 'Conference capacity, halls and incentive ideas for groups.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB' },
+      { title: 'Medical indications (CZ)', desc: 'Indications & contraindications — Czech language reference.', file: 'medical-indications-cz.pdf', size: '0.2 MB' },
+    ],
+  },
+  {
+    group: 'Media library',
+    note: 'Ready-to-use photography and video for your own marketing and listings.',
+    items: [
+      { title: 'Photo download links 2025', desc: 'Curated press & marketing photography (external links).', file: 'photo-download-links-2025.pdf', size: '0.2 MB', media: true },
+      { title: 'Video download links 2025', desc: 'Destination and hotel video assets (external links).', file: 'video-download-links-2025.pdf', size: '0.4 MB', media: true },
+    ],
+  },
+]
+
+const contacts: { label: string; email: string; phone: string; phoneHref: string }[] = [
+  { label: 'Reservations & groups', email: 'reservation.cz@cz.ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+  { label: 'MICE & conferences', email: 'conference.cz@ensanahotels.com', phone: '+420 354 655 505', phoneHref: '+420354655505' },
+  { label: 'General enquiries', email: 'marienbad@cz.ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+]
+
+const title = 'Introduce Marienbad — Partner & Travel-Trade Materials'
+const description =
+  'Official partner materials for Mariánské Lázně (Marienbad): destination and hotel presentations, spa & MICE information, media library and copy-ready company details for your CRM.'
+
+const downloadIcon =
+  'M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2'
+const copyIcon =
+  'M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-2M8 5a2 2 0 002 2h4a2 2 0 002-2M8 5a2 2 0 012-2h4a2 2 0 012 2'
+---
+
+<Base locale="en" title={title} description={description} noindex={true}>
+  <!-- Hero -->
+  <section class="relative bg-indigo-700 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.14)_0%,_transparent_60%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+    <div class="relative container-wide pt-28 pb-16 md:pt-36 md:pb-24">
+      <span class="inline-block px-3 py-1 bg-white/15 text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-5">
+        For travel partners & agencies
+      </span>
+      <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight max-w-3xl" style="font-size: var(--text-h1);">
+        Introduce Marienbad to your clients
+      </h1>
+      <p class="text-white/85 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
+        Everything you need to present Mariánské Lázně and add us to your CRM — official destination
+        and hotel presentations, spa &amp; MICE materials, a media library, and copy-ready company details.
+        All free to use in your own sales and marketing.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#downloads" class="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
+          Browse all materials
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href="#company" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
+          Company details for your CRM
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Marienbad — stats -->
+  <section class="bg-beige-100 py-14 md:py-20">
+    <div class="container-wide">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-10 text-center">Why partners choose Marienbad</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        {stats.map((s) => (
+          <div class="bg-white rounded-xl shadow-card p-5 text-center">
+            <p class="font-heading text-2xl md:text-3xl font-bold text-turquoise-700 mb-1">{s.value}</p>
+            <p class="text-xs md:text-sm text-gray-600 leading-snug">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Company at a glance -->
+  <section id="company" class="container-wide py-14 md:py-20 scroll-mt-24">
+    <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
+      <div>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">Company at a glance</h2>
+        <p class="text-gray-600 mb-6 max-w-xl">Copy any field straight into your supplier database or CRM. Everything here is official.</p>
+        <dl class="divide-y divide-beige-200 border-y border-beige-200">
+          {facts.map((f) => (
+            <div class="flex items-start gap-4 py-3">
+              <dt class="w-40 shrink-0 text-xs font-semibold uppercase tracking-wider text-gray-400 pt-1">{f.label}</dt>
+              <dd class="flex-1 text-gray-800 font-medium break-words">{f.value}</dd>
+              <button type="button" class="copy-btn shrink-0 mt-0.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-beige-300 text-xs font-medium text-indigo-700 hover:bg-indigo-50 transition-colors" data-copy={f.value} aria-label={`Copy ${f.label}`}>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={copyIcon} /></svg>
+                <span class="copy-label">Copy</span>
+              </button>
+            </div>
+          ))}
+        </dl>
+
+        <div class="mt-8 bg-beige-50 border border-beige-200 rounded-xl p-5">
+          <div class="flex items-center justify-between gap-3 mb-2">
+            <h3 class="font-heading text-sm font-bold text-indigo-800 uppercase tracking-wider">Ready-to-use description</h3>
+            <button type="button" class="copy-btn inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-beige-300 text-xs font-medium text-indigo-700 hover:bg-indigo-50 transition-colors" data-copy={shortDescription}>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={copyIcon} /></svg>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">{shortDescription}</p>
+        </div>
+      </div>
+
+      <!-- Contact card -->
+      <aside class="mt-10 lg:mt-0">
+        <div class="bg-indigo-700 text-white rounded-2xl shadow-card p-6 md:p-7 lg:sticky lg:top-24">
+          <h3 class="font-heading text-lg font-bold mb-1">Talk to our team</h3>
+          <p class="text-white/70 text-sm mb-5">Rates, allotments, FAM trips and group offers.</p>
+          <div class="space-y-4">
+            {contacts.map((c) => (
+              <div class="border-t border-white/15 pt-3 first:border-0 first:pt-0">
+                <p class="text-turquoise-300 text-xs font-semibold uppercase tracking-wider mb-1">{c.label}</p>
+                <a href={`mailto:${c.email}`} class="block text-white hover:text-turquoise-200 text-sm font-medium break-all transition-colors">{c.email}</a>
+                <a href={`tel:${c.phoneHref}`} class="block text-white/80 hover:text-white text-sm transition-colors">{c.phone}</a>
+              </div>
+            ))}
+          </div>
+          <a href={`${PDF}/marienbad-tourism.vcf`} download class="mt-6 inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+            Save contact (vCard)
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Download centre -->
+  <section id="downloads" class="bg-beige-100 py-14 md:py-20 scroll-mt-20">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-10">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">Download centre</h2>
+        <p class="text-gray-600">All presentations are PDFs, free to use in your own channels. Right-click → “Save link as” to store them, or just click to open.</p>
+      </div>
+
+      {groups.map((g) => (
+        <div class="mb-10 last:mb-0">
+          <div class="flex items-baseline gap-3 mb-4">
+            <h3 class="font-heading text-lg font-bold text-indigo-700">{g.group}</h3>
+            {g.note && <span class="text-sm text-gray-500">— {g.note}</span>}
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {g.items.map((m) => (
+              <a href={`${PDF}/${m.file}`} target="_blank" rel="noopener" class="group bg-white rounded-xl shadow-card p-5 flex gap-4 card-hover">
+                <div class={`shrink-0 w-11 h-11 rounded-xl flex items-center justify-center ${m.media ? 'bg-turquoise-50 text-turquoise-700' : 'bg-indigo-50 text-indigo-700'}`}>
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h4 class="font-semibold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{m.title}</h4>
+                  <p class="text-sm text-gray-600 leading-relaxed mt-1 mb-2">{m.desc}</p>
+                  <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">PDF · {m.size}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- How to work with us -->
+  <section class="container-wide py-14 md:py-20">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-10 text-center">Add us as a partner in three steps</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {[
+        { n: '1', t: 'Download the materials', d: 'Grab the presentations and media you need from the download centre above.' },
+        { n: '2', t: 'Add us to your CRM', d: 'Copy the company fields or import the vCard — legal name, IDs and contacts in seconds.' },
+        { n: '3', t: 'Get in touch', d: 'Contact our team for rates, allotments, FAM trips and tailored group offers.' },
+      ].map((step) => (
+        <div class="bg-white rounded-xl shadow-card p-6 text-center">
+          <div class="w-11 h-11 mx-auto rounded-full bg-indigo-700 text-white font-heading font-bold flex items-center justify-center mb-4">{step.n}</div>
+          <h3 class="font-heading text-lg font-bold text-indigo-800 mb-2">{step.t}</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">{step.d}</p>
+        </div>
+      ))}
+    </div>
+    <div class="text-center mt-10">
+      <a href="mailto:reservation.cz@cz.ensanahotels.com?subject=Partnership%20enquiry%20—%20Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B" class="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+        Start a partnership
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const text = btn.getAttribute('data-copy') || ''
+        try {
+          await navigator.clipboard.writeText(text)
+        } catch {
+          const ta = document.createElement('textarea')
+          ta.value = text
+          document.body.appendChild(ta)
+          ta.select()
+          document.execCommand('copy')
+          document.body.removeChild(ta)
+        }
+        const label = btn.querySelector('.copy-label')
+        const prev = label ? label.textContent : ''
+        if (label) label.textContent = 'Copied'
+        btn.classList.add('text-turquoise-700')
+        setTimeout(() => {
+          if (label) label.textContent = prev
+          btn.classList.remove('text-turquoise-700')
+        }, 1400)
+      })
+    })
+  </script>
+</Base>

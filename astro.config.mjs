@@ -7,7 +7,7 @@ import keystatic from '@keystatic/astro'
 import tailwindcss from '@tailwindcss/vite'
 
 /** Noindexed campaign landing pages — kept out of the sitemap to match their robots meta */
-const NOINDEXED_PATHS = ['sommer-sale-2026', 'summer-sale-2026', 'letni-sleva-2026', 'letnyaya-rasprodazha-2026']
+const NOINDEXED_PATHS = ['sommer-sale-2026', 'summer-sale-2026', 'letni-sleva-2026', 'letnyaya-rasprodazha-2026', 'introduce']
 
 export default defineConfig({
   site: 'https://marienbad.com',
