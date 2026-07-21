@@ -11,6 +11,7 @@
  * official destination / hotel / spa presentations as PDFs.
  */
 import Base from '@/layouts/Base.astro'
+import Pic from '@/components/Pic.astro'
 
 export const prerender = true
 
@@ -26,12 +27,17 @@ const facts: { label: string; value: string }[] = [
   { label: 'Destination', value: 'Mariánské Lázně (Marienbad), West Bohemia, Czech Republic' },
   { label: 'Category', value: 'Medical spa & wellness destination' },
   { label: 'Portfolio', value: '7 spa hotels · ~900 rooms · 10 conference rooms' },
-  { label: 'Website', value: 'https://marienbad.com' },
+  { label: 'Website', value: 'https://ensanahotels.com' },
   { label: 'Languages', value: 'EN · DE · CS · RU' },
 ]
 
 const shortDescription =
   'Mariánské Lázně (Marienbad) is a historic Czech spa town in the UNESCO Great Spa Towns of Europe, famous for 100+ mineral springs, natural CO₂ therapies and 200 years of spa tradition. Its seven Ensana spa hotels offer medical spa, wellness and MICE facilities, two hours from Prague.'
+
+// One-click "copy all" — the whole company record as a single plain-text block.
+const copyAllText = [...facts.map((f) => `${f.label}: ${f.value}`), '', shortDescription].join('\n')
+
+const partnerKit = '/partners/marienbad-partner-kit.zip'
 
 const stats: { value: string; label: string }[] = [
   { value: '100+', label: 'Mineral springs in the region' },
@@ -79,9 +85,9 @@ const groups: { group: string; note?: string; items: Material[] }[] = [
 ]
 
 const contacts: { label: string; email: string; phone: string; phoneHref: string }[] = [
-  { label: 'Reservations & groups', email: 'reservation.cz@cz.ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+  { label: 'Reservations & groups', email: 'reservation.cz@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
   { label: 'MICE & conferences', email: 'conference.cz@ensanahotels.com', phone: '+420 354 655 505', phoneHref: '+420354655505' },
-  { label: 'General enquiries', email: 'marienbad@cz.ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+  { label: 'General enquiries', email: 'marienbad@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
 ]
 
 const title = 'Introduce Marienbad — Partner & Travel-Trade Materials'
@@ -96,7 +102,16 @@ const copyIcon =
 
 <Base locale="en" title={title} description={description} noindex={true}>
   <!-- Hero -->
-  <section class="relative bg-indigo-700 text-white overflow-hidden">
+  <section class="relative bg-indigo-950 text-white overflow-hidden">
+    <Pic
+      src="/images/partners/roman-baths-hero.jpg"
+      alt="The Roman Baths pool at Hotel Nové Lázně, Mariánské Lázně"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/90 via-indigo-950/78 to-indigo-900/60"></div>
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.14)_0%,_transparent_60%)]"></div>
     <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
     <div class="relative container-wide pt-28 pb-16 md:pt-36 md:pb-24">
@@ -112,9 +127,12 @@ const copyIcon =
         All free to use in your own sales and marketing.
       </p>
       <div class="flex flex-wrap gap-3">
-        <a href="#downloads" class="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
-          Browse all materials
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        <a href={partnerKit} download class="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+          Download all materials (ZIP · 30 MB)
+        </a>
+        <a href="#downloads" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
+          Browse individually
         </a>
         <a href="#company" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
           Company details for your CRM
@@ -143,7 +161,13 @@ const copyIcon =
     <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
       <div>
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">Company at a glance</h2>
-        <p class="text-gray-600 mb-6 max-w-xl">Copy any field straight into your supplier database or CRM. Everything here is official.</p>
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <p class="text-gray-600 max-w-xl">Copy any field straight into your supplier database or CRM. Everything here is official.</p>
+          <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-white text-sm font-semibold transition-colors" data-copy={copyAllText}>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={copyIcon} /></svg>
+            <span class="copy-label">Copy all details</span>
+          </button>
+        </div>
         <dl class="divide-y divide-beige-200 border-y border-beige-200">
           {facts.map((f) => (
             <div class="flex items-start gap-4 py-3">
@@ -192,12 +216,34 @@ const copyIcon =
     </div>
   </section>
 
+  <!-- Visual band: colonnade + New Baths -->
+  <section class="container-wide pb-4 md:pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <figure class="relative rounded-2xl overflow-hidden shadow-card aspect-[3/2]">
+        <Pic src="/images/content/pages/cs-kolonada/featuredImage.jpg" alt="The cast-iron colonnade of Mariánské Lázně" class="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+        <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/70 to-transparent"></div>
+        <figcaption class="absolute bottom-0 left-0 p-5 text-white font-heading font-bold text-lg drop-shadow">The Colonnade</figcaption>
+      </figure>
+      <figure class="relative rounded-2xl overflow-hidden shadow-card aspect-[3/2]">
+        <Pic src="/images/content/pages/cs-architektura/featuredImage.jpg" alt="The Casino social house in Mariánské Lázně" class="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+        <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/70 to-transparent"></div>
+        <figcaption class="absolute bottom-0 left-0 p-5 text-white font-heading font-bold text-lg drop-shadow">Casino Social House</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- Download centre -->
   <section id="downloads" class="bg-beige-100 py-14 md:py-20 scroll-mt-20">
     <div class="container-wide">
-      <div class="max-w-2xl mb-10">
-        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">Download centre</h2>
-        <p class="text-gray-600">All presentations are PDFs, free to use in your own channels. Right-click → “Save link as” to store them, or just click to open.</p>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div class="max-w-2xl">
+          <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">Download centre</h2>
+          <p class="text-gray-600">All presentations are PDFs, free to use in your own channels. Grab everything at once, or pick what you need.</p>
+        </div>
+        <a href={partnerKit} download class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+          Download all (ZIP · 30 MB)
+        </a>
       </div>
 
       {groups.map((g) => (
@@ -242,7 +288,7 @@ const copyIcon =
       ))}
     </div>
     <div class="text-center mt-10">
-      <a href="mailto:reservation.cz@cz.ensanahotels.com?subject=Partnership%20enquiry%20—%20Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B" class="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+      <a href="mailto:reservation.cz@ensanahotels.com?subject=Partnership%20enquiry%20—%20Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B" class="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
         Start a partnership
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
