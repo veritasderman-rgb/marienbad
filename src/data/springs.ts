@@ -29,11 +29,28 @@ export interface Spring {
   description: Record<Locale, string>
   /** Extra paragraph for the spring detail page */
   detail: Record<Locale, string>
+  /** Photo from Wikimedia Commons; JPG under public/images/springs, WebP siblings via `pnpm images` */
+  image?: {
+    src: string
+    author: string
+    license: string
+    licenseUrl?: string
+    /** Commons file description page (attribution link) */
+    sourceUrl: string
+  }
 }
 
 export const springs: Spring[] = [
   {
     id: 'krizovy',
+    image: {
+      src: '/images/springs/krizovy.jpg',
+      author: 'Txllxt TxllxT',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B_-_Masarykova_-_View_NNE_on_K%C5%99%C3%AD%C5%BEov%C3%BD_pramen_(Cross_Spring)_1912.jpg',
+    },
     detail: {
       de: "Die Einheimischen kannten die Quelle seit jeher, doch berühmt machte sie erst der Tepler Klosterarzt Josef Johann Nehr, der Ende des 18. Jahrhunderts ihre Heilwirkung nachwies und die ersten Kurbauten durchsetzte. Das Kreuz, das der Quelle den Namen gab, steht hier seit 1749. Getrunken wird meist morgens vor dem Frühstück, langsam und in kleinen Schlucken — die genaue Dosierung bestimmt der Kurarzt.",
       en: "Locals had known the spring for ages, but it was the Teplá monastery physician Josef Johann Nehr who proved its healing effects in the late 18th century and pushed through the first spa buildings. The cross that gave the spring its name has stood here since 1749. It is usually drunk in the morning before breakfast, slowly and in small sips — your spa physician sets the exact dose.",
@@ -64,6 +81,14 @@ export const springs: Spring[] = [
   },
   {
     id: 'ferdinanduv',
+    image: {
+      src: '/images/springs/ferdinanduv.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B_Ferdinand%C5%AFv_pramen_prosinec_2020_(1).jpg',
+    },
     detail: {
       de: "Ihren Namen trägt sie nach Ferdinand I., unter dessen Herrschaft man hier im 16. Jahrhundert Salz zu gewinnen versuchte. Das Wasser hat die höchste Mineralisierung aller Marienbader Quellen; zum Pavillon von 1827 führt ein angenehmer Spaziergang durch den Auschowitzer Park, unterwegs lässt sich auch die Antoniusquelle kosten.",
       en: "It is named after Ferdinand I, under whose reign salt extraction was attempted here in the 16th century. The water has the highest mineral content of all Marienbad springs; a pleasant walk through the Úšovice park leads to the 1827 pavilion, with the Anthony Spring worth a taste on the way.",
@@ -94,6 +119,14 @@ export const springs: Spring[] = [
   },
   {
     id: 'rudolfuv',
+    image: {
+      src: '/images/springs/rudolfuv.jpg',
+      author: 'ŠJů',
+      license: 'CC BY-SA 3.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B,_pavilon_Rudolfova_pramene.jpg',
+    },
     detail: {
       de: "Benannt ist sie nach Kronprinz Rudolf. Das Verhältnis von Kalzium und Magnesium in ihrem Wasser gilt als außergewöhnlich günstig, weshalb sie bei Osteoporose-Trinkkuren eingesetzt wird — auch Kindern wird sie verschrieben. An ihrem Pavillon in Úšovice entspringt sie bis heute, ihr Wasser fließt zudem in den Kreuzbrunnen-Pavillon an der Kolonnade.",
       en: "It is named after Crown Prince Rudolph. The calcium-to-magnesium ratio of its water is considered exceptionally favourable, which is why it features in drinking cures for osteoporosis — it is prescribed to children too. It still rises at its pavilion in Úšovice, and its water also flows to the Cross Spring pavilion by the colonnade.",
@@ -124,6 +157,13 @@ export const springs: Spring[] = [
   },
   {
     id: 'karolinin',
+    image: {
+      src: '/images/springs/karolinin.jpg',
+      author: 'Gerd Eichmann',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Marienbad-150-Karolinenquelle-2012-gje.jpg',
+    },
     detail: {
       de: "Ursprünglich hieß sie Neue Quelle; den Namen der Prinzessin Karoline Auguste erhielt sie 1817. Der hohe Magnesiumanteil macht sie zur klassischen Wahl bei Nierensteinen — und ihr ist die klassizistische Karolinenbrunnen-Kolonnade gewidmet, eines der meistfotografierten Bauwerke der Stadt.",
       en: "Originally called the New Spring, it received Princess Caroline Augusta's name in 1817. Its high magnesium share makes it the classic choice for kidney stones — and it lends its name to the neoclassical Caroline Spring colonnade, one of the town's most photographed structures.",
@@ -154,6 +194,13 @@ export const springs: Spring[] = [
   },
   {
     id: 'lesni',
+    image: {
+      src: '/images/springs/lesni.jpg',
+      author: 'Mojmir Churavy',
+      license: 'CC0',
+      licenseUrl: 'http://creativecommons.org/publicdomain/zero/1.0/deed.en',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Pitny_Pavilon_Lesni_Pramen_Marianske_Lazne.jpg',
+    },
     detail: {
       de: "Sie entspringt am Rand des Kurviertels am Třebízský-Bach, und ihr Empire-Pavillon von 1869 gehört zu den anmutigsten des Kurorts. Dank der milden alkalischen Zusammensetzung eignet sie sich auch zum Inhalieren und Gurgeln; der morgendliche Weg zur Waldquelle mit dem Becher in der Hand ist für viele Gäste ein tägliches Ritual.",
       en: "It rises at the edge of the spa quarter by the Třebízský brook, and its Empire-style pavilion of 1869 is among the most graceful in the spa. Thanks to its mild alkaline composition it also suits inhalation and gargling; the morning walk to the Forest Spring, cup in hand, is a daily ritual for many guests.",
@@ -184,6 +231,13 @@ export const springs: Spring[] = [
   },
   {
     id: 'ambrozuv',
+    image: {
+      src: '/images/springs/ambrozuv.jpg',
+      author: 'JTSH26',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Ambrosiusquelle_in_Marienbad-2.jpg',
+    },
     detail: {
       de: "Die drei Austritte der Ambrosiusquelle finden Sie im Park unterhalb der Kolonnade, unweit des Zentralbads. Ihr höherer Eisengehalt trug ihr den Ruf einer Quelle gegen Blutarmut ein; im 19. Jahrhundert nannte man sie wegen der angeblichen Wirkung auf Schönheit und Frische auch Liebesquelle.",
       en: "The three outlets of the Ambrose Spring are found in the park below the colonnade, near the Central Baths. Its elevated iron content earned it a reputation against anaemia; in the 19th century it was also called the spring of love for its supposed effects on beauty and freshness.",
@@ -214,6 +268,14 @@ export const springs: Spring[] = [
   },
   {
     id: 'marii',
+    image: {
+      src: '/images/springs/marii.jpg',
+      author: 'Tadeáš Bednarz',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B,_Mariin_pramen_2020_(2).jpg',
+    },
     detail: {
       de: "Der schweflige Geruch dieses Gasaustritts gab dem Ort einst den Namen „Stinkende Wiese“, ehe man ihn nach einem Marienbild umbenannte — genutzt wurde er schon vor der Gründung des Kurorts. Das Gas wird heute gefasst und im benachbarten Kurhaus Maria Spa in trockenen CO₂-Bädern und Gasinjektionen angewendet — jener Behandlung, die Marienbad berühmt gemacht hat. Der Austritt liegt hinter dem Zentralbad; baden lässt sich darin freilich nicht.",
       en: "The sulphurous smell of this gas vent once earned the place the name \"Stinking Meadow\", before it was renamed after an image of the Virgin Mary — and it was in use even before the spa town was founded. The gas is now captured and applied at the neighbouring Maria Spa in dry CO₂ baths and gas injections — the treatment that made Marienbad famous. The vent lies behind the Central Baths; you cannot bathe in it, of course.",
@@ -244,6 +306,13 @@ export const springs: Spring[] = [
   },
   {
     id: 'farska',
+    image: {
+      src: '/images/springs/farska.jpg',
+      author: 'Draceane',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Farsk%C3%A1_kyselka,_2020_(01).jpg',
+    },
     detail: {
       de: "Zur Quelle führt der blau markierte Wanderweg durch den Wald Richtung Prameny; der unbeschwerliche Weg von der Kolonnade dauert knapp eine Stunde. Wer die Runde verlängern möchte, wandert weiter zum Reservat Smraďoch — beides passt in einen Vormittag.",
       en: "A blue-marked trail leads to the spring through the forest towards Prameny; the easy walk from the colonnade takes just under an hour. To extend the loop, continue to the Smraďoch reserve — both fit comfortably into one morning.",
@@ -274,6 +343,14 @@ export const springs: Spring[] = [
   },
   {
     id: 'balbinuv',
+    image: {
+      src: '/images/springs/balbinuv.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B_Balb%C3%ADn%C5%AFv_pramen_%C3%BAnor_2025.jpg',
+    },
     detail: {
       de: "Der Austritt liegt im Naturdenkmal des Quellgebiets am Balbín-Teich zwischen dem Viertel Hleďsebe und den Wäldern nördlich der Stadt. Die umliegenden Moorwiesen gehören zu den letzten Standorten des seltenen Sonnentaus — die Quelle verdient daher einen stillen, rücksichtsvollen Besuch.",
       en: "The outlet lies in the protected spring area by the little Balbín pond, between the Hleďsebe quarter and the forests north of the town. The surrounding boggy meadows are among the last habitats of the rare sundew — so the spring deserves a quiet, considerate visit.",
@@ -304,6 +381,14 @@ export const springs: Spring[] = [
   },
   {
     id: 'antoninuv',
+    image: {
+      src: '/images/springs/antoninuv.jpg',
+      author: 'Lubor Ferenc',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:%C3%9A%C5%A1ovice_Anton%C3%AD%C4%8Dk%C5%AFv_pramen_kv%C4%9Bten_2022_(1).jpg',
+    },
     detail: {
       de: "Die Quelle in Úšovice versorgte die umliegenden Gehöfte lange vor der Gründung des Kurorts; der heutige kleine Pavillon stammt von 1997, als der Austritt neu gefasst wurde. Zusammen mit dem Ferdinandsbrunnen bildet sie das natürliche Ziel eines Spaziergangs durch die Unterstadt — und die Einheimischen halten sie für den besten „Tafelsäuerling“.",
       en: "The spring in Úšovice served the surrounding farmsteads long before the spa was founded; today's small pavilion dates from 1997, when the outlet was newly captured. Together with the Ferdinand Spring it makes a natural goal for a walk through the lower town — and locals consider it the best \"table\" acidulous water.",
