@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { routes } from '@/i18n/config'
 import {
   springs,
   springIndicationOrder,
@@ -230,7 +231,14 @@ export default function SpringsExplorer({ locale }: Props) {
                 </span>
               )}
             </div>
-            <h3 className="font-heading font-bold text-lg text-indigo-900 mb-1">{spring.name[locale]}</h3>
+            <h3 className="font-heading font-bold text-lg mb-1">
+              <a
+                href={`/${locale}/${routes['springs-overview'][locale]}/${spring.id}`}
+                className="text-indigo-900 hover:text-turquoise-800 transition-colors"
+              >
+                {spring.name[locale]}
+              </a>
+            </h3>
             <p className="text-sm font-medium text-turquoise-800 mb-3">{spring.character[locale]}</p>
             <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">{spring.description[locale]}</p>
             <div className="flex flex-wrap gap-1.5">

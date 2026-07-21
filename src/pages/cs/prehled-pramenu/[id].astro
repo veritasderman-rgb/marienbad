@@ -1,0 +1,29 @@
+---
+import Base from '@/layouts/Base.astro'
+import SpringDetailPage from '@/components/SpringDetailPage.astro'
+import { springs, type Spring } from '@/data/springs'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return springs.map((spring) => ({ params: { id: spring.id }, props: { spring } }))
+}
+
+const locale = 'cs' as const
+const { spring } = Astro.props as { spring: Spring }
+
+const pageTitle = `${spring.name.cs} — léčivý pramen v Mariánských Lázních`
+const description = spring.description.cs
+const pageDescription = description.length > 155 ? description.slice(0, 155).replace(/\s+\S*$/, '') + '…' : description
+
+const alternateUrls = {
+  de: `/de/quellen-uebersicht/${spring.id}`,
+  en: `/en/springs-overview/${spring.id}`,
+  cs: `/cs/prehled-pramenu/${spring.id}`,
+  ru: `/ru/obzor-istochnikov/${spring.id}`,
+}
+---
+
+<Base locale={locale} section="mineral-springs" title={pageTitle} description={pageDescription} alternateUrls={alternateUrls}>
+  <SpringDetailPage locale={locale} spring={spring} />
+</Base>

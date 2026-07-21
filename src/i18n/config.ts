@@ -14,6 +14,7 @@ export const routes = {
   'mineral-springs': { de: 'mineralquellen', en: 'mineral-springs', cs: 'mineralni-prameny', ru: 'mineralnye-istochniki' },
   'things-to-do': { de: 'aktivitaeten', en: 'things-to-do', cs: 'co-delat', ru: 'chem-zanyatsya' },
   'day-trips': { de: 'ausfluege', en: 'day-trips', cs: 'vylety', ru: 'ekskursii' },
+  'springs-overview': { de: 'quellen-uebersicht', en: 'springs-overview', cs: 'prehled-pramenu', ru: 'obzor-istochnikov' },
   golf: { de: 'golf', en: 'golf', cs: 'golf', ru: 'golf' },
   culture: { de: 'kultur', en: 'culture', cs: 'kultura', ru: 'kultura' },
   nature: { de: 'natur', en: 'nature', cs: 'priroda', ru: 'priroda' },

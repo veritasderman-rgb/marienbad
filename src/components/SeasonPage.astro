@@ -1,0 +1,138 @@
+---
+/**
+ * Seasonal landing page body ("Christmas & New Year in Marienbad", ...):
+ * indigo hero, narrative sections, practical tips, day-trip CTA, related
+ * articles and cross-links to the other seasons.
+ */
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import { seasons, type Season } from '@/data/seasons'
+import { tripArticleGroups } from '@/data/tripArticles'
+
+interface Props {
+  locale: Locale
+  season: Season
+}
+
+const { locale, season } = Astro.props
+
+const catalogHref = `/${locale}/${routes['day-trips'][locale]}`
+const magazineBase = `/${locale}/${routes.magazine[locale]}`
+const accommodationHref = `/${locale}/${routes.accommodation[locale]}`
+
+const ui: Record<Locale, Record<string, string>> = {
+  de: {
+    tips: 'Praktische Tipps',
+    reading: 'Zum Weiterlesen',
+    catalogCta: 'Alle 48 Ausflugsziele entdecken',
+    stayCta: 'Unterkunft & Kuraufenthalte',
+    otherSeasons: 'Marienbad im Jahreslauf',
+  },
+  en: {
+    tips: 'Practical tips',
+    reading: 'Further reading',
+    catalogCta: 'Explore all 48 day-trip destinations',
+    stayCta: 'Accommodation & spa stays',
+    otherSeasons: 'Marienbad through the year',
+  },
+  cs: {
+    tips: 'Praktické tipy',
+    reading: 'Čtěte dál',
+    catalogCta: 'Prozkoumat všech 48 výletních cílů',
+    stayCta: 'Ubytování a lázeňské pobyty',
+    otherSeasons: 'Mariánské Lázně během roku',
+  },
+  ru: {
+    tips: 'Практические советы',
+    reading: 'Читайте также',
+    catalogCta: 'Все 48 направлений для экскурсий',
+    stayCta: 'Проживание и курортные программы',
+    otherSeasons: 'Марианские Лазни в течение года',
+  },
+}
+
+const s = ui[locale]
+const title = season.title[locale]
+const relatedArticles = season.articleRefs.map((i) => tripArticleGroups[i]).filter(Boolean)
+const otherSeasons = seasons.filter((o) => o.id !== season.id)
+
+const homeLabel = t(locale, 'nav.home')
+const breadcrumbItems = [{ label: homeLabel, href: `/${locale}` }, { label: title }]
+---
+
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+  <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-20">
+    <Breadcrumbs items={breadcrumbItems} locale={locale} />
+    <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{title}</h1>
+    <p class="text-white/85 text-lg md:text-xl max-w-2xl leading-relaxed">{season.intro[locale][0]}</p>
+  </div>
+</section>
+
+<section class="container-wide py-12 md:py-16">
+  <div class="lg:grid lg:grid-cols-[minmax(0,680px)_300px] lg:gap-12 max-w-[1024px] mx-auto">
+    <div class="prose-marienbad">
+      {season.intro[locale].slice(1).map((para) => (
+        <p class="text-gray-700 leading-relaxed mb-6">{para}</p>
+      ))}
+
+      {season.sections.map((section) => (
+        <>
+          <h2 class="font-heading text-2xl font-bold text-indigo-800 mt-10 mb-4">{section.heading[locale]}</h2>
+          <p class="text-gray-700 leading-relaxed mb-4">{section.body[locale]}</p>
+        </>
+      ))}
+
+      <div class="bg-beige-100 rounded-xl p-6 mt-10">
+        <h2 class="font-heading text-lg font-bold text-indigo-800 mb-3">{s.tips}</h2>
+        <ul class="space-y-2">
+          {season.tips[locale].map((tip) => (
+            <li class="flex gap-2.5 text-sm text-gray-700 leading-relaxed">
+              <svg class="w-4 h-4 mt-0.5 shrink-0 text-turquoise-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              <span>{tip}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-10">
+        <a href={catalogHref} class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+          {s.catalogCta}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href={accommodationHref} class="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
+          {s.stayCta}
+        </a>
+      </div>
+    </div>
+
+    <aside class="mt-12 lg:mt-0">
+      {relatedArticles.length > 0 && (
+        <>
+          <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.reading}</h2>
+          <ul class="space-y-3 mb-10">
+            {relatedArticles.map((group) => (
+              <li>
+                <a href={`${magazineBase}/${group.slugs[locale]}`} class="text-turquoise-800 hover:text-turquoise-900 font-medium leading-snug transition-colors">
+                  {group.titles[locale]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.otherSeasons}</h2>
+      <div class="space-y-3">
+        {otherSeasons.map((other) => (
+          <a href={`/${locale}/${other.slugs[locale]}`} class="block bg-white rounded-xl shadow-card p-4 card-hover group">
+            <p class="font-heading font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{other.title[locale]}</p>
+          </a>
+        ))}
+      </div>
+    </aside>
+  </div>
+</section>
