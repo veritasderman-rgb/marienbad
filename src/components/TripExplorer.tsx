@@ -360,7 +360,12 @@ export default function TripExplorer({ locale }: Props) {
       .filter((trip) => category === 'all' || trip.category === category)
       .filter((trip) => difficulty === 'all' || trip.difficulty === difficulty)
       .filter((trip) => activeTags.every((tag) => trip.tags.includes(tag)))
-      .sort((a, b) => a.driveMin - b.driveMin || a.visitHoursMin - b.visitHoursMin)
+      .sort(
+        (a, b) =>
+          Number(!a.image) - Number(!b.image) ||
+          a.driveMin - b.driveMin ||
+          a.visitHoursMin - b.visitHoursMin,
+      )
   }, [category, difficulty, activeTags])
 
   const hasFilters = category !== 'all' || difficulty !== 'all' || activeTags.length > 0
