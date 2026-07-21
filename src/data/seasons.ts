@@ -206,10 +206,10 @@ export const seasons: Season[] = [
           ru: "Экскурсии: замки открываются",
         },
         body: {
-          de: "Mit dem Frühjahr beginnt die Besichtigungssaison: Königswart, Petschau und Loket öffnen ihre Tore, auf Kladská spiegelt sich frisches Grün, und die Aussichtstürme belohnen mit klarer Fernsicht. Unser Ausflugskatalog mit 48 Zielen hilft bei der Auswahl — vom Spaziergang bis zur Tagestour.",
-          en: "Spring opens the sightseeing season: Kynžvart, Bečov and Loket unlock their gates, fresh green mirrors in the Kladská pond, and the lookout towers reward you with crystal visibility. Our catalogue of 48 destinations helps you choose — from a stroll to a full-day tour.",
-          cs: "S jarem začíná návštěvnická sezóna: Kynžvart, Bečov i Loket otevírají brány, na Kladské se zrcadlí čerstvá zeleň a rozhledny odměňují průzračnými výhledy. S výběrem pomůže náš katalog 48 výletních cílů — od procházky po celodenní túru.",
-          ru: "С весной начинается экскурсионный сезон: Кинжварт, Бечов и Локет открывают ворота, в Кладском пруду отражается свежая зелень, а смотровые башни награждают прозрачными далями. Выбрать поможет наш каталог 48 направлений — от прогулки до поездки на весь день.",
+          de: "Mit dem Frühjahr beginnt die Besichtigungssaison: Königswart, Petschau und Loket öffnen ihre Tore, auf Kladská spiegelt sich frisches Grün, und die Aussichtstürme belohnen mit klarer Fernsicht. Unser Ausflugskatalog mit 74 Zielen hilft bei der Auswahl — vom Spaziergang bis zur Tagestour.",
+          en: "Spring opens the sightseeing season: Kynžvart, Bečov and Loket unlock their gates, fresh green mirrors in the Kladská pond, and the lookout towers reward you with crystal visibility. Our catalogue of 74 destinations helps you choose — from a stroll to a full-day tour.",
+          cs: "S jarem začíná návštěvnická sezóna: Kynžvart, Bečov i Loket otevírají brány, na Kladské se zrcadlí čerstvá zeleň a rozhledny odměňují průzračnými výhledy. S výběrem pomůže náš katalog 74 výletních cílů — od procházky po celodenní túru.",
+          ru: "С весной начинается экскурсионный сезон: Кинжварт, Бечов и Локет открывают ворота, в Кладском пруду отражается свежая зелень, а смотровые башни награждают прозрачными далями. Выбрать поможет наш каталог 74 направлений — от прогулки до поездки на весь день.",
         },
       },
     ],
@@ -260,19 +260,19 @@ export const seasons: Season[] = [
     intro: {
       de: [
         "Im Sommer lebt Marienbad auf der Promenade: Morgens klingen Becher an den Quellen, tagsüber spielen Orchester an der Kolonnade, abends flanieren die Gäste im goldenen Licht der Jugendstilhotels. Es ist die Jahreszeit, in der der Kurort seiner Belle-Époque-Seele am nächsten kommt.",
-        "Zugleich ist der Sommer die beste Zeit für alles, was draußen stattfindet: Golf auf dem königlichen Platz, Wanderungen durch den Kaiserwald — und 48 Ausflugsziele in Reichweite.",
+        "Zugleich ist der Sommer die beste Zeit für alles, was draußen stattfindet: Golf auf dem königlichen Platz, Wanderungen durch den Kaiserwald — und 74 Ausflugsziele in Reichweite.",
       ],
       en: [
         "In summer Marienbad lives on the promenade: cups clink at the springs in the morning, orchestras play by the colonnade at noon, and in the evening guests stroll in the golden light of the Art Nouveau hotels. It is the season when the town comes closest to its Belle Époque soul.",
-        "Summer is also the best time for everything outdoors: golf on the royal course, hikes through the Slavkov Forest — and 48 day-trip destinations within reach.",
+        "Summer is also the best time for everything outdoors: golf on the royal course, hikes through the Slavkov Forest — and 74 day-trip destinations within reach.",
       ],
       cs: [
         "V létě žijí Mariánské Lázně na promenádě: ráno cinkají pohárky u pramenů, přes den hrají orchestry u kolonády, večer se hosté procházejí ve zlatém světle secesních hotelů. Je to období, kdy má město ke své duši belle époque nejblíž.",
-        "Léto je zároveň nejlepší čas na všechno venku: golf na královském hřišti, túry Slavkovským lesem — a 48 výletních cílů na dosah.",
+        "Léto je zároveň nejlepší čas na všechno venku: golf na královském hřišti, túry Slavkovským lesem — a 74 výletních cílů na dosah.",
       ],
       ru: [
         "Летом Марианские Лазни живут на променаде: утром звенят бокальчики у источников, днём у колоннады играют оркестры, вечером гости прогуливаются в золотом свете отелей модерна. Это время, когда город ближе всего к своей душе belle époque.",
-        "Лето — лучшее время и для всего, что происходит на воздухе: гольф на королевском поле, походы по Славковскому лесу — и 48 направлений для экскурсий под рукой.",
+        "Лето — лучшее время и для всего, что происходит на воздухе: гольф на королевском поле, походы по Славковскому лесу — и 74 направлений для экскурсий под рукой.",
       ],
     },
     sections: [
@@ -312,10 +312,10 @@ export const seasons: Season[] = [
           ru: "Летние поездки для всей семьи",
         },
         body: {
-          de: "Jetzt zeigt sich die Umgebung von ihrer besten Seite: Miniaturen im Boheminium-Park, Mittelalter zum Anfassen im Geschichtspark Bärnau, die versteinerte Hochzeit der Hans-Heiling-Felsen oder eine Bahnfahrt durchs Tepltal nach Petschau. Alle 48 Ziele — filterbar nach „mit Kindern“, „ohne Auto“ oder „mit Einkehr“ — finden Sie im Ausflugskatalog.",
-          en: "This is when the surroundings shine: miniatures at Boheminium Park, hands-on Middle Ages at the Bärnau history park, the petrified wedding of the Svatoš Rocks, or a train ride through the Teplá valley to Bečov. All 48 destinations — filterable by “with kids”, “no car” or “food available” — are in the day-trips catalogue.",
-          cs: "Teď se okolí ukazuje v nejlepším světle: miniatury v parku Boheminium, středověk na dosah ve skanzenu Bärnau, zkamenělá svatba Svatošských skal nebo jízda vlakem údolím Teplé do Bečova. Všech 48 cílů — s filtry „s dětmi“, „bez auta“ či „s občerstvením“ — najdete v katalogu výletů.",
-          ru: "Сейчас окрестности показывают себя с лучшей стороны: миниатюры в парке «Богеминиум», Средневековье на ощупь в парке Бэрнау, окаменевшая свадьба Сватошских скал или поездка на поезде по долине Теплы в Бечов. Все 48 направлений — с фильтрами «с детьми», «без машины», «есть кафе» — в каталоге экскурсий.",
+          de: "Jetzt zeigt sich die Umgebung von ihrer besten Seite: Miniaturen im Boheminium-Park, Mittelalter zum Anfassen im Geschichtspark Bärnau, die versteinerte Hochzeit der Hans-Heiling-Felsen oder eine Bahnfahrt durchs Tepltal nach Petschau. Alle 74 Ziele — filterbar nach „mit Kindern“, „ohne Auto“ oder „mit Einkehr“ — finden Sie im Ausflugskatalog.",
+          en: "This is when the surroundings shine: miniatures at Boheminium Park, hands-on Middle Ages at the Bärnau history park, the petrified wedding of the Svatoš Rocks, or a train ride through the Teplá valley to Bečov. All 74 destinations — filterable by “with kids”, “no car” or “food available” — are in the day-trips catalogue.",
+          cs: "Teď se okolí ukazuje v nejlepším světle: miniatury v parku Boheminium, středověk na dosah ve skanzenu Bärnau, zkamenělá svatba Svatošských skal nebo jízda vlakem údolím Teplé do Bečova. Všech 74 cílů — s filtry „s dětmi“, „bez auta“ či „s občerstvením“ — najdete v katalogu výletů.",
+          ru: "Сейчас окрестности показывают себя с лучшей стороны: миниатюры в парке «Богеминиум», Средневековье на ощупь в парке Бэрнау, окаменевшая свадьба Сватошских скал или поездка на поезде по долине Теплы в Бечов. Все 74 направлений — с фильтрами «с детьми», «без машины», «есть кафе» — в каталоге экскурсий.",
         },
       },
     ],

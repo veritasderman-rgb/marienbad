@@ -20,6 +20,12 @@ const { locale, spring } = Astro.props
 const overviewHref = `/${locale}/${routes['springs-overview'][locale]}`
 const detailHref = (id: string) => `${overviewHref}/${id}`
 const pillarHref = `/${locale}/${routes['mineral-springs'][locale]}`
+const co2Href: Record<Locale, string> = {
+  de: '/de/co2-therapie',
+  en: '/en/co2-therapy',
+  cs: '/cs/co2-terapie',
+  ru: '/ru/co2-terapiya',
+}
 
 const ui: Record<Locale, Record<string, string>> = {
   de: {
@@ -33,6 +39,7 @@ const ui: Record<Locale, Record<string, string>> = {
     cureGasTitle: 'So wird das Quellgas angewendet',
     cureGasText:
       'Das Gas dieser Quelle wird nicht getrunken, sondern in den Kurhäusern angewendet: als trockenes CO₂-Bad im Wannensack oder als Gasinjektion unter die Haut. Beide Anwendungen verordnet und dosiert der Kurarzt. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+    cureGasLink: 'Mehr über die CO₂-Therapie erfahren',
     cureTitle: 'So funktioniert die Trinkkur',
     cureText:
       'Getrunken wird langsam, in kleinen Schlucken, meist vor den Mahlzeiten — traditionell aus dem Schnabelbecher, der das Wasser direkt zu den Backenzähnen führt. Welche Quelle, wie viel und wie oft: Das legt Ihr Kurarzt fest, denn jedes Wasser wirkt anders. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
@@ -51,6 +58,7 @@ const ui: Record<Locale, Record<string, string>> = {
     cureGasTitle: 'How the spring gas is used',
     cureGasText:
       'The gas of this spring is not drunk but applied in the spa houses: as a dry CO₂ bath in a sealed sack, or as a gas injection under the skin. Both treatments are prescribed and dosed by the spa physician. This page informs; it is no substitute for medical advice.',
+    cureGasLink: 'Learn more about CO₂ therapy',
     cureTitle: 'How the drinking cure works',
     cureText:
       'The water is sipped slowly, usually before meals — traditionally from a spouted spa cup that guides it past the front teeth. Which spring, how much and how often is set by your spa physician, because every water acts differently. This page informs; it is no substitute for medical advice.',
@@ -69,6 +77,7 @@ const ui: Record<Locale, Record<string, string>> = {
     cureGasTitle: 'Jak se plyn z pramene používá',
     cureGasText:
       'Plyn tohoto pramene se nepije — aplikuje se v lázeňských domech: jako suchá uhličitá koupel ve vaku, nebo jako plynová injekce pod kůži. Obě procedury předepisuje a dávkuje lázeňský lékař. Tato stránka informuje a nenahrazuje lékařskou radu.',
+    cureGasLink: 'Více o CO₂ terapii a Mariině plynu',
     cureTitle: 'Jak funguje pitná kúra',
     cureText:
       'Voda se pije pomalu, po doušcích, zpravidla před jídlem — tradičně z pohárku se sosáčkem, který ji vede mimo přední zuby. Který pramen, kolik a jak často, určuje lázeňský lékař, protože každá voda působí jinak. Tato stránka informuje a nenahrazuje lékařskou radu.',
@@ -87,6 +96,7 @@ const ui: Record<Locale, Record<string, string>> = {
     cureGasTitle: 'Как применяется газ источника',
     cureGasText:
       'Газ этого источника не пьют — его применяют в курортных домах: в виде сухой углекислой ванны в мешке или газовых инъекций под кожу. Обе процедуры назначает и дозирует курортный врач. Эта страница информирует и не заменяет консультацию врача.',
+    cureGasLink: 'Подробнее о CO₂-терапии',
     cureTitle: 'Как устроен питьевой курс',
     cureText:
       'Воду пьют медленно, маленькими глотками, обычно перед едой — по традиции из бокальчика с носиком, который проводит её мимо передних зубов. Какой источник, сколько и как часто — решает курортный врач, ведь каждая вода действует по-своему. Эта страница информирует и не заменяет консультацию врача.',
@@ -185,6 +195,12 @@ const schema = {
       <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-10">
         <h2 class="font-heading text-lg font-bold text-indigo-800 mb-2">{spring.type === 'gas' ? s.cureGasTitle : s.cureTitle}</h2>
         <p class="text-sm text-gray-700 leading-relaxed">{spring.type === 'gas' ? s.cureGasText : s.cureText}</p>
+        {spring.type === 'gas' && (
+          <a href={co2Href[locale]} class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-turquoise-800 hover:text-turquoise-900 transition-colors">
+            {s.cureGasLink}
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+        )}
       </div>
 
       <a href={pillarHref} class="inline-flex items-center gap-2 text-turquoise-700 hover:text-turquoise-900 font-semibold transition-colors">
