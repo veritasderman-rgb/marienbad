@@ -1,0 +1,16 @@
+---
+import Base from '@/layouts/Base.astro'
+import SeasonPage from '@/components/SeasonPage.astro'
+import { seasons } from '@/data/seasons'
+
+export const prerender = true
+
+const locale = 'ru' as const
+const season = seasons.find((s) => s.id === 'spring')!
+
+const alternateUrls = {'de': '/de/fruehling', 'en': '/en/spring', 'cs': '/cs/jaro', 'ru': '/ru/vesna'}
+---
+
+<Base locale={locale} section="things-to-do" title={season.title.ru} description={season.metaDescription.ru} alternateUrls={alternateUrls}>
+  <SeasonPage locale={locale} season={season} />
+</Base>
