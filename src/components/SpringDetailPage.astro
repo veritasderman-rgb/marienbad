@@ -1,0 +1,205 @@
+---
+/**
+ * Detail page body for a single mineral spring: indigo hero, key facts,
+ * description, drinking-cure note and related springs. Rendered by the
+ * prerendered /{locale}/{springs-overview}/{id} routes.
+ */
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import { t } from '@/i18n/ui'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import { springs, type Spring, type SpringIndication, type SpringLocation } from '@/data/springs'
+
+interface Props {
+  locale: Locale
+  spring: Spring
+}
+
+const { locale, spring } = Astro.props
+
+const overviewHref = `/${locale}/${routes['springs-overview'][locale]}`
+const detailHref = (id: string) => `${overviewHref}/${id}`
+const pillarHref = `/${locale}/${routes['mineral-springs'][locale]}`
+
+const ui: Record<Locale, Record<string, string>> = {
+  de: {
+    overview: 'Quellenübersicht',
+    facts: 'Auf einen Blick',
+    location: 'Wo sie entspringt',
+    typeLabel: 'Art',
+    typeDrinking: 'Trinkquelle',
+    typeGas: 'CO₂-Gasquelle — nicht trinken',
+    helpsWith: 'Traditionell genutzt bei',
+    cureTitle: 'So funktioniert die Trinkkur',
+    cureText:
+      'Getrunken wird langsam, in kleinen Schlucken, meist vor den Mahlzeiten — traditionell aus dem Schnabelbecher, der das Wasser direkt zu den Backenzähnen führt. Welche Quelle, wie viel und wie oft: Das legt Ihr Kurarzt fest, denn jedes Wasser wirkt anders. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+    related: 'Weitere Quellen',
+    backToOverview: 'Alle Quellen im Überblick',
+    pillarLink: 'Mehr über die Heilquellen von Marienbad',
+  },
+  en: {
+    overview: 'Springs Overview',
+    facts: 'At a glance',
+    location: 'Where it rises',
+    typeLabel: 'Type',
+    typeDrinking: 'Drinking spring',
+    typeGas: 'CO₂ gas spring — not for drinking',
+    helpsWith: 'Traditionally used for',
+    cureTitle: 'How the drinking cure works',
+    cureText:
+      'The water is sipped slowly, usually before meals — traditionally from a spouted spa cup that guides it past the front teeth. Which spring, how much and how often is set by your spa physician, because every water acts differently. This page informs; it is no substitute for medical advice.',
+    related: 'More springs',
+    backToOverview: 'All springs at a glance',
+    pillarLink: 'More about the healing springs of Marienbad',
+  },
+  cs: {
+    overview: 'Přehled pramenů',
+    facts: 'V kostce',
+    location: 'Kde vyvěrá',
+    typeLabel: 'Typ',
+    typeDrinking: 'Pitný pramen',
+    typeGas: 'Plynový pramen CO₂ — nepije se',
+    helpsWith: 'Tradičně se užívá při',
+    cureTitle: 'Jak funguje pitná kúra',
+    cureText:
+      'Voda se pije pomalu, po doušcích, zpravidla před jídlem — tradičně z pohárku se sosáčkem, který ji vede mimo přední zuby. Který pramen, kolik a jak často, určuje lázeňský lékař, protože každá voda působí jinak. Tato stránka informuje a nenahrazuje lékařskou radu.',
+    related: 'Další prameny',
+    backToOverview: 'Všechny prameny v přehledu',
+    pillarLink: 'Více o léčivých pramenech Mariánských Lázní',
+  },
+  ru: {
+    overview: 'Обзор источников',
+    facts: 'Коротко',
+    location: 'Где бьёт',
+    typeLabel: 'Тип',
+    typeDrinking: 'Питьевой источник',
+    typeGas: 'Газовый источник CO₂ — не для питья',
+    helpsWith: 'Традиционно применяется при',
+    cureTitle: 'Как устроен питьевой курс',
+    cureText:
+      'Воду пьют медленно, маленькими глотками, обычно перед едой — по традиции из бокальчика с носиком, который проводит её мимо передних зубов. Какой источник, сколько и как часто — решает курортный врач, ведь каждая вода действует по-своему. Эта страница информирует и не заменяет консультацию врача.',
+    related: 'Другие источники',
+    backToOverview: 'Все источники в обзоре',
+    pillarLink: 'Подробнее о целебных источниках Марианских Лазней',
+  },
+}
+
+const indicationLabels: Record<Locale, Record<SpringIndication, string>> = {
+  de: { digestion: 'Verdauung', metabolism: 'Stoffwechsel', kidneys: 'Nieren & Harnwege', respiratory: 'Atemwege', blood: 'Blutbildung', bones: 'Knochen', heart: 'Herz & Kreislauf' },
+  en: { digestion: 'Digestion', metabolism: 'Metabolism', kidneys: 'Kidneys & urinary tract', respiratory: 'Respiratory tract', blood: 'Blood formation', bones: 'Bones', heart: 'Heart & circulation' },
+  cs: { digestion: 'Trávení', metabolism: 'Metabolismus', kidneys: 'Ledviny a močové cesty', respiratory: 'Dýchací cesty', blood: 'Krvetvorba', bones: 'Kosti', heart: 'Srdce a cévy' },
+  ru: { digestion: 'Пищеварение', metabolism: 'Обмен веществ', kidneys: 'Почки и мочевые пути', respiratory: 'Дыхательные пути', blood: 'Кроветворение', bones: 'Кости', heart: 'Сердце и сосуды' },
+}
+
+const locationLabels: Record<Locale, Record<SpringLocation, string>> = {
+  de: { colonnade: 'An der Kolonnade', town: 'Parks & Stadt', forest: 'Waldquelle in der Umgebung' },
+  en: { colonnade: 'By the colonnade', town: 'Parks & town', forest: 'Forest spring nearby' },
+  cs: { colonnade: 'U kolonády', town: 'Parky a město', forest: 'Lesní vývěr v okolí' },
+  ru: { colonnade: 'У колоннады', town: 'Парки и город', forest: 'Лесной источник в окрестностях' },
+}
+
+const s = ui[locale]
+const name = spring.name[locale]
+
+// Prefer springs sharing an indication; pad with the rest of the list
+const related = [
+  ...springs.filter((o) => o.id !== spring.id && o.indications.some((i) => spring.indications.includes(i))),
+  ...springs.filter((o) => o.id !== spring.id && !o.indications.some((i) => spring.indications.includes(i))),
+].slice(0, 3)
+
+const homeLabel = t(locale, 'nav.home')
+const breadcrumbItems = [
+  { label: homeLabel, href: `/${locale}` },
+  { label: s.overview, href: overviewHref },
+  { label: name },
+]
+
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name,
+  description: spring.description[locale],
+  url: `${siteUrl}${detailHref(spring.id)}`,
+  isAccessibleForFree: true,
+  containedInPlace: { '@type': 'City', name: 'Mariánské Lázně' },
+}
+---
+
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+  <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-20">
+    <Breadcrumbs items={breadcrumbItems} locale={locale} />
+    <span class="inline-block px-3 py-1 bg-white/15 text-white text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+      {spring.type === 'gas' ? s.typeGas : s.typeDrinking}
+    </span>
+    <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight" style="font-size: var(--text-h1);">{name}</h1>
+    <p class="text-turquoise-300 text-lg font-medium mb-3">{spring.character[locale]}</p>
+    <p class="text-white/85 text-lg max-w-2xl leading-relaxed">{spring.description[locale]}</p>
+  </div>
+</section>
+
+<section class="container-wide py-12 md:py-16">
+  <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
+    <div>
+      <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.facts}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        <div class="bg-beige-100 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">{s.location}</p>
+          <p class="font-semibold text-indigo-900">{locationLabels[locale][spring.location]}</p>
+        </div>
+        <div class="bg-beige-100 rounded-xl p-4">
+          <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">{s.typeLabel}</p>
+          <p class="font-semibold text-indigo-900">{spring.type === 'gas' ? s.typeGas : s.typeDrinking}</p>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <p class="text-xs uppercase tracking-wider text-gray-400 mb-2">{s.helpsWith}</p>
+        <div class="flex flex-wrap gap-2">
+          {spring.indications.map((key) => (
+            <span class="px-3 py-1 bg-turquoise-50 text-turquoise-900 text-sm font-medium rounded-full border border-turquoise-200">
+              {indicationLabels[locale][key]}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="prose-marienbad max-w-none mb-10">
+        <p class="text-gray-700 leading-relaxed">{spring.detail[locale]}</p>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-10">
+        <h2 class="font-heading text-lg font-bold text-indigo-800 mb-2">{s.cureTitle}</h2>
+        <p class="text-sm text-gray-700 leading-relaxed">{s.cureText}</p>
+      </div>
+
+      <a href={pillarHref} class="inline-flex items-center gap-2 text-turquoise-700 hover:text-turquoise-900 font-semibold transition-colors">
+        {s.pillarLink}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </div>
+
+    <aside class="mt-12 lg:mt-0">
+      <h2 class="font-heading text-xl font-bold text-indigo-800 mb-4">{s.related}</h2>
+      <div class="space-y-4 mb-8">
+        {related.map((other) => (
+          <a href={detailHref(other.id)} class="block bg-white rounded-xl shadow-card p-5 card-hover group">
+            <p class="font-heading font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{other.name[locale]}</p>
+            <p class="text-xs text-turquoise-800 font-medium mt-1">{other.character[locale]}</p>
+          </a>
+        ))}
+      </div>
+      <a
+        href={overviewHref}
+        class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors"
+      >
+        {s.backToOverview}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

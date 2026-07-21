@@ -27,11 +27,19 @@ export interface Spring {
   /** One-line mineral character, e.g. "sulphate acidulous water with Glauber's salt" */
   character: Record<Locale, string>
   description: Record<Locale, string>
+  /** Extra paragraph for the spring detail page */
+  detail: Record<Locale, string>
 }
 
 export const springs: Spring[] = [
   {
     id: 'krizovy',
+    detail: {
+      de: "Die Einheimischen kannten die Quelle seit jeher, doch berühmt machte sie erst der Tepler Klosterarzt Josef Johann Nehr, der Ende des 18. Jahrhunderts ihre Heilwirkung nachwies und die ersten Kurbauten durchsetzte. Das Kreuz, das der Quelle den Namen gab, steht hier seit 1749. Getrunken wird meist morgens vor dem Frühstück, langsam und in kleinen Schlucken — die genaue Dosierung bestimmt der Kurarzt.",
+      en: "Locals had known the spring for ages, but it was the Teplá monastery physician Josef Johann Nehr who proved its healing effects in the late 18th century and pushed through the first spa buildings. The cross that gave the spring its name has stood here since 1749. It is usually drunk in the morning before breakfast, slowly and in small sips — your spa physician sets the exact dose.",
+      cs: "Pramen znali místní odedávna, ale slávu mu přinesl až tepelský klášterní lékař Josef Jan Nehr, který u něj koncem 18. století prokázal léčivé účinky a prosadil první lázeňské stavby. Kříž, který dal prameni jméno, tu stojí od roku 1749. Pije se zpravidla ráno před snídaní, pomalu a po doušcích — přesné dávkování určí lázeňský lékař.",
+      ru: "Местные знали источник издавна, но славу ему принёс монастырский врач из Теплы Йозеф Ян Нер, доказавший в конце XVIII века его целебное действие и добившийся первых курортных построек. Крест, давший источнику имя, стоит здесь с 1749 года. Пьют его обычно утром до завтрака, медленно и маленькими глотками — точную дозировку определит курортный врач.",
+    },
     location: 'colonnade',
     type: 'drinking',
     indications: ['digestion', 'metabolism'],
@@ -56,6 +64,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'ferdinanduv',
+    detail: {
+      de: "Ihren Namen trägt sie nach Ferdinand I., unter dessen Herrschaft man hier im 16. Jahrhundert Salz zu gewinnen versuchte. Das Wasser hat die höchste Mineralisierung aller Marienbader Quellen; zum Pavillon von 1827 führt ein angenehmer Spaziergang durch den Auschowitzer Park, unterwegs lässt sich auch die Antoniusquelle kosten.",
+      en: "It is named after Ferdinand I, under whose reign salt extraction was attempted here in the 16th century. The water has the highest mineral content of all Marienbad springs; a pleasant walk through the Úšovice park leads to the 1827 pavilion, with the Anthony Spring worth a taste on the way.",
+      cs: "Jméno nese po Ferdinandovi I., za jehož vlády se tu v 16. století pokoušeli těžit sůl. Voda má nejvyšší mineralizaci ze všech mariánskolázeňských pramenů; k pavilonu z roku 1827 vede příjemná procházka Úšovickým parkem a cestou lze ochutnat i Antonínův pramen.",
+      ru: "Имя источник носит в честь Фердинанда I, при котором здесь в XVI веке пытались добывать соль. Вода имеет самую высокую минерализацию среди всех источников Марианских Лазней; к павильону 1827 года ведёт приятная прогулка через Ушовицкий парк, а по пути можно попробовать источник Антонина.",
+    },
     location: 'town',
     type: 'drinking',
     indications: ['digestion', 'metabolism'],
@@ -80,6 +94,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'rudolfuv',
+    detail: {
+      de: "Benannt ist sie nach Kronprinz Rudolf. Das Verhältnis von Kalzium und Magnesium in ihrem Wasser gilt als außergewöhnlich günstig, weshalb sie bei Osteoporose-Trinkkuren eingesetzt wird — auch Kindern wird sie verschrieben. An ihrem Pavillon in Úšovice entspringt sie bis heute, ihr Wasser fließt zudem in den Kreuzbrunnen-Pavillon an der Kolonnade.",
+      en: "It is named after Crown Prince Rudolph. The calcium-to-magnesium ratio of its water is considered exceptionally favourable, which is why it features in drinking cures for osteoporosis — it is prescribed to children too. It still rises at its pavilion in Úšovice, and its water also flows to the Cross Spring pavilion by the colonnade.",
+      cs: "Pojmenován je po korunním princi Rudolfovi. Poměr vápníku a hořčíku v jeho vodě je považován za mimořádně příznivý, proto bývá součástí pitných kúr při osteoporóze; předepisuje se i dětem. U pavilonu v Úšovicích pramení dodnes a jeho voda teče také do pavilonu Křížového pramene u kolonády.",
+      ru: "Назван в честь кронпринца Рудольфа. Соотношение кальция и магния в его воде считается исключительно благоприятным, поэтому он входит в питьевые курсы при остеопорозе — его назначают и детям. Источник по сей день бьёт у павильона в Ушовицах, а его вода подаётся и в павильон Крестового источника у колоннады.",
+    },
     location: 'colonnade',
     type: 'drinking',
     indications: ['kidneys', 'bones'],
@@ -104,6 +124,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'karolinin',
+    detail: {
+      de: "Ursprünglich hieß sie Neue Quelle; den Namen der Prinzessin Karoline Auguste erhielt sie 1817. Der hohe Magnesiumanteil macht sie zur klassischen Wahl bei Nierensteinen — und ihr ist die klassizistische Karolinenbrunnen-Kolonnade gewidmet, eines der meistfotografierten Bauwerke der Stadt.",
+      en: "Originally called the New Spring, it received Princess Caroline Augusta's name in 1817. Its high magnesium share makes it the classic choice for kidney stones — and it lends its name to the neoclassical Caroline Spring colonnade, one of the town's most photographed structures.",
+      cs: "Původně se jmenoval Nový pramen; jméno princezny Karolíny Augusty dostal roku 1817. Vysoký podíl hořčíku z něj dělá klasickou volbu při ledvinových kamenech — a právě jemu je zasvěcena klasicistní kolonáda Karolinina pramene, jedna z nejfotografovanějších staveb města.",
+      ru: "Первоначально он назывался Новым источником; имя принцессы Каролины Августы получил в 1817 году. Высокая доля магния делает его классическим выбором при почечных камнях — именно ему посвящена классицистская колоннада источника Каролины, одно из самых фотографируемых сооружений города.",
+    },
     location: 'colonnade',
     type: 'drinking',
     indications: ['kidneys'],
@@ -128,6 +154,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'lesni',
+    detail: {
+      de: "Sie entspringt am Rand des Kurviertels am Třebízský-Bach, und ihr Empire-Pavillon von 1869 gehört zu den anmutigsten des Kurorts. Dank der milden alkalischen Zusammensetzung eignet sie sich auch zum Inhalieren und Gurgeln; der morgendliche Weg zur Waldquelle mit dem Becher in der Hand ist für viele Gäste ein tägliches Ritual.",
+      en: "It rises at the edge of the spa quarter by the Třebízský brook, and its Empire-style pavilion of 1869 is among the most graceful in the spa. Thanks to its mild alkaline composition it also suits inhalation and gargling; the morning walk to the Forest Spring, cup in hand, is a daily ritual for many guests.",
+      cs: "Vyvěrá na okraji lázeňské čtvrti u Třebízského potoka a jeho empírový pavilon z roku 1869 patří k nejpůvabnějším v lázních. Díky jemnému alkalickému složení se hodí i k inhalacím a kloktání; ranní cesta k Lesnímu prameni s pohárkem v ruce je pro mnoho hostů denním rituálem.",
+      ru: "Он бьёт на краю курортного квартала у Тршебизского ручья, а его ампирный павильон 1869 года — один из самых изящных на курорте. Благодаря мягкому щелочному составу вода подходит и для ингаляций и полосканий; утренняя дорога к Лесному источнику с бокальчиком в руке — ежедневный ритуал многих гостей.",
+    },
     location: 'town',
     type: 'drinking',
     indications: ['respiratory', 'digestion'],
@@ -152,6 +184,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'ambrozuv',
+    detail: {
+      de: "Die drei Austritte der Ambrosiusquelle finden Sie im Park unterhalb der Kolonnade, unweit des Zentralbads. Ihr höherer Eisengehalt trug ihr den Ruf einer Quelle gegen Blutarmut ein; im 19. Jahrhundert nannte man sie wegen der angeblichen Wirkung auf Schönheit und Frische auch Liebesquelle.",
+      en: "The three outlets of the Ambrose Spring are found in the park below the colonnade, near the Central Baths. Its elevated iron content earned it a reputation against anaemia; in the 19th century it was also called the spring of love for its supposed effects on beauty and freshness.",
+      cs: "Tři vývěry Ambrožova pramene najdete v parku pod Kolonádou, kousek od Centrálních lázní. Vyšší obsah železa mu vysloužil pověst pramene proti chudokrevnosti; v 19. století se mu pro údajné účinky na krásu a svěžest říkalo také pramen lásky.",
+      ru: "Три выхода источника Амброжа находятся в парке под колоннадой, недалеко от Центральных лазней. Повышенное содержание железа принесло ему славу источника против малокровия; в XIX веке за приписываемое действие на красоту и свежесть его называли также источником любви.",
+    },
     location: 'town',
     type: 'drinking',
     indications: ['blood', 'kidneys'],
@@ -176,6 +214,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'marii',
+    detail: {
+      de: "Der schweflige Geruch dieses Austritts gab dem Ort einst den Namen „Stinkende Wiese“, ehe man ihn nach einem Marienbild umbenannte. Das Gas wird heute gefasst und in trockenen CO₂-Bädern und Gasinjektionen genutzt — jener Anwendung, die Marienbad berühmt gemacht hat. Der Austritt liegt hinter dem Zentralbad; baden lässt sich darin freilich nicht.",
+      en: "The sulphurous smell of this vent once earned the place the name \"Stinking Meadow\", before it was renamed after an image of the Virgin Mary. The gas is now captured and used in dry CO₂ baths and gas injections — the treatment that made Marienbad famous. The vent lies behind the Central Baths; you cannot bathe in it, of course.",
+      cs: "Právě sirný zápach tohoto vývěru dal místu jméno „Smrdutá louka“, než je přejmenovali podle obrázku Panny Marie. Plyn se dnes jímá a využívá v suchých uhličitých koupelích a plynových injekcích — proceduře, kterou Mariánské Lázně proslavily. Vývěr najdete za Centrálními lázněmi, koupat se v něm ovšem nelze.",
+      ru: "Именно серный запах этого выхода когда-то дал месту название «Вонючий луг», пока его не переименовали в честь образа Девы Марии. Сегодня газ улавливают и используют в сухих углекислых ваннах и газовых инъекциях — процедуре, прославившей Марианские Лазни. Выход находится за Центральными лазнями; купаться в нём, разумеется, нельзя.",
+    },
     location: 'town',
     type: 'gas',
     indications: ['heart'],
@@ -200,6 +244,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'farska',
+    detail: {
+      de: "Zur Quelle führt der blau markierte Wanderweg durch den Wald Richtung Prameny; der unbeschwerliche Weg von der Kolonnade dauert knapp eine Stunde. Wer die Runde verlängern möchte, wandert weiter zum Reservat Smraďoch — beides passt in einen Vormittag.",
+      en: "A blue-marked trail leads to the spring through the forest towards Prameny; the easy walk from the colonnade takes just under an hour. To extend the loop, continue to the Smraďoch reserve — both fit comfortably into one morning.",
+      cs: "K prameni vede modrá turistická značka lesem směrem na Prameny; nenáročná cesta od kolonády zabere necelou hodinu. Kdo chce okruh prodloužit, může pokračovat k rezervaci Smraďoch — obojí se vejde do jednoho dopoledne.",
+      ru: "К источнику ведёт синяя туристическая маркировка через лес в сторону Прамен; лёгкая дорога от колоннады занимает неполный час. Кто хочет продлить маршрут, может продолжить путь к заповеднику Смрадёх — и то и другое умещается в одно утро.",
+    },
     location: 'forest',
     type: 'drinking',
     indications: ['blood'],
@@ -224,6 +274,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'balbinuv',
+    detail: {
+      de: "Der Austritt liegt im Naturdenkmal des Quellgebiets am Balbín-Teich zwischen dem Viertel Hleďsebe und den Wäldern nördlich der Stadt. Die umliegenden Moorwiesen gehören zu den letzten Standorten des seltenen Sonnentaus — die Quelle verdient daher einen stillen, rücksichtsvollen Besuch.",
+      en: "The outlet lies in the protected spring area by the little Balbín pond, between the Hleďsebe quarter and the forests north of the town. The surrounding boggy meadows are among the last habitats of the rare sundew — so the spring deserves a quiet, considerate visit.",
+      cs: "Vývěr leží v přírodní památce Prameniště u Balbínova rybníčku mezi čtvrtí Hleďsebe a lesy severně od města. Okolní rašelinné loučky patří k posledním místům, kde roste vzácná rosnatka — pramen si proto zaslouží tichou, ohleduplnou návštěvu.",
+      ru: "Выход находится в охраняемом родниковом урочище у Бальбинова пруда, между кварталом Гледьсебе и лесами к северу от города. Окрестные болотистые лужайки — одно из последних мест произрастания редкой росянки, поэтому источник заслуживает тихого, бережного визита.",
+    },
     location: 'forest',
     type: 'drinking',
     indications: ['blood'],
@@ -248,6 +304,12 @@ export const springs: Spring[] = [
   },
   {
     id: 'antoninuv',
+    detail: {
+      de: "Die Quelle in Úšovice versorgte die umliegenden Gehöfte lange vor der Gründung des Kurorts; der heutige kleine Pavillon stammt von 1997, als der Austritt neu gefasst wurde. Zusammen mit dem Ferdinandsbrunnen bildet sie das natürliche Ziel eines Spaziergangs durch die Unterstadt — und die Einheimischen halten sie für den besten „Tafelsäuerling“.",
+      en: "The spring in Úšovice served the surrounding farmsteads long before the spa was founded; today's small pavilion dates from 1997, when the outlet was newly captured. Together with the Ferdinand Spring it makes a natural goal for a walk through the lower town — and locals consider it the best \"table\" acidulous water.",
+      cs: "Pramen v Úšovicích sloužil okolním usedlostem dávno před vznikem lázní; dnešní pavilonek pochází z roku 1997, kdy byl vývěr nově zachycen. Spolu s Ferdinandovým pramenem tvoří přirozený cíl procházky dolní částí města — a místní ho považují za nejlepší „stolní“ kyselku.",
+      ru: "Источник в Ушовицах служил окрестным усадьбам задолго до основания курорта; нынешний павильончик относится к 1997 году, когда выход был заново каптирован. Вместе с источником Фердинанда он образует естественную цель прогулки по нижней части города — а местные считают его лучшей «столовой» кислой водой.",
+    },
     location: 'town',
     type: 'drinking',
     indications: ['digestion'],
