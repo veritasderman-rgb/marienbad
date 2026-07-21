@@ -6,6 +6,7 @@ import {
   tripDifficultyOrder,
   tripTagOrder,
   TRIP_ORIGIN,
+  tripMapQuery,
   type DayTrip,
   type TripCategory,
   type TripDifficulty,
@@ -239,11 +240,11 @@ function formatHours(value: number, locale: Locale): string {
 }
 
 function routeUrl(trip: DayTrip): string {
-  return `https://www.google.com/maps/dir/?api=1&origin=Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B&destination=${trip.lat},${trip.lng}`
+  return `https://www.google.com/maps/dir/?api=1&origin=Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B&destination=${encodeURIComponent(tripMapQuery(trip))}`
 }
 
 function mapyUrl(trip: DayTrip): string {
-  return `https://mapy.com/turisticka?q=${encodeURIComponent(trip.name.cs)}`
+  return `https://mapy.com/turisticka?q=${encodeURIComponent(tripMapQuery(trip))}`
 }
 
 function TripMeta({ trip, locale, t }: { trip: DayTrip; locale: Locale; t: UiStrings }) {
