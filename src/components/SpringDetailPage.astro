@@ -30,6 +30,9 @@ const ui: Record<Locale, Record<string, string>> = {
     typeDrinking: 'Trinkquelle',
     typeGas: 'CO₂-Gasquelle — nicht trinken',
     helpsWith: 'Traditionell genutzt bei',
+    cureGasTitle: 'So wird das Quellgas angewendet',
+    cureGasText:
+      'Das Gas dieser Quelle wird nicht getrunken, sondern in den Kurhäusern angewendet: als trockenes CO₂-Bad im Wannensack oder als Gasinjektion unter die Haut. Beide Anwendungen verordnet und dosiert der Kurarzt. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
     cureTitle: 'So funktioniert die Trinkkur',
     cureText:
       'Getrunken wird langsam, in kleinen Schlucken, meist vor den Mahlzeiten — traditionell aus dem Schnabelbecher, der das Wasser direkt zu den Backenzähnen führt. Welche Quelle, wie viel und wie oft: Das legt Ihr Kurarzt fest, denn jedes Wasser wirkt anders. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
@@ -45,6 +48,9 @@ const ui: Record<Locale, Record<string, string>> = {
     typeDrinking: 'Drinking spring',
     typeGas: 'CO₂ gas spring — not for drinking',
     helpsWith: 'Traditionally used for',
+    cureGasTitle: 'How the spring gas is used',
+    cureGasText:
+      'The gas of this spring is not drunk but applied in the spa houses: as a dry CO₂ bath in a sealed sack, or as a gas injection under the skin. Both treatments are prescribed and dosed by the spa physician. This page informs; it is no substitute for medical advice.',
     cureTitle: 'How the drinking cure works',
     cureText:
       'The water is sipped slowly, usually before meals — traditionally from a spouted spa cup that guides it past the front teeth. Which spring, how much and how often is set by your spa physician, because every water acts differently. This page informs; it is no substitute for medical advice.',
@@ -60,6 +66,9 @@ const ui: Record<Locale, Record<string, string>> = {
     typeDrinking: 'Pitný pramen',
     typeGas: 'Plynový pramen CO₂ — nepije se',
     helpsWith: 'Tradičně se užívá při',
+    cureGasTitle: 'Jak se plyn z pramene používá',
+    cureGasText:
+      'Plyn tohoto pramene se nepije — aplikuje se v lázeňských domech: jako suchá uhličitá koupel ve vaku, nebo jako plynová injekce pod kůži. Obě procedury předepisuje a dávkuje lázeňský lékař. Tato stránka informuje a nenahrazuje lékařskou radu.',
     cureTitle: 'Jak funguje pitná kúra',
     cureText:
       'Voda se pije pomalu, po doušcích, zpravidla před jídlem — tradičně z pohárku se sosáčkem, který ji vede mimo přední zuby. Který pramen, kolik a jak často, určuje lázeňský lékař, protože každá voda působí jinak. Tato stránka informuje a nenahrazuje lékařskou radu.',
@@ -75,6 +84,9 @@ const ui: Record<Locale, Record<string, string>> = {
     typeDrinking: 'Питьевой источник',
     typeGas: 'Газовый источник CO₂ — не для питья',
     helpsWith: 'Традиционно применяется при',
+    cureGasTitle: 'Как применяется газ источника',
+    cureGasText:
+      'Газ этого источника не пьют — его применяют в курортных домах: в виде сухой углекислой ванны в мешке или газовых инъекций под кожу. Обе процедуры назначает и дозирует курортный врач. Эта страница информирует и не заменяет консультацию врача.',
     cureTitle: 'Как устроен питьевой курс',
     cureText:
       'Воду пьют медленно, маленькими глотками, обычно перед едой — по традиции из бокальчика с носиком, который проводит её мимо передних зубов. Какой источник, сколько и как часто — решает курортный врач, ведь каждая вода действует по-своему. Эта страница информирует и не заменяет консультацию врача.',
@@ -171,8 +183,8 @@ const schema = {
       </div>
 
       <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-10">
-        <h2 class="font-heading text-lg font-bold text-indigo-800 mb-2">{s.cureTitle}</h2>
-        <p class="text-sm text-gray-700 leading-relaxed">{s.cureText}</p>
+        <h2 class="font-heading text-lg font-bold text-indigo-800 mb-2">{spring.type === 'gas' ? s.cureGasTitle : s.cureTitle}</h2>
+        <p class="text-sm text-gray-700 leading-relaxed">{spring.type === 'gas' ? s.cureGasText : s.cureText}</p>
       </div>
 
       <a href={pillarHref} class="inline-flex items-center gap-2 text-turquoise-700 hover:text-turquoise-900 font-semibold transition-colors">
