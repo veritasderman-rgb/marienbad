@@ -163,19 +163,19 @@ export const tripLongDescriptions: Record<string, Record<Locale, string[]>> = {
   'boheminium': {
     de: [
       "Der Miniaturpark Boheminium entstand 1999, und seither sind hier über siebzig Modelle tschechischer Sehenswürdigkeiten im Maßstab 1:25 gewachsen — von Karlštejn über den Ještěd bis zum Prebischtor. Die Modelle entstehen in Hunderten Handarbeitsstunden und sind bis ins letzte Detail getreu: Fensterläden, Dachziegel, ja selbst die Miniaturbepflanzung.",
-      "Der Park liegt in den Wäldern oberhalb der Stadt beim Hotel Krakonoš; man erreicht ihn auf einem angenehmen Spaziergang durch die Kurwälder oder mit dem Ausflugszug aus dem Zentrum. Das Gelände ist ganzjährig geöffnet, mit Bistro und Kinderstationen — und dank befestigter Wege auch mit dem Kinderwagen bequem zu bewältigen.",
+      "Der Park liegt in den Wäldern oberhalb der Stadt beim Hotel Krakonoš; man erreicht ihn auf einem angenehmen Spaziergang durch die Kurwälder oder mit dem Stadtbus, der den Park regelmäßig anfährt. Das Gelände ist ganzjährig geöffnet, mit Bistro und Kinderstationen — und dank befestigter Wege auch mit dem Kinderwagen bequem zu bewältigen.",
     ],
     en: [
       "The Boheminium miniature park opened in 1999 and has since grown to more than seventy models of Czech landmarks at 1:25 scale — from Karlštejn via Ještěd to the Pravčická Arch. Each model takes hundreds of hours of handwork and is faithful to the last detail: shutters, roof tiles, even the miniature greenery.",
-      "The park lies in the woods above the town by the Krakonoš hotel; you reach it on a pleasant walk through the spa forests, or by the tourist train from the centre. The grounds are open year-round, with a bistro and children's stops — and thanks to the paved paths, it is easily managed with a stroller.",
+      "The park lies in the woods above the town by the Krakonoš hotel; you reach it on a pleasant walk through the spa forests, or by the regular city bus that serves the park. The grounds are open year-round, with a bistro and children's stops — and thanks to the paved paths, it is easily managed with a stroller.",
     ],
     cs: [
       "Park miniatur Boheminium vznikl v roce 1999 a od té doby v něm vyrostlo přes sedmdesát modelů českých památek v měřítku 1:25 — od Karlštejna přes Ještěd po Pravčickou bránu. Modely vznikají ručně stovky hodin a jsou věrné do posledního detailu: okenic, tašek na střeše i miniaturní zeleně.",
-      "Park leží v lesích nad městem u hotelu Krakonoš; dojdete sem příjemnou procházkou lázeňskými lesy, nebo vyjedete výletním vláčkem z centra. Areál je otevřený celoročně, s bistrem a dětskými zastaveními — a protože jsou cesty zpevněné, zvládnete ho pohodlně i s kočárkem.",
+      "Park leží v lesích nad městem u hotelu Krakonoš; dojdete sem příjemnou procházkou lázeňskými lesy, nebo dojedete autobusem MHD, který sem pravidelně zajíždí. Areál je otevřený celoročně, s bistrem a dětskými zastaveními — a protože jsou cesty zpevněné, zvládnete ho pohodlně i s kočárkem.",
     ],
     ru: [
       "Парк миниатюр «Богеминиум» открылся в 1999 году, и с тех пор в нём выросло более семидесяти моделей чешских памятников в масштабе 1:25 — от Карлштейна и Йештеда до Правчицких ворот. Каждая модель — сотни часов ручной работы, верной до последней детали: ставней, черепицы, даже миниатюрной зелени.",
-      "Парк лежит в лесах над городом у отеля «Крконош»; сюда приятно дойти пешком через курортные леса или доехать на экскурсионном паровозике из центра. Территория открыта круглый год, есть бистро и детские остановки — а благодаря мощёным дорожкам парк легко пройти и с коляской.",
+      "Парк лежит в лесах над городом у отеля «Крконош»; сюда приятно дойти пешком через курортные леса или доехать на городском автобусе, который регулярно сюда заходит. Территория открыта круглый год, есть бистро и детские остановки — а благодаря мощёным дорожкам парк легко пройти и с коляской.",
     ],
   },
   'soos': {
