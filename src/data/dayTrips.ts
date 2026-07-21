@@ -25,6 +25,8 @@ export interface DayTrip {
   visitHoursMax: number
   lat: number
   lng: number
+  /** Explicit Google/Mapy place query when the Czech name alone is ambiguous */
+  mapQuery?: string
   name: Record<Locale, string>
   description: Record<Locale, string>
   website?: string
@@ -45,6 +47,7 @@ export const TRIP_ORIGIN = { lat: 49.9646, lng: 12.7011 }
 export const dayTrips: DayTrip[] = [
   {
     id: 'hamelika',
+    mapQuery: 'Rozhledna Hamelika, Mariánské Lázně',
     image: {
       src: '/images/trips/hamelika.jpg',
       author: 'Lubor Ferenc',
@@ -75,6 +78,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'boheminium',
+    mapQuery: 'Park Boheminium, Mariánské Lázně',
     image: {
       src: '/images/trips/boheminium.jpg',
       author: 'Mojmir Churavy',
@@ -136,6 +140,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'chodovar',
+    mapQuery: 'Pivovar Chodovar, Chodová Planá',
     image: {
       src: '/images/trips/chodovar.jpg',
       author: 'Stanislav Dusík',
@@ -228,6 +233,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'kladska',
+    mapQuery: 'Kladská, Mariánské Lázně',
     image: {
       src: '/images/trips/kladska.jpg',
       author: 'Petr Štefek',
@@ -289,6 +295,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'sibyllenbad',
+    mapQuery: 'Sibyllenbad, Neualbenreuth',
     image: {
       src: '/images/trips/sibyllenbad.jpg',
       author: 'Richard Huber',
@@ -350,6 +357,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'becov',
+    mapQuery: 'Státní hrad a zámek Bečov nad Teplou',
     image: {
       src: '/images/trips/becov.jpg',
       author: 'Lucie Krotilova',
@@ -411,6 +419,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'utery',
+    mapQuery: 'Úterý, okres Plzeň-sever',
     image: {
       src: '/images/trips/utery.jpg',
       author: 'Petr Kinšt',
@@ -441,6 +450,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'krasno',
+    mapQuery: 'Rozhledna Krásno',
     image: {
       src: '/images/trips/krasno.jpg',
       author: 'Lubor Ferenc',
@@ -471,6 +481,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'waldsassen',
+    mapQuery: 'Kloster Waldsassen',
     image: {
       src: '/images/trips/waldsassen.jpg',
       author: 'Aconcagua',
@@ -501,6 +512,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'krasikov',
+    mapQuery: 'Hrad Švamberk, Krasíkov',
     image: {
       src: '/images/trips/krasikov.jpg',
       author: 'Levap75',
@@ -561,6 +573,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'loket',
+    mapQuery: 'Hrad Loket',
     image: {
       src: '/images/trips/loket.jpg',
       author: 'Pakos',
@@ -713,6 +726,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'primda',
+    mapQuery: 'Hrad Přimda',
     image: {
       src: '/images/trips/primda.jpg',
       author: 'Petr Kinšt',
@@ -773,6 +787,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'plana',
+    mapQuery: 'Planá, okres Tachov',
     image: {
       src: '/images/trips/plana.jpg',
       author: 'Gliwi',
@@ -803,6 +818,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'kosi-potok',
+    mapQuery: 'Michalovy Hory',
     image: {
       src: '/images/trips/kosi-potok.jpg',
       author: 'Jik jik',
@@ -892,6 +908,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'kappl',
+    mapQuery: 'Dreifaltigkeitskirche Kappl, Waldsassen',
     image: {
       src: '/images/trips/kappl.jpg',
       author: 'Gunther Tschuch',
@@ -1012,6 +1029,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'barnau',
+    mapQuery: 'Geschichtspark Bärnau-Tachov',
     image: {
       src: '/images/trips/barnau.jpg',
       author: 'Klaus Schicker, Schicker-allmedia.de',
@@ -1103,6 +1121,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'falkenberg',
+    mapQuery: 'Burg Falkenberg, Oberpfalz',
     image: {
       src: '/images/trips/falkenberg.jpg',
       author: 'Nikater',
@@ -1132,6 +1151,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'vildstejn',
+    mapQuery: 'Hrad Vildštejn, Skalná',
     image: {
       src: '/images/trips/vildstejn.jpg',
       author: 'Snatoki',
@@ -1162,6 +1182,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'seeberg',
+    mapQuery: 'Hrad Seeberg, Poustka',
     image: {
       src: '/images/trips/seeberg.jpg',
       author: 'Lubor Ferenc',
@@ -1222,6 +1243,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'hartenberg',
+    mapQuery: 'Hrad Hartenberg, Hřebeny',
     image: {
       src: '/images/trips/hartenberg.jpg',
       author: 'Lubor Ferenc',
@@ -1252,6 +1274,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'andelska-hora',
+    mapQuery: 'Hrad Andělská Hora, okres Karlovy Vary',
     image: {
       src: '/images/trips/andelska-hora.jpg',
       author: 'Petr Kinšt',
@@ -1282,6 +1305,7 @@ export const dayTrips: DayTrip[] = [
   },
   {
     id: 'parkstein',
+    mapQuery: 'Hoher Parkstein, Parkstein',
     image: {
       src: '/images/trips/parkstein.jpg',
       author: 'DALIBRI',
@@ -1496,3 +1520,8 @@ export const dayTrips: DayTrip[] = [
 export const tripCategoryOrder: TripCategory[] = ['castles', 'towns', 'nature', 'lookouts', 'experiences']
 export const tripDifficultyOrder: TripDifficulty[] = ['easy', 'moderate', 'demanding']
 export const tripTagOrder: TripTag[] = ['noCar', 'stroller', 'dog', 'indoor', 'winter', 'food']
+
+/** Place query for Google Maps / Mapy.com — prefers the explicit mapQuery, falls back to the Czech name */
+export function tripMapQuery(trip: DayTrip): string {
+  return trip.mapQuery ?? trip.name.cs
+}

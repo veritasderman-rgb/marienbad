@@ -8,7 +8,7 @@ import type { Locale } from '@/i18n/config'
 import { routes } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
-import { dayTrips, TRIP_ORIGIN, tripDifficultyOrder, type DayTrip, type TripCategory, type TripDifficulty, type TripTag } from '@/data/dayTrips'
+import { dayTrips, TRIP_ORIGIN, tripDifficultyOrder, tripMapQuery, type DayTrip, type TripCategory, type TripDifficulty, type TripTag } from '@/data/dayTrips'
 import { articlesForTrip } from '@/data/tripArticles'
 import { tripLongDescriptions, tripGalleries } from '@/data/tripDetails'
 
@@ -169,9 +169,12 @@ const formatHours = (v: number) => (locale === 'en' ? String(v) : String(v).repl
 const visitLabel = `${formatHours(trip.visitHoursMin)}–${formatHours(trip.visitHoursMax)} ${s.hours}`
 const driveLabel = trip.driveMin === 0 ? s.onFoot : `~${trip.driveMin} ${s.driveValue}`
 
-const routeUrl = `https://www.google.com/maps/dir/?api=1&origin=Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B&destination=${trip.lat},${trip.lng}`
-const mapyUrl = `https://mapy.com/turisticka?q=${encodeURIComponent(trip.name.cs)}`
-const embedSrc = `https://maps.google.com/maps?q=${trip.lat},${trip.lng}&z=13&hl=${locale}&ie=UTF8&output=embed`
+// Place-name queries let Google resolve the actual POI (with its card and
+// verified pin) instead of our approximate coordinates.
+const placeQuery = tripMapQuery(trip)
+const routeUrl = `https://www.google.com/maps/dir/?api=1&origin=Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B&destination=${encodeURIComponent(placeQuery)}`
+const mapyUrl = `https://mapy.com/turisticka?q=${encodeURIComponent(placeQuery)}`
+const embedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(placeQuery)}&z=14&hl=${locale}&ie=UTF8&output=embed`
 
 const homeLabel = t(locale, 'nav.home')
 const breadcrumbItems = [
