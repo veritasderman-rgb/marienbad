@@ -220,6 +220,7 @@ export default function SpringsExplorer({ locale }: Props) {
         {filtered.map((spring) => {
           const detailHref = `/${locale}/${routes['springs-overview'][locale]}/${spring.id}`
           const webp = spring.image?.src.replace(/\.jpg$/, '.webp')
+          const webp800 = spring.image?.src.replace(/\.jpg$/, '-800w.webp')
           return (
             <article
               key={spring.id}
@@ -228,7 +229,11 @@ export default function SpringsExplorer({ locale }: Props) {
               {spring.image && (
                 <a href={detailHref} className="block relative aspect-[16/10] overflow-hidden bg-beige-100 group">
                   <picture>
-                    <source srcSet={webp} type="image/webp" />
+                    <source
+                      srcSet={`${webp800} 800w, ${webp} 1200w`}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 520px"
+                      type="image/webp"
+                    />
                     <img
                       src={spring.image.src}
                       alt={spring.name[locale]}
