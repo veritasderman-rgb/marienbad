@@ -1,0 +1,295 @@
+---
+/**
+ * Parkování u hotelů Ensana v Mariánských Lázních — /cs/parkovani
+ *
+ * Zatím nelinkovaná informační podstránka (není v navigaci ani v sitemap,
+ * viz astro.config NOINDEXED_PATHS, a je označena noindex). Dostupná jen
+ * přes přímý odkaz, dokud ji nezveřejníme.
+ */
+import Base from '@/layouts/Base.astro'
+import Pic from '@/components/Pic.astro'
+
+export const prerender = true
+
+const locale = 'cs' as const
+
+interface ParkingOption {
+  name: string
+  price?: string
+  note?: string
+}
+interface Hotel {
+  name: string
+  image: string
+  location?: string
+  options: ParkingOption[]
+}
+
+const IMG = '/images/content/hotels/hotels/items'
+
+const hotels: Hotel[] = [
+  {
+    name: 'Ensana Nové Lázně',
+    image: `${IMG}/0/image.jpg`,
+    options: [
+      { name: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
+      { name: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: 'Nutná rezervace předem' },
+      {
+        name: 'Podzemní garáže v resortu',
+        price: '380 Kč/den · od 5 nocí 250 Kč/den',
+        note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů a hybridních vozidel.',
+      },
+    ],
+  },
+  {
+    name: 'Ensana Centrální Lázně',
+    image: `${IMG}/1/image.jpg`,
+    options: [
+      { name: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst (4 místa + 1 pro osoby se zdravotním postižením)' },
+      { name: 'Hlídané parkoviště za hotelem', price: '380 Kč/den', note: '30 míst, nutná rezervace předem' },
+    ],
+  },
+  {
+    name: 'Ensana Hvězda',
+    image: `${IMG}/2/image.jpg`,
+    options: [
+      {
+        name: 'Podzemní garáže v resortu',
+        price: '380 Kč/den · od 5 nocí 250 Kč/den',
+        note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů a hybridních vozidel.',
+      },
+    ],
+  },
+  {
+    name: 'Ensana Pacifik',
+    image: `${IMG}/3/image.jpg`,
+    location: 'Poloha u parku a kolonády.',
+    options: [
+      { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
+      { name: 'Parkovací dům u Městského divadla', note: 'cca 5 minut chůze od hotelu' },
+    ],
+  },
+  {
+    name: 'Ensana Butterfly',
+    image: `${IMG}/4/image.jpg`,
+    location: 'Poloha v centru města přímo u lázeňského parku.',
+    options: [
+      {
+        name: 'Podzemní garáž',
+        price: '380 Kč/den · od 5 nocí 250 Kč/den',
+        note: 'Nutná rezervace předem. Vjezd pro elektromobily a hybridní vozidla je zakázán.',
+      },
+      { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
+      { name: 'Parkovací dům u Městského divadla', note: 'Alternativně' },
+    ],
+  },
+  {
+    name: 'Ensana Vltava',
+    image: `${IMG}/5/image.jpg`,
+    location: 'Poloha u lesoparku.',
+    options: [
+      { name: 'Parkoviště před hotelem', price: '250 Kč/den', note: '5 míst, platba na recepci, nutná rezervace předem' },
+      { name: 'Místa pro osoby se zdravotním postižením', note: '3 parkovací místa' },
+    ],
+  },
+  {
+    name: 'Ensana Svoboda',
+    image: `${IMG}/6/image.jpg`,
+    location: 'Poloha v klidné části lesoparku nedaleko kolonády.',
+    options: [
+      { name: 'Parkoviště ve dvoře hotelu', price: '250 Kč/den · od 5 nocí 200 Kč/den', note: '12 míst, platba na recepci, nutná rezervace předem' },
+      { name: 'Před hotelem v Chopinově ulici', note: 'Veřejné placené stání s parkovacím automatem' },
+      { name: 'Parkovací dům u Městského divadla', note: 'ul. Pramenská, cca 200 m od hotelu' },
+    ],
+  },
+]
+
+// Přehledová tabulka — plochý seznam řádků (hotel + možnost + cena + poznámka).
+interface Row {
+  hotel?: string
+  option: string
+  price: string
+  note: string
+}
+const tableRows: Row[] = [
+  { hotel: 'Nové Lázně', option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
+  { option: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace' },
+  { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro a hybridů' },
+  { hotel: 'Centrální Lázně', option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst (4 + 1 pro invalidy)' },
+  { option: 'Hlídané parkoviště za hotelem', price: '380 Kč/den', note: '30 míst, nutná rezervace' },
+  { hotel: 'Hvězda', option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro a hybridů' },
+  { hotel: 'Pacifik', option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
+  { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'cca 5 min chůze od hotelu' },
+  { hotel: 'Butterfly', option: 'Podzemní garáž', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace; zákaz vjezdu elektro a hybridů' },
+  { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
+  { hotel: 'Vltava', option: 'Parkoviště před hotelem', price: '250 Kč/den', note: '5 míst, platba na recepci, nutná rezervace' },
+  { option: 'Místa pro osoby se zdravotním postižením', price: '–', note: '3 místa' },
+  { hotel: 'Svoboda', option: 'Parkoviště ve dvoře hotelu', price: '250 Kč/den, od 5 nocí 200 Kč/den', note: '12 míst, platba na recepci, nutná rezervace' },
+  { option: 'Před hotelem v Chopinově ulici', price: 'dle parkovacího automatu', note: 'Veřejné, parkovací automat' },
+  { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'ul. Pramenská, cca 200 m od hotelu' },
+]
+---
+
+<Base
+  locale={locale}
+  section="practical-info"
+  title="Parkování u hotelů Ensana v Mariánských Lázních"
+  description="Přehled možností parkování u jednotlivých hotelů Ensana v Mariánských Lázních — ceny, kapacity a rezervace — a doplňující informace o parkování ve městě."
+  noindex={true}
+>
+  <!-- Hero -->
+  <section class="bg-indigo-800 text-white">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-turquoise-200 font-semibold tracking-wide uppercase text-sm mb-3">Praktické informace</p>
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-3xl">
+        Parkování u hotelů Ensana v Mariánských Lázních
+      </h1>
+      <p class="mt-5 text-white/85 leading-relaxed max-w-2xl">
+        Přehled možností parkování u jednotlivých hotelů Ensana a doplňující informace o parkování ve
+        městě. U všech hotelových parkovišť a garáží platí, že je <strong class="text-white">nutná
+        rezervace předem</strong> — doporučujeme si místo zajistit již při rezervaci pobytu.
+      </p>
+    </div>
+  </section>
+
+  <!-- Přehledová tabulka -->
+  <section class="container-wide py-10 md:py-14">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-6">Přehledová tabulka</h2>
+    <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-card">
+      <table class="w-full text-left text-sm md:text-base border-collapse">
+        <thead>
+          <tr class="bg-beige-100 text-indigo-800">
+            <th class="px-4 py-3 font-semibold whitespace-nowrap">Hotel</th>
+            <th class="px-4 py-3 font-semibold">Možnost parkování</th>
+            <th class="px-4 py-3 font-semibold whitespace-nowrap">Cena</th>
+            <th class="px-4 py-3 font-semibold">Kapacita / poznámka</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {tableRows.map((r) => (
+            <tr class={r.hotel ? 'bg-white border-t-2 border-turquoise-100 align-top' : 'bg-white align-top'}>
+              <td class="px-4 py-3 font-semibold text-indigo-800 whitespace-nowrap">{r.hotel ?? ''}</td>
+              <td class="px-4 py-3 text-gray-800">{r.option}</td>
+              <td class="px-4 py-3 text-gray-700 whitespace-nowrap">{r.price}</td>
+              <td class="px-4 py-3 text-gray-600">{r.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Parkování u jednotlivých hotelů -->
+  <section class="bg-beige-50 py-10 md:py-16">
+    <div class="container-wide">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">Parkování u jednotlivých hotelů</h2>
+      <p class="text-gray-600 mb-8 max-w-2xl">Ilustrační fotografie hotelů, ke kterým se informace vztahují.</p>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {hotels.map((h) => (
+          <article class="flex flex-col sm:flex-row bg-white rounded-2xl shadow-card overflow-hidden border border-gray-100">
+            <div class="sm:w-44 lg:w-52 shrink-0">
+              <Pic
+                src={h.image}
+                alt={`Hotel ${h.name} v Mariánských Lázních`}
+                class="w-full h-40 sm:h-full object-cover"
+                sizes="(max-width: 640px) 100vw, 208px"
+              />
+            </div>
+            <div class="flex-1 p-5 md:p-6">
+              <h3 class="font-heading text-lg md:text-xl font-bold text-indigo-800">{h.name}</h3>
+              {h.location && <p class="text-sm text-gray-500 mt-1">{h.location}</p>}
+              <ul class="mt-4 space-y-3">
+                {h.options.map((o) => (
+                  <li class="flex gap-3">
+                    <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500"></span>
+                    <div>
+                      <p class="text-gray-800 font-medium">
+                        {o.name}
+                        {o.price && <span class="text-turquoise-700 font-semibold"> — {o.price}</span>}
+                      </p>
+                      {o.note && <p class="text-sm text-gray-500 mt-0.5">{o.note}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Další možnosti parkování ve městě -->
+  <section class="container-wide py-10 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">
+      Další možnosti parkování v Mariánských Lázních
+    </h2>
+    <p class="text-gray-700 leading-relaxed max-w-3xl mb-8">
+      Pokud jsou hotelová místa obsazená nebo hosté přijíždějí elektromobilem či hybridem (kam u
+      některých hotelů platí zákaz vjezdu do garáží), lze využít městská a komerční parkoviště.
+    </p>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <!-- Parkovací domy a hlídaná parkoviště -->
+      <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-6 md:p-7">
+        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-4">Parkovací domy a hlídaná parkoviště</h3>
+        <div class="space-y-5 text-gray-700 leading-relaxed">
+          <div>
+            <p class="font-semibold text-gray-900">Parking Centrum — parkovací dům</p>
+            <p class="text-sm mt-1">
+              Pramenská 653/2 (severní část města za Městským divadlem). Kryté hlídané parkoviště
+              s kamerovým dohledem, non-stop provoz (obsluha 7–16 h), kapacita 290 míst. Cena: prvních
+              20 minut zdarma, 20 Kč/hod, 240 Kč/den. Jízdní kolo 20 Kč/den. Toto je „Parkovací dům
+              u Městského divadla" zmiňovaný u hotelů Pacifik, Butterfly a Svoboda.
+            </p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900">Parking Centrum — Centrální parkoviště</p>
+            <p class="text-sm mt-1">
+              Kollárova 94/26. Hlídané, nekryté, s parkovacím automatem, non-stop, kapacita 400 míst.
+              Cena: 10 Kč/hod (0,50 €), 50 Kč/den (2 €).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Veřejná parkoviště s automatem -->
+      <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-6 md:p-7">
+        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-4">Veřejná parkoviště s automatem</h3>
+        <div class="space-y-5 text-gray-700 leading-relaxed">
+          <div>
+            <p class="font-semibold text-gray-900">Parkoviště u hotelu Koliba</p>
+            <p class="text-sm mt-1">Dusíkova ulice, 30 míst, nehlídané, 9:00–22:00. Cena cca 10 Kč/hod, 40 Kč/celý den.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900">Parkoviště u hotelu Krakonoš</p>
+            <p class="text-sm mt-1">Mariánské Lázně 660, 50 míst, nehlídané, 9:00–22:00. Cena od 10 Kč/hod, 50 Kč za delší stání.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900">Parkoviště u Oděvy</p>
+            <p class="text-sm mt-1">ul. Boženy Němcové, nehlídané, non-stop. Cena 10 Kč/30 min, 30 Kč/hod.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parkování v centru a lázeňské zóně -->
+    <div class="mt-6 bg-indigo-50 rounded-2xl border border-indigo-100 p-6 md:p-7">
+      <h3 class="font-heading text-lg font-bold text-indigo-800 mb-3">Parkování v centru a lázeňské zóně</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>
+          Ve městě je rozmístěno přes 30 parkovacích automatů. Hodinové sazby se v centru pohybují
+          zhruba od 30 do 50 Kč podle zóny (nejvyšší tarif v lázeňském centru). Pro vjezd do
+          <strong> Lázeňské zóny</strong> je potřeba povolení — hosté ubytovaní v zóně mají výjimku
+          v den příjezdu a odjezdu; jednodenní povolení do lázeňské zóny lze zakoupit z automatu za 20 Kč.
+        </p>
+        <p>
+          <strong>Způsoby platby:</strong> nové automaty přijímají hotovost (Kč i €), platební karty
+          a mobilní aplikaci <strong>ClickPark</strong>, která hlídá konec doby parkování. Ve městě
+          jsou také interaktivní tabule zobrazující počet volných míst v jednotlivých lokalitách.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
