@@ -72,24 +72,24 @@ export const hotels: Hotel[] = [
     },
     features: {
       de: [
-        'Einzigartiges Römisches Bad im Originalzustand von 1896',
-        'Königliches Kabinenbad im historischen Ambiente',
-        'Direkter Zugang zur Kolonnade und zum Křížový pramen',
-        'Umfangreiches Balneologie-Zentrum mit über 60 Behandlungen',
-        'Eleganter Speisesaal mit Halbpension und Diätküche',
-        'Beheizter Innenpool mit Panoramablick auf den Kurpark',
-        'Exklusiver Spa-Bereich mit finnischer Sauna und Dampfbad',
-        'Historische Bibliothek und Musiksalon',
+        'Einzigartiges historisches Römisches Bad von 1896',
+        'Königskabine von König Eduard VII.',
+        'Kaiserkabine von Franz Joseph I.',
+        'Kurkomplex verbunden mit Centrální Lázně und Maria Spa',
+        'Beauty-Zentrum und kosmetische Behandlungen',
+        'Konferenzzentrum Casino',
+        'Wiener Café mit Terrasse',
+        'Waldquelle und Ambrož-Quelle direkt im Hotel',
       ],
       en: [
-        'Unique Roman Bath preserved in its original 1896 condition',
-        'Royal Cabin Bath in a historic setting',
-        'Direct access to the Colonnade and Křížový pramen spring',
-        'Extensive balneology center with over 60 treatments',
-        'Elegant dining hall with half-board and dietary cuisine',
-        'Heated indoor pool with panoramic views of the spa park',
-        'Exclusive spa area with Finnish sauna and steam bath',
-        'Historic library and music salon',
+        'Unique historic Roman Bath from 1896',
+        'Royal Cabin of King Edward VII',
+        'Imperial Cabin of Franz Joseph I',
+        'Spa complex connected to Centrální Lázně and Maria Spa',
+        'Beauty centre and cosmetic treatments',
+        'Casino conference centre',
+        'Viennese café with terrace',
+        'Forest Spring and Ambrož Spring inside the hotel',
       ],
       cs: [
         'Unikátní historické Římské lázně z roku 1896',
@@ -113,16 +113,8 @@ export const hotels: Hotel[] = [
       ],
     },
     description: {
-      de: `Das Nové Lázně ist das Flaggschiff unter den Ensana Hotels in Marienbad und eines der bedeutendsten Kurhotels Europas. Das im Jahr 1896 im neorenaissance Stil erbaute Haus verbindet auf einzigartige Weise historische Pracht mit modernem medizinischem Know-how. Herzstück des Hotels ist das legendäre Römische Bad, das als einziges seiner Art in Mitteleuropa im Originalzustand erhalten geblieben ist. Unter kunstvoll verzierten Gewölbedecken und umgeben von handbemalten Fliesen erleben Gäste hier Baderituale, die einst dem europäischen Adel vorbehalten waren.
-
-Das Hotel liegt direkt an der Kolonnade, nur wenige Schritte vom berühmten Křížový pramen entfernt. Diese zentrale Lage ermöglicht es Gästen, die heilenden Mineralquellen Marienbads bequem in ihren Alltag zu integrieren. Das hauseigene Balneologie-Zentrum bietet über 60 verschiedene Behandlungen an, darunter CO2-Bäder, Mineralbäder, Moorpackungen, Paraffinwickel und Unterwassermassagen — alle unter ärztlicher Aufsicht und individuell auf die Bedürfnisse jedes Gastes abgestimmt.
-
-Die 97 großzügig geschnittenen Zimmer und Suiten verbinden historischen Charme mit zeitgemäßem Komfort. Viele bieten einen herrlichen Blick auf den Kurpark oder die Kolonnade. Der elegante Speisesaal serviert eine ausgewogene Küche, die traditionelle böhmische Rezepte mit modernen Ernährungskonzepten vereint. Ob zur klassischen Trinkkur, zur medizinischen Rehabilitation oder als luxuriöser Wellness-Aufenthalt — das Nové Lázně bietet ein Kurerlebnis auf höchstem Niveau, das in Europa seinesgleichen sucht.`,
-      en: `Nové Lázně is the flagship of Ensana's hotels in Marienbad and one of the most distinguished spa hotels in Europe. Built in 1896 in the Neo-Renaissance style, this remarkable property uniquely combines historical grandeur with modern medical expertise. At the heart of the hotel lies the legendary Roman Bath, the only one of its kind in Central Europe to have been preserved in its original condition. Beneath ornately decorated vaulted ceilings and surrounded by hand-painted tiles, guests experience bathing rituals that were once reserved for European royalty.
-
-The hotel is situated directly on the Colonnade, just steps from the famous Křížový pramen spring. This central location allows guests to seamlessly integrate the healing mineral springs of Marienbad into their daily routine. The in-house balneology center offers over 60 different treatments, including CO2 baths, mineral baths, peat wraps, paraffin wraps, and underwater massages — all supervised by physicians and individually tailored to each guest's needs.
-
-The 97 spacious rooms and suites blend historic charm with contemporary comfort. Many offer stunning views of the spa park or the Colonnade. The elegant dining hall serves a balanced cuisine that combines traditional Bohemian recipes with modern nutritional concepts. Whether you are visiting for a classic drinking cure, medical rehabilitation, or a luxurious wellness retreat, Nové Lázně delivers a spa experience of the highest caliber, unmatched anywhere in Europe.`,
+      de: `Das Nové Lázně ist das fünf-Sterne-Flaggschiff der Ensana Hotels in Mariánské Lázně. Das 1896 im italienischen Neorenaissance-Stil vom Architekten Josef Schaffer erbaute Haus beherbergt das einzigartige Römische Bad mit originalen Marmorbecken, die Königskabine von König Eduard VII. und die Kaiserkabine von Franz Joseph I. Das Hotel bietet über 60 balneologische Anwendungen unter ärztlicher Aufsicht, darunter exklusive Gasinjektionen mit natürlichem CO₂. Über gedeckte Korridore mit Centrální Lázně und Maria Spa verbunden, bildet es den größten historischen Kurkomplex Böhmens.`,
+      en: `Nové Lázně is the five-star flagship of the Ensana hotels in Mariánské Lázně. Built in 1896 in the Italian Neo-Renaissance style by architect Josef Schaffer, it houses the unique Roman Bath with original marble pools, the Royal Cabin of King Edward VII and the Imperial Cabin of Franz Joseph I. The hotel offers more than 60 balneological treatments under medical supervision, including exclusive gas injections with natural CO₂. Connected by covered corridors to Centrální Lázně and Maria Spa, it forms the largest historic spa complex in Bohemia.`,
       cs: `Nové Lázně jsou vlajkovým pětihvězdičkovým hotelem sítě Ensana v Mariánských Lázních. Budova z roku 1896 v italském novorenesančním stylu od architekta Josefa Schaffera ukrývá unikátní Římské lázně s původními mramorovými bazény, Královskou kabinu krále Edwarda VII. a Císařskou kabinu Františka Josefa I. Hotel nabízí více než 60 balneologických procedur pod lékařským dohledem, včetně exkluzivních plynových injekcí přírodním CO₂. Propojený krytými koridory s Centrálními Lázněmi a Maria Spa tvoří největší historický lázeňský komplex v Čechách.`,
       ru: `Нове Лазне — флагманский пятизвёздочный отель сети Ensana в Марианских Лазнях. Здание 1896 года в стиле итальянского неоренессанса, спроектированное архитектором Йозефом Шаффером, хранит уникальные Римские бани с оригинальными мраморными бассейнами, Королевскую кабину короля Эдуарда VII и Императорскую кабину Франца Иосифа I. Отель предлагает более 60 бальнеологических процедур под медицинским наблюдением, включая эксклюзивные газовые инъекции природным CO₂.`,
     },
@@ -224,24 +216,24 @@ The 97 spacious rooms and suites blend historic charm with contemporary comfort.
     },
     features: {
       de: [
-        'Zentrale Lage direkt am Goetheplatz',
-        'Modernes Wellness- und Balneologie-Zentrum',
-        'Großzügiger Innenpool mit Whirlpool-Bereich',
-        'Direkter Zugang zu den Mineralquellen der Kolonnade',
-        'Umfassendes medizinisches Diagnosezentrum',
-        'Elegantes Restaurant mit Kurküche',
-        'Fitnessraum und Yogaraum',
-        'Historische Fassade mit modernem Interieur',
+        'Größtes historisches Kurzentrum der Stadt (1 650 m²)',
+        'Einzigartiger Marias Gaspool mit CO₂',
+        'Verbindung zum Hotel Nové Lázně und Maria Spa',
+        'Premier Fitnesszentrum',
+        'Bewegungszentrum Five Concept',
+        'Ambrož-Quelle und Balbín-Quelle direkt im Hotel',
+        'Restaurant Goethe mit Live-Musik',
+        'Kinderspielplatz und Entspannungsgarten',
       ],
       en: [
-        'Central location directly on Goethe Square',
-        'Modern wellness and balneology center',
-        'Spacious indoor pool with whirlpool area',
-        'Direct access to the Colonnade mineral springs',
-        'Comprehensive medical diagnostic center',
-        'Elegant restaurant with spa cuisine',
-        'Fitness room and yoga studio',
-        'Historic facade with modern interior',
+        'Largest historic spa centre in town (1,650 m²)',
+        'Unique Maria\'s gas pool with CO₂',
+        'Connection to Hotel Nové Lázně and Maria Spa',
+        'Premier Fitness centre',
+        'Five Concept movement centre',
+        'Ambrož Spring and Balbín Spring inside the hotel',
+        'Restaurant Goethe with live music',
+        'Children\'s playground and relaxation garden',
       ],
       cs: [
         'Největší historické lázeňské centrum ve městě (1 650 m²)',
@@ -265,16 +257,8 @@ The 97 spacious rooms and suites blend historic charm with contemporary comfort.
       ],
     },
     description: {
-      de: `Das Centrální Lázně ist das traditionsreichste Kurhaus Marienbads und blickt auf eine Geschichte zurück, die bis ins Jahr 1812 reicht. Direkt am Goetheplatz gelegen — dort, wo Johann Wolfgang von Goethe einst selbst die Heilquellen aufsuchte — verbindet dieses Vier-Sterne-Hotel klassizistische Eleganz mit einem der modernsten Wellness-Zentren der Region. Die zentrale Lage macht es zum idealen Ausgangspunkt, um die Kolonnade, die Singenden Fontänen und die historische Altstadt zu Fuß zu erkunden.
-
-Das Herzstück des Hotels ist sein großzügiges Balneologie- und Wellness-Zentrum, das auf über 2.000 Quadratmetern modernste Behandlungsräume, einen Innenpool mit Whirlpool und einen vollständig ausgestatteten Fitnessbereich bietet. Das medizinische Team unter ärztlicher Leitung erstellt für jeden Gast einen individuellen Behandlungsplan, der auf einer gründlichen Eingangsuntersuchung basiert. Von klassischen Kuranwendungen wie Mineralbädern und Moorpackungen bis hin zu modernen physiotherapeutischen Verfahren deckt das Angebot das gesamte Spektrum der Kurmedizin ab.
-
-Die 144 komfortablen Zimmer wurden in den letzten Jahren behutsam renoviert und verbinden zeitgenössisches Design mit dem historischen Charakter des Gebäudes. Das hoteleigene Restaurant serviert eine ausgewogene Kurküche, die schmackhaft und gesundheitsbewusst zugleich ist. Für Gäste, die einen medizinisch betreuten Kuraufenthalt mit dem Komfort eines modernen Hotels verbinden möchten, ist das Centrální Lázně eine ausgezeichnete Wahl — es vereint die Tradition der böhmischen Bäderkultur mit den Ansprüchen des 21. Jahrhunderts.`,
-      en: `Centrální Lázně is the most historically significant spa house in Marienbad, with a heritage stretching back to 1812. Located directly on Goethe Square — where Johann Wolfgang von Goethe himself once sought the healing springs — this four-star hotel combines classical elegance with one of the most modern wellness centers in the region. Its central location makes it the ideal starting point for exploring the Colonnade, the Singing Fountains, and the historic old town on foot.
-
-At the heart of the hotel is its expansive balneology and wellness center, which spans over 2,000 square meters and features state-of-the-art treatment rooms, an indoor pool with whirlpool, and a fully equipped fitness area. The medical team, led by qualified physicians, creates an individual treatment plan for each guest based on a thorough initial examination. From classic spa treatments such as mineral baths and peat wraps to modern physiotherapy procedures, the offerings cover the full spectrum of spa medicine.
-
-The 144 comfortable rooms have been carefully renovated in recent years, blending contemporary design with the historic character of the building. The hotel's restaurant serves a balanced spa cuisine that is both flavorful and health-conscious. For guests who wish to combine a medically supervised spa stay with the comfort of a modern hotel, Centrální Lázně is an excellent choice — it unites the tradition of Bohemian spa culture with the standards of the 21st century.`,
+      de: `Das Centrální Lázně ist ein Vier-Sterne-Superior-Hotel direkt an der Hauptkolonnade und den Mineralquellen. Das 1 650 m² große Kurzentrum umfasst 70 Behandlungskabinen und das einzigartige Marias Gasbecken — eine traditionelle Heilmethode mit natürlichem CO₂ aus der Maria-Quelle, die seit 1905 angewendet wird. Über gedeckte Korridore ist das Hotel mit Nové Lázně und Maria Spa verbunden.`,
+      en: `Centrální Lázně is a four-star Superior hotel right by the Main Colonnade and the mineral springs. Its 1,650 m² spa centre comprises 70 treatment cabins and the unique Maria's gas pool — a traditional healing method using natural CO₂ from the Maria Spring, in use since 1905. The hotel is connected by covered corridors to Nové Lázně and Maria Spa.`,
       cs: `Centrální Lázně jsou čtyřhvězdičkový Superior hotel přímo u Hlavní kolonády a minerálních pramenů. Lázeňské centrum o rozloze 1 650 m² zahrnuje 70 procedurálních kabin a unikátní Mariino plynové jezírko — tradiční léčebnou metodu s přírodním CO₂ z Mariina pramene, používanou od roku 1905. Hotel je propojen krytými koridory s Novými Lázněmi a Maria Spa.`,
       ru: `Централни Лазне — четырёхзвёздочный отель Superior прямо у Главной колоннады и минеральных источников. Курортный центр площадью 1 650 м² включает 70 процедурных кабин и уникальное газовое озеро Марии — традиционный лечебный метод с природным CO₂ из источника Марии, применяемый с 1905 года. Отель соединён крытыми коридорами с Нове Лазне и Maria Spa.`,
     },
@@ -376,27 +360,27 @@ The 144 comfortable rooms have been carefully renovated in recent years, blendin
     },
     features: {
       de: [
-        'Prachtvolle Jugendstil-Architektur von 1905',
-        'Verbindungsgang zum Schwesterhotel Imperial',
-        'Gemeinsamer Spa- und Wellnessbereich mit dem Imperial',
-        'Lage am Goetheplatz mit Blick auf die Kolonnade',
-        'Gemütliche Lobby-Bar im historischen Ambiente',
-        'Restaurant mit böhmischer und internationaler Küche',
-        'Aufzug und barrierefreie Zimmer verfügbar',
-        'Concierge-Service für Ausflüge und Transfers',
+        'Größter Hotelpool in Mariánské Lázně (Aqua Wellness, Becken 18 × 8 m)',
+        'Galerie Atrium — Ausstellungen und Kulturveranstaltungen',
+        'Café Imperial mit zwei Terrassen',
+        'Salzhöhle',
+        'Kinderspielecke',
+        'Balbín-Quelle direkt im Hotel',
+        'Restaurant Franz Josef mit Stuckdecken',
+        'Tiefgarage',
       ],
       en: [
-        'Magnificent Art Nouveau architecture from 1905',
-        'Connecting passage to sister hotel Imperial',
-        'Shared spa and wellness area with Hotel Imperial',
-        'Location on Goethe Square overlooking the Colonnade',
-        'Cozy lobby bar in a historic setting',
-        'Restaurant with Bohemian and international cuisine',
-        'Elevator and accessible rooms available',
-        'Concierge service for excursions and transfers',
+        'Largest hotel pool in Mariánské Lázně (Aqua Wellness, 18 × 8 m pool)',
+        'Atrium Gallery — exhibitions and cultural events',
+        'Café Imperial with two terraces',
+        'Salt cave',
+        'Children\'s play corner',
+        'Balbín Spring inside the hotel',
+        'Restaurant Franz Josef with stucco ceilings',
+        'Underground parking',
       ],
       cs: [
-        'Největší hotelový bazén v Mariánských Lázních (Aqua Wellness, 2 100 m²)',
+        'Největší hotelový bazén v Mariánských Lázních (Aqua Wellness, bazén 18 × 8 m)',
         'Galerie Atrium — výstavy a kulturní akce',
         'Café Imperial se dvěma terasami',
         'Solná jeskyně',
@@ -406,7 +390,7 @@ The 144 comfortable rooms have been carefully renovated in recent years, blendin
         'Podzemní parkování',
       ],
       ru: [
-        'Крупнейший гостиничный бассейн в Марианских Лазнях (Aqua Wellness, 2 100 м²)',
+        'Крупнейший гостиничный бассейн в Марианских Лазнях (Aqua Wellness, бассейн 18 × 8 м)',
         'Галерея Атриум — выставки и культурные мероприятия',
         'Кафе Imperial с двумя террасами',
         'Соляная пещера',
@@ -417,18 +401,10 @@ The 144 comfortable rooms have been carefully renovated in recent years, blendin
       ],
     },
     description: {
-      de: `Das Hotel Hvězda ist ein Juwel des Jugendstils und zählt zu den architektonisch beeindruckendsten Hotels Marienbads. Seit seiner Eröffnung im Jahr 1905 empfängt es Gäste in einem Ambiente, das die Eleganz der Belle Époque in jedem Detail spürbar macht — von den geschwungenen Fassadenelementen über die kunstvollen Stuckdecken bis hin zu den großzügigen Fensterfronten, die das Gebäude in natürliches Licht tauchen.
-
-Eine Besonderheit des Hvězda ist die direkte Verbindung zum benachbarten Hotel Imperial über einen eleganten Innengang. Gäste des Hvězda haben dadurch uneingeschränkten Zugang zum gemeinsamen Spa- und Wellnessbereich, der zu den größten der Stadt zählt. Dieser umfasst einen Innenpool, verschiedene Saunen, Dampfbäder und ein vollständiges Balneologie-Zentrum mit einem breiten Spektrum an Kuranwendungen. Die Zusammenarbeit beider Häuser ermöglicht ein besonders vielfältiges Angebot, ohne dass Gäste auf die persönliche Atmosphäre eines mittelgroßen Hotels verzichten müssen.
-
-Der Komplex Hvězda umfasst drei miteinander verbundene Häuser — Hvězda, Imperial und Neapol — mit insgesamt 238 geschmackvoll eingerichteten Zimmern, die Jugendstil-Charme mit modernem Komfort verbinden. Viele Zimmer bieten Blick auf den Goetheplatz oder den Kurpark. Das hauseigene Restaurant serviert sowohl traditionelle böhmische Spezialitäten als auch internationale Gerichte, stets mit einem Fokus auf frische, regionale Zutaten. Die Lage am Goetheplatz, nur einen kurzen Spaziergang von der Kolonnade und den wichtigsten Mineralquellen entfernt, macht das Hvězda zu einer hervorragenden Wahl für alle, die Jugendstil-Flair, medizinische Kur und Stadtnähe vereinen möchten.`,
-      en: `Hotel Hvězda is an Art Nouveau gem and one of the most architecturally striking hotels in Marienbad. Since its opening in 1905, it has welcomed guests in an ambiance that makes the elegance of the Belle Époque palpable in every detail — from the sweeping facade elements and ornate stucco ceilings to the generous window fronts that bathe the building in natural light.
-
-A distinctive feature of the Hvězda is its direct connection to the neighboring Hotel Imperial through an elegant indoor passage. Guests of the Hvězda thus enjoy unrestricted access to the shared spa and wellness area, which is among the largest in the city. This includes an indoor pool, various saunas, steam baths, and a complete balneology center offering a wide range of spa treatments. The collaboration between the two properties provides an exceptionally diverse range of services while preserving the intimate atmosphere of a mid-sized hotel.
-
-The Hvězda complex comprises three interconnected buildings — Hvězda, Imperial and Neapol — with a total of 238 tastefully furnished rooms, blending Art Nouveau charm with modern comfort. Many rooms offer views of Goethe Square or the spa park. The in-house restaurant serves both traditional Bohemian specialties and international dishes, always with a focus on fresh, regional ingredients. Its location on Goethe Square, just a short walk from the Colonnade and the most important mineral springs, makes the Hvězda an outstanding choice for those who want to combine Art Nouveau flair, medical spa treatments, and proximity to the town center.`,
-      cs: `Hvězda je čtyřhvězdičkový Superior hotel v novorenesančním stylu z roku 1905, tvořící komplex s hotely Imperial a Neapol. Disponuje největším hotelovým bazénem ve městě — Aqua Wellness o rozloze 2 100 m² s bazénem, vířivkou, saunami a solnou jeskyní. Lázeňské centrum nabízí 30 procedurálních kabin.`,
-      ru: `Гвезда — четырёхзвёздочный отель Superior в стиле неоренессанса 1905 года, образующий комплекс с отелями Imperial и Neapol. Располагает крупнейшим гостиничным бассейном в городе — Aqua Wellness площадью 2 100 м² с бассейном, джакузи, саунами и соляной пещерой. Курортный центр предлагает 30 процедурных кабин.`,
+      de: `Das Hvězda ist ein Vier-Sterne-Superior-Hotel im Jugendstil von 1905, das gemeinsam mit den Hotels Imperial und Neapol einen Komplex bildet. Es verfügt über den größten Hotelpool der Stadt — das Aqua Wellness mit einem 18 × 8 m großen Becken, Whirlpool, Saunen und Salzhöhle. Das Kurzentrum bietet 30 Behandlungskabinen.`,
+      en: `Hvězda is a four-star Superior hotel in Art Nouveau style from 1905, forming a complex with the Imperial and Neapol hotels. It boasts the largest hotel pool in town — the Aqua Wellness with an 18 × 8 m pool, whirlpool, saunas and a salt cave. The spa centre offers 30 treatment cabins.`,
+      cs: `Hvězda je čtyřhvězdičkový Superior hotel v secesním stylu z roku 1905, tvořící komplex s hotely Imperial a Neapol. Disponuje největším hotelovým bazénem ve městě — Aqua Wellness s bazénem 18 × 8 m, vířivkou, saunami a solnou jeskyní. Lázeňské centrum nabízí 30 procedurálních kabin.`,
+      ru: `Гвезда — четырёхзвёздочный отель Superior в стиле модерн 1905 года, образующий комплекс с отелями Imperial и Neapol. Располагает крупнейшим гостиничным бассейном в городе — Aqua Wellness с бассейном 18 × 8 м, джакузи, саунами и соляной пещерой. Курортный центр предлагает 30 процедурных кабин.`,
     },
     treatments: {
       de: [
@@ -529,23 +505,25 @@ The Hvězda complex comprises three interconnected buildings — Hvězda, Imperi
     features: {
       de: [
         'Modernes Design mit lichtdurchflutetem Atrium',
-        'Familienfreundlich mit Spielbereich für Kinder',
-        'Großzügiger Wellnessbereich mit Innenpool und Saunawelt',
+        'Kinderspielecke',
+        'Großzügiges Wellnesszentrum mit Innenpool und Saunawelt',
         'Lage an der Hauptpromenade nahe der Kolonnade',
         'Barrierefreie Zimmer und Einrichtungen',
-        'Restaurant mit Buffet und Live-Cooking-Station',
-        'Fahrradverleih und organisierte Wanderungen',
-        'Moderne Behandlungsräume mit neuester Technik',
+        'Restaurant mit Buffet und Live-Cooking',
+        'Fahrradverleih und organisierte Touren',
+        'Moderne Behandlungsräume',
+        'Ferdinand-Quelle direkt im Hotel',
       ],
       en: [
-        'Modern design with light-filled atrium',
-        'Family-friendly with children\'s play corner',
-        'Spacious wellness area with indoor pool and sauna world',
-        'Located on the main promenade near the Colonnade',
+        'Modern design with a light-filled atrium',
+        'Children\'s play corner',
+        'Spacious wellness centre with indoor pool and sauna world',
+        'Location on the main promenade near the Colonnade',
         'Accessible rooms and facilities',
-        'Restaurant with buffet and live cooking station',
-        'Bicycle rental and organized hiking tours',
-        'Modern treatment rooms with latest equipment',
+        'Restaurant with buffet and live cooking',
+        'Bicycle rental and organized tours',
+        'Modern treatment rooms',
+        'Ferdinand Spring inside the hotel',
       ],
       cs: [
         'Moderní design se světlým atriem',
@@ -571,17 +549,8 @@ The Hvězda complex comprises three interconnected buildings — Hvězda, Imperi
       ],
     },
     description: {
-      de: `Das Butterfly ist das modernste der Ensana Hotels in Marienbad und wurde im Jahr 2003 erbaut, um eine neue Generation von Kurgästen anzusprechen. Mit seinem markanten, zeitgenössischen Design — geprägt von einem lichtdurchfluteten Atrium, klaren Linien und großzügigen Glasfronten — setzt es einen bewussten Kontrast zu den historischen Häusern der Stadt, ohne dabei auf den Kern der Marienbader Kurtradition zu verzichten.
-
-Besonders hervorzuheben ist die Familienfreundlichkeit des Hotels. Als einziges Ensana-Haus in Marienbad bietet das Butterfly einen eigenen Spielbereich für Kinder, sodass Familien ihren Kuraufenthalt entspannt genießen können. Der großzügige Wellnessbereich erstreckt sich über zwei Etagen und umfasst einen Innenpool, eine Saunawelt mit verschiedenen Aufgüssen, Dampfbäder und Ruhebereiche mit Blick auf den Kurpark.
-
-Die 95 Zimmer des Butterfly sind hell, geräumig und funktional gestaltet — ideal für Familien und Gäste, die Wert auf zeitgemäßen Komfort legen. Viele Zimmer sind barrierefrei zugänglich. Das Restaurant überrascht mit einem abwechslungsreichen Buffet und einer Live-Cooking-Station, an der Köche frische Gerichte vor den Augen der Gäste zubereiten. Die Lage an der Hauptpromenade ermöglicht kurze Wege zur Kolonnade und zu den Mineralquellen. Für alle, die einen medizinisch fundierten Kuraufenthalt in modernem Ambiente suchen und vielleicht mit der ganzen Familie anreisen, ist das Butterfly die perfekte Wahl.`,
-      en: `The Butterfly is the most modern of Ensana's hotels in Marienbad, built in 2003 to appeal to a new generation of spa guests. With its distinctive contemporary design — characterized by a light-filled atrium, clean lines, and generous glass facades — it provides a deliberate contrast to the city's historic properties while staying true to the core of Marienbad's spa tradition.
-
-Particularly noteworthy is the hotel's family-friendliness. As the only Ensana property in Marienbad with a dedicated children's play corner, the Butterfly is the natural choice for families seeking a spa holiday together. The spacious wellness area spans two floors and includes an indoor pool, a sauna world with various infusions, steam baths, and relaxation areas with views of the spa park.
-
-The 95 rooms of the Butterfly are bright, spacious, and functionally designed — ideal for families and guests who value contemporary comfort. Many rooms are fully accessible. The restaurant impresses with a varied buffet and a live cooking station where chefs prepare fresh dishes in front of guests. Its location on the main promenade allows for short walks to the Colonnade and the mineral springs. For anyone seeking a medically grounded spa stay in a modern setting, perhaps traveling with the whole family, the Butterfly is the perfect choice.`,
-      cs: `Butterfly je nejmodernější hotel sítě Ensana v Mariánských Lázních, postavený v roce 2003. S dětským koutkem a prostorným wellness centrem se dvěma podlažími je ideální volbou pro rodiny. 95 světlých pokojů, řada z nich bezbariérových, kombinuje současný design s plnohodnotnou lázeňskou léčbou. Ferdinandův pramen je přiveden přímo do hotelu.`,
+      de: `Das Butterfly ist das modernste Hotel der Ensana-Gruppe in Mariánské Lázně, erbaut im Jahr 2003. Mit einer Kinderspielecke und einem großzügigen, zweistöckigen Wellnesszentrum ist es die ideale Wahl für Familien. 95 helle Zimmer, viele davon barrierefrei, verbinden zeitgenössisches Design mit einer vollwertigen Kurbehandlung. Die Ferdinand-Quelle ist direkt ins Hotel geleitet.`,
+      en: `The Butterfly is the most modern hotel in the Ensana group in Mariánské Lázně, built in 2003. With a children's play corner and a spacious two-storey wellness centre, it is the ideal choice for families. 95 bright rooms, many of them accessible, combine contemporary design with full-fledged spa treatment. The Ferdinand Spring is piped directly into the hotel.`,
       ru: `Баттерфляй — самый современный отель сети Ensana в Марианских Лазнях, построенный в 2003 году. С детским уголком и просторным велнес-центром на двух этажах является идеальным выбором для семей. 95 светлых номеров, многие из которых безбарьерные, сочетают современный дизайн с полноценным курортным лечением. Источник Фердинанда подведён непосредственно к отелю.`,
     },
     treatments: {
@@ -726,7 +695,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
       de: `Das Pacifik ist ein elegantes Vier-Sterne-Kurhotel im neobarocken Stil, das seit 1906 Gäste in Marienbad empfängt. Direkt am Mírové náměstí gelegen, verbindet es historische Architektur mit einem modernen Balneologie-Zentrum, das ein breites Spektrum an Kuranwendungen bietet — von CO2-Bädern und Moorpackungen bis hin zu Massagen und Elektrotherapie. Das hauseigene medizinische Team erstellt für jeden Gast einen individuellen Behandlungsplan. Mit seinem Innenpool, dem Saunabereich und dem Restaurant mit ausgewogener Kurküche bietet das Pacifik alles für einen erholsamen Kuraufenthalt in komfortablem Ambiente.`,
       en: `The Pacifik is an elegant four-star spa hotel in Neo-Baroque style that has been welcoming guests to Marienbad since 1906. Located directly on Mírové Square, it combines historic architecture with a modern balneology center offering a wide range of spa treatments — from CO2 baths and peat wraps to massages and electrotherapy. The in-house medical team creates an individual treatment plan for each guest. With its indoor pool, sauna area, and restaurant serving balanced spa cuisine, the Pacifik provides everything for a restorative spa stay in a comfortable setting.`,
       cs: `Pacifik je elegantní čtyřhvězdičkový lázeňský hotel v neobarokním stylu, který hostí návštěvníky Mariánských Lázní od roku 1906. Přímo na Mírovém náměstí spojuje historickou architekturu s moderním balneologickým centrem nabízejícím široké spektrum lázeňských procedur — od CO2 koupelí a rašelinových zábalů po masáže a elektroterapii. Lékařský tým sestaví každému hostovi individuální léčebný plán. S vnitřním bazénem, saunovým světem a restaurací s vyváženou lázeňskou kuchyní nabízí Pacifik vše pro ozdravný pobyt v komfortním prostředí.`,
-      ru: `Пацифик — элегантный четырёхзвёздочный курортный отель в необарочном стиле, принимающий гостей в Марианских Лазнях с 1906 года. Расположенный на площади Мира, он сочетает историческую архитектуру с современным бальнеологическим центром, предлагающим широкий спектр процедур — от CO2-ванн и торфяных обёртываний до массажей и электротерапии. Медицинская команда составляет индивидуальный план лечения для каждого гостя.`,
+      ru: `Пацифик — элегантный четырёхзвёздочный курортный отель в необарочном стиле, принимающий гостей в Марианских Лазнях с 1906 года. Расположенный на площади Мира, он сочетает историческую архитектуру с современным бальнеологическим центром, предлагающим широкий спектр процедур — от CO2-ванн и торфяных обёртываний до массажей и электротерапии. Медицинская команда составляет индивидуальный план лечения для каждого гостя. С крытым бассейном, миром саун и рестораном со сбалансированной курортной кухней Пацифик предлагает всё для оздоровительного отдыха в комфортной обстановке.`,
     },
     treatments: {
       de: [
@@ -858,7 +827,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
       de: `Das Vltava ist ein gastfreundliches Drei-Sterne-Kurhotel an der Hauptpromenade von Marienbad, das sich durch ein ausgezeichnetes Preis-Leistungs-Verhältnis auszeichnet. Das eigene Kurzentrum bietet ein breites Spektrum an Behandlungen unter ärztlicher Aufsicht. Die komfortablen Zimmer und das Restaurant mit ausgewogener Kurküche machen das Vltava zur idealen Wahl für preisbewusste Kurgäste, die Wert auf medizinische Qualität legen.`,
       en: `The Vltava is a welcoming three-star spa hotel on the main promenade of Marienbad, distinguished by its excellent value for money. The in-house treatment center offers a broad spectrum of therapies under medical supervision. Comfortable rooms and a restaurant serving balanced spa cuisine make the Vltava the ideal choice for budget-conscious spa guests who value medical quality.`,
       cs: `Vltava je pohostinný tříhvězdičkový lázeňský hotel na hlavní promenádě Mariánských Lázní, který se vyznačuje vynikajícím poměrem cena/výkon. Vlastní léčebné centrum nabízí širokou škálu procedur pod lékařským dohledem. Komfortní pokoje a restaurace s vyváženou lázeňskou kuchyní dělají z Vltavy ideální volbu pro hosty, kteří hledají kvalitní léčbu za rozumnou cenu.`,
-      ru: `Влтава — гостеприимный трёхзвёздочный курортный отель на главной променаде Марианских Лазней, отличающийся превосходным соотношением цены и качества. Собственный лечебный центр предлагает широкий выбор процедур под медицинским наблюдением.`,
+      ru: `Влтава — гостеприимный трёхзвёздочный курортный отель на главной променаде Марианских Лазней, отличающийся превосходным соотношением цены и качества. Собственный лечебный центр предлагает широкий выбор процедур под медицинским наблюдением. Комфортабельные номера и ресторан со сбалансированной курортной кухней делают Влтаву идеальным выбором для гостей, ищущих качественное лечение по разумной цене.`,
     },
     treatments: {
       de: [
@@ -990,7 +959,7 @@ The 95 rooms of the Butterfly are bright, spacious, and functionally designed �
       de: `Das Svoboda ist ein charmantes Drei-Sterne-Superior-Kurhotel in ruhiger Lage nahe dem Slavkovský les, das sich durch seine besonders persönliche und familiäre Atmosphäre auszeichnet. Das im Jahr 1890 erbaute Haus verbindet Neorenaissance-Architektur mit einem eigenen Kurzentrum, das ein breites Spektrum an Behandlungen unter ärztlicher Aufsicht bietet. Die Sonnenterrasse mit Parkblick und das Restaurant mit ausgewogener Kurküche schaffen ein Ambiente, das zum Verweilen einlädt. Für Kurgäste, die Ruhe, Natur und medizinische Qualität in einem unkomplizierten Rahmen suchen, ist das Svoboda die perfekte Adresse.`,
       en: `The Svoboda is a charming three-star Superior spa hotel in a quiet location near the Slavkov Forest, distinguished by its particularly personal and familiar atmosphere. Built in 1890, the Neo-Renaissance property combines period architecture with an in-house treatment center offering a broad range of therapies under medical supervision. The sun terrace with park views and the restaurant serving balanced spa cuisine create an inviting ambiance. For spa guests seeking tranquility, nature, and medical quality in an uncomplicated setting, the Svoboda is the perfect address.`,
       cs: `Svoboda je okouzlující tříhvězdičkový Superior lázeňský hotel v klidné poloze poblíž Slavkovského lesa, který se vyznačuje obzvláště osobní a rodinnou atmosférou. Hotel z roku 1890 spojuje neorenesanční architekturu s vlastním léčebným centrem nabízejícím široké spektrum procedur pod lékařským dohledem. Sluneční terasa s výhledem na park a restaurace s vyváženou lázeňskou kuchyní vytvářejí příjemné prostředí. Pro hosty hledající klid, přírodu a kvalitní léčbu je Svoboda ideální volbou.`,
-      ru: `Свобода — очаровательный трёхзвёздочный Superior курортный отель в тихом месте рядом со Славковским лесом, отличающийся особенно домашней и уютной атмосферой. Построенный в 1890 году, он сочетает неоренессансную архитектуру с собственным лечебным центром, предлагающим широкий спектр процедур под медицинским наблюдением. Солнечная терраса с видом на парк и ресторан со сбалансированной курортной кухней создают уютную обстановку.`,
+      ru: `Свобода — очаровательный трёхзвёздочный Superior курортный отель в тихом месте рядом со Славковским лесом, отличающийся особенно домашней и уютной атмосферой. Построенный в 1890 году, он сочетает неоренессансную архитектуру с собственным лечебным центром, предлагающим широкий спектр процедур под медицинским наблюдением. Солнечная терраса с видом на парк и ресторан со сбалансированной курортной кухней создают уютную обстановку. Для гостей, ищущих спокойствие, природу и качественное лечение, Свобода — идеальный выбор.`,
     },
     treatments: {
       de: [
