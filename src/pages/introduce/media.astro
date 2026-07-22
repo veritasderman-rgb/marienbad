@@ -1,0 +1,287 @@
+---
+/**
+ * Partner media library — marienbad.com/introduce/media
+ *
+ * A clickable index of all official Ensana / Mariánské Lázně video content
+ * (YouTube) and downloadable photo galleries, grouped with short descriptions.
+ * Sourced from the Ensana "Download links" media kit.
+ *
+ * Unlisted like /introduce: noindex + kept out of the sitemap (the astro.config
+ * NOINDEXED_PATHS 'introduce' entry matches this path too).
+ */
+import Base from '@/layouts/Base.astro'
+
+export const prerender = true
+
+type Lang = 'CZ' | 'DE' | 'EN' | 'RU' | 'AR'
+interface VideoItem {
+  title: string
+  desc?: string
+  /** single video/channel link */
+  href?: string
+  /** localized variants */
+  langs?: { lang: Lang; href: string }[]
+}
+interface VideoGroup {
+  group: string
+  items: VideoItem[]
+}
+
+const videoGroups: VideoGroup[] = [
+  {
+    group: 'Destination',
+    items: [
+      { title: 'Ensana Czech — YouTube channel', desc: 'All Ensana Czech videos in one place.', href: 'https://www.youtube.com/@EnsanaCzech' },
+      { title: 'Mariánské Lázně', desc: 'Showcase film of the spa town.', href: 'https://youtu.be/4zygWCefKdw' },
+      { title: 'Climatic spa', desc: "Marienbad's status as a climatic health resort.", href: 'https://youtu.be/_tVpUIj1vAo' },
+    ],
+  },
+  {
+    group: 'Ensana hotels',
+    items: [
+      { title: 'Nové Lázně', desc: 'The flagship spa hotel with the Roman Baths.', href: 'https://youtu.be/EXfHDetR6OY' },
+      { title: 'Centrální Lázně', desc: 'Spa hotel in the heart of the colonnade.', href: 'https://youtu.be/XUktMG66mGs' },
+      { title: 'Hvězda', desc: 'Spa hotel presentation.', href: 'https://youtu.be/iu3fskBiQZc' },
+      { title: 'Pacifik', desc: 'Spa hotel presentation.', href: 'https://youtu.be/KkL-EYQLrnQ' },
+      { title: 'Butterfly', desc: 'Spa hotel presentation.', href: 'https://youtu.be/WbQOaTZUDyY' },
+      { title: 'Vltava', desc: 'Spa hotel presentation.', href: 'https://youtu.be/MgpnRrqzEM4' },
+      { title: 'Svoboda', desc: 'Spa hotel presentation.', href: 'https://youtu.be/mSX0YA13Ves' },
+    ],
+  },
+  {
+    group: 'Restaurants & conference',
+    items: [
+      { title: 'Royal Restaurant (Nové Lázně)', desc: 'Fine dining at Hotel Nové Lázně.', href: 'https://youtu.be/_QUcktFjG_k' },
+      { title: 'Conference halls — Casino', desc: 'Meeting & event spaces at the Casino.', href: 'https://youtu.be/yBGPJDL_C9g' },
+    ],
+  },
+  {
+    group: 'Spa treatments',
+    items: [
+      {
+        title: 'Spa treatments — overview',
+        desc: 'Introduction to the medical spa treatments.',
+        langs: [
+          { lang: 'CZ', href: 'https://www.youtube.com/watch?v=oNjUwx5ZNK0&t=1s' },
+          { lang: 'DE', href: 'https://www.youtube.com/watch?v=3OYqJX797QA' },
+          { lang: 'EN', href: 'https://www.youtube.com/watch?v=oNjUwx5ZNK0&t=1s' },
+          { lang: 'RU', href: 'https://www.youtube.com/watch?v=7RNcI0Y1Iiw&t=71s' },
+          { lang: 'AR', href: 'https://www.youtube.com/watch?v=oNjUwx5ZNK0&t=1s' },
+        ],
+      },
+    ],
+  },
+  {
+    group: 'Respiratory care',
+    items: [
+      {
+        title: 'Respiratory diseases',
+        desc: 'Spa care for the respiratory tract.',
+        langs: [
+          { lang: 'CZ', href: 'https://youtu.be/9M2u22iANrw' },
+          { lang: 'DE', href: 'https://youtu.be/kZJagEtrFXU' },
+          { lang: 'EN', href: 'https://youtu.be/-uIrU2OKcds' },
+          { lang: 'RU', href: 'https://youtu.be/H_M4JllspO8' },
+        ],
+      },
+      { title: 'Respiratory physiotherapy', desc: 'Czech.', href: 'https://youtu.be/Y-opCPCZj2s' },
+      { title: 'Inhalation', desc: 'Czech.', href: 'https://youtu.be/6CbQnBug1Dc' },
+      { title: 'Drinking cure', desc: 'Czech.', href: 'https://youtu.be/OujefkpfnVY' },
+      { title: 'Mineral baths', desc: 'Czech.', href: 'https://youtu.be/7C7nqIF7yZc' },
+      { title: 'Oxygen therapy', desc: 'Czech.', href: 'https://youtu.be/RbkU6uSJemY' },
+    ],
+  },
+  {
+    group: 'Exercise videos',
+    items: [
+      {
+        title: 'Back exercises',
+        langs: [
+          { lang: 'CZ', href: 'https://youtu.be/dzIpxNVCsms' },
+          { lang: 'DE', href: 'https://youtu.be/iFJs_ODfGcc' },
+          { lang: 'EN', href: 'https://youtu.be/CILnjqHlJWk' },
+          { lang: 'RU', href: 'https://youtu.be/eqcR0HZkm6w' },
+        ],
+      },
+      {
+        title: 'Shoulder exercises',
+        langs: [
+          { lang: 'CZ', href: 'https://youtu.be/GOUUD1jRRa0' },
+          { lang: 'DE', href: 'https://youtu.be/6-MAJAJD2Mw' },
+          { lang: 'EN', href: 'https://youtu.be/1spu7Qzsz_0' },
+          { lang: 'RU', href: 'https://youtu.be/k6S0Eochnis' },
+        ],
+      },
+      {
+        title: 'Exercises for feet',
+        langs: [
+          { lang: 'CZ', href: 'https://youtu.be/T70hA2kX-WM' },
+          { lang: 'DE', href: 'https://youtu.be/nVeSZeIzVTw' },
+          { lang: 'EN', href: 'https://youtu.be/EdTEpCJJG_g' },
+          { lang: 'RU', href: 'https://youtu.be/VDBGkv1sYx8' },
+        ],
+      },
+      {
+        title: 'Fitness & nutrition',
+        langs: [
+          { lang: 'CZ', href: 'https://youtu.be/mEjrlxQtz18' },
+          { lang: 'EN', href: 'https://youtu.be/_YlwZ14BHcY' },
+        ],
+      },
+    ],
+  },
+  {
+    group: 'Other therapies & activities',
+    items: [
+      {
+        title: 'PelviPower therapy',
+        langs: [
+          { lang: 'EN', href: 'https://youtu.be/qWmz7I2LJs0' },
+          { lang: 'CZ', href: 'https://youtu.be/FE8igKMYE7U' },
+        ],
+      },
+      {
+        title: 'Five Konzept',
+        langs: [
+          { lang: 'CZ', href: 'https://youtu.be/GPv_UNdLnlg' },
+          { lang: 'DE', href: 'https://youtu.be/d-sZg5-_SUQ' },
+          { lang: 'EN', href: 'https://youtu.be/whsD5PNaW4o' },
+          { lang: 'RU', href: 'https://youtu.be/0MlqyYm1-V4' },
+        ],
+      },
+      {
+        title: 'Kinesiotaping',
+        langs: [
+          { lang: 'CZ', href: 'https://youtube.com/watch?v=vn5nAULInm4' },
+          { lang: 'DE', href: 'https://youtu.be/1OEGIUJyqnY' },
+        ],
+      },
+      { title: 'Spa scooters', desc: 'Getting around the spa forest on a scooter.', href: 'https://youtu.be/RiakWZK4o_4' },
+    ],
+  },
+]
+
+const GAL = 'https://vps113733.cloud-anywhere.eu/index.php/s'
+const galleries: { title: string; desc: string; href: string }[] = [
+  { title: 'All photography', desc: 'The complete photo library in one folder.', href: `${GAL}/xTAMaCA8nb5HwYx` },
+  { title: 'Mariánské Lázně', desc: 'The destination — colonnade, springs, parks.', href: `${GAL}/qCSCqFtBTkyBK2R` },
+  { title: 'Nové Lázně', desc: 'The flagship spa hotel and Roman Baths.', href: `${GAL}/9AdktezfKiFXyY9` },
+  { title: 'Casino', desc: 'The Casino cultural & conference centre.', href: `${GAL}/99yBgjiZFmQ85X2` },
+  { title: 'Centrální Lázně', desc: 'Spa hotel by the colonnade.', href: `${GAL}/XfGLFTjGCMKGs6Q` },
+  { title: 'Maria Spa', desc: 'The Maria Spa house.', href: `${GAL}/qk6pBeCHEcrb5pZ` },
+  { title: 'Hvězda', desc: 'Spa hotel photography.', href: `${GAL}/e3cmoJSs2enq8BX` },
+  { title: 'Pacifik', desc: 'Spa hotel photography.', href: `${GAL}/gJJBc99wbX589kC` },
+  { title: 'Butterfly', desc: 'Spa hotel photography.', href: `${GAL}/Wz8joeiitYFLAj7` },
+  { title: 'Vltava', desc: 'Spa hotel photography.', href: `${GAL}/iPskjgpSH4SwarZ` },
+  { title: 'Svoboda', desc: 'Spa hotel photography.', href: `${GAL}/dHPae9ppRAFPLcy` },
+]
+
+const title = 'Media Library — Videos & Photo Galleries · Marienbad'
+const description =
+  'Clickable index of official Mariánské Lázně (Ensana) videos and downloadable photo galleries for travel partners and agencies.'
+
+const playIcon = 'M8 5v14l11-7z'
+const arrowIcon = 'M17 8l4 4m0 0l-4 4m4-4H3'
+const backIcon = 'M11 17l-5-5m0 0l5-5m-5 5h12'
+const imageIcon =
+  'M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zM3 15l4-4 4 4 3-3 4 4M15.5 9.5a1 1 0 100-2 1 1 0 000 2z'
+
+const videoCount = videoGroups.reduce((n, g) => n + g.items.reduce((m, i) => m + (i.langs ? i.langs.length : 1), 0), 0)
+---
+
+<Base locale="en" title={title} description={description} noindex={true}>
+  <!-- Hero -->
+  <section class="relative bg-indigo-800 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+    <div class="relative container-wide pt-28 pb-12 md:pt-36 md:pb-16">
+      <a href="/introduce" class="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium mb-6 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={backIcon} /></svg>
+        Back to partner materials
+      </a>
+      <span class="inline-block px-3 py-1 bg-white/15 text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-5">Media library</span>
+      <h1 class="font-heading text-3xl md:text-5xl font-bold mb-4 leading-tight" style="font-size: var(--text-h1);">Videos &amp; photo galleries</h1>
+      <p class="text-white/85 text-lg max-w-2xl leading-relaxed">
+        {videoCount} official videos and {galleries.length} photo galleries of Mariánské Lázně and the Ensana spa hotels —
+        free to use in your own marketing, listings and client presentations. Just click to open.
+      </p>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="container-wide py-14 md:py-20">
+    <div class="flex items-center gap-3 mb-10">
+      <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d={playIcon} /></svg>
+      </div>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800">Videos</h2>
+    </div>
+
+    {videoGroups.map((g) => (
+      <div class="mb-10 last:mb-0">
+        <h3 class="font-heading text-lg font-bold text-indigo-700 mb-4">{g.group}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {g.items.map((item) => (
+            item.href ? (
+              <a href={item.href} target="_blank" rel="noopener" class="group bg-white rounded-xl shadow-card p-5 flex gap-4 card-hover">
+                <div class="shrink-0 w-10 h-10 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center group-hover:bg-indigo-700 group-hover:text-white transition-colors">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d={playIcon} /></svg>
+                </div>
+                <div class="min-w-0">
+                  <h4 class="font-semibold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{item.title}</h4>
+                  {item.desc && <p class="text-sm text-gray-600 leading-relaxed mt-1">{item.desc}</p>}
+                </div>
+              </a>
+            ) : (
+              <div class="bg-white rounded-xl shadow-card p-5">
+                <div class="flex gap-4">
+                  <div class="shrink-0 w-10 h-10 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d={playIcon} /></svg>
+                  </div>
+                  <div class="min-w-0">
+                    <h4 class="font-semibold text-indigo-900 leading-snug">{item.title}</h4>
+                    {item.desc && <p class="text-sm text-gray-600 leading-relaxed mt-1">{item.desc}</p>}
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3 pl-14">
+                  {item.langs!.map((l) => (
+                    <a href={l.href} target="_blank" rel="noopener" class="inline-flex items-center px-2.5 py-1 rounded-lg border border-indigo-200 text-indigo-700 text-xs font-semibold hover:bg-indigo-700 hover:text-white hover:border-indigo-700 transition-colors">
+                      {l.lang}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- Photo galleries -->
+  <section class="bg-beige-100 py-14 md:py-20">
+    <div class="container-wide">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 rounded-xl bg-turquoise-50 text-turquoise-700 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d={imageIcon} /></svg>
+        </div>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800">Photo galleries</h2>
+      </div>
+      <p class="text-gray-600 mb-8 max-w-2xl">High-resolution photography, free for your marketing and listings. Each link opens a downloadable gallery.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {galleries.map((gal) => (
+          <a href={gal.href} target="_blank" rel="noopener" class="group bg-white rounded-xl shadow-card p-5 flex items-start gap-4 card-hover">
+            <div class="shrink-0 w-10 h-10 rounded-lg bg-turquoise-50 text-turquoise-700 flex items-center justify-center group-hover:bg-turquoise-700 group-hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d={imageIcon} /></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h4 class="font-semibold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{gal.title}</h4>
+              <p class="text-sm text-gray-600 leading-relaxed mt-1">{gal.desc}</p>
+            </div>
+            <svg class="w-4 h-4 text-gray-300 group-hover:text-turquoise-700 mt-1 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={arrowIcon} /></svg>
+          </a>
+        ))}
+      </div>
+      <p class="text-xs text-gray-500 mt-6">Photography and video © Léčebné lázně Mariánské Lázně a.s. / Ensana — free to use for the promotion of the destination.</p>
+    </div>
+  </section>
+</Base>
