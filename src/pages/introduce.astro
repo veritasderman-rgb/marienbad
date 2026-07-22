@@ -38,6 +38,7 @@ const shortDescription =
 const copyAllText = [...facts.map((f) => `${f.label}: ${f.value}`), '', shortDescription].join('\n')
 
 const partnerKit = '/partners/marienbad-partner-kit.zip'
+const viewOnline = 'https://vps113733.cloud-anywhere.eu/index.php/s/jDQABzYkcRBFKH7'
 
 const stats: { value: string; label: string }[] = [
   { value: '100+', label: 'Mineral springs in the region' },
@@ -220,6 +221,52 @@ const copyIcon =
         </div>
       </aside>
     </div>
+  </section>
+
+  <!-- About us -->
+  <section class="container-wide pb-4 md:pb-8">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-5">About us</h2>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>
+          We are <strong>Léčebné lázně Mariánské Lázně a.s.</strong>, part of the international
+          <strong>Ensana</strong> spa group — a name that joins <em>“en”</em> (enhanced) with
+          <em>“sana”</em> (health). Spa medicine is our craft: our mission is to improve our guests'
+          health during their stay, combining the methods of modern medicine with time-honoured spa
+          treatments drawn from natural healing resources.
+        </p>
+        <p>
+          Mariánské Lázně is genuinely one of a kind. We are the only destination that brings together
+          <strong>every natural healing resource in a single place</strong> — natural CO₂ gas (the rare
+          dry “Maria gas”), cold mineral water naturally rich in CO₂, natural peat (peloids), the status
+          of a <strong>climatic spa</strong> (since 2023) and <strong>UNESCO World Heritage</strong>
+          recognition (2021, Great Spa Towns of Europe). Nowhere else are all of these found side by side.
+        </p>
+        <p>
+          Our destination comprises <strong>seven spa hotels</strong> — Nové Lázně, Centrální Lázně,
+          Hvězda, Pacifik, Butterfly, Vltava and Svoboda — together offering <strong>more than 900
+          rooms</strong> and the largest historical balneology operation in the Czech Republic. For
+          meetings, incentives and congresses, our own <strong>conference centre</strong> provides
+          <strong>ten halls and meeting rooms</strong> for events of every size, complemented by fine
+          dining and full spa facilities under one roof.
+        </p>
+      </div>
+    </div>
+
+    <!-- View online callout -->
+    <a href={viewOnline} target="_blank" rel="noopener" class="group mt-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-white border border-turquoise-200 hover:border-turquoise-400 rounded-2xl p-6 md:p-7 shadow-card card-hover">
+      <div class="shrink-0 w-12 h-12 rounded-xl bg-turquoise-50 text-turquoise-700 flex items-center justify-center">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1 1 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178a1 1 0 010 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.964-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="font-heading text-xl font-bold text-indigo-800 mb-1">Browse our information online</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Prefer to look before you save? View all our destination and hotel PDFs directly in your browser — no download required.</p>
+      </div>
+      <span class="shrink-0 inline-flex items-center gap-2 text-turquoise-800 group-hover:text-turquoise-900 font-semibold text-sm">
+        View online
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </span>
+    </a>
   </section>
 
   <!-- Download centre -->
