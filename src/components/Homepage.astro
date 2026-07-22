@@ -58,6 +58,8 @@ const tripTipGroups = [2, 1, 4]
   .map((group) => ({ ...group, coverImage: coverBySlug.get(group.slugs[locale]) }))
 const magazineBase = `/${locale}/${routes.magazine[locale]}`
 const dayTripsHref = localizedHref(locale, 'day-trips')
+const itinCatalogLabel: Record<Locale, string> = { de: 'Alle 74 Ausflugsziele', en: 'Explore all 74 day trips', cs: 'Prozkoumat všech 74 výletů', ru: 'Все 74 направления' }
+const itinMagLabel: Record<Locale, string> = { de: 'Zum Magazin', en: 'Read the magazine', cs: 'Číst magazín', ru: 'Читать журнал' }
 
 const categoryLabels: Record<string, Record<Locale, string>> = {
   health: { de: 'Gesundheit', en: 'Health', cs: 'Zdraví', ru: 'Здоровье' },
@@ -322,10 +324,21 @@ const gradients = [
         hotelLabel: t(locale, 'itinerary.hotelLabel'),
         activitiesLabel: t(locale, 'itinerary.activitiesLabel'),
         treatmentLabel: t(locale, 'itinerary.treatmentLabel'),
+        tripLabel: t(locale, 'itinerary.tripLabel'),
+        articleLabel: t(locale, 'itinerary.articleLabel'),
         detailsLink: t(locale, 'itinerary.detailsLink'),
       }}
       cmsData={itineraries}
     />
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <a href={dayTripsHref} class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+        {itinCatalogLabel[locale]}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+      <a href={`/${locale}/${routes.magazine[locale]}`} class="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-beige-50 text-indigo-700 border border-indigo-200 font-semibold rounded-full transition-colors">
+        {itinMagLabel[locale]}
+      </a>
+    </div>
   </div>
 </section>
 
