@@ -74,14 +74,16 @@ const groups: { group: string; note?: string; items: Material[] }[] = [
       { title: 'Medical indications (CZ)', desc: 'Indications & contraindications — Czech language reference.', file: 'medical-indications-cz.pdf', size: '0.2 MB' },
     ],
   },
-  {
-    group: 'Media library',
-    note: 'Ready-to-use photography and video for your own marketing and listings.',
-    items: [
-      { title: 'Photo download links 2025', desc: 'Curated press & marketing photography (external links).', file: 'photo-download-links-2025.pdf', size: '0.2 MB', media: true },
-      { title: 'Video download links 2025', desc: 'Destination and hotel video assets (external links).', file: 'video-download-links-2025.pdf', size: '0.4 MB', media: true },
-    ],
-  },
+]
+
+const mediaHref = '/introduce/media'
+const photos: { src: string; caption: string }[] = [
+  { src: '/images/partners/main-spa-colonnade.jpg', caption: 'Main Spa Colonnade' },
+  { src: '/images/partners/singing-fountain.jpg', caption: 'Singing Fountain' },
+  { src: '/images/partners/ferdinand-spring-colonnade.jpg', caption: 'Ferdinand Spring Colonnade' },
+  { src: '/images/partners/rudolph-caroline-colonnade.jpg', caption: 'Rudolph & Caroline Springs Colonnade' },
+  { src: '/images/partners/colonnade-aerial.jpg', caption: 'The spa town from above' },
+  { src: '/images/partners/spa-forest.jpg', caption: 'Spa forest' },
 ]
 
 const contacts: { label: string; email: string; phone: string; phoneHref: string }[] = [
@@ -115,9 +117,8 @@ const copyIcon =
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.14)_0%,_transparent_60%)]"></div>
     <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
     <div class="relative container-wide pt-28 pb-16 md:pt-36 md:pb-24">
-      <div class="mb-8">
+      <div class="mb-8 flex justify-center">
         <img src="/images/partners/ensana-white.png" alt="Ensana" width="120" height="109" class="h-24 md:h-32 w-auto" />
-        <p class="text-white/70 text-sm mt-3">The spa hotel group behind Mariánské Lázně</p>
       </div>
       <span class="inline-block px-3 py-1 bg-white/15 text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-5">
         For travel partners & agencies
@@ -221,22 +222,6 @@ const copyIcon =
     </div>
   </section>
 
-  <!-- Visual band: colonnade + New Baths -->
-  <section class="container-wide pb-4 md:pb-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <figure class="relative rounded-2xl overflow-hidden shadow-card aspect-[3/2]">
-        <Pic src="/images/content/pages/cs-kolonada/featuredImage.jpg" alt="The cast-iron colonnade of Mariánské Lázně" class="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-        <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/70 to-transparent"></div>
-        <figcaption class="absolute bottom-0 left-0 p-5 text-white font-heading font-bold text-lg drop-shadow">The Colonnade</figcaption>
-      </figure>
-      <figure class="relative rounded-2xl overflow-hidden shadow-card aspect-[3/2]">
-        <Pic src="/images/content/pages/cs-architektura/featuredImage.jpg" alt="The Casino cultural centre in Mariánské Lázně" class="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-        <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/70 to-transparent"></div>
-        <figcaption class="absolute bottom-0 left-0 p-5 text-white font-heading font-bold text-lg drop-shadow">Casino Cultural Centre</figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- Download centre -->
   <section id="downloads" class="bg-beige-100 py-14 md:py-20 scroll-mt-20">
     <div class="container-wide">
@@ -273,6 +258,21 @@ const copyIcon =
           </div>
         </div>
       ))}
+
+      <!-- Media library callout -->
+      <a href={mediaHref} class="group mt-4 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-indigo-700 hover:bg-indigo-800 text-white rounded-2xl p-6 md:p-7 transition-colors">
+        <div class="shrink-0 w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-heading text-xl font-bold mb-1">Video &amp; photo library</h3>
+          <p class="text-white/75 text-sm leading-relaxed">Browse all official videos and downloadable photo galleries of the destination and the Ensana hotels — grouped and clickable.</p>
+        </div>
+        <span class="shrink-0 inline-flex items-center gap-2 text-turquoise-300 group-hover:text-turquoise-200 font-semibold text-sm">
+          Open library
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -297,6 +297,21 @@ const copyIcon =
         Start a partnership
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- Destination gallery -->
+  <section class="bg-beige-100 py-14 md:py-20">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {photos.map((ph) => (
+          <figure class="relative rounded-2xl overflow-hidden shadow-card aspect-[3/2]">
+            <Pic src={ph.src} alt={ph.caption} class="w-full h-full object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+            <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/65 to-transparent"></div>
+            <figcaption class="absolute bottom-0 left-0 p-4 text-white font-heading font-semibold drop-shadow">{ph.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   </section>
 
