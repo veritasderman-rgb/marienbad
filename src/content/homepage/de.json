@@ -58,7 +58,7 @@
       },
       {
         "name": "Gas",
-        "description": "99,7% reines CO₂ — \u201eMarias Gas\u201c — wird traditionell zur Förderung der peripheren Durchblutung eingesetzt.",
+        "description": "99,7% reines CO₂ — „Marias Gas“ — wird traditionell zur Förderung der peripheren Durchblutung eingesetzt.",
         "href": "/de/co2-therapie"
       },
       {
@@ -76,11 +76,11 @@
   "hotels": {
     "sectionLabel": "Unterkünfte",
     "title": "Wo übernachten in Marienbad",
-    "description": "Von historischen 5-Sterne-Spa-Hotels bis zu charmanten Pensionen.",
+    "description": "Von historischen 5-Sterne-Kurhotels bis zu 3-Sterne-Hotels.",
     "allHotelsLabel": "Alle Hotels entdecken →",
     "items": [
       {
-        "name": "Nové Lázně",
+        "name": "Ensana Nové Lázně",
         "stars": 5,
         "badge": "130 Jahre · 1896–2026",
         "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
@@ -96,7 +96,7 @@
         "anniversaryLabel": "130 Jahre Nové Lázně →"
       },
       {
-        "name": "Centrální Lázně",
+        "name": "Ensana Centrální Lázně",
         "stars": 4,
         "description": "Direkt an der Kolonnade — traditionelle Kur in zentraler Lage mit modernen Behandlungsräumen.",
         "image": "/images/content/hotels/hotels/items/1/image.jpg",
@@ -107,6 +107,76 @@
         ],
         "bookingUrl": "https://ensanahotels.com/de/hotels/centralni-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
         "bookingLabel": "Details & Buchung"
+      },
+      {
+        "name": "Ensana Hvězda",
+        "stars": 4,
+        "description": "Klassizistisches Kurhotel am Goetheplatz — das größte Ensana-Hotel mit eigenem Balneozentrum.",
+        "image": "/images/content/hotels/hotels/items/2/image.jpg",
+        "tags": [
+          "Goetheplatz",
+          "Balneozentrum",
+          "238 Zimmer"
+        ],
+        "bookingUrl": "https://ensanahotels.com/de/hotels/hvezda?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung",
+        "credit": "Txllxt TxllxT · CC BY-SA 4.0"
+      },
+      {
+        "name": "Ensana Pacifik",
+        "stars": 4,
+        "description": "Grandhotel an der Hauptstraße mit Blick auf den Skalník-Park und umfassender Kur.",
+        "image": "/images/content/hotels/hotels/items/3/image.jpg",
+        "tags": [
+          "Hauptstraße",
+          "Kurbehandlung",
+          "Wellness"
+        ],
+        "bookingUrl": "https://ensanahotels.com/de/hotels/pacifik?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung",
+        "credit": "Mojmir Churavy · CC0"
+      },
+      {
+        "name": "Ensana Butterfly",
+        "stars": 4,
+        "description": "Modernes Kurhotel an der Hauptstraße, wenige Schritte von der Kolonnade.",
+        "image": "/images/content/hotels/hotels/items/4/image.jpg",
+        "tags": [
+          "Nahe Kolonnade",
+          "Modern",
+          "Wellness"
+        ],
+        "bookingUrl": "https://ensanahotels.com/de/hotels/butterfly?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung",
+        "credit": "Mojmir Churavy · CC0"
+      },
+      {
+        "name": "Ensana Vltava",
+        "stars": 3,
+        "description": "Angenehmes Kurhotel mit voller Kur zum günstigen Preis.",
+        "image": "/images/content/hotels/hotels/items/5/image.jpg",
+        "tags": [
+          "Gutes Preis-Leistung",
+          "Kurbehandlung",
+          "Zentrum"
+        ],
+        "bookingUrl": "https://ensanahotels.com/de/hotels/vltava?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung",
+        "credit": "Lubor Ferenc · CC BY 4.0"
+      },
+      {
+        "name": "Ensana Svoboda",
+        "stars": 3,
+        "description": "Traditionelles Kurhotel im Zentrum, nah an den Quellen.",
+        "image": "/images/content/hotels/hotels/items/6/image.jpg",
+        "tags": [
+          "Zentrum",
+          "Tradition",
+          "Quellen"
+        ],
+        "bookingUrl": "https://ensanahotels.com/de/hotels/svoboda?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
+        "bookingLabel": "Details & Buchung",
+        "credit": "Lubor Ferenc · CC BY-SA 4.0"
       }
     ]
   },
@@ -117,7 +187,7 @@
     "allStoriesLabel": "Alle Geschichten lesen →",
     "stories": [
       {
-        "quote": "\u201eDie Kreuzquelle ist wie ein alter Freund \u2014 jedes Jahr bringe ich ihm einen Besuch.\u201c",
+        "quote": "„Die Kreuzquelle ist wie ein alter Freund — jedes Jahr bringe ich ihm einen Besuch.“",
         "name": "Ingrid",
         "location": "Hamburg 🇩🇪",
         "visitLabel": "Zum 12. Mal",

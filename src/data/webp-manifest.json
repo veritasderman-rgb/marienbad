@@ -491,6 +491,36 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/hotels/hotels/items/2/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/hotels/hotels/items/3/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/hotels/hotels/items/4/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/hotels/hotels/items/5/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
+  "/images/content/hotels/hotels/items/6/image.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1400,
+    "height": 933
+  },
   "/images/content/pages/cs-architektura/featuredImage.jpg": {
     "webp": true,
     "w800": true,
