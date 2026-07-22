@@ -15,6 +15,8 @@ interface Props {
     hotelLabel: string
     activitiesLabel: string
     treatmentLabel: string
+    tripLabel: string
+    articleLabel: string
     detailsLink: string
   }
   cmsData?: {
@@ -23,7 +25,7 @@ interface Props {
       items: Array<{
         icon: string
         image: string | null
-        type: 'hotel' | 'activity' | 'treatment'
+        type: 'hotel' | 'activity' | 'treatment' | 'trip' | 'article'
         titleDe: string
         titleEn: string
         titleCs: string
@@ -48,10 +50,12 @@ const categoryIcons: Record<Category, string> = {
   wellness: 'M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2 2-2 2M19 13l2 2-2 2M17 3l4 4M21 17l-4 4',
 }
 
-const typeIcons: Record<'hotel' | 'activity' | 'treatment', string> = {
+const typeIcons: Record<'hotel' | 'activity' | 'treatment' | 'trip' | 'article', string> = {
   hotel: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
   activity: 'M13 10V3L4 14h7v7l9-11h-7z',
   treatment: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  trip: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7',
+  article: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m-9 4h6m-6 4h6m4-8v10a2 2 0 01-2 2h-1a2 2 0 01-2-2V7a2 2 0 012-2h1a2 2 0 012 2z',
 }
 
 const titleKey: Record<Locale, 'titleDe' | 'titleEn' | 'titleCs' | 'titleRu'> = {
@@ -76,10 +80,12 @@ export default function ItineraryFilter({ locale, translations, cmsData }: Props
     wellness: translations.wellness,
   }
 
-  const typeLabelMap: Record<'hotel' | 'activity' | 'treatment', string> = {
+  const typeLabelMap: Record<'hotel' | 'activity' | 'treatment' | 'trip' | 'article', string> = {
     hotel: translations.hotelLabel,
     activity: translations.activitiesLabel,
     treatment: translations.treatmentLabel,
+    trip: translations.tripLabel,
+    article: translations.articleLabel,
   }
 
   function switchCategory(cat: Category) {
@@ -129,7 +135,7 @@ export default function ItineraryFilter({ locale, translations, cmsData }: Props
 
       {/* Recommendation cards */}
       <div
-        className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-opacity duration-200 ${
+        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-opacity duration-200 ${
           fading ? 'opacity-0' : 'opacity-100'
         }`}
       >
