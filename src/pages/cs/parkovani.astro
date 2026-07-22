@@ -17,20 +17,28 @@ interface ParkingOption {
   name: string
   price?: string
   note?: string
+  /** Odkaz na oficiální stránku městského parkoviště (proklik pro klienta). */
+  href?: string
 }
 interface Hotel {
   name: string
   image: string
   location?: string
+  /** Rezervační e-mail hotelu. */
+  contact: string
   options: ParkingOption[]
 }
 
 const IMG = '/images/content/hotels/hotels/items'
 
+// Oficiální stránka města pro „Parkovací dům u Městského divadla" (Parking Centrum, Pramenská).
+const CITY_GARAGE = 'https://www.muml.cz/mesto/doprava-a-parkovani/parkoviste/hlidane-parkoviste/'
+
 const hotels: Hotel[] = [
   {
     name: 'Ensana Nové Lázně',
     image: `${IMG}/0/image.jpg`,
+    contact: 'res.nl@ensanahotels.com',
     options: [
       { name: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
       { name: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: 'Nutná rezervace předem' },
@@ -44,6 +52,7 @@ const hotels: Hotel[] = [
   {
     name: 'Ensana Centrální Lázně',
     image: `${IMG}/1/image.jpg`,
+    contact: 'res.cl@ensanahotels.com',
     options: [
       { name: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst (4 místa + 1 pro osoby se zdravotním postižením)' },
       { name: 'Hlídané parkoviště za hotelem', price: '380 Kč/den', note: '30 míst, nutná rezervace předem' },
@@ -52,6 +61,7 @@ const hotels: Hotel[] = [
   {
     name: 'Ensana Hvězda',
     image: `${IMG}/2/image.jpg`,
+    contact: 'res.hv@ensanahotels.com',
     options: [
       {
         name: 'Podzemní garáže v resortu',
@@ -64,15 +74,17 @@ const hotels: Hotel[] = [
     name: 'Ensana Pacifik',
     image: `${IMG}/3/image.jpg`,
     location: 'Poloha u parku a kolonády.',
+    contact: 'res.pa@ensanahotels.com',
     options: [
       { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
-      { name: 'Parkovací dům u Městského divadla', note: 'cca 5 minut chůze od hotelu' },
+      { name: 'Parkovací dům u Městského divadla', note: 'cca 5 minut chůze od hotelu', href: CITY_GARAGE },
     ],
   },
   {
     name: 'Ensana Butterfly',
     image: `${IMG}/4/image.jpg`,
     location: 'Poloha v centru města přímo u lázeňského parku.',
+    contact: 'res.bu@ensanahotels.com',
     options: [
       {
         name: 'Podzemní garáž',
@@ -80,13 +92,14 @@ const hotels: Hotel[] = [
         note: 'Nutná rezervace předem. Vjezd pro elektromobily a hybridní vozidla je zakázán.',
       },
       { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
-      { name: 'Parkovací dům u Městského divadla', note: 'Alternativně' },
+      { name: 'Parkovací dům u Městského divadla', note: 'Alternativně', href: CITY_GARAGE },
     ],
   },
   {
     name: 'Ensana Vltava',
     image: `${IMG}/5/image.jpg`,
     location: 'Poloha u lesoparku.',
+    contact: 'res.vl@ensanahotels.com',
     options: [
       { name: 'Parkoviště před hotelem', price: '250 Kč/den', note: '5 míst, platba na recepci, nutná rezervace předem' },
       { name: 'Místa pro osoby se zdravotním postižením', note: '3 parkovací místa' },
@@ -96,10 +109,11 @@ const hotels: Hotel[] = [
     name: 'Ensana Svoboda',
     image: `${IMG}/6/image.jpg`,
     location: 'Poloha v klidné části lesoparku nedaleko kolonády.',
+    contact: 'res.sv@ensanahotels.com',
     options: [
       { name: 'Parkoviště ve dvoře hotelu', price: '250 Kč/den · od 5 nocí 200 Kč/den', note: '12 míst, platba na recepci, nutná rezervace předem' },
       { name: 'Před hotelem v Chopinově ulici', note: 'Veřejné placené stání s parkovacím automatem' },
-      { name: 'Parkovací dům u Městského divadla', note: 'ul. Pramenská, cca 200 m od hotelu' },
+      { name: 'Parkovací dům u Městského divadla', note: 'ul. Pramenská, cca 200 m od hotelu', href: CITY_GARAGE },
     ],
   },
 ]
@@ -109,14 +123,18 @@ interface TableRow {
   option: string
   price: string
   note: string
+  /** Proklik na oficiální stránku městského parkoviště. */
+  href?: string
 }
 interface TableGroup {
   hotel: string
+  contact: string
   rows: TableRow[]
 }
 const tableGroups: TableGroup[] = [
   {
-    hotel: 'Nové Lázně',
+    hotel: 'Ensana Nové Lázně',
+    contact: 'res.nl@ensanahotels.com',
     rows: [
       { option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
       { option: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace' },
@@ -124,45 +142,52 @@ const tableGroups: TableGroup[] = [
     ],
   },
   {
-    hotel: 'Centrální Lázně',
+    hotel: 'Ensana Centrální Lázně',
+    contact: 'res.cl@ensanahotels.com',
     rows: [
       { option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst (4 + 1 pro invalidy)' },
       { option: 'Hlídané parkoviště za hotelem', price: '380 Kč/den', note: '30 míst, nutná rezervace' },
     ],
   },
   {
-    hotel: 'Hvězda',
+    hotel: 'Ensana Hvězda',
+    contact: 'res.hv@ensanahotels.com',
     rows: [
       { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro a hybridů' },
     ],
   },
   {
-    hotel: 'Pacifik',
+    hotel: 'Ensana Pacifik',
+    contact: 'res.pa@ensanahotels.com',
     rows: [
       { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
-      { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'cca 5 min chůze od hotelu' },
+      { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'cca 5 min chůze od hotelu', href: CITY_GARAGE },
     ],
   },
   {
-    hotel: 'Butterfly',
+    hotel: 'Ensana Butterfly',
+    contact: 'res.bu@ensanahotels.com',
     rows: [
       { option: 'Podzemní garáž', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace; zákaz vjezdu elektro a hybridů' },
       { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
+      { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'Alternativně', href: CITY_GARAGE },
     ],
   },
   {
-    hotel: 'Vltava',
+    hotel: 'Ensana Vltava',
+    contact: 'res.vl@ensanahotels.com',
     rows: [
       { option: 'Parkoviště před hotelem', price: '250 Kč/den', note: '5 míst, platba na recepci, nutná rezervace' },
       { option: 'Místa pro osoby se zdravotním postižením', price: '–', note: '3 místa' },
     ],
   },
   {
-    hotel: 'Svoboda',
+    hotel: 'Ensana Svoboda',
+    contact: 'res.sv@ensanahotels.com',
     rows: [
       { option: 'Parkoviště ve dvoře hotelu', price: '250 Kč/den, od 5 nocí 200 Kč/den', note: '12 míst, platba na recepci, nutná rezervace' },
       { option: 'Před hotelem v Chopinově ulici', price: 'dle parkovacího automatu', note: 'Veřejné, parkovací automat' },
-      { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'ul. Pramenská, cca 200 m od hotelu' },
+      { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'ul. Pramenská, cca 200 m od hotelu', href: CITY_GARAGE },
     ],
   },
 ]
@@ -214,8 +239,8 @@ const cityLinks: { label: string; desc: string; href: string }[] = [
     </div>
   </section>
 
-  <!-- Přehledová tabulka -->
-  <section class="container-wide py-10 md:py-14">
+  <!-- Přehledová tabulka (jen na tabletu a výše; na mobilu jsou přehlednější karty níže) -->
+  <section class="container-wide py-10 md:py-14 hidden md:block">
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-6">Přehledová tabulka</h2>
     <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-card">
       <table class="w-full text-left text-sm md:text-base border-collapse">
@@ -229,13 +254,24 @@ const cityLinks: { label: string; desc: string; href: string }[] = [
         {tableGroups.map((g) => (
           <tbody class="border-t-4 border-turquoise-400">
             <tr class="bg-beige-100">
-              <th colspan="3" class="px-4 py-2.5 text-left font-heading font-bold text-indigo-800 text-base md:text-lg">
-                {g.hotel}
+              <th colspan="3" class="px-4 py-2.5 text-left align-baseline">
+                <span class="font-heading font-bold text-indigo-800 text-base md:text-lg">{g.hotel}</span>
+                <span class="ml-3 font-normal text-sm text-gray-600">
+                  Rezervace:
+                  <a href={`mailto:${g.contact}`} class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">{g.contact}</a>
+                </span>
               </th>
             </tr>
             {g.rows.map((r) => (
               <tr class="bg-white align-top border-t border-gray-100">
-                <td class="px-4 py-3 text-gray-800 font-medium">{r.option}</td>
+                <td class="px-4 py-3 text-gray-800 font-medium">
+                  {r.href ? (
+                    <a href={r.href} target="_blank" rel="noopener" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2 inline-flex items-center gap-1">
+                      {r.option}
+                      <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                    </a>
+                  ) : r.option}
+                </td>
                 <td class="px-4 py-3 text-gray-700 whitespace-nowrap">{r.price}</td>
                 <td class="px-4 py-3 text-gray-600">{r.note}</td>
               </tr>
@@ -266,13 +302,22 @@ const cityLinks: { label: string; desc: string; href: string }[] = [
             <div class="flex-1 p-5 md:p-6">
               <h3 class="font-heading text-lg md:text-xl font-bold text-indigo-800">{h.name}</h3>
               {h.location && <p class="text-sm text-gray-500 mt-1">{h.location}</p>}
+              <p class="text-sm text-gray-600 mt-2">
+                Rezervace:
+                <a href={`mailto:${h.contact}`} class="text-turquoise-700 hover:text-turquoise-800 font-medium underline underline-offset-2 break-all">{h.contact}</a>
+              </p>
               <ul class="mt-4 space-y-3">
                 {h.options.map((o) => (
                   <li class="flex gap-3">
                     <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500"></span>
                     <div>
                       <p class="text-gray-800 font-medium">
-                        {o.name}
+                        {o.href ? (
+                          <a href={o.href} target="_blank" rel="noopener" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2 inline-flex items-center gap-1">
+                            {o.name}
+                            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                          </a>
+                        ) : o.name}
                         {o.price && <span class="text-turquoise-700 font-semibold"> — {o.price}</span>}
                       </p>
                       {o.note && <p class="text-sm text-gray-500 mt-0.5">{o.note}</p>}
