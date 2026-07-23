@@ -45,7 +45,7 @@ const hotels: Hotel[] = [
       {
         name: 'Podzemní garáže v resortu',
         price: '380 Kč/den · od 5 nocí 250 Kč/den',
-        note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů a hybridních vozidel.',
+        note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.',
       },
     ],
   },
@@ -66,7 +66,7 @@ const hotels: Hotel[] = [
       {
         name: 'Podzemní garáže v resortu',
         price: '380 Kč/den · od 5 nocí 250 Kč/den',
-        note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů a hybridních vozidel.',
+        note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.',
       },
     ],
   },
@@ -89,7 +89,7 @@ const hotels: Hotel[] = [
       {
         name: 'Podzemní garáž',
         price: '380 Kč/den · od 5 nocí 250 Kč/den',
-        note: 'Nutná rezervace předem. Vjezd pro elektromobily a hybridní vozidla je zakázán.',
+        note: 'Nutná rezervace předem. Vjezd pro elektromobily, hybridní vozidla a vozidla na LPG je zakázán.',
       },
       { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
       { name: 'Parkovací dům u Městského divadla', note: 'Alternativně', href: CITY_GARAGE },
@@ -138,7 +138,7 @@ const tableGroups: TableGroup[] = [
     rows: [
       { option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
       { option: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace' },
-      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro a hybridů' },
+      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
     ],
   },
   {
@@ -153,7 +153,7 @@ const tableGroups: TableGroup[] = [
     hotel: 'Ensana Hvězda',
     contact: 'res.hv@ensanahotels.com',
     rows: [
-      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro a hybridů' },
+      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
     ],
   },
   {
@@ -168,7 +168,7 @@ const tableGroups: TableGroup[] = [
     hotel: 'Ensana Butterfly',
     contact: 'res.bu@ensanahotels.com',
     rows: [
-      { option: 'Podzemní garáž', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace; zákaz vjezdu elektro a hybridů' },
+      { option: 'Podzemní garáž', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
       { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
       { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'Alternativně', href: CITY_GARAGE },
     ],
@@ -397,9 +397,10 @@ const cityLinks: { label: string; desc: string; href: string }[] = [
           v den příjezdu a odjezdu; jednodenní povolení do lázeňské zóny lze zakoupit z automatu za 20 Kč.
         </p>
         <p>
-          <strong>Způsoby platby:</strong> nové automaty přijímají hotovost (Kč i €), platební karty
-          a mobilní aplikaci <strong>ClickPark</strong>, která hlídá konec doby parkování. Ve městě
-          jsou také interaktivní tabule zobrazující počet volných míst v jednotlivých lokalitách.
+          <strong>Způsoby platby:</strong> automaty přijímají platební karty a mobilní aplikaci
+          <strong>ClickPark</strong>, která hlídá konec doby parkování. Platba hotovostí (Kč i €) je
+          možná pouze u některých automatů nového typu, které jsou ve městě postupně rozmisťovány. Ve
+          městě jsou také interaktivní tabule zobrazující počet volných míst v jednotlivých lokalitách.
         </p>
       </div>
     </div>
