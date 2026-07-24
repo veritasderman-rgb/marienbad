@@ -15,14 +15,22 @@ function getAllowedOrigin(url: string): string {
   return ''
 }
 
-/** Extract client IP — on Vercel, use the rightmost non-private IP from x-forwarded-for */
+/** Extract the client IP for rate limiting.
+ *  On Vercel the platform sets `x-real-ip` to the true client IP, and
+ *  `x-forwarded-for` is `<client>, <vercel-proxy…>` — the LEFTMOST entry is the
+ *  original client, the rightmost is Vercel's own infrastructure (shared across
+ *  every visitor). The previous code took the rightmost, which collapsed all
+ *  visitors onto a handful of proxy IPs and rate-limited them collectively —
+ *  real entrants were blocked with a 429 once any five submissions arrived. */
 function getClientIp(request: Request): string {
+  const realIp = request.headers.get('x-real-ip')
+  if (realIp) return realIp.trim()
   const xff = request.headers.get('x-forwarded-for')
   if (xff) {
-    const ips = xff.split(',').map(s => s.trim())
-    return ips[ips.length - 1] || 'unknown'
+    const first = xff.split(',')[0]?.trim()
+    if (first) return first
   }
-  return request.headers.get('x-real-ip') || 'unknown'
+  return 'unknown'
 }
 
 // --- Rate limiting (in-memory, limited on serverless — consider Vercel KV for production) ---
