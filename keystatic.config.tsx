@@ -68,6 +68,22 @@ const markdocComponents = {
       bookingLabel: fields.text({ label: 'Booking button text', validation: { isRequired: true } }),
     },
   }),
+  'stat-counter': wrapper({
+    label: 'Stat Counter',
+    schema: {
+      caption: fields.text({ label: 'Caption' }),
+      columns: fields.integer({ label: 'Columns (2, 3, or 4)', defaultValue: 3 }),
+    },
+  }),
+  stat: block({
+    label: 'Stat',
+    schema: {
+      value: fields.text({ label: 'Value', validation: { isRequired: true } }),
+      prefix: fields.text({ label: 'Prefix (optional)' }),
+      suffix: fields.text({ label: 'Suffix (optional)' }),
+      label: fields.text({ label: 'Label', validation: { isRequired: true } }),
+    },
+  }),
 }
 
 function homepageSingleton(locale: string, label: string) {
