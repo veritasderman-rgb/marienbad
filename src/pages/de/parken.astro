@@ -1,7 +1,7 @@
 ---
 /**
- * Parkování u hotelů Ensana v Mariánských Lázních — /cs/parkovani
- * Obsah a překlady viz src/data/parking.ts + ParkingPageContent.astro.
+ * Parken an den Ensana Hotels in Marienbad — /de/parken
+ * Inhalt und Übersetzungen siehe src/data/parking.ts + ParkingPageContent.astro.
  */
 import Base from '@/layouts/Base.astro'
 import ParkingPageContent from '@/components/ParkingPageContent.astro'
@@ -9,7 +9,7 @@ import { ui, parkingUrls } from '@/data/parking'
 
 export const prerender = true
 
-const locale = 'cs' as const
+const locale = 'de' as const
 const t = ui[locale]
 ---
 
