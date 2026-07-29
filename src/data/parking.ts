@@ -223,14 +223,15 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
     { options: [
       { name: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
       { name: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: 'Nutná rezervace předem' },
-      { name: 'Podzemní garáže v resortu', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.' },
+      { name: 'Podzemní garáže v resortu', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace předem. Sdílené garáže komplexu Nové Lázně / Centrální Lázně / Hvězda, fyzicky u hotelu Hvězda. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.' },
     ] },
     { options: [
       { name: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst (4 místa + 1 pro osoby se zdravotním postižením)' },
       { name: 'Hlídané parkoviště za hotelem', price: '380 Kč/den', note: '30 míst, nutná rezervace předem' },
+      { name: 'Podzemní garáže v resortu', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace předem. Sdílené garáže komplexu Nové Lázně / Centrální Lázně / Hvězda, fyzicky u hotelu Hvězda. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.' },
     ] },
     { options: [
-      { name: 'Podzemní garáže v resortu', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace předem. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.' },
+      { name: 'Podzemní garáže v resortu', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace předem. Sdílené garáže komplexu Nové Lázně / Centrální Lázně / Hvězda, fyzicky u hotelu Hvězda. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.' },
     ] },
     { location: 'Poloha u parku a kolonády.', options: [
       { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
@@ -255,14 +256,15 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
     { options: [
       { name: 'Unbewachter Parkplatz vor dem Hotel', price: 'Kostenlos', note: 'Begrenzte Anzahl an Plätzen' },
       { name: 'Bewachter Parkplatz im Innenhof', price: '380 CZK/Tag · ab 5 Nächten 250 CZK/Tag', note: 'Reservierung im Voraus erforderlich' },
-      { name: 'Tiefgarage im Resort', price: '380 CZK/Tag · ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung im Voraus erforderlich. Einfahrt von Elektro-, Hybrid- und LPG-Fahrzeugen untersagt.' },
+      { name: 'Tiefgarage im Resort', price: '380 CZK/Tag · ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung im Voraus erforderlich. Gemeinschaftsgarage des Komplexes Nové Lázně / Centrální Lázně / Hvězda, physisch beim Hotel Hvězda. Einfahrt von Elektro-, Hybrid- und LPG-Fahrzeugen untersagt.' },
     ] },
     { options: [
       { name: 'Unbewachter Parkplatz vor dem Hotel', price: 'Kostenlos', note: 'Begrenzte Anzahl an Plätzen (4 Plätze + 1 für Menschen mit Behinderung)' },
       { name: 'Bewachter Parkplatz hinter dem Hotel', price: '380 CZK/Tag', note: '30 Plätze, Reservierung im Voraus erforderlich' },
+      { name: 'Tiefgarage im Resort', price: '380 CZK/Tag · ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung im Voraus erforderlich. Gemeinschaftsgarage des Komplexes Nové Lázně / Centrální Lázně / Hvězda, physisch beim Hotel Hvězda. Einfahrt von Elektro-, Hybrid- und LPG-Fahrzeugen untersagt.' },
     ] },
     { options: [
-      { name: 'Tiefgarage im Resort', price: '380 CZK/Tag · ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung im Voraus erforderlich. Einfahrt von Elektro-, Hybrid- und LPG-Fahrzeugen untersagt.' },
+      { name: 'Tiefgarage im Resort', price: '380 CZK/Tag · ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung im Voraus erforderlich. Gemeinschaftsgarage des Komplexes Nové Lázně / Centrální Lázně / Hvězda, physisch beim Hotel Hvězda. Einfahrt von Elektro-, Hybrid- und LPG-Fahrzeugen untersagt.' },
     ] },
     { location: 'Lage am Park und an der Kolonnade.', options: [
       { name: '4 Plätze vor dem Hotel', note: 'Nur für Check-in und Check-out' },
@@ -287,14 +289,15 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
     { options: [
       { name: 'Unguarded car park in front of the hotel', price: 'Free', note: 'Limited number of spaces' },
       { name: 'Guarded car park in the courtyard', price: '380 CZK/day · 250 CZK/day from 5 nights', note: 'Advance reservation required' },
-      { name: 'Underground garages in the resort', price: '380 CZK/day · 250 CZK/day from 5 nights', note: '38 spaces, advance reservation required. Electric, hybrid and LPG vehicles are not permitted.' },
+      { name: 'Underground garages in the resort', price: '380 CZK/day · 250 CZK/day from 5 nights', note: '38 spaces, advance reservation required. Shared garage for the Nové Lázně / Centrální Lázně / Hvězda complex, physically at the Hvězda hotel. Electric, hybrid and LPG vehicles are not permitted.' },
     ] },
     { options: [
       { name: 'Unguarded car park in front of the hotel', price: 'Free', note: 'Limited number of spaces (4 spaces + 1 for people with disabilities)' },
       { name: 'Guarded car park behind the hotel', price: '380 CZK/day', note: '30 spaces, advance reservation required' },
+      { name: 'Underground garages in the resort', price: '380 CZK/day · 250 CZK/day from 5 nights', note: '38 spaces, advance reservation required. Shared garage for the Nové Lázně / Centrální Lázně / Hvězda complex, physically at the Hvězda hotel. Electric, hybrid and LPG vehicles are not permitted.' },
     ] },
     { options: [
-      { name: 'Underground garages in the resort', price: '380 CZK/day · 250 CZK/day from 5 nights', note: '38 spaces, advance reservation required. Electric, hybrid and LPG vehicles are not permitted.' },
+      { name: 'Underground garages in the resort', price: '380 CZK/day · 250 CZK/day from 5 nights', note: '38 spaces, advance reservation required. Shared garage for the Nové Lázně / Centrální Lázně / Hvězda complex, physically at the Hvězda hotel. Electric, hybrid and LPG vehicles are not permitted.' },
     ] },
     { location: 'Located by the park and the colonnade.', options: [
       { name: '4 spaces in front of the hotel', note: 'For check-in and check-out only' },
@@ -319,14 +322,15 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
     { options: [
       { name: 'Неохраняемая парковка перед отелем', price: 'Бесплатно', note: 'Ограниченное количество мест' },
       { name: 'Охраняемая парковка во дворе', price: '380 Kč/день · от 5 ночей 250 Kč/день', note: 'Необходимо бронирование заранее' },
-      { name: 'Подземный гараж в резорте', price: '380 Kč/день · от 5 ночей 250 Kč/день', note: '38 мест, необходимо бронирование заранее. Въезд электромобилей, гибридов и автомобилей на LPG запрещён.' },
+      { name: 'Подземный гараж в резорте', price: '380 Kč/день · от 5 ночей 250 Kč/день', note: '38 мест, необходимо бронирование заранее. Общий гараж комплекса Nové Lázně / Centrální Lázně / Hvězda, физически у отеля Hvězda. Въезд электромобилей, гибридов и автомобилей на LPG запрещён.' },
     ] },
     { options: [
       { name: 'Неохраняемая парковка перед отелем', price: 'Бесплатно', note: 'Ограниченное количество мест (4 места + 1 для людей с инвалидностью)' },
       { name: 'Охраняемая парковка за отелем', price: '380 Kč/день', note: '30 мест, необходимо бронирование заранее' },
+      { name: 'Подземный гараж в резорте', price: '380 Kč/день · от 5 ночей 250 Kč/день', note: '38 мест, необходимо бронирование заранее. Общий гараж комплекса Nové Lázně / Centrální Lázně / Hvězda, физически у отеля Hvězda. Въезд электромобилей, гибридов и автомобилей на LPG запрещён.' },
     ] },
     { options: [
-      { name: 'Подземный гараж в резорте', price: '380 Kč/день · от 5 ночей 250 Kč/день', note: '38 мест, необходимо бронирование заранее. Въезд электромобилей, гибридов и автомобилей на LPG запрещён.' },
+      { name: 'Подземный гараж в резорте', price: '380 Kč/день · от 5 ночей 250 Kč/день', note: '38 мест, необходимо бронирование заранее. Общий гараж комплекса Nové Lázně / Centrální Lázně / Hvězda, физически у отеля Hvězda. Въезд электромобилей, гибридов и автомобилей на LPG запрещён.' },
     ] },
     { location: 'Расположение у парка и колоннады.', options: [
       { name: '4 места перед отелем', note: 'Только для заезда и выезда' },
@@ -369,14 +373,15 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
     [
       { option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst' },
       { option: 'Hlídané parkoviště ve dvoře', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace' },
-      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
+      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, sdílené garáže u hotelu Hvězda; nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
     ],
     [
       { option: 'Nehlídané parkoviště před hotelem', price: 'Zdarma', note: 'Omezený počet míst (4 + 1 pro invalidy)' },
       { option: 'Hlídané parkoviště za hotelem', price: '380 Kč/den', note: '30 míst, nutná rezervace' },
+      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, sdílené garáže u hotelu Hvězda; nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
     ],
     [
-      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
+      { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, sdílené garáže u hotelu Hvězda; nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
     ],
     [
       { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
@@ -401,14 +406,15 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
     [
       { option: 'Unbewachter Parkplatz vor dem Hotel', price: 'Kostenlos', note: 'Begrenzte Platzzahl' },
       { option: 'Bewachter Parkplatz im Innenhof', price: '380 CZK/Tag, ab 5 Nächten 250 CZK/Tag', note: 'Reservierung erforderlich' },
-      { option: 'Tiefgarage im Resort', price: '380 CZK/Tag, ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung erforderlich; keine Elektro-, Hybrid- und LPG-Fahrzeuge' },
+      { option: 'Tiefgarage im Resort', price: '380 CZK/Tag, ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, gemeinsame Garage beim Hotel Hvězda; Reservierung erforderlich; keine Elektro-, Hybrid- und LPG-Fahrzeuge' },
     ],
     [
       { option: 'Unbewachter Parkplatz vor dem Hotel', price: 'Kostenlos', note: 'Begrenzte Platzzahl (4 + 1 für Behinderte)' },
       { option: 'Bewachter Parkplatz hinter dem Hotel', price: '380 CZK/Tag', note: '30 Plätze, Reservierung erforderlich' },
+      { option: 'Tiefgarage im Resort', price: '380 CZK/Tag, ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, gemeinsame Garage beim Hotel Hvězda; Reservierung erforderlich; keine Elektro-, Hybrid- und LPG-Fahrzeuge' },
     ],
     [
-      { option: 'Tiefgarage im Resort', price: '380 CZK/Tag, ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, Reservierung erforderlich; keine Elektro-, Hybrid- und LPG-Fahrzeuge' },
+      { option: 'Tiefgarage im Resort', price: '380 CZK/Tag, ab 5 Nächten 250 CZK/Tag', note: '38 Plätze, gemeinsame Garage beim Hotel Hvězda; Reservierung erforderlich; keine Elektro-, Hybrid- und LPG-Fahrzeuge' },
     ],
     [
       { option: '4 Plätze vor dem Hotel', price: '–', note: 'Nur für Check-in und Check-out' },
@@ -433,14 +439,15 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
     [
       { option: 'Unguarded car park in front of the hotel', price: 'Free', note: 'Limited number of spaces' },
       { option: 'Guarded car park in the courtyard', price: '380 CZK/day, 250 CZK/day from 5 nights', note: 'Reservation required' },
-      { option: 'Underground garages in the resort', price: '380 CZK/day, 250 CZK/day from 5 nights', note: '38 spaces, reservation required; no electric, hybrid or LPG vehicles' },
+      { option: 'Underground garages in the resort', price: '380 CZK/day, 250 CZK/day from 5 nights', note: '38 spaces, shared garage at the Hvězda hotel; reservation required; no electric, hybrid or LPG vehicles' },
     ],
     [
       { option: 'Unguarded car park in front of the hotel', price: 'Free', note: 'Limited number of spaces (4 + 1 accessible)' },
       { option: 'Guarded car park behind the hotel', price: '380 CZK/day', note: '30 spaces, reservation required' },
+      { option: 'Underground garages in the resort', price: '380 CZK/day, 250 CZK/day from 5 nights', note: '38 spaces, shared garage at the Hvězda hotel; reservation required; no electric, hybrid or LPG vehicles' },
     ],
     [
-      { option: 'Underground garages in the resort', price: '380 CZK/day, 250 CZK/day from 5 nights', note: '38 spaces, reservation required; no electric, hybrid or LPG vehicles' },
+      { option: 'Underground garages in the resort', price: '380 CZK/day, 250 CZK/day from 5 nights', note: '38 spaces, shared garage at the Hvězda hotel; reservation required; no electric, hybrid or LPG vehicles' },
     ],
     [
       { option: '4 spaces in front of the hotel', price: '–', note: 'For check-in and check-out only' },
@@ -465,14 +472,15 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
     [
       { option: 'Неохраняемая парковка перед отелем', price: 'Бесплатно', note: 'Ограниченное число мест' },
       { option: 'Охраняемая парковка во дворе', price: '380 Kč/день, от 5 ночей 250 Kč/день', note: 'Необходимо бронирование' },
-      { option: 'Подземный гараж в резорте', price: '380 Kč/день, от 5 ночей 250 Kč/день', note: '38 мест, бронирование; без электро, гибридов и LPG' },
+      { option: 'Подземный гараж в резорте', price: '380 Kč/день, от 5 ночей 250 Kč/день', note: '38 мест, общий гараж у отеля Hvězda; бронирование; без электро, гибридов и LPG' },
     ],
     [
       { option: 'Неохраняемая парковка перед отелем', price: 'Бесплатно', note: 'Ограниченное число мест (4 + 1 для инвалидов)' },
       { option: 'Охраняемая парковка за отелем', price: '380 Kč/день', note: '30 мест, необходимо бронирование' },
+      { option: 'Подземный гараж в резорте', price: '380 Kč/день, от 5 ночей 250 Kč/день', note: '38 мест, общий гараж у отеля Hvězda; бронирование; без электро, гибридов и LPG' },
     ],
     [
-      { option: 'Подземный гараж в резорте', price: '380 Kč/день, от 5 ночей 250 Kč/день', note: '38 мест, бронирование; без электро, гибридов и LPG' },
+      { option: 'Подземный гараж в резорте', price: '380 Kč/день, от 5 ночей 250 Kč/день', note: '38 мест, общий гараж у отеля Hvězda; бронирование; без электро, гибридов и LPG' },
     ],
     [
       { option: '4 места перед отелем', price: '–', note: 'Только для заезда и выезда' },
