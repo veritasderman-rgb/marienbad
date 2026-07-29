@@ -45,6 +45,7 @@ export function getNavItemsFlat(locale: Locale) {
     { navKey: 'nav.accommodation', section: 'accommodation' },
     { navKey: 'nav.history', section: 'history' },
     { navKey: 'nav.practicalInfo', section: 'practical-info' },
+    { navKey: 'nav.parking', section: 'parking' },
     { navKey: 'nav.magazine', section: 'magazine' },
   ]
 
@@ -82,6 +83,7 @@ export function getNavItems(locale: Locale): NavItem[] {
       children: [
         link('nav.history', 'history'),
         link('nav.practicalInfo', 'practical-info'),
+        link('nav.parking', 'parking'),
       ],
     },
     link('nav.magazine', 'magazine'),

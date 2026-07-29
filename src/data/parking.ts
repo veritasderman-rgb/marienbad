@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import { routes, locales } from '@/i18n/config'
 
 /**
  * Parkování u hotelů Ensana + městská parkoviště — sdílená data pro stránky
@@ -84,12 +85,9 @@ const HOTEL_META = [
 // ---------------------------------------------------------------------------
 // Route slugs per locale (used for alternateUrls / hreflang).
 // ---------------------------------------------------------------------------
-export const parkingUrls: Record<Locale, string> = {
-  cs: '/cs/parkovani',
-  de: '/de/parken',
-  en: '/en/parking',
-  ru: '/ru/parkovka',
-}
+export const parkingUrls = Object.fromEntries(
+  locales.map((l) => [l, `/${l}/${routes.parking[l]}`]),
+) as Record<Locale, string>
 
 // ---------------------------------------------------------------------------
 // UI strings
