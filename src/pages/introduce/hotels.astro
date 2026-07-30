@@ -67,11 +67,11 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/0/image.jpg`,
     facts: [
       { label: 'Category', value: '5★' },
-      { label: 'Rooms', value: '97' },
+      { label: 'Rooms', value: '97 rooms' },
       { label: 'Built / style', value: '1896 · Italian Neo-Renaissance' },
       { label: 'In-house springs', value: 'Forest Spring, Ambrose Spring' },
       { label: 'Restaurant', value: 'Royal' },
-      { label: 'Spa capacity', value: '50 treatment cabins' },
+      { label: 'Best for', value: 'Premium clients, incentives, heritage & architecture' },
     ],
     highlights: [
       'Roman Baths (1896)',
@@ -109,11 +109,11 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/1/image.jpg`,
     facts: [
       { label: 'Category', value: '4★' },
-      { label: 'Rooms', value: '144' },
+      { label: 'Rooms', value: '144 rooms' },
       { label: 'Built / style', value: '1812 · historic, Art Nouveau interiors' },
       { label: 'In-house springs', value: 'Ambrose Spring, Balbín Spring, New Maria Spring' },
       { label: 'Restaurant', value: 'Goethe' },
-      { label: 'Spa capacity', value: '1,650 m² · 70 treatment cabins' },
+      { label: 'Best for', value: 'Springs and colonnade on the doorstep, classic spa cures' },
     ],
     highlights: [
       'Maria’s gas pool (CO₂)',
@@ -155,11 +155,11 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/2/image.jpg`,
     facts: [
       { label: 'Category', value: '4★' },
-      { label: 'Rooms', value: '238 (complex Hvězda · Imperial · Neapol)' },
+      { label: 'Rooms', value: '238 rooms (complex Hvězda · Imperial · Neapol)' },
       { label: 'Built / style', value: '1905 · Art Nouveau' },
       { label: 'In-house springs', value: 'Balbín Spring' },
       { label: 'Restaurant', value: 'Franz Josef' },
-      { label: 'Spa capacity', value: '30 treatment cabins' },
+      { label: 'Best for', value: 'Larger groups, families, pool & wellness' },
     ],
     highlights: [
       'Largest hotel pool in town (18 × 8 m)',
@@ -203,11 +203,11 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/3/image.jpg`,
     facts: [
       { label: 'Category', value: '4★' },
-      { label: 'Rooms', value: '96' },
+      { label: 'Rooms', value: '96 rooms' },
       { label: 'Built / style', value: '1906 · Neo-Baroque' },
       { label: 'In-house springs', value: 'Forest Spring' },
       { label: 'Restaurant', value: 'Primavera' },
-      { label: 'Spa capacity', value: '1,150 m² · 20 treatment cabins' },
+      { label: 'Best for', value: 'Active guests and hikers, all care under one roof' },
     ],
     highlights: [
       'In-house balneology centre',
@@ -248,11 +248,11 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/4/image.jpg`,
     facts: [
       { label: 'Category', value: '4★' },
-      { label: 'Rooms / beds', value: '96 rooms · 192 beds' },
+      { label: 'Rooms', value: '96 rooms' },
       { label: 'Built / style', value: '2003 · Art Nouveau–inspired interiors, original art' },
       { label: 'In-house spring', value: 'Own healing mineral spring in the hotel' },
       { label: 'Restaurant', value: 'La Fontaine · Café de Paris' },
-      { label: 'Meeting space', value: 'Salon Bellevue ≈ 120 m², up to 100 people' },
+      { label: 'Best for', value: 'Families, small conferences, in-house spring treatment' },
     ],
     highlights: [
       'Centre of town, by the spa park',
@@ -268,7 +268,7 @@ const hotels: Hotel[] = [
       {
         heading: 'Rooms',
         text:
-          '96 rooms with 192 beds. Superior category around 19.5 m² and the more spacious Junior Suite around 36.7 m² with park views. Connecting rooms for families and 2 accessible rooms. Room amenities: bathroom, TV, telephone, safe, hairdryer, bathrobe; minibar-fridge on request.',
+          '96 rooms. Superior category around 19.5 m² and the more spacious Junior Suite around 36.7 m² with park views. Connecting rooms for families and 2 accessible rooms. Room amenities: bathroom, TV, telephone, safe, hairdryer, bathrobe; minibar-fridge on request.',
       },
       {
         heading: 'Spa & medical care — the main differentiator',
@@ -315,7 +315,7 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/5/image.jpg`,
     facts: [
       { label: 'Category', value: '3★' },
-      { label: 'Rooms', value: '112' },
+      { label: 'Rooms', value: '112 rooms' },
       { label: 'Built / style', value: '1900 · Art Nouveau' },
       { label: 'In-house springs', value: 'Balbín Spring' },
       { label: 'Restaurant', value: 'Regina' },
@@ -356,11 +356,11 @@ const hotels: Hotel[] = [
     cardImage: `${CARD}/6/image.jpg`,
     facts: [
       { label: 'Category', value: '3★' },
-      { label: 'Rooms', value: '139' },
+      { label: 'Rooms', value: '139 rooms' },
       { label: 'Built / style', value: '1890 · Neo-Renaissance' },
       { label: 'In-house springs', value: 'Josef Spring' },
       { label: 'Restaurant', value: 'Carlton' },
-      { label: 'Spa capacity', value: '700 m² · 20 treatment cabins' },
+      { label: 'Best for', value: 'Quiet stays, nature lovers, personal service' },
     ],
     highlights: [
       'Quiet location by the forest park',
@@ -520,7 +520,7 @@ const treatmentCount = treatmentGroups.reduce((n, g) => n + g.items.length, 0)
 // Overview table rows
 const overview = hotels.map((h) => {
   const cat = h.facts.find((f) => f.label === 'Category')?.value ?? ''
-  const rooms = h.facts.find((f) => f.label === 'Rooms' || f.label === 'Rooms / beds')?.value ?? ''
+  const rooms = h.facts.find((f) => f.label === 'Rooms')?.value ?? ''
   const built = h.facts.find((f) => f.label === 'Built / style')?.value ?? ''
   const rest = h.facts.find((f) => f.label === 'Restaurant')?.value ?? ''
   return { name: h.name, cat, rooms, built, rest, contact: h.contact.reservationEmail }
@@ -573,6 +573,78 @@ const extLinkIcon =
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- General information: indications + treatment portfolio -->
+  <section class="container-wide py-10 md:py-14">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">General information</h2>
+    <p class="text-gray-600 mb-8 max-w-3xl">
+      Medical indications and the treatment portfolio are shared across the destination — the exact
+      offer differs by hotel and season.
+    </p>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <!-- Indications -->
+      <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-6 md:p-7">
+        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-1">Medical indications</h3>
+        <p class="text-sm text-gray-500 mb-4">Conditions treated at the Ensana spa hotels in Mariánské Lázně.</p>
+        <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-1.5">
+          {indications.map((i) => (
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500"></span>
+              {i}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Signature treatments -->
+      <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-6 md:p-7">
+        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-1">Signature treatments</h3>
+        <p class="text-sm text-gray-500 mb-4">
+          Signature treatments and many others depending on actual offers and availability.
+        </p>
+        <ul class="space-y-1.5">
+          {signatureTreatments.map((s) => (
+            <li class="flex items-start gap-2 text-sm text-gray-800 font-medium">
+              <svg class="w-3.5 h-3.5 mt-0.5 text-turquoise-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Full treatment list — collapsible to save space -->
+    <details class="mt-6 group bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden">
+      <summary class="cursor-pointer list-none px-6 md:px-7 py-5 flex items-center justify-between gap-4 hover:bg-beige-50 transition-colors">
+        <span>
+          <span class="block font-heading text-lg font-bold text-indigo-800">Full treatment list</span>
+          <span class="block text-sm text-gray-500 mt-0.5">{treatmentCount} treatments and examinations — click to expand</span>
+        </span>
+        <svg class="w-5 h-5 shrink-0 text-indigo-700 transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="px-6 md:px-7 pb-7 pt-1 border-t border-gray-100">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-5">
+          {treatmentGroups.map((g) => (
+            <div>
+              <h4 class="text-[11px] uppercase tracking-wider text-turquoise-700 font-bold mb-2">{g.group}</h4>
+              <ul class="space-y-1">
+                {g.items.map((it) => <li class="text-sm text-gray-700 leading-snug">{it}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-gray-400 mt-6">
+          Representative list based on the 2026 spa treatment price list. Prices on request — the
+          available range differs by hotel and depends on current offers and availability.
+        </p>
+      </div>
+    </details>
   </section>
 
   <!-- Overview table (desktop) -->
@@ -733,81 +805,11 @@ const extLinkIcon =
     </div>
   </section>
 
-  <!-- General information: indications + treatment portfolio -->
-  <section class="container-wide py-10 md:py-14">
-    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">General information</h2>
-    <p class="text-gray-600 mb-8 max-w-3xl">
-      Medical indications and the treatment portfolio are shared across the destination — the exact
-      offer differs by hotel and season.
-    </p>
-
-    <div class="grid gap-6 lg:grid-cols-2">
-      <!-- Indications -->
-      <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-6 md:p-7">
-        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-1">Medical indications</h3>
-        <p class="text-sm text-gray-500 mb-4">Conditions treated at the Ensana spa hotels in Mariánské Lázně.</p>
-        <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-1.5">
-          {indications.map((i) => (
-            <li class="flex items-start gap-2 text-sm text-gray-700">
-              <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500"></span>
-              {i}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Signature treatments -->
-      <div class="bg-white rounded-2xl shadow-card border border-gray-100 p-6 md:p-7">
-        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-1">Signature treatments</h3>
-        <p class="text-sm text-gray-500 mb-4">
-          Signature treatments and many others depending on actual offers and availability.
-        </p>
-        <ul class="space-y-1.5">
-          {signatureTreatments.map((s) => (
-            <li class="flex items-start gap-2 text-sm text-gray-800 font-medium">
-              <svg class="w-3.5 h-3.5 mt-0.5 text-turquoise-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              {s}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-
-    <!-- Full treatment list — collapsible to save space -->
-    <details class="mt-6 group bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden">
-      <summary class="cursor-pointer list-none px-6 md:px-7 py-5 flex items-center justify-between gap-4 hover:bg-beige-50 transition-colors">
-        <span>
-          <span class="block font-heading text-lg font-bold text-indigo-800">Full treatment list</span>
-          <span class="block text-sm text-gray-500 mt-0.5">{treatmentCount} treatments and examinations — click to expand</span>
-        </span>
-        <svg class="w-5 h-5 shrink-0 text-indigo-700 transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </summary>
-      <div class="px-6 md:px-7 pb-7 pt-1 border-t border-gray-100">
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-5">
-          {treatmentGroups.map((g) => (
-            <div>
-              <h4 class="text-[11px] uppercase tracking-wider text-turquoise-700 font-bold mb-2">{g.group}</h4>
-              <ul class="space-y-1">
-                {g.items.map((it) => <li class="text-sm text-gray-700 leading-snug">{it}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p class="text-xs text-gray-400 mt-6">
-          Representative list based on the 2026 spa treatment price list. Prices on request — the
-          available range differs by hotel and depends on current offers and availability.
-        </p>
-      </div>
-    </details>
-  </section>
-
-  <!-- Footer note -->
-  <section class="container-wide pb-10 md:pb-14">
-    <div class="bg-indigo-50 rounded-2xl border border-indigo-100 p-6 md:p-7">
+  <!-- Footer note. NB: .container-wide sets the `padding` shorthand, which zeroes
+       out padding utilities on this element — so the strip of white space below
+       the box is a margin on the box itself, not section padding. -->
+  <section class="container-wide">
+    <div class="bg-indigo-50 rounded-2xl border border-indigo-100 p-6 md:p-7 mb-4 md:mb-5">
       <h2 class="font-heading text-lg md:text-xl font-bold text-indigo-800 mb-3">Need more?</h2>
       <p class="text-gray-700 leading-relaxed">
         Official presentations, hotel pasports and downloadable photo and video galleries are available
