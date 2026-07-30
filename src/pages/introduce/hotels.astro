@@ -445,7 +445,16 @@ const extLinkIcon =
   'M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
 ---
 
-<Base locale="en" title={title} description={description} noindex={true}>
+<!-- English-only partner page: declare just the EN alternate so the language
+     switcher keeps EN on this page (DE/CS/RU fall back to their homepages) and
+     no misleading hreflang is emitted for locales where the page doesn't exist. -->
+<Base
+  locale="en"
+  title={title}
+  description={description}
+  noindex={true}
+  alternateUrls={{ en: '/introduce/hotels' }}
+>
   <!-- Hero -->
   <section class="bg-indigo-800 text-white">
     <div class="container-wide py-12 md:py-16">
