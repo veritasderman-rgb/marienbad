@@ -1,0 +1,664 @@
+---
+/**
+ * Partner hotel fact sheets — marienbad.com/introduce/hotels
+ *
+ * B2B detail sheets for all seven Ensana hotels in Mariánské Lázně, written for
+ * travel agencies: capacity, style, in-house springs, spa & medical profile,
+ * dining, meeting space and direct reservation contacts.
+ *
+ * Photography is reused from the existing on-site hotel galleries.
+ *
+ * Unlisted like /introduce: noindex + kept out of the sitemap (the astro.config
+ * NOINDEXED_PATHS 'introduce' entry matches this path too).
+ */
+import Base from '@/layouts/Base.astro'
+import Pic from '@/components/Pic.astro'
+import { getHotelGallery } from '@/content/reader'
+
+export const prerender = true
+
+const title = 'Ensana Hotels — Partner Fact Sheets | Marienbad.com'
+const description =
+  'Detailed fact sheets on all seven Ensana spa hotels in Mariánské Lázně for travel agencies: capacity, spa & medical profile, dining, meeting space and reservation contacts.'
+
+const CARD = '/images/content/hotels/hotels/items'
+
+interface Fact {
+  label: string
+  value: string
+}
+interface Block {
+  heading: string
+  /** paragraph text */
+  text?: string
+  /** bullet list */
+  items?: string[]
+}
+interface Hotel {
+  slug: string
+  name: string
+  stars: number
+  category?: string
+  claim: string
+  intro: string
+  cardImage: string
+  facts: Fact[]
+  /** highlights shown as chips */
+  highlights: string[]
+  blocks: Block[]
+  contact: {
+    address: string
+    reservationEmail: string
+    hotelEmail?: string
+    phone?: string
+    reservationPhone?: string
+  }
+  bookingUrl: string
+  detailUrl: string
+}
+
+const hotels: Hotel[] = [
+  {
+    slug: 'nove-lazne',
+    name: 'Ensana Nové Lázně',
+    stars: 5,
+    claim: 'The flagship five-star spa house with Central Europe’s only preserved Roman Baths.',
+    intro:
+      'Built in 1896 in the Italian Neo-Renaissance style by architect Josef Schaffer, Nové Lázně is the flagship of the destination and the address for guests who expect a five-star setting around a genuine historic monument. Covered corridors connect it to Centrální Lázně and Maria Spa, forming the largest historic spa complex in Bohemia.',
+    cardImage: `${CARD}/0/image.jpg`,
+    facts: [
+      { label: 'Category', value: '5★' },
+      { label: 'Rooms', value: '97' },
+      { label: 'Built / style', value: '1896 · Italian Neo-Renaissance' },
+      { label: 'In-house springs', value: 'Forest Spring, Ambrose Spring' },
+      { label: 'Restaurant', value: 'Royal' },
+      { label: 'Spa capacity', value: '50 treatment cabins' },
+    ],
+    highlights: [
+      'Roman Baths (1896)',
+      'King Edward VII Royal Cabin',
+      'Emperor Franz Joseph I Imperial Cabin',
+      'Casino conference centre',
+      '60+ balneological treatments',
+    ],
+    blocks: [
+      {
+        heading: 'Spa & medical',
+        text:
+          'More than 60 balneological treatments under medical supervision, including exclusive gas injections with natural CO₂. The Roman Baths with their original marble pools and the historic Royal and Imperial cabins are used for signature bathing rituals and special balneotherapy.',
+      },
+      {
+        heading: 'Dining & meetings',
+        text:
+          'Royal Restaurant for fine dining, a Viennese café with terrace, and the Casino conference centre for meetings and events.',
+      },
+    ],
+    contact: {
+      address: 'Reitenbergerova 53, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.nl@ensanahotels.com',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/nove-lazne',
+    detailUrl: '/en/hotel/nove-lazne',
+  },
+  {
+    slug: 'centralni-lazne',
+    name: 'Ensana Centrální Lázně',
+    stars: 4,
+    category: 'Superior',
+    claim: 'The most historic spa house, directly on Goethe Square by the Main Colonnade.',
+    intro:
+      'Centrální Lázně traces its history to 1812 and stands directly on Goethe Square, a few steps from the Main Colonnade and the mineral springs. Its spa centre is the largest historic balneology facility in town and includes the unique Maria’s gas pool, a traditional treatment using natural CO₂ in use since 1905.',
+    cardImage: `${CARD}/1/image.jpg`,
+    facts: [
+      { label: 'Category', value: '4★ Superior' },
+      { label: 'Rooms', value: '144' },
+      { label: 'Built / style', value: '1812 · historic, Art Nouveau interiors' },
+      { label: 'In-house springs', value: 'Ambrose Spring, Balbín Spring, New Maria Spring' },
+      { label: 'Restaurant', value: 'Goethe' },
+      { label: 'Spa capacity', value: '1,650 m² · 70 treatment cabins' },
+    ],
+    highlights: [
+      'Maria’s gas pool (CO₂)',
+      'CO₂ carbonated baths',
+      'Premier Fitness',
+      'Five Concept movement centre',
+      'Connected to Nové Lázně & Maria Spa',
+    ],
+    blocks: [
+      {
+        heading: 'Spa & medical',
+        text:
+          'A 1,650 m² spa centre with 70 treatment cabins — the largest historic balneology operation in town. The signature treatment is Maria’s gas pool, using natural CO₂ from the Maria Spring. Three mineral springs rise inside the hotel, so the drinking cure is available without leaving the building.',
+      },
+      {
+        heading: 'Wellness & pool',
+        text:
+          'Saunas, relaxation zones, carbonated baths, Premier Fitness and the Five Concept movement centre. The hotel has no pool of its own — guests use the pools at the partner hotels Hvězda and Nové Lázně.',
+      },
+      {
+        heading: 'Dining & meetings',
+        text: 'Restaurant Goethe with live music, plus a children’s playground and relaxation garden.',
+      },
+    ],
+    contact: {
+      address: 'Goethovo náměstí 1, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.cl@ensanahotels.com',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/centralni-lazne',
+    detailUrl: '/en/hotel/centralni-lazne',
+  },
+  {
+    slug: 'hvezda',
+    name: 'Ensana Hvězda',
+    stars: 4,
+    category: 'Superior',
+    claim: 'Art Nouveau landmark on Goethe Square with the largest hotel pool in town.',
+    intro:
+      'Hvězda is an Art Nouveau building from 1905 forming a single complex with the Imperial and Neapol houses — 238 rooms in total, the largest capacity in the destination. Its Aqua Wellness area holds the largest hotel pool in Mariánské Lázně.',
+    cardImage: `${CARD}/2/image.jpg`,
+    facts: [
+      { label: 'Category', value: '4★ Superior' },
+      { label: 'Rooms', value: '238 (complex Hvězda · Imperial · Neapol)' },
+      { label: 'Built / style', value: '1905 · Art Nouveau' },
+      { label: 'In-house springs', value: 'Balbín Spring' },
+      { label: 'Restaurant', value: 'Franz Josef' },
+      { label: 'Spa capacity', value: '30 treatment cabins' },
+    ],
+    highlights: [
+      'Largest hotel pool in town (18 × 8 m)',
+      'Aqua Wellness',
+      'Salt cave',
+      'Gallery Atrium',
+      'Café Imperial',
+      'Children’s corner',
+    ],
+    blocks: [
+      {
+        heading: 'Spa & medical',
+        text:
+          'A spa centre with 30 treatment cabins covering the full balneology range, from CO₂ and mineral baths to peat wraps, physiotherapy and halotherapy in the salt cave.',
+      },
+      {
+        heading: 'Wellness & pool',
+        text:
+          'The Aqua Wellness area with an 18 × 8 m pool — the largest hotel pool in Mariánské Lázně — plus whirlpool, saunas and a salt cave. The underground garage shared by the Nové Lázně / Centrální Lázně / Hvězda complex is physically located here.',
+      },
+      {
+        heading: 'Dining & meetings',
+        text:
+          'Restaurant Franz Josef with stucco ceilings, Café Imperial with two terraces, and the Gallery Atrium for exhibitions and cultural events.',
+      },
+    ],
+    contact: {
+      address: 'Goethovo náměstí 7, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.hv@ensanahotels.com',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/hvezda',
+    detailUrl: '/en/hotel/hvezda',
+  },
+  {
+    slug: 'pacifik',
+    name: 'Ensana Pacifik',
+    stars: 4,
+    category: 'Superior',
+    claim: 'Neo-Baroque spa hotel on Mírové Square, at the edge of the spa forest.',
+    intro:
+      'Pacifik has welcomed guests since 1906 in a Neo-Baroque building on Mírové Square, with views over the spa park and the surrounding woods. Its own 1,150 m² balneology centre puts the full treatment programme under one roof, and its position makes it a natural base for walking in the Slavkov Forest.',
+    cardImage: `${CARD}/3/image.jpg`,
+    facts: [
+      { label: 'Category', value: '4★ Superior' },
+      { label: 'Rooms', value: '96' },
+      { label: 'Built / style', value: '1906 · Neo-Baroque' },
+      { label: 'In-house springs', value: 'Forest Spring' },
+      { label: 'Restaurant', value: 'Primavera' },
+      { label: 'Spa capacity', value: '1,150 m² · 20 treatment cabins' },
+    ],
+    highlights: [
+      'In-house balneology centre',
+      'Indoor pool & sauna',
+      'Views of park and forest',
+      'Base for Slavkov Forest hikes',
+    ],
+    blocks: [
+      {
+        heading: 'Spa & medical',
+        text:
+          'A 1,150 m² balneology centre with 20 treatment cabins: CO₂ baths, mineral baths, peat wraps, massages, electrotherapy and physiotherapy, with an individual treatment plan drawn up by the in-house medical team.',
+      },
+      {
+        heading: 'Wellness & pool',
+        text: 'Indoor pool, sauna area, fitness room and lounges.',
+      },
+      {
+        heading: 'Dining & parking note',
+        text:
+          'Restaurant Primavera with spa cuisine and dietary options. Note for groups arriving by coach or car: the spaces in front of the hotel are for check-in and check-out only — for the length of the stay guests use the municipal parking house by the Municipal Theatre, about five minutes on foot.',
+      },
+    ],
+    contact: {
+      address: 'Mírové náměstí 84, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.pa@ensanahotels.com',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/pacifik',
+    detailUrl: '/en/hotel/pacifik',
+  },
+  {
+    slug: 'butterfly',
+    name: 'Ensana Butterfly',
+    stars: 4,
+    claim: 'Art Nouveau elegance in the heart of Mariánské Lázně, a step from the spa park.',
+    intro:
+      'The four-star Butterfly stands right in the centre of Mariánské Lázně, next to the spa park. The building dates from 2003 and pairs a contemporary structure with Art Nouveau–inspired interiors and original art. Its differentiator is medical: a healing mineral spring rises inside the hotel and feeds four mineral baths and the drinking cure, with a head physician on site. A family atmosphere with a children’s corner and the Bellevue salon for up to 100 people also make it a practical choice for families and for groups and conferences.',
+    cardImage: `${CARD}/4/image.jpg`,
+    facts: [
+      { label: 'Category', value: '4★' },
+      { label: 'Rooms / beds', value: '96 rooms · 192 beds' },
+      { label: 'Built / style', value: '2003 · Art Nouveau–inspired interiors, original art' },
+      { label: 'In-house spring', value: 'Own healing mineral spring in the hotel' },
+      { label: 'Restaurant', value: 'La Fontaine · Café de Paris' },
+      { label: 'Meeting space', value: 'Salon Bellevue ≈ 120 m², up to 100 people' },
+    ],
+    highlights: [
+      'Centre of town, by the spa park',
+      'Own healing mineral spring',
+      '4 mineral baths + drinking cure',
+      'Physician in the hotel',
+      'Pool, whirlpool, sauna, fitness',
+      'Underground garage',
+      'Children’s corner',
+      'Salon Bellevue up to 100 people',
+    ],
+    blocks: [
+      {
+        heading: 'Rooms',
+        text:
+          '96 rooms with 192 beds. Superior category around 19.5 m² and the more spacious Junior Suite around 36.7 m² with park views. Connecting rooms for families and 2 accessible rooms. Room amenities: bathroom, TV, telephone, safe, hairdryer, bathrobe; minibar-fridge on request.',
+      },
+      {
+        heading: 'Spa & medical care — the main differentiator',
+        text:
+          'A healing mineral spring rises directly inside the hotel and feeds four mineral baths and the drinking cure; natural peloids (peat and mud) are also used. Specialist care is led by head physician MUDr. Partesa.',
+      },
+      {
+        heading: 'Indications',
+        items: [
+          'Kidney and urinary tract disorders',
+          'Musculoskeletal system',
+          'Respiratory system',
+          'Circulatory system',
+          'Digestive system',
+          'Metabolic disorders',
+          'Oncological conditions',
+          'Neurological conditions',
+          'Thyroid disorders',
+          'Skin conditions',
+        ],
+      },
+      {
+        heading: 'Treatments',
+        items: [
+          'Mineral and pearl baths',
+          'Inhalations',
+          'Hydromassage',
+          'Lymphatic drainage',
+          'Classic and special massages',
+          'Oxygen therapy',
+          'Gas wraps and gas injections',
+          'Peat and paraffin wraps',
+        ],
+      },
+      {
+        heading: 'Wellness & pool',
+        text:
+          'Pool 12 × 6 m with whirlpool jets, whirlpool, sauna and fitness. Nursing service is available within the complex in the evening hours.',
+      },
+      {
+        heading: 'Dining',
+        text:
+          'Café de Paris and restaurant La Fontaine (breakfast and dinner served as a buffet), lobby bar and summer terrace.',
+      },
+      {
+        heading: 'Conferences & events',
+        text: 'Salon Bellevue (≈ 120 m², up to 100 people) and Café de Paris for corporate meetings.',
+      },
+      {
+        heading: 'Practical',
+        text:
+          'Check-in 14:00 · Check-out 11:00 · free Wi-Fi · underground garage · children’s corner · small dog breeds on request · spa tax applies.',
+      },
+    ],
+    contact: {
+      address: 'Hlavní 655, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.bu@ensanahotels.com',
+      hotelEmail: 'butterfly@ensanahotels.com',
+      phone: '+420 354 654 111',
+      reservationPhone: '+420 354 654 300',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/butterfly',
+    detailUrl: '/en/hotel/butterfly',
+  },
+  {
+    slug: 'vltava',
+    name: 'Ensana Vltava',
+    stars: 3,
+    claim: 'Best value in the destination, with its own treatment centre.',
+    intro:
+      'Vltava is a welcoming three-star house offering the destination’s strongest value for money, especially for longer stays. It has its own treatment centre with the full range of balneological procedures under medical supervision.',
+    cardImage: `${CARD}/5/image.jpg`,
+    facts: [
+      { label: 'Category', value: '3★' },
+      { label: 'Rooms', value: '112' },
+      { label: 'Built / style', value: '1900 · Art Nouveau' },
+      { label: 'In-house springs', value: 'Balbín Spring' },
+      { label: 'Restaurant', value: 'Regina' },
+      { label: 'Best for', value: 'Longer treatment stays, price-sensitive groups' },
+    ],
+    highlights: [
+      'In-house treatment centre',
+      'Strong value for money',
+      'Ideal for extended stays',
+      'On-site parking (5 spaces)',
+    ],
+    blocks: [
+      {
+        heading: 'Spa & medical',
+        text:
+          'An in-house treatment centre offering a broad spectrum of procedures under medical supervision — CO₂ and mineral baths, dry CO₂ gas baths, gas injections, peat and paraffin wraps, massages, inhalation therapy, electrotherapy, magnetotherapy and physiotherapy.',
+      },
+      {
+        heading: 'Dining & practical',
+        text:
+          'Restaurant Regina with half-board and full-board options. Parking in front of the hotel (5 spaces, reservation required) plus 3 accessible spaces.',
+      },
+    ],
+    contact: {
+      address: 'Anglická 475, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.vl@ensanahotels.com',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/vltava-berounka',
+    detailUrl: '/en/hotel/vltava',
+  },
+  {
+    slug: 'svoboda',
+    name: 'Ensana Svoboda',
+    stars: 3,
+    category: 'Superior',
+    claim: 'Quiet three-star Superior house by the forest park, with a personal atmosphere.',
+    intro:
+      'Svoboda sits in a calm part of the forest park near the colonnade, with direct access to hiking trails. Built in 1890 in the Neo-Renaissance style, it combines its own 700 m² treatment centre with a notably personal, family-run feel — a good fit for guests who want quiet and nature alongside proper medical care.',
+    cardImage: `${CARD}/6/image.jpg`,
+    facts: [
+      { label: 'Category', value: '3★ Superior' },
+      { label: 'Rooms', value: '139' },
+      { label: 'Built / style', value: '1890 · Neo-Renaissance' },
+      { label: 'In-house springs', value: 'Josef Spring' },
+      { label: 'Restaurant', value: 'Carlton' },
+      { label: 'Spa capacity', value: '700 m² · 20 treatment cabins' },
+    ],
+    highlights: [
+      'Quiet location by the forest park',
+      'In-house treatment centre',
+      'Personal, family atmosphere',
+      'Sun terrace with park views',
+      'Direct access to hiking trails',
+    ],
+    blocks: [
+      {
+        heading: 'Spa & medical',
+        text:
+          'A 700 m² treatment centre with 20 cabins covering the standard balneology programme under medical supervision: CO₂ and mineral baths, dry CO₂ gas baths, gas injections, peat and paraffin wraps, massages, inhalations, electrotherapy, magnetotherapy and physiotherapy.',
+      },
+      {
+        heading: 'Dining & practical',
+        text:
+          'Restaurant Carlton with spa cuisine and dietary options, plus a sun terrace overlooking the park. Parking in the hotel courtyard (12 spaces, reservation required).',
+      },
+    ],
+    contact: {
+      address: 'Chopinova 393, 353 01 Mariánské Lázně',
+      reservationEmail: 'res.sv@ensanahotels.com',
+    },
+    bookingUrl: 'https://ensanahotels.com/en/hotels/svoboda',
+    detailUrl: '/en/hotel/svoboda',
+  },
+]
+
+// Overview table rows
+const overview = hotels.map((h) => {
+  const cat = h.facts.find((f) => f.label === 'Category')?.value ?? ''
+  const rooms = h.facts.find((f) => f.label === 'Rooms' || f.label === 'Rooms / beds')?.value ?? ''
+  const built = h.facts.find((f) => f.label === 'Built / style')?.value ?? ''
+  const rest = h.facts.find((f) => f.label === 'Restaurant')?.value ?? ''
+  return { name: h.name, cat, rooms, built, rest, contact: h.contact.reservationEmail }
+})
+
+// Reuse the existing on-site galleries for photography (up to 4 per hotel).
+const galleries: Record<string, { src: string; alt: string }[]> = {}
+for (const h of hotels) {
+  const g = getHotelGallery(h.slug)
+    .slice(0, 4)
+    .map((img) => ({ src: img.image as string, alt: img.alt || h.name }))
+  galleries[h.slug] = g
+}
+
+const extLinkIcon =
+  'M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
+---
+
+<!-- English-only partner page: declare just the EN alternate so the language
+     switcher keeps EN on this page (DE/CS/RU fall back to their homepages) and
+     no misleading hreflang is emitted for locales where the page doesn't exist. -->
+<Base
+  locale="en"
+  title={title}
+  description={description}
+  noindex={true}
+  alternateUrls={{ en: '/introduce/hotels' }}
+>
+  <!-- Hero -->
+  <section class="bg-indigo-800 text-white">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-turquoise-200 font-semibold tracking-wide uppercase text-sm mb-3">Partner materials</p>
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-3xl">
+        Ensana Hotels — partner fact sheets
+      </h1>
+      <p class="mt-5 text-white/85 leading-relaxed max-w-3xl">
+        Detail sheets on all <strong class="text-white">seven Ensana spa hotels</strong> in Mariánské
+        Lázně, written for travel agencies: capacity, architecture, in-house mineral springs, spa and
+        medical profile, dining, meeting space and direct reservation contacts.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a href="/introduce" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-colors">
+          ← Partner hub
+        </a>
+        <a href="/introduce/media" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-colors">
+          Media library
+        </a>
+        <a href="/en/parking" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-colors">
+          Parking information
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview table (desktop) -->
+  <section class="container-wide py-10 md:py-14 hidden md:block">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-6">At a glance</h2>
+    <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-card">
+      <table class="w-full text-left text-sm md:text-base border-collapse">
+        <thead>
+          <tr class="bg-indigo-800 text-white">
+            <th class="px-4 py-3 font-semibold">Hotel</th>
+            <th class="px-4 py-3 font-semibold whitespace-nowrap">Category</th>
+            <th class="px-4 py-3 font-semibold whitespace-nowrap">Capacity</th>
+            <th class="px-4 py-3 font-semibold">Built / style</th>
+            <th class="px-4 py-3 font-semibold">Restaurant</th>
+            <th class="px-4 py-3 font-semibold">Reservations</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {overview.map((r) => (
+            <tr class="bg-white align-top">
+              <td class="px-4 py-3 font-semibold text-indigo-800 whitespace-nowrap">{r.name}</td>
+              <td class="px-4 py-3 text-gray-700 whitespace-nowrap">{r.cat}</td>
+              <td class="px-4 py-3 text-gray-700">{r.rooms}</td>
+              <td class="px-4 py-3 text-gray-600">{r.built}</td>
+              <td class="px-4 py-3 text-gray-600">{r.rest}</td>
+              <td class="px-4 py-3 whitespace-nowrap">
+                <a href={`mailto:${r.contact}`} class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">{r.contact}</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Per-hotel fact sheets -->
+  <section class="bg-beige-50 py-10 md:py-16">
+    <div class="container-wide space-y-10 md:space-y-14">
+      {hotels.map((h) => (
+        <article id={h.slug} class="bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden scroll-mt-24">
+          <!-- Hotel hero photo -->
+          <div class="relative">
+            <Pic
+              src={h.cardImage}
+              alt={h.name}
+              class="w-full h-52 md:h-72 object-cover"
+              sizes="(max-width: 1024px) 100vw, 1100px"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/80 via-indigo-950/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 md:p-7">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-yellow-400 text-sm tracking-wide">{'★'.repeat(h.stars)}</span>
+                {h.category && <span class="text-white/80 text-xs uppercase tracking-wider">{h.category}</span>}
+              </div>
+              <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">{h.name}</h2>
+              <p class="text-white/85 text-sm md:text-base mt-1 max-w-2xl">{h.claim}</p>
+            </div>
+          </div>
+
+          <div class="p-5 md:p-7 lg:p-8">
+            <p class="text-gray-700 leading-relaxed max-w-3xl">{h.intro}</p>
+
+            <!-- Key facts -->
+            <dl class="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+              {h.facts.map((f) => (
+                <div class="border-t border-gray-100 pt-2">
+                  <dt class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">{f.label}</dt>
+                  <dd class="text-gray-800 font-medium">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <!-- Highlights -->
+            <ul class="mt-6 flex flex-wrap gap-2">
+              {h.highlights.map((hl) => (
+                <li class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-turquoise-50 text-turquoise-800 text-xs font-medium">
+                  <svg class="w-3 h-3 text-turquoise-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {hl}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Detail blocks -->
+            <div class="mt-7 grid gap-6 lg:grid-cols-2">
+              {h.blocks.map((b) => (
+                <div class="bg-beige-50 rounded-xl p-5 border border-beige-100">
+                  <h3 class="font-heading text-base md:text-lg font-bold text-indigo-800 mb-2">{b.heading}</h3>
+                  {b.text && <p class="text-sm text-gray-700 leading-relaxed">{b.text}</p>}
+                  {b.items && (
+                    <ul class="text-sm text-gray-700 leading-relaxed grid sm:grid-cols-2 gap-x-4 gap-y-1 list-disc list-inside">
+                      {b.items.map((it) => <li>{it}</li>)}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <!-- Photo strip from existing galleries -->
+            {galleries[h.slug].length > 0 && (
+              <div class="mt-7">
+                <p class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold mb-2">Photos</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {galleries[h.slug].map((img) => (
+                    <div class="overflow-hidden rounded-lg">
+                      <Pic
+                        src={img.src}
+                        alt={img.alt}
+                        class="w-full h-28 md:h-32 object-cover"
+                        sizes="(max-width: 640px) 50vw, 260px"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Contact & links -->
+            <div class="mt-7 pt-6 border-t border-gray-100 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+              <div class="text-sm text-gray-700 space-y-1">
+                <p class="text-gray-500">{h.contact.address}</p>
+                <p>
+                  <span class="text-gray-500">Reservations:</span>{' '}
+                  <a href={`mailto:${h.contact.reservationEmail}`} class="text-turquoise-700 hover:text-turquoise-800 font-medium underline underline-offset-2 break-all">{h.contact.reservationEmail}</a>
+                </p>
+                {h.contact.hotelEmail && (
+                  <p>
+                    <span class="text-gray-500">Hotel:</span>{' '}
+                    <a href={`mailto:${h.contact.hotelEmail}`} class="text-turquoise-700 hover:text-turquoise-800 font-medium underline underline-offset-2 break-all">{h.contact.hotelEmail}</a>
+                  </p>
+                )}
+                {h.contact.phone && (
+                  <p>
+                    <span class="text-gray-500">Phone:</span>{' '}
+                    <a href={`tel:${h.contact.phone.replace(/\s/g, '')}`} class="text-turquoise-700 hover:text-turquoise-800 font-medium underline underline-offset-2">{h.contact.phone}</a>
+                    {h.contact.reservationPhone && (
+                      <span>
+                        {' · reservations '}
+                        <a href={`tel:${h.contact.reservationPhone.replace(/\s/g, '')}`} class="text-turquoise-700 hover:text-turquoise-800 font-medium underline underline-offset-2">{h.contact.reservationPhone}</a>
+                      </span>
+                    )}
+                  </p>
+                )}
+              </div>
+              <div class="flex flex-wrap gap-3 shrink-0">
+                <a href={h.detailUrl} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-800 text-sm font-semibold transition-colors">
+                  Hotel page
+                </a>
+                <a href={h.bookingUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold transition-colors">
+                  Book on ensanahotels.com
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={extLinkIcon} /></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Footer note -->
+  <section class="container-wide py-10 md:py-14">
+    <div class="bg-indigo-50 rounded-2xl border border-indigo-100 p-6 md:p-7">
+      <h2 class="font-heading text-lg md:text-xl font-bold text-indigo-800 mb-3">Need more?</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Official presentations, hotel pasports and downloadable photo and video galleries are available
+        in the <a href="/introduce" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">partner hub</a>
+        and the <a href="/introduce/media" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">media library</a>.
+        For parking at each hotel — including group and coach arrivals — see the
+        <a href="/en/parking" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">parking overview</a>.
+      </p>
+      <p class="text-gray-700 leading-relaxed mt-3">
+        All properties are operated by <strong>Léčebné lázně Mariánské Lázně a.s.</strong>, part of the
+        international <strong>Ensana</strong> spa group. For rates, allotments, FAM trips and group
+        offers contact
+        <a href="mailto:reservation.cz@ensanahotels.com" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">reservation.cz@ensanahotels.com</a>
+        or, for MICE,
+        <a href="mailto:conference.cz@ensanahotels.com" class="text-turquoise-700 hover:text-turquoise-800 underline underline-offset-2">conference.cz@ensanahotels.com</a>.
+      </p>
+    </div>
+  </section>
+</Base>
