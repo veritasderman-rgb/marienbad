@@ -6,8 +6,8 @@
   "git": {
     "deploymentEnabled": {
       "claude/marienbad-website-plan-V22c5": true,
-      "claude/*": false,
-      "dependabot/*": false
+      "claude/**": false,
+      "dependabot/**": false
     }
   },
   "headers": [
