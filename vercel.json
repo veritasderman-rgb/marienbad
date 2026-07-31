@@ -3,6 +3,13 @@
   "framework": "astro",
   "regions": ["fra1"],
   "trailingSlash": false,
+  "git": {
+    "deploymentEnabled": {
+      "claude/marienbad-website-plan-V22c5": true,
+      "claude/**": false,
+      "dependabot/**": false
+    }
+  },
   "headers": [
     {
       "source": "/keystatic/(.*)",
