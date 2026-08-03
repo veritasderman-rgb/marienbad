@@ -41,6 +41,12 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/cs-chopin-a-marianske-lazne-hudebni-dedictvi-velkeho-romantika/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/cs-co2-koupele-veda/coverImage.jpg": {
     "webp": true,
     "w800": true,
@@ -53,7 +59,19 @@
     "width": 2604,
     "height": 1930
   },
+  "/images/content/articles/cs-digitalni-detox-v-laznich-jak-se-skutecne-odpojit-od-sveta/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/cs-historie-kolonady/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-hubnuti-a-metabolicka-lecba-v-laznich-jak-funguje-lazenska-kura-na-vahu/coverImage.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
@@ -257,6 +275,12 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/cs-podzim-v-marianskych-laznich-zlata-sezona-pro-lazensky-pobyt/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/cs-pohyb-v-laznich-prodluzuje-zivot/coverImage.jpg": {
     "webp": true,
     "w800": true,
@@ -323,6 +347,12 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/cs-silvestr-a-novy-rok-v-marianskych-laznich-tiche-i-slavnostni-oslavy/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/cs-slavni-hoste-marianskych-lazni/coverImage.jpg": {
     "webp": true,
     "w800": true,
@@ -377,6 +407,30 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/de-chopin-und-marienbad-das-musikalische-erbe-des-grossen-romantikers/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/de-digitaler-detox-im-kurort-wie-man-wirklich-abschaltet/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/de-gewichtsmanagement-im-kurort-wie-die-kur-den-stoffwechsel-reguliert/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/de-herbst-in-marienbad-goldene-saison-fur-den-kuraufenthalt/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/de-marienbad-herz-europas/coverImage.jpg": {
     "webp": true,
     "w800": true,
@@ -389,13 +443,49 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/de-silvester-und-neujahr-in-marienbad-stille-und-festliche-feiern/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/en-autumn-in-marianske-lazne-the-golden-season-for-a-spa-stay/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/en-chopin-and-marianske-lazne-the-musical-heritage-of-the-great-romantic/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/en-digital-detox-at-the-spa-how-to-truly-disconnect/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/en-marienbad-heart-of-europe/coverImage.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/en-new-years-eve-in-marianske-lazne-quiet-and-festive-celebrations/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/en-train-to-marienbad/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/en-weight-management-at-the-spa-how-the-cure-regulates-your-metabolism/coverImage.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
@@ -419,6 +509,18 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/ru-cifrovoj-detoks-na-kurorte-kak-po-nastoyashchemu-otklyuchitsya/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/ru-lechenie-vesa-na-kurorte-kak-kurs-lecheniya-reguliruet-obmen-veshchestv/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/ru-marianske-lazne-serdce-evropy/coverImage.jpg": {
     "webp": true,
     "w800": true,
@@ -426,6 +528,24 @@
     "height": 630
   },
   "/images/content/articles/ru-na-poezde-v-marianske-lazne/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/ru-novyj-god-i-rozhdestvo-v-marianskikh-laznyakh-tikhij-i-prazdnichnyj-otdykh/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/ru-osen-v-marianskikh-laznyakh-zolotoj-sezon-dlya-kurortnogo-otdykha/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/ru-shopen-i-marianskie-lazni-muzykalnoe-nasledie-velikogo-romantika/coverImage.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
