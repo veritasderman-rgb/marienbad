@@ -2,15 +2,30 @@
 /**
  * Weekly article generator for marienbad.com
  *
- * Flow:
+ * NOTE: this script is NO LONGER run by CI. The GitHub Action that used to
+ * invoke it (.github/workflows/weekly-article.yml) never once fired on its
+ * schedule — every registered run failed at startup without executing a single
+ * job — so it was removed. The weekly article is now produced by a scheduled
+ * Claude routine instead, which does the same job with better verification
+ * (it can check facts against live external sources, which this script cannot).
+ *
+ * The file is kept as the editorial source of truth for that routine:
+ *   - TOPIC_BACKLOG    — remaining topics, with per-topic fact guardrails
+ *   - TONE             — tone, SEO and word-count spec
+ *   - GRAPHIC_COMPONENTS — the graphic patterns available in this codebase
+ * Update TOPIC_BACKLOG here when adding new topics.
+ *
+ * It can still be run by hand (requires ANTHROPIC_API_KEY):
+ *   node scripts/generate-weekly-article.mjs
+ * Flow when run manually:
  *   1. Pick next uncovered topic from backlog
- *   2. Generate CS article via Claude (claude-sonnet-4-6)
+ *   2. Generate CS article via Claude
  *   3. Verify Phase A — cross-check facts against knowledge base JSON
  *   4. Verify Phase B — Claude's own knowledge flags medical/historical errors
  *   5. Apply corrections if needed
  *   6. Localize CS → DE / EN / RU (cultural adaptation, not translation)
  *   7. Write 4 draft files to src/content/articles/
- *   8. Write PR metadata to /tmp/ for the GitHub Actions step
+ *   8. Write PR metadata to /tmp/
  */
 
 import Anthropic from '@anthropic-ai/sdk';
