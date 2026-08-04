@@ -1,0 +1,666 @@
+---
+/**
+ * Ensana Life — věrnostní program (skrytá stránka, zatím jen česky)
+ *
+ * Obsah vychází z oficiálních zdrojů Ensana Hotels:
+ *  - https://ensanahotels.com/cs/ensana-life
+ *  - https://ensanahotels.com/cs/ensana-life/obchodni-podminky
+ * Referenční výtah je uložen v `data/ensana_life_benefits.md`.
+ *
+ * Stránka je neveřejná: noindex + vyřazená ze sitemapy přes NOINDEXED_PATHS
+ * ('ensana-life') v astro.config.mjs. Do menu se zatím nelinkuje.
+ */
+import Base from '@/layouts/Base.astro'
+import Pic from '@/components/Pic.astro'
+
+export const prerender = true
+
+const locale = 'cs' as const
+
+const pageTitle = 'Ensana Life — věrnostní program | Marienbad.com'
+const pageDescription =
+  'Ensana Life je věrnostní program hotelů Ensana. Zdarma, bez expirace a se slevou až 20 % na ubytování i na wellness, lázně a restauraci. Přehled úrovní a podmínek.'
+
+const REGISTER_URL = 'https://ensanahotels.com/cs/ensana-life/registrace'
+const LOGIN_URL = 'https://ensanahotels.com/cs/ensana-life/login'
+const TERMS_URL = 'https://ensanahotels.com/cs/ensana-life/obchodni-podminky'
+const FAQ_URL = 'https://ensanahotels.com/cs/ensana-life/otazky-a-odpovedi'
+const LEVELS_URL = 'https://ensanahotels.com/cs/ensana-life/urovne-clenstvi'
+const CONTACT_MAIL = 'ensana.life@ensanahotels.com'
+
+interface Tier {
+  key: string
+  name: string
+  nights: string
+  nightsNote: string
+  discount: string
+  discountLabel: string
+  perks: string[]
+  /** tailwind classes for the card face */
+  face: string
+  /** text color on the card face */
+  ink: string
+  /** accent used for the ribbon / chip */
+  chip: string
+  featured?: boolean
+}
+
+const tiers: Tier[] = [
+  {
+    key: 'blue',
+    name: 'Modrá',
+    nights: '0',
+    nightsNote: 'stačí se zaregistrovat',
+    discount: '—',
+    discountLabel: 'bez slevy',
+    perks: ['Přístup k největším slevovým akcím', 'Newsletter Ensana Life'],
+    face: 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900',
+    ink: 'text-white',
+    chip: 'bg-white/15 text-turquoise-200',
+  },
+  {
+    key: 'bronze',
+    name: 'Bronzová',
+    nights: '5+',
+    nightsNote: 'nocí za poslední 2 roky',
+    discount: '10 %',
+    discountLabel: 'na ubytování i služby',
+    perks: ['Dřívější check-in dle dostupnosti', 'Přístup k největším slevovým akcím', 'Newsletter Ensana Life'],
+    face: 'bg-gradient-to-br from-[#a97142] via-[#8a5a33] to-[#5c3a1f]',
+    ink: 'text-white',
+    chip: 'bg-white/15 text-[#f5d9bd]',
+  },
+  {
+    key: 'silver',
+    name: 'Stříbrná',
+    nights: '20+',
+    nightsNote: 'nocí za poslední 2 roky',
+    discount: '15 %',
+    discountLabel: 'na ubytování i služby',
+    perks: [
+      'Dřívější check-in i pozdější check-out dle dostupnosti',
+      'Přístup k největším slevovým akcím',
+      'Newsletter Ensana Life',
+    ],
+    face: 'bg-gradient-to-br from-[#9aa5ad] via-[#77838d] to-[#4b555d]',
+    ink: 'text-white',
+    chip: 'bg-white/20 text-white',
+    featured: true,
+  },
+  {
+    key: 'gold',
+    name: 'Zlatá',
+    nights: '40+',
+    nightsNote: 'nocí za poslední 2 roky',
+    discount: '20 %',
+    discountLabel: 'na ubytování i služby',
+    perks: [
+      'Vyšší kategorie pokoje zdarma dle dostupnosti',
+      'Dřívější check-in i pozdější check-out dle dostupnosti',
+      'Přístup k největším slevovým akcím',
+      'Newsletter Ensana Life',
+    ],
+    face: 'bg-gradient-to-br from-[#e0b45c] via-[#c9973b] to-[#8a6420]',
+    ink: 'text-beige-950',
+    chip: 'bg-black/15 text-beige-950',
+  },
+]
+
+const highlights = [
+  {
+    value: 'až 20 %',
+    label: 'sleva na ubytování',
+    note: 'při rezervaci a platbě přímo v hotelu',
+  },
+  {
+    value: 'až 20 %',
+    label: 'sleva na wellness, lázně a restauraci',
+    note: 'platí i na kavárnu a další hotelové služby',
+  },
+  {
+    value: '0 Kč',
+    label: 'vstupní poplatek',
+    note: 'členství je zdarma a bez expirace',
+  },
+  {
+    value: '7',
+    label: 'hotelů Ensana v Mariánských Lázních',
+    note: 'noci se sčítají napříč pobyty',
+  },
+]
+
+const steps = [
+  {
+    title: 'Zaregistrujete se online',
+    text: 'Krátký formulář na stránkách Ensana. Bez poplatku, bez závazku.',
+  },
+  {
+    title: 'Aktivujete členství z e-mailu',
+    text: 'Přijde aktivační e-mail. Členství vzniká odsouhlasením podmínek a kliknutím na odkaz.',
+  },
+  {
+    title: 'Dostanete virtuální kartu a promo kód',
+    text: 'Kartu si uložíte jako obrázek nebo rovnou do Apple / Google peněženky. Promo kód najdete v členské sekci.',
+  },
+  {
+    title: 'Rezervujete přímo v hotelu',
+    text: 'Při rezervaci uvedete jméno, číslo karty a promo kód. Sleva se uplatňuje hned — zpětně to nejde.',
+  },
+  {
+    title: 'Při check-inu se vše ověří',
+    text: 'Hotel zkontroluje údaje a stav členství. Po pobytu se noci připočtou k vaší úrovni.',
+  },
+]
+
+const benefitCards = [
+  {
+    title: 'Sleva neplatí jen na pokoj',
+    text: 'Stejné procento se vztahuje i na lázeňské a wellness služby, restauraci a kavárnu. U dvoutýdenní kúry, kde procedury tvoří podstatnou část účtu, je to znát mnohem víc než sleva na samotné ubytování.',
+    icon: 'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
+  },
+  {
+    title: 'Členství nemá datum expirace',
+    text: 'Základní úroveň platí neomezeně. Nemusíte hlídat, jestli vám body nepropadly — jen počet nocí za poslední dva roky rozhoduje o tom, na jaké úrovni jste.',
+    icon: 'M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Žádná plastová kartička',
+    text: 'Karta je virtuální. Uložíte si ji do telefonu a když ji smažete, znovu si ji stáhnete v členské sekci. Tam si také kdykoli ověříte svůj aktuální stav.',
+    icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
+  },
+  {
+    title: 'Program platí v celé skupině',
+    text: 'Noci sbíráte nejen v Mariánských Lázních, ale i v hotelech Ensana v Maďarsku, na Slovensku, v Rumunsku, Bulharsku a Německu. A naopak — nasbírané noci uplatníte tady.',
+    icon: 'M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 000 18 15 15 0 000-18z',
+  },
+  {
+    title: 'Přístup ke slevovým akcím',
+    text: 'Členové mají přístup k největším slevovým akcím a čtvrtletním prodejům se zvláštními podmínkami — tedy k nabídkám, které se veřejně needitují.',
+    icon: 'M7 7h.01M7 3h5a2 2 0 011.4.6l7 7a2 2 0 010 2.8l-5 5a2 2 0 01-2.8 0l-7-7A2 2 0 013 10V5a2 2 0 012-2z',
+  },
+  {
+    title: 'Komfort navíc při příjezdu',
+    text: 'Od bronzové úrovně dřívější check-in, od stříbrné i pozdější check-out a na zlaté úrovni upgrade pokoje zdarma — vždy podle aktuální dostupnosti.',
+    icon: 'M5 12h14M12 5l7 7-7 7',
+  },
+]
+
+const conditions = [
+  {
+    title: 'Jen při rezervaci přímo v hotelu',
+    text: 'Sleva na ubytování platí pouze tehdy, když rezervujete a platíte přímo v hotelu — bez zprostředkovatele, agenta třetí strany nebo rezervační platformy typu Booking.com.',
+  },
+  {
+    title: 'Rezervace přes CK nebo pojišťovnu',
+    text: 'Kdo si pobyt koupí přes cestovní kancelář nebo zdravotní pojišťovnu, nemá nárok na slevu na ubytování. Slevu na ostatní hotelové služby — restauraci, lázně, wellness, kavárnu — uplatnit může.',
+  },
+  {
+    title: 'Platí na veřejné sazby',
+    text: 'Sleva se nevztahuje na bleskové výprodeje, doplatky přes zdravotní pojišťovny ani na firemní a jiné smluvní ceny. Vztahuje se na 1 pokoj a potvrzení závisí na aktuální dostupnosti.',
+  },
+  {
+    title: 'Uplatnit hned při rezervaci',
+    text: 'Zpětně slevu doplnit nelze. Rozhodující je stav členství v okamžiku rezervace, proto je dobré mít kartu i promo kód po ruce už při objednávání.',
+  },
+  {
+    title: 'All-inclusive pobyty',
+    text: 'Dřívější check-in a pozdější check-out u nich nelze čerpat zdarma. Člen ale může uplatnit slevu své úrovně na poplatek za tuto službu.',
+  },
+  {
+    title: 'Kdo se členem stát nemůže',
+    text: 'Program je pro fyzické osoby starší 18 let. Nevztahuje se na právnické osoby ani na zaměstnance Ensany a přidružených společností. Jeden člen má jednu kartu a výhody nelze sdílet ani převádět.',
+  },
+]
+
+const comparison = [
+  { label: 'Sleva na ubytování', values: ['—', '10 %', '15 %', '20 %'] },
+  { label: 'Sleva na lázně, wellness a restauraci', values: ['—', '10 %', '15 %', '20 %'] },
+  { label: 'Největší slevové akce', values: ['ano', 'ano', 'ano', 'ano'] },
+  { label: 'Newsletter Ensana Life', values: ['ano', 'ano', 'ano', 'ano'] },
+  { label: 'Dřívější check-in', values: ['—', 'ano', 'ano', 'ano'] },
+  { label: 'Pozdější check-out', values: ['—', '—', 'ano', 'ano'] },
+  { label: 'Vyšší kategorie pokoje zdarma', values: ['—', '—', '—', 'ano'] },
+]
+---
+
+<Base
+  locale={locale}
+  section="accommodation"
+  title={pageTitle}
+  description={pageDescription}
+  noindex={true}
+  alternateUrls={{ cs: '/cs/ensana-life' }}
+>
+  <!-- ── Hero s brandingovým videem ─────────────────────────────────── -->
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-indigo-950">
+    <!--
+      Bez atributu `autoplay` — přehrávání spouští skript níže, a to jen pokud
+      návštěvník nemá zapnuté `prefers-reduced-motion`. Bez JS zůstane poster.
+    -->
+    <video
+      id="brand-video"
+      class="absolute inset-0 w-full h-full object-cover"
+      poster="/images/content/ensana-life/brand-poster.jpg"
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1">
+      <source src="/videos/ensana-life-brand.webm" type="video/webm" />
+      <source src="/videos/ensana-life-brand.mp4" type="video/mp4" />
+    </video>
+
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/92 via-indigo-950/75 to-indigo-950/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/80 via-transparent to-indigo-950/40"></div>
+
+    <!-- Ovládání přehrávání (WCAG 2.2.2 — pohyb delší než 5 s musí jít zastavit) -->
+    <button
+      id="brand-video-toggle"
+      type="button"
+      hidden
+      data-playing="false"
+      class="absolute bottom-5 right-5 z-10 inline-flex items-center gap-2 pl-3 pr-4 py-2 rounded-full bg-indigo-950/70 hover:bg-indigo-950/90 border border-white/25 text-white text-sm font-semibold backdrop-blur-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400">
+      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <rect class="icon-pause" x="7" y="5" width="3.5" height="14" rx="1" />
+        <rect class="icon-pause" x="13.5" y="5" width="3.5" height="14" rx="1" />
+        <path class="icon-play" d="M8 5.5v13a1 1 0 001.53.85l10-6.5a1 1 0 000-1.7l-10-6.5A1 1 0 008 5.5z" />
+      </svg>
+      <span class="toggle-label">Pozastavit video</span>
+    </button>
+
+    <div class="relative container-wide">
+      <div class="max-w-2xl py-24 md:py-32">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+          Věrnostní program
+        </span>
+
+        <h1 class="mt-6 font-heading text-4xl md:text-6xl font-bold text-white leading-[1.05]">
+          Ensana Life
+        </h1>
+
+        <p class="mt-4 font-heading text-xl md:text-2xl text-turquoise-300 font-medium leading-snug">
+          Čím déle u nás zůstanete, tím víc vám zůstane.
+        </p>
+
+        <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-xl">
+          Členství je zdarma, bez expirace a začíná okamžitě. Sleva roste s počtem odbydlených nocí
+          až na <strong class="text-white">20 %</strong> — a neplatí jen na pokoj, vztahuje se i na
+          lázně, wellness, restauraci a kavárnu.
+        </p>
+
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Zaregistrovat se zdarma
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href="#urovne" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+            Prohlédnout úrovně
+          </a>
+        </div>
+
+        <p class="mt-6 text-sm text-white/60">
+          Už jste členem? <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer" class="text-turquoise-300 underline underline-offset-4 hover:text-turquoise-200">Přihlaste se do členské sekce</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Čtyři hlavní čísla ──────────────────────────────────────────── -->
+  <section class="bg-white border-b border-beige-200">
+    <div class="container-wide">
+      <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-beige-200">
+        {highlights.map((h) => (
+          <div class="px-5 py-8 md:px-8 md:py-10">
+            <div class="font-heading text-3xl md:text-4xl font-bold text-indigo-700">{h.value}</div>
+            <div class="mt-2 font-semibold text-beige-950 leading-snug">{h.label}</div>
+            <div class="mt-1 text-sm text-beige-700 leading-snug">{h.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Co to je ────────────────────────────────────────────────────── -->
+  <section class="section bg-beige-50">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">
+            Věrnostní program, který lázeňskému hostu opravdu sedí
+          </h2>
+          <div class="mt-6 space-y-5 text-lg text-beige-900 leading-relaxed">
+            <p>
+              Ensana Life odměňuje opakované pobyty slevami a dalšími výhodami. Čím víc nocí u nás
+              odbydlíte, tím vyšší úroveň členství získáte — a tím větší sleva vám zůstane.
+            </p>
+            <p>
+              Pro Mariánské Lázně to má jeden zásadní rozměr. <strong>Sedm ze zdejších lázeňských hotelů
+              patří skupině Ensana</strong> a klasická lázeňská kúra trvá dva až tři týdny. Rozhodující
+              počet nocí se tak nesbírá roky — často stačí jeden delší pobyt.
+            </p>
+            <div class="rounded-2xl bg-white border border-turquoise-200 p-6">
+              <p class="font-semibold text-indigo-700">Jak rychle se postupuje výš</p>
+              <ul class="mt-3 space-y-2 text-base text-beige-900">
+                <li class="flex gap-3">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+                  <span>Týdenní pobyt vás dostane na <strong>bronzovou</strong> úroveň.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+                  <span>Jedna třítýdenní kúra znamená <strong>stříbrnou</strong> úroveň.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+                  <span>Dvě takové kúry během dvou let už jsou <strong>zlatá</strong> karta.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="overflow-hidden rounded-3xl shadow-card">
+            <Pic
+              src="/images/content/ensana-life/brand-poster.jpg"
+              alt="Lázeňská hostka s pohárkem na kolonádě v ranním světle"
+              class="w-full h-full object-cover"
+              sizes="(min-width: 1024px) 45vw, 100vw"
+            />
+          </div>
+          <div class="absolute -bottom-6 -left-6 hidden md:block bg-indigo-700 text-white rounded-2xl px-6 py-5 shadow-lg max-w-[15rem]">
+            <div class="font-heading text-2xl font-bold text-yellow-400">bez expirace</div>
+            <div class="mt-1 text-sm text-white/80 leading-snug">Základní členství platí neomezeně.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Úrovně členství ─────────────────────────────────────────────── -->
+  <section id="urovne" class="section bg-white scroll-mt-24">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">Čtyři úrovně členství</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">
+          O zařazení rozhoduje součet nocí odbydlených za poslední dva roky. Úroveň se přiděluje
+          nebo obnovuje po pobytu.
+        </p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        {tiers.map((tier) => (
+          <div class={`relative rounded-3xl overflow-hidden shadow-card flex flex-col ${tier.featured ? 'ring-2 ring-yellow-400 ring-offset-2' : ''}`}>
+            {tier.featured && (
+              <span class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-yellow-400 text-beige-950 text-xs font-bold uppercase tracking-wide">
+                Nejčastější
+              </span>
+            )}
+
+            <!-- lícová strana karty -->
+            <div class={`${tier.face} ${tier.ink} p-6 pb-7 relative`}>
+              <div class="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.55)_0%,_transparent_55%)]"></div>
+              <div class="relative">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-xs font-semibold uppercase tracking-[0.18em] opacity-80">Ensana Life</span>
+                  <span class="w-9 h-6 rounded bg-white/25 border border-white/30"></span>
+                </div>
+                <div class="mt-7 font-heading text-2xl font-bold">{tier.name} karta</div>
+                <div class="mt-5 flex items-end gap-2">
+                  <span class="font-heading text-4xl font-bold leading-none">{tier.discount}</span>
+                  <span class="text-sm opacity-85 leading-snug pb-1">{tier.discountLabel}</span>
+                </div>
+                <div class={`mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold ${tier.chip}`}>
+                  {tier.nights} <span class="font-normal opacity-90">{tier.nightsNote}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- výhody -->
+            <ul class="flex-1 bg-beige-50 p-6 space-y-3 border-t border-black/5">
+              {tier.perks.map((perk) => (
+                <li class="flex gap-3 text-sm text-beige-900 leading-snug">
+                  <svg class="w-4 h-4 mt-0.5 text-turquoise-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  <span>{perk}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-8 text-sm text-beige-700 max-w-3xl leading-relaxed">
+        Modrá karta samotnou slevu na ubytování ani na služby nenese — ta se otevírá až s bronzovou
+        úrovní, tedy po prvních pěti odbydlených nocích. Nový člen tak první pobyt rezervuje ještě
+        bez procentuální slevy, ale už s přístupem ke slevovým akcím. Pokud se člen na základě
+        pobytů v aktuálním a předchozím roce nekvalifikuje pro udržení své úrovně, je zařazen zpět
+        na modrou kartu. Slevy platí při rezervaci a platbě přímo v hotelu a vztahují se na veřejné
+        sazby.
+      </p>
+
+      <!-- srovnávací tabulka (desktop) -->
+      <div class="mt-12 hidden md:block overflow-hidden rounded-2xl border border-beige-200">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-indigo-700 text-white">
+              <th class="px-6 py-4 font-heading text-sm font-semibold uppercase tracking-wide">Výhoda</th>
+              {tiers.map((t) => (
+                <th class="px-4 py-4 text-center font-heading text-sm font-semibold uppercase tracking-wide">{t.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-beige-50'}>
+                <td class="px-6 py-3.5 text-sm font-medium text-beige-950 border-t border-beige-200">{row.label}</td>
+                {row.values.map((v) => (
+                  <td class="px-4 py-3.5 text-center text-sm border-t border-beige-200">
+                    {v === 'ano' ? (
+                      <svg class="w-5 h-5 mx-auto text-turquoise-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                    ) : v === '—' ? (
+                      <span class="text-beige-400">—</span>
+                    ) : (
+                      <span class="font-semibold text-indigo-700">{v}</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8">
+        <a href={LEVELS_URL} target="_blank" rel="noopener noreferrer" class="btn-ghost">
+          Detail úrovní na ensanahotels.com
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Benefity ────────────────────────────────────────────────────── -->
+  <section class="section bg-beige-50">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">Co z toho host reálně má</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">
+          Program není o sbírání bodů, které jednou propadnou. Je postavený na jednoduché slevě —
+          a na několika drobnostech, které pobyt zpříjemní.
+        </p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {benefitCards.map((b) => (
+          <div class="bg-white rounded-2xl p-7 border border-beige-200 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-turquoise-100 flex items-center justify-center">
+              <svg class="w-6 h-6 text-indigo-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={b.icon} /></svg>
+            </div>
+            <h3 class="mt-5 font-heading text-lg font-bold text-indigo-700 leading-snug">{b.title}</h3>
+            <p class="mt-3 text-beige-800 leading-relaxed">{b.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Jak to funguje ──────────────────────────────────────────────── -->
+  <section class="section bg-indigo-700 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+    <div class="relative container-wide">
+      <div class="max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">Jak se stát členem</h2>
+        <p class="mt-4 text-lg text-white/80 leading-relaxed">
+          Celé to zabere pár minut a nic to nestojí.
+        </p>
+      </div>
+
+      <ol class="mt-12 grid md:grid-cols-2 xl:grid-cols-5 gap-6">
+        {steps.map((s, i) => (
+          <li class="relative bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="w-10 h-10 rounded-full bg-yellow-400 text-beige-950 font-heading font-bold flex items-center justify-center">
+              {i + 1}
+            </div>
+            <h3 class="mt-4 font-heading text-base font-bold leading-snug">{s.title}</h3>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-12 flex flex-wrap gap-4">
+        <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Založit členství
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+        <a href={FAQ_URL} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          Otázky a odpovědi
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Co je dobré vědět ───────────────────────────────────────────── -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">Co je dobré vědět předem</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">
+          Aby nevznikla falešná očekávání — tohle jsou podmínky, na které se nejčastěji naráží.
+        </p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-x-10 gap-y-8">
+        {conditions.map((c) => (
+          <div class="border-l-2 border-yellow-400 pl-5">
+            <h3 class="font-heading text-lg font-bold text-indigo-700 leading-snug">{c.title}</h3>
+            <p class="mt-2 text-beige-800 leading-relaxed">{c.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 rounded-2xl bg-beige-50 border border-beige-200 p-7 md:p-8">
+        <p class="text-beige-900 leading-relaxed">
+          Členství můžete kdykoli zrušit e-mailem. Ensana si vyhrazuje právo podmínky programu měnit
+          a program jednostranně ukončit s 90denní výpovědní lhůtou — po jejím uplynutí už nebudou
+          možné nové registrace a členové využijí jen výhody, které jim už byly potvrzeny.
+          Závazné znění najdete ve <a href={TERMS_URL} target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">všeobecných obchodních podmínkách Ensana Life</a>.
+        </p>
+        <p class="mt-4 text-beige-900 leading-relaxed">
+          S dotazy k programu se obraťte na
+          <a href={`mailto:${CONTACT_MAIL}`} class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">{CONTACT_MAIL}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Závěrečná výzva ─────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-aubergine-900 text-white">
+    <div class="absolute inset-0">
+      <Pic
+        src="/images/content/ensana-life/social-poster.jpg"
+        alt=""
+        class="w-full h-full object-cover"
+        sizes="100vw"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
+
+    <div class="relative container-wide">
+      <div class="max-w-2xl py-20 md:py-28">
+        <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">
+          Příští pobyt může být levnější než ten minulý
+        </h2>
+        <p class="mt-5 text-lg text-white/80 leading-relaxed">
+          Registrace trvá pár minut, nic nestojí a členství začíná okamžitě. Přístup ke slevovým
+          akcím máte hned; sleva na ubytování a služby se otevírá s bronzovou úrovní, tedy po
+          prvních pěti odbydlených nocích.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Zaregistrovat se zdarma
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/cs/ubytovani" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+            Prohlédnout hotely v Mariánských Lázních
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  #brand-video-toggle .icon-play {
+    display: none;
+  }
+  #brand-video-toggle[data-playing='false'] .icon-pause {
+    display: none;
+  }
+  #brand-video-toggle[data-playing='false'] .icon-play {
+    display: inline;
+  }
+</style>
+
+<script>
+  const video = document.getElementById('brand-video') as HTMLVideoElement | null
+  const toggle = document.getElementById('brand-video-toggle')
+
+  if (video && toggle) {
+    const label = toggle.querySelector('.toggle-label')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const setState = (playing: boolean) => {
+      toggle.dataset.playing = String(playing)
+      if (label) label.textContent = playing ? 'Pozastavit video' : 'Přehrát video'
+    }
+
+    const start = () => {
+      video.play().then(
+        () => setState(true),
+        () => setState(false),
+      )
+    }
+
+    const stop = () => {
+      video.pause()
+      setState(false)
+    }
+
+    // Autoplay jen pro návštěvníky, kteří omezený pohyb nepožadují.
+    if (reduced.matches) stop()
+    else start()
+
+    // Tlačítko se zobrazí teprve tehdy, když ho JS umí obsloužit.
+    toggle.hidden = false
+
+    toggle.addEventListener('click', () => {
+      if (video.paused) start()
+      else stop()
+    })
+
+    reduced.addEventListener('change', (event) => {
+      if (event.matches) stop()
+    })
+  }
+</script>
