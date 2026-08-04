@@ -605,6 +605,18 @@
     "width": 1080,
     "height": 1080
   },
+  "/images/content/ensana-life/brand-poster.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 900
+  },
+  "/images/content/ensana-life/social-poster.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 900
+  },
   "/images/content/hero/hero/image.jpg": {
     "webp": true,
     "w800": true,
