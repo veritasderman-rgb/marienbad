@@ -233,10 +233,14 @@ const comparison = [
 >
   <!-- ── Hero s brandingovým videem ─────────────────────────────────── -->
   <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-indigo-950">
+    <!--
+      Bez atributu `autoplay` — přehrávání spouští skript níže, a to jen pokud
+      návštěvník nemá zapnuté `prefers-reduced-motion`. Bez JS zůstane poster.
+    -->
     <video
+      id="brand-video"
       class="absolute inset-0 w-full h-full object-cover"
       poster="/images/content/ensana-life/brand-poster.jpg"
-      autoplay
       muted
       loop
       playsinline
@@ -249,6 +253,21 @@ const comparison = [
 
     <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/92 via-indigo-950/75 to-indigo-950/30"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/80 via-transparent to-indigo-950/40"></div>
+
+    <!-- Ovládání přehrávání (WCAG 2.2.2 — pohyb delší než 5 s musí jít zastavit) -->
+    <button
+      id="brand-video-toggle"
+      type="button"
+      hidden
+      data-playing="false"
+      class="absolute bottom-5 right-5 z-10 inline-flex items-center gap-2 pl-3 pr-4 py-2 rounded-full bg-indigo-950/70 hover:bg-indigo-950/90 border border-white/25 text-white text-sm font-semibold backdrop-blur-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400">
+      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <rect class="icon-pause" x="7" y="5" width="3.5" height="14" rx="1" />
+        <rect class="icon-pause" x="13.5" y="5" width="3.5" height="14" rx="1" />
+        <path class="icon-play" d="M8 5.5v13a1 1 0 001.53.85l10-6.5a1 1 0 000-1.7l-10-6.5A1 1 0 008 5.5z" />
+      </svg>
+      <span class="toggle-label">Pozastavit video</span>
+    </button>
 
     <div class="relative container-wide">
       <div class="max-w-2xl py-24 md:py-32">
@@ -265,8 +284,9 @@ const comparison = [
         </p>
 
         <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-xl">
-          Členství je zdarma, bez expirace a začíná okamžitě. Sleva až <strong class="text-white">20 %</strong>
-          neplatí jen na pokoj — vztahuje se i na lázně, wellness, restauraci a kavárnu.
+          Členství je zdarma, bez expirace a začíná okamžitě. Sleva roste s počtem odbydlených nocí
+          až na <strong class="text-white">20 %</strong> — a neplatí jen na pokoj, vztahuje se i na
+          lázně, wellness, restauraci a kavárnu.
         </p>
 
         <div class="mt-9 flex flex-wrap gap-4">
@@ -410,9 +430,12 @@ const comparison = [
       </div>
 
       <p class="mt-8 text-sm text-beige-700 max-w-3xl leading-relaxed">
-        Pokud se člen na základě pobytů v aktuálním a předchozím roce nekvalifikuje pro udržení své
-        úrovně, je zařazen zpět na modrou kartu. Slevy platí při rezervaci a platbě přímo v hotelu
-        a vztahují se na veřejné sazby.
+        Modrá karta samotnou slevu na ubytování ani na služby nenese — ta se otevírá až s bronzovou
+        úrovní, tedy po prvních pěti odbydlených nocích. Nový člen tak první pobyt rezervuje ještě
+        bez procentuální slevy, ale už s přístupem ke slevovým akcím. Pokud se člen na základě
+        pobytů v aktuálním a předchozím roce nekvalifikuje pro udržení své úrovně, je zařazen zpět
+        na modrou kartu. Slevy platí při rezervaci a platbě přímo v hotelu a vztahují se na veřejné
+        sazby.
       </p>
 
       <!-- srovnávací tabulka (desktop) -->
@@ -569,8 +592,9 @@ const comparison = [
           Příští pobyt může být levnější než ten minulý
         </h2>
         <p class="mt-5 text-lg text-white/80 leading-relaxed">
-          Registrace trvá pár minut, nic nestojí a členství začíná okamžitě. Slevu uplatníte hned
-          při první rezervaci provedené přímo v hotelu.
+          Registrace trvá pár minut, nic nestojí a členství začíná okamžitě. Přístup ke slevovým
+          akcím máte hned; sleva na ubytování a služby se otevírá s bronzovou úrovní, tedy po
+          prvních pěti odbydlených nocích.
         </p>
         <div class="mt-9 flex flex-wrap gap-4">
           <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" class="btn-primary">
@@ -585,3 +609,58 @@ const comparison = [
     </div>
   </section>
 </Base>
+
+<style>
+  #brand-video-toggle .icon-play {
+    display: none;
+  }
+  #brand-video-toggle[data-playing='false'] .icon-pause {
+    display: none;
+  }
+  #brand-video-toggle[data-playing='false'] .icon-play {
+    display: inline;
+  }
+</style>
+
+<script>
+  const video = document.getElementById('brand-video') as HTMLVideoElement | null
+  const toggle = document.getElementById('brand-video-toggle')
+
+  if (video && toggle) {
+    const label = toggle.querySelector('.toggle-label')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const setState = (playing: boolean) => {
+      toggle.dataset.playing = String(playing)
+      if (label) label.textContent = playing ? 'Pozastavit video' : 'Přehrát video'
+    }
+
+    const start = () => {
+      video.play().then(
+        () => setState(true),
+        () => setState(false),
+      )
+    }
+
+    const stop = () => {
+      video.pause()
+      setState(false)
+    }
+
+    // Autoplay jen pro návštěvníky, kteří omezený pohyb nepožadují.
+    if (reduced.matches) stop()
+    else start()
+
+    // Tlačítko se zobrazí teprve tehdy, když ho JS umí obsloužit.
+    toggle.hidden = false
+
+    toggle.addEventListener('click', () => {
+      if (video.paused) start()
+      else stop()
+    })
+
+    reduced.addEventListener('change', (event) => {
+      if (event.matches) stop()
+    })
+  }
+</script>

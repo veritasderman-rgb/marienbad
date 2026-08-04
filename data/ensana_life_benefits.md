@@ -24,7 +24,9 @@ Klíčové vlastnosti:
 - **Virtuální karta** — žádná plastová kartička; karta chodí v podobě obrázku nebo přímo do
   Apple / Google peněženky.
 - **Členství nemá dobu platnosti** (základní úroveň je bez expirace).
-- **Začíná okamžitě** po aktivaci — na první slevu se nemusí čekat na další pobyt.
+- **Začíná okamžitě** po aktivaci — člen hned získává přístup ke slevovým akcím a newsletteru.
+  Procentuální sleva na ubytování a služby ale náleží až od bronzové úrovně (5+ nocí), takže
+  úplně první pobyt se rezervuje ještě bez ní.
 - Slevy rostou s počtem odbydlených nocí.
 
 ## 2. Hlavní benefity pro klienta — shrnutí
@@ -194,4 +196,7 @@ Apple / Google peněženky. Stav členství si tam rovněž zkontroluje.
      to je znatelná částka.
   3. **Nulová vstupní bariéra** — zdarma, bez expirace, bez plastové karty.
 - Vždy uvádět podmínku „**rezervace a platba přímo v hotelu**“ — bez ní je sdělení zavádějící.
+- **Neslibovat slevu už na první rezervaci.** Nový člen je na modré kartě, která slevu nemá;
+  procenta začínají bronzovou úrovní po 5 odbydlených nocích. Okamžitý je přístup ke slevovým
+  akcím, ne procentuální sleva.
 - Na webu **nepoužívat tvrzení o konkrétní úspoře v korunách**; ceny se mění a program má výjimky.
