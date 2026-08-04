@@ -605,17 +605,23 @@
     "width": 1080,
     "height": 1080
   },
-  "/images/content/ensana-life/brand-poster.jpg": {
+  "/images/content/ensana-life/hotel-vecer.jpg": {
     "webp": true,
     "w800": true,
-    "width": 1600,
-    "height": 900
+    "width": 2400,
+    "height": 1340
   },
-  "/images/content/ensana-life/social-poster.jpg": {
+  "/images/content/ensana-life/kolonada-hero.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 2400,
+    "height": 1340
+  },
+  "/images/content/ensana-life/rimske-lazne.jpg": {
     "webp": true,
     "w800": true,
     "width": 1600,
-    "height": 900
+    "height": 1194
   },
   "/images/content/hero/hero/image.jpg": {
     "webp": true,
