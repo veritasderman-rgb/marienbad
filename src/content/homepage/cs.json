@@ -209,11 +209,12 @@
   },
   "seasonal": {
     "badge": "Doporučujeme",
-    "season": "To nejlepší",
-    "title": "Prameny na vás čekají — vaše kúra v Mariánských Lázních",
-    "description": "Mariánské Lázně okouzlí v každém ročním období: Skalníkovy sady překvapují proměnlivými barvami, Zpívající fontána láká na legendární vodní představení a jemný horský vzduch v nadmořské výšce 630 metrů je přírodním lékem na dýchací cesty.",
-    "ctaText": "Zjistit více",
-    "image": "/images/content/seasonal/seasonal/image.jpg"
+    "season": "Aktivní září",
+    "title": "Aktivní září v Mariánských Lázních",
+    "description": "Město po hlavní sezoně patří pohybu: běhání lesem, golf, tenis, discgolf, koloběžky i plavání — a k tomu videosérie cvičení s naší fyzioterapeutkou Eliškou. Září je nejlepší kondička roku.",
+    "ctaText": "Objevit Aktivní září",
+    "image": "/images/library/sport/tenis-02.jpg",
+    "href": "/cs/aktivni-zari"
   },
   "magazine": {
     "sectionLabel": "Magazín",

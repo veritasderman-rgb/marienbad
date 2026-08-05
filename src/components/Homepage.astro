@@ -23,9 +23,12 @@ interface Props {
 const { locale } = Astro.props
 const cms = await getHomepage(locale)
 
-// Dynamically fetch the 3 most recent articles (sorted by date descending in reader)
+// Dynamically fetch the 3 most recent articles (sorted by date descending in
+// reader). Articles dated in the future are scheduled posts — they belong in
+// the magazine once their day comes, not in today's news block.
 const allArticles = await getArticles(locale)
-const latestArticles = allArticles.slice(0, 3)
+const todayIso = new Date().toISOString().slice(0, 10)
+const latestArticles = allArticles.filter((a) => a.date <= todayIso).slice(0, 3)
 
 // Popup coordination: CampaignPopup (rendered site-wide from Base.astro) takes
 // priority over the homepage-only PromoPopup/BookingPopup. Mirror its phase
@@ -46,7 +49,9 @@ const ensanaHotelPath: Record<Locale, string> = { de: 'hotels', en: 'hotels', cs
 // Dec–Feb → christmas/winter, Mar–May → spring, Jun–Aug → summer, Sep–Nov → autumn.
 const seasonByMonth = ['christmas', 'christmas', 'spring', 'spring', 'spring', 'summer', 'summer', 'summer', 'autumn', 'autumn', 'autumn', 'christmas']
 const currentSeason = seasons.find((s) => s.id === seasonByMonth[now.getMonth()]) ?? seasons[0]
-const seasonHref = `/${locale}/${currentSeason.slugs[locale]}`
+// The CMS may pin the highlight to a specific landing page via `seasonal.href`
+// (e.g. a campaign like /cs/aktivni-zari); otherwise follow the current season.
+const seasonHref = (cms.seasonal as any).href ?? `/${locale}/${currentSeason.slugs[locale]}`
 
 // Curated day-trip listicles surfaced on the homepage (indexes into tripArticleGroups):
 // 5 with kids, 7 castles & ruins, 5 sleeping volcanoes. Each card reuses the
