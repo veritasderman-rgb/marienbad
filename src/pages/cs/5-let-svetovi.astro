@@ -1,0 +1,23 @@
+---
+/**
+ * „5 let světoví" — 5. výročí zápisu UNESCO (Great Spa Towns of Europe).
+ * Obsah drží sdílená komponenta FiveYearsWorldHeritage.
+ */
+import Base from '@/layouts/Base.astro'
+import FiveYearsWorldHeritage from '@/components/FiveYearsWorldHeritage.astro'
+
+export const prerender = true
+
+const locale = 'cs' as const
+---
+
+<Base
+  locale={locale}
+  section="culture"
+  title="5 let světoví — výročí UNESCO | Marienbad.com"
+  description="Slavná lázeňská města Evropy slaví 5 let na seznamu UNESCO. Oslavy 11.–13. září 2026 zahajují Mariánské Lázně — program, souvislosti a proč být u toho."
+  ogImage="/images/content/articles/cs-5-let-svetovi/coverImage.jpg"
+  alternateUrls={{ cs: '/cs/5-let-svetovi', de: '/de/5-jahre-welterbe', en: '/en/5-years-world-heritage', ru: '/ru/5-let-yunesko' }}
+>
+  <FiveYearsWorldHeritage locale={locale} />
+</Base>

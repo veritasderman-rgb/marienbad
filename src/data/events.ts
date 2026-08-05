@@ -145,6 +145,30 @@ export const events: MarienbadEvent[] = [
     icon: '🎬',
   },
   {
+    id: 'unesco-5-years',
+    name: {
+      de: '5 Jahre Welterbe — UNESCO-Jubiläum',
+      en: '5 Years World-Class — UNESCO anniversary',
+      cs: '5 let světoví — výročí UNESCO',
+      ru: '5 лет всемирного наследия — юбилей ЮНЕСКО',
+    } as any,
+    period: {
+      de: '11.–13. September 2026',
+      en: '11–13 September 2026',
+      cs: '11.–13. září 2026',
+      ru: '11–13 сентября 2026',
+    } as any,
+    months: [9],
+    category: 'tradition',
+    description: {
+      de: 'Die Bedeutenden Kurstädte Europas feiern 5 Jahre auf der UNESCO-Liste — Marienbad eröffnet die Feierlichkeiten mit dem Heritage Forum und einem Festabend.',
+      en: 'The Great Spa Towns of Europe celebrate 5 years on the UNESCO list — Mariánské Lázně opens the festivities with the Heritage Forum and a gala evening.',
+      cs: 'Slavná lázeňská města Evropy slaví 5 let na seznamu UNESCO — Mariánské Lázně oslavy zahajují konferencí Heritage Forum a slavnostním večerem.',
+      ru: 'Знаменитые курортные города Европы отмечают 5 лет в списке ЮНЕСКО — Марианске Лазне открывают торжества конференцией Heritage Forum и праздничным вечером.',
+    } as any,
+    icon: '🏛️',
+  },
+  {
     id: 'christmas-markets',
     name: {
       de: 'Weihnachtsmärkte',

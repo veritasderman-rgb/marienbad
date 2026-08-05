@@ -23,6 +23,12 @@
     "width": 1200,
     "height": 630
   },
+  "/images/content/articles/cs-5-let-svetovi/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
   "/images/content/articles/cs-burnout-prevence-lazne/coverImage.jpg": {
     "webp": true,
     "w800": true,
@@ -354,6 +360,12 @@
     "height": 630
   },
   "/images/content/articles/cs-slavni-hoste-marianskych-lazni/coverImage.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 630
+  },
+  "/images/content/articles/cs-sport-v-marianskych-laznich/coverImage.jpg": {
     "webp": true,
     "w800": true,
     "width": 1200,
