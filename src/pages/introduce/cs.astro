@@ -1,0 +1,26 @@
+---
+/**
+ * Česká mutace B2B stránky pro partnery — /introduce/cs.
+ * Stejný obsah a materiály jako /introduce, komunikace v češtině;
+ * jazyk každého dokumentu je vyznačen štítkem u položky.
+ */
+import Base from '@/layouts/Base.astro'
+import IntroducePartnerPage, {
+  introduceAlternates,
+  introduceSwitcher,
+  introduceMeta,
+} from '@/components/IntroducePartnerPage.astro'
+
+export const prerender = true
+---
+
+<Base
+  locale="cs"
+  title={introduceMeta.cs.title}
+  description={introduceMeta.cs.description}
+  noindex={true}
+  alternateUrls={introduceAlternates}
+  switcherUrls={introduceSwitcher}
+>
+  <IntroducePartnerPage lang="cs" />
+</Base>

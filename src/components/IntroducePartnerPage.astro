@@ -1,0 +1,790 @@
+---
+/**
+ * B2B stránka pro cestovní kanceláře — /introduce (EN výchozí),
+ * /introduce/de a /introduce/cs.
+ *
+ * Zásada: partner v každé mutaci vidí VŠECHNY materiály, ale komunikace je
+ * v jeho jazyce a u každého dokumentu je jasně řečeno, v jakém jazyce je
+ * (štítek u položky). PDF soubory jsou sdílené — existují jednou.
+ */
+import Pic from '@/components/Pic.astro'
+
+type Lang = 'en' | 'de' | 'cs'
+
+// Meta + jazykové URL exportujeme pro tenké stránky /introduce, /introduce/de
+// a /introduce/cs (exporty se hoistují do module scope, proto jen literály).
+export const introduceMeta = {
+  en: {
+    title: 'Introduce Marienbad — Partner & Travel-Trade Materials',
+    description:
+      'Official partner materials for Mariánské Lázně (Marienbad): destination and hotel presentations, spa & MICE information, media library and copy-ready company details for your CRM.',
+  },
+  de: {
+    title: 'Marienbad vorstellen — Unterlagen für Reisebüros & Partner',
+    description:
+      'Offizielle Partnerunterlagen für Marienbad: Destinations- und Hotelpräsentationen, Kur- und MICE-Informationen, Mediathek und kopierfertige Firmendaten für Ihr CRM.',
+  },
+  cs: {
+    title: 'Představte Mariánské Lázně — podklady pro CK a partnery',
+    description:
+      'Oficiální partnerské podklady pro Mariánské Lázně: prezentace destinace a hotelů, informace o lázeňské péči a MICE, mediatéka a firemní údaje připravené ke zkopírování do vašeho CRM.',
+  },
+}
+
+export const introduceAlternates = {
+  en: '/introduce',
+  de: '/introduce/de',
+  cs: '/introduce/cs',
+}
+
+export const introduceSwitcher = {
+  ...introduceAlternates,
+  ru: '/introduce',
+}
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+
+const PDF = '/partners'
+const partnerKit = '/partners/marienbad-partner-kit.zip'
+const viewOnline = 'https://vps113733.cloud-anywhere.eu/index.php/s/jDQABzYkcRBFKH7'
+const mediaHref = '/introduce/media'
+
+const downloadIcon = 'M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2'
+const copyIcon =
+  'M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-2M8 5a2 2 0 002 2h4a2 2 0 002-2M8 5a2 2 0 012-2h4a2 2 0 012 2'
+
+/** Jazyk dokumentu (štítek u položek ke stažení). */
+type DocLang = 'EN' | 'DE' | 'CS'
+
+interface Material {
+  title: string
+  desc: string
+  file: string
+  size: string
+  doc: DocLang
+}
+
+interface Content {
+  heroBadge: string
+  heroTitle: string
+  heroLead: string
+  heroKit: string
+  heroBrowse: string
+  heroCompany: string
+  langSwitchLabel: string
+  statsHeading: string
+  stats: { value: string; label: string }[]
+  companyHeading: string
+  companyLead: string
+  copyAll: string
+  copy: string
+  copied: string
+  factLabels: string[]
+  descriptionHeading: string
+  shortDescription: string
+  contactHeading: string
+  contactLead: string
+  contacts: { label: string; email: string; phone: string; phoneHref: string }[]
+  vcard: string
+  aboutHeading: string
+  aboutCaption: string
+  aboutParagraphsHtml: string[]
+  viewOnlineHeading: string
+  viewOnlineText: string
+  viewOnlineCta: string
+  downloadsHeading: string
+  downloadsLead: string
+  downloadAll: string
+  docLangBadge: Record<DocLang, string>
+  groups: { group: string; note?: string; items: Material[] }[]
+  mediaHeading: string
+  mediaText: string
+  mediaCta: string
+  hotelsHeading: string
+  hotelsText: string
+  hotelsCta: string
+  hotelsHref: string
+  newsletterHeading: string
+  newsletterText: string
+  newsletterCta: string
+  newsletterHref: string
+  stepsHeading: string
+  steps: { t: string; d: string }[]
+  partnershipCta: string
+  partnershipMailto: string
+  photoCaptions: string[]
+}
+
+// Firemní údaje jsou jazykově neutrální — jen popisky polí se překládají.
+const factValues = [
+  'Léčebné lázně Mariánské Lázně a.s.',
+  'Ensana (Mariánské Lázně Ensana)',
+  '45359113',
+  'CZ45359113',
+  'Masarykova 22/5, 353 01 Mariánské Lázně, Czech Republic',
+  'Mariánské Lázně (Marienbad), West Bohemia, Czech Republic',
+  'Medical spa & wellness destination',
+  '7 spa hotels · ~900 rooms · 10 conference rooms',
+  'https://ensanahotels.com',
+  'EN · DE · CS · RU',
+]
+
+const photos = [
+  '/images/partners/main-spa-colonnade.jpg',
+  '/images/partners/singing-fountain.jpg',
+  '/images/partners/ferdinand-spring-colonnade.jpg',
+  '/images/partners/rudolph-caroline-colonnade.jpg',
+  '/images/partners/spa-forest.jpg',
+]
+
+const flyerItems = (t: (l: DocLang) => string, d: string): Material[] => [
+  { title: t('CS'), desc: d, file: 'butterfly-flyer-cs.pdf', size: '4.7 MB', doc: 'CS' },
+  { title: t('EN'), desc: d, file: 'butterfly-flyer-en.pdf', size: '4.7 MB', doc: 'EN' },
+  { title: t('DE'), desc: d, file: 'butterfly-flyer-de.pdf', size: '4.7 MB', doc: 'DE' },
+]
+
+const content: Record<Lang, Content> = {
+  en: {
+    heroBadge: 'For travel partners & agencies',
+    heroTitle: 'Introduce Marienbad to your clients',
+    heroLead:
+      'Everything you need to present Mariánské Lázně and add us to your CRM — official destination and hotel presentations, spa & MICE materials, a media library, and copy-ready company details. All free to use in your own sales and marketing.',
+    heroKit: 'Download all materials (ZIP · 30 MB)',
+    heroBrowse: 'Browse individually',
+    heroCompany: 'Company details for your CRM',
+    langSwitchLabel: 'This page in your language',
+    statsHeading: 'Why partners choose Marienbad',
+    stats: [
+      { value: '100+', label: 'Mineral springs in the region' },
+      { value: '200+', label: 'Years of spa tradition (since 1808)' },
+      { value: 'UNESCO', label: 'World Heritage since 2021' },
+      { value: '7', label: 'Ensana spa hotels · ~900 rooms' },
+      { value: '10', label: 'Conference & meeting rooms' },
+      { value: '~2 h', label: 'From Prague · 50 km Karlovy Vary' },
+    ],
+    companyHeading: 'Company at a glance',
+    companyLead: 'Copy any field straight into your supplier database or CRM. Everything here is official.',
+    copyAll: 'Copy all details',
+    copy: 'Copy',
+    copied: 'Copied',
+    factLabels: [
+      'Legal name', 'Brand', 'Registration No. (IČO)', 'VAT No. (DIČ)', 'Address', 'Destination',
+      'Category', 'Portfolio', 'Website', 'Languages',
+    ],
+    descriptionHeading: 'Ready-to-use description',
+    shortDescription:
+      'Mariánské Lázně (Marienbad) is a historic Czech spa town in the UNESCO Great Spa Towns of Europe, famous for 100+ mineral springs, natural CO₂ therapies and 200 years of spa tradition. Its seven Ensana spa hotels offer medical spa, wellness and MICE facilities, two hours from Prague.',
+    contactHeading: 'Talk to our team',
+    contactLead: 'Rates, allotments, FAM trips and group offers. We reply in English, German or Czech.',
+    contacts: [
+      { label: 'Reservations & groups', email: 'reservation.cz@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+      { label: 'MICE & conferences', email: 'conference.cz@ensanahotels.com', phone: '+420 354 655 505', phoneHref: '+420354655505' },
+      { label: 'General enquiries', email: 'marienbad@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+    ],
+    vcard: 'Save contact (vCard)',
+    aboutHeading: 'About us',
+    aboutCaption: 'Mariánské Lázně from above — the colonnade, Singing Fountain and spa parks.',
+    aboutParagraphsHtml: [
+      'We are <strong>Léčebné lázně Mariánské Lázně a.s.</strong>, part of the international <strong>Ensana</strong> spa group — a name that joins <em>“en”</em> (enhanced) with <em>“sana”</em> (health). Spa medicine is our craft: our mission is to improve our guests’ health during their stay, combining the methods of modern medicine with time-honoured spa treatments drawn from natural healing resources.',
+      'Mariánské Lázně is genuinely one of a kind. We are the only destination that brings together <strong>every natural healing resource in a single place</strong> — natural CO₂ gas (the rare dry “Maria gas”), cold mineral water naturally rich in CO₂, natural peat (peloids), the status of a <strong>climatic spa</strong> (since 2023) and <strong>UNESCO World Heritage</strong> recognition (2021, Great Spa Towns of Europe). Nowhere else are all of these found side by side.',
+      'Our destination comprises <strong>seven spa hotels</strong> — Nové Lázně, Centrální Lázně, Hvězda, Pacifik, Butterfly, Vltava and Svoboda — together offering <strong>more than 900 rooms</strong> and the largest historical balneology operation in the Czech Republic. For meetings, incentives and congresses, our own <strong>conference centre</strong> provides <strong>ten halls and meeting rooms</strong> for events of every size, complemented by fine dining and full spa facilities under one roof.',
+    ],
+    viewOnlineHeading: 'Browse our information online',
+    viewOnlineText: 'Prefer to look before you save? View all our destination and hotel PDFs directly in your browser — no download required.',
+    viewOnlineCta: 'View online',
+    downloadsHeading: 'Download centre',
+    downloadsLead:
+      'All presentations are PDFs, free to use in your own channels. Each item is labelled with the language of the document, so you always know which version to hand to which client.',
+    downloadAll: 'Download all (ZIP · 30 MB)',
+    docLangBadge: { EN: 'In English', DE: 'In German', CS: 'In Czech' },
+    groups: [
+      {
+        group: 'Destination presentations',
+        items: [
+          { title: 'Introduction of the destination', desc: 'Full visual presentation of Mariánské Lázně for partners and agencies.', file: 'introduction-of-destination.pdf', size: '9.6 MB', doc: 'EN' },
+          { title: 'Why Mariánské Lázně', desc: 'The key selling points — reasons to send your clients to Marienbad.', file: 'why-marianske-lazne.pdf', size: '3.7 MB', doc: 'EN' },
+          { title: 'Two-page destination fact sheet', desc: 'A concise overview — ideal as a quick hand-out or e-mail attachment.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB', doc: 'EN' },
+        ],
+      },
+      {
+        group: 'Hotels, spa & product',
+        items: [
+          { title: 'Hotels & destination introduction', desc: 'The seven Ensana spa hotels and what each of them offers.', file: 'hotels-and-destination.pdf', size: '11.1 MB', doc: 'EN' },
+          { title: 'Spa treatment', desc: 'Medical spa programmes, therapies and treatment overview.', file: 'spa-treatment.pdf', size: '1.2 MB', doc: 'EN' },
+          { title: 'Mineral springs', desc: 'The famous springs of Marienbad and how they are used.', file: 'mineral-springs.pdf', size: '1.7 MB', doc: 'EN' },
+          { title: 'MICE — meetings & events', desc: 'Conference capacity, halls and incentive ideas for groups.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB', doc: 'EN' },
+          { title: 'Medical indications', desc: 'Indications & contraindications — medical reference.', file: 'medical-indications-cz.pdf', size: '0.2 MB', doc: 'CS' },
+        ],
+      },
+      {
+        group: 'Hotel flyers — Ensana Butterfly',
+        note: 'one flyer, three language versions',
+        items: flyerItems(
+          (l) => ({ CS: 'Butterfly flyer — Czech', EN: 'Butterfly flyer — English', DE: 'Butterfly flyer — German' })[l],
+          'Client-ready flyer: the new Traditional and Intensive spa stays and the Ferdinand Spring.',
+        ),
+      },
+    ],
+    mediaHeading: 'Video & photo library',
+    mediaText: 'Browse all official videos and downloadable photo galleries of the destination and the Ensana hotels — grouped and clickable.',
+    mediaCta: 'Open library',
+    hotelsHeading: 'Hotel fact sheets',
+    hotelsText: 'Detailed sheets on all seven Ensana hotels: capacity, spa & medical profile, dining, meeting space and direct reservation contacts. In English.',
+    hotelsCta: 'Open fact sheets',
+    hotelsHref: '/introduce/hotels',
+    newsletterHeading: 'Ensana News archive',
+    newsletterText: 'Every issue of our partner newsletter with summaries, topic tags and search — this link opens the English edition; Czech and German are one click away.',
+    newsletterCta: 'Browse the archive',
+    newsletterHref: '/introduce/newsletter-ck/en',
+    stepsHeading: 'Add us as a partner in three steps',
+    steps: [
+      { t: 'Download the materials', d: 'Grab the presentations and media you need from the download centre above.' },
+      { t: 'Add us to your CRM', d: 'Copy the company fields or import the vCard — legal name, IDs and contacts in seconds.' },
+      { t: 'Get in touch', d: 'Contact our team for rates, allotments, FAM trips and tailored group offers.' },
+    ],
+    partnershipCta: 'Start a partnership',
+    partnershipMailto: 'mailto:reservation.cz@ensanahotels.com?subject=Partnership%20enquiry%20—%20Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B',
+    photoCaptions: ['Main Spa Colonnade', 'Singing Fountain', 'Ferdinand Spring Colonnade', 'Rudolph & Caroline Springs Colonnade', 'Spa forest'],
+  },
+
+  de: {
+    heroBadge: 'Für Reisepartner & Reisebüros',
+    heroTitle: 'Stellen Sie Ihren Kunden Marienbad vor',
+    heroLead:
+      'Alles, was Sie brauchen, um Marienbad zu präsentieren und uns in Ihr CRM aufzunehmen — offizielle Destinations- und Hotelpräsentationen, Kur- und MICE-Unterlagen, eine Mediathek und kopierfertige Firmendaten. Alles frei nutzbar in Ihrem Vertrieb und Marketing.',
+    heroKit: 'Alle Unterlagen herunterladen (ZIP · 30 MB)',
+    heroBrowse: 'Einzeln durchsehen',
+    heroCompany: 'Firmendaten für Ihr CRM',
+    langSwitchLabel: 'Diese Seite in Ihrer Sprache',
+    statsHeading: 'Warum Partner Marienbad wählen',
+    stats: [
+      { value: '100+', label: 'Mineralquellen in der Region' },
+      { value: '200+', label: 'Jahre Kurtradition (seit 1808)' },
+      { value: 'UNESCO', label: 'Welterbe seit 2021' },
+      { value: '7', label: 'Ensana-Kurhotels · ~900 Zimmer' },
+      { value: '10', label: 'Konferenz- und Tagungsräume' },
+      { value: '~2 Std.', label: 'Von Prag · 50 km Karlsbad' },
+    ],
+    companyHeading: 'Das Unternehmen im Überblick',
+    companyLead: 'Kopieren Sie jedes Feld direkt in Ihre Lieferantendatenbank oder Ihr CRM. Alle Angaben sind offiziell.',
+    copyAll: 'Alle Daten kopieren',
+    copy: 'Kopieren',
+    copied: 'Kopiert',
+    factLabels: [
+      'Firmenname', 'Marke', 'Handelsregisternr. (IČO)', 'USt-IdNr. (DIČ)', 'Adresse', 'Destination',
+      'Kategorie', 'Portfolio', 'Website', 'Sprachen',
+    ],
+    descriptionHeading: 'Fertige Kurzbeschreibung',
+    shortDescription:
+      'Marienbad (Mariánské Lázně) ist eine historische tschechische Kurstadt der UNESCO-Stätte „Bedeutende Kurstädte Europas“, berühmt für über 100 Mineralquellen, natürliche CO₂-Therapien und 200 Jahre Kurtradition. Die sieben Ensana-Kurhotels bieten Medical Spa, Wellness und MICE-Kapazitäten, zwei Stunden von Prag.',
+    contactHeading: 'Sprechen Sie mit unserem Team',
+    contactLead: 'Preise, Kontingente, FAM-Trips und Gruppenangebote. Wir antworten auf Deutsch, Englisch oder Tschechisch.',
+    contacts: [
+      { label: 'Reservierungen & Gruppen', email: 'reservation.cz@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+      { label: 'MICE & Konferenzen', email: 'conference.cz@ensanahotels.com', phone: '+420 354 655 505', phoneHref: '+420354655505' },
+      { label: 'Allgemeine Anfragen', email: 'marienbad@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+    ],
+    vcard: 'Kontakt speichern (vCard)',
+    aboutHeading: 'Über uns',
+    aboutCaption: 'Marienbad von oben — Kolonnade, Singende Fontäne und Kurparks.',
+    aboutParagraphsHtml: [
+      'Wir sind <strong>Léčebné lázně Mariánské Lázně a.s.</strong>, Teil der internationalen Kurgruppe <strong>Ensana</strong> — ein Name, der <em>„en“</em> (enhanced, gesteigert) mit <em>„sana“</em> (Gesundheit) verbindet. Kurmedizin ist unser Handwerk: Unsere Mission ist es, die Gesundheit unserer Gäste während des Aufenthalts zu verbessern — mit den Methoden der modernen Medizin und bewährten Kuranwendungen aus natürlichen Heilmitteln.',
+      'Marienbad ist tatsächlich einzigartig. Wir sind die einzige Destination, die <strong>alle natürlichen Heilmittel an einem Ort</strong> vereint — natürliches CO₂-Gas (das seltene trockene „Maria-Gas“), kaltes, von Natur aus CO₂-reiches Mineralwasser, Naturmoor (Peloide), den Status eines <strong>Klimakurorts</strong> (seit 2023) und die Anerkennung als <strong>UNESCO-Welterbe</strong> (2021, Bedeutende Kurstädte Europas). Nirgendwo sonst findet sich all das nebeneinander.',
+      'Unsere Destination umfasst <strong>sieben Kurhotels</strong> — Nové Lázně, Centrální Lázně, Hvězda, Pacifik, Butterfly, Vltava und Svoboda — mit zusammen <strong>über 900 Zimmern</strong> und dem größten historischen Balneologiebetrieb Tschechiens. Für Tagungen, Incentives und Kongresse bietet unser eigenes <strong>Konferenzzentrum zehn Säle und Tagungsräume</strong> für Veranstaltungen jeder Größe — ergänzt durch Gastronomie und komplette Kureinrichtungen unter einem Dach.',
+    ],
+    viewOnlineHeading: 'Unsere Unterlagen online durchsehen',
+    viewOnlineText: 'Erst schauen, dann speichern? Alle Destinations- und Hotel-PDFs lassen sich direkt im Browser ansehen — ohne Download.',
+    viewOnlineCta: 'Online ansehen',
+    downloadsHeading: 'Download-Center',
+    downloadsLead:
+      'Alle Präsentationen sind PDFs und frei in Ihren Kanälen nutzbar. Jede Unterlage trägt ein Sprachetikett — Sie wissen also immer, welche Version zu welchem Kunden passt.',
+    downloadAll: 'Alles herunterladen (ZIP · 30 MB)',
+    docLangBadge: { EN: 'Auf Englisch', DE: 'Auf Deutsch', CS: 'Auf Tschechisch' },
+    groups: [
+      {
+        group: 'Destinationspräsentationen',
+        items: [
+          { title: 'Vorstellung der Destination', desc: 'Vollständige visuelle Präsentation Marienbads für Partner und Reisebüros.', file: 'introduction-of-destination.pdf', size: '9.6 MB', doc: 'EN' },
+          { title: 'Warum Marienbad', desc: 'Die wichtigsten Verkaufsargumente — Gründe, Ihre Kunden nach Marienbad zu schicken.', file: 'why-marianske-lazne.pdf', size: '3.7 MB', doc: 'EN' },
+          { title: 'Zweiseitiges Destinations-Factsheet', desc: 'Kompakter Überblick — ideal als Hand-out oder E-Mail-Anhang.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB', doc: 'EN' },
+        ],
+      },
+      {
+        group: 'Hotels, Kur & Produkt',
+        items: [
+          { title: 'Hotels & Destination', desc: 'Die sieben Ensana-Kurhotels und was jedes von ihnen bietet.', file: 'hotels-and-destination.pdf', size: '11.1 MB', doc: 'EN' },
+          { title: 'Kurbehandlung', desc: 'Medizinische Kurprogramme, Therapien und Anwendungsüberblick.', file: 'spa-treatment.pdf', size: '1.2 MB', doc: 'EN' },
+          { title: 'Mineralquellen', desc: 'Die berühmten Quellen Marienbads und ihre Nutzung.', file: 'mineral-springs.pdf', size: '1.7 MB', doc: 'EN' },
+          { title: 'MICE — Tagungen & Events', desc: 'Konferenzkapazitäten, Säle und Incentive-Ideen für Gruppen.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB', doc: 'EN' },
+          { title: 'Medizinische Indikationen', desc: 'Indikationen & Kontraindikationen — medizinische Referenz.', file: 'medical-indications-cz.pdf', size: '0.2 MB', doc: 'CS' },
+        ],
+      },
+      {
+        group: 'Hotelflyer — Ensana Butterfly',
+        note: 'ein Flyer, drei Sprachversionen',
+        items: flyerItems(
+          (l) => ({ CS: 'Butterfly-Flyer — Tschechisch', EN: 'Butterfly-Flyer — Englisch', DE: 'Butterfly-Flyer — Deutsch' })[l],
+          'Kundenfertiger Flyer: die neuen Kuraufenthalte Traditionell und Intensiv und die Ferdinandquelle.',
+        ),
+      },
+    ],
+    mediaHeading: 'Video- & Fotomediathek',
+    mediaText: 'Alle offiziellen Videos und herunterladbaren Fotogalerien der Destination und der Ensana-Hotels — gruppiert und klickbar.',
+    mediaCta: 'Mediathek öffnen',
+    hotelsHeading: 'Hotel-Factsheets',
+    hotelsText: 'Detaillierte Datenblätter zu allen sieben Ensana-Hotels: Kapazität, Kur- und Medizinprofil, Gastronomie, Tagungsräume und direkte Reservierungskontakte. Auf Englisch.',
+    hotelsCta: 'Factsheets öffnen',
+    hotelsHref: '/introduce/hotels',
+    newsletterHeading: 'Ensana-News-Archiv',
+    newsletterText: 'Alle Ausgaben unseres Partner-Newsletters mit Zusammenfassungen, Themen-Tags und Suche — dieser Link öffnet die deutsche Ausgabe; Englisch und Tschechisch sind einen Klick entfernt.',
+    newsletterCta: 'Archiv durchsuchen',
+    newsletterHref: '/introduce/newsletter-ck/de',
+    stepsHeading: 'In drei Schritten Partner werden',
+    steps: [
+      { t: 'Unterlagen herunterladen', d: 'Holen Sie sich Präsentationen und Medien aus dem Download-Center oben.' },
+      { t: 'In Ihr CRM aufnehmen', d: 'Firmendaten kopieren oder die vCard importieren — Firmenname, IDs und Kontakte in Sekunden.' },
+      { t: 'Kontakt aufnehmen', d: 'Sprechen Sie mit unserem Team über Preise, Kontingente, FAM-Trips und Gruppenangebote.' },
+    ],
+    partnershipCta: 'Partnerschaft starten',
+    partnershipMailto: 'mailto:reservation.cz@ensanahotels.com?subject=Partneranfrage%20—%20Marienbad',
+    photoCaptions: ['Hauptkolonnade', 'Singende Fontäne', 'Kolonnade der Ferdinandquelle', 'Kolonnade der Rudolf- und Karolinenquelle', 'Kurwald'],
+  },
+
+  cs: {
+    heroBadge: 'Pro cestovní kanceláře a partnery',
+    heroTitle: 'Představte svým klientům Mariánské Lázně',
+    heroLead:
+      'Vše, co potřebujete k prezentaci Mariánských Lázní a k zavedení do svého CRM — oficiální prezentace destinace a hotelů, podklady o lázeňské péči a MICE, mediatéka a firemní údaje připravené ke zkopírování. Vše zdarma k použití ve vašem prodeji a marketingu.',
+    heroKit: 'Stáhnout všechny podklady (ZIP · 30 MB)',
+    heroBrowse: 'Procházet jednotlivě',
+    heroCompany: 'Firemní údaje pro vaše CRM',
+    langSwitchLabel: 'Tato stránka ve vašem jazyce',
+    statsHeading: 'Proč si partneři vybírají Mariánky',
+    stats: [
+      { value: '100+', label: 'minerálních pramenů v regionu' },
+      { value: '200+', label: 'let lázeňské tradice (od 1808)' },
+      { value: 'UNESCO', label: 'Světové dědictví od 2021' },
+      { value: '7', label: 'hotelů Ensana · ~900 pokojů' },
+      { value: '10', label: 'konferenčních a jednacích sálů' },
+      { value: '~2 h', label: 'z Prahy · 50 km z Karlových Varů' },
+    ],
+    companyHeading: 'Firma v kostce',
+    companyLead: 'Zkopírujte kterékoli pole rovnou do své dodavatelské databáze nebo CRM. Všechny údaje jsou oficiální.',
+    copyAll: 'Zkopírovat všechny údaje',
+    copy: 'Kopírovat',
+    copied: 'Zkopírováno',
+    factLabels: [
+      'Obchodní firma', 'Značka', 'IČO', 'DIČ', 'Adresa', 'Destinace',
+      'Kategorie', 'Portfolio', 'Web', 'Jazyky',
+    ],
+    descriptionHeading: 'Hotový popis k převzetí',
+    shortDescription:
+      'Mariánské Lázně jsou historické lázeňské město zapsané v rámci Slavných lázeňských měst Evropy na seznamu UNESCO, proslulé více než 100 minerálními prameny, přírodními CO₂ terapiemi a 200 lety lázeňské tradice. Sedm hotelů Ensana nabízí léčebné lázeňství, wellness i MICE zázemí, dvě hodiny od Prahy.',
+    contactHeading: 'Spojte se s naším týmem',
+    contactLead: 'Ceny, alotmenty, FAM tripy a skupinové nabídky. Odpovídáme česky, anglicky i německy.',
+    contacts: [
+      { label: 'Rezervace a skupiny', email: 'reservation.cz@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+      { label: 'MICE a konference', email: 'conference.cz@ensanahotels.com', phone: '+420 354 655 505', phoneHref: '+420354655505' },
+      { label: 'Obecné dotazy', email: 'marienbad@ensanahotels.com', phone: '+420 354 655 501–9', phoneHref: '+420354655501' },
+    ],
+    vcard: 'Uložit kontakt (vCard)',
+    aboutHeading: 'O nás',
+    aboutCaption: 'Mariánské Lázně z výšky — kolonáda, Zpívající fontána a lázeňské parky.',
+    aboutParagraphsHtml: [
+      'Jsme <strong>Léčebné lázně Mariánské Lázně a.s.</strong>, součást mezinárodní lázeňské skupiny <strong>Ensana</strong> — jména spojujícího <em>„en“</em> (enhanced, posílené) a <em>„sana“</em> (zdraví). Lázeňská medicína je naše řemeslo: naším posláním je zlepšit zdraví hostů během pobytu spojením postupů moderní medicíny s osvědčenými lázeňskými procedurami z přírodních léčivých zdrojů.',
+      'Mariánské Lázně jsou skutečně jedinečné. Jsme jediná destinace, která spojuje <strong>všechny přírodní léčivé zdroje na jednom místě</strong> — přírodní CO₂ plyn (vzácný suchý „Mariin plyn“), studenou minerální vodu přirozeně bohatou na CO₂, přírodní rašelinu (peloidy), statut <strong>klimatických lázní</strong> (od 2023) a zápis na seznam <strong>Světového dědictví UNESCO</strong> (2021, Slavná lázeňská města Evropy). Nikde jinde to všechno nenajdete vedle sebe.',
+      'Naši destinaci tvoří <strong>sedm lázeňských hotelů</strong> — Nové Lázně, Centrální Lázně, Hvězda, Pacifik, Butterfly, Vltava a Svoboda — s celkem <strong>více než 900 pokoji</strong> a největším historickým balneoprovozem v České republice. Pro tagungy, incentivy a kongresy nabízí naše vlastní <strong>konferenční centrum deset sálů a jednacích místností</strong> pro akce každé velikosti, doplněné gastronomií a kompletním lázeňským zázemím pod jednou střechou.',
+    ],
+    viewOnlineHeading: 'Prohlédněte si podklady online',
+    viewOnlineText: 'Chcete se napřed podívat? Všechna PDF o destinaci i hotelech si prohlédnete rovnou v prohlížeči — bez stahování.',
+    viewOnlineCta: 'Zobrazit online',
+    downloadsHeading: 'Centrum ke stažení',
+    downloadsLead:
+      'Všechny prezentace jsou PDF a můžete je volně použít ve svých kanálech. U každé položky uvádíme jazyk dokumentu — vždy tedy víte, kterou verzi dát kterému klientovi.',
+    downloadAll: 'Stáhnout vše (ZIP · 30 MB)',
+    docLangBadge: { EN: 'V angličtině', DE: 'V němčině', CS: 'V češtině' },
+    groups: [
+      {
+        group: 'Prezentace destinace',
+        items: [
+          { title: 'Představení destinace', desc: 'Kompletní vizuální prezentace Mariánských Lázní pro partnery a CK.', file: 'introduction-of-destination.pdf', size: '9.6 MB', doc: 'EN' },
+          { title: 'Proč Mariánské Lázně', desc: 'Hlavní prodejní argumenty — důvody, proč poslat klienty do Mariánek.', file: 'why-marianske-lazne.pdf', size: '3.7 MB', doc: 'EN' },
+          { title: 'Dvoustránkový přehled destinace', desc: 'Stručný souhrn — ideální jako rychlý hand-out nebo příloha e-mailu.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB', doc: 'EN' },
+        ],
+      },
+      {
+        group: 'Hotely, lázně a produkt',
+        items: [
+          { title: 'Hotely a destinace', desc: 'Sedm hotelů Ensana a co který z nich nabízí.', file: 'hotels-and-destination.pdf', size: '11.1 MB', doc: 'EN' },
+          { title: 'Lázeňská léčba', desc: 'Léčebné programy, terapie a přehled procedur.', file: 'spa-treatment.pdf', size: '1.2 MB', doc: 'EN' },
+          { title: 'Minerální prameny', desc: 'Slavné mariánskolázeňské prameny a jejich využití.', file: 'mineral-springs.pdf', size: '1.7 MB', doc: 'EN' },
+          { title: 'MICE — setkání a akce', desc: 'Konferenční kapacity, sály a nápady na incentivy pro skupiny.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB', doc: 'EN' },
+          { title: 'Léčebné indikace', desc: 'Indikace a kontraindikace — odborná reference.', file: 'medical-indications-cz.pdf', size: '0.2 MB', doc: 'CS' },
+        ],
+      },
+      {
+        group: 'Hotelové letáky — Ensana Butterfly',
+        note: 'jeden leták, tři jazykové verze',
+        items: flyerItems(
+          (l) => ({ CS: 'Leták Butterfly — česky', EN: 'Leták Butterfly — anglicky', DE: 'Leták Butterfly — německy' })[l],
+          'Leták pro klienty: nové Tradiční a Intenzivní léčebné pobyty a Ferdinandův pramen.',
+        ),
+      },
+    ],
+    mediaHeading: 'Video a foto mediatéka',
+    mediaText: 'Všechna oficiální videa a fotogalerie destinace a hotelů Ensana ke stažení — přehledně seskupené.',
+    mediaCta: 'Otevřít mediatéku',
+    hotelsHeading: 'Detailní listy hotelů',
+    hotelsText: 'Podrobné listy všech sedmi hotelů Ensana: kapacity, lázeňský a léčebný profil, gastronomie, jednací prostory a přímé rezervační kontakty. V angličtině.',
+    hotelsCta: 'Otevřít listy hotelů',
+    hotelsHref: '/introduce/hotels',
+    newsletterHeading: 'Archiv Ensana News',
+    newsletterText: 'Všechna vydání partnerského newsletteru se shrnutími, štítky témat a vyhledáváním — tento odkaz otevře českou verzi; angličtina a němčina jsou na jedno kliknutí.',
+    newsletterCta: 'Prohlédnout archiv',
+    newsletterHref: '/introduce/newsletter-ck',
+    stepsHeading: 'Přidejte si nás jako partnera ve třech krocích',
+    steps: [
+      { t: 'Stáhněte si podklady', d: 'Vyberte si prezentace a média z centra ke stažení výše.' },
+      { t: 'Zaveďte nás do CRM', d: 'Zkopírujte firemní pole nebo importujte vCard — název, identifikátory a kontakty během vteřin.' },
+      { t: 'Ozvěte se nám', d: 'Domluvte s naším týmem ceny, alotmenty, FAM tripy a skupinové nabídky na míru.' },
+    ],
+    partnershipCta: 'Zahájit spolupráci',
+    partnershipMailto: 'mailto:reservation.cz@ensanahotels.com?subject=Z%C3%A1jem%20o%20spolupr%C3%A1ci%20—%20Mari%C3%A1nsk%C3%A9%20L%C3%A1zn%C4%9B',
+    photoCaptions: ['Hlavní kolonáda', 'Zpívající fontána', 'Kolonáda Ferdinandova pramene', 'Kolonáda Rudolfova a Karolinina pramene', 'Lázeňský les'],
+  },
+}
+
+const c = content[lang]
+
+const facts = c.factLabels.map((label, i) => ({ label, value: factValues[i] }))
+const copyAllText = [...facts.map((f) => `${f.label}: ${f.value}`), '', c.shortDescription].join('\n')
+
+/** Přepínač jazyků této stránky (výchozí je EN na /introduce). */
+const langSwitch: { code: Lang; label: string; href: string }[] = [
+  { code: 'en', label: 'English', href: '/introduce' },
+  { code: 'de', label: 'Deutsch', href: '/introduce/de' },
+  { code: 'cs', label: 'Česky', href: '/introduce/cs' },
+]
+
+const badgeColor: Record<DocLang, string> = {
+  EN: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+  DE: 'bg-yellow-50 text-yellow-800 border-yellow-300',
+  CS: 'bg-turquoise-50 text-turquoise-800 border-turquoise-200',
+}
+---
+
+<!-- Hero -->
+<section class="relative bg-indigo-950 text-white overflow-hidden">
+  <Pic
+    src="/images/partners/roman-baths-hero.jpg"
+    alt="The Roman Baths pool at Hotel Nové Lázně, Mariánské Lázně"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    fetchpriority="high"
+    sizes="100vw"
+  />
+  <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/90 via-indigo-950/78 to-indigo-900/60"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.14)_0%,_transparent_60%)]"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+  <div class="relative container-wide pt-24 pb-16 md:pt-28 md:pb-24">
+    <!-- Přepínač jazyků stránky -->
+    <div class="flex justify-end mb-6">
+      <div class="inline-flex items-center gap-2">
+        <span class="text-xs text-white/50 uppercase tracking-wider hidden sm:inline">{c.langSwitchLabel}</span>
+        <div class="inline-flex rounded-full bg-white/10 border border-white/20 p-1">
+          {langSwitch.map((l) => (
+            <a
+              href={l.href}
+              aria-current={l.code === lang ? 'page' : undefined}
+              class={`px-3.5 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                l.code === lang ? 'bg-yellow-400 text-beige-950' : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}>
+              {l.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-8 flex justify-center">
+      <img src="/images/partners/ensana-white.png" alt="Ensana" width="120" height="109" class="h-24 md:h-32 w-auto" />
+    </div>
+    <span class="inline-block px-3 py-1 bg-white/15 text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-5">
+      {c.heroBadge}
+    </span>
+    <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight max-w-3xl" style="font-size: var(--text-h1);">
+      {c.heroTitle}
+    </h1>
+    <p class="text-white/85 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">{c.heroLead}</p>
+    <div class="flex flex-wrap gap-3">
+      <a href={partnerKit} download class="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+        {c.heroKit}
+      </a>
+      <a href="#downloads" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
+        {c.heroBrowse}
+      </a>
+      <a href="#company" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
+        {c.heroCompany}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Statistiky -->
+<section class="bg-beige-100 py-14 md:py-20">
+  <div class="container-wide">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-10 text-center">{c.statsHeading}</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+      {c.stats.map((s) => (
+        <div class="bg-white rounded-xl shadow-card p-5 text-center">
+          <p class="font-heading text-2xl md:text-3xl font-bold text-turquoise-700 mb-1">{s.value}</p>
+          <p class="text-xs md:text-sm text-gray-600 leading-snug">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Firma v kostce -->
+<section id="company" class="container-wide py-14 md:py-20 scroll-mt-24">
+  <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
+    <div>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">{c.companyHeading}</h2>
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <p class="text-gray-600 max-w-xl">{c.companyLead}</p>
+        <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-white text-sm font-semibold transition-colors" data-copy={copyAllText} data-copied={c.copied}>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={copyIcon} /></svg>
+          <span class="copy-label">{c.copyAll}</span>
+        </button>
+      </div>
+      <dl class="divide-y divide-beige-200 border-y border-beige-200">
+        {facts.map((f) => (
+          <div class="flex items-start gap-4 py-3">
+            <dt class="w-40 shrink-0 text-xs font-semibold uppercase tracking-wider text-gray-400 pt-1">{f.label}</dt>
+            <dd class="flex-1 text-gray-800 font-medium break-words">{f.value}</dd>
+            <button type="button" class="copy-btn shrink-0 mt-0.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-beige-300 text-xs font-medium text-indigo-700 hover:bg-indigo-50 transition-colors" data-copy={f.value} data-copied={c.copied} aria-label={`${c.copy} ${f.label}`}>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={copyIcon} /></svg>
+              <span class="copy-label">{c.copy}</span>
+            </button>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-8 bg-beige-50 border border-beige-200 rounded-xl p-5">
+        <div class="flex items-center justify-between gap-3 mb-2">
+          <h3 class="font-heading text-sm font-bold text-indigo-800 uppercase tracking-wider">{c.descriptionHeading}</h3>
+          <button type="button" class="copy-btn inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-beige-300 text-xs font-medium text-indigo-700 hover:bg-indigo-50 transition-colors" data-copy={c.shortDescription} data-copied={c.copied}>
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={copyIcon} /></svg>
+            <span class="copy-label">{c.copy}</span>
+          </button>
+        </div>
+        <p class="text-sm text-gray-700 leading-relaxed">{c.shortDescription}</p>
+      </div>
+    </div>
+
+    <!-- Kontaktní karta -->
+    <aside class="mt-10 lg:mt-0">
+      <div class="bg-indigo-700 text-white rounded-2xl shadow-card p-6 md:p-7 lg:sticky lg:top-24">
+        <img src="/images/partners/ensana-white.png" alt="Ensana" width="56" height="51" class="h-12 w-auto mb-4 mx-auto" />
+        <h3 class="font-heading text-lg font-bold mb-1">{c.contactHeading}</h3>
+        <p class="text-white/70 text-sm mb-5">{c.contactLead}</p>
+        <div class="space-y-4">
+          {c.contacts.map((ct) => (
+            <div class="border-t border-white/15 pt-3 first:border-0 first:pt-0">
+              <p class="text-turquoise-300 text-xs font-semibold uppercase tracking-wider mb-1">{ct.label}</p>
+              <a href={`mailto:${ct.email}`} class="block text-white hover:text-turquoise-200 text-sm font-medium break-all transition-colors">{ct.email}</a>
+              <a href={`tel:${ct.phoneHref}`} class="block text-white/80 hover:text-white text-sm transition-colors">{ct.phone}</a>
+            </div>
+          ))}
+        </div>
+        <a href={`${PDF}/marienbad-tourism.vcf`} download class="mt-6 inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 bg-yellow-400 hover:bg-yellow-300 text-beige-950 font-semibold rounded-full transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+          {c.vcard}
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- O nás -->
+<section class="container-wide pt-10 md:pt-16 pb-4 md:pb-8">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-6">{c.aboutHeading}</h2>
+  <div class="lg:grid lg:grid-cols-[minmax(0,480px)_minmax(0,1fr)] lg:gap-10 xl:gap-12 items-start">
+    <figure class="mb-8 lg:mb-0">
+      <Pic src="/images/partners/colonnade-aerial.jpg" alt={c.aboutCaption} class="w-full rounded-2xl shadow-card object-cover" sizes="(max-width: 1024px) 100vw, 480px" />
+      <figcaption class="text-xs text-gray-400 mt-2">{c.aboutCaption}</figcaption>
+    </figure>
+    <div class="space-y-4 text-gray-700 leading-relaxed">
+      {c.aboutParagraphsHtml.map((p) => <p set:html={p} />)}
+    </div>
+  </div>
+
+  <a href={viewOnline} target="_blank" rel="noopener" class="group mt-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-white border border-turquoise-200 hover:border-turquoise-400 rounded-2xl p-6 md:p-7 shadow-card card-hover">
+    <div class="shrink-0 w-12 h-12 rounded-xl bg-turquoise-50 text-turquoise-700 flex items-center justify-center">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1 1 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178a1 1 0 010 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.964-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+    </div>
+    <div class="flex-1">
+      <h3 class="font-heading text-xl font-bold text-indigo-800 mb-1">{c.viewOnlineHeading}</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">{c.viewOnlineText}</p>
+    </div>
+    <span class="shrink-0 inline-flex items-center gap-2 text-turquoise-800 group-hover:text-turquoise-900 font-semibold text-sm">
+      {c.viewOnlineCta}
+      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+    </span>
+  </a>
+</section>
+
+<!-- Centrum ke stažení -->
+<section id="downloads" class="bg-beige-100 py-14 md:py-20 scroll-mt-20">
+  <div class="container-wide">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{c.downloadsHeading}</h2>
+        <p class="text-gray-600">{c.downloadsLead}</p>
+      </div>
+      <a href={partnerKit} download class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+        {c.downloadAll}
+      </a>
+    </div>
+
+    {c.groups.map((g) => (
+      <div class="mb-10 last:mb-0">
+        <div class="flex items-baseline gap-3 mb-4">
+          <h3 class="font-heading text-lg font-bold text-indigo-700">{g.group}</h3>
+          {g.note && <span class="text-sm text-gray-500">— {g.note}</span>}
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {g.items.map((m) => (
+            <a href={`${PDF}/${m.file}`} target="_blank" rel="noopener" class="group bg-white rounded-xl shadow-card p-5 flex gap-4 card-hover">
+              <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center bg-indigo-50 text-indigo-700">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h4 class="font-semibold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{m.title}</h4>
+                <p class="text-sm text-gray-600 leading-relaxed mt-1 mb-2.5">{m.desc}</p>
+                <span class="inline-flex flex-wrap items-center gap-2">
+                  <span class={`px-2 py-0.5 rounded-full border text-[0.68rem] font-bold uppercase tracking-wide ${badgeColor[m.doc]}`}>{c.docLangBadge[m.doc]}</span>
+                  <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">PDF · {m.size}</span>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <!-- Mediatéka -->
+    <a href={mediaHref} class="group mt-4 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-indigo-700 hover:bg-indigo-800 text-white rounded-2xl p-6 md:p-7 transition-colors">
+      <div class="shrink-0 w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="font-heading text-xl font-bold mb-1">{c.mediaHeading}</h3>
+        <p class="text-white/75 text-sm leading-relaxed">{c.mediaText}</p>
+      </div>
+      <span class="shrink-0 inline-flex items-center gap-2 text-turquoise-300 group-hover:text-turquoise-200 font-semibold text-sm">
+        {c.mediaCta}
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </span>
+    </a>
+
+    <!-- Listy hotelů + archiv newsletterů -->
+    <div class="mt-5 grid md:grid-cols-2 gap-5">
+      <a href={c.hotelsHref} class="group flex items-start gap-4 bg-white rounded-2xl shadow-card p-6 card-hover">
+        <div class="shrink-0 w-12 h-12 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M6 21V5a2 2 0 012-2h8a2 2 0 012 2v16M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1" /></svg>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-heading text-lg font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors mb-1">{c.hotelsHeading}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{c.hotelsText}</p>
+          <span class="mt-2 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
+            {c.hotelsCta}
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href={c.newsletterHref} class="group flex items-start gap-4 bg-white rounded-2xl shadow-card p-6 card-hover">
+        <div class="shrink-0 w-12 h-12 rounded-xl bg-turquoise-50 text-turquoise-700 flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-heading text-lg font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors mb-1">{c.newsletterHeading}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{c.newsletterText}</p>
+          <span class="mt-2 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
+            {c.newsletterCta}
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Tři kroky -->
+<section class="container-wide py-14 md:py-20">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-10 text-center">{c.stepsHeading}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    {c.steps.map((step, i) => (
+      <div class="bg-white rounded-xl shadow-card p-6 text-center">
+        <div class="w-11 h-11 mx-auto rounded-full bg-indigo-700 text-white font-heading font-bold flex items-center justify-center mb-4">{i + 1}</div>
+        <h3 class="font-heading text-lg font-bold text-indigo-800 mb-2">{step.t}</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">{step.d}</p>
+      </div>
+    ))}
+  </div>
+  <div class="text-center mt-10">
+    <a href={c.partnershipMailto} class="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+      {c.partnershipCta}
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Galerie -->
+<section class="bg-beige-100 py-14 md:py-20">
+  <div class="container-wide">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {photos.map((src, i) => (
+        <figure class="relative rounded-2xl overflow-hidden shadow-card aspect-[3/2]">
+          <Pic src={src} alt={c.photoCaptions[i]} class="w-full h-full object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+          <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/65 to-transparent"></div>
+          <figcaption class="absolute bottom-0 left-0 p-4 text-white font-heading font-semibold drop-shadow">{c.photoCaptions[i]}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault()
+      const text = btn.getAttribute('data-copy') || ''
+      try {
+        await navigator.clipboard.writeText(text)
+      } catch {
+        const ta = document.createElement('textarea')
+        ta.value = text
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      const label = btn.querySelector('.copy-label')
+      const prev = label ? label.textContent : ''
+      if (label) label.textContent = btn.getAttribute('data-copied') || 'Copied'
+      btn.classList.add('text-turquoise-700')
+      setTimeout(() => {
+        if (label) label.textContent = prev
+        btn.classList.remove('text-turquoise-700')
+      }, 1400)
+    })
+  })
+</script>

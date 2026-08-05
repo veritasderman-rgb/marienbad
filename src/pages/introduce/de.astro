@@ -1,0 +1,26 @@
+---
+/**
+ * Německá mutace B2B stránky pro partnery — /introduce/de.
+ * Stejný obsah a materiály jako /introduce, komunikace v němčině;
+ * jazyk každého dokumentu je vyznačen štítkem u položky.
+ */
+import Base from '@/layouts/Base.astro'
+import IntroducePartnerPage, {
+  introduceAlternates,
+  introduceSwitcher,
+  introduceMeta,
+} from '@/components/IntroducePartnerPage.astro'
+
+export const prerender = true
+---
+
+<Base
+  locale="de"
+  title={introduceMeta.de.title}
+  description={introduceMeta.de.description}
+  noindex={true}
+  alternateUrls={introduceAlternates}
+  switcherUrls={introduceSwitcher}
+>
+  <IntroducePartnerPage lang="de" />
+</Base>
