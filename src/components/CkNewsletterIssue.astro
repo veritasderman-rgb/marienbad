@@ -1,0 +1,215 @@
+---
+/**
+ * Detail jednoho čísla newsletteru pro CK — plné znění v jednom jazyce,
+ * s přepínačem na ostatní jazykové verze téhož čísla.
+ */
+import {
+  newsletterLangs,
+  newsletterLangNames,
+  type Newsletter,
+  type NewsletterLang,
+} from '@/data/ckNewsletters'
+
+interface Props {
+  lang: NewsletterLang
+  newsletter: Newsletter
+}
+
+const { lang, newsletter } = Astro.props
+const c = newsletter.content[lang]
+
+const ui: Record<NewsletterLang, Record<string, string>> = {
+  cs: {
+    back: 'Zpět na archiv',
+    eyebrow: 'Newsletter pro cestovní kanceláře',
+    highlights: 'V tomto čísle',
+    topics: 'Témata',
+    attachments: 'Přílohy původního e-mailu',
+    attachmentsNote:
+      'Letáky byly rozeslány jako přílohy e-mailu. Pokud je potřebujete znovu, napište si o ně na kontakt níže.',
+    langLabel: 'Jazyková verze',
+    new: 'novinka',
+    sentBy: 'Odesláno',
+  },
+  en: {
+    back: 'Back to the archive',
+    eyebrow: 'Newsletter for travel agencies',
+    highlights: 'In this issue',
+    topics: 'Topics',
+    attachments: 'Attachments of the original e-mail',
+    attachmentsNote:
+      'The leaflets were sent as e-mail attachments. If you need them again, just ask at the contact below.',
+    langLabel: 'Language version',
+    new: 'new',
+    sentBy: 'Sent',
+  },
+  de: {
+    back: 'Zurück zum Archiv',
+    eyebrow: 'Newsletter für Reisebüros',
+    highlights: 'In dieser Ausgabe',
+    topics: 'Themen',
+    attachments: 'Anlagen der ursprünglichen E-Mail',
+    attachmentsNote:
+      'Die Prospekte wurden als E-Mail-Anlagen versendet. Falls Sie sie erneut benötigen, melden Sie sich gerne über den Kontakt unten.',
+    langLabel: 'Sprachversion',
+    new: 'neu',
+    sentBy: 'Versendet',
+  },
+}
+
+const t = ui[lang]
+const archiveUrl = lang === 'cs' ? '/introduce/newsletter-ck' : `/introduce/newsletter-ck/${lang}`
+const issueUrl = (l: NewsletterLang) => `/introduce/newsletter-ck/${l}/${newsletter.slug}`
+const dateLocale: Record<NewsletterLang, string> = { cs: 'cs-CZ', en: 'en-GB', de: 'de-DE' }
+const sentOn = new Date(newsletter.date).toLocaleDateString(dateLocale[lang], {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+})
+---
+
+<section class="bg-indigo-700 text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl py-14 md:py-20">
+      <a href={archiveUrl} class="inline-flex items-center gap-2 text-sm font-semibold text-turquoise-300 hover:text-turquoise-200">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+        {t.back}
+      </a>
+
+      <p class="mt-6 text-xs font-semibold uppercase tracking-wider text-white/50">{t.eyebrow}</p>
+      <h1 class="mt-2 font-heading text-3xl md:text-4xl font-bold leading-tight">{c.subject}</h1>
+      <p class="mt-3 text-white/70">{t.sentBy}: <time datetime={newsletter.date}>{sentOn}</time></p>
+
+      <div class="mt-8">
+        <span class="block text-xs font-semibold uppercase tracking-wider text-white/50">{t.langLabel}</span>
+        <div class="mt-2 inline-flex rounded-full bg-white/10 border border-white/20 p-1">
+          {newsletterLangs.map((l) => (
+            <a
+              href={issueUrl(l)}
+              aria-current={l === lang ? 'page' : undefined}
+              class={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                l === lang ? 'bg-yellow-400 text-beige-950' : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}>
+              {newsletterLangNames[l]}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <!-- Shrnutí a hlavní body -->
+      <div class="rounded-2xl bg-white border border-beige-200 p-7">
+        <p class="text-xs font-semibold uppercase tracking-wider text-indigo-700">{t.highlights}</p>
+        <ul class="mt-4 space-y-2.5">
+          {c.highlights.map((h) => (
+            <li class="flex gap-3 text-beige-900 leading-snug">
+              <svg class="w-4 h-4 mt-1 text-turquoise-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-6 text-xs font-semibold uppercase tracking-wider text-indigo-700">{t.topics}</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {c.topics.map((topic) => (
+            <span class="px-3 py-1 rounded-full bg-turquoise-100 text-indigo-700 text-xs font-semibold">{topic}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Plné znění -->
+      <div class="mt-12">
+        <p class="font-heading text-lg font-bold text-indigo-700">{c.greeting}</p>
+        <p class="mt-4 text-beige-900 leading-relaxed">{c.lead}</p>
+      </div>
+
+      {c.sections.map((section) => (
+        <div class="mt-12 pt-10 border-t border-beige-300">
+          <h2 class="font-heading text-2xl font-bold text-indigo-700 leading-snug">{section.heading}</h2>
+
+          {section.paragraphs?.map((p) => <p class="mt-4 text-beige-900 leading-relaxed">{p}</p>)}
+
+          {section.bullets && (
+            <ul class="mt-5 space-y-3">
+              {section.bullets.map((b) => (
+                <li class="flex gap-3">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+                  <span class="text-beige-900 leading-snug">
+                    <strong class="text-indigo-700">{b.label}</strong>
+                    {b.isNew && (
+                      <span class="ml-2 align-middle px-2 py-0.5 rounded-full bg-yellow-400 text-beige-950 text-[0.7rem] font-bold uppercase tracking-wide">
+                        {t.new}
+                      </span>
+                    )}
+                    {b.note && <span class="text-beige-800"> — {b.note}</span>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {section.cta && (
+            <a href={section.cta.href} class="btn-ghost mt-6">
+              {section.cta.label}
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </a>
+          )}
+        </div>
+      ))}
+
+      {newsletter.attachments && (
+        <div class="mt-12 pt-10 border-t border-beige-300">
+          <h2 class="font-heading text-2xl font-bold text-indigo-700 leading-snug">{t.attachments}</h2>
+          <ul class="mt-5 space-y-2.5">
+            {newsletter.attachments.map((a) => (
+              <li class="flex gap-3 text-beige-900">
+                <svg class="w-5 h-5 mt-0.5 text-indigo-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6" /></svg>
+                <span>{a.label[lang]}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-4 text-sm text-beige-700 leading-relaxed">{t.attachmentsNote}</p>
+        </div>
+      )}
+
+      <!-- Závěr a podpis -->
+      <div class="mt-12 pt-10 border-t border-beige-300">
+        <p class="text-beige-900 leading-relaxed">{c.closing}</p>
+
+        <div class="mt-8 rounded-2xl bg-white border border-beige-200 p-7">
+          <p class="font-heading text-lg font-bold text-indigo-700">{newsletter.sender.name}</p>
+          <p class="mt-1 text-beige-800">{newsletter.sender.role}</p>
+          <p class="text-beige-800">{newsletter.sender.company}</p>
+          <p class="mt-3">
+            <a href={`mailto:${newsletter.sender.email}`} class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">
+              {newsletter.sender.email}
+            </a>
+          </p>
+          <p class="mt-1">
+            <a href={newsletter.sender.web} target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline underline-offset-4 hover:text-indigo-800">
+              www.ensanahotels.com
+            </a>
+          </p>
+        </div>
+
+        <p class="mt-6 text-xs text-beige-600">
+          © 2026 Léčebné lázně Mariánské Lázně a.s. Všechna práva vyhrazena.
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <a href={archiveUrl} class="btn-ghost">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+          {t.back}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

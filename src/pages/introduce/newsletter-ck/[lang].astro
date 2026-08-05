@@ -1,0 +1,50 @@
+---
+/**
+ * Archiv newsletterů pro CK — cizojazyčné varianty (/en, /de).
+ * Čeština má vlastní vstupní bod na /introduce/newsletter-ck (index.astro),
+ * proto ji tady negenerujeme.
+ */
+import Base from '@/layouts/Base.astro'
+import CkNewsletterArchive from '@/components/CkNewsletterArchive.astro'
+import { newsletterLangs, type NewsletterLang } from '@/data/ckNewsletters'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return newsletterLangs
+    .filter((lang) => lang !== 'cs')
+    .map((lang) => ({ params: { lang }, props: { lang } }))
+}
+
+interface Props {
+  lang: NewsletterLang
+}
+
+const { lang } = Astro.props
+
+const meta: Record<string, { title: string; description: string }> = {
+  en: {
+    title: 'Ensana News archive | For travel agencies',
+    description:
+      'Every issue of the Ensana News partner newsletter in one place — with a summary, main points and topic tags for quick reference.',
+  },
+  de: {
+    title: 'Archiv der Ensana News | Für Reisebüros',
+    description:
+      'Alle Ausgaben des Partner-Newsletters Ensana News an einem Ort — mit Zusammenfassung, den wichtigsten Punkten und Themen-Tags zum schnellen Nachschlagen.',
+  },
+}
+
+const m = meta[lang]
+---
+
+<Base
+  locale={lang === 'de' ? 'de' : 'en'}
+  section="accommodation"
+  title={m.title}
+  description={m.description}
+  noindex={true}
+  alternateUrls={{ [lang === 'de' ? 'de' : 'en']: `/introduce/newsletter-ck/${lang}` }}
+>
+  <CkNewsletterArchive lang={lang} />
+</Base>
