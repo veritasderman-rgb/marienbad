@@ -1,0 +1,629 @@
+---
+/**
+ * Aktivní září v Mariánských Lázních — obsah kampaňové stránky ve všech
+ * čtyřech jazycích. Videa (Cvičení s Eliškou + aktivity) jsou v češtině,
+ * proto cizojazyčné mutace nesou poznámku o jazyku — cviky jsou ale
+ * vizuální a srozumitelné i bez zvuku.
+ *
+ * Videa se vkládají přes youtube-nocookie s loading="lazy" — stejný vzor
+ * jako MarkdocRenderer a PodcastPage.
+ */
+import Pic from '@/components/Pic.astro'
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLMj3cJtcC8RtqiDsdBxO_-N0QbUQhvnLR'
+
+interface Content {
+  eyebrow: string
+  titleHtml: string
+  lead: string
+  ctaBook: string
+  ctaEliska: string
+  whyHeading: string
+  whyP1: string
+  whyP2: string
+  whyP3Html: string
+  parkAlt: string
+  heroAlt: string
+  activitiesHeading: string
+  activitiesLeadHtml: string
+  activities: { title: string; text: string; icon: string }[]
+  photoAlts: string[]
+  eliskaBadge: string
+  eliskaHeading: string
+  eliskaLead: string
+  videoLangNote?: string
+  featuredVideos: { id: string; title: string; note: string }[]
+  seriesLabel: string
+  series: { label: string; count: string }[]
+  playlistCta: string
+  videosHeading: string
+  videosLead: string
+  activityVideos: { id: string; title: string }[]
+  eventsHeading: string
+  eventsLead: string
+  events: { label: string; note: string }[]
+  eventsMoreHtml: string
+  colonnadeAlt: string
+  closingHeading: string
+  closingText: string
+  closingBook: string
+  closingArticle: string
+  bookingHref: string
+  articleHref: string
+}
+
+const ICONS = {
+  run: 'M13 4a2 2 0 104 0 2 2 0 00-4 0zM7 21l3-6M17 21l-3-7-4-2 2-5 4 2 3-1',
+  walk: 'M9 4a2 2 0 104 0 2 2 0 00-4 0zM8 21l2-7-2-4 3-3 2 4 3 2M16 21V11',
+  scooter: 'M5 17a3 3 0 106 0 3 3 0 00-6 0zM13 17a3 3 0 106 0 3 3 0 00-6 0zM8 17l3-8h4l1 3M12 6h3',
+  tennis: 'M12 3a9 9 0 100 18 9 9 0 000-18zM5 6c3 2 3 10 0 12M19 6c-3 2-3 10 0 12',
+  golf: 'M8 21c0-2 4-2 4-2s4 0 4 2M12 19V4M12 4l6 2.5L12 9',
+  disc: 'M12 6a8 4 0 100 8 8 4 0 000-8zM4 10v4c0 2.2 3.6 4 8 4s8-1.8 8-4v-4',
+  swim: 'M2 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M2 12c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M14 5a2 2 0 104 0 2 2 0 00-4 0z',
+  gym: 'M4 12h2M18 12h2M6 8v8M18 8v8M8 12h8M8 10v4M16 10v4',
+}
+
+const content: Record<Locale, Content> = {
+  cs: {
+    eyebrow: 'Sezonní program',
+    titleHtml: 'Aktivní září<br />v Mariánských Lázních',
+    lead:
+      'Město se po hlavní sezoně nadechne, lesy voní podzimem a teploty jsou stvořené pro pohyb. Běhání, golf, tenis, discgolf, koloběžky, plavání — a cvičení s naší fyzioterapeutkou Eliškou.',
+    ctaBook: 'Rezervovat zářijový pobyt',
+    ctaEliska: 'Cvičení s Eliškou',
+    whyHeading: 'Proč je září na pohyb nejlepší měsíc',
+    whyP1:
+      'Mariánské Lázně jsou od roku 2023 klimatickými lázněmi — zdejší vzduch je oficiálně uznaný léčivý zdroj. V nadmořské výšce kolem 600 metrů září nepálí: dny jsou příjemně teplé, rána svěží a lesy Slavkovského lesa právě začínají hrát barvami.',
+    whyP2:
+      'Hlavní letní vlna hostů odjela, takže na kurtech, hřištích i stezkách je volněji a klidněji. A protože pohyb je tady součástí léčby, všechno máte v docházkové vzdálenosti — od bazénu po discgolfové hřiště.',
+    whyP3Html:
+      'Víc o tom, proč se tu tak dobře dýchá, najdete na stránce o <a href="/cs/klimatoterapie" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">klimatoterapii</a>.',
+    parkAlt: 'Lázeňský park s fontánou a pavilonem Křížového pramene za slunečného dne',
+    heroAlt: 'Tenisové podání na antukovém kurtu obklopeném lesy v Mariánských Lázních',
+    activitiesHeading: 'Co všechno si v září užijete',
+    activitiesLeadHtml:
+      'Osm způsobů, jak se hýbat — všechny pár minut od kolonnády. Podrobného průvodce najdete v článku <a href="/cs/magazin/sport-v-marianskych-laznich" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">Sportovní Mariánky</a>.',
+    activities: [
+      { title: 'Běhání', text: 'Přes 70 km značených stezek začíná hned za posledními domy. Rovinaté parkové okruhy i lesní traily s výhledy.', icon: ICONS.run },
+      { title: 'Chůze a nordic walking', text: 'Nejmariánskolázeňštější sport: terénní kúra se tu předepisuje přes 200 let. Značené trasy od zelených po červené.', icon: ICONS.walk },
+      { title: 'Koloběžky a kolo', text: 'Terénní koloběžky do Slavkovského lesa; lanovka na Krakonoše v létě vyveze i kola. Info na hotelových recepcích.', icon: ICONS.scooter },
+      { title: 'Tenis', text: 'Antukové kurty TCF Schicht na Anglické ulici — v srpnu 2026 hostily juniorský Billie Jean King Cup.', icon: ICONS.tennis },
+      { title: 'Golf a Chip&Putt', text: 'Royal Golf Club (1905) je nejstarší hřiště v Česku. Pro začátečníky veřejná 9jamka a Chip&Putt bez zelené karty.', icon: ICONS.golf },
+      { title: 'Discgolf', text: '18 jamek a 1 862 metrů na Voře. Disky si půjčíte na recepcích — kolo hry zabere rodině hodinu a půl.', icon: ICONS.disc },
+      { title: 'Plavání', text: 'Hosté hotelů Ensana mají bazén pod vlastní střechou — od Butterfly s vířivkou po Římské lázně z roku 1896.', icon: ICONS.swim },
+      { title: 'Fitness s fyzioterapeutkou', text: 'Posilovny přímo v hotelech — a cvičení, které vede fyzioterapeutka Eliška. Sérii videí najdete níže.', icon: ICONS.gym },
+    ],
+    photoAlts: [
+      'Tenisový úder zblízka na antukovém kurtu',
+      'Golfový švih na hřišti mezi lesy',
+      'Podvečerní slunce v lázeňském parku',
+      'Odpočinek na trávě v parku po sportu',
+    ],
+    eliskaBadge: 'Videosérie',
+    eliskaHeading: 'Cvičení s Eliškou',
+    eliskaLead:
+      'Naše fyzioterapeutka Eliška natočila sérii krátkých videí, se kterými protáhnete krční i hrudní páteř kdekoli — v hotelovém pokoji, v parku, doma. Žádné náčiní, žádná posilovna, jen pár minut denně.',
+    featuredVideos: [
+      { id: 'KuWOj0q9PWI', title: 'Cvičení s Eliškou — protažení krční páteře', note: 'Úvod do série 10 cviků. Zvládnete je v pokoji i na lavičce v parku.' },
+      { id: 'gcOl7d-opMk', title: 'Cvičení s Eliškou — protažení hrudní páteře', note: 'Úvod do série 9 cviků proti ztuhlým zádům — ideální po dni na cestách.' },
+    ],
+    seriesLabel: 'Celá série na našem YouTube',
+    series: [
+      { label: 'Protažení krční páteře', count: 'úvod + 10 cviků' },
+      { label: 'Protažení hrudní páteře', count: 'úvod + 9 cviků' },
+      { label: 'Kineziologické tejpování', count: '2 videa' },
+      { label: 'Pohybem ke zdraví (Mgr. Dominik Mach)', count: 'cviky na rameno, záda a chodidla' },
+    ],
+    playlistCta: 'Přehrát celý playlist na YouTube',
+    videosHeading: 'Podívejte se, jak Aktivní září vypadá',
+    videosLead: 'Krátká videa z našeho kanálu — od koloběžek ve Slavkovském lese po rodinný discgolf.',
+    activityVideos: [
+      { id: 'RiakWZK4o_4', title: 'Koloběžky — objevte Slavkovský les' },
+      { id: '7j6fsn9eMPM', title: 'Tenis — sport a relax v jednom' },
+      { id: 'UnDXKz6uE-Y', title: 'Discgolf — zábava pro celou rodinu' },
+      { id: 'slblIseRAvA', title: 'Chip&Putt — golf pro každého člena rodiny' },
+      { id: 'mEjrlxQtz18', title: 'Fitness & výživa — zdraví v rovnováze' },
+      { id: 'vM1BQRcXeuk', title: 'Na kole nebo koloběžce — rodinný výlet po Mariánkách' },
+    ],
+    eventsHeading: 'A když si dáte pauzu',
+    eventsLead: 'Září ve městě žije i kulturou — mezi sportem stihnete:',
+    events: [
+      { label: 'Dny evropského dědictví', note: 'jedinečná možnost poznat město zevnitř (7.–20. 9.)' },
+      { label: 'Oslavy 5 let na seznamu UNESCO', note: '11.–13. 9. — Mariánské Lázně zahajují' },
+      { label: 'Zpřístupnění Domu Chopin a Anglikánské kaple', note: '12. 9.' },
+      { label: 'Závěrečný kolonádní koncert sezóny 2026', note: '12. 9. — Západočeský symfonický orchestr' },
+    ],
+    eventsMoreHtml:
+      'Kompletní kulturní přehled najdou hosté na <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
+    colonnadeAlt: 'Interiér litinové Hlavní kolonády se stropními freskami',
+    closingHeading: 'Září je nejlepší kondička roku',
+    closingText:
+      'Klidnější město, barvící se lesy a pohyb, který tu má dvousetletou tradici. Vyberte si hotel a přijeďte si zazávodit sami se sebou.',
+    closingBook: 'Vybrat hotel a rezervovat',
+    closingArticle: 'Přečíst průvodce sportem',
+    bookingHref: '/cs/ubytovani',
+    articleHref: '/cs/magazin/sport-v-marianskych-laznich',
+  },
+
+  de: {
+    eyebrow: 'Saisonprogramm',
+    titleHtml: 'Aktiver September<br />in Marienbad',
+    lead:
+      'Nach der Hauptsaison atmet die Stadt auf, die Wälder duften nach Herbst, und die Temperaturen sind wie geschaffen für Bewegung. Laufen, Golf, Tennis, Discgolf, Tretroller, Schwimmen — und Übungen mit unserer Physiotherapeutin Eliška.',
+    ctaBook: 'September-Aufenthalt buchen',
+    ctaEliska: 'Übungen mit Eliška',
+    whyHeading: 'Warum der September der beste Monat für Bewegung ist',
+    whyP1:
+      'Marienbad ist seit 2023 Klimakurort — die Luft ist ein offiziell anerkanntes Heilmittel. In rund 600 Metern Höhe brennt der September nicht: Die Tage sind angenehm warm, die Morgen frisch, und die Wälder des Kaiserwaldes beginnen gerade, Farben zu tragen.',
+    whyP2:
+      'Die große Sommerwelle der Gäste ist abgereist — auf Plätzen, Courts und Wegen ist es freier und ruhiger. Und weil Bewegung hier Teil der Kur ist, liegt alles in Gehweite: vom Pool bis zum Discgolf-Parcours.',
+    whyP3Html:
+      'Mehr darüber, warum es sich hier so gut atmet, auf der Seite zur <a href="/de/klimatherapie" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">Klimatherapie</a>.',
+    parkAlt: 'Kurpark mit Fontäne und dem Pavillon der Kreuzquelle an einem sonnigen Tag',
+    heroAlt: 'Tennisaufschlag auf einem Sandplatz inmitten der Wälder von Marienbad',
+    activitiesHeading: 'Was Sie im September alles erwartet',
+    activitiesLeadHtml: 'Acht Arten, sich zu bewegen — alle wenige Minuten von der Kolonnade entfernt.',
+    activities: [
+      { title: 'Laufen', text: 'Über 70 km markierter Wege beginnen gleich hinter den letzten Häusern. Ebene Parkrunden und Waldtrails mit Aussicht.', icon: ICONS.run },
+      { title: 'Gehen und Nordic Walking', text: 'Der marienbadischste Sport überhaupt: Die Terrainkur wird hier seit über 200 Jahren verordnet. Markierte Wege von Grün bis Rot.', icon: ICONS.walk },
+      { title: 'Tretroller und Rad', text: 'Geländeroller in den Kaiserwald; die Seilbahn auf den Krakonoš nimmt im Sommer auch Räder mit. Infos an den Hotelrezeptionen.', icon: ICONS.scooter },
+      { title: 'Tennis', text: 'Die Sandplätze des TCF Schicht in der Anglická-Straße — im August 2026 Gastgeber des Junioren-Billie-Jean-King-Cups.', icon: ICONS.tennis },
+      { title: 'Golf und Chip&Putt', text: 'Der Royal Golf Club (1905) ist der älteste Platz Tschechiens. Für Einsteiger ein öffentlicher 9-Loch-Platz und Chip&Putt ohne Platzreife.', icon: ICONS.golf },
+      { title: 'Discgolf', text: '18 Bahnen und 1 862 Meter im Areal Na Voře. Discs leihen Sie an den Rezeptionen — eine Runde dauert für die Familie gut anderthalb Stunden.', icon: ICONS.disc },
+      { title: 'Schwimmen', text: 'Gäste der Ensana-Hotels haben den Pool unter dem eigenen Dach — vom Butterfly mit Whirlpool bis zu den Römischen Bädern von 1896.', icon: ICONS.swim },
+      { title: 'Fitness mit Physiotherapeutin', text: 'Fitnessräume direkt in den Hotels — und Übungen, die Physiotherapeutin Eliška anleitet. Die Videoserie finden Sie unten.', icon: ICONS.gym },
+    ],
+    photoAlts: [
+      'Tennisschlag aus der Nähe auf dem Sandplatz',
+      'Golfschwung auf dem Platz zwischen Wäldern',
+      'Abendsonne im Kurpark',
+      'Erholung auf der Wiese nach dem Sport',
+    ],
+    eliskaBadge: 'Videoserie',
+    eliskaHeading: 'Übungen mit Eliška',
+    eliskaLead:
+      'Unsere Physiotherapeutin Eliška hat eine Serie kurzer Videos gedreht, mit denen Sie Hals- und Brustwirbelsäule überall dehnen — im Hotelzimmer, im Park, zu Hause. Kein Gerät, kein Fitnessstudio, nur ein paar Minuten am Tag.',
+    videoLangNote: 'Die Videos sind auf Tschechisch — die Übungen werden aber vorgezeigt und sind auch ohne Ton gut nachvollziehbar.',
+    featuredVideos: [
+      { id: 'KuWOj0q9PWI', title: 'Übungen mit Eliška — Dehnung der Halswirbelsäule', note: 'Einführung in die Serie von 10 Übungen — fürs Hotelzimmer wie für die Parkbank.' },
+      { id: 'gcOl7d-opMk', title: 'Übungen mit Eliška — Dehnung der Brustwirbelsäule', note: 'Einführung in die Serie von 9 Übungen gegen einen steifen Rücken — ideal nach einem Reisetag.' },
+    ],
+    seriesLabel: 'Die ganze Serie auf unserem YouTube',
+    series: [
+      { label: 'Dehnung der Halswirbelsäule', count: 'Einführung + 10 Übungen' },
+      { label: 'Dehnung der Brustwirbelsäule', count: 'Einführung + 9 Übungen' },
+      { label: 'Kinesiologisches Taping', count: '2 Videos' },
+      { label: 'Pohybem ke zdraví (Mgr. Dominik Mach)', count: 'Übungen für Schulter, Rücken und Füße' },
+    ],
+    playlistCta: 'Ganze Playlist auf YouTube abspielen',
+    videosHeading: 'Sehen Sie, wie der Aktive September aussieht',
+    videosLead: 'Kurze Videos von unserem Kanal — vom Tretroller im Kaiserwald bis zum Familien-Discgolf.',
+    activityVideos: [
+      { id: 'RiakWZK4o_4', title: 'Tretroller — den Kaiserwald entdecken' },
+      { id: '7j6fsn9eMPM', title: 'Tennis — Sport und Erholung in einem' },
+      { id: 'UnDXKz6uE-Y', title: 'Discgolf — Spaß für die ganze Familie' },
+      { id: 'slblIseRAvA', title: 'Chip&Putt — Golf für jedes Familienmitglied' },
+      { id: 'mEjrlxQtz18', title: 'Fitness & Ernährung — Gesundheit im Gleichgewicht' },
+      { id: 'vM1BQRcXeuk', title: 'Mit Rad oder Roller — Familienausflug durch Marienbad' },
+    ],
+    eventsHeading: 'Und wenn Sie Pause machen',
+    eventsLead: 'Der September lebt auch von Kultur — zwischen dem Sport schaffen Sie:',
+    events: [
+      { label: 'Tage des europäischen Kulturerbes', note: 'die Stadt von innen kennenlernen (7.–20. 9.)' },
+      { label: 'Feier: 5 Jahre auf der UNESCO-Liste', note: '11.–13. 9. — Marienbad eröffnet' },
+      { label: 'Öffnung des Chopin-Hauses und der Anglikanischen Kapelle', note: '12. 9.' },
+      { label: 'Abschlusskonzert der Kolonnadensaison 2026', note: '12. 9. — Westböhmisches Symphonieorchester' },
+    ],
+    eventsMoreHtml:
+      'Den vollständigen Kulturüberblick finden Ihre Gäste auf <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
+    colonnadeAlt: 'Innenraum der gusseisernen Hauptkolonnade mit Deckenfresken',
+    closingHeading: 'Der September ist die beste Kondition des Jahres',
+    closingText:
+      'Eine ruhigere Stadt, sich färbende Wälder und Bewegung mit zweihundertjähriger Tradition. Wählen Sie Ihr Hotel und treten Sie gegen sich selbst an.',
+    closingBook: 'Hotel wählen und buchen',
+    closingArticle: 'Zur UNESCO-Jubiläumsseite',
+    bookingHref: '/de/unterkunft',
+    articleHref: '/de/5-jahre-welterbe',
+  },
+
+  en: {
+    eyebrow: 'Seasonal programme',
+    titleHtml: 'Active September<br />in Mariánské Lázně',
+    lead:
+      'After the main season the town takes a breath, the forests smell of autumn and the temperatures are made for movement. Running, golf, tennis, disc golf, scooters, swimming — and exercises with our physiotherapist Eliška.',
+    ctaBook: 'Book a September stay',
+    ctaEliska: 'Exercises with Eliška',
+    whyHeading: 'Why September is the best month for movement',
+    whyP1:
+      'Mariánské Lázně has been a climatic spa since 2023 — the local air is an officially recognised healing resource. At around 600 metres above sea level September never scorches: days are pleasantly warm, mornings fresh, and the Slavkov Forest is just starting to turn.',
+    whyP2:
+      'The main summer wave of guests has left, so courts, courses and trails are freer and calmer. And because movement is part of the cure here, everything is within walking distance — from the pool to the disc golf course.',
+    whyP3Html:
+      'More on why breathing comes so easily here on the <a href="/en/climate-therapy" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">climate therapy</a> page.',
+    parkAlt: 'Spa park with a fountain and the Cross Spring pavilion on a sunny day',
+    heroAlt: 'Tennis serve on a clay court surrounded by the forests of Mariánské Lázně',
+    activitiesHeading: 'Everything September has in store',
+    activitiesLeadHtml: 'Eight ways to keep moving — all a few minutes from the colonnade.',
+    activities: [
+      { title: 'Running', text: 'Over 70 km of marked trails begin just past the last houses. Flat park loops and forest trails with views.', icon: ICONS.run },
+      { title: 'Walking and nordic walking', text: 'The most quintessentially Marienbad sport: the terrain cure has been prescribed here for over 200 years. Marked routes from green to red.', icon: ICONS.walk },
+      { title: 'Scooters and bikes', text: 'Off-road scooters into the Slavkov Forest; the Krakonoš cable car carries bikes in summer. Ask at hotel receptions.', icon: ICONS.scooter },
+      { title: 'Tennis', text: 'The TCF Schicht clay courts on Anglická street — hosts of the junior Billie Jean King Cup in August 2026.', icon: ICONS.tennis },
+      { title: 'Golf and Chip&Putt', text: 'The Royal Golf Club (1905) is the oldest course in the country. For beginners, a public 9-hole course and Chip&Putt with no green card.', icon: ICONS.golf },
+      { title: 'Disc golf', text: '18 holes and 1,862 metres at Na Voře. Rent discs at the receptions — a family round takes a pleasant hour and a half.', icon: ICONS.disc },
+      { title: 'Swimming', text: 'Ensana hotel guests have the pool under their own roof — from the Butterfly with its whirlpool to the Roman Baths of 1896.', icon: ICONS.swim },
+      { title: 'Physio-led fitness', text: 'Gyms right in the hotels — and exercises led by physiotherapist Eliška. Find the video series below.', icon: ICONS.gym },
+    ],
+    photoAlts: [
+      'Close-up tennis stroke on a clay court',
+      'Golf swing on a course between forests',
+      'Evening sun in the spa park',
+      'Resting on the grass after sport',
+    ],
+    eliskaBadge: 'Video series',
+    eliskaHeading: 'Exercises with Eliška',
+    eliskaLead:
+      'Our physiotherapist Eliška has recorded a series of short videos to stretch your neck and thoracic spine anywhere — in your hotel room, in the park, at home. No equipment, no gym, just a few minutes a day.',
+    videoLangNote: 'The videos are in Czech — but every exercise is demonstrated on screen and easy to follow without sound.',
+    featuredVideos: [
+      { id: 'KuWOj0q9PWI', title: 'Exercises with Eliška — neck spine stretching', note: 'Introduction to the 10-exercise series — for the hotel room or a park bench.' },
+      { id: 'gcOl7d-opMk', title: 'Exercises with Eliška — thoracic spine stretching', note: 'Introduction to the 9-exercise series against a stiff back — ideal after a day of travelling.' },
+    ],
+    seriesLabel: 'The whole series on our YouTube',
+    series: [
+      { label: 'Neck spine stretching', count: 'intro + 10 exercises' },
+      { label: 'Thoracic spine stretching', count: 'intro + 9 exercises' },
+      { label: 'Kinesiology taping', count: '2 videos' },
+      { label: 'Pohybem ke zdraví (Mgr. Dominik Mach)', count: 'exercises for shoulders, back and feet' },
+    ],
+    playlistCta: 'Play the full playlist on YouTube',
+    videosHeading: 'See what Active September looks like',
+    videosLead: 'Short videos from our channel — from scooters in the Slavkov Forest to family disc golf.',
+    activityVideos: [
+      { id: 'RiakWZK4o_4', title: 'Scooters — discover the Slavkov Forest' },
+      { id: '7j6fsn9eMPM', title: 'Tennis — sport and relaxation in one' },
+      { id: 'UnDXKz6uE-Y', title: 'Disc golf — fun for the whole family' },
+      { id: 'slblIseRAvA', title: 'Chip&Putt — golf for every member of the family' },
+      { id: 'mEjrlxQtz18', title: 'Fitness & nutrition — health in balance' },
+      { id: 'vM1BQRcXeuk', title: 'By bike or scooter — a family ride around Marienbad' },
+    ],
+    eventsHeading: 'And when you take a break',
+    eventsLead: 'September lives with culture too — between the sport you can catch:',
+    events: [
+      { label: 'European Heritage Days', note: 'a rare chance to see the town from the inside (7–20 Sept)' },
+      { label: 'Celebrating 5 years on the UNESCO list', note: '11–13 Sept — Mariánské Lázně opens' },
+      { label: 'Chopin House and the Anglican Chapel open to visitors', note: '12 Sept' },
+      { label: 'Closing colonnade concert of the 2026 season', note: '12 Sept — West Bohemian Symphony Orchestra' },
+    ],
+    eventsMoreHtml:
+      'The full cultural listings are at <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
+    colonnadeAlt: 'Interior of the cast-iron Main Colonnade with ceiling frescoes',
+    closingHeading: 'September is the best workout of the year',
+    closingText:
+      'A quieter town, forests turning colour and movement with a two-hundred-year tradition. Pick a hotel and come race against yourself.',
+    closingBook: 'Choose a hotel and book',
+    closingArticle: 'Visit the UNESCO anniversary page',
+    bookingHref: '/en/accommodation',
+    articleHref: '/en/5-years-world-heritage',
+  },
+
+  ru: {
+    eyebrow: 'Сезонная программа',
+    titleHtml: 'Активный сентябрь<br />в Марианских Лазнях',
+    lead:
+      'После главного сезона город делает вдох, леса пахнут осенью, а температуры созданы для движения. Бег, гольф, теннис, диск-гольф, самокаты, плавание — и упражнения с нашим физиотерапевтом Элишкой.',
+    ctaBook: 'Забронировать сентябрь',
+    ctaEliska: 'Упражнения с Элишкой',
+    whyHeading: 'Почему сентябрь — лучший месяц для движения',
+    whyP1:
+      'Марианске Лазне с 2023 года — климатический курорт: здешний воздух официально признан лечебным ресурсом. На высоте около 600 метров сентябрь не жжёт: дни приятно тёплые, утра свежие, а леса Славковского леса как раз начинают менять краски.',
+    whyP2:
+      'Главная летняя волна гостей уехала — на кортах, полях и тропах свободнее и спокойнее. А поскольку движение здесь часть лечения, всё в пешей доступности: от бассейна до диск-гольф-парка.',
+    whyP3Html:
+      'Больше о том, почему здесь так легко дышится, — на странице о <a href="/ru/klimatoterapiya" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">климатотерапии</a>.',
+    parkAlt: 'Курортный парк с фонтаном и павильоном Крестового источника в солнечный день',
+    heroAlt: 'Подача в теннисе на грунтовом корте среди лесов Марианских Лазней',
+    activitiesHeading: 'Всё, что ждёт вас в сентябре',
+    activitiesLeadHtml: 'Восемь способов двигаться — всё в нескольких минутах от колоннады.',
+    activities: [
+      { title: 'Бег', text: 'Более 70 км маркированных троп начинаются сразу за последними домами. Ровные парковые круги и лесные трейлы с видами.', icon: ICONS.run },
+      { title: 'Ходьба и скандинавская ходьба', text: 'самый марианско-лазеньский спорт: терренкур здесь прописывают больше 200 лет. Маркированные маршруты от зелёных до красных.', icon: ICONS.walk },
+      { title: 'Самокаты и велосипед', text: 'Внедорожные самокаты в Славковский лес; канатная дорога на Краконош летом перевозит и велосипеды. Информация на ресепшен.', icon: ICONS.scooter },
+      { title: 'Теннис', text: 'Грунтовые корты TCF Schicht на улице Anglická — в августе 2026 года принимали юниорский Billie Jean King Cup.', icon: ICONS.tennis },
+      { title: 'Гольф и Chip&Putt', text: 'Royal Golf Club (1905) — старейшее поле страны. Для начинающих — публичная 9-луночная площадка и Chip&Putt без зелёной карты.', icon: ICONS.golf },
+      { title: 'Диск-гольф', text: '18 лунок и 1 862 метра в ареале На Воржэ. Диски выдают на ресепшен — семейный круг занимает приятные полтора часа.', icon: ICONS.disc },
+      { title: 'Плавание', text: 'У гостей отелей Ensana бассейн под собственной крышей — от Butterfly с джакузи до Римских бань 1896 года.', icon: ICONS.swim },
+      { title: 'Фитнес с физиотерапевтом', text: 'Тренажёрные залы прямо в отелях — и упражнения, которые ведёт физиотерапевт Элишка. Видеосерия ниже.', icon: ICONS.gym },
+    ],
+    photoAlts: [
+      'Теннисный удар крупным планом на грунтовом корте',
+      'Гольф-свинг на поле среди лесов',
+      'Вечернее солнце в курортном парке',
+      'Отдых на траве в парке после спорта',
+    ],
+    eliskaBadge: 'Видеосерия',
+    eliskaHeading: 'Упражнения с Элишкой',
+    eliskaLead:
+      'Наш физиотерапевт Элишка записала серию коротких видео, с которыми вы растянете шейный и грудной отделы позвоночника где угодно — в номере, в парке, дома. Без инвентаря и спортзала, всего несколько минут в день.',
+    videoLangNote: 'Видео на чешском языке — но каждое упражнение показано на экране и легко повторяется без звука.',
+    featuredVideos: [
+      { id: 'KuWOj0q9PWI', title: 'Упражнения с Элишкой — растяжка шейного отдела', note: 'Введение в серию из 10 упражнений — для номера или скамейки в парке.' },
+      { id: 'gcOl7d-opMk', title: 'Упражнения с Элишкой — растяжка грудного отдела', note: 'Введение в серию из 9 упражнений против скованной спины — идеально после дня в дороге.' },
+    ],
+    seriesLabel: 'Вся серия на нашем YouTube',
+    series: [
+      { label: 'Растяжка шейного отдела', count: 'введение + 10 упражнений' },
+      { label: 'Растяжка грудного отдела', count: 'введение + 9 упражнений' },
+      { label: 'Кинезиологическое тейпирование', count: '2 видео' },
+      { label: 'Pohybem ke zdraví (Mgr. Dominik Mach)', count: 'упражнения для плеч, спины и стоп' },
+    ],
+    playlistCta: 'Открыть весь плейлист на YouTube',
+    videosHeading: 'Посмотрите, как выглядит Активный сентябрь',
+    videosLead: 'Короткие видео с нашего канала — от самокатов в Славковском лесу до семейного диск-гольфа.',
+    activityVideos: [
+      { id: 'RiakWZK4o_4', title: 'Самокаты — откройте Славковский лес' },
+      { id: '7j6fsn9eMPM', title: 'Теннис — спорт и отдых в одном' },
+      { id: 'UnDXKz6uE-Y', title: 'Диск-гольф — веселье для всей семьи' },
+      { id: 'slblIseRAvA', title: 'Chip&Putt — гольф для каждого члена семьи' },
+      { id: 'mEjrlxQtz18', title: 'Фитнес и питание — здоровье в балансе' },
+      { id: 'vM1BQRcXeuk', title: 'На велосипеде или самокате — семейная прогулка по Марианкам' },
+    ],
+    eventsHeading: 'А когда сделаете паузу',
+    eventsLead: 'Сентябрь живёт и культурой — между спортом успеете:',
+    events: [
+      { label: 'Дни европейского наследия', note: 'редкая возможность узнать город изнутри (7–20 сентября)' },
+      { label: 'Празднование 5 лет в списке ЮНЕСКО', note: '11–13 сентября — Марианске Лазне открывают' },
+      { label: 'Открытие Дома Шопена и Англиканской капеллы', note: '12 сентября' },
+      { label: 'Заключительный концерт сезона на колоннаде', note: '12 сентября — Западночешский симфонический оркестр' },
+    ],
+    eventsMoreHtml:
+      'Полная культурная афиша — на <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
+    colonnadeAlt: 'Интерьер чугунной Главной колоннады с потолочными фресками',
+    closingHeading: 'Сентябрь — лучшая форма года',
+    closingText:
+      'Спокойный город, окрашивающиеся леса и движение с двухсотлетней традицией. Выберите отель и приезжайте посоревноваться с самим собой.',
+    closingBook: 'Выбрать отель и забронировать',
+    closingArticle: 'На страницу юбилея ЮНЕСКО',
+    bookingHref: '/ru/prozhivanie',
+    articleHref: '/ru/5-let-yunesko',
+  },
+}
+
+const c = content[locale]
+---
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="relative min-h-[75vh] flex items-center overflow-hidden bg-indigo-950">
+  <div class="absolute inset-0">
+    <Pic
+      src="/images/library/sport/tenis-02.jpg"
+      alt={c.heroAlt}
+      class="w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-indigo-950/55 to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/60 via-transparent to-indigo-950/25"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+        {c.eyebrow}
+      </span>
+
+      <h1 class="mt-6 font-heading text-4xl md:text-6xl font-bold text-white leading-[1.05]" set:html={c.titleHtml} />
+
+      <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-xl">{c.lead}</p>
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href={c.bookingHref} class="btn-primary">
+          {c.ctaBook}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+        <a href="#cviceni-s-eliskou" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          {c.ctaEliska}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Proč právě září ──────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.whyHeading}</h2>
+        <div class="mt-6 space-y-5 text-lg text-beige-900 leading-relaxed">
+          <p>{c.whyP1}</p>
+          <p>{c.whyP2}</p>
+          <p set:html={c.whyP3Html} />
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-3xl shadow-card">
+        <Pic
+          src="/images/library/colonnade/park-16a4999.jpg"
+          alt={c.parkAlt}
+          class="w-full h-full object-cover"
+          sizes="(min-width: 1024px) 45vw, 100vw"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Aktivity ─────────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.activitiesHeading}</h2>
+      <p class="mt-4 text-lg text-beige-800 leading-relaxed" set:html={c.activitiesLeadHtml} />
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+      {c.activities.map((a) => (
+        <div class="bg-beige-50 rounded-2xl p-6 border border-beige-200 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-turquoise-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-indigo-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={a.icon} /></svg>
+          </div>
+          <h3 class="mt-4 font-heading text-lg font-bold text-indigo-700 leading-snug">{a.title}</h3>
+          <p class="mt-2 text-sm text-beige-800 leading-relaxed">{a.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+      {['tenis-01', 'golf-01', 'park-podvecer-01', 'park-relax-01'].map((img, i) => (
+        <div class="overflow-hidden rounded-xl">
+          <Pic src={`/images/library/sport/${img}.jpg`} alt={c.photoAlts[i]} class="w-full h-full object-cover aspect-[4/3]" sizes="(min-width: 768px) 25vw, 50vw" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Cvičení s Eliškou ────────────────────────────────────────────── -->
+<section id="cviceni-s-eliskou" class="section bg-indigo-700 text-white relative overflow-hidden scroll-mt-24">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+        {c.eliskaBadge}
+      </span>
+      <h2 class="mt-5 font-heading text-3xl md:text-4xl font-bold leading-tight">{c.eliskaHeading}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{c.eliskaLead}</p>
+      {c.videoLangNote && <p class="mt-3 text-sm text-turquoise-200/90 leading-relaxed">{c.videoLangNote}</p>}
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      {c.featuredVideos.map((v) => (
+        <div class="bg-white/8 border border-white/15 rounded-2xl overflow-hidden">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0&modestbranding=1`}
+              title={v.title}
+              class="absolute inset-0 w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading text-lg font-bold leading-snug">{v.title}</h3>
+            <p class="mt-1.5 text-sm text-white/75 leading-relaxed">{v.note}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-8 rounded-2xl bg-white/8 border border-white/15 p-6 md:p-7">
+      <p class="text-sm font-semibold uppercase tracking-wider text-turquoise-300">{c.seriesLabel}</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+        {c.series.map((s) => (
+          <li class="flex gap-3 text-white/90 leading-snug">
+            <svg class="w-4 h-4 mt-1 text-turquoise-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+            <span><strong>{s.label}</strong> — {s.count}</span>
+          </li>
+        ))}
+      </ul>
+      <a href={PLAYLIST_URL} target="_blank" rel="noopener noreferrer" class="btn-primary mt-6">
+        {c.playlistCta}
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Videa aktivit ────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.videosHeading}</h2>
+      <p class="mt-4 text-lg text-beige-800 leading-relaxed">{c.videosLead}</p>
+    </div>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {c.activityVideos.map((v) => (
+        <div class="bg-white rounded-2xl overflow-hidden border border-beige-200 card-hover">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0&modestbranding=1`}
+              title={v.title}
+              class="absolute inset-0 w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <p class="p-4 font-semibold text-indigo-700 leading-snug">{v.title}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Zářijové akce ────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.eventsHeading}</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">{c.eventsLead}</p>
+        <ul class="mt-6 space-y-4">
+          {c.events.map((e) => (
+            <li class="flex gap-3">
+              <span class="mt-2.5 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+              <span class="text-beige-900 leading-snug"><strong class="text-indigo-700">{e.label}</strong> — {e.note}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-beige-800" set:html={c.eventsMoreHtml} />
+      </div>
+      <div class="overflow-hidden rounded-3xl shadow-card">
+        <Pic
+          src="/images/library/colonnade/main-colonnade-16a4646.jpg"
+          alt={c.colonnadeAlt}
+          class="w-full h-full object-cover"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Závěrečná výzva ──────────────────────────────────────────────── -->
+<section class="relative overflow-hidden bg-aubergine-900 text-white">
+  <div class="absolute inset-0">
+    <Pic
+      src="/images/library/sport/park-podvecer-01.jpg"
+      alt=""
+      class="w-full h-full object-cover"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">{c.closingHeading}</h2>
+      <p class="mt-5 text-lg text-white/80 leading-relaxed">{c.closingText}</p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href={c.bookingHref} class="btn-primary">
+          {c.closingBook}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+        <a href={c.articleHref} class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          {c.closingArticle}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

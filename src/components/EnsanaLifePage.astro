@@ -1,0 +1,349 @@
+---
+/**
+ * Ensana Life — obsah stránky věrnostního programu, sdílený všemi čtyřmi
+ * jazykovými mutacemi. Texty drží src/data/ensanaLifeContent.ts.
+ */
+import Pic from '@/components/Pic.astro'
+import type { Locale } from '@/i18n/config'
+import { ensanaLifeContent, CONTACT_MAIL } from '@/data/ensanaLifeContent'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const c = ensanaLifeContent[locale]
+
+/** Vzhled karet úrovní podle klíče (jazykově nezávislý). */
+const tierStyles: Record<string, { face: string; ink: string; chip: string }> = {
+  blue: { face: 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900', ink: 'text-white', chip: 'bg-white/15 text-turquoise-200' },
+  bronze: { face: 'bg-gradient-to-br from-[#a97142] via-[#8a5a33] to-[#5c3a1f]', ink: 'text-white', chip: 'bg-white/15 text-[#f5d9bd]' },
+  silver: { face: 'bg-gradient-to-br from-[#9aa5ad] via-[#77838d] to-[#4b555d]', ink: 'text-white', chip: 'bg-white/20 text-white' },
+  gold: { face: 'bg-gradient-to-br from-[#e0b45c] via-[#c9973b] to-[#8a6420]', ink: 'text-beige-950', chip: 'bg-black/15 text-beige-950' },
+}
+
+/** Jednoduchý inline-markdown pro **tučné**. */
+function bold(text: string, strongClass = ''): string {
+  const cls = strongClass ? ` class="${strongClass}"` : ''
+  return text.replace(/\*\*([^*]+)\*\*/g, `<strong${cls}>$1</strong>`)
+}
+
+const legalHtml = c.conditions.legal.replace(
+  '{terms}',
+  `<a href="${c.urls.terms}" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">${c.conditions.termsLabel}</a>`,
+)
+---
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="relative min-h-[85vh] flex items-center overflow-hidden bg-indigo-950">
+  <div class="absolute inset-0">
+    <Pic
+      src="/images/content/ensana-life/kolonada-hero.jpg"
+      alt={c.about.imageAlt}
+      class="w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+  </div>
+
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-indigo-950/55 to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/60 via-transparent to-indigo-950/25"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-24 md:py-32">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+        {c.hero.eyebrow}
+      </span>
+
+      <h1 class="mt-6 font-heading text-4xl md:text-6xl font-bold text-white leading-[1.05]">Ensana Life</h1>
+      <p class="mt-4 font-heading text-xl md:text-2xl text-turquoise-300 font-medium leading-snug">{c.hero.subtitle}</p>
+      <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-xl" set:html={bold(c.hero.lead, 'text-white')} />
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href={c.urls.register} target="_blank" rel="noopener noreferrer" class="btn-primary">
+          {c.hero.register}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+        <a href="#urovne" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          {c.hero.viewTiers}
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm text-white/60">
+        {c.hero.memberPrompt}
+        <a href={c.urls.login} target="_blank" rel="noopener noreferrer" class="text-turquoise-300 underline underline-offset-4 hover:text-turquoise-200"> {c.hero.memberLink}</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Čtyři hlavní čísla ──────────────────────────────────────────── -->
+<section class="bg-white border-b border-beige-200">
+  <div class="container-wide">
+    <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-beige-200">
+      {c.highlights.map((h) => (
+        <div class="px-5 py-8 md:px-8 md:py-10">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-indigo-700">{h.value}</div>
+          <div class="mt-2 font-semibold text-beige-950 leading-snug">{h.label}</div>
+          <div class="mt-1 text-sm text-beige-700 leading-snug">{h.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Co to je ────────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.about.heading}</h2>
+        <div class="mt-6 space-y-5 text-lg text-beige-900 leading-relaxed">
+          <p>{c.about.p1}</p>
+          <p set:html={bold(c.about.p2)} />
+          <div class="rounded-2xl bg-white border border-turquoise-200 p-6">
+            <p class="font-semibold text-indigo-700">{c.about.boxTitle}</p>
+            <ul class="mt-3 space-y-2 text-base text-beige-900">
+              {c.about.boxItems.map((item) => (
+                <li class="flex gap-3">
+                  <span class="mt-2 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+                  <span set:html={bold(item)} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="overflow-hidden rounded-3xl shadow-card">
+          <Pic
+            src="/images/content/ensana-life/rimske-lazne.jpg"
+            alt={c.about.bathAlt}
+            class="w-full h-full object-cover"
+            sizes="(min-width: 1024px) 45vw, 100vw"
+          />
+        </div>
+        <div class="absolute -bottom-6 -left-6 hidden md:block bg-indigo-700 text-white rounded-2xl px-6 py-5 shadow-lg max-w-[15rem]">
+          <div class="font-heading text-2xl font-bold text-yellow-400">{c.about.badgeValue}</div>
+          <div class="mt-1 text-sm text-white/80 leading-snug">{c.about.badgeNote}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Úrovně členství ─────────────────────────────────────────────── -->
+<section id="urovne" class="section bg-white scroll-mt-24">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.tiers.heading}</h2>
+      <p class="mt-4 text-lg text-beige-800 leading-relaxed">{c.tiers.lead}</p>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+      {c.tiers.items.map((tier) => {
+        const style = tierStyles[tier.key]
+        return (
+          <div class={`relative rounded-3xl overflow-hidden shadow-card flex flex-col ${tier.featured ? 'ring-2 ring-yellow-400 ring-offset-2' : ''}`}>
+            {tier.featured && (
+              <span class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-yellow-400 text-beige-950 text-xs font-bold uppercase tracking-wide">
+                {c.tiers.featuredLabel}
+              </span>
+            )}
+
+            <div class={`${style.face} ${style.ink} p-6 pb-7 relative`}>
+              <div class="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.55)_0%,_transparent_55%)]"></div>
+              <div class="relative">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-xs font-semibold uppercase tracking-[0.18em] opacity-80">Ensana Life</span>
+                  <span class="w-9 h-6 rounded bg-white/25 border border-white/30"></span>
+                </div>
+                <div class="mt-7 font-heading text-2xl font-bold">{tier.name}</div>
+                <div class="mt-5 flex items-end gap-2">
+                  <span class="font-heading text-4xl font-bold leading-none">{tier.discount}</span>
+                  <span class="text-sm opacity-85 leading-snug pb-1">{tier.discountLabel}</span>
+                </div>
+                <div class={`mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold ${style.chip}`}>
+                  {tier.nights} <span class="font-normal opacity-90">{tier.nightsNote}</span>
+                </div>
+              </div>
+            </div>
+
+            <ul class="flex-1 bg-beige-50 p-6 space-y-3 border-t border-black/5">
+              {tier.perks.map((perk) => (
+                <li class="flex gap-3 text-sm text-beige-900 leading-snug">
+                  <svg class="w-4 h-4 mt-0.5 text-turquoise-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  <span>{perk}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      })}
+    </div>
+
+    <p class="mt-8 text-sm text-beige-700 max-w-3xl leading-relaxed">{c.tiers.note}</p>
+
+    <div class="mt-12 hidden md:block overflow-hidden rounded-2xl border border-beige-200">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-indigo-700 text-white">
+            <th class="px-6 py-4 font-heading text-sm font-semibold uppercase tracking-wide">{c.tiers.tableBenefit}</th>
+            {c.tiers.items.map((t) => (
+              <th class="px-4 py-4 text-center font-heading text-sm font-semibold uppercase tracking-wide">{t.name}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {c.tiers.comparison.map((row, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-beige-50'}>
+              <td class="px-6 py-3.5 text-sm font-medium text-beige-950 border-t border-beige-200">{row.label}</td>
+              {row.values.map((v) => (
+                <td class="px-4 py-3.5 text-center text-sm border-t border-beige-200">
+                  {v === c.tiers.yes ? (
+                    <svg class="w-5 h-5 mx-auto text-turquoise-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  ) : v === '—' ? (
+                    <span class="text-beige-400">—</span>
+                  ) : (
+                    <span class="font-semibold text-indigo-700">{v}</span>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8">
+      <a href={c.urls.levels} target="_blank" rel="noopener noreferrer" class="btn-ghost">
+        {c.tiers.levelsCta}
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Benefity ────────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.benefits.heading}</h2>
+      <p class="mt-4 text-lg text-beige-800 leading-relaxed">{c.benefits.lead}</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {c.benefits.cards.map((b, i) => {
+        const icons = [
+          'M12 21.5c-3.04 0-5.5-2.09-5.5-6 0-3.91 5.5-11 5.5-11s5.5 7.09 5.5 11c0 3.91-2.46 6-5.5 6z',
+          'M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z',
+          'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
+          'M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 000 18 15 15 0 000-18z',
+          'M7 7h.01M7 3h5a2 2 0 011.4.6l7 7a2 2 0 010 2.8l-5 5a2 2 0 01-2.8 0l-7-7A2 2 0 013 10V5a2 2 0 012-2z',
+          'M5 12h14M12 5l7 7-7 7',
+        ]
+        return (
+          <div class="bg-white rounded-2xl p-7 border border-beige-200 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-turquoise-100 flex items-center justify-center">
+              <svg class="w-6 h-6 text-indigo-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={icons[i]} /></svg>
+            </div>
+            <h3 class="mt-5 font-heading text-lg font-bold text-indigo-700 leading-snug">{b.title}</h3>
+            <p class="mt-3 text-beige-800 leading-relaxed">{b.text}</p>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- ── Jak to funguje ──────────────────────────────────────────────── -->
+<section class="section bg-indigo-700 text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">{c.steps.heading}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{c.steps.lead}</p>
+    </div>
+
+    <ol class="mt-12 grid md:grid-cols-2 xl:grid-cols-5 gap-6">
+      {c.steps.items.map((s, i) => (
+        <li class="relative bg-white/8 border border-white/15 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-full bg-yellow-400 text-beige-950 font-heading font-bold flex items-center justify-center">
+            {i + 1}
+          </div>
+          <h3 class="mt-4 font-heading text-base font-bold leading-snug">{s.title}</h3>
+          <p class="mt-2 text-sm text-white/75 leading-relaxed">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-12 flex flex-wrap gap-4">
+      <a href={c.urls.register} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        {c.steps.join}
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+      </a>
+      <a href={c.urls.faq} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+        {c.steps.faq}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Co je dobré vědět ───────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.conditions.heading}</h2>
+      <p class="mt-4 text-lg text-beige-800 leading-relaxed">{c.conditions.lead}</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-x-10 gap-y-8">
+      {c.conditions.items.map((item) => (
+        <div class="border-l-2 border-yellow-400 pl-5">
+          <h3 class="font-heading text-lg font-bold text-indigo-700 leading-snug">{item.title}</h3>
+          <p class="mt-2 text-beige-800 leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 rounded-2xl bg-beige-50 border border-beige-200 p-7 md:p-8">
+      <p class="text-beige-900 leading-relaxed" set:html={legalHtml} />
+      <p class="mt-4 text-beige-900 leading-relaxed">
+        {c.conditions.contactLead}
+        <a href={`mailto:${CONTACT_MAIL}`} class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800"> {CONTACT_MAIL}</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Závěrečná výzva ─────────────────────────────────────────────── -->
+<section class="relative overflow-hidden bg-aubergine-900 text-white">
+  <div class="absolute inset-0">
+    <Pic
+      src="/images/content/ensana-life/hotel-vecer.jpg"
+      alt=""
+      class="w-full h-full object-cover"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">{c.closing.heading}</h2>
+      <p class="mt-5 text-lg text-white/80 leading-relaxed">{c.closing.text}</p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href={c.urls.register} target="_blank" rel="noopener noreferrer" class="btn-primary">
+          {c.closing.register}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+        <a href={c.closing.bookingHref} class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          {c.closing.browseHotels}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
