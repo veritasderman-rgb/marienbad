@@ -97,8 +97,8 @@ for (const event of events) {
 const sectionTitle = t(locale, 'eventCalendar.title')
 const currentLabel = t(locale, 'eventCalendar.currentSeason')
 
-function loc(obj: { de: string; en: string }): string {
-  return (obj as Record<string, string>)[locale] ?? obj.en
+function loc(obj: Record<Locale, string>): string {
+  return obj[locale] ?? obj.en
 }
 
 // The events are recurring/seasonal — the data holds no concrete calendar
@@ -158,7 +158,9 @@ const eventListSchema = JSON.stringify({
             {seasonEvents.map((event) => (
               <div class={`border-l-4 ${season.borderColor} ${isCurrent ? season.bgColor : 'bg-white'} rounded-lg shadow-sm p-5 transition-shadow hover:shadow-md`}>
                 <div class="flex items-start gap-3">
-                  <span class="text-2xl leading-none mt-0.5" role="img">{event.icon}</span>
+                  <span class="w-10 h-10 rounded-xl bg-white border border-black/5 shadow-sm flex items-center justify-center shrink-0">
+                    <svg class={`w-5 h-5 ${season.textColor}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={event.icon} /></svg>
+                  </span>
                   <div class="min-w-0">
                     <h4 class="font-semibold text-gray-900 text-base m-0">
                       {loc(event.name)}
