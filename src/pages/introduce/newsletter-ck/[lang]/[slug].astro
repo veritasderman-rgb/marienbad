@@ -1,0 +1,49 @@
+---
+/**
+ * Detail jednoho čísla newsletteru pro CK — jedna URL na jazyk a číslo,
+ * takže partnerovi jde poslat přímý odkaz v jeho jazyce.
+ */
+import Base from '@/layouts/Base.astro'
+import CkNewsletterIssue from '@/components/CkNewsletterIssue.astro'
+import {
+  ckNewsletters,
+  newsletterLangs,
+  issueAlternates,
+  issueSwitcher,
+  type Newsletter,
+  type NewsletterLang,
+} from '@/data/ckNewsletters'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return newsletterLangs.flatMap((lang) =>
+    ckNewsletters.map((newsletter) => ({
+      params: { lang, slug: newsletter.slug },
+      props: { lang, newsletter },
+    })),
+  )
+}
+
+interface Props {
+  lang: NewsletterLang
+  newsletter: Newsletter
+}
+
+const { lang, newsletter } = Astro.props
+const c = newsletter.content[lang]
+
+const baseLocale = lang === 'de' ? 'de' : lang === 'en' ? 'en' : 'cs'
+---
+
+<Base
+  locale={baseLocale}
+  section="accommodation"
+  title={`${c.subject} | ${lang === 'cs' ? 'Archiv newsletterů' : lang === 'de' ? 'Newsletter-Archiv' : 'Newsletter archive'}`}
+  description={c.summary}
+  noindex={true}
+  alternateUrls={issueAlternates(newsletter.slug)}
+  switcherUrls={issueSwitcher(newsletter.slug)}
+>
+  <CkNewsletterIssue lang={lang} newsletter={newsletter} />
+</Base>

@@ -1,0 +1,234 @@
+---
+/**
+ * Archiv newsletterů pro cestovní kanceláře — obsah stránky
+ * /introduce/newsletter-ck (a jejích jazykových variant).
+ *
+ * Jazyk je součástí URL, takže partnerovi jde poslat rovnou odkaz v jeho jazyce.
+ * Filtr nad kartami hledá v `searchIndexFor()`, který zahrnuje všechny jazykové
+ * verze — CK tak číslo najde, i když hledá jinak, než je zrovna přepnutá stránka.
+ */
+import {
+  newslettersByDate,
+  searchIndexFor,
+  newsletterLangs,
+  newsletterLangNames,
+  archiveUrl,
+  issueUrl,
+  type NewsletterLang,
+} from '@/data/ckNewsletters'
+
+interface Props {
+  lang: NewsletterLang
+}
+
+const { lang } = Astro.props
+
+const ui: Record<NewsletterLang, Record<string, string>> = {
+  cs: {
+    eyebrow: 'Pro cestovní kanceláře',
+    title: 'Archiv newsletterů Ensana News',
+    lead:
+      'Všechna vydání newsletteru pro partnery na jednom místě. Každé číslo má shrnutí, hlavní body a štítky témat, takže se dá rychle dohledat, ve kterém vydání jsme co posílali.',
+    searchLabel: 'Hledat v archivu',
+    searchPlaceholder: 'Např. Butterfly, procedury, Chopin…',
+    noResults: 'Žádné vydání neodpovídá hledání.',
+    clear: 'Zrušit filtr',
+    issues: 'vydání',
+    open: 'Otevřít celé vydání',
+    highlights: 'V tomto čísle',
+    langLabel: 'Jazyk archivu',
+    contactTitle: 'Nenašli jste, co hledáte?',
+    contactText:
+      'Napište nám a rádi dohledáme starší vydání, doplníme podklady pro podporu prodeje nebo připravíme materiály na míru.',
+    backToHub: 'Podklady pro partnery',
+  },
+  en: {
+    eyebrow: 'For travel agencies',
+    title: 'Ensana News archive',
+    lead:
+      'Every issue of our partner newsletter in one place. Each one carries a summary, its main points and topic tags, so you can quickly trace which issue covered what.',
+    searchLabel: 'Search the archive',
+    searchPlaceholder: 'e.g. Butterfly, treatments, Chopin…',
+    noResults: 'No issue matches your search.',
+    clear: 'Clear filter',
+    issues: 'issues',
+    open: 'Open the full issue',
+    highlights: 'In this issue',
+    langLabel: 'Archive language',
+    contactTitle: 'Not finding what you need?',
+    contactText:
+      'Write to us and we will happily dig out an older issue, add sales-support materials or put together something tailored.',
+    backToHub: 'Partner materials',
+  },
+  de: {
+    eyebrow: 'Für Reisebüros',
+    title: 'Archiv der Ensana News',
+    lead:
+      'Alle Ausgaben unseres Partner-Newsletters an einem Ort. Jede Ausgabe enthält eine Zusammenfassung, die wichtigsten Punkte und Themen-Tags — so lässt sich schnell nachvollziehen, in welcher Ausgabe was stand.',
+    searchLabel: 'Im Archiv suchen',
+    searchPlaceholder: 'z. B. Butterfly, Anwendungen, Chopin…',
+    noResults: 'Keine Ausgabe entspricht der Suche.',
+    clear: 'Filter zurücksetzen',
+    issues: 'Ausgaben',
+    open: 'Ganze Ausgabe öffnen',
+    highlights: 'In dieser Ausgabe',
+    langLabel: 'Archivsprache',
+    contactTitle: 'Nicht gefunden, was Sie suchen?',
+    contactText:
+      'Schreiben Sie uns — wir suchen gerne eine ältere Ausgabe heraus, ergänzen Unterlagen zur Verkaufsunterstützung oder stellen Materialien nach Maß zusammen.',
+    backToHub: 'Partnerunterlagen',
+  },
+}
+
+const t = ui[lang]
+const dateLocale: Record<NewsletterLang, string> = { cs: 'cs-CZ', en: 'en-GB', de: 'de-DE' }
+const CONTACT = 'pirlvekova@ensanahotels.com'
+---
+
+<section class="bg-indigo-700 text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl py-16 md:py-24">
+      <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+        {t.eyebrow}
+      </span>
+
+      <h1 class="mt-6 font-heading text-3xl md:text-5xl font-bold leading-tight">{t.title}</h1>
+      <p class="mt-5 text-lg text-white/80 leading-relaxed">{t.lead}</p>
+
+      <div class="mt-8">
+        <span class="block text-xs font-semibold uppercase tracking-wider text-white/50">{t.langLabel}</span>
+        <div class="mt-2 inline-flex rounded-full bg-white/10 border border-white/20 p-1">
+          {newsletterLangs.map((l) => (
+            <a
+              href={archiveUrl(l)}
+              aria-current={l === lang ? 'page' : undefined}
+              class={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                l === lang ? 'bg-yellow-400 text-beige-950' : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}>
+              {newsletterLangNames[l]}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <label class="block w-full max-w-md">
+        <span class="block text-sm font-semibold text-indigo-700">{t.searchLabel}</span>
+        <input
+          id="nl-search"
+          type="search"
+          autocomplete="off"
+          placeholder={t.searchPlaceholder}
+          class="mt-2 w-full rounded-full border border-beige-300 bg-white px-5 py-3 text-beige-950 placeholder:text-beige-500 focus:outline-none focus:ring-2 focus:ring-turquoise-400 focus:border-turquoise-400"
+        />
+      </label>
+      <p id="nl-count" class="text-sm text-beige-700" data-word={t.issues}>
+        {newslettersByDate.length} {t.issues}
+      </p>
+    </div>
+
+    <div id="nl-list" class="mt-10 space-y-6">
+      {newslettersByDate.map((n) => {
+        const c = n.content[lang]
+        return (
+          <article
+            class="nl-card bg-white rounded-2xl border border-beige-200 p-7 md:p-8 card-hover"
+            data-search={searchIndexFor(n)}>
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 leading-snug">
+                <a href={issueUrl(lang, n.slug)} class="hover:text-indigo-800">{c.subject}</a>
+              </h2>
+              <time datetime={n.date} class="text-sm font-medium text-beige-600">
+                {new Date(n.date).toLocaleDateString(dateLocale[lang], { month: 'long', year: 'numeric' })}
+              </time>
+            </div>
+
+            <p class="mt-3 text-beige-800 leading-relaxed">{c.summary}</p>
+
+            <div class="mt-5 rounded-xl bg-beige-50 border border-beige-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-indigo-700">{t.highlights}</p>
+              <ul class="mt-3 space-y-2">
+                {c.highlights.map((h) => (
+                  <li class="flex gap-3 text-sm text-beige-900 leading-snug">
+                    <svg class="w-4 h-4 mt-0.5 text-turquoise-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              {c.topics.map((topic) => (
+                <span class="px-3 py-1 rounded-full bg-turquoise-100 text-indigo-700 text-xs font-semibold">{topic}</span>
+              ))}
+            </div>
+
+            <div class="mt-6 flex flex-wrap items-center gap-4">
+              <a href={issueUrl(lang, n.slug)} class="btn-ghost">
+                {t.open}
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </a>
+              <div class="flex items-center gap-2 text-sm text-beige-600">
+                {newsletterLangs.map((l) => (
+                  <a href={issueUrl(l, n.slug)} class="underline underline-offset-4 hover:text-indigo-700">
+                    {l.toUpperCase()}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        )
+      })}
+    </div>
+
+    <p id="nl-empty" hidden class="mt-10 rounded-2xl bg-white border border-beige-200 p-8 text-center text-beige-700">
+      {t.noResults}
+    </p>
+
+    <div class="mt-14 rounded-2xl bg-indigo-700 text-white p-8 md:p-10">
+      <h2 class="font-heading text-2xl font-bold">{t.contactTitle}</h2>
+      <p class="mt-3 text-white/80 leading-relaxed max-w-2xl">{t.contactText}</p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href={`mailto:${CONTACT}`} class="btn-primary">{CONTACT}</a>
+        <a href="/introduce" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          {t.backToHub}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const input = document.getElementById('nl-search') as HTMLInputElement | null
+  const count = document.getElementById('nl-count')
+  const empty = document.getElementById('nl-empty')
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.nl-card'))
+
+  if (input && count && empty) {
+    const word = count.dataset.word ?? ''
+
+    const apply = () => {
+      const q = input.value.trim().toLowerCase()
+      let shown = 0
+
+      for (const card of cards) {
+        const hit = q === '' || (card.dataset.search ?? '').includes(q)
+        card.hidden = !hit
+        if (hit) shown++
+      }
+
+      count.textContent = `${shown} ${word}`
+      empty.hidden = shown !== 0
+    }
+
+    input.addEventListener('input', apply)
+    apply()
+  }
+</script>

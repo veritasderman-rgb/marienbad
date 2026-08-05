@@ -1,0 +1,26 @@
+---
+/**
+ * Archiv newsletterů pro CK — český vstupní bod.
+ *
+ * Neveřejné jako zbytek /introduce: noindex + mimo sitemapu (astro.config
+ * NOINDEXED_PATHS obsahuje 'introduce', což pokrývá i tuhle cestu).
+ * Jazykové varianty: /introduce/newsletter-ck/en a /de.
+ */
+import Base from '@/layouts/Base.astro'
+import CkNewsletterArchive from '@/components/CkNewsletterArchive.astro'
+import { newsletterArchiveAlternates, newsletterArchiveSwitcher } from '@/data/ckNewsletters'
+
+export const prerender = true
+---
+
+<Base
+  locale="cs"
+  section="accommodation"
+  title="Archiv newsletterů Ensana News | Pro cestovní kanceláře"
+  description="Všechna vydání partnerského newsletteru Ensana News na jednom místě — se shrnutím, hlavními body a štítky témat pro rychlé dohledání."
+  noindex={true}
+  alternateUrls={newsletterArchiveAlternates}
+  switcherUrls={newsletterArchiveSwitcher}
+>
+  <CkNewsletterArchive lang="cs" />
+</Base>
