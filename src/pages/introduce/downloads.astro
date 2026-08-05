@@ -1,0 +1,26 @@
+---
+/**
+ * Centrum ke stažení pro CK — anglický výchozí vstup (/introduce/downloads).
+ * Neveřejné jako zbytek /introduce: noindex + mimo sitemapu (NOINDEXED_PATHS
+ * 'introduce' pokrývá i tuhle cestu). Mutace: /introduce/downloads/de a /cs.
+ */
+import Base from '@/layouts/Base.astro'
+import IntroduceDownloadCentre, {
+  downloadCentreAlternates,
+  downloadCentreSwitcher,
+  downloadCentreMeta,
+} from '@/components/IntroduceDownloadCentre.astro'
+
+export const prerender = true
+---
+
+<Base
+  locale="en"
+  title={downloadCentreMeta.en.title}
+  description={downloadCentreMeta.en.description}
+  noindex={true}
+  alternateUrls={downloadCentreAlternates}
+  switcherUrls={downloadCentreSwitcher}
+>
+  <IntroduceDownloadCentre lang="en" />
+</Base>

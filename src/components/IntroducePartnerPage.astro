@@ -57,17 +57,6 @@ const downloadIcon = 'M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-
 const copyIcon =
   'M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-2M8 5a2 2 0 002 2h4a2 2 0 002-2M8 5a2 2 0 012-2h4a2 2 0 012 2'
 
-/** Jazyk dokumentu (štítek u položek ke stažení). */
-type DocLang = 'EN' | 'DE' | 'CS'
-
-interface Material {
-  title: string
-  desc: string
-  file: string
-  size: string
-  doc: DocLang
-}
-
 interface Content {
   heroBadge: string
   heroTitle: string
@@ -96,11 +85,12 @@ interface Content {
   viewOnlineHeading: string
   viewOnlineText: string
   viewOnlineCta: string
+  materialsHeading: string
   downloadsHeading: string
   downloadsLead: string
   downloadAll: string
-  docLangBadge: Record<DocLang, string>
-  groups: { group: string; note?: string; items: Material[] }[]
+  downloadsCta: string
+  downloadsCount: string
   mediaHeading: string
   mediaText: string
   mediaCta: string
@@ -139,12 +129,6 @@ const photos = [
   '/images/partners/ferdinand-spring-colonnade.jpg',
   '/images/partners/rudolph-caroline-colonnade.jpg',
   '/images/partners/spa-forest.jpg',
-]
-
-const flyerItems = (t: (l: DocLang) => string, d: string): Material[] => [
-  { title: t('CS'), desc: d, file: 'butterfly-flyer-cs.pdf', size: '4.7 MB', doc: 'CS' },
-  { title: t('EN'), desc: d, file: 'butterfly-flyer-en.pdf', size: '4.7 MB', doc: 'EN' },
-  { title: t('DE'), desc: d, file: 'butterfly-flyer-de.pdf', size: '4.7 MB', doc: 'DE' },
 ]
 
 const content: Record<Lang, Content> = {
@@ -196,39 +180,13 @@ const content: Record<Lang, Content> = {
     viewOnlineHeading: 'Browse our information online',
     viewOnlineText: 'Prefer to look before you save? View all our destination and hotel PDFs directly in your browser — no download required.',
     viewOnlineCta: 'View online',
+    materialsHeading: 'Materials & downloads',
     downloadsHeading: 'Download centre',
     downloadsLead:
       'All presentations are PDFs, free to use in your own channels. Each item is labelled with the language of the document, so you always know which version to hand to which client.',
     downloadAll: 'Download all (ZIP · 44 MB)',
-    docLangBadge: { EN: 'In English', DE: 'In German', CS: 'In Czech' },
-    groups: [
-      {
-        group: 'Destination presentations',
-        items: [
-          { title: 'Introduction of the destination', desc: 'Full visual presentation of Mariánské Lázně for partners and agencies.', file: 'introduction-of-destination.pdf', size: '9.6 MB', doc: 'EN' },
-          { title: 'Why Mariánské Lázně', desc: 'The key selling points — reasons to send your clients to Marienbad.', file: 'why-marianske-lazne.pdf', size: '3.7 MB', doc: 'EN' },
-          { title: 'Two-page destination fact sheet', desc: 'A concise overview — ideal as a quick hand-out or e-mail attachment.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB', doc: 'EN' },
-        ],
-      },
-      {
-        group: 'Hotels, spa & product',
-        items: [
-          { title: 'Hotels & destination introduction', desc: 'The seven Ensana spa hotels and what each of them offers.', file: 'hotels-and-destination.pdf', size: '11.1 MB', doc: 'EN' },
-          { title: 'Spa treatment', desc: 'Medical spa programmes, therapies and treatment overview.', file: 'spa-treatment.pdf', size: '1.2 MB', doc: 'EN' },
-          { title: 'Mineral springs', desc: 'The famous springs of Marienbad and how they are used.', file: 'mineral-springs.pdf', size: '1.7 MB', doc: 'EN' },
-          { title: 'MICE — meetings & events', desc: 'Conference capacity, halls and incentive ideas for groups.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB', doc: 'EN' },
-          { title: 'Medical indications', desc: 'Indications & contraindications — medical reference.', file: 'medical-indications-cz.pdf', size: '0.2 MB', doc: 'CS' },
-        ],
-      },
-      {
-        group: 'Hotel flyers — Ensana Butterfly',
-        note: 'one flyer, three language versions',
-        items: flyerItems(
-          (l) => ({ CS: 'Butterfly flyer — Czech', EN: 'Butterfly flyer — English', DE: 'Butterfly flyer — German' })[l],
-          'Client-ready flyer: the new Traditional and Intensive spa stays and the Ferdinand Spring.',
-        ),
-      },
-    ],
+    downloadsCta: 'Open the download centre',
+    downloadsCount: '11 PDF documents · EN · DE · CS',
     mediaHeading: 'Video & photo library',
     mediaText: 'Browse all official videos and downloadable photo galleries of the destination and the Ensana hotels — grouped and clickable.',
     mediaCta: 'Open library',
@@ -242,7 +200,7 @@ const content: Record<Lang, Content> = {
     newsletterHref: '/introduce/newsletter-ck/en',
     stepsHeading: 'Add us as a partner in three steps',
     steps: [
-      { t: 'Download the materials', d: 'Grab the presentations and media you need from the download centre above.' },
+      { t: 'Download the materials', d: 'Grab the presentations and media you need from the download centre.' },
       { t: 'Add us to your CRM', d: 'Copy the company fields or import the vCard — legal name, IDs and contacts in seconds.' },
       { t: 'Get in touch', d: 'Contact our team for rates, allotments, FAM trips and tailored group offers.' },
     ],
@@ -299,39 +257,13 @@ const content: Record<Lang, Content> = {
     viewOnlineHeading: 'Unsere Unterlagen online durchsehen',
     viewOnlineText: 'Erst schauen, dann speichern? Alle Destinations- und Hotel-PDFs lassen sich direkt im Browser ansehen — ohne Download.',
     viewOnlineCta: 'Online ansehen',
+    materialsHeading: 'Unterlagen & Downloads',
     downloadsHeading: 'Download-Center',
     downloadsLead:
       'Alle Präsentationen sind PDFs und frei in Ihren Kanälen nutzbar. Jede Unterlage trägt ein Sprachetikett — Sie wissen also immer, welche Version zu welchem Kunden passt.',
     downloadAll: 'Alles herunterladen (ZIP · 44 MB)',
-    docLangBadge: { EN: 'Auf Englisch', DE: 'Auf Deutsch', CS: 'Auf Tschechisch' },
-    groups: [
-      {
-        group: 'Destinationspräsentationen',
-        items: [
-          { title: 'Vorstellung der Destination', desc: 'Vollständige visuelle Präsentation Marienbads für Partner und Reisebüros.', file: 'introduction-of-destination.pdf', size: '9.6 MB', doc: 'EN' },
-          { title: 'Warum Marienbad', desc: 'Die wichtigsten Verkaufsargumente — Gründe, Ihre Kunden nach Marienbad zu schicken.', file: 'why-marianske-lazne.pdf', size: '3.7 MB', doc: 'EN' },
-          { title: 'Zweiseitiges Destinations-Factsheet', desc: 'Kompakter Überblick — ideal als Hand-out oder E-Mail-Anhang.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB', doc: 'EN' },
-        ],
-      },
-      {
-        group: 'Hotels, Kur & Produkt',
-        items: [
-          { title: 'Hotels & Destination', desc: 'Die sieben Ensana-Kurhotels und was jedes von ihnen bietet.', file: 'hotels-and-destination.pdf', size: '11.1 MB', doc: 'EN' },
-          { title: 'Kurbehandlung', desc: 'Medizinische Kurprogramme, Therapien und Anwendungsüberblick.', file: 'spa-treatment.pdf', size: '1.2 MB', doc: 'EN' },
-          { title: 'Mineralquellen', desc: 'Die berühmten Quellen Marienbads und ihre Nutzung.', file: 'mineral-springs.pdf', size: '1.7 MB', doc: 'EN' },
-          { title: 'MICE — Tagungen & Events', desc: 'Konferenzkapazitäten, Säle und Incentive-Ideen für Gruppen.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB', doc: 'EN' },
-          { title: 'Medizinische Indikationen', desc: 'Indikationen & Kontraindikationen — medizinische Referenz.', file: 'medical-indications-cz.pdf', size: '0.2 MB', doc: 'CS' },
-        ],
-      },
-      {
-        group: 'Hotelflyer — Ensana Butterfly',
-        note: 'ein Flyer, drei Sprachversionen',
-        items: flyerItems(
-          (l) => ({ CS: 'Butterfly-Flyer — Tschechisch', EN: 'Butterfly-Flyer — Englisch', DE: 'Butterfly-Flyer — Deutsch' })[l],
-          'Kundenfertiger Flyer: die neuen Kuraufenthalte Traditionell und Intensiv und die Ferdinandquelle.',
-        ),
-      },
-    ],
+    downloadsCta: 'Download-Center öffnen',
+    downloadsCount: '11 PDF-Dokumente · EN · DE · CS',
     mediaHeading: 'Video- & Fotomediathek',
     mediaText: 'Alle offiziellen Videos und herunterladbaren Fotogalerien der Destination und der Ensana-Hotels — gruppiert und klickbar.',
     mediaCta: 'Mediathek öffnen',
@@ -345,7 +277,7 @@ const content: Record<Lang, Content> = {
     newsletterHref: '/introduce/newsletter-ck/de',
     stepsHeading: 'In drei Schritten Partner werden',
     steps: [
-      { t: 'Unterlagen herunterladen', d: 'Holen Sie sich Präsentationen und Medien aus dem Download-Center oben.' },
+      { t: 'Unterlagen herunterladen', d: 'Holen Sie sich Präsentationen und Medien aus dem Download-Center.' },
       { t: 'In Ihr CRM aufnehmen', d: 'Firmendaten kopieren oder die vCard importieren — Firmenname, IDs und Kontakte in Sekunden.' },
       { t: 'Kontakt aufnehmen', d: 'Sprechen Sie mit unserem Team über Preise, Kontingente, FAM-Trips und Gruppenangebote.' },
     ],
@@ -402,39 +334,13 @@ const content: Record<Lang, Content> = {
     viewOnlineHeading: 'Prohlédněte si podklady online',
     viewOnlineText: 'Chcete se napřed podívat? Všechna PDF o destinaci i hotelech si prohlédnete rovnou v prohlížeči — bez stahování.',
     viewOnlineCta: 'Zobrazit online',
+    materialsHeading: 'Podklady a materiály',
     downloadsHeading: 'Centrum ke stažení',
     downloadsLead:
       'Všechny prezentace jsou PDF a můžete je volně použít ve svých kanálech. U každé položky uvádíme jazyk dokumentu — vždy tedy víte, kterou verzi dát kterému klientovi.',
     downloadAll: 'Stáhnout vše (ZIP · 44 MB)',
-    docLangBadge: { EN: 'V angličtině', DE: 'V němčině', CS: 'V češtině' },
-    groups: [
-      {
-        group: 'Prezentace destinace',
-        items: [
-          { title: 'Představení destinace', desc: 'Kompletní vizuální prezentace Mariánských Lázní pro partnery a CK.', file: 'introduction-of-destination.pdf', size: '9.6 MB', doc: 'EN' },
-          { title: 'Proč Mariánské Lázně', desc: 'Hlavní prodejní argumenty — důvody, proč poslat klienty do Mariánek.', file: 'why-marianske-lazne.pdf', size: '3.7 MB', doc: 'EN' },
-          { title: 'Dvoustránkový přehled destinace', desc: 'Stručný souhrn — ideální jako rychlý hand-out nebo příloha e-mailu.', file: 'marianske-lazne-2-page-info.pdf', size: '1.0 MB', doc: 'EN' },
-        ],
-      },
-      {
-        group: 'Hotely, lázně a produkt',
-        items: [
-          { title: 'Hotely a destinace', desc: 'Sedm hotelů Ensana a co který z nich nabízí.', file: 'hotels-and-destination.pdf', size: '11.1 MB', doc: 'EN' },
-          { title: 'Lázeňská léčba', desc: 'Léčebné programy, terapie a přehled procedur.', file: 'spa-treatment.pdf', size: '1.2 MB', doc: 'EN' },
-          { title: 'Minerální prameny', desc: 'Slavné mariánskolázeňské prameny a jejich využití.', file: 'mineral-springs.pdf', size: '1.7 MB', doc: 'EN' },
-          { title: 'MICE — setkání a akce', desc: 'Konferenční kapacity, sály a nápady na incentivy pro skupiny.', file: 'mice-meetings-and-events.pdf', size: '4.1 MB', doc: 'EN' },
-          { title: 'Léčebné indikace', desc: 'Indikace a kontraindikace — odborná reference.', file: 'medical-indications-cz.pdf', size: '0.2 MB', doc: 'CS' },
-        ],
-      },
-      {
-        group: 'Hotelové letáky — Ensana Butterfly',
-        note: 'jeden leták, tři jazykové verze',
-        items: flyerItems(
-          (l) => ({ CS: 'Leták Butterfly — česky', EN: 'Leták Butterfly — anglicky', DE: 'Leták Butterfly — německy' })[l],
-          'Leták pro klienty: nové Tradiční a Intenzivní léčebné pobyty a Ferdinandův pramen.',
-        ),
-      },
-    ],
+    downloadsCta: 'Otevřít centrum ke stažení',
+    downloadsCount: '11 PDF dokumentů · EN · DE · CS',
     mediaHeading: 'Video a foto mediatéka',
     mediaText: 'Všechna oficiální videa a fotogalerie destinace a hotelů Ensana ke stažení — přehledně seskupené.',
     mediaCta: 'Otevřít mediatéku',
@@ -448,7 +354,7 @@ const content: Record<Lang, Content> = {
     newsletterHref: '/introduce/newsletter-ck',
     stepsHeading: 'Přidejte si nás jako partnera ve třech krocích',
     steps: [
-      { t: 'Stáhněte si podklady', d: 'Vyberte si prezentace a média z centra ke stažení výše.' },
+      { t: 'Stáhněte si podklady', d: 'Vyberte si prezentace a média v centru ke stažení.' },
       { t: 'Zaveďte nás do CRM', d: 'Zkopírujte firemní pole nebo importujte vCard — název, identifikátory a kontakty během vteřin.' },
       { t: 'Ozvěte se nám', d: 'Domluvte s naším týmem ceny, alotmenty, FAM tripy a skupinové nabídky na míru.' },
     ],
@@ -470,11 +376,16 @@ const langSwitch: { code: Lang; label: string; href: string }[] = [
   { code: 'cs', label: 'Česky', href: '/introduce/cs' },
 ]
 
-const badgeColor: Record<DocLang, string> = {
-  EN: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-  DE: 'bg-yellow-50 text-yellow-800 border-yellow-300',
-  CS: 'bg-turquoise-50 text-turquoise-800 border-turquoise-200',
-}
+/** Lokalizované vstupy do centra ke stažení. */
+const downloadsHref = { en: '/introduce/downloads', de: '/introduce/downloads/de', cs: '/introduce/downloads/cs' }[lang]
+
+/** Náhledy prvních stran PDF pro koláž karty centra ke stažení. */
+const THUMB = '/images/partners/pdf-thumbs'
+const collageThumbs = [
+  `${THUMB}/introduction-of-destination.jpg`,
+  `${THUMB}/hotels-and-destination.jpg`,
+  `${THUMB}/butterfly-flyer-en.jpg`,
+]
 ---
 
 <!-- Hero -->
@@ -525,7 +436,7 @@ const badgeColor: Record<DocLang, string> = {
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
         {c.heroKit}
       </a>
-      <a href="#downloads" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
+      <a href={downloadsHref} class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
         {c.heroBrowse}
       </a>
       <a href="#company" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-full transition-colors">
@@ -639,85 +550,88 @@ const badgeColor: Record<DocLang, string> = {
   </a>
 </section>
 
-<!-- Centrum ke stažení -->
+<!-- Materiály: karta centra ke stažení + mediatéka, hotely, newslettery -->
 <section id="downloads" class="bg-beige-100 py-14 md:py-20 scroll-mt-20">
   <div class="container-wide">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-      <div class="max-w-2xl">
-        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{c.downloadsHeading}</h2>
-        <p class="text-gray-600">{c.downloadsLead}</p>
-      </div>
-      <a href={partnerKit} download class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
-        {c.downloadAll}
-      </a>
+    <div class="max-w-2xl mb-10">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{c.materialsHeading}</h2>
+      <p class="text-gray-600">{c.downloadsLead}</p>
     </div>
 
-    {c.groups.map((g) => (
-      <div class="mb-10 last:mb-0">
-        <div class="flex items-baseline gap-3 mb-4">
-          <h3 class="font-heading text-lg font-bold text-indigo-700">{g.group}</h3>
-          {g.note && <span class="text-sm text-gray-500">— {g.note}</span>}
+    <!-- Centrum ke stažení — koláž náhledů PDF + vstup na podstránku -->
+    <div class="bg-white rounded-2xl shadow-card overflow-hidden md:grid md:grid-cols-[minmax(0,440px)_minmax(0,1fr)]">
+      <a href={downloadsHref} class="relative block bg-indigo-800/[0.04] p-6 md:p-8" aria-hidden="true" tabindex="-1">
+        <div class="relative h-56 md:h-full md:min-h-[16rem]">
+          <div class="absolute left-0 top-2 w-[62%] -rotate-3 rounded-lg overflow-hidden shadow-lg border border-black/5">
+            <Pic src={collageThumbs[0]} alt="" class="w-full h-auto" sizes="280px" />
+          </div>
+          <div class="absolute right-0 top-10 w-[52%] rotate-2 rounded-lg overflow-hidden shadow-lg border border-black/5">
+            <Pic src={collageThumbs[1]} alt="" class="w-full h-auto" sizes="240px" />
+          </div>
+          <div class="absolute left-[28%] bottom-0 w-[34%] rotate-1 rounded-lg overflow-hidden shadow-xl border border-black/5">
+            <Pic src={collageThumbs[2]} alt="" class="w-full h-auto" sizes="160px" />
+          </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {g.items.map((m) => (
-            <a href={`${PDF}/${m.file}`} target="_blank" rel="noopener" class="group bg-white rounded-xl shadow-card p-5 flex gap-4 card-hover">
-              <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center bg-indigo-50 text-indigo-700">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
-              </div>
-              <div class="min-w-0 flex-1">
-                <h4 class="font-semibold text-indigo-900 group-hover:text-turquoise-800 transition-colors leading-snug">{m.title}</h4>
-                <p class="text-sm text-gray-600 leading-relaxed mt-1 mb-2.5">{m.desc}</p>
-                <span class="inline-flex flex-wrap items-center gap-2">
-                  <span class={`px-2 py-0.5 rounded-full border text-[0.68rem] font-bold uppercase tracking-wide ${badgeColor[m.doc]}`}>{c.docLangBadge[m.doc]}</span>
-                  <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">PDF · {m.size}</span>
-                </span>
-              </div>
-            </a>
-          ))}
+      </a>
+      <div class="p-6 md:p-8 flex flex-col justify-center">
+        <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-900 mb-2">
+          <a href={downloadsHref} class="hover:text-turquoise-800 transition-colors">{c.downloadsHeading}</a>
+        </h3>
+        <p class="text-sm font-semibold text-turquoise-700 uppercase tracking-wider mb-3">{c.downloadsCount}</p>
+        <div class="flex flex-wrap gap-3 mt-2">
+          <a href={downloadsHref} class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-full transition-colors">
+            {c.downloadsCta}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href={partnerKit} download class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-indigo-200 hover:border-indigo-400 text-indigo-800 font-semibold rounded-full transition-colors">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={downloadIcon} /></svg>
+            {c.downloadAll}
+          </a>
         </div>
       </div>
-    ))}
+    </div>
 
-    <!-- Mediatéka -->
-    <a href={mediaHref} class="group mt-4 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-indigo-700 hover:bg-indigo-800 text-white rounded-2xl p-6 md:p-7 transition-colors">
-      <div class="shrink-0 w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-      </div>
-      <div class="flex-1">
-        <h3 class="font-heading text-xl font-bold mb-1">{c.mediaHeading}</h3>
-        <p class="text-white/75 text-sm leading-relaxed">{c.mediaText}</p>
-      </div>
-      <span class="shrink-0 inline-flex items-center gap-2 text-turquoise-300 group-hover:text-turquoise-200 font-semibold text-sm">
-        {c.mediaCta}
-        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </span>
-    </a>
-
-    <!-- Listy hotelů + archiv newsletterů -->
-    <div class="mt-5 grid md:grid-cols-2 gap-5">
-      <a href={c.hotelsHref} class="group flex items-start gap-4 bg-white rounded-2xl shadow-card p-6 card-hover">
-        <div class="shrink-0 w-12 h-12 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M6 21V5a2 2 0 012-2h8a2 2 0 012 2v16M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1" /></svg>
+    <!-- Mediatéka + listy hotelů + archiv newsletterů — karty s fotkou -->
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href={mediaHref} class="group bg-white rounded-2xl shadow-card overflow-hidden card-hover flex flex-col">
+        <div class="relative aspect-[16/9] overflow-hidden">
+          <Pic src="/images/library/colonnade/main-colonnade-16a4646.jpg" alt="" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+          <span class="absolute bottom-2.5 left-2.5 inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-950/70 text-white backdrop-blur-sm">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+          </span>
         </div>
-        <div class="flex-1">
+        <div class="p-5 flex-1 flex flex-col">
+          <h3 class="font-heading text-lg font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors mb-1">{c.mediaHeading}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed flex-1">{c.mediaText}</p>
+          <span class="mt-3 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
+            {c.mediaCta}
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href={c.hotelsHref} class="group bg-white rounded-2xl shadow-card overflow-hidden card-hover flex flex-col">
+        <div class="relative aspect-[16/9] overflow-hidden">
+          <Pic src="/images/hotels/hotels/0/images/0/image.jpg" alt="" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
           <h3 class="font-heading text-lg font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors mb-1">{c.hotelsHeading}</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">{c.hotelsText}</p>
-          <span class="mt-2 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
+          <p class="text-gray-600 text-sm leading-relaxed flex-1">{c.hotelsText}</p>
+          <span class="mt-3 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
             {c.hotelsCta}
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </span>
         </div>
       </a>
 
-      <a href={c.newsletterHref} class="group flex items-start gap-4 bg-white rounded-2xl shadow-card p-6 card-hover">
-        <div class="shrink-0 w-12 h-12 rounded-xl bg-turquoise-50 text-turquoise-700 flex items-center justify-center">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
+      <a href={c.newsletterHref} class="group bg-white rounded-2xl shadow-card overflow-hidden card-hover flex flex-col">
+        <div class="relative aspect-[16/9] overflow-hidden">
+          <Pic src="/images/library/colonnade/cross-spring-pavilion-16a1598.jpg" alt="" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
         </div>
-        <div class="flex-1">
+        <div class="p-5 flex-1 flex flex-col">
           <h3 class="font-heading text-lg font-bold text-indigo-900 group-hover:text-turquoise-800 transition-colors mb-1">{c.newsletterHeading}</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">{c.newsletterText}</p>
-          <span class="mt-2 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
+          <p class="text-gray-600 text-sm leading-relaxed flex-1">{c.newsletterText}</p>
+          <span class="mt-3 inline-flex items-center gap-2 text-turquoise-700 font-semibold text-sm">
             {c.newsletterCta}
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </span>

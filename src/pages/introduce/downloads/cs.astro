@@ -1,0 +1,22 @@
+---
+/** Česká mutace centra ke stažení — /introduce/downloads/cs. */
+import Base from '@/layouts/Base.astro'
+import IntroduceDownloadCentre, {
+  downloadCentreAlternates,
+  downloadCentreSwitcher,
+  downloadCentreMeta,
+} from '@/components/IntroduceDownloadCentre.astro'
+
+export const prerender = true
+---
+
+<Base
+  locale="cs"
+  title={downloadCentreMeta.cs.title}
+  description={downloadCentreMeta.cs.description}
+  noindex={true}
+  alternateUrls={downloadCentreAlternates}
+  switcherUrls={downloadCentreSwitcher}
+>
+  <IntroduceDownloadCentre lang="cs" />
+</Base>
