@@ -1,0 +1,526 @@
+---
+/**
+ * „5 let světoví" — landing page k 5. výročí zápisu na seznam UNESCO
+ * (Great Spa Towns of Europe, 24. 7. 2021). Jedna komponenta pro všechny
+ * čtyři jazykové mutace; obsah drží per-locale záznamy níže.
+ *
+ * Fakta: kampaň Karlovarského kraje kr-karlovarsky.cz/5letsvetovi —
+ * oslavy 11.–13. 9. 2026 ve třech lázeňských městech kraje; program
+ * v Mariánských Lázních v pátek 11. 9. (Heritage Forum 9–15 h, křest
+ * novin Great Spa Times v 18 h, slavnostní zahájení 19–21 h).
+ */
+import Pic from '@/components/Pic.astro'
+import type { Locale } from '@/i18n/config'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+interface DayProgramme {
+  day: string
+  town: string
+  items: string[]
+  highlight?: boolean
+}
+
+interface Content {
+  eyebrow: string
+  title: string
+  subtitle: string
+  lead: string
+  ctaProgramme: string
+  ctaBook: string
+  whatHeading: string
+  whatParagraphs: string[]
+  factLabels: { towns: string; countries: string; year: string; anniversary: string }
+  factNotes: { towns: string; countries: string; year: string; anniversary: string }
+  programmeHeading: string
+  programmeLead: string
+  days: DayProgramme[]
+  programmeNote: string
+  programmeCta: string
+  septemberHeading: string
+  septemberText: string
+  septemberItems: string[]
+  moreHeading: string
+  moreText: string
+  moreUnesco: string
+  moreArticle: string
+  closingHeading: string
+  closingText: string
+  closingBook: string
+  bookingHref: string
+  unescoHref: string
+  articleHref: string
+}
+
+const content: Record<Locale, Content> = {
+  cs: {
+    eyebrow: 'Výročí UNESCO',
+    title: '5 let světoví',
+    subtitle: 'Slavná lázeňská města Evropy slaví páté výročí zápisu na seznam UNESCO.',
+    lead:
+      '24. července 2021 se Mariánské Lázně spolu s Karlovými Vary a Františkovými Lázněmi staly součástí Světového dědictví UNESCO. V září 2026 to celý kraj oslaví třídenním programem — a začíná se právě u nás.',
+    ctaProgramme: 'Program oslav',
+    ctaBook: 'Rezervovat pobyt',
+    whatHeading: 'Co vlastně slavíme',
+    whatParagraphs: [
+      'Na 44. zasedání Výboru pro světové dědictví ve Fu-čou byl 24. července 2021 na seznam UNESCO zapsán soubor **Slavná lázeňská města Evropy** (The Great Spa Towns of Europe) — 11 měst v 7 zemích, která společně vyprávějí příběh evropské lázeňské kultury.',
+      'Tři z těch měst leží v Karlovarském kraji: **Karlovy Vary, Mariánské Lázně a Františkovy Lázně**. Žádný jiný region na světě nemá na seznamu tak hustý lázeňský trojúhelník.',
+      'Pro Mariánské Lázně zápis potvrdil to, co tu hosté cítí dvě stě let: kolonáda, prameny, parky a lázeňská krajina kolem města tvoří celek světového významu — a jako o celek se o něj město stará.',
+    ],
+    factLabels: { towns: 'měst', countries: 'zemí', year: 'rok zápisu', anniversary: 'výročí' },
+    factNotes: {
+      towns: 'tvoří Slavná lázeňská města Evropy',
+      countries: 'od Anglie po Itálii',
+      year: '24. července 2021 ve Fu-čou',
+      anniversary: 'slavíme 11.–13. září 2026',
+    },
+    programmeHeading: 'Tři dny, tři města',
+    programmeLead:
+      'Oslavy pořádá Karlovarský kraj od pátku 11. do neděle 13. září 2026 — každý den v jiném městě. Mariánské Lázně otevírají.',
+    days: [
+      {
+        day: 'Pátek 11. 9.',
+        town: 'Mariánské Lázně',
+        items: [
+          'Konference Heritage Forum (9:00–15:00)',
+          'Křest novin Great Spa Times (18:00)',
+          'Slavnostní zahájení oslav (19:00–21:00)',
+        ],
+        highlight: true,
+      },
+      {
+        day: 'Sobota 12. 9.',
+        town: 'Karlovy Vary',
+        items: ['Celodenní fórum v parku UNESCO', 'Koncert v Císařských lázních (18:00)', 'Večerní program VARY°ZÁŘÍ'],
+      },
+      {
+        day: 'Neděle 13. 9.',
+        town: 'Františkovy Lázně',
+        items: ['Prohlídky památek', 'Prezentace mládežnického fóra', 'Přednáška o historii železnice'],
+      },
+    ],
+    programmeNote: 'Podrobný a průběžně doplňovaný program najdete na stránkách kraje.',
+    programmeCta: 'Kompletní program na kr-karlovarsky.cz',
+    septemberHeading: 'A září tím nekončí',
+    septemberText: 'Výročí se potkává s nejbohatším kulturním týdnem podzimu:',
+    septemberItems: [
+      'Dny evropského dědictví (7.–20. 9.) — jedinečná možnost poznat město zevnitř',
+      'Zpřístupnění Domu Chopin a Anglikánské kaple (12. 9.)',
+      'Závěrečný kolonádní koncert sezóny 2026 (12. 9.)',
+      'Aktivní září — sport a cvičení s naší fyzioterapeutkou',
+    ],
+    moreHeading: 'Proč jsou Mariánské Lázně na seznamu',
+    moreText:
+      'Krajinu, architekturu i příběh, kvůli kterým zápis vznikl, máme zpracované do hloubky — od hodnoty „lázeňské krajiny" po jednotlivé stavby.',
+    moreUnesco: 'Mariánské Lázně a UNESCO',
+    moreArticle: 'Přečíst článek k výročí',
+    closingHeading: 'Oslavte to s námi přímo v dějišti',
+    closingText:
+      'Zahájení oslav proběhne pár kroků od našich hotelů. Spojte zářijový pobyt s programem, který se koná jednou za pět let.',
+    closingBook: 'Vybrat hotel a rezervovat',
+    bookingHref: '/cs/ubytovani',
+    unescoHref: '/cs/unesco',
+    articleHref: '/cs/magazin/5-let-svetovi',
+  },
+
+  de: {
+    eyebrow: 'UNESCO-Jubiläum',
+    title: '5 Jahre Welterbe',
+    subtitle: 'Die bedeutenden Kurstädte Europas feiern fünf Jahre auf der UNESCO-Liste.',
+    lead:
+      'Am 24. Juli 2021 wurde Marienbad gemeinsam mit Karlsbad und Franzensbad Teil des UNESCO-Welterbes. Im September 2026 feiert die ganze Region mit einem dreitägigen Programm — und der Auftakt findet bei uns statt.',
+    ctaProgramme: 'Festprogramm',
+    ctaBook: 'Aufenthalt buchen',
+    whatHeading: 'Was wir eigentlich feiern',
+    whatParagraphs: [
+      'Auf der 44. Sitzung des Welterbekomitees in Fuzhou wurde am 24. Juli 2021 die Stätte **Bedeutende Kurstädte Europas** (The Great Spa Towns of Europe) in die UNESCO-Liste aufgenommen — 11 Städte in 7 Ländern, die gemeinsam die Geschichte der europäischen Kurkultur erzählen.',
+      'Drei dieser Städte liegen in der Karlsbader Region: **Karlsbad, Marienbad und Franzensbad**. Keine andere Region der Welt hat ein so dichtes Kurstädte-Dreieck auf der Liste.',
+      'Für Marienbad bestätigte die Eintragung, was Gäste hier seit zweihundert Jahren spüren: Kolonnade, Quellen, Parks und die Kurlandschaft rund um die Stadt bilden ein Ensemble von Weltrang — und als solches wird es gepflegt.',
+    ],
+    factLabels: { towns: 'Städte', countries: 'Länder', year: 'Jahr der Eintragung', anniversary: 'Jubiläum' },
+    factNotes: {
+      towns: 'bilden die Bedeutenden Kurstädte Europas',
+      countries: 'von England bis Italien',
+      year: '24. Juli 2021 in Fuzhou',
+      anniversary: 'gefeiert am 11.–13. September 2026',
+    },
+    programmeHeading: 'Drei Tage, drei Städte',
+    programmeLead:
+      'Die Region Karlsbad feiert von Freitag, 11., bis Sonntag, 13. September 2026 — jeden Tag in einer anderen Stadt. Marienbad eröffnet.',
+    days: [
+      {
+        day: 'Freitag, 11. 9.',
+        town: 'Marienbad',
+        items: [
+          'Konferenz Heritage Forum (9:00–15:00)',
+          'Taufe der Zeitung Great Spa Times (18:00)',
+          'Feierliche Eröffnung (19:00–21:00)',
+        ],
+        highlight: true,
+      },
+      {
+        day: 'Samstag, 12. 9.',
+        town: 'Karlsbad',
+        items: ['Ganztägiges Forum im UNESCO-Park', 'Konzert im Kaiserbad (18:00)', 'Abendprogramm VARY°ZÁŘÍ'],
+      },
+      {
+        day: 'Sonntag, 13. 9.',
+        town: 'Franzensbad',
+        items: ['Denkmalbesichtigungen', 'Präsentationen des Jugendforums', 'Vortrag zur Eisenbahngeschichte'],
+      },
+    ],
+    programmeNote: 'Das laufend ergänzte Detailprogramm finden Sie auf den Seiten der Region.',
+    programmeCta: 'Komplettes Programm auf kr-karlovarsky.cz',
+    septemberHeading: 'Und der September bietet noch mehr',
+    septemberText: 'Das Jubiläum fällt in die reichste Kulturwoche des Herbstes:',
+    septemberItems: [
+      'Tage des europäischen Kulturerbes (7.–20. 9.) — die Stadt von innen kennenlernen',
+      'Öffnung des Chopin-Hauses und der Anglikanischen Kapelle (12. 9.)',
+      'Abschlusskonzert der Kolonnadensaison 2026 (12. 9.)',
+      'Herbstprogramm des Stadttheaters — Operette, Schauspiel und Konzerte',
+    ],
+    moreHeading: 'Warum Marienbad auf der Liste steht',
+    moreText:
+      'Landschaft, Architektur und die Geschichte hinter der Eintragung haben wir ausführlich aufbereitet — vom Wert der „Kurlandschaft" bis zu den einzelnen Bauwerken.',
+    moreUnesco: 'Marienbad und die UNESCO',
+    moreArticle: 'Jubiläumsartikel lesen',
+    closingHeading: 'Feiern Sie mit uns am Ort des Geschehens',
+    closingText:
+      'Die Eröffnung der Feierlichkeiten findet wenige Schritte von unseren Hotels statt. Verbinden Sie Ihren Septemberaufenthalt mit einem Programm, das es nur alle fünf Jahre gibt.',
+    closingBook: 'Hotel wählen und buchen',
+    bookingHref: '/de/unterkunft',
+    unescoHref: '/de/unesco',
+    articleHref: '/de/magazin/5-let-svetovi',
+  },
+
+  en: {
+    eyebrow: 'UNESCO anniversary',
+    title: '5 Years World-Class',
+    subtitle: 'The Great Spa Towns of Europe celebrate five years on the UNESCO list.',
+    lead:
+      'On 24 July 2021, Mariánské Lázně — together with Karlovy Vary and Františkovy Lázně — became part of UNESCO World Heritage. In September 2026 the whole region celebrates with a three-day programme, and it opens right here.',
+    ctaProgramme: 'Celebration programme',
+    ctaBook: 'Book a stay',
+    whatHeading: 'What we are actually celebrating',
+    whatParagraphs: [
+      'At the 44th session of the World Heritage Committee in Fuzhou on 24 July 2021, **The Great Spa Towns of Europe** were inscribed on the UNESCO list — 11 towns in 7 countries that together tell the story of European spa culture.',
+      'Three of those towns lie in the Karlovy Vary Region: **Karlovy Vary, Mariánské Lázně and Františkovy Lázně**. No other region in the world has such a dense spa triangle on the list.',
+      'For Mariánské Lázně the inscription confirmed what guests have felt here for two hundred years: the colonnade, the springs, the parks and the therapeutic landscape around the town form an ensemble of world importance — and the town cares for it as one.',
+    ],
+    factLabels: { towns: 'towns', countries: 'countries', year: 'year of inscription', anniversary: 'anniversary' },
+    factNotes: {
+      towns: 'make up the Great Spa Towns of Europe',
+      countries: 'from England to Italy',
+      year: '24 July 2021 in Fuzhou',
+      anniversary: 'celebrated 11–13 September 2026',
+    },
+    programmeHeading: 'Three days, three towns',
+    programmeLead:
+      'The Karlovy Vary Region celebrates from Friday 11 to Sunday 13 September 2026 — each day in a different town. Mariánské Lázně opens the festivities.',
+    days: [
+      {
+        day: 'Friday 11 Sept',
+        town: 'Mariánské Lázně',
+        items: [
+          'Heritage Forum conference (9:00–15:00)',
+          'Launch of the Great Spa Times newspaper (18:00)',
+          'Opening celebration (19:00–21:00)',
+        ],
+        highlight: true,
+      },
+      {
+        day: 'Saturday 12 Sept',
+        town: 'Karlovy Vary',
+        items: ['All-day forum in the UNESCO park', 'Concert at the Imperial Spa (18:00)', 'VARY°ZÁŘÍ evening programme'],
+      },
+      {
+        day: 'Sunday 13 Sept',
+        town: 'Františkovy Lázně',
+        items: ['Landmark tours', 'Youth forum presentations', 'Lecture on railway history'],
+      },
+    ],
+    programmeNote: 'The detailed, continuously updated programme is on the regional website.',
+    programmeCta: 'Full programme at kr-karlovarsky.cz',
+    septemberHeading: 'And September has more in store',
+    septemberText: 'The anniversary meets the richest cultural week of the autumn:',
+    septemberItems: [
+      'European Heritage Days (7–20 Sept) — a rare chance to see the town from the inside',
+      'Chopin House and the Anglican Chapel open to visitors (12 Sept)',
+      'Closing colonnade concert of the 2026 season (12 Sept)',
+      'Autumn programme of the Municipal Theatre — operetta, drama and concerts',
+    ],
+    moreHeading: 'Why Mariánské Lázně is on the list',
+    moreText:
+      'We have covered the landscape, the architecture and the story behind the inscription in depth — from the value of the "therapeutic landscape" to the individual buildings.',
+    moreUnesco: 'Mariánské Lázně and UNESCO',
+    moreArticle: 'Read the anniversary article',
+    closingHeading: 'Celebrate with us where it happens',
+    closingText:
+      'The opening of the celebrations takes place a few steps from our hotels. Combine a September stay with a programme that comes around once every five years.',
+    closingBook: 'Choose a hotel and book',
+    bookingHref: '/en/accommodation',
+    unescoHref: '/en/unesco',
+    articleHref: '/en/magazine/5-let-svetovi',
+  },
+
+  ru: {
+    eyebrow: 'Юбилей ЮНЕСКО',
+    title: '5 лет всемирного наследия',
+    subtitle: 'Знаменитые курортные города Европы отмечают пять лет в списке ЮНЕСКО.',
+    lead:
+      '24 июля 2021 года Марианске Лазне вместе с Карловыми Варами и Франтишковыми Лазнями стали частью Всемирного наследия ЮНЕСКО. В сентябре 2026 года весь край отметит это трёхдневной программой — и открытие пройдёт именно у нас.',
+    ctaProgramme: 'Программа торжеств',
+    ctaBook: 'Забронировать пребывание',
+    whatHeading: 'Что мы, собственно, празднуем',
+    whatParagraphs: [
+      'На 44-й сессии Комитета всемирного наследия в Фучжоу 24 июля 2021 года в список ЮНЕСКО был внесён объект **«Знаменитые курортные города Европы»** (The Great Spa Towns of Europe) — 11 городов в 7 странах, которые вместе рассказывают историю европейской курортной культуры.',
+      'Три из этих городов лежат в Карловарском крае: **Карловы Вары, Марианске Лазне и Франтишковы Лазни**. Ни один другой регион мира не имеет в списке столь плотного курортного треугольника.',
+      'Для Марианских Лазней внесение подтвердило то, что гости чувствуют здесь двести лет: колоннада, источники, парки и лечебный ландшафт вокруг города образуют ансамбль мирового значения — и город заботится о нём как о едином целом.',
+    ],
+    factLabels: { towns: 'городов', countries: 'стран', year: 'год внесения', anniversary: 'юбилей' },
+    factNotes: {
+      towns: 'составляют Знаменитые курортные города Европы',
+      countries: 'от Англии до Италии',
+      year: '24 июля 2021 года в Фучжоу',
+      anniversary: 'празднуем 11–13 сентября 2026 года',
+    },
+    programmeHeading: 'Три дня, три города',
+    programmeLead:
+      'Карловарский край празднует с пятницы 11 по воскресенье 13 сентября 2026 года — каждый день в другом городе. Марианске Лазне открывают торжества.',
+    days: [
+      {
+        day: 'Пятница, 11.09',
+        town: 'Марианске Лазне',
+        items: [
+          'Конференция Heritage Forum (9:00–15:00)',
+          'Презентация газеты Great Spa Times (18:00)',
+          'Торжественное открытие (19:00–21:00)',
+        ],
+        highlight: true,
+      },
+      {
+        day: 'Суббота, 12.09',
+        town: 'Карловы Вары',
+        items: ['Форум в парке ЮНЕСКО весь день', 'Концерт в Императорских банях (18:00)', 'Вечерняя программа VARY°ZÁŘÍ'],
+      },
+      {
+        day: 'Воскресенье, 13.09',
+        town: 'Франтишковы Лазни',
+        items: ['Экскурсии по памятникам', 'Презентации молодёжного форума', 'Лекция об истории железной дороги'],
+      },
+    ],
+    programmeNote: 'Подробная, постоянно пополняемая программа — на сайте края.',
+    programmeCta: 'Полная программа на kr-karlovarsky.cz',
+    septemberHeading: 'И это ещё не весь сентябрь',
+    septemberText: 'Юбилей совпадает с самой насыщенной культурной неделей осени:',
+    septemberItems: [
+      'Дни европейского наследия (7–20 сентября) — редкая возможность узнать город изнутри',
+      'Открытие Дома Шопена и Англиканской капеллы (12 сентября)',
+      'Заключительный концерт сезона на колоннаде (12 сентября)',
+      'Осенняя программа Городского театра — оперетта, драма и концерты',
+    ],
+    moreHeading: 'Почему Марианске Лазне в списке',
+    moreText:
+      'Ландшафт, архитектуру и историю, ради которых состоялось внесение, мы разобрали подробно — от ценности «лечебного ландшафта» до отдельных зданий.',
+    moreUnesco: 'Марианске Лазне и ЮНЕСКО',
+    moreArticle: 'Прочитать юбилейную статью',
+    closingHeading: 'Отпразднуйте с нами там, где всё происходит',
+    closingText:
+      'Открытие торжеств пройдёт в нескольких шагах от наших отелей. Совместите сентябрьское пребывание с программой, которая бывает раз в пять лет.',
+    closingBook: 'Выбрать отель и забронировать',
+    bookingHref: '/ru/prozhivanie',
+    unescoHref: '/ru/unesco',
+    articleHref: '/ru/zhurnal/5-let-svetovi',
+  },
+}
+
+const c = content[locale]
+const CAMPAIGN_URL = 'https://www.kr-karlovarsky.cz/5letsvetovi'
+
+const facts = [
+  { value: '11', label: c.factLabels.towns, note: c.factNotes.towns },
+  { value: '7', label: c.factLabels.countries, note: c.factNotes.countries },
+  { value: '2021', label: c.factLabels.year, note: c.factNotes.year },
+  { value: '5', label: c.factLabels.anniversary, note: c.factNotes.anniversary },
+]
+
+/** Jednoduchý inline-markdown pro **tučné** v odstavcích. */
+function bold(text: string): string {
+  return text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+}
+---
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="relative min-h-[75vh] flex items-center overflow-hidden bg-indigo-950">
+  <div class="absolute inset-0">
+    <Pic
+      src="/images/library/colonnade/singing-fountain-16a3313.jpg"
+      alt="Zpívající fontána a pavilon Křížového pramene v Mariánských Lázních"
+      class="w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-indigo-950/55 to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/60 via-transparent to-indigo-950/25"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+        {c.eyebrow}
+      </span>
+
+      <h1 class="mt-6 font-heading text-4xl md:text-6xl font-bold text-white leading-[1.05]">{c.title}</h1>
+      <p class="mt-4 font-heading text-xl md:text-2xl text-turquoise-300 font-medium leading-snug">{c.subtitle}</p>
+      <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-xl">{c.lead}</p>
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#program" class="btn-primary">
+          {c.ctaProgramme}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7" /></svg>
+        </a>
+        <a href={c.bookingHref} class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+          {c.ctaBook}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Čtyři čísla ──────────────────────────────────────────────────── -->
+<section class="bg-white border-b border-beige-200">
+  <div class="container-wide">
+    <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-beige-200">
+      {facts.map((f) => (
+        <div class="px-5 py-8 md:px-8 md:py-10">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-indigo-700">{f.value}</div>
+          <div class="mt-2 font-semibold text-beige-950 leading-snug">{f.label}</div>
+          <div class="mt-1 text-sm text-beige-700 leading-snug">{f.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Co slavíme ───────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.whatHeading}</h2>
+        <div class="mt-6 space-y-5 text-lg text-beige-900 leading-relaxed">
+          {c.whatParagraphs.map((p) => <p set:html={bold(p)} />)}
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-3xl shadow-card">
+        <Pic
+          src="/images/library/colonnade/main-colonnade-16a4646.jpg"
+          alt="Interiér litinové Hlavní kolonády se stropními freskami"
+          class="w-full h-full object-cover"
+          sizes="(min-width: 1024px) 45vw, 100vw"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Program ──────────────────────────────────────────────────────── -->
+<section id="program" class="section bg-indigo-700 text-white relative overflow-hidden scroll-mt-24">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">{c.programmeHeading}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{c.programmeLead}</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      {c.days.map((d) => (
+        <div class={`rounded-2xl p-6 border ${d.highlight ? 'bg-yellow-400 text-beige-950 border-yellow-300' : 'bg-white/8 border-white/15'}`}>
+          <p class={`text-xs font-semibold uppercase tracking-wider ${d.highlight ? 'text-beige-950/70' : 'text-turquoise-300'}`}>{d.day}</p>
+          <h3 class="mt-1.5 font-heading text-xl font-bold leading-snug">{d.town}</h3>
+          <ul class="mt-4 space-y-2.5">
+            {d.items.map((item) => (
+              <li class="flex gap-2.5 text-sm leading-snug">
+                <svg class={`w-4 h-4 mt-0.5 shrink-0 ${d.highlight ? 'text-beige-950' : 'text-turquoise-300'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                <span class={d.highlight ? '' : 'text-white/85'}>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-6 text-sm text-white/60">{c.programmeNote}</p>
+    <a href={CAMPAIGN_URL} target="_blank" rel="noopener noreferrer" class="btn-primary mt-4">
+      {c.programmeCta}
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── Zářijový kontext + odkazy ────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.septemberHeading}</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">{c.septemberText}</p>
+        <ul class="mt-6 space-y-4">
+          {c.septemberItems.map((item) => (
+            <li class="flex gap-3">
+              <span class="mt-2.5 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+              <span class="text-beige-900 leading-snug">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-2xl bg-beige-50 border border-beige-200 p-7 md:p-8">
+        <h2 class="font-heading text-2xl font-bold text-indigo-700 leading-snug">{c.moreHeading}</h2>
+        <p class="mt-3 text-beige-800 leading-relaxed">{c.moreText}</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href={c.unescoHref} class="btn-ghost">
+            {c.moreUnesco}
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href={c.articleHref} class="btn-ghost">
+            {c.moreArticle}
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Závěrečná výzva ──────────────────────────────────────────────── -->
+<section class="relative overflow-hidden bg-aubergine-900 text-white">
+  <div class="absolute inset-0">
+    <Pic
+      src="/images/library/colonnade/park-16a4999.jpg"
+      alt=""
+      class="w-full h-full object-cover"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">{c.closingHeading}</h2>
+      <p class="mt-5 text-lg text-white/80 leading-relaxed">{c.closingText}</p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href={c.bookingHref} class="btn-primary">
+          {c.closingBook}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
