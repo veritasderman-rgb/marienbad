@@ -1,0 +1,380 @@
+---
+/**
+ * Aktivní září v Mariánských Lázních — kampaňová landing page (zatím jen česky).
+ *
+ * Spojuje tři věci: proč je září na pohyb ideální (klimatické lázně, konec
+ * hlavní sezony), přehled sportů ve městě a videosérii „Cvičení s Eliškou"
+ * + aktivity z YouTube kanálu Ensana (playlist Aktivní září s Ensanou).
+ *
+ * Videa se vkládají přes youtube-nocookie s loading="lazy" — stejný vzor jako
+ * MarkdocRenderer a PodcastPage, bez cookies třetích stran před kliknutím.
+ */
+import Base from '@/layouts/Base.astro'
+import Pic from '@/components/Pic.astro'
+
+export const prerender = true
+
+const locale = 'cs' as const
+
+const pageTitle = 'Aktivní září v Mariánských Lázních | Marienbad.com'
+const pageDescription =
+  'Září je v Mariánských Lázních stvořené pro pohyb: běhání lesem, golf, tenis, discgolf, koloběžky i plavání — a k tomu videosérie cvičení s fyzioterapeutkou Eliškou.'
+
+const PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLMj3cJtcC8RtqiDsdBxO_-N0QbUQhvnLR'
+
+/** Dvě úvodní videa série Cvičení s Eliškou. */
+const featuredVideos = [
+  {
+    id: 'KuWOj0q9PWI',
+    title: 'Cvičení s Eliškou — protažení krční páteře',
+    note: 'Úvod do série 10 cviků. Zvládnete je v pokoji i na lavičce v parku.',
+  },
+  {
+    id: 'gcOl7d-opMk',
+    title: 'Cvičení s Eliškou — protažení hrudní páteře',
+    note: 'Úvod do série 9 cviků proti ztuhlým zádům — ideální po dni na cestách.',
+  },
+]
+
+/** Přehled celé videosérie — počty odpovídají playlistu Aktivní září s Ensanou. */
+const series = [
+  { label: 'Protažení krční páteře', count: 'úvod + 10 cviků' },
+  { label: 'Protažení hrudní páteře', count: 'úvod + 9 cviků' },
+  { label: 'Kineziologické tejpování', count: '2 videa' },
+  { label: 'Pohybem ke zdraví (Mgr. Dominik Mach)', count: 'cviky na rameno, záda a chodidla' },
+]
+
+/** Videa aktivit z téhož playlistu. */
+const activityVideos = [
+  { id: 'RiakWZK4o_4', title: 'Koloběžky — objevte Slavkovský les' },
+  { id: '7j6fsn9eMPM', title: 'Tenis — sport a relax v jednom' },
+  { id: 'UnDXKz6uE-Y', title: 'Discgolf — zábava pro celou rodinu' },
+  { id: 'slblIseRAvA', title: 'Chip&Putt — golf pro každého člena rodiny' },
+  { id: 'mEjrlxQtz18', title: 'Fitness & výživa — zdraví v rovnováze' },
+  { id: 'vM1BQRcXeuk', title: 'Na kole nebo koloběžce — rodinný výlet po Mariánkách' },
+]
+
+const activities = [
+  {
+    title: 'Běhání',
+    text: 'Přes 70 km značených stezek začíná hned za posledními domy. Rovinaté parkové okruhy i lesní traily s výhledy.',
+    icon: 'M13 4a2 2 0 104 0 2 2 0 00-4 0zM7 21l3-6M17 21l-3-7-4-2 2-5 4 2 3-1',
+  },
+  {
+    title: 'Chůze a nordic walking',
+    text: 'Nejmariánskolázeňštější sport: terénní kúra se tu předepisuje přes 200 let. Značené trasy od zelených po červené.',
+    icon: 'M9 4a2 2 0 104 0 2 2 0 00-4 0zM8 21l2-7-2-4 3-3 2 4 3 2M16 21V11',
+  },
+  {
+    title: 'Koloběžky a kolo',
+    text: 'Terénní koloběžky do Slavkovského lesa; lanovka na Krakonoše v létě vyveze i kola. Info na hotelových recepcích.',
+    icon: 'M5 17a3 3 0 106 0 3 3 0 00-6 0zM13 17a3 3 0 106 0 3 3 0 00-6 0zM8 17l3-8h4l1 3M12 6h3',
+  },
+  {
+    title: 'Tenis',
+    text: 'Antukové kurty TCF Schicht na Anglické ulici — v srpnu 2026 hostily juniorský Billie Jean King Cup.',
+    icon: 'M12 3a9 9 0 100 18 9 9 0 000-18zM5 6c3 2 3 10 0 12M19 6c-3 2-3 10 0 12',
+  },
+  {
+    title: 'Golf a Chip&Putt',
+    text: 'Royal Golf Club (1905) je nejstarší hřiště v Česku. Pro začátečníky veřejná 9jamka a Chip&Putt bez zelené karty.',
+    icon: 'M8 21c0-2 4-2 4-2s4 0 4 2M12 19V4M12 4l6 2.5L12 9',
+  },
+  {
+    title: 'Discgolf',
+    text: '18 jamek a 1 862 metrů na Voře. Disky si půjčíte na recepcích — kolo hry zabere rodině hodinu a půl.',
+    icon: 'M12 6a8 4 0 100 8 8 4 0 000-8zM4 10v4c0 2.2 3.6 4 8 4s8-1.8 8-4v-4',
+  },
+  {
+    title: 'Plavání',
+    text: 'Hotelové bazény včetně Římských lázní z roku 1896 a městský 25m bazén se saunou a tobogánem.',
+    icon: 'M2 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M2 12c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M14 5a2 2 0 104 0 2 2 0 00-4 0z',
+  },
+  {
+    title: 'Fitness s fyzioterapeutkou',
+    text: 'Posilovny přímo v hotelech — a cvičení, které vede fyzioterapeutka Eliška. Sérii videí najdete níže.',
+    icon: 'M4 12h2M18 12h2M6 8v8M18 8v8M8 12h8M8 10v4M16 10v4',
+  },
+]
+
+const septemberEvents = [
+  { label: 'Dny evropského dědictví', note: 'jedinečná možnost poznat město zevnitř (7.–20. 9.)' },
+  { label: 'Zpřístupnění Domu Chopin a Anglikánské kaple', note: '12. 9.' },
+  { label: 'Závěrečný kolonádní koncert sezóny 2026', note: '12. 9. — Západočeský symfonický orchestr' },
+  { label: 'Podzimní program Městského divadla', note: 'opereta, činohra i koncerty' },
+]
+---
+
+<Base
+  locale={locale}
+  section="things-to-do"
+  title={pageTitle}
+  description={pageDescription}
+  ogImage="/images/content/articles/cs-sport-v-marianskych-laznich/coverImage.jpg"
+  alternateUrls={{ cs: '/cs/aktivni-zari' }}
+>
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="relative min-h-[75vh] flex items-center overflow-hidden bg-indigo-950">
+    <div class="absolute inset-0">
+      <Pic
+        src="/images/library/sport/tenis-02.jpg"
+        alt="Tenisové podání na antukovém kurtu obklopeném lesy v Mariánských Lázních"
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+        sizes="100vw"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/90 via-indigo-950/55 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/60 via-transparent to-indigo-950/25"></div>
+
+    <div class="relative container-wide">
+      <div class="max-w-2xl py-20 md:py-28">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+          Sezonní program
+        </span>
+
+        <h1 class="mt-6 font-heading text-4xl md:text-6xl font-bold text-white leading-[1.05]">
+          Aktivní září<br />v Mariánských Lázních
+        </h1>
+
+        <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-xl">
+          Město se po hlavní sezoně nadechne, lesy voní podzimem a teploty jsou stvořené pro pohyb.
+          Běhání, golf, tenis, discgolf, koloběžky, plavání — a cvičení s naší fyzioterapeutkou Eliškou.
+        </p>
+
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="/cs/ubytovani" class="btn-primary">
+            Rezervovat zářijový pobyt
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href="#cviceni-s-eliskou" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+            Cvičení s Eliškou
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Proč právě září ──────────────────────────────────────────────── -->
+  <section class="section bg-beige-50">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">
+            Proč je září na pohyb nejlepší měsíc
+          </h2>
+          <div class="mt-6 space-y-5 text-lg text-beige-900 leading-relaxed">
+            <p>
+              Mariánské Lázně jsou od roku 2023 <strong>klimatickými lázněmi</strong> — zdejší vzduch je
+              oficiálně uznaný léčivý zdroj. V nadmořské výšce kolem 600 metrů září nepálí: dny jsou
+              příjemně teplé, rána svěží a lesy Slavkovského lesa právě začínají hrát barvami.
+            </p>
+            <p>
+              Hlavní letní vlna hostů odjela, takže na kurtech, hřištích i stezkách je <strong>volněji
+              a klidněji</strong>. A protože pohyb je tady součástí léčby, všechno máte v docházkové
+              vzdálenosti — od bazénu po discgolfové hřiště.
+            </p>
+            <p>
+              Víc o tom, proč se tu tak dobře dýchá, najdete na stránce o
+              <a href="/cs/klimatoterapie" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">klimatoterapii</a>.
+            </p>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-card">
+          <Pic
+            src="/images/library/colonnade/park-16a4999.jpg"
+            alt="Lázeňský park s fontánou a pavilonem Křížového pramene za slunečného dne"
+            class="w-full h-full object-cover"
+            sizes="(min-width: 1024px) 45vw, 100vw"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Aktivity ─────────────────────────────────────────────────────── -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">Co všechno si v září užijete</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">
+          Osm způsobů, jak se hýbat — všechny pár minut od kolonnády. Podrobného průvodce najdete
+          v článku <a href="/cs/magazin/sport-v-marianskych-laznich" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">Sportovní Mariánky</a>.
+        </p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        {activities.map((a) => (
+          <div class="bg-beige-50 rounded-2xl p-6 border border-beige-200 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-turquoise-100 flex items-center justify-center">
+              <svg class="w-6 h-6 text-indigo-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={a.icon} /></svg>
+            </div>
+            <h3 class="mt-4 font-heading text-lg font-bold text-indigo-700 leading-snug">{a.title}</h3>
+            <p class="mt-2 text-sm text-beige-800 leading-relaxed">{a.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- fotopás -->
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="overflow-hidden rounded-xl"><Pic src="/images/library/sport/tenis-01.jpg" alt="Tenisový úder zblízka na antukovém kurtu" class="w-full h-full object-cover aspect-[4/3]" sizes="(min-width: 768px) 25vw, 50vw" /></div>
+        <div class="overflow-hidden rounded-xl"><Pic src="/images/library/sport/golf-01.jpg" alt="Golfový švih na hřišti mezi lesy" class="w-full h-full object-cover aspect-[4/3]" sizes="(min-width: 768px) 25vw, 50vw" /></div>
+        <div class="overflow-hidden rounded-xl"><Pic src="/images/library/sport/park-podvecer-01.jpg" alt="Podvečerní slunce v lázeňském parku" class="w-full h-full object-cover aspect-[4/3]" sizes="(min-width: 768px) 25vw, 50vw" /></div>
+        <div class="overflow-hidden rounded-xl"><Pic src="/images/library/sport/park-relax-01.jpg" alt="Odpočinek na trávě v parku po sportu" class="w-full h-full object-cover aspect-[4/3]" sizes="(min-width: 768px) 25vw, 50vw" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Cvičení s Eliškou ────────────────────────────────────────────── -->
+  <section id="cviceni-s-eliskou" class="section bg-indigo-700 text-white relative overflow-hidden scroll-mt-24">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+    <div class="relative container-wide">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 text-sm font-semibold tracking-wide uppercase">
+          Videosérie
+        </span>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl font-bold leading-tight">Cvičení s Eliškou</h2>
+        <p class="mt-4 text-lg text-white/80 leading-relaxed">
+          Naše fyzioterapeutka Eliška natočila sérii krátkých videí, se kterými protáhnete krční
+          i hrudní páteř kdekoli — v hotelovém pokoji, v parku, doma. Žádné náčiní, žádná posilovna,
+          jen pár minut denně.
+        </p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        {featuredVideos.map((v) => (
+          <div class="bg-white/8 border border-white/15 rounded-2xl overflow-hidden">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0&modestbranding=1`}
+                title={v.title}
+                class="absolute inset-0 w-full h-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <div class="p-5">
+              <h3 class="font-heading text-lg font-bold leading-snug">{v.title}</h3>
+              <p class="mt-1.5 text-sm text-white/75 leading-relaxed">{v.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 rounded-2xl bg-white/8 border border-white/15 p-6 md:p-7">
+        <p class="text-sm font-semibold uppercase tracking-wider text-turquoise-300">Celá série na našem YouTube</p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+          {series.map((s) => (
+            <li class="flex gap-3 text-white/90 leading-snug">
+              <svg class="w-4 h-4 mt-1 text-turquoise-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+              <span><strong>{s.label}</strong> — {s.count}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={PLAYLIST_URL} target="_blank" rel="noopener noreferrer" class="btn-primary mt-6">
+          Přehrát celý playlist na YouTube
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Videa aktivit ────────────────────────────────────────────────── -->
+  <section class="section bg-beige-50">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">Podívejte se, jak Aktivní září vypadá</h2>
+        <p class="mt-4 text-lg text-beige-800 leading-relaxed">
+          Krátká videa z našeho kanálu — od koloběžek ve Slavkovském lese po rodinný discgolf.
+        </p>
+      </div>
+
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {activityVideos.map((v) => (
+          <div class="bg-white rounded-2xl overflow-hidden border border-beige-200 card-hover">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0&modestbranding=1`}
+                title={v.title}
+                class="absolute inset-0 w-full h-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <p class="p-4 font-semibold text-indigo-700 leading-snug">{v.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Zářijové akce ────────────────────────────────────────────────── -->
+  <section class="section bg-white">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">A když si dáte pauzu</h2>
+          <p class="mt-4 text-lg text-beige-800 leading-relaxed">
+            Září ve městě žije i kulturou — mezi sportem stihnete:
+          </p>
+          <ul class="mt-6 space-y-4">
+            {septemberEvents.map((e) => (
+              <li class="flex gap-3">
+                <span class="mt-2.5 w-1.5 h-1.5 rounded-full bg-turquoise-500 shrink-0"></span>
+                <span class="text-beige-900 leading-snug"><strong class="text-indigo-700">{e.label}</strong> — {e.note}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-6 text-beige-800">
+            Kompletní kulturní přehled najdou hosté na
+            <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.
+          </p>
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-card">
+          <Pic
+            src="/images/library/colonnade/main-colonnade-16a4646.jpg"
+            alt="Interiér litinové Hlavní kolonády se stropními freskami"
+            class="w-full h-full object-cover"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Závěrečná výzva ──────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-aubergine-900 text-white">
+    <div class="absolute inset-0">
+      <Pic
+        src="/images/library/sport/park-podvecer-01.jpg"
+        alt=""
+        class="w-full h-full object-cover"
+        sizes="100vw"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
+
+    <div class="relative container-wide">
+      <div class="max-w-2xl py-20 md:py-28">
+        <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">
+          Září je nejlepší kondička roku
+        </h2>
+        <p class="mt-5 text-lg text-white/80 leading-relaxed">
+          Klidnější město, barvící se lesy a pohyb, který tu má dvousetletou tradici.
+          Vyberte si hotel a přijeďte si zazávodit sami se sebou.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="/cs/ubytovani" class="btn-primary">
+            Vybrat hotel a rezervovat
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/cs/magazin/sport-v-marianskych-laznich" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white font-semibold hover:bg-white/10 transition-colors">
+            Přečíst průvodce sportem
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
