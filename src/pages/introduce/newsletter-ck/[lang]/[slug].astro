@@ -5,7 +5,14 @@
  */
 import Base from '@/layouts/Base.astro'
 import CkNewsletterIssue from '@/components/CkNewsletterIssue.astro'
-import { ckNewsletters, newsletterLangs, type Newsletter, type NewsletterLang } from '@/data/ckNewsletters'
+import {
+  ckNewsletters,
+  newsletterLangs,
+  issueAlternates,
+  issueSwitcher,
+  type Newsletter,
+  type NewsletterLang,
+} from '@/data/ckNewsletters'
 
 export const prerender = true
 
@@ -35,7 +42,8 @@ const baseLocale = lang === 'de' ? 'de' : lang === 'en' ? 'en' : 'cs'
   title={`${c.subject} | ${lang === 'cs' ? 'Archiv newsletterů' : lang === 'de' ? 'Newsletter-Archiv' : 'Newsletter archive'}`}
   description={c.summary}
   noindex={true}
-  alternateUrls={{ [baseLocale]: `/introduce/newsletter-ck/${lang}/${newsletter.slug}` }}
+  alternateUrls={issueAlternates(newsletter.slug)}
+  switcherUrls={issueSwitcher(newsletter.slug)}
 >
   <CkNewsletterIssue lang={lang} newsletter={newsletter} />
 </Base>

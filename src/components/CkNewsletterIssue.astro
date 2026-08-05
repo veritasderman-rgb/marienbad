@@ -6,6 +6,8 @@
 import {
   newsletterLangs,
   newsletterLangNames,
+  archiveUrl,
+  issueUrl,
   type Newsletter,
   type NewsletterLang,
 } from '@/data/ckNewsletters'
@@ -58,8 +60,7 @@ const ui: Record<NewsletterLang, Record<string, string>> = {
 }
 
 const t = ui[lang]
-const archiveUrl = lang === 'cs' ? '/introduce/newsletter-ck' : `/introduce/newsletter-ck/${lang}`
-const issueUrl = (l: NewsletterLang) => `/introduce/newsletter-ck/${l}/${newsletter.slug}`
+const backUrl = archiveUrl(lang)
 const dateLocale: Record<NewsletterLang, string> = { cs: 'cs-CZ', en: 'en-GB', de: 'de-DE' }
 const sentOn = new Date(newsletter.date).toLocaleDateString(dateLocale[lang], {
   day: 'numeric',
@@ -73,7 +74,7 @@ const sentOn = new Date(newsletter.date).toLocaleDateString(dateLocale[lang], {
 
   <div class="relative container-wide">
     <div class="max-w-3xl py-14 md:py-20">
-      <a href={archiveUrl} class="inline-flex items-center gap-2 text-sm font-semibold text-turquoise-300 hover:text-turquoise-200">
+      <a href={backUrl} class="inline-flex items-center gap-2 text-sm font-semibold text-turquoise-300 hover:text-turquoise-200">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
         {t.back}
       </a>
@@ -87,7 +88,7 @@ const sentOn = new Date(newsletter.date).toLocaleDateString(dateLocale[lang], {
         <div class="mt-2 inline-flex rounded-full bg-white/10 border border-white/20 p-1">
           {newsletterLangs.map((l) => (
             <a
-              href={issueUrl(l)}
+              href={issueUrl(l, newsletter.slug)}
               aria-current={l === lang ? 'page' : undefined}
               class={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
                 l === lang ? 'bg-yellow-400 text-beige-950' : 'text-white/80 hover:text-white hover:bg-white/10'
@@ -205,7 +206,7 @@ const sentOn = new Date(newsletter.date).toLocaleDateString(dateLocale[lang], {
       </div>
 
       <div class="mt-10">
-        <a href={archiveUrl} class="btn-ghost">
+        <a href={backUrl} class="btn-ghost">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
           {t.back}
         </a>

@@ -8,6 +8,7 @@
  */
 import Base from '@/layouts/Base.astro'
 import CkNewsletterArchive from '@/components/CkNewsletterArchive.astro'
+import { newsletterArchiveAlternates, newsletterArchiveSwitcher } from '@/data/ckNewsletters'
 
 export const prerender = true
 ---
@@ -18,7 +19,8 @@ export const prerender = true
   title="Archiv newsletterů Ensana News | Pro cestovní kanceláře"
   description="Všechna vydání partnerského newsletteru Ensana News na jednom místě — se shrnutím, hlavními body a štítky témat pro rychlé dohledání."
   noindex={true}
-  alternateUrls={{ cs: '/introduce/newsletter-ck' }}
+  alternateUrls={newsletterArchiveAlternates}
+  switcherUrls={newsletterArchiveSwitcher}
 >
   <CkNewsletterArchive lang="cs" />
 </Base>

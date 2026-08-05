@@ -12,6 +12,8 @@ import {
   searchIndexFor,
   newsletterLangs,
   newsletterLangNames,
+  archiveUrl,
+  issueUrl,
   type NewsletterLang,
 } from '@/data/ckNewsletters'
 
@@ -79,9 +81,6 @@ const ui: Record<NewsletterLang, Record<string, string>> = {
 }
 
 const t = ui[lang]
-const archiveUrl = (l: NewsletterLang) => (l === 'cs' ? '/introduce/newsletter-ck' : `/introduce/newsletter-ck/${l}`)
-const issueUrl = (l: NewsletterLang, slug: string) => `/introduce/newsletter-ck/${l}/${slug}`
-
 const dateLocale: Record<NewsletterLang, string> = { cs: 'cs-CZ', en: 'en-GB', de: 'de-DE' }
 const CONTACT = 'pirlvekova@ensanahotels.com'
 ---

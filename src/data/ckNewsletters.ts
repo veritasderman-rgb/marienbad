@@ -384,6 +384,47 @@ export const ckNewsletters: Newsletter[] = [
   },
 ]
 
+/** Adresa archivu v daném jazyce (čeština má vlastní vstupní bod bez segmentu). */
+export function archiveUrl(lang: NewsletterLang): string {
+  return lang === 'cs' ? '/introduce/newsletter-ck' : `/introduce/newsletter-ck/${lang}`
+}
+
+/** Adresa konkrétního čísla v daném jazyce. */
+export function issueUrl(lang: NewsletterLang, slug: string): string {
+  return `/introduce/newsletter-ck/${lang}/${slug}`
+}
+
+/**
+ * Mapy pro `Base`.
+ *
+ * `alternates` jsou skutečné jazykové verze téže stránky (hreflang). Ruština
+ * verzi nemá, proto v nich chybí — hreflang nesmí ukazovat na neekvivalentní
+ * stránku. `switcher` navíc ruštinu směruje na anglickou verzi, aby přepínač
+ * jazyků v hlavičce návštěvníka nevyhodil z newsletteru na homepage.
+ */
+export const newsletterArchiveAlternates = {
+  cs: archiveUrl('cs'),
+  en: archiveUrl('en'),
+  de: archiveUrl('de'),
+}
+
+export const newsletterArchiveSwitcher = {
+  ...newsletterArchiveAlternates,
+  ru: archiveUrl('en'),
+}
+
+export function issueAlternates(slug: string) {
+  return {
+    cs: issueUrl('cs', slug),
+    en: issueUrl('en', slug),
+    de: issueUrl('de', slug),
+  }
+}
+
+export function issueSwitcher(slug: string) {
+  return { ...issueAlternates(slug), ru: issueUrl('en', slug) }
+}
+
 /** Archiv seřazený od nejnovějšího čísla. */
 export const newslettersByDate = [...ckNewsletters].sort((a, b) => b.date.localeCompare(a.date))
 
