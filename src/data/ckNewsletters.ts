@@ -51,6 +51,10 @@ export interface NewsletterContent {
 
 export interface NewsletterAttachment {
   label: Record<NewsletterLang, string>
+  /** Cesta k souboru v public/, pokud ho hostujeme. Bez ní se příloha jen vypíše. */
+  href?: string
+  /** Popis souboru pro odkaz, např. „PDF · 4,7 MB". */
+  meta?: string
 }
 
 export interface Newsletter {
@@ -87,9 +91,21 @@ export const ckNewsletters: Newsletter[] = [
     slug: '2026-08',
     date: '2026-08-01',
     attachments: [
-      { label: { cs: 'Leták hotelu Butterfly — česky', en: 'Butterfly hotel flyer — Czech', de: 'Hotelflyer Butterfly — Tschechisch' } },
-      { label: { cs: 'Leták hotelu Butterfly — anglicky', en: 'Butterfly hotel flyer — English', de: 'Hotelflyer Butterfly — Englisch' } },
-      { label: { cs: 'Leták hotelu Butterfly — německy', en: 'Butterfly hotel flyer — German', de: 'Hotelflyer Butterfly — Deutsch' } },
+      {
+        label: { cs: 'Leták hotelu Butterfly — česky', en: 'Butterfly hotel flyer — Czech', de: 'Hotelflyer Butterfly — Tschechisch' },
+        href: '/partners/butterfly-flyer-cs.pdf',
+        meta: 'PDF · 4,7 MB',
+      },
+      {
+        label: { cs: 'Leták hotelu Butterfly — anglicky', en: 'Butterfly hotel flyer — English', de: 'Hotelflyer Butterfly — Englisch' },
+        href: '/partners/butterfly-flyer-en.pdf',
+        meta: 'PDF · 4,7 MB',
+      },
+      {
+        label: { cs: 'Leták hotelu Butterfly — německy', en: 'Butterfly hotel flyer — German', de: 'Hotelflyer Butterfly — Deutsch' },
+        href: '/partners/butterfly-flyer-de.pdf',
+        meta: 'PDF · 4,7 MB',
+      },
     ],
     sender: IRLVEKOVA,
     content: {

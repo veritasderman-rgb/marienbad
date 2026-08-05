@@ -27,6 +27,8 @@ const ui: Record<NewsletterLang, Record<string, string>> = {
     highlights: 'V tomto čísle',
     topics: 'Témata',
     attachments: 'Přílohy původního e-mailu',
+    attachmentsAvailable:
+      'Letáky jsou ke stažení přímo zde. Můžete je volně použít při komunikaci s klienty i ve vlastních prodejních materiálech.',
     attachmentsNote:
       'Letáky byly rozeslány jako přílohy e-mailu. Pokud je potřebujete znovu, napište si o ně na kontakt níže.',
     langLabel: 'Jazyková verze',
@@ -39,6 +41,8 @@ const ui: Record<NewsletterLang, Record<string, string>> = {
     highlights: 'In this issue',
     topics: 'Topics',
     attachments: 'Attachments of the original e-mail',
+    attachmentsAvailable:
+      'The flyers can be downloaded right here. You are welcome to use them in your client communication and in your own sales materials.',
     attachmentsNote:
       'The leaflets were sent as e-mail attachments. If you need them again, just ask at the contact below.',
     langLabel: 'Language version',
@@ -51,6 +55,8 @@ const ui: Record<NewsletterLang, Record<string, string>> = {
     highlights: 'In dieser Ausgabe',
     topics: 'Themen',
     attachments: 'Anlagen der ursprünglichen E-Mail',
+    attachmentsAvailable:
+      'Die Flyer stehen hier direkt zum Herunterladen bereit. Sie können sie frei in der Kundenkommunikation und in Ihren eigenen Verkaufsunterlagen verwenden.',
     attachmentsNote:
       'Die Prospekte wurden als E-Mail-Anlagen versendet. Falls Sie sie erneut benötigen, melden Sie sich gerne über den Kontakt unten.',
     langLabel: 'Sprachversion',
@@ -183,15 +189,36 @@ const sentOn = new Date(newsletter.date).toLocaleDateString(dateLocale[lang], {
       {newsletter.attachments && (
         <div class="mt-12 pt-10 border-t border-beige-300">
           <h2 class="font-heading text-2xl font-bold text-indigo-700 leading-snug">{t.attachments}</h2>
-          <ul class="mt-5 space-y-2.5">
-            {newsletter.attachments.map((a) => (
-              <li class="flex gap-3 text-beige-900">
-                <svg class="w-5 h-5 mt-0.5 text-indigo-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6" /></svg>
-                <span>{a.label[lang]}</span>
-              </li>
-            ))}
+          <ul class="mt-5 space-y-3">
+            {newsletter.attachments.map((a) => {
+              const Row = (
+                <>
+                  <svg class="w-5 h-5 mt-0.5 text-indigo-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6" /></svg>
+                  <span class="flex-1">
+                    <span class="font-semibold">{a.label[lang]}</span>
+                    {a.meta && <span class="block text-sm text-beige-600">{a.meta}</span>}
+                  </span>
+                </>
+              )
+
+              return a.href ? (
+                <li>
+                  <a
+                    href={a.href}
+                    download
+                    class="flex gap-3 items-start rounded-xl bg-white border border-beige-200 p-4 text-beige-900 hover:border-turquoise-400 hover:bg-turquoise-50 transition-colors no-underline">
+                    {Row}
+                    <svg class="w-5 h-5 mt-0.5 text-turquoise-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" /></svg>
+                  </a>
+                </li>
+              ) : (
+                <li class="flex gap-3 text-beige-900">{Row}</li>
+              )
+            })}
           </ul>
-          <p class="mt-4 text-sm text-beige-700 leading-relaxed">{t.attachmentsNote}</p>
+          <p class="mt-4 text-sm text-beige-700 leading-relaxed">
+            {newsletter.attachments.some((a) => a.href) ? t.attachmentsAvailable : t.attachmentsNote}
+          </p>
         </div>
       )}
 
