@@ -42,6 +42,7 @@ export interface EnsanaLifeContent {
     badgeValue: string
     badgeNote: string
     imageAlt: string
+    bathAlt: string
   }
   tiers: {
     heading: string
@@ -134,6 +135,7 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       badgeValue: 'bez expirace',
       badgeNote: 'Základní členství platí neomezeně.',
       imageAlt: 'Lázeňská hostka s pohárkem na kolonádě v ranním světle',
+      bathAlt: 'Historická lázeňská hala s tyrkysovou minerální vodou a mramorovými sloupy',
     },
     tiers: {
       heading: 'Čtyři úrovně členství',
@@ -260,6 +262,7 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       badgeValue: 'ohne Verfall',
       badgeNote: 'Die Basis-Mitgliedschaft gilt unbegrenzt.',
       imageAlt: 'Kurgästin mit Trinkbecher auf der Kolonnade im Morgenlicht',
+      bathAlt: 'Historische Badehalle mit türkisfarbenem Mineralwasser und Marmorsäulen',
     },
     tiers: {
       heading: 'Vier Mitgliedschaftsstufen',
@@ -380,6 +383,7 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       badgeValue: 'never expires',
       badgeNote: 'Basic membership is valid indefinitely.',
       imageAlt: 'Spa guest with a drinking cup on the colonnade in morning light',
+      bathAlt: 'Historic bath hall with turquoise mineral water and marble columns',
     },
     tiers: {
       heading: 'Four membership tiers',
@@ -506,6 +510,7 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       badgeValue: 'бессрочно',
       badgeNote: 'Базовое членство действует без ограничений.',
       imageAlt: 'Гостья курорта с питьевой кружечкой на колоннаде в утреннем свете',
+      bathAlt: 'Историческая купальная зала с бирюзовой минеральной водой и мраморными колоннами',
     },
     tiers: {
       heading: 'Четыре уровня членства',

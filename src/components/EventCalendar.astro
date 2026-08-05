@@ -89,7 +89,12 @@ const eventsBySeason = new Map<Season, MarienbadEvent[]>()
 for (const season of seasons) {
   eventsBySeason.set(season.id, [])
 }
-for (const event of events) {
+// Jednorázové akce (oneOff) se po svém termínu přestanou zobrazovat;
+// každoroční zůstávají trvale.
+const todayIso = new Date().toISOString().slice(0, 10)
+const visibleEvents = events.filter((event) => !event.oneOff || event.oneOff.endDate >= todayIso)
+
+for (const event of visibleEvents) {
   const season = getSeasonForEvent(event)
   eventsBySeason.get(season)!.push(event)
 }
@@ -101,13 +106,13 @@ function loc(obj: Record<Locale, string>): string {
   return obj[locale] ?? obj.en
 }
 
-// The events are recurring/seasonal — the data holds no concrete calendar
-// dates, so recurrence is expressed via eventSchedule (byMonth) rather than
-// fabricated startDate/endDate values.
+// Recurring/seasonal events carry no concrete calendar dates, so recurrence
+// is expressed via eventSchedule (byMonth). One-off events (oneOff) instead
+// get real startDate/endDate — advertising them as yearly would be wrong.
 const eventListSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: events.map((event, index) => ({
+  itemListElement: visibleEvents.map((event, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     item: {
@@ -115,11 +120,15 @@ const eventListSchema = JSON.stringify({
       name: loc(event.name),
       description: loc(event.description),
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      eventSchedule: {
-        '@type': 'Schedule',
-        repeatFrequency: 'P1Y',
-        byMonth: event.months,
-      },
+      ...(event.oneOff
+        ? { startDate: event.oneOff.startDate, endDate: event.oneOff.endDate }
+        : {
+            eventSchedule: {
+              '@type': 'Schedule',
+              repeatFrequency: 'P1Y',
+              byMonth: event.months,
+            },
+          }),
       location: {
         '@type': 'Place',
         name: 'Mariánské Lázně',

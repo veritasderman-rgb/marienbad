@@ -16,6 +16,12 @@ export interface MarienbadEvent {
   description: Record<Locale, string>
   /** SVG path data (24×24, stroke) */
   icon: string
+  /**
+   * Jednorázová akce s pevným termínem (ISO datum). Kalendář ji po skončení
+   * přestane zobrazovat a v JSON-LD dostane startDate/endDate místo ročního
+   * opakování. Bez tohoto pole je akce každoroční.
+   */
+  oneOff?: { startDate: string; endDate: string }
 }
 
 export const events: MarienbadEvent[] = [
@@ -218,6 +224,7 @@ export const events: MarienbadEvent[] = [
     },
     // antický portikus
     icon: 'M4 21h16M5 21v-9M9.5 21v-9M14.5 21v-9M19 21v-9M3 12h18M12 3l9 5H3l9-5z',
+    oneOff: { startDate: '2026-09-11', endDate: '2026-09-13' },
   },
   {
     id: 'christmas-markets',
