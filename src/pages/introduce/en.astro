@@ -1,0 +1,28 @@
+---
+/**
+ * Anglická mutace B2B stránky pro partnery — /introduce/en.
+ *
+ * Kanonický anglický vstup je /introduce; tahle adresa existuje proto, že
+ * partner, který zná /introduce/de a /introduce/cs, si přirozeně zkusí i /en.
+ * Obsah je identický, hreflang i přepínač jazyků míří na /introduce.
+ */
+import Base from '@/layouts/Base.astro'
+import IntroducePartnerPage, {
+  introduceAlternates,
+  introduceSwitcher,
+  introduceMeta,
+} from '@/components/IntroducePartnerPage.astro'
+
+export const prerender = true
+---
+
+<Base
+  locale="en"
+  title={introduceMeta.en.title}
+  description={introduceMeta.en.description}
+  noindex={true}
+  alternateUrls={introduceAlternates}
+  switcherUrls={introduceSwitcher}
+>
+  <IntroducePartnerPage lang="en" />
+</Base>
