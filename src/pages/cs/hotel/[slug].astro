@@ -22,6 +22,8 @@ const treatments = hotel.treatments.cs ?? hotel.treatments.en
 
 const starsDisplay = '★'.repeat(hotel.stars) + '☆'.repeat(5 - hotel.stars)
 const pageTitle = `${hotel.name} — ${hotel.stars}hvězdičkový lázeňský hotel v Mariánských Lázních`
+// Zkrácený popis slouží jen pro <meta description>; v hlavičce stránky
+// se zobrazuje tagline, aby se úvodní věta popisu neopakovala dvakrát.
 const pageDescription = description.slice(0, 155).replace(/\s+\S*$/, '') + '…'
 
 const pathname = Astro.url.pathname.replace(/\/$/, '')
@@ -61,14 +63,14 @@ const lodgingSchema = JSON.stringify({
 <Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription} alternateUrls={{ de: `/de/hotel/${hotel.slug}`, en: `/en/hotel/${hotel.slug}`, cs: `/cs/hotel/${hotel.slug}`, ru: `/ru/hotel/${hotel.slug}` }}>
   <script type="application/ld+json" set:html={lodgingSchema} />
 
-  <PillarPage locale={locale} title={hotel.name} description={pageDescription}>
+  <PillarPage locale={locale} title={hotel.name} description={hotel.tagline[locale]}>
     <!-- Star Rating & Year -->
     <div class="flex flex-wrap items-center gap-4 mb-8 text-sm">
       <span class="text-yellow-500 text-lg tracking-wide" aria-label={`${hotel.stars} z 5 hvězd`}>{starsDisplay}</span>
       <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{hotel.stars} hvězdy</span>
       <span class="text-beige-600">Postaveno {hotel.yearBuilt}</span>
       <span class="text-beige-600">·</span>
-      <span class="text-beige-600">{hotel.style}</span>
+      <span class="text-beige-600">{hotel.style[locale]}</span>
     </div>
 
     <!-- Description -->

@@ -12,7 +12,13 @@ export interface Hotel {
   name: string
   stars: number
   yearBuilt: number
-  style: string
+  /** Architektonický sloh — lokalizovaný, zobrazuje se jako údaj u hotelu. */
+  style: {
+    de: string
+    en: string
+    cs: string
+    ru: string
+  }
   exelyHotelId: number
   bookingUrl: string
   bookingUrls: {
@@ -54,7 +60,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Nové Lázně',
     stars: 5,
     yearBuilt: 1896,
-    style: 'Neorenaissance',
+    style: { de: 'Neorenaissance', en: 'Neo-Renaissance', cs: 'Neorenesance', ru: 'Неоренессанс' },
     exelyHotelId: 50110,
     bookingUrl: 'https://www.ensanahotels.com/nove-lazne',
     bookingUrls: {
@@ -198,7 +204,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Centrální Lázně',
     stars: 4,
     yearBuilt: 1812,
-    style: 'Klassizismus',
+    style: { de: 'Klassizismus', en: 'Neoclassical', cs: 'Klasicismus', ru: 'Классицизм' },
     exelyHotelId: 50092,
     bookingUrl: 'https://www.ensanahotels.com/centralni-lazne',
     bookingUrls: {
@@ -259,7 +265,7 @@ export const hotels: Hotel[] = [
     description: {
       de: `Das Centrální Lázně ist ein Vier-Sterne-Superior-Hotel direkt an der Hauptkolonnade und den Mineralquellen. Das 1 650 m² große Kurzentrum umfasst 70 Behandlungskabinen und das einzigartige Marias Gasbecken — eine traditionelle Heilmethode mit natürlichem CO₂ aus der Maria-Quelle, die seit 1905 angewendet wird. Über gedeckte Korridore ist das Hotel mit Nové Lázně und Maria Spa verbunden.`,
       en: `Centrální Lázně is a four-star Superior hotel right by the Main Colonnade and the mineral springs. Its 1,650 m² spa centre comprises 70 treatment cabins and the unique Maria's gas pool — a traditional healing method using natural CO₂ from the Maria Spring, in use since 1905. The hotel is connected by covered corridors to Nové Lázně and Maria Spa.`,
-      cs: `Centrální Lázně jsou čtyřhvězdičkový Superior hotel přímo u Hlavní kolonády a minerálních pramenů. Lázeňské centrum o rozloze 1 650 m² zahrnuje 70 procedurálních kabin a unikátní Mariino plynové jezírko — tradiční léčebnou metodu s přírodním CO₂ z Mariina pramene, používanou od roku 1905. Hotel je propojen krytými koridory s Novými Lázněmi a Maria Spa.`,
+      cs: `Centrální Lázně jsou čtyřhvězdičkový Superior hotel přímo u Hlavní kolonády a minerálních pramenů. Lázeňské centrum o rozloze 1 650 m² zahrnuje 70 procedurových kabin a unikátní Mariino plynové jezírko — tradiční léčebnou metodu s přírodním CO₂ z Mariina pramene, používanou od roku 1905. Hotel je propojen krytými koridory s Novými Lázněmi a Maria Spa.`,
       ru: `Централни Лазне — четырёхзвёздочный отель Superior прямо у Главной колоннады и минеральных источников. Курортный центр площадью 1 650 м² включает 70 процедурных кабин и уникальное газовое озеро Марии — традиционный лечебный метод с природным CO₂ из источника Марии, применяемый с 1905 года. Отель соединён крытыми коридорами с Нове Лазне и Maria Spa.`,
     },
     treatments: {
@@ -342,7 +348,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Hvězda',
     stars: 4,
     yearBuilt: 1905,
-    style: 'Jugendstil (Art Nouveau)',
+    style: { de: 'Jugendstil', en: 'Art Nouveau', cs: 'Secese', ru: 'Ар-нуво' },
     exelyHotelId: 50093,
     bookingUrl: 'https://www.ensanahotels.com/hvezda',
     bookingUrls: {
@@ -403,7 +409,7 @@ export const hotels: Hotel[] = [
     description: {
       de: `Das Hvězda ist ein Vier-Sterne-Superior-Hotel im Jugendstil von 1905, das gemeinsam mit den Hotels Imperial und Neapol einen Komplex bildet. Es verfügt über den größten Hotelpool der Stadt — das Aqua Wellness mit einem 18 × 8 m großen Becken, Whirlpool, Saunen und Salzhöhle. Das Kurzentrum bietet 30 Behandlungskabinen.`,
       en: `Hvězda is a four-star Superior hotel in Art Nouveau style from 1905, forming a complex with the Imperial and Neapol hotels. It boasts the largest hotel pool in town — the Aqua Wellness with an 18 × 8 m pool, whirlpool, saunas and a salt cave. The spa centre offers 30 treatment cabins.`,
-      cs: `Hvězda je čtyřhvězdičkový Superior hotel v secesním stylu z roku 1905, tvořící komplex s hotely Imperial a Neapol. Disponuje největším hotelovým bazénem ve městě — Aqua Wellness s bazénem 18 × 8 m, vířivkou, saunami a solnou jeskyní. Lázeňské centrum nabízí 30 procedurálních kabin.`,
+      cs: `Hvězda je čtyřhvězdičkový Superior hotel v secesním stylu z roku 1905, tvořící komplex s hotely Imperial a Neapol. Disponuje největším hotelovým bazénem ve městě — Aqua Wellness s bazénem 18 × 8 m, vířivkou, saunami a solnou jeskyní. Lázeňské centrum nabízí 30 procedurových kabin.`,
       ru: `Гвезда — четырёхзвёздочный отель Superior в стиле модерн 1905 года, образующий комплекс с отелями Imperial и Neapol. Располагает крупнейшим гостиничным бассейном в городе — Aqua Wellness с бассейном 18 × 8 м, джакузи, саунами и соляной пещерой. Курортный центр предлагает 30 процедурных кабин.`,
     },
     treatments: {
@@ -486,7 +492,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Butterfly',
     stars: 4,
     yearBuilt: 2003,
-    style: 'Moderne',
+    style: { de: 'Moderne', en: 'Modern', cs: 'Moderní architektura', ru: 'Современная архитектура' },
     exelyHotelId: 50095,
     bookingUrl: 'https://www.ensanahotels.com/butterfly',
     bookingUrls: {
@@ -507,7 +513,7 @@ export const hotels: Hotel[] = [
         'Modernes Design mit lichtdurchflutetem Atrium',
         'Kinderspielecke',
         'Großzügiges Wellnesszentrum mit Innenpool und Saunawelt',
-        'Lage an der Hauptpromenade nahe der Kolonnade',
+        'Lage an der Hauptstraße Hlavní třída im Stadtzentrum',
         'Barrierefreie Zimmer und Einrichtungen',
         'Restaurant mit Buffet und Live-Cooking',
         'Fahrradverleih und organisierte Touren',
@@ -518,7 +524,7 @@ export const hotels: Hotel[] = [
         'Modern design with a light-filled atrium',
         'Children\'s play corner',
         'Spacious wellness centre with indoor pool and sauna world',
-        'Location on the main promenade near the Colonnade',
+        'Location on Hlavní třída in the town centre',
         'Accessible rooms and facilities',
         'Restaurant with buffet and live cooking',
         'Bicycle rental and organized tours',
@@ -529,18 +535,18 @@ export const hotels: Hotel[] = [
         'Moderní design se světlým atriem',
         'Dětský koutek',
         'Prostorné wellness centrum s vnitřním bazénem a saunovým světem',
-        'Poloha na hlavní promenádě u kolonády',
+        'Poloha na Hlavní třídě v centru města',
         'Bezbariérové pokoje a vybavení',
         'Restaurace s bufetem a živým vařením',
         'Půjčovna kol a organizované túry',
-        'Moderní procedurální místnosti',
+        'Moderní procedurové kabiny',
         'Ferdinandův pramen přímo v hotelu',
       ],
       ru: [
         'Современный дизайн со светлым атриумом',
         'Детский уголок',
         'Просторная велнес-зона с крытым бассейном и сауной',
-        'Расположение на главной променаде у колоннады',
+        'Расположение на улице Главни тршида в центре города',
         'Безбарьерные номера и инфраструктура',
         'Ресторан с буфетом и живой кулинарией',
         'Прокат велосипедов и организованные походы',
@@ -634,7 +640,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Pacifik',
     stars: 4,
     yearBuilt: 1906,
-    style: 'Neobarock',
+    style: { de: 'Neobarock', en: 'Neo-Baroque', cs: 'Neobaroko', ru: 'Необарокко' },
     exelyHotelId: 50094,
     bookingUrl: 'https://www.ensanahotels.com/pacifik',
     bookingUrls: {
@@ -645,14 +651,14 @@ export const hotels: Hotel[] = [
     },
     address: 'Mírové náměstí 84, 353 01 Mariánské Lázně, Czech Republic',
     tagline: {
-      de: 'Elegantes 4-Sterne-Kurhotel im neobarocken Stil am Mírové náměstí',
-      en: 'Elegant 4-star spa hotel in Neo-Baroque style on Mírové Square',
-      cs: 'Elegantní 4hvězdičkový lázeňský hotel v neobarokním stylu na Mírovém náměstí',
-      ru: 'Элегантный 4-звёздочный курортный отель в необарочном стиле на площади Мира',
+      de: 'Elegantes 4-Sterne-Kurhotel am Mírové náměstí, am Rand des Kurwalds',
+      en: 'Elegant 4-star spa hotel on Mírové Square, at the edge of the spa forest',
+      cs: 'Elegantní 4hvězdičkový lázeňský hotel na Mírovém náměstí, na okraji lázeňských lesů',
+      ru: 'Элегантный 4-звёздочный курортный отель на площади Мира, у края курортного леса',
     },
     features: {
       de: [
-        'Neobarocke Architektur von 1906',
+        'Waldquelle direkt im Hotel',
         'Eigenes Balneologie-Zentrum mit modernen Behandlungsräumen',
         'Innenpool und Saunabereich',
         'Zentrale Lage am Mírové náměstí',
@@ -662,7 +668,7 @@ export const hotels: Hotel[] = [
         'Idealer Ausgangspunkt für Wanderungen im Slavkovský les',
       ],
       en: [
-        'Neo-Baroque architecture from 1906',
+        'Forest Spring inside the hotel',
         'In-house balneology center with modern treatment rooms',
         'Indoor pool and sauna area',
         'Central location on Mírové Square',
@@ -672,8 +678,8 @@ export const hotels: Hotel[] = [
         'Ideal starting point for hikes in the Slavkov Forest',
       ],
       cs: [
-        'Neobarokní architektura z roku 1906',
-        'Vlastní balneologické centrum s moderními procedurálními místnostmi',
+        'Lesní pramen přímo v hotelu',
+        'Vlastní balneologické centrum s moderními procedurovými kabinami',
         'Vnitřní bazén a saunový svět',
         'Centrální poloha na Mírovém náměstí',
         'Restaurace s lázeňskou kuchyní a dietními možnostmi',
@@ -682,7 +688,7 @@ export const hotels: Hotel[] = [
         'Ideální výchozí bod pro túry ve Slavkovském lese',
       ],
       ru: [
-        'Необарочная архитектура 1906 года',
+        'Лесной источник прямо в отеле',
         'Собственный бальнеологический центр с современными процедурными кабинетами',
         'Крытый бассейн и сауна',
         'Центральное расположение на площади Мира',
@@ -774,7 +780,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Vltava',
     stars: 3,
     yearBuilt: 1900,
-    style: 'Secese',
+    style: { de: 'Jugendstil', en: 'Art Nouveau', cs: 'Secese', ru: 'Ар-нуво' },
     exelyHotelId: 50096,
     bookingUrl: 'https://www.ensanahotels.com/vltava-berounka',
     bookingUrls: {
@@ -808,7 +814,7 @@ export const hotels: Hotel[] = [
         'Parking available at the hotel',
       ],
       cs: [
-        'Vlastní léčebné centrum s procedurálními místnostmi',
+        'Vlastní léčebné centrum s procedurovými kabinami',
         'Klidná poloha na hlavní promenádě',
         'Restaurace s polopenzí a plnou penzí',
         'Atraktivní poměr cena/výkon',
@@ -898,7 +904,7 @@ export const hotels: Hotel[] = [
     name: 'Ensana Svoboda',
     stars: 3,
     yearBuilt: 1890,
-    style: 'Neorenaissance',
+    style: { de: 'Neorenaissance', en: 'Neo-Renaissance', cs: 'Neorenesance', ru: 'Неоренессанс' },
     exelyHotelId: 50097,
     bookingUrl: 'https://www.ensanahotels.com/svoboda',
     bookingUrls: {
@@ -937,7 +943,7 @@ export const hotels: Hotel[] = [
       ],
       cs: [
         'Klidná poloha poblíž Slavkovského lesa',
-        'Vlastní léčebné centrum s procedurálními místnostmi',
+        'Vlastní léčebné centrum s procedurovými kabinami',
         'Osobní, rodinná atmosféra',
         'Restaurace s lázeňskou kuchyní a dietními možnostmi',
         'Sluneční terasa s výhledem na park',
