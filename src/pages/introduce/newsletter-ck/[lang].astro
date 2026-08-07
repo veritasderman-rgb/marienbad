@@ -1,8 +1,9 @@
 ---
 /**
- * Archiv newsletterů pro CK — cizojazyčné varianty (/en, /de).
- * Čeština má vlastní vstupní bod na /introduce/newsletter-ck (index.astro),
- * proto ji tady negenerujeme.
+ * Archiv newsletterů pro CK — jazykové varianty (/en, /de, /cs).
+ * Kanonický český vstup je /introduce/newsletter-ck (index.astro); /cs
+ * generujeme taky, protože detaily čísel pod /cs/<slug> existují a partner
+ * si tuhle adresu přirozeně zkusí.
  */
 import Base from '@/layouts/Base.astro'
 import CkNewsletterArchive from '@/components/CkNewsletterArchive.astro'
@@ -16,9 +17,7 @@ import {
 export const prerender = true
 
 export function getStaticPaths() {
-  return newsletterLangs
-    .filter((lang) => lang !== 'cs')
-    .map((lang) => ({ params: { lang }, props: { lang } }))
+  return newsletterLangs.map((lang) => ({ params: { lang }, props: { lang } }))
 }
 
 interface Props {
@@ -38,13 +37,18 @@ const meta: Record<string, { title: string; description: string }> = {
     description:
       'Alle Ausgaben des Partner-Newsletters Ensana News an einem Ort — mit Zusammenfassung, den wichtigsten Punkten und Themen-Tags zum schnellen Nachschlagen.',
   },
+  cs: {
+    title: 'Archiv newsletterů Ensana News | Pro cestovní kanceláře',
+    description:
+      'Všechna vydání partnerského newsletteru Ensana News na jednom místě — se shrnutím, hlavními body a štítky témat pro rychlé dohledání.',
+  },
 }
 
 const m = meta[lang]
 ---
 
 <Base
-  locale={lang === 'de' ? 'de' : 'en'}
+  locale={lang === 'de' ? 'de' : lang === 'cs' ? 'cs' : 'en'}
   section="accommodation"
   title={m.title}
   description={m.description}
