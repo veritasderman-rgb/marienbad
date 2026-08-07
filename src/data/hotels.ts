@@ -265,7 +265,7 @@ export const hotels: Hotel[] = [
     description: {
       de: `Das Centrální Lázně ist ein Vier-Sterne-Superior-Hotel direkt an der Hauptkolonnade und den Mineralquellen. Das 1 650 m² große Kurzentrum umfasst 70 Behandlungskabinen und das einzigartige Marias Gasbecken — eine traditionelle Heilmethode mit natürlichem CO₂ aus der Maria-Quelle, die seit 1905 angewendet wird. Über gedeckte Korridore ist das Hotel mit Nové Lázně und Maria Spa verbunden.`,
       en: `Centrální Lázně is a four-star Superior hotel right by the Main Colonnade and the mineral springs. Its 1,650 m² spa centre comprises 70 treatment cabins and the unique Maria's gas pool — a traditional healing method using natural CO₂ from the Maria Spring, in use since 1905. The hotel is connected by covered corridors to Nové Lázně and Maria Spa.`,
-      cs: `Centrální Lázně jsou čtyřhvězdičkový Superior hotel přímo u Hlavní kolonády a minerálních pramenů. Lázeňské centrum o rozloze 1 650 m² zahrnuje 70 procedurových kabin a unikátní Mariino plynové jezírko — tradiční léčebnou metodu s přírodním CO₂ z Mariina pramene, používanou od roku 1905. Hotel je propojen krytými koridory s Novými Lázněmi a Maria Spa.`,
+      cs: `Centrální Lázně jsou čtyřhvězdičkový Superior hotel přímo u Hlavní kolonády a minerálních pramenů. Lázeňské centrum o rozloze 1 650 m² zahrnuje 70 kabin pro procedury a unikátní Mariino plynové jezírko — tradiční léčebnou metodu s přírodním CO₂ z Mariina pramene, používanou od roku 1905. Hotel je propojen krytými koridory s Novými Lázněmi a Maria Spa.`,
       ru: `Централни Лазне — четырёхзвёздочный отель Superior прямо у Главной колоннады и минеральных источников. Курортный центр площадью 1 650 м² включает 70 процедурных кабин и уникальное газовое озеро Марии — традиционный лечебный метод с природным CO₂ из источника Марии, применяемый с 1905 года. Отель соединён крытыми коридорами с Нове Лазне и Maria Spa.`,
     },
     treatments: {
@@ -409,7 +409,7 @@ export const hotels: Hotel[] = [
     description: {
       de: `Das Hvězda ist ein Vier-Sterne-Superior-Hotel im Jugendstil von 1905, das gemeinsam mit den Hotels Imperial und Neapol einen Komplex bildet. Es verfügt über den größten Hotelpool der Stadt — das Aqua Wellness mit einem 18 × 8 m großen Becken, Whirlpool, Saunen und Salzhöhle. Das Kurzentrum bietet 30 Behandlungskabinen.`,
       en: `Hvězda is a four-star Superior hotel in Art Nouveau style from 1905, forming a complex with the Imperial and Neapol hotels. It boasts the largest hotel pool in town — the Aqua Wellness with an 18 × 8 m pool, whirlpool, saunas and a salt cave. The spa centre offers 30 treatment cabins.`,
-      cs: `Hvězda je čtyřhvězdičkový Superior hotel v secesním stylu z roku 1905, tvořící komplex s hotely Imperial a Neapol. Disponuje největším hotelovým bazénem ve městě — Aqua Wellness s bazénem 18 × 8 m, vířivkou, saunami a solnou jeskyní. Lázeňské centrum nabízí 30 procedurových kabin.`,
+      cs: `Hvězda je čtyřhvězdičkový Superior hotel v secesním stylu z roku 1905, tvořící komplex s hotely Imperial a Neapol. Disponuje největším hotelovým bazénem ve městě — Aqua Wellness s bazénem 18 × 8 m, vířivkou, saunami a solnou jeskyní. Lázeňské centrum nabízí 30 kabin pro procedury.`,
       ru: `Гвезда — четырёхзвёздочный отель Superior в стиле модерн 1905 года, образующий комплекс с отелями Imperial и Neapol. Располагает крупнейшим гостиничным бассейном в городе — Aqua Wellness с бассейном 18 × 8 м, джакузи, саунами и соляной пещерой. Курортный центр предлагает 30 процедурных кабин.`,
     },
     treatments: {
@@ -539,7 +539,7 @@ export const hotels: Hotel[] = [
         'Bezbariérové pokoje a vybavení',
         'Restaurace s bufetem a živým vařením',
         'Půjčovna kol a organizované túry',
-        'Moderní procedurové kabiny',
+        'Moderní kabiny pro procedury',
         'Ferdinandův pramen přímo v hotelu',
       ],
       ru: [
@@ -679,7 +679,7 @@ export const hotels: Hotel[] = [
       ],
       cs: [
         'Lesní pramen přímo v hotelu',
-        'Vlastní balneologické centrum s moderními procedurovými kabinami',
+        'Vlastní balneologické centrum s moderními kabinami pro procedury',
         'Vnitřní bazén a saunový svět',
         'Centrální poloha na Mírovém náměstí',
         'Restaurace s lázeňskou kuchyní a dietními možnostmi',
@@ -814,7 +814,7 @@ export const hotels: Hotel[] = [
         'Parking available at the hotel',
       ],
       cs: [
-        'Vlastní léčebné centrum s procedurovými kabinami',
+        'Vlastní léčebné centrum s kabinami pro procedury',
         'Klidná poloha na hlavní promenádě',
         'Restaurace s polopenzí a plnou penzí',
         'Atraktivní poměr cena/výkon',
@@ -943,7 +943,7 @@ export const hotels: Hotel[] = [
       ],
       cs: [
         'Klidná poloha poblíž Slavkovského lesa',
-        'Vlastní léčebné centrum s procedurovými kabinami',
+        'Vlastní léčebné centrum s kabinami pro procedury',
         'Osobní, rodinná atmosféra',
         'Restaurace s lázeňskou kuchyní a dietními možnostmi',
         'Sluneční terasa s výhledem na park',
