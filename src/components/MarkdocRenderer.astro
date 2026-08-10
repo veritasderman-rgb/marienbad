@@ -107,12 +107,16 @@ function renderCustomHtml(node: RenderableTreeNode): string {
       const trimmed = raw.trim()
       const numeric = /^\d[\d\s]*$/.test(trimmed)
       const target = numeric ? trimmed.replace(/\s/g, '') : ''
-      const dataAttr = numeric ? ` data-stat-target="${escapeAttr(target)}" data-stat-final="${escapeAttr(raw)}"` : ''
+      // Thousands groups are joined with NBSP so a figure like "982 000" can
+      // never break across two lines in a narrow grid cell — and so the value
+      // matches what the count-up animation renders via toLocaleString.
+      const display = numeric ? trimmed.replace(/\s/g, ' ') : raw
+      const dataAttr = numeric ? ` data-stat-target="${escapeAttr(target)}" data-stat-final="${escapeAttr(display)}"` : ''
       const prefix = attrs.prefix
         ? `<span class="stat-affix stat-prefix">${escapeHtml(attrs.prefix)}</span>` : ''
       const suffix = attrs.suffix
         ? `<span class="stat-affix stat-suffix">${escapeHtml(attrs.suffix)}</span>` : ''
-      return `<div class="stat-item"><p class="stat-value">${prefix}<span class="stat-number"${dataAttr}>${escapeHtml(raw)}</span>${suffix}</p><p class="stat-label">${escapeHtml(attrs.label)}</p></div>`
+      return `<div class="stat-item"><p class="stat-value">${prefix}<span class="stat-number"${dataAttr}>${escapeHtml(display)}</span>${suffix}</p><p class="stat-label">${escapeHtml(attrs.label)}</p></div>`
     }
 
     // Custom tag: youtube

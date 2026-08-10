@@ -568,6 +568,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .stat-value {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
   gap: 0.2em;
@@ -576,10 +577,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .stat-number {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 2.75rem);
+  font-size: clamp(1.75rem, 1.15rem + 2.6vw, 2.75rem);
   font-weight: 700;
   color: var(--color-indigo-dark, #004F71);
   font-variant-numeric: tabular-nums;
+  /* Grouped figures ("982 000") stay on one line; a long suffix wraps below. */
+  white-space: nowrap;
 }
 .stat-affix {
   font-family: var(--font-heading);
