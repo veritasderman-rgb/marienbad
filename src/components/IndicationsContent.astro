@@ -1,0 +1,84 @@
+---
+/**
+ * IndicationsContent — the body of the indications & contraindications reference
+ * page. Rendered inside PillarPage's prose column, so section headings are real
+ * h2/h3 elements and feed the page's table of contents.
+ *
+ * Content comes from src/data/indications.ts, transcribed from the spa's own
+ * published lists. The Czech edition additionally carries the statutory
+ * indication codes and the care types Czech public insurance covers.
+ */
+import type { Locale } from '@/i18n/config'
+import { getIndications } from '@/data/indications'
+import { localizedHref } from '@/i18n/utils'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const data = getIndications(locale)
+const ctaHref = localizedHref(locale, 'accommodation')
+---
+
+<p>{data.intro}</p>
+
+{data.careTypes && data.careTypes.length > 0 && (
+  <aside class="my-8 rounded-2xl border border-beige-200 bg-beige-50 p-6">
+    {data.careTypesTitle && (
+      <p class="font-heading text-lg font-semibold text-indigo-700 !mb-4">{data.careTypesTitle}</p>
+    )}
+    <dl class="space-y-4 !mb-0">
+      {data.careTypes.map((type) => (
+        <div>
+          <dt class="font-heading text-base font-semibold text-indigo-700">{type.code}</dt>
+          <dd class="text-beige-800 text-base leading-relaxed">{type.label}</dd>
+        </div>
+      ))}
+    </dl>
+  </aside>
+)}
+
+<h2 id="indikace">{data.indicationsTitle}</h2>
+
+{data.groups.map((group) => (
+  <section>
+    <h3 id={group.id}>{group.title}</h3>
+    <ul>
+      {group.items.map((item) => (
+        <li>
+          {item.code && (
+            <span class="mr-2 inline-block rounded bg-turquoise-100 px-1.5 py-0.5 font-heading text-xs font-semibold tracking-wide text-indigo-700 align-middle">
+              {item.code}
+            </span>
+          )}
+          <span>{item.text}</span>
+          {item.coverage && (
+            <span class="mt-1 block text-sm text-beige-600">{item.coverage}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+))}
+
+<h2 id="kontraindikace">{data.contraindicationsTitle}</h2>
+<p>{data.contraindicationsIntro}</p>
+<ol>
+  {data.contraindications.map((item) => <li>{item}</li>)}
+</ol>
+
+<h2 id="disclaimer">{data.disclaimerTitle}</h2>
+<p>{data.disclaimer}</p>
+<p class="text-sm text-beige-600">{data.sourceNote}</p>
+
+<aside class="mt-10 rounded-2xl bg-indigo-700 p-7 text-white">
+  <p class="font-heading text-xl font-bold !mb-3">{data.ctaTitle}</p>
+  <p class="text-white/85 leading-relaxed !mb-5">{data.ctaText}</p>
+  <a
+    href={ctaHref}
+    class="inline-block rounded-full bg-yellow-400 px-8 py-3 font-bold text-indigo-900 transition-colors hover:bg-yellow-500 !no-underline"
+  >
+    {data.ctaLabel}
+  </a>
+</aside>

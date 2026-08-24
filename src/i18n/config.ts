@@ -22,6 +22,7 @@ export const routes = {
   history: { de: 'geschichte', en: 'history', cs: 'historie', ru: 'istoriya' },
   'practical-info': { de: 'praktische-infos', en: 'practical-info', cs: 'prakticke-informace', ru: 'prakticheskaya-informaciya' },
   parking: { de: 'parken', en: 'parking', cs: 'parkovani', ru: 'parkovka' },
+  indications: { de: 'indikationen-und-kontraindikationen', en: 'indications-and-contraindications', cs: 'indikace-a-kontraindikace', ru: 'pokazaniya-i-protivopokazaniya' },
   people: { de: 'menschen', en: 'people', cs: 'lide', ru: 'lyudi' },
   magazine: { de: 'magazin', en: 'magazine', cs: 'magazin', ru: 'zhurnal' },
   podcast: { cs: 'podcast' },

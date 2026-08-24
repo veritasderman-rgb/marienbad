@@ -8,6 +8,8 @@ import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { getHotelBySlug } from '@/data/hotels'
 import { hotels } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
+import SectionCard from '@/components/SectionCard.astro'
+import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
 
 const locale = 'cs' as const
@@ -73,6 +75,12 @@ const faqSchema = faqs.length > 0 ? {
   {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <SectionCard
+      title="Indikace a kontraindikace"
+      description="Které diagnózy se v Mariánských Lázních léčí, jaké typy péče hradí pojišťovna a kdy lázeňskou léčbu naopak nelze poskytnout."
+      href={localizedHref(locale, 'indications')}
+      variant="turquoise"
+    />
     <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
     <HotelRecommendationBox
       locale={locale}
