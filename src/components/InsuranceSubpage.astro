@@ -6,6 +6,7 @@
  * cenové a srovnávací tabulky, které by se do 680px sloupce nevešly.
  */
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Pic from '@/components/Pic.astro'
 import InsuranceCta from '@/components/InsuranceCta.astro'
 import InsuranceNavCards from '@/components/InsuranceNavCards.astro'
 import { INSURANCE_BASE } from '@/data/insuranceSpa'
@@ -18,9 +19,12 @@ interface Props {
   /** Volitelné doplnění drobečkové navigace (např. detail indikace). */
   extraCrumbs?: { label: string; href?: string }[]
   eyebrow?: string
+  /** Snímek pod hlavičkou. Bez něj stránka začíná rovnou obsahem. */
+  image?: string
+  imageAlt?: string
 }
 
-const { title, lead, current, extraCrumbs = [], eyebrow } = Astro.props
+const { title, lead, current, extraCrumbs = [], eyebrow, image, imageAlt } = Astro.props
 
 const breadcrumbs = [
   { label: 'Domů', href: '/cs' },
@@ -43,7 +47,21 @@ const breadcrumbs = [
   </div>
 </section>
 
-<div class="container-wide py-14 md:py-20">
+{image && (
+  <div class="container-wide -mt-8 md:-mt-10 relative z-10">
+    <div class="max-w-4xl mx-auto overflow-hidden shadow-card" style="border-radius: var(--radius-card);">
+      <Pic
+        src={image}
+        alt={imageAlt ?? ''}
+        class="w-full h-52 md:h-80 object-cover"
+        sizes="(max-width: 768px) 100vw, 896px"
+        loading="eager"
+      />
+    </div>
+  </div>
+)}
+
+<div class:list={["container-wide py-14 md:py-20", image && "pt-10 md:pt-14"]}>
   <div class="max-w-4xl mx-auto flex flex-col gap-14 md:gap-20">
     <slot />
     <InsuranceCta />
