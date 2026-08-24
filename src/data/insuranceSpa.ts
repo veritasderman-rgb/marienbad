@@ -131,7 +131,7 @@ export const subPages: SubPage[] = [
     metaDescription:
       'Ve kterých hotelech Ensana lze čerpat lázeňskou péči hrazenou pojišťovnou, kde je ubytování bez doplatku, a co pobyt nabízí navíc — Ensana Life, turistická karta i vybavení města.',
     lead:
-      'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — mezi léčbou a pokojem se tak nechodí ven. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
+      'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — mezi léčbou a pokojem se tak zpravidla nechodí ven. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
     icon: 'hotel',
   },
   {
@@ -1021,7 +1021,7 @@ export const insuranceHotels: InsuranceHotel[] = [
 ]
 
 export const hotelsIntro =
-  'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi tak nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
+  'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi tak zpravidla nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
 
 /**
  * Pozor na rozpor mezi dvěma zdroji: ceník 2026 má nulový doplatek jen
