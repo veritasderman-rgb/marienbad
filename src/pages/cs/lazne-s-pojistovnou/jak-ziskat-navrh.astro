@@ -1,0 +1,164 @@
+---
+import Base from '@/layouts/Base.astro'
+import InsuranceSubpage from '@/components/InsuranceSubpage.astro'
+import { INSURANCE_BASE, doctorChecklist, getSubPage, insurers, processSteps, reservationChecklist } from '@/data/insuranceSpa'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const page = getSubPage('jak-ziskat-navrh')
+---
+
+<Base
+  locale={locale}
+  section="insurance-spa"
+  title={page.metaTitle}
+  description={page.metaDescription}
+  alternateUrls={{ cs: `${INSURANCE_BASE}/${page.slug}` }}
+>
+  <InsuranceSubpage title={page.title} lead={page.lead} current={page.slug} eyebrow="Lázně s pojišťovnou" extraCrumbs={[{ label: page.navLabel }]}>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">Čtyři kroky od ordinace k nástupu</h2>
+      <ol class="flex flex-col gap-6 list-none p-0 m-0">
+        {processSteps.map((step) => (
+          <li class="bg-white border border-beige-200 p-6 md:p-8 m-0" style="border-radius: var(--radius-card);">
+            <div class="flex items-start gap-5">
+              <span class="shrink-0 w-12 h-12 rounded-full bg-indigo-700 text-white font-heading text-xl font-bold flex items-center justify-center">{step.n}</span>
+              <div class="flex-1">
+                <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{step.title}</h3>
+                {step.body.map((para) => <p class="text-beige-800 text-base leading-relaxed mb-3 last:mb-0">{para}</p>)}
+                {step.tip && (
+                  <p class="mt-4 bg-turquoise-50 border-l-4 border-turquoise-400 text-indigo-800 text-sm leading-relaxed px-4 py-3 rounded-r-lg">
+                    <strong class="font-semibold">Tip:</strong> {step.tip}
+                  </p>
+                )}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Který lékař návrh vystaví</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-4">
+        Návrh na lázeňskou péči nevystavují lázně a nevystaví ho ani revizní lékař pojišťovny. Vypisuje ho
+        <strong class="text-indigo-800"> praktický lékař</strong> nebo <strong class="text-indigo-800">ambulantní specialista</strong> —
+        podle diagnózy tedy ortoped, urolog, neurolog, kardiolog, gastroenterolog, dermatolog či onkolog.
+      </p>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-4">
+        Lékař ho vystavuje na základě doporučení odborného lékaře, nebo na základě doporučení ošetřujícího lékaře
+        při hospitalizaci — typicky po operaci kloubu, po infarktu nebo po zákroku na močových cestách.
+      </p>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed">
+        V návrhu lékař zároveň uvede, jaký typ péče doporučuje — komplexní, nebo příspěvkovou — a jaké lázeňské místo.
+        Právě tady je vaše příležitost ovlivnit, kam pojedete.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Co si vzít s sebou k lékaři</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">
+        Čím kompletnější podklady lékař má, tím rychleji návrh vyplní a tím menší je riziko, že ho revizní lékař vrátí k doplnění.
+      </p>
+      <ul class="flex flex-col gap-3 list-none p-0 m-0">
+        {doctorChecklist.map((item) => (
+          <li class="flex gap-3 bg-beige-100 border border-beige-200 px-5 py-4 rounded-xl text-beige-900 text-base leading-relaxed">
+            <svg class="w-5 h-5 text-turquoise-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="bg-indigo-50 border border-indigo-100 p-6 md:p-8" style="border-radius: var(--radius-card);">
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-4">Jak požádat přímo o Mariánské Lázně</h2>
+      <p class="text-beige-900 text-base leading-relaxed mb-4">
+        Pokud vaše onemocnění patří mezi indikace léčené v Mariánských Lázních, můžete lékaře požádat, aby už při
+        vystavení návrhu uvedl společnost <strong>Léčebné lázně Mariánské Lázně a.s.</strong> Nejde o formalitu —
+        lázeňské místo uvedené v návrhu je to, kam vás pojišťovna nasměruje.
+      </p>
+      <p class="text-beige-900 text-base leading-relaxed">
+        Ověřte si předem v <a href={`${INSURANCE_BASE}/indikace`} class="text-indigo-600 font-semibold underline underline-offset-2 hover:text-turquoise-600">přehledu léčených diagnóz</a>,
+        zda vaše onemocnění do některé z devíti zdejších indikačních skupin spadá. Lékaři to usnadní rozhodování.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Platnost návrhu — na co si dát pozor</h2>
+      <div class="grid gap-4 sm:grid-cols-2 mb-6">
+        <div class="bg-white border border-beige-200 p-6" style="border-radius: var(--radius-card);">
+          <p class="text-turquoise-700 text-xs font-bold uppercase tracking-wider mb-2">Komplexní péče (KLP)</p>
+          <p class="text-indigo-800 text-2xl font-bold mb-1">3 měsíce</p>
+          <p class="text-beige-800 text-sm leading-relaxed">při stupni naléhavosti II</p>
+          <p class="text-indigo-800 text-2xl font-bold mb-1 mt-4">1 měsíc</p>
+          <p class="text-beige-800 text-sm leading-relaxed">při stupni naléhavosti I</p>
+        </div>
+        <div class="bg-white border border-beige-200 p-6" style="border-radius: var(--radius-card);">
+          <p class="text-turquoise-700 text-xs font-bold uppercase tracking-wider mb-2">Příspěvková péče (PLP)</p>
+          <p class="text-indigo-800 text-2xl font-bold mb-1">6 měsíců</p>
+          <p class="text-beige-800 text-sm leading-relaxed">ode dne vystavení navrhujícím lékařem</p>
+        </div>
+      </div>
+      <p class="bg-yellow-50 border-l-4 border-yellow-400 text-beige-900 text-base leading-relaxed px-5 py-4 rounded-r-lg">
+        <strong class="font-semibold">Pobyt je nutné nastoupit v době platnosti návrhu</strong> — stačí i poslední den platnosti,
+        ale ne později. Platnost prodloužit nelze. Pokud vám termín uniká, ozvěte se lázním co nejdřív; volná kapacita
+        se řeší podle aktuální obsazenosti hotelů.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Co potřebují lázně k rezervaci</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">
+        Termín, hotel i kategorii pokoje si můžete dohodnout předem a rezervace se nezpoplatňuje. Připravte si:
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0">
+        {reservationChecklist.map((item) => (
+          <li class="flex gap-3 bg-white border border-beige-200 px-5 py-4 rounded-xl text-beige-900 text-sm leading-relaxed">
+            <svg class="w-4 h-4 text-turquoise-600 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Na pojišťovně nezáleží</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">
+        Léčebné lázně Mariánské Lázně a.s. jsou smluvním partnerem všech zdravotních pojišťoven působících
+        v České republice. Ať jste pojištěni kdekoli, návrh sem lze směřovat.
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
+        {insurers.map((ins) => (
+          <li class="bg-beige-100 border border-beige-200 rounded-xl px-5 py-4">
+            <p class="flex items-baseline gap-2 mb-1">
+              <span class="font-heading font-bold text-indigo-700">{ins.short}</span>
+              <span class="text-beige-700 text-sm tabular-nums">{ins.code}</span>
+            </p>
+            <p class="text-beige-800 text-sm leading-snug">{ins.name}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Když pojišťovna návrh neschválí</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-4">
+        Revizní lékař může návrh zamítnout — nejčastěji proto, že diagnóza nesplňuje podmínky indikačního seznamu
+        nebo že dosavadní ambulantní léčba nebyla vyčerpána. Znamená to konec cesty do lázní? Nemusí.
+      </p>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed">
+        Pobyt můžete absolvovat jako samoplátce. Léčebné lázně Mariánské Lázně a.s. na to mají speciální nabídku
+        <strong class="text-indigo-800"> Lázeňská péče bez pojišťovny v hotelu Svoboda</strong>. Léčebný plán sestavuje
+        lázeňský lékař stejně jako u hrazeného pobytu, jen bez omezení daných indikačním seznamem — a délku pobytu
+        si volíte sami.
+      </p>
+    </section>
+
+  </InsuranceSubpage>
+</Base>

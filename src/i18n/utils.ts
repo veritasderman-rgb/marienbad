@@ -17,9 +17,12 @@ export function formatDate(locale: Locale, date: string | Date): string {
   }).format(d)
 }
 
-/** Get the localized URL for a section */
+/** Get the localized URL for a section. Sections that exist in only some
+ *  locales (e.g. the Czech-only insurance section) fall back to that locale's
+ *  home page rather than emitting an `/xx/undefined` link. */
 export function localizedHref(locale: Locale, section: SectionKey): string {
-  return `/${locale}/${routes[section][locale]}`
+  const slug = (routes[section] as Partial<Record<Locale, string>>)[locale]
+  return slug ? `/${locale}/${slug}` : `/${locale}`
 }
 
 /** Get all alternate links for a section (for hreflang tags) */
@@ -28,7 +31,9 @@ export function getAlternateLinks(section: SectionKey | 'home'): { locale: Local
   if (section === 'home') {
     return locales.map((l) => ({ locale: l, href: `/${l}` }))
   }
-  return locales.map((l) => ({ locale: l, href: `/${l}/${routes[section][l]}` }))
+  return locales
+    .filter((l) => (routes[section] as Partial<Record<Locale, string>>)[l])
+    .map((l) => ({ locale: l, href: `/${l}/${(routes[section] as Record<Locale, string>)[l]}` }))
 }
 
 /** Navigation item types */
@@ -40,6 +45,8 @@ export type NavItem = NavLink | NavDropdown
 export function getNavItemsFlat(locale: Locale) {
   const sectionKeys: { navKey: string; section: SectionKey }[] = [
     { navKey: 'nav.mineralSprings', section: 'mineral-springs' },
+    // Sekce o péči hrazené pojišťovnou existuje jen česky.
+    ...(locale === 'cs' ? [{ navKey: 'nav.insuranceSpa', section: 'insurance-spa' as SectionKey }] : []),
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
     { navKey: 'nav.dayTrips', section: 'day-trips' },
     { navKey: 'nav.accommodation', section: 'accommodation' },
@@ -63,8 +70,23 @@ export function getNavItems(locale: Locale): NavItem[] {
     href: `/${locale}/${routes[section][locale]}`,
   })
 
+  // Česká verze má navíc sekci o lázeňské péči hrazené pojišťovnou, takže se
+  // z prostého odkazu stává rozbalovací nabídka. Ostatní jazyky ji nemají.
+  const mineralSprings: NavItem =
+    locale === 'cs'
+      ? {
+          type: 'dropdown',
+          navKey: 'nav.mineralSprings',
+          children: [
+            link('nav.overview', 'mineral-springs'),
+            link('nav.insuranceSpa', 'insurance-spa'),
+            link('nav.indications', 'indications'),
+          ],
+        }
+      : link('nav.mineralSprings', 'mineral-springs')
+
   return [
-    link('nav.mineralSprings', 'mineral-springs'),
+    mineralSprings,
     {
       type: 'dropdown',
       navKey: 'nav.thingsToDo',

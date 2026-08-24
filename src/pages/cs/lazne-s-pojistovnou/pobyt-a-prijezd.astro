@@ -1,0 +1,101 @@
+---
+import Base from '@/layouts/Base.astro'
+import InsuranceSubpage from '@/components/InsuranceSubpage.astro'
+import { INSURANCE_BASE, getSubPage, packingList, spaTax, staySteps, travelBlocks } from '@/data/insuranceSpa'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const page = getSubPage('pobyt-a-prijezd')
+---
+
+<Base
+  locale={locale}
+  section="insurance-spa"
+  title={page.metaTitle}
+  description={page.metaDescription}
+  alternateUrls={{ cs: `${INSURANCE_BASE}/${page.slug}` }}
+>
+  <InsuranceSubpage title={page.title} lead={page.lead} current={page.slug} eyebrow="Lázně s pojišťovnou" extraCrumbs={[{ label: page.navLabel }]}>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-6">Cesta do Mariánských Lázní</h2>
+      <div class="flex flex-col gap-6">
+        {travelBlocks.map((block) => (
+          <article class="bg-white border border-beige-200 p-6 md:p-8" style="border-radius: var(--radius-card);">
+            <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{block.heading}</h3>
+            <p class="text-beige-800 text-base leading-relaxed mb-4">{block.body}</p>
+            {block.bullets && (
+              <ul class="flex flex-col gap-2.5 list-none p-0 m-0 mb-4">
+                {block.bullets.map((bullet) => (
+                  <li class="flex gap-3 text-beige-800 text-base leading-relaxed">
+                    <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500 mt-2.5" aria-hidden="true"></span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {block.note && (
+              <p class="bg-turquoise-50 border-l-4 border-turquoise-400 text-indigo-800 text-sm leading-relaxed px-4 py-3 rounded-r-lg m-0">
+                {block.note}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-4 mt-6">
+        <a href="/cs/jak-se-dostat" class="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:text-turquoise-600 transition-colors">
+          Podrobný průvodce dopravou
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href="/cs/parkovani" class="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:text-turquoise-600 transition-colors">
+          Parkování v Mariánských Lázních
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-6">Jak pobyt probíhá</h2>
+      <ol class="flex flex-col gap-4 list-none p-0 m-0">
+        {staySteps.map((step, i) => (
+          <li class="flex items-start gap-5 bg-beige-100 border border-beige-200 p-6 m-0" style="border-radius: var(--radius-card);">
+            <span class="shrink-0 w-10 h-10 rounded-full bg-indigo-700 text-white font-heading font-bold flex items-center justify-center">{i + 1}</span>
+            <div>
+              <h3 class="font-heading text-lg md:text-xl font-bold text-indigo-700 mb-2">{step.heading}</h3>
+              <p class="text-beige-900 text-base leading-relaxed m-0">{step.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="bg-indigo-50 border border-indigo-100 p-6 md:p-8" style="border-radius: var(--radius-card);">
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">Co se platí při příjezdu</h2>
+      <p class="text-beige-900 text-base leading-relaxed mb-4">
+        Lázeňský poplatek <strong>{spaTax.amount}</strong> se hradí v hotelu při příjezdu. K němu se připočítá
+        případný doplatek za ubytování podle kategorie pokoje a sezóny.
+      </p>
+      <p class="text-beige-800 text-sm leading-relaxed">{spaTax.exemptions}</p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Co si zabalit</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">
+        Na tři až čtyři týdny se balí jinak než na dovolenou. Nejdůležitější jsou doklady a léky — všechno ostatní
+        se v Mariánských Lázních dá dokoupit.
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0">
+        {packingList.map((item) => (
+          <li class="flex gap-3 bg-white border border-beige-200 px-5 py-4 rounded-xl text-beige-900 text-base leading-relaxed">
+            <svg class="w-5 h-5 text-turquoise-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+  </InsuranceSubpage>
+</Base>

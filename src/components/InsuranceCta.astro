@@ -1,0 +1,67 @@
+---
+/**
+ * Kontaktní blok sekce „Lázně s pojišťovnou“. Opakuje se na konci každé
+ * podstránky — u cílové skupiny 50+ je telefon podstatnější než formulář,
+ * proto je číslo první a v odkazovatelné podobě.
+ */
+import { contacts } from '@/data/insuranceSpa'
+
+interface Props {
+  title?: string
+  text?: string
+}
+
+const {
+  title = 'Potřebujete poradit s návrhem nebo termínem?',
+  text = 'Rezervace termínu, hotelu i kategorie pokoje je zdarma. Zavolejte nebo napište — na místě vám rovnou řeknou, jaká je volná kapacita.',
+} = Astro.props
+---
+
+<section class="not-prose bg-indigo-700 text-white" style="border-radius: var(--radius-card);">
+  <div class="p-7 md:p-10">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold mb-3 text-white">{title}</h2>
+    <p class="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mb-7">{text}</p>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-7">
+      <div class="bg-white/10 rounded-xl p-5">
+        <p class="text-turquoise-300 text-xs uppercase tracking-wider font-semibold mb-2">Informace o lázeňské péči</p>
+        <a href={contacts.infoPhoneHref} class="text-white text-xl font-semibold hover:text-turquoise-300 transition-colors">
+          {contacts.infoPhone}
+        </a>
+      </div>
+      <div class="bg-white/10 rounded-xl p-5">
+        <p class="text-turquoise-300 text-xs uppercase tracking-wider font-semibold mb-2">Rezervace pobytu</p>
+        <div class="flex flex-col gap-1">
+          {contacts.reservationPhones.map((phone, i) => (
+            <a href={contacts.reservationPhoneHrefs[i]} class="text-white text-lg font-semibold hover:text-turquoise-300 transition-colors">
+              {phone}
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="bg-white/10 rounded-xl p-5">
+        <p class="text-turquoise-300 text-xs uppercase tracking-wider font-semibold mb-2">E-mail</p>
+        <a href={`mailto:${contacts.email}`} class="text-white text-base font-semibold hover:text-turquoise-300 transition-colors break-all">
+          {contacts.email}
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <a
+        href={contacts.reservationUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 bg-yellow-400 text-indigo-900 font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition-colors"
+      >
+        Bezplatná rezervace pobytu
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <p class="text-white/60 text-sm">
+        {contacts.company}, {contacts.address}
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import Base from '@/layouts/Base.astro'
+import InsuranceSubpage from '@/components/InsuranceSubpage.astro'
+import { INSURANCE_BASE, faqs, getSubPage } from '@/data/insuranceSpa'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const page = getSubPage('caste-dotazy')
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+})
+---
+
+<Base
+  locale={locale}
+  section="insurance-spa"
+  title={page.metaTitle}
+  description={page.metaDescription}
+  alternateUrls={{ cs: `${INSURANCE_BASE}/${page.slug}` }}
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+
+  <InsuranceSubpage title={page.title} lead={page.lead} current={page.slug} eyebrow="Lázně s pojišťovnou" extraCrumbs={[{ label: page.navLabel }]}>
+
+    <section>
+      <dl class="flex flex-col gap-4 m-0">
+        {faqs.map((item) => (
+          <div class="bg-white border border-beige-200 p-6 md:p-7" style="border-radius: var(--radius-card);">
+            <dt class="font-heading text-lg md:text-xl font-bold text-indigo-700 mb-3">{item.q}</dt>
+            <dd class="text-beige-900 text-base leading-relaxed m-0">{item.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="bg-beige-100 border border-beige-200 p-6 md:p-8" style="border-radius: var(--radius-card);">
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">Nenašli jste odpověď?</h2>
+      <p class="text-beige-900 text-base leading-relaxed">
+        Otázky ke konkrétnímu návrhu, termínu nebo doplatku zodpoví rezervační oddělení lázní. Zavolat je
+        u individuálních dotazů rychlejší než psát — kontakty najdete níže.
+      </p>
+    </section>
+
+  </InsuranceSubpage>
+</Base>

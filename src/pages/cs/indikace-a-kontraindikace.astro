@@ -5,6 +5,7 @@ import IndicationsContent from '@/components/IndicationsContent.astro'
 import { getIndications } from '@/data/indications'
 import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
+import { INSURANCE_BASE } from '@/data/insuranceSpa'
 
 const locale = 'cs' as const
 const data = getIndications(locale)
@@ -28,6 +29,20 @@ const breadcrumbs = [
   }}
 >
   <PillarPage locale={locale} title={data.title} description={data.metaDescription} breadcrumbs={breadcrumbs}>
+    <aside class="not-prose mb-8 rounded-2xl border border-indigo-100 bg-indigo-50 p-6">
+      <p class="font-heading text-lg font-semibold text-indigo-700 mb-2">Chcete pobyt hrazený zdravotní pojišťovnou?</p>
+      <p class="text-beige-900 text-base leading-relaxed mb-4">
+        Tato stránka je referenční seznam diagnóz a kontraindikací. Praktický postup — který lékař vystaví návrh,
+        jak dlouho platí, kolik doplatíte a co k pobytu patří — najdete v samostatné sekci.
+      </p>
+      <a
+        href={INSURANCE_BASE}
+        class="inline-flex items-center gap-2 rounded-full bg-indigo-700 px-6 py-3 font-semibold text-white transition-colors hover:bg-indigo-800"
+      >
+        Lázně s pojišťovnou — kompletní průvodce
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </aside>
     <IndicationsContent locale={locale} />
   </PillarPage>
 </Base>
