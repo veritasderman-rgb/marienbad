@@ -60,8 +60,17 @@ function renderCustomHtml(node: RenderableTreeNode): string {
     }
 
     // Custom tag: gallery-image
+    // Serves the same pre-generated WebP variants as `figure`; without this a
+    // gallery shipped full-size JPEGs and had no intrinsic size, so every grid
+    // reflowed once the images landed.
     if (name === 'gallery-image') {
-      return `<figure class="gallery-item"><img src="${escapeAttr(attrs.src)}" alt="${escapeAttr(attrs.alt)}" loading="lazy" decoding="async" /></figure>`
+      const galOptim = lookup(attrs.src ?? '')
+      const galDims = galOptim.width ? ` width="${galOptim.width}" height="${galOptim.height}"` : ''
+      const galImg = `<img src="${escapeAttr(attrs.src)}" alt="${escapeAttr(attrs.alt)}"${galDims} loading="lazy" decoding="async" />`
+      const galMedia = galOptim.webpSrcset
+        ? `<picture style="display:contents"><source type="image/webp" srcset="${escapeAttr(galOptim.webpSrcset)}" sizes="(max-width: 768px) 100vw, 400px" />${galImg}</picture>`
+        : galImg
+      return `<figure class="gallery-item">${galMedia}</figure>`
     }
 
     // Custom tag: pullquote
