@@ -1170,7 +1170,7 @@ export const benefits: Benefit[] = [
   {
     title: 'Bazény, sauny a wellness',
     body:
-      'Vlastní bazén má každý z lázeňských hotelů, tříhvězdičkové nevyjímaje. Největší je ve Hvězdě, kde k němu patří dvě sauny, vířivka, parní lázeň a solná jeskyně. Hosté dependancí ubytovaní na pokojích bez doplatku mohou bazén využívat za hodinovou sazbu podle ceníku: 100 Kč/hod. ve Vltavě, 150 Kč/hod. ve Svobodě a 250 Kč/hod. ve Hvězdě a Pacifiku.',
+      'Bazén nepatří jen ke čtyřhvězdičkovým hotelům — vlastní ho i tříhvězdičkové Vltava a Svoboda. Největší je ve Hvězdě: 18 × 8 m, k tomu vířivka, sauny a solná jeskyně. Hosté dependancí ubytovaní na pokojích bez doplatku mohou bazén využívat za hodinovou sazbu podle ceníku: 100 Kč/hod. ve Vltavě, 150 Kč/hod. ve Svobodě a 250 Kč/hod. ve Hvězdě a Pacifiku. Vybavení konkrétního hotelu najdete v jeho detailu.',
     linkLabel: 'Přehled hotelů a ubytování',
     href: '/cs/ubytovani',
   },
