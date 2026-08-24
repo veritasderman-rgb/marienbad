@@ -30,14 +30,16 @@ const page = getSubPage('hotely-a-vyhody')
         {insuranceHotels.map((hotel) => (
           <article class="bg-white border border-beige-200 overflow-hidden md:grid md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:items-start" style="border-radius: var(--radius-card);">
             {/* Fotka vedle údajů a v přirozeném poměru — ořez do nízkého pásu
-                usekával budovám střechy. Pic musí být obalený vlastním divem:
+                usekával budovám střechy. Žádné md:h-full ani object-cover —
+                textový sloupec je vyšší než fotka a roztažení na výšku řádku
+                by snímek ořízlo do stran. Pic musí být obalený vlastním divem:
                 renderuje <picture class="contents">, takže by se <source>
                 i <img> staly samostatnými buňkami mřížky a rozhodily ji. */}
-            <div class="md:h-full">
+            <div>
               <Pic
                 src={hotel.image}
                 alt={hotel.imageAlt}
-                class="w-full h-auto block md:h-full md:object-cover"
+                class="w-full h-auto block"
                 sizes="(max-width: 768px) 100vw, 352px"
               />
             </div>
