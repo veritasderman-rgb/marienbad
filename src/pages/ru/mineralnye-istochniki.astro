@@ -9,6 +9,8 @@ import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { getHotelBySlug } from '@/data/hotels'
 import { hotels } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
+import SectionCard from '@/components/SectionCard.astro'
+import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
 
 const locale = 'ru' as const
@@ -63,6 +65,12 @@ const quizTranslations = {
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <SectionCard
+      title="Показания и противопоказания"
+      description="Какие заболевания лечат в Марианске-Лазне и при каких обстоятельствах курортное лечение невозможно."
+      href={localizedHref(locale, 'indications')}
+      variant="turquoise"
+    />
     <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
     <HotelRecommendationBox
       locale={locale}

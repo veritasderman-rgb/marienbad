@@ -10,6 +10,8 @@ import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { getHotelBySlug } from '@/data/hotels'
 import { hotels } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
+import SectionCard from '@/components/SectionCard.astro'
+import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
 
 const locale = 'en' as const
@@ -64,6 +66,12 @@ const quizTranslations = {
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <SectionCard
+      title="Indications and contraindications"
+      description="Which conditions are treated in Marienbad — and the circumstances under which spa treatment cannot be given."
+      href={localizedHref(locale, 'indications')}
+      variant="turquoise"
+    />
     <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
     <RelatedArticles locale={locale} category="health" />
     <HotelRecommendationBox
