@@ -1,0 +1,173 @@
+---
+/**
+ * MedicalPromoLanding — landing page for the Ensana Medical Promo (−25 % on
+ * medical programmes, sold 22.–30. 9. 2026 for stays 15. 10. 2026 – 30. 6. 2027).
+ *
+ * Three server-rendered states, driven by the dates in
+ * src/content/campaigns/{locale}.json (Keystatic-managed):
+ *  - before saleStart → teaser copy, CTA to the Ensana countdown page
+ *  - saleStart..saleEnd → sale copy, CTA to the Ensana promo page
+ *  - after saleEnd → expired notice, CTA to Ensana's general offers
+ *
+ * The page itself never books anything: every CTA hands off to Ensana's IBE.
+ */
+import type { Locale } from '@/i18n/config'
+import { getCampaign } from '@/lib/campaign'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const data = getCampaign(locale).medicalPromo
+const headlineParts = data.headline.split('\n')
+
+const saleStart = new Date(data.saleStart)
+const saleEnd = new Date(data.saleEnd)
+saleEnd.setHours(23, 59, 59, 999)
+const now = new Date()
+const beforeSale = now < saleStart
+const afterSale = now > saleEnd
+
+const dateFormatter = new Intl.DateTimeFormat(
+  locale === 'cs' ? 'cs-CZ' : locale === 'de' ? 'de-DE' : locale === 'ru' ? 'ru-RU' : 'en-GB',
+  { day: 'numeric', month: 'long', year: 'numeric' }
+)
+const salePeriodDisplay = `${dateFormatter.format(saleStart)} – ${dateFormatter.format(saleEnd)}`
+
+const bodyText = afterSale ? data.expiredNotice : beforeSale ? data.teaserText : data.saleText
+const ctaLabel = afterSale ? data.expiredCtaLabel : beforeSale ? data.teaserCtaLabel : data.ctaLabel
+const ctaUrl = afterSale ? data.expiredCtaUrl : beforeSale ? data.teaserCtaUrl : data.ctaUrl
+
+const heroStyle = data.image
+  ? `background: linear-gradient(135deg, rgba(45,42,110,0.75) 0%, rgba(0,79,113,0.7) 50%, rgba(49,153,179,0.65) 100%), url('${data.image}') center / cover no-repeat;`
+  : undefined
+const heroAlt = data.imageAlt || data.eyebrow
+---
+
+<section
+  class={data.image
+    ? 'text-white py-20 md:py-28 relative'
+    : 'bg-gradient-to-br from-indigo-700 via-indigo-600 to-turquoise-500 text-white py-20 md:py-28'}
+  style={heroStyle}
+  role={data.image ? 'img' : undefined}
+  aria-label={data.image ? heroAlt : undefined}
+>
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-turquoise-100 text-sm font-semibold tracking-[0.25em] uppercase mb-5">{data.landingHeroEyebrow}</p>
+      <h1 class="font-heading text-4xl md:text-6xl font-bold leading-tight mb-6">
+        {headlineParts[0]}{headlineParts[1] && (<><br/>{headlineParts[1]}</>)}
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 leading-relaxed mb-8">{bodyText}</p>
+      <a
+        href={ctaUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-4 px-10 rounded-full text-lg transition-colors shadow-lg"
+      >
+        {ctaLabel}
+      </a>
+      {!afterSale && (
+        <p class="mt-6 text-sm text-white/75">{data.footnote}</p>
+      )}
+    </div>
+  </div>
+</section>
+
+{!afterSale && (
+  <section class="py-16 md:py-20 bg-beige-50">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-10 text-center">{data.landingKeyInfoTitle}</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-beige-200">
+            <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{data.landingDiscountLabel}</p>
+            <p class="font-heading text-4xl font-bold text-indigo-700">{data.discountLabel}</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-beige-200">
+            <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{data.landingStayPeriodLabel}</p>
+            <p class="font-heading text-xl font-semibold text-indigo-700 leading-tight">{data.stayPeriod}</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-beige-200">
+            <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{data.landingSalePeriodLabel}</p>
+            <p class="font-heading text-xl font-semibold text-indigo-700 leading-tight">{salePeriodDisplay}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{!afterSale && data.programmes.length > 0 && (
+  <section class="py-16 md:py-20">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-4 text-center">{data.programmesTitle}</h2>
+        <p class="text-beige-700 text-lg leading-relaxed mb-10 text-center max-w-2xl mx-auto">{data.programmesIntro}</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {data.programmes.map((programme) => (
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-beige-200 flex flex-col">
+              <h3 class="font-heading text-xl font-bold text-indigo-700 mb-3">{programme.name}</h3>
+              <p class="text-beige-700 text-base leading-relaxed">{programme.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{!afterSale && (
+  <section class="py-16 md:py-20 bg-beige-50">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 mb-8 text-center">{data.landingConditionsTitle}</h2>
+        <ul class="space-y-4">
+          {data.conditions.map((c) => (
+            <li class="flex items-start gap-3 bg-white rounded-xl p-4 border border-beige-200">
+              <svg class="w-6 h-6 text-turquoise-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-beige-800 text-base leading-relaxed">{c}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-12 text-center">
+          <a
+            href={ctaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-4 px-10 rounded-full text-lg transition-colors shadow-lg"
+          >
+            {ctaLabel}
+          </a>
+          <p class="mt-4 text-sm text-beige-600">{data.footnote}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{data.relatedLinks.length > 0 && (
+  <section class="py-16 md:py-20">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-8 text-center">{data.relatedTitle}</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {data.relatedLinks.map((link) => (
+            <a
+              href={link.href}
+              class="flex items-center justify-between gap-3 bg-white rounded-xl px-5 py-4 border border-beige-200 hover:border-turquoise-400 transition-colors group"
+            >
+              <span class="font-heading text-base font-semibold text-indigo-700">{link.label}</span>
+              <svg class="w-5 h-5 text-turquoise-500 shrink-0 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}

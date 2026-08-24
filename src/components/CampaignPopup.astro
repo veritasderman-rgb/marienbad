@@ -1,17 +1,24 @@
 ---
 /**
- * CampaignPopup — site-wide promo popup for Jubilee Sale (1.–6. 6. 2026, −25 %)
- * and Summer Sale (9.–17. 6. 2026, −25 %).
+ * CampaignPopup — site-wide promo popup for Jubilee Sale (1.–6. 6. 2026, −25 %),
+ * Summer Sale (9.–17. 6. 2026, −25 %) and Medical Promo (22.–30. 9. 2026, −25 %).
  *
- * Phases (priority: jubilee > summer when overlapping):
+ * Phases (priority when windows overlap: jubilee > summer > medical):
  *  - jubilee-teaser:   teaserStart .. dayBefore(saleStart)
  *  - jubilee-active:   saleStart   .. saleEnd
  *  - summer-teaser:    teaserStart .. dayBefore(saleStart)   (skipped if jubilee-active)
  *  - summer-active:    saleStart   .. saleEnd
+ *  - medical-teaser:   teaserStart .. dayBefore(saleStart)   (only while medicalPromo.enabled)
+ *  - medical-active:   saleStart   .. saleEnd                (only while medicalPromo.enabled)
  *  - none:             outside all windows → component renders empty
  *
  * All dates/copy come from src/content/campaigns/{locale}.json (Keystatic-managed).
  * Per-phase dismissal in localStorage so closing one phase doesn't hide the next.
+ *
+ * Reviewing an off-season or not-yet-live phase: append ?campaignPreview=<phase>
+ * (e.g. ?campaignPreview=medical-teaser) to any page. That bypasses the date
+ * windows, the per-campaign enabled flag and the dismissal/session locks, and
+ * shows the card immediately.
  */
 import type { Locale } from '@/i18n/config'
 import { t } from '@/i18n/ui'
@@ -56,6 +63,22 @@ const summerStayLine = campaign.summerSale.landingStayPeriodLabel && campaign.su
   ? `${campaign.summerSale.landingStayPeriodLabel}: ${campaign.summerSale.stayPeriod}`
   : (campaign.summerSale.stayPeriod ?? '')
 const summerConditions = campaign.summerSale.conditions ?? []
+
+// Medical Promo — same two-phase shape as Summer Sale. Cards are always rendered
+// so ?campaignPreview= can show them before the campaign goes live; the enabled
+// flag only gates the date-driven path in the script below.
+const medical = campaign.medicalPromo
+const medicalHeadlineParts = medical.headline.split('\n')
+const medicalHeaderStyle = medical.image
+  ? `background: linear-gradient(180deg, rgba(0,79,113,0.25) 0%, rgba(0,79,113,0.85) 100%), url('${medical.image}') center / cover no-repeat; min-height: 220px;`
+  : gradientFallback
+const medicalImgAlt = medical.imageAlt || medical.eyebrow
+const medicalPopupImage = medical.popupImage
+const medicalPopupAlt = medical.popupImageAlt || medicalImgAlt
+const medicalStayLine = medical.landingStayPeriodLabel && medical.stayPeriod
+  ? `${medical.landingStayPeriodLabel}: ${medical.stayPeriod}`
+  : (medical.stayPeriod ?? '')
+const medicalConditions = medical.conditions ?? []
 ---
 
 {campaign.popupEnabled && (
@@ -70,6 +93,10 @@ const summerConditions = campaign.summerSale.conditions ?? []
     data-summer-teaser-start={campaign.summerSale.teaserStart}
     data-summer-sale-start={campaign.summerSale.saleStart}
     data-summer-sale-end={campaign.summerSale.saleEnd}
+    data-medical-enabled={medical.enabled ? '1' : '0'}
+    data-medical-teaser-start={medical.teaserStart}
+    data-medical-sale-start={medical.saleStart}
+    data-medical-sale-end={medical.saleEnd}
     data-countdown-done={labels.countdownDone}
   >
     {/* ============== JUBILEE — TEASER ============== */}
@@ -261,6 +288,138 @@ const summerConditions = campaign.summerSale.conditions ?? []
         </Fragment>
       )}
     </div>
+    {/* ============== MEDICAL PROMO — TEASER ============== */}
+    <div data-card="medical-teaser" class="campaign-card hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
+      {medicalPopupImage ? (
+        <Fragment>
+          <button class="campaign-close absolute top-3 right-3 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white transition-colors cursor-pointer" aria-label={labels.close}>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <img src={medicalPopupImage} alt={medicalPopupAlt} class="block w-full h-auto" width="1080" height="1080" />
+          <div class="sr-only">
+            <p>{medical.eyebrow}</p>
+            <p>{medicalHeadlineParts.join(' ')} — {medical.discountLabel}</p>
+            <p>{medical.teaserText}</p>
+            {medicalStayLine && <p>{medicalStayLine}</p>}
+            {medicalConditions.length > 0 && (
+              <ul>{medicalConditions.map((c) => <li>{c}</li>)}</ul>
+            )}
+            <p>{medical.footnote}</p>
+          </div>
+          <div class="px-6 py-5 text-center">
+            <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-4 px-6 mb-5">
+              <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">{labels.countdown}</p>
+              <p data-countdown="medical" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
+            </div>
+            <a
+              href={medical.teaserCtaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+            >
+              {medical.teaserCtaLabel}
+            </a>
+            <p class="text-beige-500 text-xs mt-4">{medical.footnote}</p>
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <div class="px-6 pt-8 pb-10 text-center text-white relative flex flex-col justify-end" style={medicalHeaderStyle} role={medical.image ? 'img' : undefined} aria-label={medical.image ? medicalImgAlt : undefined}>
+            <button class="campaign-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={labels.close}>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{medical.eyebrow}</p>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">
+              {medicalHeadlineParts[0]}{medicalHeadlineParts[1] && (<><br/>{medicalHeadlineParts[1]}</>)}
+            </h2>
+          </div>
+          <div class="px-6 py-6 text-center">
+            <p class="text-beige-700 text-base leading-relaxed mb-6">{medical.teaserText}</p>
+            <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-4 px-6 mb-5">
+              <p class="text-turquoise-600 text-xs font-semibold tracking-[0.2em] uppercase mb-1">{labels.countdown}</p>
+              <p data-countdown="medical" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
+            </div>
+            <a
+              href={medical.teaserCtaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+            >
+              {medical.teaserCtaLabel}
+            </a>
+            <p class="text-beige-500 text-xs mt-4">{medical.footnote}</p>
+          </div>
+        </Fragment>
+      )}
+    </div>
+
+    {/* ============== MEDICAL PROMO — ACTIVE ============== */}
+    <div data-card="medical-active" class="campaign-card hidden relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-md w-full transition-transform duration-300 scale-95">
+      {medicalPopupImage ? (
+        <Fragment>
+          <button class="campaign-close absolute top-3 right-3 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white transition-colors cursor-pointer" aria-label={labels.close}>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <img src={medicalPopupImage} alt={medicalPopupAlt} class="block w-full h-auto" width="1080" height="1080" />
+          <div class="sr-only">
+            <p>{medical.eyebrow}</p>
+            <p>{medicalHeadlineParts.join(' ')} — {medical.discountLabel}</p>
+            <p>{medical.saleText}</p>
+            {medicalStayLine && <p>{medicalStayLine}</p>}
+            {medicalConditions.length > 0 && (
+              <ul>{medicalConditions.map((c) => <li>{c}</li>)}</ul>
+            )}
+            <p>{medical.footnote}</p>
+          </div>
+          <div class="px-6 py-5 text-center">
+            <a
+              href={medical.ctaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+            >
+              {medical.ctaLabel}
+            </a>
+            <p class="text-beige-500 text-xs mt-4">{medical.footnote}</p>
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <div class="px-6 pt-8 pb-10 text-center text-white relative flex flex-col justify-end" style={medicalHeaderStyle} role={medical.image ? 'img' : undefined} aria-label={medical.image ? medicalImgAlt : undefined}>
+            <button class="campaign-close absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 transition-colors cursor-pointer" aria-label={labels.close}>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <p class="text-turquoise-200 text-xs font-semibold tracking-[0.2em] uppercase mb-3">{medical.eyebrow}</p>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">
+              {medicalHeadlineParts[0]}{medicalHeadlineParts[1] && (<><br/>{medicalHeadlineParts[1]}</>)}
+            </h2>
+          </div>
+          <div class="px-6 py-6 text-center">
+            <p class="text-beige-700 text-base leading-relaxed mb-5">{medical.saleText}</p>
+            <div class="border-2 border-dashed border-turquoise-300 bg-beige-50 rounded-xl py-5 px-6 mb-5">
+              <p class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 tracking-wider">{medical.discountLabel}</p>
+            </div>
+            <a
+              href={medical.ctaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
+            >
+              {medical.ctaLabel}
+            </a>
+            <p class="text-beige-500 text-xs mt-4">{medical.footnote}</p>
+          </div>
+        </Fragment>
+      )}
+    </div>
   </div>
 
   <script is:inline>
@@ -282,34 +441,56 @@ const summerConditions = campaign.summerSale.conditions ?? []
       var summerSaleStart = startOfDay(parseDate(overlay.dataset.summerSaleStart));
       var summerSaleEnd = endOfDay(parseDate(overlay.dataset.summerSaleEnd));
 
+      var medicalEnabled = overlay.dataset.medicalEnabled === '1';
+      var medicalTeaserStart = startOfDay(parseDate(overlay.dataset.medicalTeaserStart));
+      var medicalSaleStart = startOfDay(parseDate(overlay.dataset.medicalSaleStart));
+      var medicalSaleEnd = endOfDay(parseDate(overlay.dataset.medicalSaleEnd));
+
       var now = new Date();
       var phase = null;
       var countdownTarget = null;
 
-      if (now >= jubileeSaleStart && now <= jubileeSaleEnd) {
+      // ?campaignPreview=<phase> renders any card on demand for review, ignoring the
+      // date windows, the per-campaign enabled flag and the dismissal/session locks.
+      var preview = null;
+      try { preview = new URLSearchParams(window.location.search).get('campaignPreview'); } catch (e) {}
+
+      if (preview) {
+        phase = preview;
+      } else if (now >= jubileeSaleStart && now <= jubileeSaleEnd) {
         phase = 'jubilee-active';
       } else if (now >= summerSaleStart && now <= summerSaleEnd) {
         phase = 'summer-active';
+      } else if (medicalEnabled && now >= medicalSaleStart && now <= medicalSaleEnd) {
+        phase = 'medical-active';
       } else if (now >= jubileeTeaserStart && now < jubileeSaleStart) {
         phase = 'jubilee-teaser';
-        countdownTarget = jubileeSaleStart;
       } else if (now >= summerTeaserStart && now < summerSaleStart) {
         phase = 'summer-teaser';
-        countdownTarget = summerSaleStart;
+      } else if (medicalEnabled && now >= medicalTeaserStart && now < medicalSaleStart) {
+        phase = 'medical-teaser';
       }
 
       if (!phase) return;
 
+      var campaignKey = phase.split('-')[0];
+      if (phase.indexOf('-teaser') > 0) {
+        countdownTarget = campaignKey === 'jubilee' ? jubileeSaleStart
+          : campaignKey === 'summer' ? summerSaleStart
+          : medicalSaleStart;
+      }
+
       var storageKey = 'campaign-' + phase + '-dismissed';
-      try { if (localStorage.getItem(storageKey)) return; } catch (e) {}
+      if (!preview) {
+        try { if (localStorage.getItem(storageKey)) return; } catch (e) {}
+      }
 
       var card = overlay.querySelector('[data-card="' + phase + '"]');
       if (!card) return;
       card.classList.remove('hidden');
 
       if (countdownTarget) {
-        var countdownKey = phase.indexOf('jubilee') === 0 ? 'jubilee' : 'summer';
-        var countdownEl = card.querySelector('[data-countdown="' + countdownKey + '"]');
+        var countdownEl = card.querySelector('[data-countdown="' + campaignKey + '"]');
         var doneText = overlay.dataset.countdownDone || 'Ready!';
         if (countdownEl) {
           var update = function () {
@@ -335,12 +516,15 @@ const summerConditions = campaign.summerSale.conditions ?? []
         // Shared one-modal-per-session lock, claimed only when actually showing
         // (an eager claim would suppress the popup for the whole session if the
         // visitor navigated away during the delay). Campaign wins over
-        // PromoPopup/BookingPopup via its shorter show delay.
-        try {
-          if (sessionStorage.getItem('ml-modal-shown')) return;
-          sessionStorage.setItem('ml-modal-shown', '1');
-          sessionStorage.setItem('booking-popup-dismissed', '1');
-        } catch (e) {}
+        // PromoPopup/BookingPopup via its shorter show delay. A preview claims
+        // no lock, so reviewers can reload the same page repeatedly.
+        if (!preview) {
+          try {
+            if (sessionStorage.getItem('ml-modal-shown')) return;
+            sessionStorage.setItem('ml-modal-shown', '1');
+            sessionStorage.setItem('booking-popup-dismissed', '1');
+          } catch (e) {}
+        }
         overlay.classList.remove('opacity-0', 'pointer-events-none');
         overlay.classList.add('opacity-100', 'pointer-events-auto');
         card.classList.remove('scale-95');
@@ -350,7 +534,9 @@ const summerConditions = campaign.summerSale.conditions ?? []
       function hide() {
         overlay.classList.add('opacity-0', 'pointer-events-none');
         overlay.classList.remove('opacity-100', 'pointer-events-auto');
-        try { localStorage.setItem(storageKey, '1'); } catch (e) {}
+        if (!preview) {
+          try { localStorage.setItem(storageKey, '1'); } catch (e) {}
+        }
       }
 
       var closeButtons = card.querySelectorAll('.campaign-close');
@@ -366,7 +552,7 @@ const summerConditions = campaign.summerSale.conditions ?? []
         if (e.key === 'Escape') hide();
       });
 
-      setTimeout(show, 8000);
+      setTimeout(show, preview ? 300 : 8000);
     })();
   </script>
 )}
