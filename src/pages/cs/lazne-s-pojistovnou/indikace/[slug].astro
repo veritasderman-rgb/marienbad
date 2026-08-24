@@ -1,0 +1,150 @@
+---
+import Base from '@/layouts/Base.astro'
+import InsuranceSubpage from '@/components/InsuranceSubpage.astro'
+import { INSURANCE_BASE, getSubPage, indicationPages } from '@/data/insuranceSpa'
+import { indications } from '@/data/indications'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return indicationPages.map((page) => ({ params: { slug: page.slug }, props: { page } }))
+}
+
+const locale = 'cs' as const
+const { page } = Astro.props
+const hub = getSubPage('indikace')
+const group = indications.cs.groups.find((g) => g.id === page.groupId)
+
+const others = indicationPages.filter((p) => p.slug !== page.slug)
+---
+
+<Base
+  locale={locale}
+  section="insurance-spa"
+  title={page.metaTitle}
+  description={page.metaDescription}
+  alternateUrls={{ cs: `${INSURANCE_BASE}/indikace/${page.slug}` }}
+>
+  <InsuranceSubpage
+    title={page.title}
+    lead={page.lead}
+    eyebrow={`Indikační skupina ${page.roman}`}
+    extraCrumbs={[{ label: hub.navLabel, href: `${INSURANCE_BASE}/indikace` }, { label: page.navLabel }]}
+  >
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">Co se v této skupině léčí</h2>
+      <ul class="flex flex-col gap-3 list-none p-0 m-0">
+        {page.treats.map((item) => (
+          <li class="flex gap-3 bg-beige-100 border border-beige-200 px-5 py-4 rounded-xl text-beige-900 text-base leading-relaxed">
+            <svg class="w-5 h-5 text-turquoise-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">Cíl lázeňské léčby</h2>
+      <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0">
+        {page.goals.map((goal) => (
+          <li class="flex gap-3 text-beige-800 text-base leading-relaxed">
+            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500 mt-2.5" aria-hidden="true"></span>
+            <span>{goal}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">Používané procedury</h2>
+      <dl class="grid gap-4 sm:grid-cols-2 m-0">
+        {page.procedures.map((proc) => (
+          <div class="bg-white border border-beige-200 p-5" style="border-radius: var(--radius-card);">
+            <dt class="font-heading font-bold text-indigo-700 mb-2">{proc.name}</dt>
+            <dd class="text-beige-800 text-sm leading-relaxed m-0">{proc.detail}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    {page.local && (
+      <section class="bg-turquoise-50 border-l-4 border-turquoise-400 px-6 py-6 md:px-8 md:py-7 rounded-r-xl">
+        <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{page.local.heading}</h2>
+        <p class="text-beige-900 text-base leading-relaxed">{page.local.body}</p>
+      </section>
+    )}
+
+    {group && (
+      <section>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-1">
+          Co uvádí indikační seznam
+        </h2>
+        <p class="text-turquoise-700 text-sm font-semibold uppercase tracking-wider mb-4">{group.title}</p>
+        <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">
+          Kód vlevo uvádí lékař do návrhu na lázeňskou péči. Za diagnózou je rozsah, který pojišťovna hradí:
+          K je komplexní péče, P příspěvková a číslo za písmenem znamená délku pobytu ve dnech.
+        </p>
+        <ul class="flex flex-col gap-4 list-none p-0 m-0">
+          {group.items.map((item) => (
+            <li class="bg-white border border-beige-200 p-5 md:p-6" style="border-radius: var(--radius-card);">
+              <div class="flex flex-wrap items-start gap-3 mb-2">
+                <span class="shrink-0 inline-flex items-center rounded-lg bg-indigo-700 text-white text-xs font-bold px-2.5 py-1 tabular-nums">
+                  {item.code}
+                </span>
+                <p class="flex-1 min-w-[16rem] text-beige-900 text-base leading-relaxed m-0">{item.text}</p>
+              </div>
+              {item.coverage && (
+                <p class="text-turquoise-800 text-sm font-medium bg-turquoise-50 inline-block px-3 py-1.5 rounded-lg m-0 mt-2">
+                  {item.coverage}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+        <p class="text-beige-700 text-sm leading-relaxed mt-5">{indications.cs.sourceNote}</p>
+      </section>
+    )}
+
+    <section class="bg-indigo-50 border border-indigo-100 p-6 md:p-8" style="border-radius: var(--radius-card);">
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">Máte tuto diagnózu?</h2>
+      <p class="text-beige-900 text-base leading-relaxed mb-5">
+        Dalším krokem je návštěva praktického lékaře nebo ambulantního specialisty, který návrh na lázeňskou péči
+        vystaví. Rovnou ho požádejte, aby do návrhu uvedl Léčebné lázně Mariánské Lázně a.s.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href={`${INSURANCE_BASE}/jak-ziskat-navrh`} class="inline-flex items-center gap-2 bg-indigo-700 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-800 transition-colors">
+          Jak získat návrh
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href={`${INSURANCE_BASE}/cenik-doplatku`} class="inline-flex items-center gap-2 border border-indigo-200 text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-white transition-colors">
+          Kolik doplatím
+        </a>
+      </div>
+    </section>
+
+    <nav aria-label="Další indikační skupiny">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-6">Další léčené skupiny</h2>
+      <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0">
+        {others.map((other) => (
+          <li class="m-0">
+            <a
+              href={`${INSURANCE_BASE}/indikace/${other.slug}`}
+              class="group flex items-start gap-3 bg-white border border-beige-200 p-4 hover:border-turquoise-400 hover:shadow-card transition-all duration-300 h-full"
+              style="border-radius: var(--radius-card);"
+            >
+              <span class="shrink-0 w-9 h-9 rounded-lg bg-indigo-700 text-white text-xs font-bold flex items-center justify-center">{other.roman}</span>
+              <span class="flex flex-col gap-1">
+                <span class="font-semibold text-indigo-700 group-hover:text-turquoise-600 transition-colors">{other.title}</span>
+                <span class="text-beige-700 text-sm leading-relaxed">{other.teaser}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+  </InsuranceSubpage>
+</Base>

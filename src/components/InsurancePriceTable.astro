@@ -1,0 +1,117 @@
+---
+/**
+ * Ceník doplatků — jedna tabulka na typ péče (KLP / PLP).
+ *
+ * Devět číselných sloupců se na mobilu nevejde, proto tabulka scrolluje
+ * vodorovně uvnitř vlastního kontejneru a první sloupec zůstává přilepený.
+ */
+import type { PriceList } from '@/data/insuranceSpa'
+import { priceRoomLegend, priceFootnote } from '@/data/insuranceSpa'
+
+interface Props {
+  list: PriceList
+}
+
+const { list } = Astro.props
+
+const fmt = (v: number | null): string => {
+  if (v === null) return '—'
+  if (v === 0) return '0'
+  return new Intl.NumberFormat('cs-CZ').format(v)
+}
+
+const hasFootnote = list.groups.some((g) => g.rows.some((r) => r.footnote))
+---
+
+<div class="not-prose">
+  <h2 id={`cenik-${list.key}`} class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-3">
+    {list.title}
+  </h2>
+  <p class="text-beige-800 text-base leading-relaxed mb-6 max-w-3xl">{list.intro}</p>
+
+  {list.validityNote && (
+    <p class="bg-turquoise-50 border-l-4 border-turquoise-400 text-indigo-800 text-sm px-4 py-3 mb-6 rounded-r-lg">
+      {list.validityNote}
+    </p>
+  )}
+
+  <p class="md:hidden text-beige-700 text-sm mb-2 flex items-center gap-2">
+    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3M16 9l4 3-4 3" />
+    </svg>
+    Tabulkou lze posouvat do stran.
+  </p>
+  <div class="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+    <table class="w-full min-w-[46rem] border-collapse text-sm">
+      <caption class="sr-only">
+        {list.title} — {list.boardLabel}, ceny za osobu v Kč včetně DPH
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" rowspan="2" class="sticky left-0 z-10 bg-indigo-700 text-white text-left font-semibold px-3 py-3 align-bottom min-w-[11rem]">
+            {list.boardLabel}
+          </th>
+          {list.seasons.map((season) => (
+            <th scope="colgroup" colspan="3" class="bg-indigo-700 text-white text-center font-semibold px-3 py-2 border-l border-white/20 whitespace-nowrap">
+              {season}
+            </th>
+          ))}
+        </tr>
+        <tr>
+          {list.seasons.map(() =>
+            list.columns.map((col, i) => (
+              <th scope="col" class={`bg-indigo-600 text-white/90 text-right font-medium px-3 py-2 whitespace-nowrap ${i === 0 ? 'border-l border-white/20' : ''}`}>
+                {col}
+              </th>
+            ))
+          )}
+        </tr>
+      </thead>
+      <tbody>
+        {list.groups.map((group) => (
+          <>
+            <tr>
+              <th
+                scope="rowgroup"
+                colspan={10}
+                class="sticky left-0 bg-beige-200 text-indigo-800 text-left font-heading font-bold uppercase tracking-wide text-xs px-3 py-2"
+              >
+                {group.hotel}
+              </th>
+            </tr>
+            {group.rows.map((row) => (
+              <tr class="border-b border-beige-200 bg-white odd:bg-beige-50">
+                <th scope="row" class="sticky left-0 z-10 bg-inherit text-indigo-900 text-left font-medium px-3 py-2.5 whitespace-nowrap">
+                  {row.room}{row.footnote && <span class="text-turquoise-700" aria-hidden="true">*</span>}
+                </th>
+                {row.values.map((value, i) => (
+                  <td class={`text-right px-3 py-2.5 tabular-nums whitespace-nowrap ${i % 3 === 0 ? 'border-l border-beige-200' : ''} ${value === 0 ? 'text-turquoise-700 font-semibold' : 'text-beige-900'}`}>
+                    {fmt(value)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-beige-700 text-sm mt-4">{priceRoomLegend}</p>
+  <p class="text-beige-700 text-sm mt-1">
+    <span class="text-turquoise-700 font-semibold">0</span> — ubytování bez doplatku. <span class="font-semibold">—</span> — cena není v ceníku pro danou sezónu uvedena; sdělí ji lázně na vyžádání.
+  </p>
+  {hasFootnote && <p class="text-beige-700 text-sm mt-1">* {priceFootnote}</p>}
+
+  <h3 class="font-heading text-xl font-bold text-indigo-700 mt-10 mb-4">Další doplatky a poplatky</h3>
+  <ul class="flex flex-col gap-3 list-none p-0 m-0">
+    {list.extras.map((extra) => (
+      <li class="flex gap-3 text-beige-800 text-base leading-relaxed">
+        <svg class="w-5 h-5 text-turquoise-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{extra}</span>
+      </li>
+    ))}
+  </ul>
+</div>

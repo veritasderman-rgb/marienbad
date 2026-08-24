@@ -1,0 +1,23 @@
+---
+/**
+ * Rozcestník sekce o lázeňské péči hrazené ze zdravotního pojištění.
+ * Sekce je jen česky — týká se českého veřejného zdravotního pojištění.
+ */
+import Base from '@/layouts/Base.astro'
+import InsuranceSpaLanding from '@/components/InsuranceSpaLanding.astro'
+import { INSURANCE_BASE } from '@/data/insuranceSpa'
+
+export const prerender = true
+
+const locale = 'cs' as const
+---
+
+<Base
+  locale={locale}
+  section="insurance-spa"
+  title="Lázně s pojišťovnou — Mariánské Lázně 2026 | Marienbad.com"
+  description="Kdy máte nárok na lázně hrazené pojišťovnou, který lékař vystaví návrh, kolik činí doplatky v roce 2026 a co všechno k pobytu v Mariánských Lázních patří."
+  alternateUrls={{ cs: INSURANCE_BASE }}
+>
+  <InsuranceSpaLanding />
+</Base>

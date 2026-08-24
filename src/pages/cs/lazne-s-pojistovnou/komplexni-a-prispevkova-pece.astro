@@ -1,0 +1,135 @@
+---
+import Base from '@/layouts/Base.astro'
+import InsuranceSubpage from '@/components/InsuranceSubpage.astro'
+import { INSURANCE_BASE, careComparison, careLegalNote, careTypes, getSubPage, spaTax } from '@/data/insuranceSpa'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const page = getSubPage('komplexni-a-prispevkova-pece')
+const [klp, plp] = careTypes
+---
+
+<Base
+  locale={locale}
+  section="insurance-spa"
+  title={page.metaTitle}
+  description={page.metaDescription}
+  alternateUrls={{ cs: `${INSURANCE_BASE}/${page.slug}` }}
+>
+  <InsuranceSubpage title={page.title} lead={page.lead} current={page.slug} eyebrow="Lázně s pojišťovnou" extraCrumbs={[{ label: page.navLabel }]}>
+
+    <section>
+      <div class="grid gap-5 md:grid-cols-2">
+        {careTypes.map((type) => (
+          <article class="bg-white border border-beige-200 p-7 flex flex-col h-full" style="border-radius: var(--radius-card);">
+            <p class="text-turquoise-700 text-xs font-bold uppercase tracking-wider mb-2">{type.abbr}</p>
+            <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{type.name}</h2>
+            <p class="text-beige-800 leading-relaxed mb-6">{type.tagline}</p>
+
+            <p class="font-semibold text-indigo-800 text-sm mb-2">Pojišťovna hradí</p>
+            <ul class="flex flex-col gap-1.5 list-none p-0 m-0 mb-5">
+              {type.covered.map((item) => (
+                <li class="flex gap-2 text-beige-800 text-sm leading-relaxed">
+                  <svg class="w-4 h-4 text-turquoise-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p class="font-semibold text-indigo-800 text-sm mb-2">Hradíte sami</p>
+            <ul class="flex flex-col gap-1.5 list-none p-0 m-0">
+              {type.paidByClient.map((item) => (
+                <li class="flex gap-2 text-beige-800 text-sm leading-relaxed">
+                  <svg class="w-4 h-4 text-beige-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">Srovnání bod po bodu</h2>
+      <div class="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+        <table class="w-full min-w-[42rem] border-collapse text-sm md:text-base">
+          <thead>
+            <tr>
+              <th scope="col" class="bg-indigo-700 text-white text-left font-semibold px-4 py-3 w-1/4">&nbsp;</th>
+              <th scope="col" class="bg-indigo-700 text-white text-left font-semibold px-4 py-3 border-l border-white/20">
+                Komplexní péče <span class="font-normal text-white/70">(KLP)</span>
+              </th>
+              <th scope="col" class="bg-indigo-700 text-white text-left font-semibold px-4 py-3 border-l border-white/20">
+                Příspěvková péče <span class="font-normal text-white/70">(PLP)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {careComparison.map((row) => (
+              <tr class="border-b border-beige-200 bg-white odd:bg-beige-50">
+                <th scope="row" class="text-left font-semibold text-indigo-800 align-top px-4 py-3.5">{row.label}</th>
+                <td class="text-beige-900 align-top px-4 py-3.5 border-l border-beige-200 leading-relaxed">{row.klp}</td>
+                <td class="text-beige-900 align-top px-4 py-3.5 border-l border-beige-200 leading-relaxed">{row.plp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bg-beige-100 border border-beige-200 p-6 md:p-8" style="border-radius: var(--radius-card);">
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-4">Lázeňská léčba je vždy péče lůžková</h2>
+      <p class="text-beige-900 text-base leading-relaxed">{careLegalNote}</p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Co to znamená pro váš rozpočet</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">
+        Rozdíl mezi oběma typy péče je v praxi řádový. U komplexní péče můžete pobyt absolvovat i zcela bez doplatku —
+        v pokoji 1/2 Standard v dependancích Vítkov, Labe nebo Windsor je doplatek nulový ve všech sezónách.
+        U příspěvkové péče hradíte ubytování a stravu v plné výši.
+      </p>
+
+      <div class="grid gap-4 sm:grid-cols-2 mb-6">
+        <div class="bg-white border border-beige-200 p-6" style="border-radius: var(--radius-card);">
+          <p class="text-turquoise-700 text-xs font-bold uppercase tracking-wider mb-3">{klp.abbr} — 21 dnů, dependance, 1/2 Standard</p>
+          <p class="text-indigo-800 text-3xl font-bold mb-1">0 Kč</p>
+          <p class="text-beige-800 text-sm leading-relaxed">doplatek za ubytování a stravu</p>
+          <p class="text-beige-700 text-sm leading-relaxed mt-3">+ lázeňský poplatek {spaTax.amount}</p>
+        </div>
+        <div class="bg-white border border-beige-200 p-6" style="border-radius: var(--radius-card);">
+          <p class="text-turquoise-700 text-xs font-bold uppercase tracking-wider mb-3">{plp.abbr} — 21 dnů, dependance, 1/2 Standard</p>
+          <p class="text-indigo-800 text-3xl font-bold mb-1">od 21 210 Kč</p>
+          <p class="text-beige-800 text-sm leading-relaxed">ubytování s polopenzí, sezóna leden–duben</p>
+          <p class="text-beige-700 text-sm leading-relaxed mt-3">+ lázeňský poplatek {spaTax.amount}</p>
+        </div>
+      </div>
+
+      <p class="text-beige-700 text-sm leading-relaxed mb-6">
+        Uvedené částky jsou nejnižší z ceníku pro rok 2026 a platí pro nejlevnější kategorii a sezónu.
+        U vyšších kategorií a v hlavní sezóně jsou ceny výrazně vyšší.
+      </p>
+
+      <a href={`${INSURANCE_BASE}/cenik-doplatku`} class="inline-flex items-center gap-2 bg-indigo-700 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-800 transition-colors">
+        Kompletní ceník doplatků 2026
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">Dovolená, nebo neschopenka?</h2>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-4">
+        Praktický rozdíl, na který se ptá skoro každý. <strong class="text-indigo-800">Komplexní péči čerpáte v době pracovní neschopnosti</strong> —
+        neschopenku vystaví lázeňský lékař při vstupní lékařské prohlídce, tedy až na místě, ne váš praktik před odjezdem.
+      </p>
+      <p class="text-beige-800 text-base md:text-lg leading-relaxed">
+        <strong class="text-indigo-800">Příspěvkovou péči čerpáte v době vlastní dovolené.</strong> Pro pracující to znamená
+        vyčerpat na 21 dnů podstatnou část roční dovolené — pro seniory v důchodu je naopak tento typ péče
+        organizačně jednodušší.
+      </p>
+    </section>
+
+  </InsuranceSubpage>
+</Base>

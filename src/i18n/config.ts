@@ -26,6 +26,8 @@ export const routes = {
   people: { de: 'menschen', en: 'people', cs: 'lide', ru: 'lyudi' },
   magazine: { de: 'magazin', en: 'magazine', cs: 'magazin', ru: 'zhurnal' },
   podcast: { cs: 'podcast' },
+  /** Česká sekce o péči hrazené z veřejného zdravotního pojištění — jen cs. */
+  'insurance-spa': { cs: 'lazne-s-pojistovnou' },
   quiz: { de: 'quiz', en: 'quiz', cs: 'kviz', ru: 'viktorina' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>
 

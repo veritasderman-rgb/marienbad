@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro'
 import { locales, routes, type Locale, type SectionKey } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import { getArticles, getStories, getPagesIndex } from '@/content/reader'
+import { INSURANCE_BASE, indicationPages, subPages } from '@/data/insuranceSpa'
 
 interface SearchEntry {
   title: string
@@ -95,6 +96,23 @@ export const GET: APIRoute = async ({ url }) => {
       excerpt: '',
       type: 'page',
     })
+  }
+
+  // (e) Czech-only section on insurance-covered spa care — hand-built pages
+  //     with no CMS entry, so they would otherwise never reach the index.
+  if (locale === 'cs') {
+    add({
+      title: 'Lázně s pojišťovnou',
+      url: INSURANCE_BASE,
+      excerpt: 'Kdy máte nárok na lázeňskou péči hrazenou pojišťovnou, jak získat návrh a kolik činí doplatky.',
+      type: 'page',
+    })
+    for (const page of subPages) {
+      add({ title: page.title, url: `${INSURANCE_BASE}/${page.slug}`, excerpt: page.metaDescription, type: 'page' })
+    }
+    for (const page of indicationPages) {
+      add({ title: page.title, url: `${INSURANCE_BASE}/indikace/${page.slug}`, excerpt: page.teaser, type: 'page' })
+    }
   }
 
   return new Response(JSON.stringify([...entries.values()]), {

@@ -1,0 +1,52 @@
+---
+/**
+ * Společný rámec podstránek sekce „Lázně s pojišťovnou“.
+ *
+ * Proti PillarPage.astro záměrně nemá boční obsah — podstránky nesou široké
+ * cenové a srovnávací tabulky, které by se do 680px sloupce nevešly.
+ */
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import InsuranceCta from '@/components/InsuranceCta.astro'
+import InsuranceNavCards from '@/components/InsuranceNavCards.astro'
+import { INSURANCE_BASE } from '@/data/insuranceSpa'
+
+interface Props {
+  title: string
+  lead: string
+  /** Slug aktuální podstránky — vypadne z rozcestníku na patě. */
+  current?: string
+  /** Volitelné doplnění drobečkové navigace (např. detail indikace). */
+  extraCrumbs?: { label: string; href?: string }[]
+  eyebrow?: string
+}
+
+const { title, lead, current, extraCrumbs = [], eyebrow } = Astro.props
+
+const breadcrumbs = [
+  { label: 'Domů', href: '/cs' },
+  { label: 'Léčivé prameny & Lázně', href: '/cs/mineralni-prameny' },
+  { label: 'Lázně s pojišťovnou', href: INSURANCE_BASE },
+  ...extraCrumbs,
+]
+---
+
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+  <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-16">
+    <Breadcrumbs items={breadcrumbs} locale="cs" />
+    {eyebrow && (
+      <p class="text-turquoise-300 text-sm font-semibold uppercase tracking-wider mb-3">{eyebrow}</p>
+    )}
+    <h1 class="font-heading text-3xl md:text-5xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{title}</h1>
+    <p class="text-white/80 text-lg md:text-xl max-w-3xl leading-relaxed">{lead}</p>
+  </div>
+</section>
+
+<div class="container-wide py-14 md:py-20">
+  <div class="max-w-4xl mx-auto flex flex-col gap-14 md:gap-20">
+    <slot />
+    <InsuranceCta />
+    <InsuranceNavCards current={current} heading="Kam dál" />
+  </div>
+</div>

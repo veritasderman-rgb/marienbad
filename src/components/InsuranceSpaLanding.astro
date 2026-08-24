@@ -1,0 +1,248 @@
+---
+/**
+ * Rozcestník sekce „Lázně s pojišťovnou“ — /cs/lazne-s-pojistovnou.
+ *
+ * Stránka odpovídá na čtyři otázky v pořadí, v jakém je klient klade:
+ * mám nárok → co za to zaplatím → co pro to musím udělat → co za to dostanu.
+ */
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import InsuranceCta from '@/components/InsuranceCta.astro'
+import InsuranceNavCards from '@/components/InsuranceNavCards.astro'
+import {
+  INSURANCE_BASE,
+  benefits,
+  careTypes,
+  indicationPages,
+  insurers,
+  processSteps,
+} from '@/data/insuranceSpa'
+
+const breadcrumbs = [
+  { label: 'Domů', href: '/cs' },
+  { label: 'Léčivé prameny & Lázně', href: '/cs/mineralni-prameny' },
+  { label: 'Lázně s pojišťovnou' },
+]
+---
+
+<!-- Hero -->
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.14)_0%,_transparent_60%)]"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
+  <div class="relative container-wide pt-28 pb-16 md:pt-36 md:pb-20">
+    <Breadcrumbs items={breadcrumbs} locale="cs" />
+    <p class="text-turquoise-300 text-sm font-semibold uppercase tracking-wider mb-3">Lázeňská péče hrazená ze zdravotního pojištění</p>
+    <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="font-size: var(--text-h1);">
+      Lázně v Mariánských Lázních s pojišťovnou
+    </h1>
+    <p class="text-white/85 text-lg md:text-xl max-w-3xl leading-relaxed mb-8">
+      Tři až čtyři týdny léčby, kterou z velké části zaplatí vaše zdravotní pojišťovna. Na této stránce najdete,
+      kdy na lázně máte nárok, který lékař vám návrh vystaví, kolik doplatíte a co všechno k pobytu patří.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a href={`${INSURANCE_BASE}/jak-ziskat-navrh`} class="inline-flex items-center gap-2 bg-yellow-400 text-indigo-900 font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition-colors">
+        Jak získat návrh
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+      <a href={`${INSURANCE_BASE}/cenik-doplatku`} class="inline-flex items-center gap-2 border border-white/40 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
+        Ceník doplatků 2026
+      </a>
+      <a href={`${INSURANCE_BASE}/indikace`} class="inline-flex items-center gap-2 border border-white/40 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
+        Léčené diagnózy
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Máte nárok? -->
+<section class="container-wide py-16 md:py-20">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-700 mb-5">Kdy máte na lázeňskou péči nárok</h2>
+    <p class="text-beige-800 text-lg leading-relaxed mb-4">
+      Nárok nevzniká věkem ani přáním, ale diagnózou. Zákon vymezuje takzvaný indikační seznam — soupis onemocnění,
+      u kterých je lázeňská léčebně rehabilitační péče hrazená z veřejného zdravotního pojištění. Váš lékař posoudí,
+      zda vaše diagnóza do seznamu patří, a pokud ano, vystaví návrh.
+    </p>
+    <p class="text-beige-800 text-lg leading-relaxed mb-8">
+      V Mariánských Lázních se léčí devět indikačních skupin. Léčebné lázně Mariánské Lázně a.s. jsou přitom
+      smluvním partnerem <strong class="text-indigo-800">všech zdravotních pojišťoven v České republice</strong> —
+      na tom, u které jste pojištěni, tedy nezáleží.
+    </p>
+
+    <ul class="flex flex-wrap gap-2 list-none p-0 m-0 mb-10">
+      {insurers.map((ins) => (
+        <li class="inline-flex items-baseline gap-2 bg-beige-100 border border-beige-200 rounded-full px-4 py-2">
+          <span class="font-semibold text-indigo-700 text-sm">{ins.short}</span>
+          <span class="text-beige-700 text-xs tabular-nums">{ins.code}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-5">Devět léčených skupin onemocnění</h3>
+    <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0 mb-8">
+      {indicationPages.map((ind) => (
+        <li class="m-0">
+          <a
+            href={`${INSURANCE_BASE}/indikace/${ind.slug}`}
+            class="group flex items-start gap-3 bg-white border border-beige-200 p-4 hover:border-turquoise-400 hover:shadow-card transition-all duration-300 h-full"
+            style="border-radius: var(--radius-card);"
+          >
+            <span class="shrink-0 w-9 h-9 rounded-lg bg-indigo-700 text-white text-xs font-bold flex items-center justify-center">{ind.roman}</span>
+            <span class="flex flex-col gap-1">
+              <span class="font-semibold text-indigo-700 group-hover:text-turquoise-600 transition-colors">{ind.title}</span>
+              <span class="text-beige-700 text-sm leading-relaxed">{ind.teaser}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a href={`${INSURANCE_BASE}/indikace`} class="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:text-turquoise-600 transition-colors">
+      Podrobný přehled indikací a kontraindikací
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+    </a>
+  </div>
+</section>
+
+<!-- KLP vs PLP -->
+<section class="bg-beige-100 py-16 md:py-20">
+  <div class="container-wide">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-700 mb-5">Dva typy hrazené péče</h2>
+      <p class="text-beige-800 text-lg leading-relaxed mb-8">
+        O tom, který typ dostanete, rozhoduje lékař v návrhu a následně revizní lékař pojišťovny. Rozdíl je
+        v tom, co za vás pojišťovna zaplatí — a tím i v tom, kolik pobyt stojí vás.
+      </p>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        {careTypes.map((type) => (
+          <article class="bg-white border border-beige-200 p-7 flex flex-col h-full" style="border-radius: var(--radius-card);">
+            <p class="text-turquoise-700 text-xs font-bold uppercase tracking-wider mb-2">{type.abbr}</p>
+            <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{type.name}</h3>
+            <p class="text-beige-800 leading-relaxed mb-6">{type.tagline}</p>
+
+            <p class="font-semibold text-indigo-800 text-sm mb-2">Pojišťovna hradí</p>
+            <ul class="flex flex-col gap-1.5 list-none p-0 m-0 mb-5">
+              {type.covered.map((item) => (
+                <li class="flex gap-2 text-beige-800 text-sm leading-relaxed">
+                  <svg class="w-4 h-4 text-turquoise-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p class="font-semibold text-indigo-800 text-sm mb-2">Hradíte sami</p>
+            <ul class="flex flex-col gap-1.5 list-none p-0 m-0 mb-6">
+              {type.paidByClient.map((item) => (
+                <li class="flex gap-2 text-beige-800 text-sm leading-relaxed">
+                  <svg class="w-4 h-4 text-beige-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <dl class="mt-auto border-t border-beige-200 pt-4 text-sm flex flex-col gap-2">
+              <div class="flex gap-2">
+                <dt class="text-beige-700 shrink-0">Délka:</dt>
+                <dd class="text-indigo-800 font-medium m-0">{type.length}</dd>
+              </div>
+              <div class="flex gap-2">
+                <dt class="text-beige-700 shrink-0">Čerpá se:</dt>
+                <dd class="text-indigo-800 font-medium m-0">{type.timing}</dd>
+              </div>
+              <div class="flex gap-2">
+                <dt class="text-beige-700 shrink-0">Platnost návrhu:</dt>
+                <dd class="text-indigo-800 font-medium m-0">{type.validity}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+
+      <div class="flex flex-wrap gap-4 mt-8">
+        <a href={`${INSURANCE_BASE}/komplexni-a-prispevkova-pece`} class="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:text-turquoise-600 transition-colors">
+          Podrobné srovnání obou typů
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href={`${INSURANCE_BASE}/cenik-doplatku`} class="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:text-turquoise-600 transition-colors">
+          Ceník doplatků 2026
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Postup -->
+<section class="container-wide py-16 md:py-20">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-700 mb-5">Jak pobyt získat — čtyři kroky</h2>
+    <p class="text-beige-800 text-lg leading-relaxed mb-10">
+      Celý proces začíná v ordinaci vašeho lékaře a končí pozvánkou k nástupu. Nic z toho nevyřizují lázně za vás —
+      první krok musíte udělat sami.
+    </p>
+
+    <ol class="flex flex-col gap-6 list-none p-0 m-0">
+      {processSteps.map((step) => (
+        <li class="relative bg-white border border-beige-200 p-6 md:p-8 m-0" style="border-radius: var(--radius-card);">
+          <div class="flex items-start gap-5">
+            <span class="shrink-0 w-12 h-12 rounded-full bg-indigo-700 text-white font-heading text-xl font-bold flex items-center justify-center">
+              {step.n}
+            </span>
+            <div class="flex-1">
+              <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{step.title}</h3>
+              {step.body.map((para) => (
+                <p class="text-beige-800 text-base leading-relaxed mb-3 last:mb-0">{para}</p>
+              ))}
+              {step.tip && (
+                <p class="mt-4 bg-turquoise-50 border-l-4 border-turquoise-400 text-indigo-800 text-sm leading-relaxed px-4 py-3 rounded-r-lg">
+                  <strong class="font-semibold">Tip:</strong> {step.tip}
+                </p>
+              )}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <a href={`${INSURANCE_BASE}/jak-ziskat-navrh`} class="inline-flex items-center gap-2 mt-8 text-indigo-700 font-semibold hover:text-turquoise-600 transition-colors">
+      Co si vzít k lékaři a na co si dát pozor
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Výhody -->
+<section class="bg-beige-100 py-16 md:py-20">
+  <div class="container-wide">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-heading text-2xl md:text-4xl font-bold text-indigo-700 mb-5">Co k pobytu dostanete</h2>
+      <p class="text-beige-800 text-lg leading-relaxed mb-10">
+        Lázeňský pobyt není jen soubor procedur. Tři týdny jsou dost dlouhá doba na to, aby záleželo i na tom,
+        kde bydlíte, co je v okolí a co si k pobytu můžete přidat.
+      </p>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {benefits.map((benefit) => (
+          <article class="bg-white border border-beige-200 p-6 flex flex-col h-full" style="border-radius: var(--radius-card);">
+            <h3 class="font-heading text-lg font-bold text-indigo-700 mb-3">{benefit.title}</h3>
+            <p class="text-beige-800 text-sm leading-relaxed mb-4">{benefit.body}</p>
+            {benefit.href && (
+              <a href={benefit.href} class="mt-auto inline-flex items-center gap-2 text-indigo-600 text-sm font-semibold hover:text-turquoise-600 transition-colors">
+                {benefit.linkLabel}
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rozcestník + kontakt -->
+<section class="container-wide py-16 md:py-20">
+  <div class="max-w-4xl mx-auto flex flex-col gap-14 md:gap-16">
+    <InsuranceNavCards heading="Všechno k lázeňské péči s pojišťovnou" />
+    <InsuranceCta />
+  </div>
+</section>
