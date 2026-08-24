@@ -28,13 +28,19 @@ const page = getSubPage('hotely-a-vyhody')
 
       <div class="flex flex-col gap-5">
         {insuranceHotels.map((hotel) => (
-          <article class="bg-white border border-beige-200 overflow-hidden" style="border-radius: var(--radius-card);">
-            <Pic
-              src={hotel.image}
-              alt={hotel.imageAlt}
-              class="w-full h-48 md:h-64 object-cover"
-              sizes="(max-width: 768px) 100vw, 896px"
-            />
+          <article class="bg-white border border-beige-200 overflow-hidden md:grid md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:items-start" style="border-radius: var(--radius-card);">
+            {/* Fotka vedle údajů a v přirozeném poměru — ořez do nízkého pásu
+                usekával budovám střechy. Pic musí být obalený vlastním divem:
+                renderuje <picture class="contents">, takže by se <source>
+                i <img> staly samostatnými buňkami mřížky a rozhodily ji. */}
+            <div class="md:h-full">
+              <Pic
+                src={hotel.image}
+                alt={hotel.imageAlt}
+                class="w-full h-auto block md:h-full md:object-cover"
+                sizes="(max-width: 768px) 100vw, 352px"
+              />
+            </div>
             <div class="p-6 md:p-8">
             <div class="flex flex-wrap items-baseline gap-3 mb-3">
               <h3 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 m-0">{hotel.name}</h3>

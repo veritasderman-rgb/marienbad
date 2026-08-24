@@ -51,9 +51,10 @@ export interface SubPage {
   /** Klíč ikony v komponentě InsuranceNavCards.astro */
   icon: 'document' | 'compare' | 'price' | 'stethoscope' | 'suitcase' | 'hotel' | 'question'
   /** Snímek pod hlavičkou podstránky. Cesty vedou na fotky, které web už
-   *  používá jinde — mají hotové WebP varianty v manifestu. */
-  image: string
-  imageAlt: string
+   *  používá jinde — mají hotové WebP varianty v manifestu. Volitelný: přehled
+   *  hotelů banner nemá, protože jeho snímek nese hned první karta v seznamu. */
+  image?: string
+  imageAlt?: string
 }
 
 export const subPages: SubPage[] = [
@@ -132,8 +133,6 @@ export const subPages: SubPage[] = [
     lead:
       'Léčba i procedury probíhají přímo v hotelu, kde bydlíte — nikam se za nimi nedochází. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
     icon: 'hotel',
-    image: '/images/hotels/hotels/2/images/0/image.jpg',
-    imageAlt: 'Lázeňské hotely Hvězda a Imperial nad parkem s růžovými záhony',
   },
   {
     slug: 'caste-dotazy',
