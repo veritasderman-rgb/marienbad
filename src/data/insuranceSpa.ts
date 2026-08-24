@@ -961,8 +961,15 @@ export const insuranceHotels: InsuranceHotel[] = [
 export const hotelsIntro =
   'Léčba i všechny procedury probíhají přímo v hotelu, kde bydlíte — nikam se za nimi nedochází. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
 
+/**
+ * Pozor na rozpor mezi dvěma zdroji: ceník 2026 má nulový doplatek jen
+ * u pokojů 1/2 Standard v dependancích, zatímco odpovědi na dotazy na
+ * lazneml.cz uvádějí mezi ubytováním bez doplatku i hotely Vltava a Svoboda
+ * (jejich kategorie Komfort a Komfort Plus ale doplatek v ceníku mají).
+ * Text proto odděluje doložený údaj z ceníku od tvrzení lázní.
+ */
 export const hotelsFreeNote =
-  'U komplexní lázeňské péče je zcela bez doplatku ubytování v hotelech Vltava a Svoboda a v dependancích Labe, Windsor a Vítkov — konkrétně v pokojích kategorie 1/2 Standard, které mají v ceníku nulový doplatek ve všech sezónách.'
+  'Ceník komplexní péče pro rok 2026 uvádí nulový doplatek u pokojů 1/2 Standard v dependancích Vítkov, Labe a Windsor — ubytování tam nestojí nic v žádné ze tří sezón. Lázně mezi ubytováním bez doplatku uvádějí i hotely Vltava a Svoboda; ceník pro ně ale obsahuje pouze kategorie Komfort a Komfort Plus, které doplatek mají, proto si konkrétní kategorii bez doplatku ověřte při rezervaci.'
 
 /* ------------------------------------------------------------------ *
  * Cesta, zavazadla, doprava po městě
@@ -981,7 +988,7 @@ export const travelBlocks: TravelBlock[] = [
     body:
       'Mariánské Lázně leží na trati Plzeň – Cheb a mají vlastní železniční stanici. Pro třítýdenní pobyt je vlak obvykle pohodlnější než auto — nemusíte celou dobu řešit parkování a cestu zvládnete i s omezenou hybností.',
     bullets: [
-      'Z Prahy přibližně 3 hodiny, s přestupem v Plzni.',
+      'Z Prahy přibližně 3 hodiny — z hlavního nádraží jede denně několik expresů přímo do Mariánských Lázní přes Plzeň, bez přestupu.',
       'Z Plzně přibližně 1,5 hodiny přímým spojem.',
       'Z Karlových Varů přibližně 1 hodina.',
       'Z Chebu 25 minut, s návazností na mezinárodní vlaky z Německa.',
@@ -1000,13 +1007,14 @@ export const travelBlocks: TravelBlock[] = [
       'Kurýrní služby doručující do druhého dne (PPL, DPD, Zásilkovna) fungují stejně — rozhoduje jen to, zda hotel zásilku přijme a uschová.',
     ],
     note:
-      'Odesílejte tak, aby zásilka dorazila den až dva po vašem nástupu, ne dřív. Recepce vám ji předá při příjezdu nebo ji uloží do vašeho pokoje.',
+      'Odesílejte tak, aby zásilka dorazila den až dva před vaším příjezdem — s větším předstihem ji hotel obvykle nepřevezme, po vašem nástupu byste naopak zůstali bez věcí. Recepce vám ji předá při příjezdu nebo ji nechá donést na pokoj.',
   },
   {
     heading: 'Z nádraží do hotelu',
     body:
       'Vlakové nádraží leží asi dva kilometry od lázeňského centra, takže poslední úsek cesty je potřeba dojet — pěšky to s kufrem není příjemné, zvlášť do kopce.',
     bullets: [
+      'Hosté hotelů Ensana mohou využít transfer přímo z perónu — stačí sdělit číslo vlaku při rezervaci nebo předem e-mailem.',
       'Trolejbusová linka č. 5 spojuje nádraží s centrem a kolonádou. Ráno jezdí po 15–20 minutách, odpoledne a večer po 20 minutách.',
       'Taxi stojí přímo před výpravní budovou; jízda do lázeňské části trvá pár minut.',
       'Hotelová recepce zajistí taxi i transfer z letiště v Praze nebo Mnichově — stačí se ozvat předem.',
@@ -1154,7 +1162,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Ve kterém hotelu je při komplexní lázeňské péči ubytování bez doplatku?',
-    a: 'V hotelech Vltava a Svoboda a v dependancích Labe, Windsor a Vítkov.',
+    a: 'Lázně uvádějí hotely Vltava a Svoboda a dependance Labe, Windsor a Vítkov. V ceníku pro rok 2026 mají nulový doplatek pokoje 1/2 Standard v dependancích; u hotelů Vltava a Svoboda ceník obsahuje jen kategorie Komfort a Komfort Plus, které doplatek mají — konkrétní kategorii bez doplatku si proto ověřte při rezervaci.',
   },
   {
     q: 'Za co se u komplexní péče účtuje doplatek?',
