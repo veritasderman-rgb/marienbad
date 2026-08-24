@@ -245,7 +245,7 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
       { name: 'Místa pro osoby se zdravotním postižením', note: '3 parkovací místa' },
     ] },
     { location: 'Poloha v klidné části lesoparku nedaleko kolonády.', options: [
-      { name: 'Parkoviště ve dvoře hotelu', price: '250 Kč/den · od 5 nocí 200 Kč/den', note: '12 míst, platba na recepci, nutná rezervace předem' },
+      { name: 'Parkoviště ve dvoře hotelu', price: 'do 4 nocí 250 Kč/noc · od 5 nocí 200 Kč/noc', note: 'Omezená dostupnost — 12 míst. Rezervace nutná předem na recepci hotelu, kde parkování také zaplatíte.' },
       { name: 'Před hotelem v Chopinově ulici', note: 'Veřejné placené stání s parkovacím automatem' },
       { name: 'Parkovací dům u Městského divadla', note: 'ul. Pramenská, cca 200 m od hotelu', href: CITY_GARAGE },
     ] },
@@ -278,7 +278,7 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
       { name: 'Plätze für Menschen mit Behinderung', note: '3 Parkplätze' },
     ] },
     { location: 'Lage in einem ruhigen Teil des Waldparks nahe der Kolonnade.', options: [
-      { name: 'Parkplatz im Innenhof des Hotels', price: '250 CZK/Tag · ab 5 Nächten 200 CZK/Tag', note: '12 Plätze, Zahlung an der Rezeption, Reservierung im Voraus erforderlich' },
+      { name: 'Parkplatz im Innenhof des Hotels', price: 'bis 4 Nächte 250 CZK/Nacht · ab 5 Nächten 200 CZK/Nacht', note: 'Begrenzte Verfügbarkeit — 12 Plätze. Reservierung im Voraus an der Hotelrezeption erforderlich, dort erfolgt auch die Zahlung.' },
       { name: 'Vor dem Hotel in der Chopin-Straße', note: 'Öffentliches gebührenpflichtiges Parken mit Parkautomat' },
       { name: 'Parkhaus am Stadttheater', note: 'Pramenská-Straße, ca. 200 m vom Hotel', href: CITY_GARAGE },
     ] },
@@ -311,7 +311,7 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
       { name: 'Spaces for people with disabilities', note: '3 parking spaces' },
     ] },
     { location: 'Located in a quiet part of the forest park near the colonnade.', options: [
-      { name: 'Car park in the hotel courtyard', price: '250 CZK/day · 200 CZK/day from 5 nights', note: '12 spaces, payment at reception, advance reservation required' },
+      { name: 'Car park in the hotel courtyard', price: '250 CZK/night up to 4 nights · 200 CZK/night from 5 nights', note: 'Limited availability — 12 spaces. Advance reservation required at the hotel reception, where you also pay.' },
       { name: 'In front of the hotel on Chopin Street', note: 'Public paid parking with a ticket machine' },
       { name: 'Parking house by the Municipal Theatre', note: 'Pramenská Street, about 200 m from the hotel', href: CITY_GARAGE },
     ] },
@@ -344,7 +344,7 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
       { name: 'Места для людей с инвалидностью', note: '3 парковочных места' },
     ] },
     { location: 'Расположение в тихой части лесопарка недалеко от колоннады.', options: [
-      { name: 'Парковка во дворе отеля', price: '250 Kč/день · от 5 ночей 200 Kč/день', note: '12 мест, оплата на ресепшене, необходимо бронирование заранее' },
+      { name: 'Парковка во дворе отеля', price: 'до 4 ночей 250 Kč/ночь · от 5 ночей 200 Kč/ночь', note: 'Ограниченная доступность — 12 мест. Бронирование обязательно заранее на ресепшене отеля, там же производится оплата.' },
       { name: 'Перед отелем на улице Шопена', note: 'Общественная платная стоянка с паркоматом' },
       { name: 'Паркинг у Городского театра', note: 'ул. Pramenská, около 200 м от отеля', href: CITY_GARAGE },
     ] },
@@ -395,7 +395,7 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
       { option: 'Místa pro osoby se zdravotním postižením', price: '–', note: '3 místa' },
     ],
     [
-      { option: 'Parkoviště ve dvoře hotelu', price: '250 Kč/den, od 5 nocí 200 Kč/den', note: '12 míst, platba na recepci, nutná rezervace' },
+      { option: 'Parkoviště ve dvoře hotelu', price: 'do 4 nocí 250 Kč/noc, od 5 nocí 200 Kč/noc', note: '12 míst, omezená dostupnost; rezervace předem na recepci' },
       { option: 'Před hotelem v Chopinově ulici', price: 'dle parkovacího automatu', note: 'Veřejné, parkovací automat' },
       { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'ul. Pramenská, cca 200 m od hotelu', href: CITY_GARAGE },
     ],
@@ -428,7 +428,7 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
       { option: 'Plätze für Menschen mit Behinderung', price: '–', note: '3 Plätze' },
     ],
     [
-      { option: 'Parkplatz im Innenhof des Hotels', price: '250 CZK/Tag, ab 5 Nächten 200 CZK/Tag', note: '12 Plätze, Zahlung an der Rezeption, Reservierung erforderlich' },
+      { option: 'Parkplatz im Innenhof des Hotels', price: 'bis 4 Nächte 250 CZK/Nacht, ab 5 Nächten 200 CZK/Nacht', note: '12 Plätze, begrenzte Verfügbarkeit; Reservierung im Voraus an der Rezeption' },
       { option: 'Vor dem Hotel in der Chopin-Straße', price: 'laut Parkautomat', note: 'Öffentlich, Parkautomat' },
       { option: 'Parkhaus am Stadttheater', price: 'nach städtischem Tarif', note: 'Pramenská-Straße, ca. 200 m vom Hotel', href: CITY_GARAGE },
     ],
@@ -461,7 +461,7 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
       { option: 'Spaces for people with disabilities', price: '–', note: '3 spaces' },
     ],
     [
-      { option: 'Car park in the hotel courtyard', price: '250 CZK/day, 200 CZK/day from 5 nights', note: '12 spaces, payment at reception, reservation required' },
+      { option: 'Car park in the hotel courtyard', price: '250 CZK/night up to 4 nights, 200 CZK/night from 5 nights', note: '12 spaces, limited availability; advance reservation at reception' },
       { option: 'In front of the hotel on Chopin Street', price: 'per parking meter', note: 'Public, parking meter' },
       { option: 'Parking house by the Municipal Theatre', price: 'per city tariff', note: 'Pramenská Street, about 200 m from the hotel', href: CITY_GARAGE },
     ],
@@ -494,7 +494,7 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
       { option: 'Места для людей с инвалидностью', price: '–', note: '3 места' },
     ],
     [
-      { option: 'Парковка во дворе отеля', price: '250 Kč/день, от 5 ночей 200 Kč/день', note: '12 мест, оплата на ресепшене, необходимо бронирование' },
+      { option: 'Парковка во дворе отеля', price: 'до 4 ночей 250 Kč/ночь, от 5 ночей 200 Kč/ночь', note: '12 мест, ограниченная доступность; бронирование заранее на ресепшене' },
       { option: 'Перед отелем на улице Шопена', price: 'по паркомату', note: 'Общественная, паркомат' },
       { option: 'Паркинг у Городского театра', price: 'по городскому тарифу', note: 'ул. Pramenská, около 200 м от отеля', href: CITY_GARAGE },
     ],

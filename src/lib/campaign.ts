@@ -120,3 +120,65 @@ const campaigns: Record<Locale, CampaignData> = {
 export function getCampaign(locale: Locale): CampaignData {
   return campaigns[locale]
 }
+
+/**
+ * Campaign windows are agreed in the destination's local time, so a bare
+ * `YYYY-MM-DD` must be anchored there rather than in UTC (the Vercel server) or
+ * in the visitor's zone (the browser). Otherwise the landing page and the popup
+ * flip phases hours apart for the same visitor.
+ */
+export const CAMPAIGN_TIME_ZONE = 'Europe/Prague'
+
+/** How far `timeZone` is ahead of UTC at the given instant, in milliseconds. */
+function timeZoneOffsetMs(utcMs: number, timeZone: string): number {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour12: false,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }).formatToParts(new Date(utcMs))
+  const at = (type: Intl.DateTimeFormatPartTypes) => Number(parts.find((p) => p.type === type)?.value)
+  // Some engines report midnight as hour 24 rather than 0.
+  const asUtc = Date.UTC(at('year'), at('month') - 1, at('day'), at('hour') % 24, at('minute'), at('second'))
+  // The formatted parts carry no milliseconds, so compare against the same
+  // instant truncated to a whole second or the offset comes out short.
+  return asUtc - (utcMs - ((utcMs % 1000) + 1000) % 1000)
+}
+
+/** The instant `YYYY-MM-DD` begins in the campaign time zone. */
+export function campaignDayStart(date: string): Date {
+  const [year, month, day] = date.split('-').map(Number)
+  const guess = Date.UTC(year, month - 1, day)
+  return new Date(guess - timeZoneOffsetMs(guess, CAMPAIGN_TIME_ZONE))
+}
+
+/**
+ * The last instant of `YYYY-MM-DD` in the campaign time zone — defined as the
+ * moment before the next day begins, which stays correct across a DST change.
+ */
+export function campaignDayEnd(date: string): Date {
+  const [year, month, day] = date.split('-').map(Number)
+  const nextDay = new Date(Date.UTC(year, month - 1, day + 1)).toISOString().slice(0, 10)
+  return new Date(campaignDayStart(nextDay).getTime() - 1)
+}
+
+/**
+ * Force `utm_medium` on an outbound campaign URL. The stored URL names the
+ * destination (countdown page vs. promo page), which depends on the phase; the
+ * medium names where the click came from, which depends on the placement. Both
+ * surfaces link to the same destinations, so the medium is applied at render
+ * time instead of duplicating every URL per placement.
+ */
+export function withUtmMedium(url: string, medium: 'popup' | 'website'): string {
+  try {
+    const parsed = new URL(url)
+    parsed.searchParams.set('utm_medium', medium)
+    return parsed.toString()
+  } catch {
+    return url
+  }
+}

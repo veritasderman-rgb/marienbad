@@ -12,7 +12,7 @@
  * The page itself never books anything: every CTA hands off to Ensana's IBE.
  */
 import type { Locale } from '@/i18n/config'
-import { getCampaign } from '@/lib/campaign'
+import { CAMPAIGN_TIME_ZONE, campaignDayEnd, campaignDayStart, getCampaign, withUtmMedium } from '@/lib/campaign'
 
 interface Props {
   locale: Locale
@@ -22,22 +22,30 @@ const { locale } = Astro.props
 const data = getCampaign(locale).medicalPromo
 const headlineParts = data.headline.split('\n')
 
-const saleStart = new Date(data.saleStart)
-const saleEnd = new Date(data.saleEnd)
-saleEnd.setHours(23, 59, 59, 999)
+// Anchored in the campaign time zone, matching CampaignPopup, so both surfaces
+// switch phase together rather than hours apart.
+const saleStart = campaignDayStart(data.saleStart)
+const saleEnd = campaignDayEnd(data.saleEnd)
 const now = new Date()
 const beforeSale = now < saleStart
 const afterSale = now > saleEnd
 
+// The boundaries above are instants, not calendar dates: the sale start is
+// 22:00 UTC the previous day. Formatting them without a time zone would render
+// the sale window a day early on the UTC runtime.
 const dateFormatter = new Intl.DateTimeFormat(
   locale === 'cs' ? 'cs-CZ' : locale === 'de' ? 'de-DE' : locale === 'ru' ? 'ru-RU' : 'en-GB',
-  { day: 'numeric', month: 'long', year: 'numeric' }
+  { day: 'numeric', month: 'long', year: 'numeric', timeZone: CAMPAIGN_TIME_ZONE }
 )
 const salePeriodDisplay = `${dateFormatter.format(saleStart)} – ${dateFormatter.format(saleEnd)}`
 
 const bodyText = afterSale ? data.expiredNotice : beforeSale ? data.teaserText : data.saleText
 const ctaLabel = afterSale ? data.expiredCtaLabel : beforeSale ? data.teaserCtaLabel : data.ctaLabel
-const ctaUrl = afterSale ? data.expiredCtaUrl : beforeSale ? data.teaserCtaUrl : data.ctaUrl
+// Every click here is a landing-page click, whatever the stored URL says.
+const ctaUrl = withUtmMedium(
+  afterSale ? data.expiredCtaUrl : beforeSale ? data.teaserCtaUrl : data.ctaUrl,
+  'website'
+)
 
 const heroStyle = data.image
   ? `background: linear-gradient(135deg, rgba(45,42,110,0.75) 0%, rgba(0,79,113,0.7) 50%, rgba(49,153,179,0.65) 100%), url('${data.image}') center / cover no-repeat;`

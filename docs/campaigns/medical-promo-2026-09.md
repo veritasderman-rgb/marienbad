@@ -126,6 +126,11 @@ Tři stavy podle data (server-rendered): před startem prodeje teaser text +
 CTA na countdown, během prodeje sale text + CTA na promo LP, po 30. 9.
 text „akce skončila“ + CTA na standardní nabídku hotelů.
 
+Hranice fází se vyhodnocují v čase kampaně (Europe/Prague) — ne v UTC serveru
+ani v pásmu návštěvníka. Popup dostává hranice předpočítané ze serveru, takže
+obě plochy přepnou fázi ve stejný okamžik; jinak by o půlnoci 22. 9. popup
+hlásil slevu ve chvíli, kdy stránka ještě ukazuje odpočet.
+
 SEO: hreflang propojuje všechny čtyři mutace, `noindex` řídí
 `medicalPromoNoindex()` v `src/lib/medicalPromo.ts` – stránka se otevře
 vyhledávačům se startem teasingu, do té doby je noindex. Slugy jsou zároveň
@@ -158,7 +163,12 @@ z/na kampaňovou landing page.
 - Všechny odchozí CTA na ensanahotels.com nesou UTM ve stejné konvenci, jakou
   už web používá u Summer Sale (aby to HQ v reportu sedělo k ostatním
   kampaním): `utm_source=marienbad&utm_medium=website|popup&utm_campaign=medical-promo-2026`.
-  Popup používá `utm_medium=popup`, landing page `utm_medium=website`.
+- Cílová URL je vlastností **fáze** (teaser → countdown stránka, prodej → promo
+  LP), zatímco `utm_medium` je vlastností **umístění**. Obě plochy odkazují na
+  stejné cíle, takže se `utm_medium` nedoplňuje ručně do dat, ale nastavuje se
+  při renderu: popup vždy `popup`, landing page vždy `website`
+  (`withUtmMedium()` v `src/lib/campaign.ts`). Co je uložené v CMS, se přepíše —
+  díky tomu nejde attribution rozbít překlepem v jedné z osmi URL.
 - GA4 (consent-gated, beze změny privacy nastavení): sledovat zobrazení/kliky
   popupu a outbound kliky na Ensana LP stejnou konvencí jako u Summer Sale.
 - Reporting konsoliduje HQ (formát jako SP/SS/BF) – naše čísla = dodaný traffic
