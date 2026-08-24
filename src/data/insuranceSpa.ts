@@ -131,7 +131,7 @@ export const subPages: SubPage[] = [
     metaDescription:
       'Ve kterých hotelech Ensana lze čerpat lázeňskou péči hrazenou pojišťovnou, kde je ubytování bez doplatku, a co pobyt nabízí navíc — Ensana Life, turistická karta i vybavení města.',
     lead:
-      'Léčba i procedury probíhají přímo v hotelu, kde bydlíte — nikam se za nimi nedochází. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
+      'Léčba i procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem — mezi léčbou a pokojem se nechodí ven. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
     icon: 'hotel',
   },
   {
@@ -226,7 +226,7 @@ export const processSteps: ProcessStep[] = [
       'Komplexní péče se čerpá v době pracovní neschopnosti; tu vystaví lázeňský lékař při vstupní lékařské prohlídce. Příspěvkovou péči čerpáte v době své dovolené.',
     ],
     tip:
-      'Nastoupit lze kterýkoli den v týdnu — pobyt nezačíná jen v pondělí. Všechny procedury probíhají přímo v hotelu, kde bydlíte.',
+      'Nastoupit lze kterýkoli den v týdnu — pobyt nezačíná jen v pondělí. Všechny procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem.',
   },
   {
     n: 4,
@@ -1021,7 +1021,7 @@ export const insuranceHotels: InsuranceHotel[] = [
 ]
 
 export const hotelsIntro =
-  'Léčba i všechny procedury probíhají přímo v hotelu, kde bydlíte — nikam se za nimi nedochází. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
+  'Léčba i všechny procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
 
 /**
  * Pozor na rozpor mezi dvěma zdroji: ceník 2026 má nulový doplatek jen
@@ -1109,7 +1109,7 @@ export const staySteps: StayStep[] = [
   {
     heading: 'Denní režim',
     body:
-      'Procedury se rozloží do celého dne a probíhají přímo v hotelu, kde bydlíte. Mezi nimi zbývá čas na pitnou kúru na kolonádě, procházky v lázeňských lesích a kulturní program města.',
+      'Procedury se rozloží do celého dne a probíhají v budově, kde bydlíte, případně v budovách spojených koridorem. Mezi nimi zbývá čas na pitnou kúru na kolonádě, procházky v lázeňských lesích a kulturní program města.',
   },
   {
     heading: 'Kontrolní a výstupní vyšetření',
@@ -1165,12 +1165,12 @@ export const benefits: Benefit[] = [
   {
     title: 'Léčba přímo v hotelu',
     body:
-      'Všechny procedury probíhají v budově, kde bydlíte. Odpadá docházení mezi léčebnými domy po městě — u třítýdenního pobytu s omezenou hybností jde o zásadní rozdíl v pohodlí i v bezpečí.',
+      'Všechny procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem. Odpadá docházení mezi léčebnými domy po městě — u třítýdenního pobytu s omezenou hybností jde o zásadní rozdíl v pohodlí i v bezpečí.',
   },
   {
     title: 'Bazény, sauny a wellness',
     body:
-      'Čtyřhvězdičkové hotely mají vlastní bazén se saunami, vířivkou a parní lázní. Hosté dependancí na pokojích bez doplatku mohou bazén využívat za hodinovou sazbu podle ceníku.',
+      'Vlastní bazén má každý z lázeňských hotelů, tříhvězdičkové nevyjímaje. Největší je ve Hvězdě, kde k němu patří dvě sauny, vířivka, parní lázeň a solná jeskyně. Hosté dependancí ubytovaní na pokojích bez doplatku mohou bazén využívat za hodinovou sazbu podle ceníku: 100 Kč/hod. ve Vltavě, 150 Kč/hod. ve Svobodě a 250 Kč/hod. ve Hvězdě a Pacifiku.',
     linkLabel: 'Přehled hotelů a ubytování',
     href: '/cs/ubytovani',
   },
@@ -1240,7 +1240,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Dochází se na procedury mimo hotel? Jak daleko?',
-    a: 'Nedochází. Všechny procedury jsou vždy v hotelu, kde jste ubytováni.',
+    a: 'Ven se nechodí. Všechny procedury jsou v hotelu, kde jste ubytováni — podle hotelu buď přímo ve vaší budově, nebo v budově spojené koridorem.',
   },
   {
     q: 'Je možné ubytování společně s doprovodem bez účasti pojišťovny?',
