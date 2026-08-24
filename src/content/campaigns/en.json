@@ -43,5 +43,74 @@
     "image": "/images/content/campaigns/summerSale/image.jpg",
     "popupImage": "/images/content/campaigns/summer-sale/en.jpg",
     "popupImageAlt": "Summer Sale — 25% off stays for two at Ensana Hotels"
+  },
+  "medicalPromo": {
+    "enabled": false,
+    "teaserStart": "2026-09-17",
+    "saleStart": "2026-09-22",
+    "saleEnd": "2026-09-30",
+    "stayPeriod": "15 Oct 2026 – 30 June 2027",
+    "eyebrow": "Medical programmes −25 %",
+    "headline": "Medical programmes\n−25 %",
+    "teaserText": "On 22 September the 25 % discount on medical programmes in Marienbad opens. Choose any stay between 15 October 2026 and 30 June 2027.",
+    "saleText": "Until 30 September only: book your medical stay in Marienbad with 25 % off. Healthy In, Traditional Spa or Immunity Booster — with arrival any time up to the end of June 2027.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Book with 25 % off",
+    "ctaUrl": "https://ensanahotels.com/en/medical-programmes-promo?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "teaserCtaLabel": "See the countdown",
+    "teaserCtaUrl": "https://ensanahotels.com/en/medical-programmes-countdown?utm_source=marienbad&utm_medium=popup&utm_campaign=medical-promo-2026",
+    "conditions": [
+      "30 % non-refundable prepayment",
+      "30 % cancellation fee",
+      "1 free change per reservation",
+      "New bookings only"
+    ],
+    "footnote": "Booking window: 22–30 Sept 2026 • Stay 15 Oct 2026 – 30 June 2027",
+    "landingPageTitle": "Medical programmes with 25 % off — Marienbad — Marienbad.com",
+    "landingPageDescription": "25 % off medical programmes at the Ensana hotels in Marienbad. Book 22–30 September 2026 for stays from 15 October 2026 to 30 June 2027.",
+    "landingHeroEyebrow": "Medical Promo 2026",
+    "landingKeyInfoTitle": "Key information",
+    "landingConditionsTitle": "Booking conditions",
+    "landingSalePeriodLabel": "Booking window",
+    "landingStayPeriodLabel": "Stay period",
+    "landingDiscountLabel": "Discount",
+    "programmesTitle": "The programmes on offer",
+    "programmesIntro": "The 25 % discount applies to every Ensana medical programme. For Marienbad we particularly recommend these three.",
+    "programmes": [
+      {
+        "name": "Healthy In",
+        "description": "A shorter medical stay for a first encounter with the Marienbad cure — an initial medical consultation, treatments matched to your needs and the drinking cure from the local springs."
+      },
+      {
+        "name": "Traditional Spa",
+        "description": "The classic comprehensive cure in the form Marienbad has passed down for more than two hundred years. Medical supervision, daily treatments and natural healing resources."
+      },
+      {
+        "name": "Immunity Booster",
+        "description": "A programme built around strengthening your defences before winter, combining the natural mineral springs, carbon dioxide baths and walking in the spa forests."
+      }
+    ],
+    "relatedTitle": "Before you decide",
+    "relatedLinks": [
+      {
+        "label": "Mineral springs",
+        "href": "/en/mineral-springs"
+      },
+      {
+        "label": "CO₂ therapy",
+        "href": "/en/co2-therapy"
+      },
+      {
+        "label": "Accommodation",
+        "href": "/en/accommodation"
+      }
+    ],
+    "expiredNotice": "The Medical Promo booking window closed on 30 September 2026. Current offers from the Ensana hotels in Marienbad are on their website.",
+    "expiredCtaLabel": "See current offers",
+    "expiredCtaUrl": "https://ensanahotels.com/en/destinations/czech-republic/marianske-lazne/best-offers?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "image": null,
+    "imageAlt": "",
+    "popupImage": null,
+    "popupImageAlt": ""
   }
 }

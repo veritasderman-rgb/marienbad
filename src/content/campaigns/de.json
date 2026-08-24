@@ -43,5 +43,74 @@
     "image": "/images/content/campaigns/summerSale/image.jpg",
     "popupImage": "/images/content/campaigns/summer-sale/de.jpg",
     "popupImageAlt": "Summer Sale — 25 % Rabatt für eine Auszeit zu zweit in den Ensana Hotels"
+  },
+  "medicalPromo": {
+    "enabled": false,
+    "teaserStart": "2026-09-17",
+    "saleStart": "2026-09-22",
+    "saleEnd": "2026-09-30",
+    "stayPeriod": "15. 10. 2026 – 30. 6. 2027",
+    "eyebrow": "Kurprogramme −25 %",
+    "headline": "Kurprogramme\n−25 %",
+    "teaserText": "Am 22. September startet der Rabatt von 25 % auf Kurprogramme in Marienbad. Ihren Aufenthalt wählen Sie frei zwischen dem 15. Oktober 2026 und dem 30. Juni 2027.",
+    "saleText": "Nur bis 30. September: Buchen Sie Ihren Kuraufenthalt in Marienbad mit 25 % Rabatt. Healthy In, Traditional Spa oder Immunity Booster — mit Anreise bis Ende Juni 2027.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Mit 25 % Rabatt buchen",
+    "ctaUrl": "https://ensanahotels.com/de/kur-programme-promo?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "teaserCtaLabel": "Zum Countdown",
+    "teaserCtaUrl": "https://ensanahotels.com/de/kur-programme-countdown?utm_source=marienbad&utm_medium=popup&utm_campaign=medical-promo-2026",
+    "conditions": [
+      "30 % nicht erstattbare Anzahlung",
+      "30 % Stornogebühr",
+      "1 kostenlose Umbuchung pro Reservierung",
+      "Gilt nur für Neubuchungen"
+    ],
+    "footnote": "Buchungsfenster: 22.–30. 9. 2026 • Aufenthalt 15. 10. 2026 – 30. 6. 2027",
+    "landingPageTitle": "Kurprogramme mit 25 % Rabatt — Marienbad — Marienbad.com",
+    "landingPageDescription": "25 % Rabatt auf Kurprogramme in den Ensana Hotels in Marienbad. Buchen Sie vom 22. bis 30. September 2026, Aufenthalt vom 15. Oktober 2026 bis 30. Juni 2027.",
+    "landingHeroEyebrow": "Medical Promo 2026",
+    "landingKeyInfoTitle": "Wichtige Informationen",
+    "landingConditionsTitle": "Buchungsbedingungen",
+    "landingSalePeriodLabel": "Verkaufszeitraum",
+    "landingStayPeriodLabel": "Aufenthaltszeitraum",
+    "landingDiscountLabel": "Rabatt",
+    "programmesTitle": "Diese Kurprogramme sind im Angebot",
+    "programmesIntro": "Der Rabatt von 25 % gilt für alle medizinischen Programme von Ensana. Für Marienbad empfehlen wir vor allem diese drei.",
+    "programmes": [
+      {
+        "name": "Healthy In",
+        "description": "Der kürzere Kuraufenthalt für alle, die die Marienbader Kur zum ersten Mal erleben möchten — ärztliche Eingangsuntersuchung, individuell abgestimmte Anwendungen und die Trinkkur aus den örtlichen Quellen."
+      },
+      {
+        "name": "Traditional Spa",
+        "description": "Die klassische, umfassende Kur in jener Form, wie sie in Marienbad seit über zweihundert Jahren weitergegeben wird. Ärztliche Betreuung, tägliche Anwendungen und natürliche Heilmittel."
+      },
+      {
+        "name": "Immunity Booster",
+        "description": "Ein Programm zur Stärkung der Abwehrkräfte vor dem Winter. Es verbindet die natürlichen Mineralquellen, Kohlensäurebäder und Bewegung in den Kurwäldern."
+      }
+    ],
+    "relatedTitle": "Bevor Sie sich entscheiden",
+    "relatedLinks": [
+      {
+        "label": "Mineralquellen",
+        "href": "/de/mineralquellen"
+      },
+      {
+        "label": "CO₂-Therapie",
+        "href": "/de/co2-therapie"
+      },
+      {
+        "label": "Unterkunft",
+        "href": "/de/unterkunft"
+      }
+    ],
+    "expiredNotice": "Das Buchungsfenster der Medical Promo endete am 30. September 2026. Die aktuellen Angebote der Ensana Hotels in Marienbad finden Sie auf deren Website.",
+    "expiredCtaLabel": "Aktuelle Angebote ansehen",
+    "expiredCtaUrl": "https://ensanahotels.com/de/destinationen/tschechien/marienbad/best-offers?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "image": null,
+    "imageAlt": "",
+    "popupImage": null,
+    "popupImageAlt": ""
   }
 }

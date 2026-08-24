@@ -83,32 +83,37 @@ Popisy produktů čerpat výhradně z `data/ensana_knowledge_base.json`
 
 ---
 
-## 4. Mechanika na webu (implementační plán)
+## 4. Mechanika na webu
 
-### 4.1 Datová vrstva – rozšíření kampaňového systému
+Sekce 4.1–4.3 jsou **hotové a nasazené jako neaktivní** (viz 4.7), zbytek
+zůstává plánem.
 
-- Do `src/content/campaigns/{de,en,cs,ru}.json` přidat objekt `medicalPromo`
-  se stejným tvarem jako `summerSale` (teaserStart `2026-09-17`, saleStart
-  `2026-09-22`, saleEnd `2026-09-30`, stayPeriod, texty, CTA URL, podmínky).
-- Rozšířit interface v `src/lib/campaign.ts` a schéma v `keystatic.config.tsx`,
-  aby marketing mohl texty ladit v CMS bez nasazení.
+### 4.1 Datová vrstva – rozšíření kampaňového systému ✅
 
-### 4.2 Site-wide popup (CampaignPopup)
+- `src/content/campaigns/{de,en,cs,ru}.json` obsahují objekt `medicalPromo`
+  ve stejném duchu jako `summerSale` (teaserStart `2026-09-17`, saleStart
+  `2026-09-22`, saleEnd `2026-09-30`, stayPeriod, texty, CTA URL, podmínky,
+  popisy tří programů a interní odkazy).
+- Typy v `src/lib/campaign.ts` a schéma v `keystatic.config.tsx` jsou
+  rozšířené, takže marketing ladí veškeré texty v CMS bez nasazení.
 
-- Přidat fáze `medical-teaser` (17.–21. 9., s countdownem do startu prodeje)
-  a `medical-active` (22.–30. 9.) do `CampaignPopup.astro`.
-- Mechanika per-phase dismissal v localStorage už existuje – zavřený teaser
-  nesmí skrýt aktivní fázi.
+### 4.2 Site-wide popup (CampaignPopup) ✅
+
+- `CampaignPopup.astro` má fáze `medical-teaser` (17.–21. 9., s countdownem
+  do startu prodeje) a `medical-active` (22.–30. 9.).
+- Priorita při překryvu: jubilee > summer > medical. Per-fázový dismissal
+  v localStorage funguje beze změny – zavřený teaser neskryje aktivní fázi.
 - CTA v teaser fázi → Ensana **countdown** stránka; v aktivní fázi → **promo LP**.
+- Karty umí i variantu „celý obrázek“ (`popupImage`) pro čtvercové kreativy
+  od HQ, stejně jako Summer Sale. Dokud kreativa chybí, renderuje se
+  gradientová textová karta.
 
-### 4.3 Kampaňová landing page (4 jazyky)
+### 4.3 Kampaňová landing page (4 jazyky) ✅
 
-Nová komponenta `MedicalPromoLanding.astro` podle vzoru `SummerSaleLanding.astro`
-(hero, 3 karty klíčových údajů, podmínky, CTA) + navíc sekce tří produktů
-(Healthy In / Traditional Spa / Immunity Booster) a blok „Proč Mariánské Lázně“
-s odkazy na pilířové stránky (prameny, CO₂ terapie, hotely).
-
-Navržené URL (vzor `letni-sleva-2026` / `sommer-sale-2026`):
+`MedicalPromoLanding.astro` – hero, tři karty klíčových údajů, sekce tří
+programů (Healthy In / Traditional Spa / Immunity Booster), podmínky
+rezervace a blok „Než se rozhodnete“ s odkazy na pilířové stránky
+(prameny, CO₂ terapie, ubytování). Bez klientského JS.
 
 | Jazyk | URL |
 |---|---|
@@ -117,9 +122,16 @@ Navržené URL (vzor `letni-sleva-2026` / `sommer-sale-2026`):
 | EN | `/en/medical-promo-2026` |
 | RU | `/ru/medical-promo-2026` |
 
-SEO: `noindex` **ne**dávat, ale nastavit korektní hreflang mezi 4 mutacemi;
-po 30. 9. stránka zůstává s textem „akce skončila“ + CTA na standardní
-nabídku hotelů (stejné chování jako `SummerSaleLanding` po `saleEnd`).
+Tři stavy podle data (server-rendered): před startem prodeje teaser text +
+CTA na countdown, během prodeje sale text + CTA na promo LP, po 30. 9.
+text „akce skončila“ + CTA na standardní nabídku hotelů.
+
+SEO: hreflang propojuje všechny čtyři mutace, `noindex` řídí
+`medicalPromoNoindex()` v `src/lib/medicalPromo.ts` – stránka se otevře
+vyhledávačům se startem teasingu, do té doby je noindex. Slugy jsou zároveň
+v `NOINDEXED_PATHS` v `astro.config.mjs`, aby se noindex stránka neobjevila
+v sitemapě; pokud budeme chtít stránku v sitemapě po dobu kampaně, je to
+jednořádková úprava toho seznamu.
 
 ### 4.4 Podpůrná místa na webu
 
@@ -143,12 +155,35 @@ z/na kampaňovou landing page.
 
 ### 4.6 Odkazy a měření
 
-- Všechny odchozí CTA na ensanahotels.com opatřit UTM:
-  `?utm_source=marienbad.com&utm_medium=referral&utm_campaign=medical-promo-2026&utm_content={popup|landing|hotel-bar|magazine}`
+- Všechny odchozí CTA na ensanahotels.com nesou UTM ve stejné konvenci, jakou
+  už web používá u Summer Sale (aby to HQ v reportu sedělo k ostatním
+  kampaním): `utm_source=marienbad&utm_medium=website|popup&utm_campaign=medical-promo-2026`.
+  Popup používá `utm_medium=popup`, landing page `utm_medium=website`.
 - GA4 (consent-gated, beze změny privacy nastavení): sledovat zobrazení/kliky
   popupu a outbound kliky na Ensana LP stejnou konvencí jako u Summer Sale.
 - Reporting konsoliduje HQ (formát jako SP/SS/BF) – naše čísla = dodaný traffic
   a kliky na IBE, poskytneme na vyžádání z GA4.
+
+### 4.7 Jak je to teď zapnuté (a jak se to spustí) ✅
+
+Kampaň leží na webu **kompletní, ale vypnutá**. Řídí to jediný přepínač
+`medicalPromo.enabled` v každé jazykové mutaci (Keystatic → *Campaigns →
+Medical Promo → Campaign live*), který je nastavený na `false`:
+
+- popup se nezobrazí, ať je jakékoli datum,
+- landing page je vždy `noindex` a není v sitemapě.
+
+Po potvrzení kampaně z HQ stačí přepínač zapnout ve všech čtyřech mutacích.
+Od té chvíle běží všechno podle dat: 17. 9. naskočí teaser fáze a stránka se
+otevře indexaci, 22. 9. se popup i CTA přepnou na prodejní fázi, 30. 9. ve
+23:59 popup zhasne a stránka přejde do stavu „akce skončila“. Žádný další
+zásah ani deploy není potřeba.
+
+**Kontrola před spuštěním:** popup si lze vyvolat kdykoli parametrem
+`?campaignPreview=medical-teaser` nebo `?campaignPreview=medical-active`
+na libovolné stránce (např. `/de?campaignPreview=medical-teaser`). Preview
+obchází data i přepínač a neukládá si „zavřeno“, takže se dá procházet
+opakovaně. Funguje i pro starší fáze (`jubilee-teaser`, `summer-active` …).
 
 ---
 
@@ -189,28 +224,31 @@ Na landing page a v popupu (zkráceně) uvádět:
    je i naše volba do sheetu (deadline 28. 8.).
 2. **Vizuály HQ** – formáty a termín dodání (potřeba nejpozději 12. 9., ať
    stihneme WebP generování a QA).
-3. **Souhlas HQ s vlastní landing page na marienbad.com** – alternativa je
-   linkovat výhradně Ensana LP; doporučujeme vlastní LP kvůli SEO a kontextu
-   destinace, s CTA vždy na Ensana IBE.
-4. **UTM konvence HQ** – pokud HQ vyžaduje vlastní tagging pro konsolidovaný
-   reporting, převezmeme jejich.
+3. **Souhlas HQ s vlastní landing page na marienbad.com** – stránky jsou
+   hotové, ale drží se vypnuté a noindex, dokud souhlas nepřijde. Alternativa
+   je linkovat výhradně Ensana LP; doporučujeme vlastní LP kvůli SEO a
+   kontextu destinace, CTA míří vždy na Ensana IBE.
+4. **UTM konvence HQ** – zatím používáme konvenci, kterou web má u Summer Sale
+   (`utm_source=marienbad`); pokud HQ vyžaduje pro konsolidovaný reporting
+   vlastní tagging, přepíšeme URL v CMS bez zásahu do kódu.
 5. **Sociální sítě** – čekáme na instrukce od Jasminy Csalové; obsah z magazínu
    (Immunity Booster) můžeme nabídnout jako podklad.
 
 ---
 
-## 8. Rozsah prací na webu (odhad)
+## 8. Rozsah prací na webu
 
-| Úkol | Odhad |
+| Úkol | Stav |
 |---|---|
-| Rozšíření campaign dat + Keystatic schéma + `campaign.ts` | 0,5 dne |
-| Fáze medical-teaser/active v `CampaignPopup.astro` | 0,5 dne |
-| `MedicalPromoLanding.astro` + 4 stránky + hreflang | 1 den |
-| Texty 4 jazyky (CS/DE/EN/RU) vč. korektur | 1 den |
-| Bannery na homepage / hotelech / pilířích | 0,5 dne |
-| Magazínový článek 4 jazyky | 1 den |
-| QA, vizuály, deploy | 0,5 dne |
-| **Celkem** | **~5 člověkodnů** |
+| Rozšíření campaign dat + Keystatic schéma + `campaign.ts` | ✅ hotovo |
+| Fáze medical-teaser/active v `CampaignPopup.astro` + preview režim | ✅ hotovo |
+| `MedicalPromoLanding.astro` + 4 stránky + hreflang + noindex | ✅ hotovo |
+| Texty 4 jazyky (CS/DE/EN/RU) – první verze | ✅ hotovo, čeká na korekturu |
+| Zapracování vizuálů od HQ (`popupImage`, hero `image`) | ⏳ čeká na dodání |
+| Bannery na homepage / hotelech / pilířích | ⏳ plán, ~0,5 dne |
+| Magazínový článek 4 jazyky | ⏳ plán, ~1 den |
+| Zapnutí kampaně (`enabled` ve 4 mutacích) + QA | ⏳ po potvrzení z HQ |
 
-Implementaci navrhujeme rozdělit do 2–3 samostatných PR (infrastruktura+popup,
-landing pages, obsah), v souladu s workflow projektu.
+Zbývá tedy zhruba 1,5–2 člověkodne plus korektura textů. Rozdělení do
+samostatných PR podle workflow projektu: tato dávka pokrývá infrastrukturu,
+popup a landing pages; bannery a magazínový článek přijdou zvlášť.

@@ -43,5 +43,74 @@
     "image": "/images/content/campaigns/summerSale/image.jpg",
     "popupImage": "/images/content/campaigns/summer-sale/ru.jpg",
     "popupImageAlt": "Summer Sale — −25% на отдых для двоих в отелях Ensana"
+  },
+  "medicalPromo": {
+    "enabled": false,
+    "teaserStart": "2026-09-17",
+    "saleStart": "2026-09-22",
+    "saleEnd": "2026-09-30",
+    "stayPeriod": "15.10.2026 – 30.06.2027",
+    "eyebrow": "Лечебные программы −25 %",
+    "headline": "Лечебные программы\n−25 %",
+    "teaserText": "22 сентября стартует скидка 25 % на лечебные программы в Марианске-Лазне. Даты пребывания вы выбираете свободно — с 15 октября 2026 по 30 июня 2027 года.",
+    "saleText": "Только до 30 сентября: забронируйте лечебный отдых в Марианске-Лазне со скидкой 25 %. Healthy In, Traditional Spa или Immunity Booster — с заездом вплоть до конца июня 2027 года.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Забронировать со скидкой 25 %",
+    "ctaUrl": "https://ensanahotels.com/ru/medical-programmes-promo?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "teaserCtaLabel": "Обратный отсчёт",
+    "teaserCtaUrl": "https://ensanahotels.com/ru/medical-programmes-countdown?utm_source=marienbad&utm_medium=popup&utm_campaign=medical-promo-2026",
+    "conditions": [
+      "Невозвратная предоплата 30 %",
+      "Штраф за отмену 30 %",
+      "1 бесплатное изменение брони",
+      "Только для новых бронирований"
+    ],
+    "footnote": "Период продаж: 22–30 сентября 2026 • Пребывание 15.10.2026 – 30.06.2027",
+    "landingPageTitle": "Лечебные программы со скидкой 25 % — Марианске-Лазне — Marienbad.com",
+    "landingPageDescription": "Скидка 25 % на лечебные программы в отелях Ensana в Марианске-Лазне. Бронирование 22–30 сентября 2026 года, пребывание с 15 октября 2026 по 30 июня 2027 года.",
+    "landingHeroEyebrow": "Medical Promo 2026",
+    "landingKeyInfoTitle": "Ключевая информация",
+    "landingConditionsTitle": "Условия бронирования",
+    "landingSalePeriodLabel": "Период продаж",
+    "landingStayPeriodLabel": "Даты пребывания",
+    "landingDiscountLabel": "Скидка",
+    "programmesTitle": "Программы, участвующие в акции",
+    "programmesIntro": "Скидка 25 % распространяется на все лечебные программы Ensana. Для Марианске-Лазне мы особенно рекомендуем эти три.",
+    "programmes": [
+      {
+        "name": "Healthy In",
+        "description": "Более короткий лечебный курс для первого знакомства с марианским курортным лечением — первичная консультация врача, подобранные процедуры и питьевой курс из местных источников."
+      },
+      {
+        "name": "Traditional Spa",
+        "description": "Классический комплексный курс в том виде, в каком его передают в Марианске-Лазне уже более двухсот лет. Врачебное наблюдение, ежедневные процедуры и природные лечебные ресурсы."
+      },
+      {
+        "name": "Immunity Booster",
+        "description": "Программа для укрепления иммунитета перед зимой. Она сочетает природные минеральные источники, углекислые ванны и прогулки в курортных лесах."
+      }
+    ],
+    "relatedTitle": "Прежде чем решить",
+    "relatedLinks": [
+      {
+        "label": "Минеральные источники",
+        "href": "/ru/mineralnye-istochniki"
+      },
+      {
+        "label": "СО₂-терапия",
+        "href": "/ru/co2-terapiya"
+      },
+      {
+        "label": "Проживание",
+        "href": "/ru/prozhivanie"
+      }
+    ],
+    "expiredNotice": "Период продаж Medical Promo завершился 30 сентября 2026 года. Актуальные предложения отелей Ensana в Марианске-Лазне — на их сайте.",
+    "expiredCtaLabel": "Смотреть актуальные предложения",
+    "expiredCtaUrl": "https://ensanahotels.com/ru/napravleniya/cheshskaya-respublika/marienbad/best-offers?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "image": null,
+    "imageAlt": "",
+    "popupImage": null,
+    "popupImageAlt": ""
   }
 }

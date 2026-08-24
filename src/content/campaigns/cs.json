@@ -43,5 +43,74 @@
     "image": "/images/content/campaigns/summerSale/image.jpg",
     "popupImage": "/images/content/campaigns/summer-sale/cs.jpg",
     "popupImageAlt": "Summer Sale — sleva 25 % na společné pobyty v hotelech Ensana"
+  },
+  "medicalPromo": {
+    "enabled": false,
+    "teaserStart": "2026-09-17",
+    "saleStart": "2026-09-22",
+    "saleEnd": "2026-09-30",
+    "stayPeriod": "15. 10. 2026 – 30. 6. 2027",
+    "eyebrow": "Léčebné pobyty −25 %",
+    "headline": "Léčebné programy\n−25 %",
+    "teaserText": "22. září startuje sleva 25 % na léčebné programy v Mariánských Lázních. Termín pobytu si vyberete kdykoli od 15. října 2026 do 30. června 2027.",
+    "saleText": "Jen do 30. září: rezervujte léčebný pobyt v Mariánských Lázních se slevou 25 %. Healthy In, Traditional Spa i Immunity Booster — s termínem pobytu až do konce června 2027.",
+    "discountLabel": "−25 %",
+    "ctaLabel": "Rezervovat se slevou 25 %",
+    "ctaUrl": "https://ensanahotels.com/cs/lecebne-programy-promo?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "teaserCtaLabel": "Zobrazit odpočítávání",
+    "teaserCtaUrl": "https://ensanahotels.com/cs/lecebne-programy-countdown?utm_source=marienbad&utm_medium=popup&utm_campaign=medical-promo-2026",
+    "conditions": [
+      "30% nevratná záloha",
+      "30% storno poplatek",
+      "1 změna rezervace zdarma",
+      "Platí pouze pro nové rezervace"
+    ],
+    "footnote": "Prodejní okno: 22.–30. 9. 2026 • Pobyt 15. 10. 2026 – 30. 6. 2027",
+    "landingPageTitle": "Léčebné programy se slevou 25 % — Mariánské Lázně — Marienbad.com",
+    "landingPageDescription": "Sleva 25 % na léčebné programy v hotelech Ensana v Mariánských Lázních. Rezervujte 22.–30. září 2026, pobyt od 15. října 2026 do 30. června 2027.",
+    "landingHeroEyebrow": "Medical Promo 2026",
+    "landingKeyInfoTitle": "Klíčové informace",
+    "landingConditionsTitle": "Podmínky rezervace",
+    "landingSalePeriodLabel": "Prodejní období",
+    "landingStayPeriodLabel": "Termín pobytu",
+    "landingDiscountLabel": "Sleva",
+    "programmesTitle": "Léčebné programy v akci",
+    "programmesIntro": "Sleva 25 % platí na všechny léčebné programy Ensana. Pro Mariánské Lázně doporučujeme především tyto tři.",
+    "programmes": [
+      {
+        "name": "Healthy In",
+        "description": "Kratší léčebný pobyt pro první seznámení s mariánskolázeňskou kúrou — vstupní lékařská konzultace, procedury na míru a pitná kúra z místních pramenů."
+      },
+      {
+        "name": "Traditional Spa",
+        "description": "Klasická komplexní lázeňská kúra v podobě, jaká se v Mariánských Lázních předává už přes dvě stě let. Lékařský dohled, každodenní procedury a přírodní léčivé zdroje."
+      },
+      {
+        "name": "Immunity Booster",
+        "description": "Program zaměřený na posílení imunity před zimou. Spojuje přírodní minerální prameny, uhličité koupele a pohyb v lázeňských lesích."
+      }
+    ],
+    "relatedTitle": "Než se rozhodnete",
+    "relatedLinks": [
+      {
+        "label": "Minerální prameny",
+        "href": "/cs/mineralni-prameny"
+      },
+      {
+        "label": "Léčba CO₂",
+        "href": "/cs/co2-terapie"
+      },
+      {
+        "label": "Ubytování",
+        "href": "/cs/ubytovani"
+      }
+    ],
+    "expiredNotice": "Prodejní okno akce Medical Promo skončilo 30. září 2026. Aktuální nabídku hotelů Ensana v Mariánských Lázních najdete na jejich webu.",
+    "expiredCtaLabel": "Zobrazit aktuální nabídku",
+    "expiredCtaUrl": "https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne/nejlepsi-nabidky?utm_source=marienbad&utm_medium=website&utm_campaign=medical-promo-2026",
+    "image": null,
+    "imageAlt": "",
+    "popupImage": null,
+    "popupImageAlt": ""
   }
 }

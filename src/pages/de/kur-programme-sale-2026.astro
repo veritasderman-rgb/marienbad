@@ -1,0 +1,19 @@
+---
+import Base from '@/layouts/Base.astro'
+import MedicalPromoLanding from '@/components/MedicalPromoLanding.astro'
+import { getCampaign } from '@/lib/campaign'
+import { medicalPromoAlternateUrls, medicalPromoNoindex } from '@/lib/medicalPromo'
+
+const locale = 'de' as const
+const data = getCampaign(locale).medicalPromo
+---
+
+<Base
+  locale={locale}
+  title={data.landingPageTitle}
+  description={data.landingPageDescription}
+  noindex={medicalPromoNoindex(data)}
+  alternateUrls={medicalPromoAlternateUrls}
+>
+  <MedicalPromoLanding locale={locale} />
+</Base>

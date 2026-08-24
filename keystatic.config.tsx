@@ -343,6 +343,83 @@ function campaignSingleton(locale: string, label: string) {
         },
         { label: 'Summer Sale' }
       ),
+      medicalPromo: fields.object(
+        {
+          enabled: fields.checkbox({
+            label: 'Campaign live',
+            defaultValue: false,
+            description:
+              'Off = the popup never appears and the landing page stays noindex, whatever the dates below say. Turn on once Ensana HQ confirms the campaign.',
+          }),
+          teaserStart: fields.text({ label: 'Teaser start (YYYY-MM-DD)', description: 'e.g. 2026-09-17' }),
+          saleStart: fields.text({ label: 'Sale start (YYYY-MM-DD)', description: 'e.g. 2026-09-22' }),
+          saleEnd: fields.text({ label: 'Sale end (YYYY-MM-DD inclusive)', description: 'e.g. 2026-09-30' }),
+          stayPeriod: fields.text({ label: 'Stay period (display text)', description: 'e.g. 15. 10. 2026 – 30. 6. 2027' }),
+          eyebrow: fields.text({ label: 'Eyebrow / small label' }),
+          headline: fields.text({ label: 'Headline (use \\n for line break)' }),
+          teaserText: fields.text({ label: 'Teaser body text', multiline: true }),
+          saleText: fields.text({ label: 'Sale body text', multiline: true }),
+          discountLabel: fields.text({ label: 'Discount label', description: 'e.g. −25 %' }),
+          ctaLabel: fields.text({ label: 'CTA button label (sale phase)' }),
+          ctaUrl: fields.text({ label: 'CTA URL — Ensana promo landing page', description: 'Full URL incl. UTM params' }),
+          teaserCtaLabel: fields.text({ label: 'CTA button label (teaser phase)' }),
+          teaserCtaUrl: fields.text({ label: 'CTA URL — Ensana countdown page', description: 'Full URL incl. UTM params' }),
+          conditions: fields.array(fields.text({ label: 'Condition' }), {
+            label: 'Booking conditions (30% prepayment, etc.)',
+            itemLabel: (props) => props.value || 'Condition',
+          }),
+          footnote: fields.text({ label: 'Footnote / small print' }),
+          landingPageTitle: fields.text({ label: 'Landing page <title> tag' }),
+          landingPageDescription: fields.text({ label: 'Landing page meta description', multiline: true }),
+          landingHeroEyebrow: fields.text({ label: 'Landing page hero eyebrow' }),
+          landingKeyInfoTitle: fields.text({ label: 'Landing page "Key info" section title' }),
+          landingConditionsTitle: fields.text({ label: 'Landing page "Conditions" section title' }),
+          landingSalePeriodLabel: fields.text({ label: 'Label for sale window' }),
+          landingStayPeriodLabel: fields.text({ label: 'Label for stay period' }),
+          landingDiscountLabel: fields.text({ label: 'Label for discount' }),
+          programmesTitle: fields.text({ label: 'Programmes section title' }),
+          programmesIntro: fields.text({ label: 'Programmes section intro', multiline: true }),
+          programmes: fields.array(
+            fields.object({
+              name: fields.text({ label: 'Programme name', description: 'e.g. Immunity Booster' }),
+              description: fields.text({ label: 'Short description', multiline: true }),
+            }),
+            {
+              label: 'Discounted programmes (Healthy In + Traditional Spa are mandatory per HQ)',
+              itemLabel: (props) => props.fields.name.value || 'Programme',
+            }
+          ),
+          relatedTitle: fields.text({ label: '"Before you decide" section title' }),
+          relatedLinks: fields.array(
+            fields.object({
+              label: fields.text({ label: 'Link label' }),
+              href: fields.text({ label: 'Path on marienbad.com', description: 'e.g. /de/mineralquellen' }),
+            }),
+            {
+              label: 'Internal links to supporting pages',
+              itemLabel: (props) => props.fields.label.value || 'Link',
+            }
+          ),
+          expiredNotice: fields.text({ label: 'Notice shown after the sale ends', multiline: true }),
+          expiredCtaLabel: fields.text({ label: 'CTA label after the sale ends' }),
+          expiredCtaUrl: fields.text({ label: 'CTA URL after the sale ends', description: 'Ensana general offers page' }),
+          image: fields.image({
+            label: 'Hero image (optional)',
+            directory: 'public/images/content/campaigns/medical-promo',
+            publicPath: '/images/content/campaigns/medical-promo/',
+            description: 'Hero image for the landing page. Recommended ~1920×800 px. Leave empty for solid gradient.',
+          }),
+          imageAlt: fields.text({ label: 'Hero image alt text (for accessibility)' }),
+          popupImage: fields.image({
+            label: 'Popup creative (optional, per-locale square banner)',
+            directory: 'public/images/content/campaigns/medical-promo',
+            publicPath: '/images/content/campaigns/medical-promo/',
+            description: 'Square creative (1080×1080) from Ensana HQ, shown as the full popup visual. Leave empty to fall back to the gradient + text card.',
+          }),
+          popupImageAlt: fields.text({ label: 'Popup creative alt text (for accessibility)' }),
+        },
+        { label: 'Medical Promo (September 2026)' }
+      ),
     },
   })
 }
