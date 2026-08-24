@@ -131,7 +131,7 @@ export const subPages: SubPage[] = [
     metaDescription:
       'Ve kterých hotelech Ensana lze čerpat lázeňskou péči hrazenou pojišťovnou, kde je ubytování bez doplatku, a co pobyt nabízí navíc — Ensana Life, turistická karta i vybavení města.',
     lead:
-      'Léčba i procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem — mezi léčbou a pokojem se nechodí ven. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
+      'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — mezi léčbou a pokojem se tak nechodí ven. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
     icon: 'hotel',
   },
   {
@@ -226,7 +226,7 @@ export const processSteps: ProcessStep[] = [
       'Komplexní péče se čerpá v době pracovní neschopnosti; tu vystaví lázeňský lékař při vstupní lékařské prohlídce. Příspěvkovou péči čerpáte v době své dovolené.',
     ],
     tip:
-      'Nastoupit lze kterýkoli den v týdnu — pobyt nezačíná jen v pondělí. Všechny procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem.',
+      'Nastoupit lze kterýkoli den v týdnu — pobyt nezačíná jen v pondělí. Procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem.',
   },
   {
     n: 4,
@@ -1021,7 +1021,7 @@ export const insuranceHotels: InsuranceHotel[] = [
 ]
 
 export const hotelsIntro =
-  'Léčba i všechny procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
+  'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi tak nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
 
 /**
  * Pozor na rozpor mezi dvěma zdroji: ceník 2026 má nulový doplatek jen
@@ -1109,7 +1109,7 @@ export const staySteps: StayStep[] = [
   {
     heading: 'Denní režim',
     body:
-      'Procedury se rozloží do celého dne a probíhají v budově, kde bydlíte, případně v budovách spojených koridorem. Mezi nimi zbývá čas na pitnou kúru na kolonádě, procházky v lázeňských lesích a kulturní program města.',
+      'Procedury se rozloží do celého dne a probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem. Mezi nimi zbývá čas na pitnou kúru na kolonádě, procházky v lázeňských lesích a kulturní program města.',
   },
   {
     heading: 'Kontrolní a výstupní vyšetření',
@@ -1165,7 +1165,7 @@ export const benefits: Benefit[] = [
   {
     title: 'Léčba přímo v hotelu',
     body:
-      'Všechny procedury probíhají v budově, kde bydlíte, případně v budovách spojených koridorem. Odpadá docházení mezi léčebnými domy po městě — u třítýdenního pobytu s omezenou hybností jde o zásadní rozdíl v pohodlí i v bezpečí.',
+      'Procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi nechodí. Výjimkou bývá procedura s unikátním vybavením, které má jen jeden z lázeňských domů. U třítýdenního pobytu s omezenou hybností je to zásadní rozdíl v pohodlí i v bezpečí.',
   },
   {
     title: 'Bazény, sauny a wellness',
@@ -1240,7 +1240,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Dochází se na procedury mimo hotel? Jak daleko?',
-    a: 'Ven se nechodí. Všechny procedury jsou v hotelu, kde jste ubytováni — podle hotelu buď přímo ve vaší budově, nebo v budově spojené koridorem.',
+    a: 'Většinou ne. Procedury bývají v hotelu, kde jste ubytováni — podle hotelu buď přímo ve vaší budově, nebo v budově spojené koridorem, takže se nechodí ven. Výjimkou je procedura s unikátním vybavením, které má jen jeden z lázeňských domů; na tu se dochází.',
   },
   {
     q: 'Je možné ubytování společně s doprovodem bez účasti pojišťovny?',
