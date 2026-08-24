@@ -50,6 +50,10 @@ export interface SubPage {
   lead: string
   /** Klíč ikony v komponentě InsuranceNavCards.astro */
   icon: 'document' | 'compare' | 'price' | 'stethoscope' | 'suitcase' | 'hotel' | 'question'
+  /** Snímek pod hlavičkou podstránky. Cesty vedou na fotky, které web už
+   *  používá jinde — mají hotové WebP varianty v manifestu. */
+  image: string
+  imageAlt: string
 }
 
 export const subPages: SubPage[] = [
@@ -63,6 +67,8 @@ export const subPages: SubPage[] = [
     lead:
       'Návrh na lázeňskou péči nevystavují lázně, ale váš lékař. Tady je celý postup od první návštěvy ordinace až po pozvánku k nástupu — včetně toho, co si připravit a na co si dát pozor.',
     icon: 'document',
+    image: '/images/content/articles/cs-rehabilitace-po-covidu/coverImage.jpg',
+    imageAlt: 'Dvojice lázeňských hostů s porcelánovými pohárky před kolonádou',
   },
   {
     slug: 'komplexni-a-prispevkova-pece',
@@ -74,6 +80,8 @@ export const subPages: SubPage[] = [
     lead:
       'Dva typy hrazené lázeňské péče se liší v jediné, ale zásadní věci — kolik za vás zaplatí pojišťovna. Následující srovnání ukazuje, co který typ zahrnuje a co znamená pro váš rozpočet i pro plánování volna.',
     icon: 'compare',
+    image: '/images/hotels/hotels/5/images/0/image.jpg',
+    imageAlt: 'Lázeňský hotel Vltava — žlutá fasáda s balkony nad lázeňskou částí města',
   },
   {
     slug: 'cenik-doplatku',
@@ -85,6 +93,8 @@ export const subPages: SubPage[] = [
     lead:
       'Ceny za osobu v Kč včetně DPH podle oficiálních ceníků Léčebných lázní Mariánské Lázně a.s. pro rok 2026. U komplexní péče jde o doplatek k tomu, co hradí pojišťovna; u příspěvkové péče o cenu ubytování a stravy, kterou hradíte celou.',
     icon: 'price',
+    image: '/images/hotels/hotels/1/images/0/image.jpg',
+    imageAlt: 'Lázeňský hotel Centrální Lázně s bílou historizující fasádou pod zalesněným svahem',
   },
   {
     slug: 'indikace',
@@ -96,6 +106,8 @@ export const subPages: SubPage[] = [
     lead:
       'Zda máte na lázně nárok, rozhoduje diagnóza a indikační seznam. Vyberte skupinu, která odpovídá vašemu onemocnění — u každé najdete, co se léčí, jakými procedurami a jak dlouhý pobyt pojišťovna hradí.',
     icon: 'stethoscope',
+    image: '/images/content/articles/cs-lazenska-lecba-pruvodce/coverImage.jpg',
+    imageAlt: 'Hostka v županu u nerezové vany napuštěné minerální vodou',
   },
   {
     slug: 'pobyt-a-prijezd',
@@ -107,6 +119,8 @@ export const subPages: SubPage[] = [
     lead:
       'Cesta do lázní se dá zvládnout bez auta i bez těžkého kufru. Tady je vše, co potřebujete vědět od nákupu jízdenky po vstupní lékařskou prohlídku a běžný denní režim.',
     icon: 'suitcase',
+    image: '/images/content/articles/cs-vlakem-do-mariansk-lazni/coverImage.jpg',
+    imageAlt: 'Nástupiště železniční stanice Mariánské Lázně s podsvíceným názvem stanice',
   },
   {
     slug: 'hotely-a-vyhody',
@@ -118,6 +132,8 @@ export const subPages: SubPage[] = [
     lead:
       'Léčba i procedury probíhají přímo v hotelu, kde bydlíte — nikam se za nimi nedochází. Volba hotelu proto rozhoduje o pohodlí celého pobytu i o výši doplatku.',
     icon: 'hotel',
+    image: '/images/hotels/hotels/2/images/0/image.jpg',
+    imageAlt: 'Lázeňské hotely Hvězda a Imperial nad parkem s růžovými záhony',
   },
   {
     slug: 'caste-dotazy',
@@ -129,6 +145,8 @@ export const subPages: SubPage[] = [
     lead:
       'Otázky, které dostáváme nejčastěji. Odpovědi vycházejí z informací Léčebných lázní Mariánské Lázně a.s. a z platné legislativy.',
     icon: 'question',
+    image: '/images/library/colonnade/park-16a4873.jpg',
+    imageAlt: 'Lázeňské parky v Mariánských Lázních s pavilonem a rozkvetlými záhony',
   },
 ]
 
@@ -589,11 +607,19 @@ export interface IndicationPage {
   procedures: { name: string; detail: string }[]
   /** Volitelný odstavec o pramenech nebo místních specifikách. */
   local?: { heading: string; body: string }
+  /** Snímek k této indikaci — vždy procedura nebo prostředí, které se u ní
+   *  skutečně používá, ne ilustrace bez vztahu k textu. */
+  image: string
+  imageAlt: string
+  imageCaption: string
 }
 
 export const indicationPages: IndicationPage[] = [
   {
     slug: 'pohybove-ustroji',
+    image: '/images/content/articles/cs-lecba-raselinou-marianske-lazne/coverImage.jpg',
+    imageAlt: 'Slatinný zábal nanesený na zádech ležícího klienta',
+    imageCaption: 'Slatinné zábaly s teplotou až 40 °C tlumí bolest a zánět — jedna z hlavních procedur této skupiny.',
     groupId: 'musculoskeletal',
     roman: 'VII',
     navLabel: 'Pohybové ústrojí',
@@ -627,6 +653,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'ledviny-a-mocove-cesty',
+    image: '/images/content/articles/cs-postonkologicky-lazensky-program/coverImage.jpg',
+    imageAlt: 'Dvojice s lázeňskými pohárky u pavilonu Rudolfova pramene',
+    imageCaption: 'Rudolfův pramen s vysokým obsahem vápníku a hořčíku — jeden ze čtyř pramenů, které lékař u této indikace předepisuje.',
     groupId: 'urinary',
     roman: 'VIII',
     navLabel: 'Ledviny a močové cesty',
@@ -665,6 +694,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'dychaci-ustroji',
+    image: '/images/content/pages/cs-klimatoterapie/featuredImage.jpg',
+    imageAlt: 'Lesní cesta ve Slavkovském lese prosvícená sluncem',
+    imageCaption: 'Klimatoterapie není doplněk — poloha města v 630 m n. m. a čisté lesní ovzduší jsou součástí léčebného plánu.',
     groupId: 'respiratory',
     roman: 'V',
     navLabel: 'Dýchací ústrojí',
@@ -699,6 +731,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'onkologicka-onemocneni',
+    image: '/images/content/articles/cs-rehabilitace-po-covidu/coverImage.jpg',
+    imageAlt: 'Dvojice lázeňských hostů s porcelánovými pohárky před kolonádou',
+    imageCaption: 'Cílem je rekondice a návrat do běžného života — pitná kúra, pohyb a klid patří k programu stejně jako procedury.',
     groupId: 'oncology',
     roman: 'I',
     navLabel: 'Onkologická onemocnění',
@@ -732,6 +767,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'kozni-onemocneni',
+    image: '/images/content/articles/cs-lazenska-lecba-koznich-onemocneni/coverImage.jpg',
+    imageAlt: 'Klientka ponořená v minerální koupeli při svíčkách',
+    imageCaption: 'Minerální koupele snižují zánět a podráždění, hydratují pokožku a obnovují kožní bariéru.',
     groupId: 'skin',
     roman: 'X',
     navLabel: 'Kožní onemocnění',
@@ -758,6 +796,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'travici-ustroji',
+    image: '/images/content/articles/cs-pitna-kura-pruvodce/coverImage.jpg',
+    imageAlt: 'Hostka pije z lázeňského pohárku u Zpívající fontány',
+    imageCaption: 'Pitná kúra s přesným dávkováním a načasováním je u této skupiny základem léčby.',
     groupId: 'digestive',
     roman: 'III',
     navLabel: 'Trávicí ústrojí',
@@ -793,6 +834,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'neurologicka-onemocneni',
+    image: '/images/content/articles/cs-hubnuti-a-metabolicka-lecba-v-laznich-jak-funguje-lazenska-kura-na-vahu/coverImage.jpg',
+    imageAlt: 'Fyzioterapeut vede klientku při cvičení na páteř v rehabilitační tělocvičně',
+    imageCaption: 'Individuální fyzioterapie v intenzitě, jaké se v ambulantním režimu nedosáhne — práce na koordinaci, stabilitě a hybnosti.',
     groupId: 'nervous',
     roman: 'VI',
     navLabel: 'Neurologická onemocnění',
@@ -824,6 +868,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'obehove-ustroji',
+    image: '/images/content/articles/cs-co2-koupele-veda/coverImage.jpg',
+    imageAlt: 'Klientka v nerezové vaně s minerální uhličitou koupelí',
+    imageCaption: 'Uhličité koupele z místních pramenů zlepšují prokrvení a snižují krevní tlak — jádro léčby této indikace.',
     groupId: 'circulatory',
     roman: 'II',
     navLabel: 'Oběhové ústrojí',
@@ -856,6 +903,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'metabolismus-a-stitna-zlaza',
+    image: '/images/content/articles/cs-lecba-pohyboveho-aparatu/coverImage.jpg',
+    imageAlt: 'Skupina hostů při nordic walkingu v lázeňském parku',
+    imageCaption: 'Řízený pohybový režim a klimatoterapie podporují metabolismus i celkovou kondici.',
     groupId: 'metabolic',
     roman: 'IV',
     navLabel: 'Metabolismus a žlázy',
@@ -904,6 +954,9 @@ export function getIndicationPage(slug: string): IndicationPage {
 export interface InsuranceHotel {
   /** Slug v src/data/hotels.ts, pokud má hotel na webu vlastní stránku. */
   hotelSlug?: string
+  /** Exteriér hotelu z jeho vlastní galerie (src/content/hotel-galleries). */
+  image: string
+  imageAlt: string
   name: string
   stars: number
   rooms: string
@@ -915,6 +968,8 @@ export interface InsuranceHotel {
 export const insuranceHotels: InsuranceHotel[] = [
   {
     hotelSlug: 'hvezda',
+    image: '/images/hotels/hotels/2/images/0/image.jpg',
+    imageAlt: 'Lázeňské hotely Hvězda a Imperial nad parkem s růžovými záhony',
     name: 'Hvězda – Imperial',
     stars: 4,
     rooms: '237 pokojů ve třech propojených budovách — Hvězda, Imperial a Neapol',
@@ -923,6 +978,8 @@ export const insuranceHotels: InsuranceHotel[] = [
   },
   {
     hotelSlug: 'centralni-lazne',
+    image: '/images/hotels/hotels/1/images/0/image.jpg',
+    imageAlt: 'Lázeňský hotel Centrální Lázně s bílou historizující fasádou pod zalesněným svahem',
     name: 'Centrální Lázně – Maria Spa',
     stars: 4,
     rooms: '108 pokojů',
@@ -931,6 +988,8 @@ export const insuranceHotels: InsuranceHotel[] = [
   },
   {
     hotelSlug: 'pacifik',
+    image: '/images/hotels/hotels/3/images/0/image.jpg',
+    imageAlt: 'Nasvícená fasáda Grandhotelu Pacifik na Hlavní třídě za soumraku',
     name: 'Pacifik',
     stars: 4,
     rooms: '96 pokojů',
@@ -940,6 +999,8 @@ export const insuranceHotels: InsuranceHotel[] = [
   },
   {
     hotelSlug: 'vltava',
+    image: '/images/hotels/hotels/5/images/0/image.jpg',
+    imageAlt: 'Lázeňský hotel Vltava — žlutá fasáda s balkony nad lázeňskou částí města',
     name: 'Vltava',
     stars: 3,
     rooms: '80 pokojů ve dvou propojených budovách — Vltava a Berounka',
@@ -949,6 +1010,8 @@ export const insuranceHotels: InsuranceHotel[] = [
   },
   {
     hotelSlug: 'svoboda',
+    image: '/images/hotels/hotels/6/images/0/image.jpg',
+    imageAlt: 'Propojené budovy lázeňského hotelu Svoboda s hotelem Margareta uprostřed',
     name: 'Svoboda',
     stars: 3,
     rooms: '99 pokojů ve třech propojených budovách — Svoboda, Margareta a Palladio',
