@@ -1,4 +1,4 @@
-import type { MedicalPromoData } from '@/lib/campaign'
+import { campaignDayStart, type MedicalPromoData } from '@/lib/campaign'
 import type { Locale } from '@/i18n/config'
 
 /** Landing page paths per locale — also the hreflang map for all four pages. */
@@ -17,5 +17,5 @@ export const medicalPromoAlternateUrls: Record<Locale, string> = {
  */
 export function medicalPromoNoindex(data: MedicalPromoData, now: Date = new Date()): boolean {
   if (!data.enabled) return true
-  return now < new Date(data.teaserStart)
+  return now < campaignDayStart(data.teaserStart)
 }

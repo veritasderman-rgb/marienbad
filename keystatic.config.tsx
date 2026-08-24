@@ -361,9 +361,15 @@ function campaignSingleton(locale: string, label: string) {
           saleText: fields.text({ label: 'Sale body text', multiline: true }),
           discountLabel: fields.text({ label: 'Discount label', description: 'e.g. −25 %' }),
           ctaLabel: fields.text({ label: 'CTA button label (sale phase)' }),
-          ctaUrl: fields.text({ label: 'CTA URL — Ensana promo landing page', description: 'Full URL incl. UTM params' }),
+          ctaUrl: fields.text({
+            label: 'CTA URL — Ensana promo landing page',
+            description: 'Full URL incl. UTM params. utm_medium is set automatically per placement (popup vs. website), so whatever you put there is overwritten.',
+          }),
           teaserCtaLabel: fields.text({ label: 'CTA button label (teaser phase)' }),
-          teaserCtaUrl: fields.text({ label: 'CTA URL — Ensana countdown page', description: 'Full URL incl. UTM params' }),
+          teaserCtaUrl: fields.text({
+            label: 'CTA URL — Ensana countdown page',
+            description: 'Full URL incl. UTM params. utm_medium is set automatically per placement, same as above.',
+          }),
           conditions: fields.array(fields.text({ label: 'Condition' }), {
             label: 'Booking conditions (30% prepayment, etc.)',
             itemLabel: (props) => props.value || 'Condition',

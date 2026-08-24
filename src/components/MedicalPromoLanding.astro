@@ -12,7 +12,7 @@
  * The page itself never books anything: every CTA hands off to Ensana's IBE.
  */
 import type { Locale } from '@/i18n/config'
-import { getCampaign } from '@/lib/campaign'
+import { campaignDayEnd, campaignDayStart, getCampaign, withUtmMedium } from '@/lib/campaign'
 
 interface Props {
   locale: Locale
@@ -22,9 +22,10 @@ const { locale } = Astro.props
 const data = getCampaign(locale).medicalPromo
 const headlineParts = data.headline.split('\n')
 
-const saleStart = new Date(data.saleStart)
-const saleEnd = new Date(data.saleEnd)
-saleEnd.setHours(23, 59, 59, 999)
+// Anchored in the campaign time zone, matching CampaignPopup, so both surfaces
+// switch phase together rather than hours apart.
+const saleStart = campaignDayStart(data.saleStart)
+const saleEnd = campaignDayEnd(data.saleEnd)
 const now = new Date()
 const beforeSale = now < saleStart
 const afterSale = now > saleEnd
@@ -37,7 +38,11 @@ const salePeriodDisplay = `${dateFormatter.format(saleStart)} – ${dateFormatte
 
 const bodyText = afterSale ? data.expiredNotice : beforeSale ? data.teaserText : data.saleText
 const ctaLabel = afterSale ? data.expiredCtaLabel : beforeSale ? data.teaserCtaLabel : data.ctaLabel
-const ctaUrl = afterSale ? data.expiredCtaUrl : beforeSale ? data.teaserCtaUrl : data.ctaUrl
+// Every click here is a landing-page click, whatever the stored URL says.
+const ctaUrl = withUtmMedium(
+  afterSale ? data.expiredCtaUrl : beforeSale ? data.teaserCtaUrl : data.ctaUrl,
+  'website'
+)
 
 const heroStyle = data.image
   ? `background: linear-gradient(135deg, rgba(45,42,110,0.75) 0%, rgba(0,79,113,0.7) 50%, rgba(49,153,179,0.65) 100%), url('${data.image}') center / cover no-repeat;`

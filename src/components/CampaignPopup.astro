@@ -22,7 +22,7 @@
  */
 import type { Locale } from '@/i18n/config'
 import { t } from '@/i18n/ui'
-import { getCampaign } from '@/lib/campaign'
+import { campaignDayEnd, campaignDayStart, getCampaign, withUtmMedium } from '@/lib/campaign'
 
 interface Props {
   locale: Locale
@@ -79,6 +79,25 @@ const medicalStayLine = medical.landingStayPeriodLabel && medical.stayPeriod
   ? `${medical.landingStayPeriodLabel}: ${medical.stayPeriod}`
   : (medical.stayPeriod ?? '')
 const medicalConditions = medical.conditions ?? []
+
+// Every click here is a popup click, whatever the stored URL says.
+const medicalTeaserCta = withUtmMedium(medical.teaserCtaUrl, 'popup')
+const medicalCta = withUtmMedium(medical.ctaUrl, 'popup')
+
+// Phase boundaries are resolved server-side in the campaign time zone and handed
+// to the script as epoch milliseconds, so every visitor switches phase at the
+// same moment and in step with the landing page.
+const windows = {
+  jubileeTeaserStart: campaignDayStart(campaign.jubilee.teaserStart).getTime(),
+  jubileeSaleStart: campaignDayStart(campaign.jubilee.saleStart).getTime(),
+  jubileeSaleEnd: campaignDayEnd(campaign.jubilee.saleEnd).getTime(),
+  summerTeaserStart: campaignDayStart(campaign.summerSale.teaserStart).getTime(),
+  summerSaleStart: campaignDayStart(campaign.summerSale.saleStart).getTime(),
+  summerSaleEnd: campaignDayEnd(campaign.summerSale.saleEnd).getTime(),
+  medicalTeaserStart: campaignDayStart(medical.teaserStart).getTime(),
+  medicalSaleStart: campaignDayStart(medical.saleStart).getTime(),
+  medicalSaleEnd: campaignDayEnd(medical.saleEnd).getTime(),
+}
 ---
 
 {campaign.popupEnabled && (
@@ -87,16 +106,16 @@ const medicalConditions = medical.conditions ?? []
     class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
     role="dialog"
     aria-modal="true"
-    data-jubilee-teaser-start={campaign.jubilee.teaserStart}
-    data-jubilee-sale-start={campaign.jubilee.saleStart}
-    data-jubilee-sale-end={campaign.jubilee.saleEnd}
-    data-summer-teaser-start={campaign.summerSale.teaserStart}
-    data-summer-sale-start={campaign.summerSale.saleStart}
-    data-summer-sale-end={campaign.summerSale.saleEnd}
+    data-jubilee-teaser-start={windows.jubileeTeaserStart}
+    data-jubilee-sale-start={windows.jubileeSaleStart}
+    data-jubilee-sale-end={windows.jubileeSaleEnd}
+    data-summer-teaser-start={windows.summerTeaserStart}
+    data-summer-sale-start={windows.summerSaleStart}
+    data-summer-sale-end={windows.summerSaleEnd}
     data-medical-enabled={medical.enabled ? '1' : '0'}
-    data-medical-teaser-start={medical.teaserStart}
-    data-medical-sale-start={medical.saleStart}
-    data-medical-sale-end={medical.saleEnd}
+    data-medical-teaser-start={windows.medicalTeaserStart}
+    data-medical-sale-start={windows.medicalSaleStart}
+    data-medical-sale-end={windows.medicalSaleEnd}
     data-countdown-done={labels.countdownDone}
   >
     {/* ============== JUBILEE — TEASER ============== */}
@@ -314,7 +333,7 @@ const medicalConditions = medical.conditions ?? []
               <p data-countdown="medical" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
             </div>
             <a
-              href={medical.teaserCtaUrl}
+              href={medicalTeaserCta}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
@@ -344,7 +363,7 @@ const medicalConditions = medical.conditions ?? []
               <p data-countdown="medical" class="font-heading text-2xl md:text-3xl font-bold text-indigo-700">...</p>
             </div>
             <a
-              href={medical.teaserCtaUrl}
+              href={medicalTeaserCta}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
@@ -379,7 +398,7 @@ const medicalConditions = medical.conditions ?? []
           </div>
           <div class="px-6 py-5 text-center">
             <a
-              href={medical.ctaUrl}
+              href={medicalCta}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
@@ -408,7 +427,7 @@ const medicalConditions = medical.conditions ?? []
               <p class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 tracking-wider">{medical.discountLabel}</p>
             </div>
             <a
-              href={medical.ctaUrl}
+              href={medicalCta}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-block w-full bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold py-3.5 px-6 rounded-full text-center transition-colors"
@@ -427,26 +446,22 @@ const medicalConditions = medical.conditions ?? []
       var overlay = document.getElementById('campaign-popup-overlay');
       if (!overlay) return;
 
-      function parseDate(s) {
-        var parts = s.split('-');
-        return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
-      }
-      function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
-      function endOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999); }
-
-      var jubileeTeaserStart = startOfDay(parseDate(overlay.dataset.jubileeTeaserStart));
-      var jubileeSaleStart = startOfDay(parseDate(overlay.dataset.jubileeSaleStart));
-      var jubileeSaleEnd = endOfDay(parseDate(overlay.dataset.jubileeSaleEnd));
-      var summerTeaserStart = startOfDay(parseDate(overlay.dataset.summerTeaserStart));
-      var summerSaleStart = startOfDay(parseDate(overlay.dataset.summerSaleStart));
-      var summerSaleEnd = endOfDay(parseDate(overlay.dataset.summerSaleEnd));
+      // Phase boundaries as epoch milliseconds, resolved server-side in the
+      // campaign time zone — never re-derived from the visitor's clock, so the
+      // popup and the landing page change phase at the same moment.
+      var jubileeTeaserStart = Number(overlay.dataset.jubileeTeaserStart);
+      var jubileeSaleStart = Number(overlay.dataset.jubileeSaleStart);
+      var jubileeSaleEnd = Number(overlay.dataset.jubileeSaleEnd);
+      var summerTeaserStart = Number(overlay.dataset.summerTeaserStart);
+      var summerSaleStart = Number(overlay.dataset.summerSaleStart);
+      var summerSaleEnd = Number(overlay.dataset.summerSaleEnd);
 
       var medicalEnabled = overlay.dataset.medicalEnabled === '1';
-      var medicalTeaserStart = startOfDay(parseDate(overlay.dataset.medicalTeaserStart));
-      var medicalSaleStart = startOfDay(parseDate(overlay.dataset.medicalSaleStart));
-      var medicalSaleEnd = endOfDay(parseDate(overlay.dataset.medicalSaleEnd));
+      var medicalTeaserStart = Number(overlay.dataset.medicalTeaserStart);
+      var medicalSaleStart = Number(overlay.dataset.medicalSaleStart);
+      var medicalSaleEnd = Number(overlay.dataset.medicalSaleEnd);
 
-      var now = new Date();
+      var now = Date.now();
       var phase = null;
       var countdownTarget = null;
 
@@ -494,7 +509,7 @@ const medicalConditions = medical.conditions ?? []
         var doneText = overlay.dataset.countdownDone || 'Ready!';
         if (countdownEl) {
           var update = function () {
-            var diff = countdownTarget.getTime() - Date.now();
+            var diff = countdownTarget - Date.now();
             if (diff <= 0) { countdownEl.textContent = doneText; return; }
             var days = Math.floor(diff / 86400000);
             var hours = Math.floor((diff % 86400000) / 3600000);
