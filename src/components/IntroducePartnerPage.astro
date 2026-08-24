@@ -394,7 +394,12 @@ const content: Record<Lang, Content> = {
 
 const c = content[lang]
 
-const facts = c.factLabels.map((label, i) => ({ label, value: factValues[i] }))
+const facts = [
+  ...c.factLabels.map((label, i) => ({ label, value: factValues[i] })),
+  // The channels are named the same in every language, so they extend the table
+  // straight from `socials` — one source for both the card and the CRM fields.
+  ...socials.map((channel) => ({ label: channel.name, value: channel.href })),
+]
 const copyAllText = [...facts.map((f) => `${f.label}: ${f.value}`), '', c.shortDescription].join('\n')
 
 /** Přepínač jazyků této stránky (výchozí je EN na /introduce). */
