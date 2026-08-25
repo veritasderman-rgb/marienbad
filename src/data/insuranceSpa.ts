@@ -606,6 +606,14 @@ export interface IndicationPage {
   procedures: { name: string; detail: string }[]
   /** Volitelný odstavec o pramenech nebo místních specifikách. */
   local?: { heading: string; body: string }
+  /** Volitelné okénko s novinkou nebo rozšířenou péčí, která se této skupiny týká. */
+  spotlight?: {
+    eyebrow: string
+    heading: string
+    body: string[]
+    linkLabel: string
+    linkHref: string
+  }
   /** Snímek k této indikaci — vždy procedura nebo prostředí, které se u ní
    *  skutečně používá, ne ilustrace bez vztahu k textu. */
   image: string
@@ -762,7 +770,22 @@ export const indicationPages: IndicationPage[] = [
       { name: 'Manuální lymfodrenáž', detail: 'Doplněná přístrojovou drenáží Lymfoven a Lymfopress.' },
       { name: 'Klimatoterapie a dietoterapie', detail: 'Řízený pobyt venku a individuálně sestavená strava.' },
       { name: 'Rehabilitační program', detail: 'Pohybová aktivita, masáže a hydroterapie.' },
+      {
+        name: 'Řízený pohyb a nutriční vedení',
+        detail:
+          'Rozšířená péče zavedená po studii OnkoFit-Spa — pohybová aktivita pod dohledem fyzioterapeuta a opakované konzultace s nutričním terapeutem.',
+      },
     ],
+    spotlight: {
+      eyebrow: 'Rozšířená péče',
+      heading: 'Co do pobytu přinesla studie OnkoFit-Spa',
+      body: [
+        'Léčebné lázně Mariánské Lázně a.s. zařadily jako první v České republice rozšířenou péči o pacientky po onkologické léčbě přímo do standardního léčebného lázeňského pobytu. Není to nadstavba za příplatek, ale součást programu, který dostane pacientka s touto diagnózou.',
+        'Podkladem byla studie OnkoFit-Spa, kterou lázně vedly společně s 1. lékařskou fakultou Univerzity Karlovy, Institutem lázeňství a balneologie, v.v.i. a Svazem léčebných lázní ČR. Zapojilo se do ní přes čtyřicet žen s gynekologickými nádorovými onemocněními, především s nádorem prsu. Třítýdenní program proběhl v rámci běžného léčebného pobytu, doplnil ho řízený pohyb pod dohledem fyzioterapeuta a konzultace s nutričním terapeutem a dalších šest měsíců po návratu domů se stav sledoval na dálku.',
+      ],
+      linkLabel: 'Přečíst si, co studie zjistila',
+      linkHref: '/cs/magazin/onkofit-spa-studie',
+    },
   },
   {
     slug: 'kozni-onemocneni',

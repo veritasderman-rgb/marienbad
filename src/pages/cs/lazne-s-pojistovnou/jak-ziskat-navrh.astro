@@ -74,6 +74,45 @@ const page = getSubPage('jak-ziskat-navrh')
       </ul>
     </section>
 
+    {/* Blok pro lékaře. Stránka je jinak psaná pro pacienta, proto je zřetelně
+        označený — pacient ho zároveň může ukázat svému lékaři v ordinaci. */}
+    <section class="bg-indigo-700 text-white p-7 md:p-9" style="border-radius: var(--radius-card);">
+      <p class="text-turquoise-300 text-xs font-bold uppercase tracking-wider mb-2">Pro lékaře</p>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-white mb-4">Návrh se dnes vyplňuje elektronicky</h2>
+      <p class="text-white/85 text-base leading-relaxed mb-4">
+        Od <strong class="text-white">1. září 2025</strong> platí zkrácená podoba návrhu na lázeňskou léčebně
+        rehabilitační péči v rozsahu <strong class="text-white">jedné strany A4</strong> — dřívější formulář měl šest
+        dílů na pěti stranách. Vyplnit ho lze rovnou online ve formuláři Svazu léčebných lázní ČR.
+      </p>
+      <ol class="flex flex-col gap-3 list-none p-0 m-0 mb-7">
+        {[
+          'Otevřete elektronický formulář. Registrace není povinná — přihlášeným se ale návrhy ukládají a jdou znovu použít; funguje stejné jméno i heslo jako na starém webu SLL.',
+          'Vyplňte všechny požadované údaje.',
+          'Hotový návrh stáhněte, uložte do počítače nebo vytiskněte.',
+          'Odešlete ho spolu s lékařskou zprávou na zdravotní pojišťovnu pacienta.',
+        ].map((step, i) => (
+          <li class="flex gap-4 items-start">
+            <span class="shrink-0 w-8 h-8 rounded-full bg-white/15 text-white text-sm font-bold flex items-center justify-center tabular-nums">{i + 1}</span>
+            <span class="text-white/85 text-base leading-relaxed pt-1">{step}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href="https://www.lecebnelazne.cz/navrh-na-lecebnou-peci"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 bg-yellow-400 text-indigo-900 font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition-colors"
+        >
+          Otevřít elektronický návrh
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <p class="text-white/70 text-sm leading-relaxed m-0">
+          Pokud pacientovi doporučujete Mariánské Lázně, uveďte do návrhu Léčebné lázně Mariánské Lázně a.s.
+        </p>
+      </div>
+    </section>
+
     <section class="bg-indigo-50 border border-indigo-100 p-6 md:p-8" style="border-radius: var(--radius-card);">
       <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-4">Jak požádat přímo o Mariánské Lázně</h2>
       <p class="text-beige-900 text-base leading-relaxed mb-4">
