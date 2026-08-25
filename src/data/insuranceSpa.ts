@@ -221,7 +221,7 @@ export const processSteps: ProcessStep[] = [
     title: 'Nástup a průběh léčebného pobytu',
     summary: 'Vyberete si hotel a termín, nebo počkáte na předvolání.',
     body: [
-      'V rámci společnosti si vybíráte z lázeňských hotelů podle svých přání a možností. Termín nástupu, lázeňský hotel i typ ubytování si můžete dohodnout předem a rezervace se nezpoplatňuje.',
+      'V rámci společnosti si vybíráte z lázeňských hotelů podle svých přání a možností. Termín nástupu, lázeňský hotel i typ ubytování si můžete dohodnout předem a nic z toho vám nezpoplatníme — ani výběr termínu, ani hotelu, ani kategorie pokoje. Na rezervační poplatek se vyplatí ptát všude, kam se hlásíte; u nás žádný není.',
       'Pokud termín předem zajištěný nemáte, budete k nástupu vyzváni podle aktuálních kapacitních možností. Nástupní termín je závazný a lze ho změnit jen ze závažných důvodů.',
       'Komplexní péče se čerpá v době pracovní neschopnosti; tu vystaví lázeňský lékař při vstupní lékařské prohlídce. Příspěvkovou péči čerpáte v době své dovolené.',
     ],
@@ -1021,7 +1021,7 @@ export const insuranceHotels: InsuranceHotel[] = [
 ]
 
 export const hotelsIntro =
-  'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi tak zpravidla nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem a rezervace se nezpoplatňuje.'
+  'Léčba i procedury probíhají většinou v budově, kde bydlíte, případně v budovách spojených koridorem — ven se za nimi tak zpravidla nechodí. Umístění se řeší podle aktuální volné kapacity, termín i hotel si ale můžete dohodnout předem — a rezervaci vám nezpoplatníme.'
 
 /**
  * Pozor na rozpor mezi dvěma zdroji: ceník 2026 má nulový doplatek jen
@@ -1220,7 +1220,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Můžu si dohodnout termín pobytu, hotel a typ ubytování předem?',
-    a: 'Ano. Za rezervaci se neúčtuje žádný poplatek.',
+    a: 'Ano, a nic si za to neúčtujeme — rezervace termínu, hotelu ani kategorie pokoje u nás nestojí nic. Rezervační poplatek přitom není v cestovním ruchu neobvyklý, proto se na něj ptejte i tam, kde si pobyt srovnáváte.',
   },
   {
     q: 'Ve kterém hotelu je při komplexní lázeňské péči ubytování bez doplatku?',
