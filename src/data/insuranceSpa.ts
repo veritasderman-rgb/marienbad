@@ -266,7 +266,6 @@ export const careTypes: CareType[] = [
     paidByClient: [
       'doplatek za vyšší standard ubytování',
       'doplatek za jednolůžkový pokoj',
-      'výběrovou stravu',
       'lázeňský poplatek 50 Kč za osobu a den',
     ],
     length: '21 nebo 28 dnů podle diagnózy a indikačního seznamu',
@@ -300,7 +299,7 @@ export interface ComparisonRow {
 
 export const careComparison: ComparisonRow[] = [
   { label: 'Co hradí zdravotní pojišťovna', klp: 'Lázeňskou léčbu, standardní ubytování i celodenní stravování', plp: 'Pouze lázeňskou léčbu' },
-  { label: 'Co si hradíte sami', klp: 'Doplatek za vyšší standard ubytování, jednolůžkový pokoj a výběrovou stravu', plp: 'Ubytování a stravování v plné výši' },
+  { label: 'Co si hradíte sami', klp: 'Doplatek za vyšší standard ubytování a za jednolůžkový pokoj', plp: 'Ubytování a stravování v plné výši' },
   { label: 'Délka pobytu', klp: '21 nebo 28 dnů podle indikačního seznamu', plp: '21 dnů, v indikovaných případech 14 dnů' },
   { label: 'Kdy se pobyt čerpá', klp: 'V době pracovní neschopnosti', plp: 'V době vlastní dovolené' },
   { label: 'Platnost schváleného návrhu', klp: '3 měsíce (naléhavost II) nebo 1 měsíc (naléhavost I)', plp: '6 měsíců od vystavení lékařem' },
@@ -360,7 +359,7 @@ export const priceLists: PriceList[] = [
     columns: ['1 den', '21 dnů', '28 dnů'],
     seasons: SEASONS,
     intro:
-      'Zdravotní pojišťovna hradí vše: lázeňskou léčbu, ubytování i celodenní stravování. Níže uvedené částky jsou doplatek za vyšší standard ubytování, jednolůžkový pokoj a výběrovou stravu — tedy to, co si připlácíte nad rámec úhrady pojišťovny.',
+      'Zdravotní pojišťovna hradí vše: lázeňskou léčbu, ubytování i celodenní stravování. Níže uvedené částky jsou doplatek za vyšší standard ubytování a za jednolůžkový pokoj — tedy to, co si připlácíte nad rámec úhrady pojišťovny.',
     validityNote: 'Změny v ceníku komplexní lázeňské péče jsou platné od 15. 6. 2026.',
     groups: [
       {
@@ -1251,7 +1250,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Za co se u komplexní péče účtuje doplatek?',
-    a: 'Za nadstandardní ubytování a za stravování formou bufetu při snídani a večeři — vždy, a u některých hotelů i při obědě.',
+    a: 'Za nadstandardní ubytování a za jednolůžkový pokoj. Stravování u komplexní péče hradí pojišťovna v plném rozsahu, doplatek za ně neúčtujeme.',
   },
   {
     q: 'Kdo vystavuje pracovní neschopnost při komplexní lázeňské péči?',
