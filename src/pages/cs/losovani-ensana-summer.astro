@@ -1,0 +1,1308 @@
+---
+/**
+ * Losovací nástroj pro spotřebitelské soutěže (Ensana Summer).
+ *
+ * Stránka záměrně NEPOUŽÍVÁ Base.astro: je to celoobrazovkový nástroj, který
+ * má režim nahrávání 9:16 pro reels, a lepící se hlavička, patička, cookie
+ * lišta ani rezervační pruh do záběru nepatří. Proto si nese vlastní <html>.
+ *
+ * Není v navigaci a je noindex — cesta je zároveň v NOINDEXED_PATHS
+ * v astro.config.mjs, takže nejde ani do sitemapy.
+ *
+ * Veškerý výpočet běží v prohlížeči. Nahrané kontakty se nikam neodesílají
+ * a nikam neukládají; stránka nemá žádný serverový protějšek.
+ */
+export const prerender = true
+
+
+---
+
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Losování Ensana Summer</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="Interní nástroj pro transparentní losování výherce soutěže Ensana Summer." />
+  <link rel="preload" href="/fonts/Branding-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Branding-Medium.woff2" as="font" type="font/woff2" crossorigin />
+  <style is:global>
+/* Branding se hostuje u nás — stránka nedělá jediný požadavek ven.
+   Rodina má váhy 500/600/700, proto je základ 500 a ne 400. */
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Branding"; src: url("/fonts/Branding-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+/* Ensana paleta (src/styles/global.css). Stránka je záměrně jednotématická —
+   tmavá — protože se natáčí na video: výsledek nesmí záviset na tom, jestli
+   má člověk u prohlížeče zapnutý světlý nebo tmavý režim. Všechny barvy jsou
+   proto malované explicitně, žádná se nedědí od hostitele. */
+:root {
+  --ground:   #001A28;
+  --surface:  #002D42;
+  --raised:   #004F71;
+  --line:     #0d5c7d;
+  --ink:      #FAF7F2;
+  --muted:    #8FB4C4;
+  --accent:   #8BD3E6;
+  --prize:    #F6BA00;
+  --flag:     #E98CBE;
+  --ok:       #7BD8B0;
+
+  --display: 'Branding', 'Segoe UI', system-ui, sans-serif;
+  --prose:   Georgia, 'Times New Roman', serif;
+
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.375rem;
+  --step-3: 1.875rem;
+  --step-4: clamp(2rem, 1.4rem + 2.6vw, 3rem);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: var(--step-1);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* jemná vodní textura na pozadí — lázeňský motiv, ne dekorace pro dekoraci */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 15% -10%, rgba(139, 211, 230, 0.10), transparent 70%),
+    radial-gradient(45rem 32rem at 95% 8%, rgba(0, 79, 113, 0.55), transparent 72%);
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 700; letter-spacing: -0.015em; }
+h1 { font-size: var(--step-4); line-height: 1.05; }
+h2 { font-size: var(--step-3); line-height: 1.15; }
+h3 { font-size: var(--step-2); line-height: 1.25; }
+p  { margin: 0; }
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.prose {
+  font-family: var(--prose);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.prose em { color: var(--ink); font-style: italic; }
+.prose strong { color: var(--ink); font-weight: 500; }
+
+/* ---------- hlavička ---------- */
+
+.masthead { display: flex; flex-direction: column; gap: 0.85rem; }
+.masthead .lede { max-width: 56ch; }
+
+/* ---------- fázová navigace ---------- */
+
+.phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  align-self: flex-start;
+}
+.phase {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  transition: background 160ms ease, color 160ms ease;
+}
+.phase:hover { color: var(--ink); }
+.phase[aria-selected="true"] { background: var(--accent); color: #00212f; }
+.phase .n { font-variant-numeric: tabular-nums; opacity: 0.65; font-size: 0.8125rem; }
+.phase[aria-selected="true"] .n { opacity: 0.75; }
+.phase:focus-visible { outline: 2px solid var(--prize); outline-offset: 3px; }
+
+/* ---------- panely a karty ---------- */
+
+.panel { display: none; flex-direction: column; gap: 1.75rem; }
+.panel.is-active { display: flex; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 40rem) { .card { padding: 1.85rem; } }
+
+.card-head { display: flex; flex-direction: column; gap: 0.4rem; }
+
+/* ---------- nahrání souborů ---------- */
+
+.drops { display: grid; gap: 1rem; }
+@media (min-width: 46rem) { .drops { grid-template-columns: 1fr 1fr; } }
+
+.drop {
+  position: relative;
+  border: 1.5px dashed var(--line);
+  border-radius: 0.85rem;
+  padding: 1.35rem;
+  background: rgba(0, 79, 113, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.drop.is-over { border-color: var(--accent); background: rgba(139, 211, 230, 0.12); }
+.drop.has-file { border-style: solid; border-color: var(--accent); }
+.drop h3 { font-size: 1.0625rem; }
+.drop .hint { font-size: 0.875rem; color: var(--muted); }
+.drop input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.drop .loaded { font-size: 0.875rem; color: var(--accent); font-weight: 600; }
+
+/* ---------- statistiky ---------- */
+
+.stats { display: grid; gap: 0.75rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 46rem) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat {
+  background: rgba(0, 79, 113, 0.35);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.stat .v { font-size: 1.75rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.stat .k { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.stat.flagged .v { color: var(--flag); }
+.stat.frozen .v { color: var(--accent); }
+
+/* ---------- kontrolní řádky (OCR) ---------- */
+
+.review { display: flex; flex-direction: column; gap: 0.6rem; max-height: 30rem; overflow-y: auto; padding-right: 0.35rem; }
+.row {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 0.85rem;
+  background: rgba(0, 79, 113, 0.3);
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+}
+@media (min-width: 46rem) { .row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; } }
+.row.is-dropped { opacity: 0.45; }
+.row .why { font-size: 0.8125rem; color: var(--flag); display: flex; flex-direction: column; gap: 0.15rem; }
+.row .why .raw { color: var(--muted); font-family: var(--prose); font-style: italic; word-break: break-all; }
+.row input[type="text"] {
+  width: 100%;
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  padding: 0.55rem 0.7rem;
+}
+.row input[type="text"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- tlačítka ---------- */
+
+.btn {
+  appearance: none;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 120ms ease, background 160ms ease, color 160ms ease;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--prize); outline-offset: 3px; }
+.btn-primary { background: var(--accent); color: #00212f; }
+.btn-primary:hover { background: #a9e0ee; }
+.btn-prize { background: var(--prize); color: #2b2100; font-size: 1.0625rem; padding: 0.85rem 2rem; }
+.btn-prize:hover { background: #ffcd2e; }
+.btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-small { font-size: 0.8125rem; padding: 0.45rem 0.9rem; }
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+.btn[disabled]:active { transform: none; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; }
+
+/* ---------- pole ---------- */
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.field label { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea {
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1.0625rem;
+  padding: 0.7rem 0.85rem;
+  width: 100%;
+}
+.field textarea { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.field .note { font-size: 0.8125rem; color: var(--muted); font-family: var(--prose); }
+.grid-2 { display: grid; gap: 1rem; }
+@media (min-width: 46rem) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- commit blok ---------- */
+
+pre.commit {
+  margin: 0;
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre;
+}
+.hash { color: var(--accent); word-break: break-all; }
+
+/* ---------- losovací scéna ---------- */
+
+.stage {
+  position: relative;
+  background: linear-gradient(178deg, #00263a 0%, #001A28 58%, #002236 100%);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  padding: 2.5rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  overflow: hidden;
+  text-align: center;
+}
+.stage::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -14rem;
+  width: 34rem;
+  height: 34rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(139, 211, 230, 0.16), transparent 62%);
+  pointer-events: none;
+}
+.stage > * { position: relative; z-index: 1; }
+
+.seed-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.chip {
+  min-width: 2.75rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.6rem;
+  background: rgba(139, 211, 230, 0.14);
+  border: 1px solid rgba(139, 211, 230, 0.4);
+  color: var(--accent);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.dial {
+  font-size: clamp(4.5rem, 3rem + 14vw, 9rem);
+  font-weight: 700;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  min-height: 1em;
+}
+.dial.is-locked { color: var(--prize); }
+.dial.is-idle { color: var(--muted); opacity: 0.35; }
+.dial-label { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+.winner {
+  width: min(100%, 28rem);
+  background: rgba(246, 186, 0, 0.08);
+  border: 1px solid rgba(246, 186, 0, 0.45);
+  border-radius: 1rem;
+  padding: 1.4rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.winner.is-shown { display: flex; animation: rise 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(1.25rem); } to { opacity: 1; transform: none; } }
+.winner .who { font-size: 1.5rem; font-weight: 700; word-break: break-word; }
+.winner .mail { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9375rem; color: var(--accent); word-break: break-all; }
+.winner .meta { font-size: 0.8125rem; color: var(--muted); }
+
+.subs { display: flex; flex-direction: column; gap: 0.5rem; width: min(100%, 28rem); }
+.sub {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(0, 79, 113, 0.4);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  font-size: 0.9375rem;
+  text-align: left;
+}
+.sub .rank { color: var(--muted); font-size: 0.8125rem; font-weight: 600; white-space: nowrap; }
+.sub .mail { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8125rem; color: var(--accent); word-break: break-all; }
+
+/* ---------- režim nahrávání ---------- */
+
+body.recording .masthead,
+body.recording .phases,
+body.recording #panel-prep,
+body.recording #panel-check,
+body.recording #panel-draw > .card { display: none; }
+body.recording .wrap { padding: 0; max-width: none; gap: 0; }
+body.recording {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rec-host { display: contents; }
+body.recording .stage {
+  width: min(100vw, calc((100vh - 2rem) * 9 / 16));
+  aspect-ratio: 9 / 16;
+  justify-content: center;
+  border-radius: 0;
+  border: 0;
+  margin: 0 auto;
+}
+body.recording .stage .subs { display: none; }
+body.recording .rec-exit { display: inline-flex; }
+body.recording .toast { display: none; }
+body.recording .stage-cta.is-ready { display: flex; }
+
+.stage-cta { display: none; flex-direction: column; align-items: center; gap: 0.6rem; }
+.stage-cta .why { font-size: 0.8125rem; color: var(--muted); font-family: var(--prose); max-width: 22rem; }
+.rec-exit {
+  display: none;
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 20;
+  opacity: 0.35;
+}
+.rec-exit:hover { opacity: 1; }
+
+/* ---------- drobnosti ---------- */
+
+.callout {
+  border-left: 3px solid var(--accent);
+  padding: 0.15rem 0 0.15rem 1rem;
+  font-family: var(--prose);
+  color: var(--muted);
+  line-height: 1.6;
+}
+.callout.warn { border-left-color: var(--flag); }
+.callout strong { color: var(--ink); font-weight: 500; }
+
+.formula {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  background: var(--ground);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  color: var(--accent);
+  white-space: pre;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translate(-50%, 1.5rem);
+  background: var(--accent);
+  color: #00212f;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+  z-index: 40;
+}
+.toast.is-shown { opacity: 1; transform: translate(-50%, 0); }
+
+.empty { color: var(--muted); font-family: var(--prose); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Ensana Summer</p>
+    <h1>Losování, které si každý přepočítá</h1>
+    <p class="prose lede">
+      Výherce neurčuje tahle stránka, ale <strong>čísla Sportky</strong>, která v době zmrazení seznamu
+      nikdo neznal. Stránka jen provede výpočet, který je zveřejněný dopředu. Kontakty
+      zůstávají ve vašem prohlížeči — nikam se neodesílají.
+    </p>
+  </header>
+
+  <div class="phases" role="tablist" aria-label="Fáze losování">
+    <button class="phase" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="true" type="button"><span class="n">1</span> Zmrazit seznam</button>
+    <button class="phase" role="tab" id="tab-draw" aria-controls="panel-draw" aria-selected="false" type="button"><span class="n">2</span> Losovat</button>
+    <button class="phase" role="tab" id="tab-check" aria-controls="panel-check" aria-selected="false" type="button"><span class="n">3</span> Ověřit</button>
+  </div>
+
+  <!-- ══════════ FÁZE 1 ══════════ -->
+  <section class="panel is-active" id="panel-prep" role="tabpanel" aria-labelledby="tab-prep">
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Načtěte oba zdroje přihlášek</h2>
+        <p class="prose">
+          Soubory se zpracují přímo tady v prohlížeči. E-maily se nikam neodesílají a stránka si je nikam neukládá —
+          po zavření záložky jsou pryč.
+        </p>
+      </div>
+
+      <div class="drops">
+        <label class="drop" id="drop-ml">
+          <h3>MailerLite</h3>
+          <p class="hint">CSV export ze seznamu soutěže. Sloupec s e-mailem se najde sám.</p>
+          <p class="loaded" data-loaded hidden></p>
+          <input type="file" accept=".csv,.txt,text/csv" multiple aria-label="CSV export z MailerLite">
+        </label>
+
+        <label class="drop" id="drop-ocr">
+          <h3>Papírové přihlášky (OCR)</h3>
+          <p class="hint">CSV z naskenovaných formulářů. Řádky se navíc projedou kontrolou překlepů.</p>
+          <p class="loaded" data-loaded hidden></p>
+          <input type="file" accept=".csv,.txt,text/csv" multiple aria-label="CSV z OCR papírových přihlášek">
+        </label>
+      </div>
+
+      <div class="stats" id="stats" hidden>
+        <div class="stat frozen"><span class="v" id="stat-total">0</span><span class="k">Platných losů</span></div>
+        <div class="stat"><span class="v" id="stat-paper">0</span><span class="k">Z papíru</span></div>
+        <div class="stat"><span class="v" id="stat-dupes">0</span><span class="k">Duplicit</span></div>
+        <div class="stat flagged"><span class="v" id="stat-flags">0</span><span class="k">Ke kontrole</span></div>
+      </div>
+    </div>
+
+    <div class="card" id="review-card" hidden>
+      <div class="card-head">
+        <h2>Zkontrolujte, co OCR nepřečetlo</h2>
+        <p class="prose">
+          Tyhle adresy stroj vyhodnotil jako podezřelé. <strong>Opravte je podle papíru</strong>, nebo řádek vyřaďte.
+          Nic se neopravuje automaticky — jinak by o složení seznamu rozhodovala heuristika, kterou nikdo neviděl.
+        </p>
+      </div>
+      <div class="review" id="review"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Zmrazení seznamu</h2>
+        <p class="prose">
+          Seznam se seřadí podle e-mailu, očísluje od 1 do N a spočítá se jeho otisk SHA-256.
+          <strong>Ten otisk zveřejněte dřív, než padnou čísla Sportky.</strong> Když by kdokoli potom do seznamu sáhl,
+          otisk už nebude sedět.
+        </p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="freeze" type="button" disabled>Zmrazit seznam a spočítat otisk</button>
+        <button class="btn btn-ghost btn-small" id="copy-list" type="button" hidden>Kopírovat očíslovaný seznam</button>
+      </div>
+      <div id="commit-out" hidden>
+        <pre class="commit" id="commit-text"></pre>
+        <div class="actions" style="margin-top: 0.85rem;">
+          <button class="btn btn-ghost btn-small" id="copy-commit" type="button">Kopírovat text ke zveřejnění</button>
+          <button class="btn btn-primary btn-small" id="go-draw" type="button">Pokračovat k losování</button>
+        </div>
+      </div>
+      <p class="callout warn">
+        <strong>Seznam sám nezveřejňujte.</strong> 800 e-mailů jsou osobní údaje. Ven jde jen otisk, počet losů
+        a použitý postup.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ══════════ FÁZE 2 ══════════ -->
+  <section class="panel" id="panel-draw" role="tabpanel" aria-labelledby="tab-draw">
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Losovací čísla</h2>
+        <p class="prose">
+          Opište čísla z prvního tahu Sportky z data, které máte v pravidlech. Pořadí nehraje roli —
+          stránka je vždy seřadí vzestupně, aby výsledek nezáležel na tom, jak je kdo přepsal.
+        </p>
+      </div>
+      <div class="field">
+        <label for="seed">Tažená čísla</label>
+        <input type="text" id="seed" inputmode="numeric" placeholder="např. 4 11 23 30 41 49" autocomplete="off">
+        <p class="note" id="seed-norm">Normalizovaný tvar se ukáže, jakmile začnete psát.</p>
+      </div>
+      <div id="draw-src"></div>
+      <div class="actions">
+        <button class="btn btn-prize" id="draw" type="button" disabled>Losovat výherce</button>
+        <button class="btn btn-ghost btn-small" id="rec-mode" type="button">Režim nahrávání 9 : 16</button>
+        <button class="btn btn-ghost btn-small" id="reveal-mails" type="button" aria-pressed="false">Zobrazit celé e-maily</button>
+      </div>
+    </div>
+
+    <div class="rec-host">
+      <div class="stage" id="stage">
+        <p class="eyebrow">Ensana Summer</p>
+        <div class="seed-chips" id="chips"></div>
+        <div>
+          <p class="dial-label" id="dial-label">Pořadové číslo výherce</p>
+          <div class="dial is-idle" id="dial">...</div>
+        </div>
+        <div class="winner" id="winner">
+          <p class="eyebrow" style="color: var(--prize);">Výherce</p>
+          <p class="who" id="w-name"></p>
+          <p class="mail" id="w-mail"></p>
+          <p class="meta" id="w-meta"></p>
+        </div>
+        <div class="stage-cta is-ready" id="stage-cta">
+          <button class="btn btn-prize" id="stage-draw" type="button">Spustit losování</button>
+          <p class="why">Výsledek je daný taženými čísly — kolikrát losování pustíte, tolikrát vyjde stejně.</p>
+        </div>
+        <div class="subs" id="subs"></div>
+      </div>
+    </div>
+
+    <button class="btn btn-ghost btn-small rec-exit" id="rec-exit" type="button">Ukončit nahrávání</button>
+
+    <div class="card" id="result-card" hidden>
+      <div class="card-head">
+        <h3>Text k vyhlášení</h3>
+        <p class="prose">Zveřejněte ho i s otiskem z první fáze — dohromady je losování přepočitatelné zvenčí.</p>
+      </div>
+      <pre class="commit" id="result-text"></pre>
+      <div class="actions">
+        <button class="btn btn-ghost btn-small" id="copy-result" type="button">Kopírovat</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════ FÁZE 3 ══════════ -->
+  <section class="panel" id="panel-check" role="tabpanel" aria-labelledby="tab-check">
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Přepočet bez seznamu</h2>
+        <p class="prose">
+          Tuhle část může spustit kdokoli — stačí tři údaje, které zveřejníte. Seznam kontaktů k tomu potřeba není,
+          a proto ho taky nikdy nikomu nedáváte.
+        </p>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="v-hash">Otisk seznamu (SHA-256)</label>
+          <input type="text" id="v-hash" placeholder="64 znaků" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="v-n">Počet losů N</label>
+          <input type="text" id="v-n" inputmode="numeric" placeholder="např. 793" autocomplete="off">
+        </div>
+      </div>
+      <div class="field">
+        <label for="v-seed">Tažená čísla</label>
+        <input type="text" id="v-seed" placeholder="např. 4 11 23 30 41 49" autocomplete="off">
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="verify" type="button">Přepočítat</button>
+      </div>
+      <div id="verify-out" hidden>
+        <pre class="commit" id="verify-text"></pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Postup, na kterém to stojí</h3>
+      </div>
+      <p class="prose">
+        Seznam se seřadí podle e-mailu (porovnání po znacích, ne podle české abecedy — jinak by výsledek závisel
+        na nastavení počítače) a očísluje od 1. Kanonický zápis je <em>číslo, tabulátor, e-mail, konec řádku</em>
+        pro každý los, v kódování UTF-8. Z něj vzniká otisk:
+      </p>
+      <div class="formula">otisk = SHA-256( "1\te-mail\n2\te-mail\n…" )</div>
+      <p class="prose">Výherce je pak jednoznačně dán otiskem, taženými čísly a počtem losů:</p>
+      <div class="formula">index = ( SHA-256( čísla + "|" + otisk ) mod N ) + 1</div>
+      <p class="prose">
+        Náhradníci se odvozují stejně, jen se do vstupu přidá pořadí a už vylosovaná čísla se přeskakují:
+      </p>
+      <div class="formula">index_k = ( SHA-256( čísla + "|" + otisk + "|" + k ) mod N ) + 1</div>
+      <p class="callout">
+        Otisk se zveřejňuje <strong>před</strong> tahem Sportky, čísla vzniknou <strong>po</strong> něm.
+        Ani jedna strana tak nemůže ovlivnit druhou — a v tom je celý důkaz.
+      </p>
+    </div>
+
+  </section>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" is:inline>
+const $ = (id) => document.getElementById(id);
+
+/* ══════════════════ stav ══════════════════ */
+
+const state = {
+  sources: { ml: [], ocr: [] },   // syrové řádky ze souborů
+  entries: [],                    // sloučené, po deduplikaci
+  flags: [],                      // řádky ke kontrole
+  fixes: new Map(),               // ruční zásahy podle id řádku, přežijí přepočet
+  dupes: 0,
+  frozen: null,                   // { list, hash, n }
+  showMails: false,
+  lastDraw: null,
+};
+
+/* ══════════════════ CSV ══════════════════ */
+
+/** Oddělovač se hádá podle prvního řádku — MailerLite dává čárky, české Excely středníky. */
+function sniffDelimiter(text) {
+  const line = text.split(/\r?\n/).find((l) => l.trim().length) || '';
+  const counts = [[',', 0], [';', 0], ['\t', 0]];
+  let inQuotes = false;
+  for (const ch of line) {
+    if (ch === '"') inQuotes = !inQuotes;
+    else if (!inQuotes) for (const c of counts) if (ch === c[0]) c[1]++;
+  }
+  counts.sort((a, b) => b[1] - a[1]);
+  return counts[0][1] > 0 ? counts[0][0] : ',';
+}
+
+function parseCsv(text) {
+  const clean = text.replace(/^﻿/, '');
+  const delim = sniffDelimiter(clean);
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+
+  for (let i = 0; i < clean.length; i++) {
+    const ch = clean[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (clean[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else field += ch;
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === delim) {
+      row.push(field); field = '';
+    } else if (ch === '\n') {
+      row.push(field); rows.push(row); row = []; field = '';
+    } else if (ch !== '\r') {
+      field += ch;
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter((r) => r.some((c) => c.trim().length));
+}
+
+/** Najde sloupec s e-mailem podle hlavičky; když hlavička nesedí, vezme sloupec s nejvíc zavináči. */
+function pickColumns(rows) {
+  if (!rows.length) return null;
+  const header = rows[0].map((h) => h.trim().toLowerCase());
+  let emailIdx = header.findIndex((h) => /^(e[-\s]?mail|email_?address|mail)$/.test(h));
+  if (emailIdx === -1) emailIdx = header.findIndex((h) => h.includes('mail'));
+
+  // buňka s adresou obsahuje „mail" i v datovém řádku — když to, co jsme
+  // vzali za hlavičku, samo vypadá jako e-mail, hlavička tam prostě není
+  if (emailIdx !== -1 && EMAIL_RE.test(normalize(rows[0][emailIdx]))) emailIdx = -1;
+
+  let body = rows.slice(1);
+  if (emailIdx === -1) {
+    // žádná použitelná hlavička — hledáme sloupec s nejvíc zavináči a bereme i první řádek
+    const width = Math.max(...rows.map((r) => r.length));
+    let best = -1, bestScore = 0;
+    for (let c = 0; c < width; c++) {
+      const score = rows.filter((r) => (r[c] || '').includes('@')).length;
+      if (score > bestScore) { bestScore = score; best = c; }
+    }
+    if (best === -1) return null;
+    emailIdx = best;
+    body = rows;
+  }
+
+  const nameIdx = header.findIndex((h) => /^(name|jm[eé]no|first_?name|kř?estn[ií].*)/.test(h));
+  const surIdx = header.findIndex((h) => /^(last_?name|p[řr][ií]jmen[ií])/.test(h));
+  return { emailIdx, nameIdx, surIdx, body };
+}
+
+/* ══════════════════ kontrola adres ══════════════════ */
+
+const KNOWN_DOMAINS = [
+  'seznam.cz', 'email.cz', 'centrum.cz', 'volny.cz', 'post.cz', 'atlas.cz', 'tiscali.cz',
+  'gmail.com', 'googlemail.com', 'hotmail.com', 'outlook.com', 'outlook.cz', 'live.com',
+  'icloud.com', 'me.com', 'yahoo.com', 'yahoo.de', 'gmx.de', 'gmx.net', 'web.de',
+  't-online.de', 'freenet.de', 'azet.sk', 'zoznam.sk', 'pobox.sk', 'chello.cz', 'quick.cz',
+];
+
+function editDistance(a, b) {
+  const m = a.length, n = b.length;
+  if (Math.abs(m - n) > 2) return 9;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+const EMAIL_RE = /^[^\s@,;:<>()[\]\\]+@[^\s@,;:<>()[\]\\]+\.[a-z]{2,}$/i;
+
+/** Vrací null, když je adresa v pořádku, jinak důvod k ruční kontrole. */
+function suspect(raw, normalized, fromOcr) {
+  if (!normalized) return 'prázdná adresa';
+  if (/\s/.test(raw.trim())) return 'mezera uvnitř adresy';
+  const ats = (normalized.match(/@/g) || []).length;
+  if (ats === 0) return 'chybí zavináč';
+  if (ats > 1) return 'víc zavináčů než jeden';
+  if (!EMAIL_RE.test(normalized)) return 'neplatný tvar adresy';
+
+  const domain = normalized.split('@')[1];
+  if (!domain.includes('.')) return 'doména bez tečky';
+  if (KNOWN_DOMAINS.includes(domain)) return null;
+
+  // typická OCR záměna v doméně — nabídneme nejbližší běžnou
+  let best = null, bestD = 3;
+  for (const d of KNOWN_DOMAINS) {
+    const dist = editDistance(domain, d);
+    if (dist < bestD) { bestD = dist; best = d; }
+  }
+  if (best && bestD <= 2) return `možná překlep v doméně — nemá tam být ${best}?`;
+  if (fromOcr && /[0О1lI]/.test(domain)) return 'v doméně je znak, který OCR často plete';
+  return null;
+}
+
+const normalize = (s) => (s || '').trim().replace(/^["'<]+|["'>]+$/g, '').replace(/\s+/g, '').toLowerCase();
+
+/* ══════════════════ načtení souborů ══════════════════ */
+
+async function readFiles(fileList, bucket) {
+  const rows = [];
+  for (const file of fileList) {
+    const text = await file.text();
+    const cols = pickColumns(parseCsv(text));
+    if (!cols) { toast(`V souboru ${file.name} jsem nenašel sloupec s e-mailem.`); continue; }
+    for (const r of cols.body) {
+      const raw = r[cols.emailIdx] || '';
+      if (!raw.trim()) continue;
+      const name = [cols.nameIdx >= 0 ? r[cols.nameIdx] : '', cols.surIdx >= 0 ? r[cols.surIdx] : '']
+        .filter((x) => x && x.trim()).join(' ').trim();
+      // id musí přežít přepočet seznamu, jinak by se ruční opravy ztrácely
+      rows.push({ id: `${bucket}-${rows.length}`, raw, name, file: file.name });
+    }
+  }
+  state.sources[bucket] = rows;
+  rebuild();
+  return rows.length;
+}
+
+/** Sloučí oba zdroje, odstraní duplicity a vytřídí adresy ke kontrole. */
+function rebuild() {
+  const seen = new Map();
+  state.flags = [];
+  state.dupes = 0;
+
+  for (const bucket of ['ml', 'ocr']) {
+    const fromOcr = bucket === 'ocr';
+    for (const row of state.sources[bucket]) {
+      const email = normalize(row.raw);
+      const why = suspect(row.raw, email, fromOcr);
+      if (why) {
+        const edit = state.fixes.get(row.id) || { fixed: '', dropped: false };
+        state.flags.push({ ...row, email, why, source: fromOcr ? 'papír' : 'MailerLite', ...edit });
+        continue;
+      }
+      if (seen.has(email)) { state.dupes++; continue; }
+      seen.set(email, { email, name: row.name, source: fromOcr ? 'papír' : 'MailerLite' });
+    }
+  }
+
+  // ručně opravené řádky se přidají zpátky
+  for (const f of state.flags) {
+    if (f.dropped) continue;
+    const fixed = normalize(f.fixed);
+    if (!fixed || suspect(f.fixed, fixed, false)) continue;
+    if (seen.has(fixed)) { state.dupes++; continue; }
+    seen.set(fixed, { email: fixed, name: f.name, source: f.source });
+  }
+
+  state.entries = [...seen.values()];
+  state.frozen = null;
+  render();
+}
+
+/* ══════════════════ vykreslení fáze 1 ══════════════════ */
+
+function render() {
+  const has = state.sources.ml.length + state.sources.ocr.length > 0;
+  $('stats').hidden = !has;
+  $('stat-total').textContent = state.entries.length;
+  $('stat-paper').textContent = state.entries.filter((e) => e.source === 'papír').length;
+  $('stat-dupes').textContent = state.dupes;
+  const open = state.flags.filter((f) => !f.dropped && !normalize(f.fixed)).length;
+  $('stat-flags').textContent = open;
+
+  $('review-card').hidden = state.flags.length === 0;
+  renderReview();
+
+  $('freeze').disabled = state.entries.length === 0;
+  $('commit-out').hidden = !state.frozen;
+  $('copy-list').hidden = !state.frozen;
+  $('draw').disabled = !state.frozen || !currentSeed();
+  renderDrawSource();
+}
+
+function renderReview() {
+  const host = $('review');
+  host.textContent = '';
+  state.flags.forEach((f) => {
+    const row = document.createElement('div');
+    row.className = 'row' + (f.dropped ? ' is-dropped' : '');
+
+    const why = document.createElement('div');
+    why.className = 'why';
+    const reason = document.createElement('span');
+    reason.textContent = `${f.why} · ${f.source}`;
+    const raw = document.createElement('span');
+    raw.className = 'raw';
+    raw.textContent = f.raw.trim();
+    why.append(reason, raw);
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = f.fixed;
+    input.placeholder = 'správná adresa podle papíru';
+    input.setAttribute('aria-label', `Oprava adresy ${f.raw.trim()}`);
+    input.disabled = f.dropped;
+    input.addEventListener('change', () => {
+      const edit = state.fixes.get(f.id) || { fixed: '', dropped: false };
+      state.fixes.set(f.id, { ...edit, fixed: input.value });
+      rebuild();
+    });
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn btn-ghost btn-small';
+    btn.textContent = f.dropped ? 'Vrátit' : 'Vyřadit';
+    btn.addEventListener('click', () => {
+      const edit = state.fixes.get(f.id) || { fixed: '', dropped: false };
+      state.fixes.set(f.id, { ...edit, dropped: !f.dropped });
+      rebuild();
+    });
+
+    row.append(why, input, btn);
+    host.append(row);
+  });
+}
+
+/* ══════════════════ zmrazení ══════════════════ */
+
+const enc = new TextEncoder();
+
+async function sha256Hex(str) {
+  const buf = await crypto.subtle.digest('SHA-256', enc.encode(str));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+/** Řadí se po znacích (ne podle locale), aby výsledek nezávisel na nastavení počítače. */
+function canonicalList(entries) {
+  const sorted = [...entries].sort((a, b) => (a.email < b.email ? -1 : a.email > b.email ? 1 : 0));
+  return sorted.map((e, i) => ({ ...e, index: i + 1 }));
+}
+
+async function freeze() {
+  const list = canonicalList(state.entries);
+  const canonical = list.map((e) => `${e.index}\t${e.email}\n`).join('');
+  const hash = await sha256Hex(canonical);
+  state.frozen = { list, hash, n: list.length };
+
+  const today = new Date().toISOString().slice(0, 10);
+  $('commit-text').textContent =
+`LOSOVÁNÍ ENSANA SUMMER — ZÁVAZEK K SEZNAMU
+Zveřejněno: ${today}
+
+Počet losů (N):  ${list.length}
+Otisk seznamu:   ${hash}
+
+Postup zveřejněný předem:
+  otisk  = SHA-256( "1<TAB>e-mail\\n2<TAB>e-mail\\n…" ), seznam seřazený vzestupně po znacích
+  index  = ( SHA-256( tažená čísla + "|" + otisk ) mod N ) + 1
+  náhr.  = ( SHA-256( tažená čísla + "|" + otisk + "|" + pořadí ) mod N ) + 1
+
+Zdroj náhody: první tah Sportky ze dne …………, čísla seřazená vzestupně
+              a spojená pomlčkou.
+
+Seznam se nezveřejňuje — obsahuje osobní údaje. Zveřejněný otisk stačí
+k tomu, aby šlo po tahu ověřit, že se s ním nehýbalo.`;
+  render();
+  toast('Seznam zmrazen. Otisk zveřejněte před tahem.');
+}
+
+/* ══════════════════ losování ══════════════════ */
+
+/** Z libovolného zápisu udělá jednoznačný tvar: čísla vzestupně, spojená pomlčkou. */
+function normalizeSeed(input) {
+  const nums = (input.match(/\d+/g) || []).map((n) => parseInt(n, 10));
+  if (nums.length < 2) return '';
+  return [...nums].sort((a, b) => a - b).join('-');
+}
+
+const currentSeed = () => normalizeSeed($('seed').value);
+
+async function indexFrom(seed, hash, n, k) {
+  const input = k == null ? `${seed}|${hash}` : `${seed}|${hash}|${k}`;
+  const hex = await sha256Hex(input);
+  return Number(BigInt('0x' + hex) % BigInt(n)) + 1;
+}
+
+async function pickWinners(seed, hash, n, count) {
+  const picked = [];
+  const first = await indexFrom(seed, hash, n);
+  picked.push(first);
+  let k = 1;
+  while (picked.length < Math.min(count, n) && k < n * 4 + 50) {
+    const idx = await indexFrom(seed, hash, n, k);
+    if (!picked.includes(idx)) picked.push(idx);
+    k++;
+  }
+  return picked;
+}
+
+const maskMail = (mail) => {
+  const [user, domain] = mail.split('@');
+  if (!domain) return mail;
+  const head = user.slice(0, 1);
+  return `${head}${'*'.repeat(Math.max(2, user.length - 1))}@${domain}`;
+};
+
+const showMail = (mail) => (state.showMails ? mail : maskMail(mail));
+
+function renderChips(seed) {
+  const host = $('chips');
+  host.textContent = '';
+  if (!seed) return;
+  for (const n of seed.split('-')) {
+    const chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.textContent = n;
+    host.append(chip);
+  }
+}
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function spinTo(target, n) {
+  const dial = $('dial');
+  dial.classList.remove('is-locked', 'is-idle');
+  if (reduceMotion) { dial.textContent = target; dial.classList.add('is-locked'); return Promise.resolve(); }
+
+  return new Promise((resolve) => {
+    const total = 2200;
+    const start = performance.now();
+    let last = 0;
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / total);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const gap = 28 + eased * 190;           // losování se ke konci zpomaluje
+      if (now - last > gap) {
+        dial.textContent = 1 + Math.floor(Math.random() * n);
+        last = now;
+      }
+      if (t < 1) requestAnimationFrame(tick);
+      else { dial.textContent = target; dial.classList.add('is-locked'); resolve(); }
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+async function draw() {
+  if (!state.frozen) { toast('Nejdřív zmrazte seznam v první fázi.'); return; }
+  const seed = currentSeed();
+  if (!seed) { toast('Zadejte tažená čísla.'); return; }
+
+  const { hash, n, list } = state.frozen;
+  const picks = await pickWinners(seed, hash, n, 3);
+  state.lastDraw = { seed, picks };
+
+  $('draw').disabled = true;
+  $('stage-cta').classList.remove('is-ready');
+  $('winner').classList.remove('is-shown');
+  $('subs').textContent = '';
+  renderChips(seed);
+
+  await spinTo(picks[0], n);
+
+  const win = list[picks[0] - 1];
+  $('w-name').textContent = win.name || `Los číslo ${picks[0]}`;
+  $('w-mail').textContent = showMail(win.email);
+  $('w-meta').textContent = `Los ${picks[0]} z ${n} · přihláška: ${win.source}`;
+  $('winner').classList.add('is-shown');
+
+  const subs = $('subs');
+  picks.slice(1).forEach((p, i) => {
+    const e = list[p - 1];
+    const el = document.createElement('div');
+    el.className = 'sub';
+    const rank = document.createElement('span');
+    rank.className = 'rank';
+    rank.textContent = `${i + 1}. náhradník · los ${p}`;
+    const mail = document.createElement('span');
+    mail.className = 'mail';
+    mail.textContent = showMail(e.email);
+    el.append(rank, mail);
+    subs.append(el);
+  });
+
+  const today = new Date().toISOString().slice(0, 10);
+  const subLines = picks.slice(1)
+    .map((p, i) => `${i + 1}. náhradník:   los č. ${p} — ${maskMail(list[p - 1].email)}`)
+    .join('\n');
+  $('result-text').textContent =
+`LOSOVÁNÍ ENSANA SUMMER — VÝSLEDEK
+Losováno: ${today}
+
+Tažená čísla:   ${seed}
+Otisk seznamu:  ${hash}
+Počet losů (N): ${n}
+
+Výherce:        los č. ${picks[0]} — ${maskMail(win.email)}
+${subLines}
+
+Přepočítat si to může kdokoli — stačí tažená čísla, otisk a N.`;
+  $('result-card').hidden = false;
+  $('draw').disabled = false;
+}
+
+/** Přepíše jen adresy — po přepnutí maskování nemá smysl točit dialem znovu. */
+function redrawMails() {
+  const { picks } = state.lastDraw;
+  const { list } = state.frozen;
+  $('w-mail').textContent = showMail(list[picks[0] - 1].email);
+  [...$('subs').querySelectorAll('.mail')].forEach((el, i) => {
+    el.textContent = showMail(list[picks[i + 1] - 1].email);
+  });
+}
+
+function renderDrawSource() {
+  const host = $('draw-src');
+  host.textContent = '';
+  const p = document.createElement('p');
+  p.className = state.frozen ? 'callout' : 'callout warn';
+  if (state.frozen) {
+    p.innerHTML = `Zmrazený seznam: <strong>${state.frozen.n} losů</strong>, otisk <span class="hash">${state.frozen.hash.slice(0, 16)}…</span>`;
+  } else {
+    p.innerHTML = '<strong>Seznam ještě není zmrazený.</strong> Vraťte se do první fáze — bez otisku by losování nebylo čím doložit.';
+  }
+  host.append(p);
+}
+
+/* ══════════════════ ověření ══════════════════ */
+
+async function verify() {
+  const hash = $('v-hash').value.trim().toLowerCase();
+  const n = parseInt($('v-n').value.replace(/\D/g, ''), 10);
+  const seed = normalizeSeed($('v-seed').value);
+
+  if (!/^[0-9a-f]{64}$/.test(hash)) { toast('Otisk musí mít 64 znaků 0–9 a a–f.'); return; }
+  if (!n || n < 1) { toast('Zadejte počet losů N.'); return; }
+  if (!seed) { toast('Zadejte tažená čísla.'); return; }
+
+  const picks = await pickWinners(seed, hash, n, 3);
+  const subLines = picks.slice(1).map((p, i) => `${i + 1}. náhradník: los č. ${p}`).join('\n');
+  $('verify-text').textContent =
+`Tažená čísla (normalizovaná): ${seed}
+Otisk seznamu:                ${hash}
+Počet losů (N):               ${n}
+
+Výherce:      los č. ${picks[0]}
+${subLines}
+
+Sedí-li tahle čísla s vyhlášeným výsledkem, losování proběhlo podle
+zveřejněného postupu.`;
+  $('verify-out').hidden = false;
+}
+
+/* ══════════════════ drobná obsluha ══════════════════ */
+
+let toastTimer;
+function toast(msg) {
+  const el = $('toast');
+  el.textContent = msg;
+  el.classList.add('is-shown');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('is-shown'), 3200);
+}
+
+async function copy(text, label) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast(`${label} zkopírováno do schránky.`);
+  } catch {
+    toast('Schránka není dostupná — text označte a zkopírujte ručně.');
+  }
+}
+
+function selectPhase(which) {
+  for (const key of ['prep', 'draw', 'check']) {
+    const on = key === which;
+    $(`tab-${key}`).setAttribute('aria-selected', String(on));
+    $(`panel-${key}`).classList.toggle('is-active', on);
+  }
+}
+
+/* ══════════════════ události ══════════════════ */
+
+for (const [id, bucket] of [['drop-ml', 'ml'], ['drop-ocr', 'ocr']]) {
+  const zone = $(id);
+  const input = zone.querySelector('input[type="file"]');
+  const label = zone.querySelector('[data-loaded]');
+
+  const ingest = async (files) => {
+    if (!files || !files.length) return;
+    const count = await readFiles([...files], bucket);
+    zone.classList.add('has-file');
+    label.hidden = false;
+    label.textContent = `${[...files].map((f) => f.name).join(', ')} · ${count} řádků`;
+  };
+
+  input.addEventListener('change', () => ingest(input.files));
+  zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('is-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('is-over'));
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.classList.remove('is-over');
+    ingest(e.dataTransfer.files);
+  });
+}
+
+for (const key of ['prep', 'draw', 'check']) {
+  $(`tab-${key}`).addEventListener('click', () => selectPhase(key));
+}
+
+$('freeze').addEventListener('click', freeze);
+$('go-draw').addEventListener('click', () => selectPhase('draw'));
+$('draw').addEventListener('click', draw);
+$('verify').addEventListener('click', verify);
+
+$('copy-commit').addEventListener('click', () => copy($('commit-text').textContent, 'Text k závazku'));
+$('copy-result').addEventListener('click', () => copy($('result-text').textContent, 'Výsledek'));
+$('copy-list').addEventListener('click', () => {
+  if (!state.frozen) return;
+  const csv = 'index,email,zdroj\n' + state.frozen.list.map((e) => `${e.index},${e.email},${e.source}`).join('\n');
+  copy(csv, 'Očíslovaný seznam');
+});
+
+$('seed').addEventListener('input', () => {
+  const norm = currentSeed();
+  $('seed-norm').textContent = norm
+    ? `Do výpočtu vstoupí: ${norm}`
+    : 'Zadejte alespoň dvě čísla.';
+  $('draw').disabled = !state.frozen || !norm;
+  if (!state.lastDraw) renderChips(norm);
+});
+
+$('reveal-mails').addEventListener('click', (e) => {
+  state.showMails = !state.showMails;
+  e.currentTarget.setAttribute('aria-pressed', String(state.showMails));
+  e.currentTarget.textContent = state.showMails ? 'Skrýt e-maily' : 'Zobrazit celé e-maily';
+  if (state.lastDraw) redrawMails();
+});
+
+/** Před nahráváním se scéna vyčistí, aby šel natočit i samotný tah. */
+function resetStage() {
+  $('dial').textContent = '...';
+  $('dial').classList.remove('is-locked');
+  $('dial').classList.add('is-idle');
+  $('winner').classList.remove('is-shown');
+  $('subs').textContent = '';
+  renderChips(currentSeed());   // čísla ať jsou v záběru dřív, než tah začne
+  $('stage-cta').classList.add('is-ready');
+}
+
+$('stage-draw').addEventListener('click', async () => {
+  $('stage-cta').classList.remove('is-ready');
+  await draw();
+});
+
+$('rec-mode').addEventListener('click', () => {
+  if (!state.frozen) { toast('Nejdřív zmrazte seznam v první fázi.'); return; }
+  if (!currentSeed()) { toast('Zadejte tažená čísla, ať je co losovat.'); return; }
+  resetStage();
+  document.body.classList.add('recording');
+});
+$('rec-exit').addEventListener('click', () => document.body.classList.remove('recording'));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.body.classList.remove('recording');
+});
+
+renderDrawSource();
+</script>
+</body>
+</html>
