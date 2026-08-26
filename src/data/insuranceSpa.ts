@@ -623,9 +623,9 @@ export interface IndicationPage {
 export const indicationPages: IndicationPage[] = [
   {
     slug: 'pohybove-ustroji',
-    image: '/images/content/articles/cs-lecba-raselinou-marianske-lazne/coverImage.jpg',
-    imageAlt: 'Slatinný zábal nanesený na zádech ležícího klienta',
-    imageCaption: 'Slatinné zábaly s teplotou až 40 °C tlumí bolest a zánět — jedna z hlavních procedur této skupiny.',
+    image: '/images/library/treatments/electrode-pad-shoulder.jpg',
+    imageAlt: 'Ruce terapeutky upevňují elektrodu s popruhem na rameno a horní část zad',
+    imageCaption: 'Fyzikální léčba v praxi — terapeutka upevňuje elektrody před zahájením elektroléčby.',
     groupId: 'musculoskeletal',
     roman: 'VII',
     navLabel: 'Pohybové ústrojí',
@@ -737,9 +737,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'onkologicka-onemocneni',
-    image: '/images/content/articles/cs-rehabilitace-po-covidu/coverImage.jpg',
-    imageAlt: 'Dvojice lázeňských hostů s porcelánovými pohárky před kolonádou',
-    imageCaption: 'Cílem je rekondice a návrat do běžného života — pitná kúra, pohyb a klid patří k programu stejně jako procedury.',
+    image: '/images/library/treatments/lymphatic-drainage-legs.jpg',
+    imageAlt: 'Klientka s nohama v modrých pneumatických rukávech při přístrojové lymfodrenáži',
+    imageCaption: 'Manuální i přístrojová lymfodrenáž patří u této skupiny k hlavním procedurám — otoky po operaci či ozařování jsou častý důvod pobytu.',
     groupId: 'oncology',
     roman: 'I',
     navLabel: 'Onkologická onemocnění',
@@ -855,9 +855,9 @@ export const indicationPages: IndicationPage[] = [
   },
   {
     slug: 'neurologicka-onemocneni',
-    image: '/images/content/articles/cs-hubnuti-a-metabolicka-lecba-v-laznich-jak-funguje-lazenska-kura-na-vahu/coverImage.jpg',
-    imageAlt: 'Fyzioterapeut vede klientku při cvičení na páteř v rehabilitační tělocvičně',
-    imageCaption: 'Individuální fyzioterapie v intenzitě, jaké se v ambulantním režimu nedosáhne — práce na koordinaci, stabilitě a hybnosti.',
+    image: '/images/library/mineral-bath/underwater-massage-smiling-guest.jpg',
+    imageAlt: 'Usmívající se klientka ve vaně během podvodní masáže',
+    imageCaption: 'Podvodní masáž spojuje balneoterapii s cílenou fyzikální terapií — u této skupiny jedna z nejčastějších procedur.',
     groupId: 'nervous',
     roman: 'VI',
     navLabel: 'Neurologická onemocnění',
