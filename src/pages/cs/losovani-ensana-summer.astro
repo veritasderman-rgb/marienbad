@@ -293,6 +293,7 @@ p  { margin: 0; }
 .field textarea { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; resize: vertical; }
 .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .field .note { font-size: 0.8125rem; color: var(--muted); font-family: var(--prose); }
+.field .note.is-error { color: var(--flag); }
 .grid-2 { display: grid; gap: 1rem; }
 @media (min-width: 46rem) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 
@@ -565,6 +566,7 @@ body.recording .stage-cta.is-ready { display: flex; }
         <button class="btn btn-primary" id="freeze" type="button" disabled>Zmrazit seznam a spočítat otisk</button>
         <button class="btn btn-ghost btn-small" id="copy-list" type="button" hidden>Kopírovat očíslovaný seznam</button>
       </div>
+      <p class="callout warn" id="freeze-block" hidden></p>
       <div id="commit-out" hidden>
         <pre class="commit" id="commit-text"></pre>
         <div class="actions" style="margin-top: 0.85rem;">
@@ -594,7 +596,7 @@ body.recording .stage-cta.is-ready { display: flex; }
       <div class="field">
         <label for="seed">Tažená čísla</label>
         <input type="text" id="seed" inputmode="numeric" placeholder="např. 4 11 23 30 41 49" autocomplete="off">
-        <p class="note" id="seed-norm">Normalizovaný tvar se ukáže, jakmile začnete psát.</p>
+        <p class="note" id="seed-norm">Šest čísel z rozsahu 1–49. Normalizovaný tvar se ukáže, jakmile je zadáte.</p>
       </div>
       <div id="draw-src"></div>
       <div class="actions">
@@ -841,6 +843,13 @@ function suspect(raw, normalized, fromOcr) {
 
 const normalize = (s) => (s || '').trim().replace(/^["'<]+|["'>]+$/g, '').replace(/\s+/g, '').toLowerCase();
 
+/** Označený řádek je vyřízený, jen když je vyřazený nebo opravený na platnou adresu. */
+function isResolved(f) {
+  if (f.dropped) return true;
+  const fixed = normalize(f.fixed);
+  return !!fixed && !suspect(f.fixed, fixed, false);
+}
+
 /* ══════════════════ načtení souborů ══════════════════ */
 
 async function readFiles(fileList, bucket) {
@@ -854,8 +863,10 @@ async function readFiles(fileList, bucket) {
       if (!raw.trim()) continue;
       const name = [cols.nameIdx >= 0 ? r[cols.nameIdx] : '', cols.surIdx >= 0 ? r[cols.surIdx] : '']
         .filter((x) => x && x.trim()).join(' ').trim();
-      // id musí přežít přepočet seznamu, jinak by se ruční opravy ztrácely
-      rows.push({ id: `${bucket}-${rows.length}`, raw, name, file: file.name });
+      // Klíč podle obsahu, ne podle pořadí: po opětovném nahrání opraveného
+      // exportu by pozice ukázala na jiného člověka a oprava by se tiše
+      // přenesla na cizí přihlášku.
+      rows.push({ id: `${bucket}::${raw.trim().toLowerCase()}`, raw, name, file: file.name });
     }
   }
   state.sources[bucket] = rows;
@@ -895,6 +906,14 @@ function rebuild() {
 
   state.entries = [...seen.values()];
   state.frozen = null;
+
+  // Se seznamem padá i tah, který z něj vzešel. Jinak by šlo zkopírovat
+  // výsledek patřící k jiným datům — a přepnutí maskování by spadlo.
+  if (state.lastDraw) {
+    state.lastDraw = null;
+    resetStage();
+    $('result-card').hidden = true;
+  }
   render();
 }
 
@@ -906,13 +925,19 @@ function render() {
   $('stat-total').textContent = state.entries.length;
   $('stat-paper').textContent = state.entries.filter((e) => e.source === 'papír').length;
   $('stat-dupes').textContent = state.dupes;
-  const open = state.flags.filter((f) => !f.dropped && !normalize(f.fixed)).length;
+  const open = state.flags.filter((f) => !isResolved(f)).length;
   $('stat-flags').textContent = open;
 
   $('review-card').hidden = state.flags.length === 0;
   renderReview();
 
-  $('freeze').disabled = state.entries.length === 0;
+  // Zmrazit nelze, dokud visí nevyřízený řádek — jinak by se do losování šlo
+  // s pool­em, ze kterého někdo tiše vypadl.
+  $('freeze').disabled = state.entries.length === 0 || open > 0;
+  $('freeze-block').hidden = open === 0;
+  $('freeze-block').textContent = open === 1
+    ? 'Zbývá vyřídit 1 označenou adresu — opravte ji, nebo ji vyřaďte. Do losování nesmí jít seznam, ze kterého někdo tiše vypadl.'
+    : `Zbývá vyřídit ${open} označených adres — opravte je, nebo je vyřaďte. Do losování nesmí jít seznam, ze kterého někdo tiše vypadl.`;
   $('commit-out').hidden = !state.frozen;
   $('copy-list').hidden = !state.frozen;
   $('draw').disabled = !state.frozen || !currentSeed();
@@ -1007,12 +1032,24 @@ k tomu, aby šlo po tahu ověřit, že se s ním nehýbalo.`;
 
 /* ══════════════════ losování ══════════════════ */
 
-/** Z libovolného zápisu udělá jednoznačný tvar: čísla vzestupně, spojená pomlčkou. */
-function normalizeSeed(input) {
-  const nums = (input.match(/\d+/g) || []).map((n) => parseInt(n, 10));
-  if (nums.length < 2) return '';
-  return [...nums].sort((a, b) => a - b).join('-');
+/**
+ * Z libovolného zápisu udělá jednoznačný tvar: čísla vzestupně, spojená pomlčkou.
+ *
+ * Kontrola je schválně přísná — musí to být přesně šest různých čísel 1–49.
+ * Volnější pravidlo by spolklo i překlep nebo datum omylem zkopírované
+ * k výsledku, seed by vyšel jiný a stránka by přesto tvářila, že losuje
+ * podle vyhlášeného tahu.
+ */
+function parseSeed(input) {
+  const nums = (String(input).match(/\d+/g) || []).map((n) => parseInt(n, 10));
+  if (!nums.length) return { seed: '', error: '' };
+  if (nums.length !== 6) return { seed: '', error: `Sportka má šest čísel, tady jich je ${nums.length}. Opište jen tažená čísla, bez data a pořadí tahu.` };
+  if (nums.some((n) => n < 1 || n > 49)) return { seed: '', error: 'Tažená čísla Sportky jsou v rozsahu 1 až 49.' };
+  if (new Set(nums).size !== 6) return { seed: '', error: 'Dvě čísla se opakují — v jednom tahu se každé číslo objeví nejvýš jednou.' };
+  return { seed: [...nums].sort((a, b) => a - b).join('-'), error: '' };
 }
+
+const normalizeSeed = (input) => parseSeed(input).seed;
 
 const currentSeed = () => normalizeSeed($('seed').value);
 
@@ -1084,8 +1121,8 @@ function spinTo(target, n) {
 
 async function draw() {
   if (!state.frozen) { toast('Nejdřív zmrazte seznam v první fázi.'); return; }
-  const seed = currentSeed();
-  if (!seed) { toast('Zadejte tažená čísla.'); return; }
+  const { seed, error } = parseSeed($('seed').value);
+  if (!seed) { toast(error || 'Zadejte šest tažených čísel.'); return; }
 
   const { hash, n, list } = state.frozen;
   const picks = await pickWinners(seed, hash, n, 3);
@@ -1142,6 +1179,7 @@ Přepočítat si to může kdokoli — stačí tažená čísla, otisk a N.`;
 
 /** Přepíše jen adresy — po přepnutí maskování nemá smysl točit dialem znovu. */
 function redrawMails() {
+  if (!state.lastDraw || !state.frozen) return;
   const { picks } = state.lastDraw;
   const { list } = state.frozen;
   $('w-mail').textContent = showMail(list[picks[0] - 1].email);
@@ -1168,11 +1206,11 @@ function renderDrawSource() {
 async function verify() {
   const hash = $('v-hash').value.trim().toLowerCase();
   const n = parseInt($('v-n').value.replace(/\D/g, ''), 10);
-  const seed = normalizeSeed($('v-seed').value);
+  const { seed, error } = parseSeed($('v-seed').value);
 
   if (!/^[0-9a-f]{64}$/.test(hash)) { toast('Otisk musí mít 64 znaků 0–9 a a–f.'); return; }
   if (!n || n < 1) { toast('Zadejte počet losů N.'); return; }
-  if (!seed) { toast('Zadejte tažená čísla.'); return; }
+  if (!seed) { toast(error || 'Zadejte šest tažených čísel.'); return; }
 
   const picks = await pickWinners(seed, hash, n, 3);
   const subLines = picks.slice(1).map((p, i) => `${i + 1}. náhradník: los č. ${p}`).join('\n');
@@ -1230,6 +1268,9 @@ for (const [id, bucket] of [['drop-ml', 'ml'], ['drop-ocr', 'ocr']]) {
     zone.classList.add('has-file');
     label.hidden = false;
     label.textContent = `${[...files].map((f) => f.name).join(', ')} · ${count} řádků`;
+    // Bez vynulování by výběr téhož souboru podruhé nevyvolal change a stránka
+    // by po opravě CSV na disku tvrdila, že se načetlo, aniž by se cokoli změnilo.
+    input.value = '';
   };
 
   input.addEventListener('change', () => ingest(input.files));
@@ -1260,12 +1301,13 @@ $('copy-list').addEventListener('click', () => {
 });
 
 $('seed').addEventListener('input', () => {
-  const norm = currentSeed();
-  $('seed-norm').textContent = norm
-    ? `Do výpočtu vstoupí: ${norm}`
-    : 'Zadejte alespoň dvě čísla.';
-  $('draw').disabled = !state.frozen || !norm;
-  if (!state.lastDraw) renderChips(norm);
+  const { seed, error } = parseSeed($('seed').value);
+  $('seed-norm').textContent = seed
+    ? `Do výpočtu vstoupí: ${seed}`
+    : error || 'Opište šest tažených čísel.';
+  $('seed-norm').classList.toggle('is-error', !!error);
+  $('draw').disabled = !state.frozen || !seed;
+  if (!state.lastDraw) renderChips(seed);
 });
 
 $('reveal-mails').addEventListener('click', (e) => {
@@ -1293,7 +1335,7 @@ $('stage-draw').addEventListener('click', async () => {
 
 $('rec-mode').addEventListener('click', () => {
   if (!state.frozen) { toast('Nejdřív zmrazte seznam v první fázi.'); return; }
-  if (!currentSeed()) { toast('Zadejte tažená čísla, ať je co losovat.'); return; }
+  if (!currentSeed()) { toast('Zadejte šest tažených čísel, ať je co losovat.'); return; }
   resetStage();
   document.body.classList.add('recording');
 });
