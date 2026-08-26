@@ -6,11 +6,11 @@ import react from '@astrojs/react'
 import keystatic from '@keystatic/astro'
 import tailwindcss from '@tailwindcss/vite'
 
-/** Noindexed campaign landing pages — kept out of the sitemap to match their robots meta */
+/** Noindexed campaign landing pages and internal tools — kept out of the sitemap to match their robots meta */
 const NOINDEXED_PATHS = [
   'sommer-sale-2026', 'summer-sale-2026', 'letni-sleva-2026', 'letnyaya-rasprodazha-2026',
   'kur-programme-sale-2026', 'medical-promo-2026', 'lecebne-programy-sleva-2026',
-  'introduce',
+  'introduce', 'losovani-ensana-summer',
 ]
 
 export default defineConfig({
