@@ -171,6 +171,47 @@ const gradients = [
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
       {cms.healingElements.items.map((item, i) => {
+        /* Fotka ke každému živlu — pořadí odpovídá pořadí položek v CMS
+           (voda, země, plyn, klima), stejně jako ikony níž. */
+        const photos = [
+          {
+            src: '/images/library/drinking-cure/spa-cup-daylight-spring.jpg',
+            alt: {
+              cs: 'Ruka drží bílý lázeňský džbánek pod výtokem minerální vody na osluněném kamenném sloupu.',
+              en: 'A hand holds a white spa jug beneath a mineral water spout on a sunlit stone pillar.',
+              de: 'Eine Hand hält einen weißen Kurkrug unter einen Mineralwasserauslauf an einer sonnenbeschienenen Steinsäule.',
+              ru: 'Рука держит белую курортную кружку под струёй минеральной воды у освещённой солнцем каменной колонки.',
+            },
+          },
+          {
+            src: '/images/library/treatments/peat-wrap-back.jpg',
+            alt: {
+              cs: 'Slatinný zábal nanesený na horní části zad při lázeňské proceduře.',
+              en: 'A dark peat mud pack applied to the upper back during a spa treatment.',
+              de: 'Eine dunkle Moorpackung auf dem oberen Rücken während einer Spa-Behandlung.',
+              ru: 'Тёмное торфяное обёртывание на верхней части спины во время процедуры.',
+            },
+          },
+          {
+            src: '/images/library/treatments/co2-pool-relaxation.jpg',
+            alt: {
+              cs: 'Hosté v županech odpočívají u bazénku s Mariiným plynem ve fialovém nasvícení.',
+              en: 'Guests in robes resting beside the CO₂ pool under purple lighting.',
+              de: 'Gäste in Bademänteln ruhen neben dem CO₂-Becken im violetten Licht.',
+              ru: 'Гости в халатах отдыхают у бассейна с газом в фиолетовой подсветке.',
+            },
+          },
+          {
+            src: '/images/library/town/aerial-spa-quarter.jpg',
+            alt: {
+              cs: 'Pohled na lázeňské domy sevřené zalesněným svahem.',
+              en: 'View of the spa houses framed by a forested hillside.',
+              de: 'Blick auf die Kurhäuser vor einem bewaldeten Hang.',
+              ru: 'Вид на курортные дома, окружённые лесистым склоном.',
+            },
+          },
+        ]
+        const photo = photos[i % 4]
         const icons = [
           /* Water/Drop */ 'M12 21.5c-3.04 0-5.5-2.46-5.5-5.5 0-3.91 5.5-11.5 5.5-11.5s5.5 7.59 5.5 11.5c0 3.04-2.46 5.5-5.5 5.5z',
           /* Earth/Leaf */ 'M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L7 18.5C9 14 13 12 17 12V8zM3.82 21.34C5.9 16.17 8 10 17 8v4c-4 0-8 2-10 6.5l-1.29 3.5',
@@ -179,14 +220,25 @@ const gradients = [
         ]
         const ElTag = item.href ? 'a' : 'div'
         return (
-          <ElTag href={item.href} class="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center card-hover reveal block group transition-all hover:bg-white/15">
-            <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-turquoise-400/20 flex items-center justify-center transition-transform group-hover:scale-110">
-              <svg class="w-6 h-6 md:w-8 md:h-8 text-turquoise-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d={icons[i % 4]} />
-              </svg>
+          <ElTag href={item.href} class="relative overflow-hidden rounded-xl card-hover reveal block group transition-all">
+            <Pic
+              src={photo.src}
+              alt={photo.alt[locale]}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(min-width: 1024px) 25vw, 50vw"
+            />
+            {/* Překryv drží kontrast textu. Přechod místo plné plochy: nahoře
+                je fotka vidět, dole, kde leží popisek, ztmavne. */}
+            <div class="absolute inset-0 bg-gradient-to-b from-indigo-950/45 via-indigo-950/68 to-indigo-950/82 group-hover:from-indigo-950/35 transition-colors"></div>
+            <div class="relative p-4 md:p-6 text-center">
+              <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-turquoise-400/25 flex items-center justify-center transition-transform group-hover:scale-110">
+                <svg class="w-6 h-6 md:w-8 md:h-8 text-turquoise-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={icons[i % 4]} />
+                </svg>
+              </div>
+              <h3 class="font-heading text-base md:text-xl font-bold mb-1 md:mb-2">{item.name}</h3>
+              <p class="text-white/80 text-xs md:text-sm leading-relaxed hidden md:block">{item.description}</p>
             </div>
-            <h3 class="font-heading text-base md:text-xl font-bold mb-1 md:mb-2">{item.name}</h3>
-            <p class="text-white/70 text-xs md:text-sm leading-relaxed hidden md:block">{item.description}</p>
           </ElTag>
         )
       })}

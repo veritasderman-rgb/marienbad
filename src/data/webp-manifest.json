@@ -1001,6 +1001,12 @@
     "width": 1203,
     "height": 798
   },
+  "/images/library/colonnade/colonnade-interior-hall.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
   "/images/library/colonnade/cross-spring-pavilion-16a1598.jpg": {
     "webp": true,
     "w800": true,
@@ -1181,6 +1187,108 @@
     "width": 1200,
     "height": 800
   },
+  "/images/library/drinking-cure/elderly-man-drinking-cure.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/drinking-cure/spa-cup-colonnade-pour.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/drinking-cure/spa-cup-daylight-spring.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/fitness/golfer-sunset-swing.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
+  },
+  "/images/library/fitness/historic-pilates-studio.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/fitness/senior-stretch-trainer.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/fitness/trainer-client-smile.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/hotels/grand-hotel-facade.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/lifestyle/purple-relaxation-lounge.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1080,
+    "height": 1080
+  },
+  "/images/library/lifestyle/towel-portrait-tiled-wall.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1067,
+    "height": 1600
+  },
+  "/images/library/mineral-bath/co2-apparatus-tub.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1057
+  },
+  "/images/library/mineral-bath/couple-champagne-toast-bath.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/mineral-bath/grand-thermal-bath-hall.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1061
+  },
+  "/images/library/mineral-bath/man-eyes-closed-marble.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/mineral-bath/solo-mineral-bath-smile.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1067,
+    "height": 1600
+  },
+  "/images/library/mineral-bath/underwater-massage-smiling-guest.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/nature/outdoor-tub-lakeside.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1600
+  },
   "/images/library/sport/golf-01.jpg": {
     "webp": true,
     "w800": true,
@@ -1216,6 +1324,84 @@
     "w800": true,
     "width": 1920,
     "height": 1080
+  },
+  "/images/library/springs/bronze-fountain-spa-pool.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1280,
+    "height": 853
+  },
+  "/images/library/springs/domed-spring-pavilion.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/town/aerial-central-spa-building.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1066
+  },
+  "/images/library/town/aerial-spa-quarter.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1066
+  },
+  "/images/library/town/rococo-facade-detail.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/town/townhouse-street-corner.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/treatments/co2-pool-relaxation.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1037
+  },
+  "/images/library/treatments/electrode-pad-shoulder.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/treatments/lymphatic-drainage-legs.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/treatments/nutrition-consultation-desk.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 900
+  },
+  "/images/library/treatments/oxygen-therapy-portrait.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/treatments/peat-wrap-back.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
+  "/images/library/treatments/poolside-peat-wrap.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1063
   },
   "/images/library/winter/main-colonnade-16a2896.jpg": {
     "webp": true,
