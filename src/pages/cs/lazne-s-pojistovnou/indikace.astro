@@ -40,12 +40,14 @@ const itemCount = (groupId: string) => cs.groups.find((g) => g.id === groupId)?.
               class="group flex flex-col h-full bg-white border border-beige-200 overflow-hidden hover:border-turquoise-400 hover:shadow-card transition-all duration-300"
               style="border-radius: var(--radius-card);"
             >
-              {/* Bez pevné výšky a bez object-cover — snímky mají shodný poměr
-                  stran, takže se karty srovnají samy a nic se neořezává. */}
+              {/* Jednotný rámeček 16:10: snímky mají dva různé poměry stran
+                  (1,9 u krajinek, 1,5 u fotek procedur) a bez něj by pruhy
+                  obrázků na kartách nesedly. 16:10 je kompromis, který
+                  z portrétovějších fotek procedur ubere jen pár procent. */}
               <Pic
                 src={ind.image}
                 alt={ind.imageAlt}
-                class="w-full h-auto block"
+                class="w-full aspect-[16/10] object-cover block"
                 sizes="(min-width: 1024px) 30vw, 100vw"
               />
               <div class="flex flex-col h-full gap-3 p-6">
