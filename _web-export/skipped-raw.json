@@ -1,0 +1,46 @@
+[
+  {
+    "pid": "P200",
+    "source": "Lymfopress a Hydrojet/IMG_8514-Edit.dng",
+    "reason": "RAW .dng – nutná konverze z RAW",
+    "alt": {
+      "cs": "Náhled v nízkém rozlišení ženy na hydrojet lůžku v růžové ošetřovně, odpovídá scéně P199.",
+      "en": "Low-resolution preview of a woman on a hydrojet massage bed in a pink treatment room, matching the scene in P199.",
+      "de": "Niedrig aufgelöste Vorschau einer Frau auf einer Hydrojet-Liege in einem rosafarbenen Raum, entspricht der Szene von P199."
+    },
+    "caption": {
+      "cs": "Stejné hydrojet sezení z jiného úhlu, čeká na zpracování ve vysokém rozlišení.",
+      "en": "The same hydrojet session captured from another angle, awaiting a full-resolution edit.",
+      "de": "Dieselbe Hydrojet-Sitzung aus einem anderen Blickwinkel, wartet noch auf die hochauflösende Bearbeitung."
+    },
+    "tags": [
+      "hydrojet",
+      "spa-treatment",
+      "raw-file",
+      "low-resolution",
+      "treatment-room"
+    ]
+  },
+  {
+    "pid": "P201",
+    "source": "Lymfopress a Hydrojet/IMG_8578-Edit.dng",
+    "reason": "RAW .dng – nutná konverze z RAW",
+    "alt": {
+      "cs": "Náhled v nízkém rozlišení ženy při lymfodrenážní kompresní terapii na oranžovém lůžku, odpovídá scéně P202.",
+      "en": "Low-resolution preview of a woman receiving lymphatic-drainage compression therapy on an orange treatment table, matching the scene in P202.",
+      "de": "Niedrig aufgelöste Vorschau einer Frau bei einer Lymphdrainage-Kompressionstherapie auf einer orangen Behandlungsliege, entspricht der Szene von P202."
+    },
+    "caption": {
+      "cs": "Další záběr z lymfodrenážního sezení, zatím dostupný jen jako náhled z RAW souboru.",
+      "en": "Another frame from the lymphatic-drainage session, still only available as a raw thumbnail.",
+      "de": "Ein weiteres Bild aus der Lymphdrainage-Sitzung, bislang nur als Rohdaten-Miniatur verfügbar."
+    },
+    "tags": [
+      "lymphatic-drainage",
+      "spa-treatment",
+      "raw-file",
+      "low-resolution",
+      "treatment-room"
+    ]
+  }
+]
