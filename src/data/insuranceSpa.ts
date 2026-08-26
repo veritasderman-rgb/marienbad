@@ -1006,7 +1006,7 @@ export const insuranceHotels: InsuranceHotel[] = [
     stars: 4,
     rooms: '108 pokojů',
     roomCategories: ['1/2 a 1/1 Superior', '1/2 a 1/1 Superior Plus', '1/2 Maria Superior', '1/2 Maria Superior de luxe'],
-    note: 'Stojí na místě původního lázeňského domu z roku 1812 a je zdrojem Mariina plynu pro suché uhličité koupele.',
+    note: 'Stojí na místě původního lázeňského domu z roku 1812 a je zdrojem Mariina plynu pro suché uhličité koupele. Vlastní bazén tu není — hosté chodí plavat do Nových Lázní, se kterými jsou Centrální Lázně spojené krytým koridorem, nebo do Hvězdy.',
   },
   {
     hotelSlug: 'pacifik',
@@ -1193,7 +1193,7 @@ export const benefits: Benefit[] = [
   {
     title: 'Bazény, sauny a wellness',
     body:
-      'Bazén nepatří jen ke čtyřhvězdičkovým hotelům — vlastní ho i tříhvězdičkové Vltava a Svoboda. Největší je ve Hvězdě: 18 × 8 m, k tomu vířivka, sauny a solná jeskyně. Hosté dependancí ubytovaní na pokojích bez doplatku mohou bazén využívat za hodinovou sazbu podle ceníku: 100 Kč/hod. ve Vltavě, 150 Kč/hod. ve Svobodě a 250 Kč/hod. ve Hvězdě a Pacifiku. Vybavení konkrétního hotelu najdete v jeho detailu.',
+      'Bazén není otázka počtu hvězdiček — mají ho i tříhvězdičkové Vltava a Svoboda. Největší je ve Hvězdě: 18 × 8 m, k tomu vířivka, sauny a solná jeskyně. Výjimkou jsou Centrální Lázně, které vlastní bazén nemají; jejich hosté chodí plavat do Nových Lázní, se kterými je hotel spojený krytým koridorem, nebo do Hvězdy. Hosté dependancí ubytovaní na pokojích bez doplatku mohou bazén využívat za hodinovou sazbu podle ceníku: 100 Kč/hod. ve Vltavě, 150 Kč/hod. ve Svobodě a 250 Kč/hod. ve Hvězdě a Pacifiku. Vybavení konkrétního hotelu najdete v jeho detailu.',
     linkLabel: 'Přehled hotelů a ubytování',
     href: '/cs/ubytovani',
   },
