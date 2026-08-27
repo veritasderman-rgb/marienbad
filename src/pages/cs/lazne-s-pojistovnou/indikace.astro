@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro'
 import InsuranceSubpage from '@/components/InsuranceSubpage.astro'
+import Pic from '@/components/Pic.astro'
 import { INSURANCE_BASE, getSubPage, indicationPages } from '@/data/insuranceSpa'
 import { indications } from '@/data/indications'
 
@@ -36,9 +37,20 @@ const itemCount = (groupId: string) => cs.groups.find((g) => g.id === groupId)?.
           <li class="m-0">
             <a
               href={`${INSURANCE_BASE}/indikace/${ind.slug}`}
-              class="group flex flex-col h-full gap-3 bg-white border border-beige-200 p-6 hover:border-turquoise-400 hover:shadow-card transition-all duration-300"
+              class="group flex flex-col h-full bg-white border border-beige-200 overflow-hidden hover:border-turquoise-400 hover:shadow-card transition-all duration-300"
               style="border-radius: var(--radius-card);"
             >
+              {/* Jednotný rámeček 16:10: snímky mají dva různé poměry stran
+                  (1,9 u krajinek, 1,5 u fotek procedur) a bez něj by pruhy
+                  obrázků na kartách nesedly. 16:10 je kompromis, který
+                  z portrétovějších fotek procedur ubere jen pár procent. */}
+              <Pic
+                src={ind.image}
+                alt={ind.imageAlt}
+                class="w-full aspect-[16/10] object-cover block"
+                sizes="(min-width: 1024px) 30vw, 100vw"
+              />
+              <div class="flex flex-col h-full gap-3 p-6">
               <div class="flex items-center gap-3">
                 <span class="shrink-0 w-10 h-10 rounded-lg bg-indigo-700 text-white text-sm font-bold flex items-center justify-center">{ind.roman}</span>
                 <span class="text-beige-700 text-xs uppercase tracking-wider font-semibold">
@@ -51,6 +63,7 @@ const itemCount = (groupId: string) => cs.groups.find((g) => g.id === groupId)?.
                 Zobrazit detail
                 <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </span>
+              </div>
             </a>
           </li>
         ))}

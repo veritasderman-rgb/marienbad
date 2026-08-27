@@ -8,6 +8,7 @@ import type { Locale } from '@/i18n/config'
 import { routes } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Pic from '@/components/Pic.astro'
 import { seasons, type Season } from '@/data/seasons'
 import { tripArticleGroups } from '@/data/tripArticles'
 
@@ -60,9 +61,65 @@ const otherSeasons = seasons.filter((o) => o.id !== season.id)
 
 const homeLabel = t(locale, 'nav.home')
 const breadcrumbItems = [{ label: homeLabel, href: `/${locale}` }, { label: title }]
+
+/**
+ * Fotka do hlavičky podle ročního období. Hero byl do teď jen barevný přechod,
+ * přitom sezónnost je jediné, co tahle stránka prodává.
+ */
+const heroPhotos: Record<string, { src: string; alt: Record<Locale, string> }> = {
+  spring: {
+    src: '/images/library/colonnade/cross-spring-pavilion-16a2252.jpg',
+    alt: {
+      cs: 'Pavilon Křížového pramene a Hlavní kolonáda mezi jarně olistěnými stromy',
+      de: 'Pavillon der Kreuzquelle und Hauptkolonnade zwischen frühlingsgrünen Bäumen',
+      en: 'The Cross Spring pavilion and Main Colonnade among trees in fresh spring leaf',
+      ru: 'Павильон Крестового источника и Главная колоннада среди деревьев в весенней листве',
+    },
+  },
+  summer: {
+    src: '/images/library/colonnade/park-16a4486.jpg',
+    alt: {
+      cs: 'Lázeňský park se Zpívající fontánou za letního dne',
+      de: 'Kurpark mit der Singenden Fontäne an einem Sommertag',
+      en: 'The spa park and Singing Fountain on a summer day',
+      ru: 'Курортный парк с Поющим фонтаном в летний день',
+    },
+  },
+  autumn: {
+    src: '/images/library/colonnade/rudolph-caroline-colonnade-16a4444.jpg',
+    alt: {
+      cs: 'Kolonáda Rudolfova a Karolinina pramene mezi podzimně zbarvenými stromy',
+      de: 'Kolonnade der Rudolfs- und Karolinenquelle zwischen herbstlich gefärbten Bäumen',
+      en: 'The Rudolf and Caroline spring colonnade framed by autumn foliage',
+      ru: 'Колоннада Рудольфова и Каролинина источников среди осенней листвы',
+    },
+  },
+  christmas: {
+    src: '/images/library/xmas/main-colonnade-16a3399.jpg',
+    alt: {
+      cs: 'Zasněžená Hlavní kolonáda s ozdobeným vánočním stromem',
+      de: 'Verschneite Hauptkolonnade mit geschmücktem Weihnachtsbaum',
+      en: 'The snow-covered Main Colonnade with a decorated Christmas tree',
+      ru: 'Заснеженная Главная колоннада с украшенной рождественской ёлкой',
+    },
+  },
+}
+const heroPhoto = heroPhotos[season.id]
 ---
 
 <section class="relative bg-indigo-700 text-white overflow-hidden">
+  {heroPhoto && (
+    <Pic
+      src={heroPhoto.src}
+      alt={heroPhoto.alt[locale]}
+      class="absolute inset-0 w-full h-full object-cover"
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+  )}
+  {/* Přechod drží čitelnost nadpisu i drobečkové navigace přes fotku. */}
+  <div class="absolute inset-0 bg-gradient-to-b from-indigo-950/80 via-indigo-900/68 to-indigo-800/62"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
   <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-20">

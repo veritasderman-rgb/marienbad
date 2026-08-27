@@ -33,8 +33,16 @@ function renderCustomHtml(node: RenderableTreeNode): string {
       const widthClass =
         attrs.width === 'wide' ? ' figure-wide' :
         attrs.width === 'full' ? ' figure-full' : ''
-      const caption = attrs.caption
-        ? `<figcaption class="figure-caption">${escapeHtml(attrs.caption)}</figcaption>`
+      // Atribuce cizích snímků. Fotky v /images/trips/ jsou z Wikimedia
+      // Commons pod CC — bez uvedení autora a licence bychom je použít
+      // nesměli. Visí ve figcaption, aby zůstala u snímku i bez popisku.
+      const credit = attrs.credit
+        ? (attrs.creditHref
+            ? `<a class="figure-credit" href="${escapeAttr(attrs.creditHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(attrs.credit)}</a>`
+            : `<span class="figure-credit">${escapeHtml(attrs.credit)}</span>`)
+        : ''
+      const caption = attrs.caption || credit
+        ? `<figcaption class="figure-caption">${escapeHtml(attrs.caption ?? '')}${credit}</figcaption>`
         : ''
       const figOptim = lookup(attrs.src ?? '')
       const figDims = figOptim.width ? ` width="${figOptim.width}" height="${figOptim.height}"` : ''
