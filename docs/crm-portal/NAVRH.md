@@ -9,7 +9,7 @@
 ## 1. Co to bude
 
 Neveřejná část webu (`marienbad.com/portal`), do které se přihlásí jen pozvaní lidé.
-Uvnitř je pět věcí:
+Uvnitř je osm věcí:
 
 | Modul | Co umí |
 |---|---|
@@ -18,6 +18,9 @@ Uvnitř je pět věcí:
 | **Statistiky rozesílek** | Jednou měsíčně se automaticky stáhnou výsledky (doručeno, otevření, prokliky, odhlášení) a uloží se do historie. |
 | **Výkonnost partnerů** | Nahrání měsíčního Excelu → validace → uložení do databáze. |
 | **Srovnání období** | Automatické srovnání měsíc/měsíc, meziročně a klouzavých 12 měsíců — pro každého partnera i celkově. |
+| **Import z veletrhu** | Nahrání CSV z veletrhu (ITB, Holiday World) → odstranění duplicit proti CRM → založení nových partnerů jako `prospect`. |
+| **Dashboard výkonnosti** | Firemní přehled přes všechny partnery: KPI, trendy, rozpad podle segmentu a země, největší pohyby, koncentrace obratu. |
+| **Ověření partnerů** | Automatická lustrace v Hlídači státu — insolvence, nespolehlivý plátce DPH, trestní rejstřík právnických osob. |
 
 Vše za přihlášením, více uživatelských účtů s různými právy, hesla nikde v otevřené podobě.
 
@@ -43,8 +46,12 @@ nasazené nebo připravené:
                     │  Supabase (EU)       │   │  MailerLite API   │
                     │  • Postgres + RLS    │   │  connect.mailer…  │
                     │  • Auth (účty, 2FA)  │   │  kampaně + statis.│
-                    │  • Storage (Excely)  │   └───────────────────┘
-                    └──────────────────────┘
+                    │  • Storage (soubory) │   └───────────────────┘
+                    └──────────────────────┘   ┌───────────────────┐
+                                               │  Hlídač státu API │
+                                               │  insolvence, DPH, │
+                                               │  trestní rejstřík │
+                                               └───────────────────┘
                                  ▲
                     ┌────────────┴─────────┐
                     │  Vercel Cron         │
@@ -188,6 +195,9 @@ Kontakty na lidi v CK jsou osobní údaje (byť pracovní), takže:
 - **retenční politika:** komunikace 5 let, agregované statistiky bez omezení, nahrané Excely
   24 měsíců, audit log 12 měsíců. Mazání běží automaticky;
 - **výmaz na žádost** — tlačítko, které kontakt anonymizuje a zachová jen agregáty;
+- **kontakty z veletrhu** mají vlastní režim — vizitka není souhlas s rozesílkou, viz 5.4;
+- **údaje zvláštní kategorie se neukládají** — odpověď Hlídače státu obsahuje u jednatelů
+  vazbu na politiku, což jsou podle čl. 9 politické názory. Do CRM se nepřenášejí, viz 5.5;
 - zpracovatelské smlouvy: MailerLite (Litva, EU) i Supabase (region EU-West, Irsko) —
   data neopouštějí EU, což je pro DE/AT/CH klientelu podstatné;
 - doplnění záznamů o činnostech zpracování a rozšíření stávajících stránek o ochraně
@@ -209,6 +219,8 @@ partners(id, name, legal_name, ico, dic, country, city, website,
          tier,               -- A | B | C
          status,             -- active | prospect | inactive
          owner_user_id,      -- kdo vztah spravuje
+         acquisition_source, -- napr. 'veletrh:ITB-2026' | 'import:2026-03' | 'manual'
+         acquired_at, acquired_by,
          languages[], notes, created_at, updated_at)
 
 partner_contacts(id, partner_id, first_name, last_name, email citext, phone, position,
@@ -241,12 +253,26 @@ partner_performance(id, partner_id, period_month date, hotel_slug,
                     extra jsonb, import_id, created_at)
     UNIQUE (partner_id, period_month, hotel_slug)
 
-performance_imports(id, filename, sha256, storage_path, template_id,
-                    rows_total, rows_ok, rows_failed, status, error_log jsonb,
-                    uploaded_by, uploaded_at)
+imports(id, kind,               -- 'performance' (Excel) | 'partners' (CSV z veletrhu)
+        filename, sha256, storage_path, template_id, encoding, delimiter,
+        rows_total, rows_ok, rows_failed, rows_duplicate, status, error_log jsonb,
+        uploaded_by, uploaded_at)
+    -- jedna tabulka pro oba importy: sdílí validaci, audit i retenci souboru
 
-import_templates(id, name, column_mapping jsonb, created_by)
-    -- namapování sloupců Excelu na metriky, aby se to nedělalo pokaždé znovu
+import_templates(id, kind, name, column_mapping jsonb, created_by)
+    -- namapování sloupců na pole, aby se to nedělalo pokaždé znovu
+
+-- Ověření partnera v Hlídači státu
+partner_verifications(id, partner_id, ico, checked_at, source,   -- zatím jen 'hlidac_statu'
+                      insolvency_as_debtor_open  bool,
+                      insolvency_as_debtor_count int,
+                      vat_unreliable_now bool, vat_ever_listed bool,
+                      criminal_records_count int,
+                      employees_band, turnover_band, vat_payer_status,
+                      risk_level,      -- ok | watch | alert
+                      raw jsonb,       -- snímek odpovědi, ať jde doložit, na čem se rozhodovalo
+                      created_at)
+    -- append-only jako newsletter_stats: každá kontrola = nový řádek, historie zůstává
 
 audit_log(id, actor_id, action, entity, entity_id, diff jsonb, ip, user_agent, at)
 ```
@@ -412,6 +438,121 @@ s limitem velikosti a času, bez vyhodnocování vzorců.
 
 ---
 
+### 5.4 Import partnerů z veletrhu (CSV)
+
+Z veletrhu (ITB Berlin, Holiday World) se vozí vizitky a exporty ze čtečky leadů. Formát
+je pokaždé jiný, data bývají neúplná a část kontaktů už v CRM je.
+
+```
+Nahrání CSV  →  Detekce kódování a oddělovače  →  Mapování sloupců
+     ↓
+Odstranění duplicit  ──  1. podle IČO (spolehlivé)
+                     ──  2. podle domény e-mailu
+                     ──  3. fuzzy podle názvu → k ručnímu potvrzení, nikdy automaticky
+     ↓
+Náhled  ──  „14 nových, 6 už v CRM, 3 řádky k rozhodnutí"
+     ↓
+Založení jako status = 'prospect', acquisition_source = 'veletrh:ITB-2026'
+```
+
+**Na čem to v Česku obvykle padá** a s čím proto import počítá:
+
+- oddělovač `;`, ne čárka (české Excely),
+- kódování Windows-1250, ne UTF-8,
+- desetinná čárka,
+- **IČO s vedoucí nulou** — Excel ho zkonvertuje na číslo a nulu sežere. Načítá se jako
+  text a doplňuje se zpět na osm míst.
+
+> **Vizitka není souhlas s newsletterem.** Kontakty z veletrhu se zakládají s
+> `newsletter_opt_in = false` a do žádné rozesílky se nedostanou, dokud neprojdou
+> samostatným potvrzením (double opt-in e-mail). Zaznamenává se `lawful_basis`, kde se
+> vizitka získala a kdy. Bez toho by první rozesílka na veletržní seznam byla porušení
+> pravidel pro nevyžádaná obchodní sdělení, ne jen nezdvořilost.
+
+Import sdílí veškerou mechaniku s importem výkonnosti — stejná tabulka `imports`, stejná
+validace s náhledem, stejný audit i uchování zdrojového souboru.
+
+---
+
+### 5.5 Ověření partnerů v Hlídači státu
+
+U cestovních kanceláří je úpadek reálné a opakující se riziko. Portál proto partnery
+lustruje proti veřejným rejstříkům přes API [Hlídače státu](https://www.hlidacstatu.cz).
+
+**Co se kontroluje:**
+
+| Zdroj | Co se z něj bere |
+|---|---|
+| Insolvenční rejstřík (ISIR) | řízení, kde partner vystupuje **jako dlužník**, a jejich stav |
+| Registr nespolehlivých plátců DPH | zda je nespolehlivý nyní a zda kdy zapsaný byl |
+| Rejstřík trestů právnických osob | počet záznamů |
+| Základní údaje | počet zaměstnanců, pásmo obratu, plátcovství DPH |
+
+**Vyhodnocení rizika:**
+
+| Stupeň | Kdy |
+|---|---|
+| `alert` | otevřená insolvence **jako dlužník**, nebo aktuálně nespolehlivý plátce DPH, nebo záznam v trestním rejstříku |
+| `watch` | pravomocně skončená insolvence jako dlužník za poslední tři roky, nebo dřívější zápis mezi nespolehlivé plátce |
+| `ok` | vše ostatní |
+
+> **Proč `as_Debtor` a ne počet záznamů.** Ověřoval jsem to na reálných datech: Čedok
+> (IČO 60192755) má v ISIR osm insolvenčních řízení. U všech je ale `as_Debtor: false`
+> a `as_Creditor: true` — Čedok je věřitelem v cizích insolvencích, což je u velké CK
+> úplně běžné. Implementace, která by jen spočítala záznamy, by na zdravé firmě spustila
+> poplach. Riziko nese `as_Debtor`, ne počet.
+
+**Párování na IČO, ne na jméno.** Vyhledávání podle názvu je nespolehlivé — „Čedok" se
+najde, „EXIM TOURS" nevrátí nic. IČO je proto klíč; našeptávání podle jména slouží jen
+jako pomůcka a **spojení IČO s partnerem vždy potvrzuje člověk**. Přiřadit partnerovi
+cizí IČO by znamenalo hodnotit riziko úplně jiné firmy.
+
+**Kdy to běží:** při založení partnera (včetně importu z veletrhu), na vyžádání tlačítkem
+a jednou měsíčně stejným cronem jako statistiky rozesílek. Každá kontrola zakládá nový
+řádek, takže je vidět vývoj. Změna stupně rizika pošle upozornění vlastníkovi vztahu —
+„partner X se nově objevil v insolvenci jako dlužník" je informace, která má dorazit hned.
+
+> **Co se záměrně neukládá.** Odpověď obsahuje u jednatelů a společníků pole
+> `political_Involvement` (vazba na politiku, případně politická strana). To jsou podle
+> GDPR čl. 9 údaje zvláštní kategorie — politické názory. Do CRM se **neukládají** a
+> hodnocení rizika partnera se o ně neopírá. Ověřujeme firmu, ne lidi.
+
+**Licence.** Každá odpověď nese `source_Url` a `copyright`. U ověření se proto zobrazuje
+uvedení zdroje s odkazem na kartu subjektu na hlidacstatu.cz a dodržují se
+[podmínky užití](https://texty.hlidacstatu.cz/licence/). Výsledky se cachují v databázi;
+API se nevolá při každém zobrazení stránky.
+
+> **Omezení, které je potřeba říct nahlas:** Hlídač státu pokrývá **jen české subjekty**.
+> Vzhledem k tomu, že hlavní trh jsou německy mluvící země, bude velká část partnerů
+> německých a rakouských a tahle kontrola se jich netýká. Pro ně je potřeba buď obdoba
+> (Handelsregister, Insolvenzbekanntmachungen), nebo se smířit s ruční prověrkou. Zatím to
+> návrh řeší tak, že partner bez českého IČO má stav `neověřeno` — ne `ok`. Falešné
+> „v pořádku" je horší než přiznané „nevíme".
+
+---
+
+### 5.6 Dashboard výkonnosti firmy
+
+Souhrn přes všechny partnery — na rozdíl od karty partnera, která ukazuje jednoho.
+Referenčním bodem je vždy **poslední uzavřený měsíc s daty**, ne dnešek.
+
+- **KPI řádek** — obraty, room nights, rezervace, průměrná délka pobytu, storna;
+  u každého MoM, YoY a R12 ze srovnávacího view.
+- **Trend** — 24 měsíců obratu a room nights.
+- **Rozpad** — podle segmentu (CK / touroperátor / korporát / pojišťovna), země, hotelu a tieru.
+- **Největší pohyby** — deset partnerů nahoru a deset dolů meziročně. Tohle je ta část,
+  ze které plyne, komu zavolat.
+- **Koncentrace obratu** — jaký podíl dělá top 5 partnerů. U lázní závislých na několika
+  velkých CK je to riziková metrika, ne zajímavost.
+- **Průnik s rozesílkami** — jak si vedou partneři, kteří newsletter otevírají, proti těm,
+  kteří ne. Uvedeno jako souvislost, ne jako důkaz, že za to může newsletter.
+
+Filtry: období, segment, země, hotel. Vše se počítá na serveru nad
+`v_performance_compare`; grafy jsou lehké SVG bez knihoven navíc. Role `analyst` a
+`viewer` vidí agregáty normálně — maskují se jen kontaktní údaje, ne čísla.
+
+---
+
 ## 6. Obrazovky
 
 | Cesta | Obsah |
@@ -421,8 +562,11 @@ s limitem velikosti a času, bez vyhodnocování vzorců.
 | `/portal/partners/[id]` | Karta partnera: kontakty, komunikace, graf výkonnosti, přijaté newslettery |
 | `/portal/newsletters` | Archiv rozesílek + vývoj statistik v čase |
 | `/portal/newsletters/new` | Návrh → náhled → test → schválení → odeslání |
-| `/portal/import` | Průvodce nahráním Excelu |
+| `/portal/import` | Průvodce nahráním Excelu s výkonností |
+| `/portal/import/leads` | Průvodce nahráním CSV z veletrhu |
+| `/portal/dashboard` | Dashboard výkonnosti firmy — KPI, trendy, rozpady, koncentrace |
 | `/portal/reports` | Srovnání období, export do CSV |
+| `/portal/verifications` | Přehled ověření: co je `alert`, co `watch`, co neověřené |
 | `/portal/admin/users` | Pozvánky, role, deaktivace *(jen owner)* |
 | `/portal/admin/audit` | Audit log *(jen owner)* |
 
@@ -438,13 +582,20 @@ paleta Ensana a font Branding, aby to nepůsobilo jako cizí nástroj.
 |---|---|---|
 | **0. Základ** | Probuzení Supabase, migrace schématu + RLS, Auth s 2FA, middleware, správa uživatelů, audit log | 2–3 dny |
 | **1. CRM** | Partneři, kontakty, komunikace, vyhledávání, prvotní import seznamu partnerů | 3–4 dny |
-| **2. Newsletter** | Koncept → schválení → odeslání, archiv, synchronizace segmentů, testovací odesílání | 3–4 dny |
-| **3. Statistiky** | Cron, tabulky statistik, dashboard, měsíční souhrn e-mailem | 2 dny |
-| **4. Excel + srovnání** | Průvodce importem, mapovací šablony, srovnávací view, reporty, export | 3–4 dny |
-| **5. Zpevnění** | Nonce CSP na veřejném webu, gitleaks v CI, zkouška obnovy ze zálohy, bezpečnostní checklist, GDPR dokumentace | 2 dny |
+| **2. Import z veletrhu** | CSV průvodce, detekce kódování a oddělovače, odstranění duplicit, double opt-in pro veletržní kontakty | 2–3 dny |
+| **3. Newsletter** | Koncept → schválení → odeslání, archiv, synchronizace segmentů, testovací odesílání | 3–4 dny |
+| **4. Statistiky rozesílek** | Cron, tabulky statistik, měsíční souhrn e-mailem | 2 dny |
+| **5. Excel + srovnání** | Průvodce importem, mapovací šablony, srovnávací view, reporty, export | 3–4 dny |
+| **6. Dashboard výkonnosti** | KPI, trendy, rozpady, největší pohyby, koncentrace obratu | 2–3 dny |
+| **7. Ověření partnerů** | Napojení na Hlídače státu, párování na IČO, vyhodnocení rizika, měsíční přeověření, upozornění | 2–3 dny |
+| **8. Zpevnění** | Nonce CSP na veřejném webu, gitleaks v CI, zkouška obnovy ze zálohy, bezpečnostní checklist, GDPR dokumentace | 2 dny |
 
-**Celkem zhruba 15–19 dní práce.** Fáze 0–2 dávají použitelný celek (CRM + rozesílání),
-fáze 3–4 přidávají analytiku. Po každé fázi samostatný PR.
+**Celkem zhruba 21–27 dní práce.** Fáze 0–3 dávají použitelný celek (CRM, veletržní
+kontakty, rozesílání), fáze 4–6 přidávají analytiku, fáze 7 prověrku partnerů. Po každé
+fázi samostatný PR.
+
+Fáze 7 je jediná, která nezávisí na ničem jiném než na fázi 1 — pokud je prověrka partnerů
+naléhavější než rozesílky, dá se předsadit.
 
 ---
 
@@ -454,6 +605,7 @@ fáze 3–4 přidávají analytiku. Po každé fázi samostatný PR.
 |---|---|
 | Supabase Pro | **Nutné.** Free tarif uspí projekt po týdnu nečinnosti — což je přesně náš případ (portál se používá párkrát měsíčně). Ostatně stávající projekt `marienbad` je uspaný právě proto. Pro tarif navíc přináší PITR zálohy a ochranu proti uniklým heslům. |
 | MailerLite Advanced | Nutné pro vkládání vlastního HTML přes API. Cena podle počtu odběratelů — je potřeba ověřit aktuální tarif účtu. |
+| Hlídač státu | API je veřejné a pro tento objem dotazů bezplatné. Váže se na něj uvedení zdroje a [podmínky užití](https://texty.hlidacstatu.cz/licence/). |
 | Vercel | Cron 1× měsíčně zvládne i současný tarif. Na Hobby se ale úlohy spouští s přesností na hodinu a max. 1× denně; Pro dává minutovou přesnost. |
 
 ---
@@ -469,6 +621,10 @@ fáze 3–4 přidávají analytiku. Po každé fázi samostatný PR.
 | Výpadek měsíčního jobu | Idempotence, dohledávání nezpracovaných období, upozornění e-mailem |
 | Nadhodnocená otevřenost (Apple MPP) | Hlavní metrika = unikátní prokliky a CTOR |
 | Odchod člověka z týmu | Deaktivace účtu, odhlášení všech relací, záznam v audit logu |
+| Falešný poplach u prověrky partnera | Riziko nese `as_Debtor`, ne počet insolvenčních záznamů; věřitel v cizí insolvenci je stav `ok` |
+| Prověrka přiřazená špatné firmě | Párování na IČO, nikdy automaticky podle názvu; spojení potvrzuje člověk |
+| Zahraniční partner vypadá jako prověřený | Bez českého IČO se stav ukazuje jako `neověřeno`, nikdy jako `ok` |
+| Rozesílka na veletržní kontakty bez souhlasu | `newsletter_opt_in = false` při zakládání, povinný double opt-in před první rozesílkou |
 
 ---
 
@@ -482,3 +638,9 @@ fáze 3–4 přidávají analytiku. Po každé fázi samostatný PR.
 4. **Kolik účtů a kdo v jaké roli.**
 5. **Existující seznam partnerů** v jakékoli podobě (Excel, Google Sheet, kontakty),
    ze kterého se udělá prvotní import.
+6. **Ukázka CSV z veletrhu** — ideálně export ze čtečky leadů z posledního ročníku.
+7. **Zahraniční partneři:** má se pro německé a rakouské CK řešit obdoba prověrky
+   (Handelsregister), nebo stačí, že se ukážou jako neověřené a prověří se ručně?
+8. **Dashboard výkonnosti firmy** je v návrhu pojatý jako souhrn přes všechny partnery.
+   Kdybyste tím mysleli spíš detail jedné partnerské firmy, ten už je na kartě partnera —
+   dejte vědět, jestli to takhle sedí.
