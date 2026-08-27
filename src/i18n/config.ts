@@ -29,6 +29,12 @@ export const routes = {
   /** Česká sekce o péči hrazené z veřejného zdravotního pojištění — jen cs. */
   'insurance-spa': { cs: 'lazne-s-pojistovnou' },
   quiz: { de: 'quiz', en: 'quiz', cs: 'kviz', ru: 'viktorina' },
+  /**
+   * Svatební landing page. Slugy jsou schválně kratší než u magazínových
+   * článků (`hochzeit-in-marienbad` je článek, `hochzeit` je landing), ať se
+   * ve výsledcích vyhledávání nepřebíjejí.
+   */
+  weddings: { de: 'hochzeit', en: 'weddings', cs: 'svatba', ru: 'svadba' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>
 
 export type SectionKey = keyof typeof routes
