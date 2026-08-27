@@ -118,16 +118,22 @@ k osobním údajům dostane jen ten, kdo je k práci potřebuje.
 
 ### 3.3 Vrstvy ochrany
 
-1. **Astro middleware** (`src/middleware.ts`) — hlídá každý požadavek na `/portal/*` a
-   `/api/portal/*`. Bez platné session přesměruje na přihlášení.
+1. **Astro middleware** (`src/middleware.ts`) — rozlišuje dva druhy provozu:
+   - **Prohlížečové cesty** — `/portal/*` a `/api/portal/*` mimo strojový výčet níže.
+     Vyžadují platnou session; bez ní přesměrování na přihlášení, u API odpověď 401.
+   - **Strojové cesty** — `/api/portal/cron/*` a `/api/portal/intake/*`. Ty se
+     **nikdy nepřesměrovávají**. Ověřují se výhradně bearer tokenem a session cookie
+     u nich middleware **ignoruje**.
 2. **Kontrola v každém API endpointu zvlášť** — middleware se nikdy nebere jako jediná
-   pojistka. Každá serverová funkce si znovu ověří identitu i roli.
+   pojistka. Každá serverová funkce si znovu ověří identitu i roli (u strojových cest token).
 3. **Row Level Security v Postgresu** — zapnutá a vynucená (`FORCE ROW LEVEL SECURITY`)
    na všech tabulkách, výchozí stav „nic není vidět". I kdyby unikl anon klíč, data se nedají
    přečíst.
 4. **CRM tabulky nejsou vystavené přes veřejné API Supabase** — jsou ve schématu `crm`,
    které není v `exposed_schemas`. Do databáze sahá jen server Astro aplikace.
 5. **CSRF** — kontrola hlavičky `Origin` u všech zápisových požadavků + double-submit token.
+   Strojové cesty jsou z něj vyňaté, protože je to čistě prohlížečový mechanismus — chrání
+   je místo něj to, že cookie vůbec nepřijímají.
 6. **Hlavičky pro `/portal/*`** ve `vercel.json`: vlastní blok s přísnější CSP
    (`default-src 'self'`, bez `unsafe-inline`, bez Google Analytics), `X-Robots-Tag: noindex,
    nofollow`, `Cache-Control: no-store`.
@@ -135,6 +141,12 @@ k osobním údajům dostane jen ten, kdo je k práci potřebuje.
    (`astro.config.mjs` filtr + `sitemap-content.xml.ts`).
 8. **Žádná analytika uvnitř portálu** — GA4 ani Plausible se v portálu nenačítají. Jinak by
    se do Googlu dostávaly URL s názvy a ID partnerů.
+
+> **Proč to rozdělení není detail:** Vercel Cron **nenásleduje přesměrování** — kdyby
+> middleware cron endpoint přesměroval na přihlášení, úloha by na odpovědi 3xx skončila jako
+> „hotová" a nikdy by neproběhla. A naopak: strojová cesta, která by přijímala session cookie,
+> by šla zneužít přes CSRF — přihlášeného uživatele by stačilo navést na cizí stránku, která
+> job odpálí jeho jménem. Proto strojové cesty cookie ignorují a spoléhají jen na token.
 
 ### 3.4 Klíče a tajemství
 
@@ -245,6 +257,36 @@ Jedno databázové view spočítá všechna tři srovnání najednou:
 
 ```sql
 CREATE VIEW crm.v_performance_compare AS
+WITH monthly AS (
+  -- Jeden řádek na partnera a měsíc. Nutný krok: partner_performance má klíč
+  -- (partner_id, period_month, hotel_slug), takže partner vykazovaný přes několik
+  -- hotelů má na jeden měsíc několik řádků.
+  SELECT partner_id,
+         period_month,
+         SUM(revenue_eur) AS revenue_eur,
+         SUM(room_nights) AS room_nights
+  FROM crm.partner_performance
+  GROUP BY partner_id, period_month
+),
+series AS (
+  -- Souvislá řada měsíců pro každého partnera; měsíc bez dat = nula, ne chybějící řádek.
+  SELECT p.partner_id,
+         g.month::date              AS period_month,
+         COALESCE(m.revenue_eur, 0) AS revenue_eur,
+         COALESCE(m.room_nights, 0) AS room_nights
+  FROM (SELECT DISTINCT partner_id FROM monthly) p
+  CROSS JOIN generate_series(
+               (SELECT MIN(period_month) FROM monthly),
+               -- Poslední naimportovaný měsíc, NE dnešek: jinak by se měsíce, které ještě
+               -- nikdo nenahrál, dopočítaly jako nula a R12 by klesalo jen proto, že data
+               -- chybí.
+               (SELECT MAX(period_month) FROM monthly),
+               interval '1 month'
+             ) AS g(month)
+  LEFT JOIN monthly m
+         ON m.partner_id   = p.partner_id
+        AND m.period_month = g.month::date
+)
 SELECT
   partner_id,
   period_month,
@@ -260,9 +302,12 @@ SELECT
   -- klouzavých 12 měsíců vs. předchozích 12
   SUM(revenue_eur) OVER (w ROWS BETWEEN 11 PRECEDING AND CURRENT ROW)   AS revenue_r12,
   SUM(revenue_eur) OVER (w ROWS BETWEEN 23 PRECEDING AND 12 PRECEDING)  AS revenue_r12_prev
-FROM crm.partner_performance
+FROM series
 WINDOW w AS (PARTITION BY partner_id ORDER BY period_month);
 ```
+
+Rozpad po hotelech řeší souběžné view se stejnou stavbou, jen agregované a partitionované
+podle `(partner_id, hotel_slug)`.
 
 Procentní změny se počítají nad tímto view. Definice, aby v tom nebyl zmatek:
 
@@ -270,8 +315,11 @@ Procentní změny se počítají nad tímto view. Definice, aby v tom nebyl zmat
 - **YoY** — měsíc M proti M−12 (podstatné u lázní, kde je silná sezónnost)
 - **R12** — součet M−11…M proti součtu M−23…M−12 (vyhlazuje sezónnost)
 
-Chybějící měsíc se doplní jako nula, ne jako „chybí", aby se okno neposunulo — jinak by
-srovnání meziročně tiše ukazovalo špatný měsíc.
+Dva kroky před oknem — agregace na jeden řádek na partnera a měsíc a dopočet chybějících
+měsíců jako nuly — nejsou kosmetika. `LAG` posouvá o **řádky, ne o měsíce**: bez nich by
+`LAG(…, 1)` u partnera vykazovaného přes několik hotelů sáhl na jiný hotel v témže měsíci
+a `LAG(…, 12)` na dvanáctý řádek zpět místo na loňský měsíc. Srovnání by nespadlo — tiše by
+ukazovalo špatná čísla, což je horší.
 
 ---
 
@@ -283,7 +331,7 @@ srovnání meziročně tiše ukazovalo špatný měsíc.
 1. Claude připraví návrh
    → čte podklady: segment partnerů, novinky z Keystaticu, kampaňový kalendář
    → vygeneruje předmět, preheader a HTML
-   → POST /api/portal/newsletters (servisní token: JEN vytvoření konceptu)
+   → POST /api/portal/intake/newsletter-draft (servisní token: JEN vytvoření konceptu)
    → uloží se jako newsletters.status = 'draft'
 
 2. Člověk v portálu
