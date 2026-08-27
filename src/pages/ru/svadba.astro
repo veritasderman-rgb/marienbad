@@ -1,0 +1,23 @@
+---
+/**
+ * Svatební landing page — evergreen, ne kampaň. Obsah drží sdílená
+ * komponenta WeddingsPage, texty src/data/weddingsContent.ts.
+ */
+import Base from '@/layouts/Base.astro'
+import WeddingsPage from '@/components/WeddingsPage.astro'
+
+export const prerender = true
+
+const locale = 'ru' as const
+---
+
+<Base
+  locale={locale}
+  section="culture"
+  title="Свадьба в Марианских Лазнях — места, залы, даты | Marienbad.com"
+  description="Церемония у колоннады, банкет под хрустальными люстрами и семь отелей в пешей доступности. Места, вместимость залов и ответы на частые вопросы."
+  ogImage="/images/library/wedding/casino-marble-hall-banquet.jpg"
+  alternateUrls={{ cs: '/cs/svatba', de: '/de/hochzeit', en: '/en/weddings', ru: '/ru/svadba' }}
+>
+  <WeddingsPage locale={locale} />
+</Base>

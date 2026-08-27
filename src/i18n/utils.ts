@@ -96,6 +96,7 @@ export function getNavItems(locale: Locale): NavItem[] {
         link('nav.golf', 'golf'),
         link('nav.culture', 'culture'),
         link('nav.nature', 'nature'),
+        link('nav.weddings', 'weddings'),
       ],
     },
     link('nav.accommodation', 'accommodation'),

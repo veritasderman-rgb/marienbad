@@ -1,0 +1,511 @@
+---
+/**
+ * Svatební landing page — obsah sdílený všemi čtyřmi jazykovými mutacemi.
+ * Texty drží src/data/weddingsContent.ts.
+ *
+ * Hero je schválně **split** (foto vpravo, text vlevo), ne full-bleed jako
+ * ostatní kampaňové stránky: 16 z 20 fotek sady je na výšku a přes celou
+ * šířku by z nich zůstal úzký proužek.
+ */
+import Pic from '@/components/Pic.astro'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import {
+  weddingsContent,
+  venueLinks,
+  relatedLinks,
+  ENSANA_WEDDING_URL,
+  WEDDING_MAIL,
+} from '@/data/weddingsContent'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const c = weddingsContent[locale]
+const links = venueLinks[locale]
+const related = relatedLinks[locale]
+
+const IMG = '/images/library/wedding/'
+const mailto = `mailto:${WEDDING_MAIL}?subject=${encodeURIComponent(c.hero.heading)}`
+
+const breadcrumbItems = [
+  { label: c.breadcrumb, href: `/${locale}/${routes.weddings[locale]}` },
+]
+
+/** FAQPage JSON-LD. FaqSchema.astro čte rawBody z Markdocu, na .astro stránce
+ *  ho nemá odkud vzít, takže se schéma vypisuje ručně. */
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.faq.items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+})
+
+const serviceSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: c.breadcrumb,
+  name: c.hero.heading,
+  description: c.metaDescription,
+  areaServed: { '@type': 'City', name: 'Mariánské Lázně' },
+  provider: { '@type': 'Organization', name: 'Marienbad.com', url: 'https://marienbad.com' },
+})
+---
+
+<script type="application/ld+json" set:html={serviceSchema} is:inline />
+<script type="application/ld+json" set:html={faqSchema} is:inline />
+
+<!-- ── Hero — split ─────────────────────────────────────────────────── -->
+<section class="bg-beige-50">
+  <div class="grid lg:grid-cols-[1fr_0.85fr] items-stretch">
+    <div class="order-2 lg:order-1 flex items-center">
+      <div class="px-6 md:px-10 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-16 py-14 md:py-20 max-w-2xl">
+        <Breadcrumbs items={breadcrumbItems} locale={locale} />
+        <span class="inline-block mt-4 px-3 py-1 bg-turquoise-100 text-indigo-700 text-xs font-semibold uppercase tracking-wider rounded-full">
+          {c.hero.eyebrow}
+        </span>
+        <h1 class="mt-5 font-heading font-bold text-indigo-700 leading-tight" style="font-size: var(--text-h1);">
+          {c.hero.heading}
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-beige-900 leading-relaxed">{c.hero.lead}</p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="#poptavka" class="btn-primary" data-ga="wedding-hero-cta">
+            {c.hero.ctaPrimary}
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href="#mista" class="btn-ghost">{c.hero.ctaSecondary}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 relative min-h-[58vh] lg:min-h-[76vh]">
+      <Pic
+        src={`${IMG}main-colonnade-couple-dancing.jpg`}
+        alt={c.alts.hero}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+        sizes="(min-width: 1024px) 46vw, 100vw"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ── Čtyři čísla ──────────────────────────────────────────────────── -->
+<section class="bg-white border-b border-beige-200">
+  <div class="container-wide">
+    <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-beige-200">
+      {c.facts.map((f) => (
+        <div class="px-5 py-8 md:px-8 md:py-10">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-indigo-700">{f.value}</div>
+          <div class="mt-2 font-semibold text-beige-950 leading-snug">{f.label}</div>
+          <div class="mt-1 text-sm text-beige-700 leading-snug">{f.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Místa ────────────────────────────────────────────────────────── -->
+<section id="mista" class="section bg-beige-50 scroll-mt-24">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-wider text-turquoise-600">{c.venues.eyebrow}</p>
+      <h2 class="mt-2 font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.venues.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.venues.lead}</p>
+    </div>
+
+    <div class="mt-14 space-y-16 lg:space-y-24">
+      {c.venues.items.slice(0, 4).map((v, i) => (
+        <div class="grid lg:grid-cols-[1fr_0.9fr] gap-10 lg:gap-16 items-center">
+          <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+            <h3 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-snug">{v.name}</h3>
+            <p class="mt-4 text-lg text-beige-900 leading-relaxed">{v.line}</p>
+            <dl class="mt-6 grid sm:grid-cols-3 gap-4 text-sm">
+              <div>
+                <dt class="font-semibold text-beige-950">{c.venues.capacityLabel}</dt>
+                <dd class="mt-0.5 text-beige-700">{v.capacity}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-beige-950">{c.venues.settingLabel}</dt>
+                <dd class="mt-0.5 text-beige-700">{v.setting}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-beige-950">{c.venues.seasonLabel}</dt>
+                <dd class="mt-0.5 text-beige-700">{v.season}</dd>
+              </div>
+            </dl>
+            <a href={links[v.key]} class="btn-ghost mt-7">{v.linkLabel}</a>
+          </div>
+          <div class={`overflow-hidden rounded-3xl shadow-card ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+            <Pic
+              src={`${IMG}${v.photo}.jpg`}
+              alt={c.alts[v.key]}
+              class="w-full h-full object-cover"
+              sizes="(min-width: 1024px) 42vw, 100vw"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Široký pás mezi místy 4 a 5 ──────────────────────────────────── -->
+<section class="relative h-[42vh] md:h-[56vh] overflow-hidden">
+  <Pic
+    src={`${IMG}casino-marble-hall-banquet.jpg`}
+    alt={c.venues.bandAlt}
+    class="w-full h-full object-cover"
+    sizes="100vw"
+  />
+</section>
+
+<!-- ── Páté místo ───────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    {c.venues.items.slice(4).map((v) => (
+      <div class="grid lg:grid-cols-[1fr_0.9fr] gap-10 lg:gap-16 items-center">
+        <div>
+          <h3 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-snug">{v.name}</h3>
+          <p class="mt-4 text-lg text-beige-900 leading-relaxed">{v.line}</p>
+          <dl class="mt-6 grid sm:grid-cols-3 gap-4 text-sm">
+            <div>
+              <dt class="font-semibold text-beige-950">{c.venues.capacityLabel}</dt>
+              <dd class="mt-0.5 text-beige-700">{v.capacity}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-beige-950">{c.venues.settingLabel}</dt>
+              <dd class="mt-0.5 text-beige-700">{v.setting}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-beige-950">{c.venues.seasonLabel}</dt>
+              <dd class="mt-0.5 text-beige-700">{v.season}</dd>
+            </div>
+          </dl>
+          <a href={links[v.key]} class="btn-ghost mt-7">{v.linkLabel}</a>
+        </div>
+        <div class="overflow-hidden rounded-3xl shadow-card">
+          <Pic
+            src={`${IMG}${v.photo}.jpg`}
+            alt={c.alts[v.key]}
+            class="w-full h-full object-cover"
+            sizes="(min-width: 1024px) 42vw, 100vw"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ── Tabulka sálů ─────────────────────────────────────────────────── -->
+<section id="saly" class="section bg-white scroll-mt-24">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.halls.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.halls.lead}</p>
+    </div>
+
+    {/* Na mobilu karty, od md tabulka — vodorovný scroll by na telefonu
+        nikdo nečetl a svatební návštěvnost je převážně mobilní. */}
+    <div class="mt-10 grid gap-4 md:hidden">
+      {c.halls.rows.map((r) => (
+        <div class="rounded-2xl border border-beige-200 p-5">
+          <h3 class="font-heading text-lg font-bold text-indigo-700">{r.name}</h3>
+          <div class="mt-3 flex gap-6 text-sm">
+            <div>
+              <div class="text-beige-700">{c.halls.colBanquet}</div>
+              <div class="font-semibold text-beige-950">{r.banquet}</div>
+            </div>
+            <div>
+              <div class="text-beige-700">{c.halls.colReception}</div>
+              <div class="font-semibold text-beige-950">{r.reception}</div>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-beige-700 leading-snug">{r.character}</p>
+        </div>
+      ))}
+    </div>
+
+    <table class="hidden md:table mt-10 w-full text-left border-collapse">
+      <thead>
+        <tr class="border-b-2 border-beige-300">
+          <th class="py-3 pr-4 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700">{c.halls.colName}</th>
+          <th class="py-3 px-4 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700">{c.halls.colBanquet}</th>
+          <th class="py-3 px-4 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700">{c.halls.colReception}</th>
+          <th class="py-3 pl-4 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700">{c.halls.colCharacter}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {c.halls.rows.map((r) => (
+          <tr class="border-b border-beige-200">
+            <td class="py-4 pr-4 font-semibold text-beige-950">{r.name}</td>
+            <td class="py-4 px-4 text-beige-900 tabular-nums">{r.banquet}</td>
+            <td class="py-4 px-4 text-beige-900 tabular-nums">{r.reception}</td>
+            <td class="py-4 pl-4 text-beige-700 text-sm">{r.character}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <p class="mt-5 text-sm text-beige-700 leading-relaxed max-w-2xl">{c.halls.note}</p>
+  </div>
+</section>
+
+<!-- ── Den ve třech aktech ──────────────────────────────────────────── -->
+<section class="section bg-indigo-700 text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-wider text-turquoise-300">{c.acts.eyebrow}</p>
+      <h2 class="mt-2 font-heading text-3xl md:text-4xl font-bold leading-tight">{c.acts.heading}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{c.acts.lead}</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      {c.acts.items.map((a) => (
+        <div class={`rounded-2xl overflow-hidden border ${a.highlight ? 'bg-yellow-400 text-beige-950 border-yellow-300' : 'bg-white/8 border-white/15'}`}>
+          {/* 3/4, ne 4/3 — fotky sady jsou na výšku a v širokém rámečku
+              by z nich zbyl pruh (viz IMAGE-MANIFEST.md). */}
+          <div class="aspect-[3/4] overflow-hidden">
+            <Pic
+              src={`${IMG}${a.photo}.jpg`}
+              alt={c.alts[a.key]}
+              class="w-full h-full object-cover"
+              sizes="(min-width: 768px) 30vw, 100vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-xl font-bold leading-snug">{a.title}</h3>
+            <ul class="mt-4 space-y-2.5">
+              {a.items.map((item) => (
+                <li class="flex gap-2.5 text-sm leading-snug">
+                  <svg class={`w-4 h-4 mt-0.5 shrink-0 ${a.highlight ? 'text-beige-950' : 'text-turquoise-300'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                  <span class={a.highlight ? '' : 'text-white/85'}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Dva tahy ─────────────────────────────────────────────────────── -->
+<section class="section bg-aubergine-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(201,163,105,0.14)_0%,_transparent_55%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">{c.draws.heading}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{c.draws.lead}</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      {c.draws.items.map((d, i) => (
+        <div class="rounded-2xl border border-white/15 bg-white/8 p-7 md:p-9">
+          <h3 class="font-heading text-xl md:text-2xl font-bold leading-snug">{d.title}</h3>
+          <p class="mt-4 text-white/85 leading-relaxed">{d.body}</p>
+          <a href={i === 0 ? links.fountain : '#poptavka'} class="btn-ghost mt-6 !border-white/40 !text-white hover:!bg-white/10">
+            {d.linkLabel}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Galerie detailů ──────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.gallery.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.gallery.lead}</p>
+    </div>
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+      {c.gallery.photos.map((p) => (
+        <div class="aspect-[3/4] overflow-hidden rounded-2xl">
+          <Pic
+            src={`${IMG}${p.photo}.jpg`}
+            alt={p.alt}
+            class="w-full h-full object-cover"
+            sizes="(min-width: 768px) 24vw, 48vw"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Pro hosty ────────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.guests.heading}</h2>
+        <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.guests.lead}</p>
+        <ul class="mt-7 space-y-3">
+          {c.guests.bullets.map((b) => (
+            <li class="flex gap-3 text-beige-900 leading-relaxed">
+              <svg class="w-5 h-5 mt-0.5 shrink-0 text-turquoise-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-beige-200 bg-white p-7 md:p-9">
+        <h3 class="font-heading text-xl font-bold text-indigo-700">{c.guests.cardTitle}</h3>
+        <div class="mt-6 flex flex-col gap-3">
+          <a href={`/${locale}/${routes.accommodation[locale]}`} class="btn-ghost justify-between">
+            {c.guests.linkAccommodation}
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+          <a href={`/${locale}/${routes['day-trips'][locale]}`} class="btn-ghost justify-between">
+            {c.guests.linkTrips}
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Kdy ──────────────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-[1fr_0.8fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.when.heading}</h2>
+        <div class="mt-6 space-y-5 text-lg text-beige-900 leading-relaxed">
+          <p>{c.when.p1}</p>
+          <p>{c.when.p2}</p>
+        </div>
+        <a href={`/${locale}/${locale === 'de' ? 'beste-reisezeit' : locale === 'en' ? 'best-time-to-visit' : locale === 'cs' ? 'nejlepsi-cas-navstevy' : 'luchshee-vremya'}`} class="btn-ghost mt-7">
+          {c.when.linkLabel}
+        </a>
+      </div>
+      <div class="overflow-hidden rounded-3xl shadow-card">
+        <Pic
+          src={`${IMG}cross-spring-colonnade-veil.jpg`}
+          alt={c.when.alt}
+          class="w-full h-full object-cover"
+          sizes="(min-width: 1024px) 38vw, 100vw"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.faq.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.faq.lead}</p>
+    </div>
+
+    <div class="mt-10 max-w-3xl space-y-3">
+      {c.faq.items.map((f) => (
+        <details class="group rounded-2xl border border-beige-200 bg-white overflow-hidden" data-ga="wedding-faq">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 font-semibold text-beige-950 hover:text-indigo-700 transition-colors">
+            <span>{f.q}</span>
+            <svg class="w-5 h-5 shrink-0 text-turquoise-500 transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+          </summary>
+          <div class="px-6 pb-6 -mt-1 text-beige-900 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Závěrečná výzva přes fotku ───────────────────────────────────── -->
+<section id="poptavka" class="relative overflow-hidden bg-aubergine-900 text-white scroll-mt-24">
+  <div class="absolute inset-0">
+    <Pic
+      src={`${IMG}main-colonnade-fresco-steps.jpg`}
+      alt=""
+      class="w-full h-full object-cover [object-position:center_68%]"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">{c.finalCta.heading}</h2>
+      <p class="mt-5 text-lg text-white/85 leading-relaxed">{c.finalCta.body}</p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href={mailto} class="btn-primary" data-ga="wedding-footer-cta">
+          {c.finalCta.cta}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+        <a
+          href={ENSANA_WEDDING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-ghost !border-white/40 !text-white hover:!bg-white/10"
+          data-ga="wedding-ensana"
+        >
+          {c.finalCta.ensanaLabel}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Související čtení ────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-tight">{c.related.heading}</h2>
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      {c.related.items.map((r, i) => (
+        <a href={related[i]} class="group block rounded-2xl border border-beige-200 p-6 hover:border-turquoise-300 hover:shadow-md transition-all">
+          <h3 class="font-heading text-lg font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors leading-snug">{r.title}</h3>
+          <p class="mt-2 text-sm text-beige-700 leading-relaxed">{r.note}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // GA4 je consent-gated v ConsentBanner; gtag tady jen použijeme, pokud existuje.
+  const send = (name: string, label: string) => {
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void }
+    w.gtag?.('event', name, { event_category: 'weddings', event_label: label })
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ga]').forEach((el) => {
+    el.addEventListener('click', () => send('wedding_click', el.dataset.ga ?? ''), { passive: true })
+  })
+
+  document.querySelectorAll<HTMLDetailsElement>('details[data-ga="wedding-faq"]').forEach((d) => {
+    d.addEventListener('toggle', () => {
+      if (d.open) send('wedding_faq_open', d.querySelector('summary')?.textContent?.trim() ?? '')
+    })
+  })
+
+  const venues = document.getElementById('mista')
+  if (venues && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          send('wedding_reach_venues', 'mista')
+          io.disconnect()
+        }
+      },
+      { threshold: 0.25 },
+    )
+    io.observe(venues)
+  }
+</script>
