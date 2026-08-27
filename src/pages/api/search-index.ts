@@ -3,6 +3,7 @@ import { locales, routes, type Locale, type SectionKey } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import { getArticles, getStories, getPagesIndex } from '@/content/reader'
 import { INSURANCE_BASE, indicationPages, subPages } from '@/data/insuranceSpa'
+import { weddingsContent } from '@/data/weddingsContent'
 
 interface SearchEntry {
   title: string
@@ -114,6 +115,15 @@ export const GET: APIRoute = async ({ url }) => {
       add({ title: page.title, url: `${INSURANCE_BASE}/indikace/${page.slug}`, excerpt: page.teaser, type: 'page' })
     }
   }
+
+  // (f) Svatební landing page — ručně psaná stránka bez CMS záznamu, takže
+  //     ji blok (c) nevidí a bez tohohle by ve vyhledávání nebyla vůbec.
+  add({
+    title: t(locale, 'nav.weddings'),
+    url: `/${locale}/${routes.weddings[locale]}`,
+    excerpt: weddingsContent[locale].metaDescription,
+    type: 'page',
+  })
 
   return new Response(JSON.stringify([...entries.values()]), {
     status: 200,

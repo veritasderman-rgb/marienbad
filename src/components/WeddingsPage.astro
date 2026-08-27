@@ -15,7 +15,7 @@ import {
   weddingsContent,
   venueLinks,
   relatedLinks,
-  ENSANA_WEDDING_URL,
+  ensanaWeddingUrl,
   WEDDING_MAIL,
 } from '@/data/weddingsContent'
 
@@ -449,7 +449,7 @@ const serviceSchema = JSON.stringify({
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </a>
         <a
-          href={ENSANA_WEDDING_URL}
+          href={ensanaWeddingUrl(locale)}
           target="_blank"
           rel="noopener noreferrer"
           class="btn-ghost !border-white/40 !text-white hover:!bg-white/10"
@@ -479,8 +479,21 @@ const serviceSchema = JSON.stringify({
 </section>
 
 <script>
-  // GA4 je consent-gated v ConsentBanner; gtag tady jen použijeme, pokud existuje.
+  // GoogleAnalytics.astro instaluje window.gtag okamžitě, ještě před souhlasem —
+  // jeho přítomnost tedy souhlas neznamená. Bez téhle brány by se události
+  // nakupily v dataLayer a po pozdějším přijetí cookies se přehrály do gtag.js.
+  // Stejnou podmínku má i posluchač kliknutí v GoogleAnalytics.astro.
+  let consentGranted = false
+  try {
+    consentGranted = localStorage.getItem('ml-consent') === 'granted'
+  } catch {
+    /* localStorage může být nedostupné (private mode, blokované cookies) */
+  }
+  document.addEventListener('ml:consent-granted', () => { consentGranted = true })
+  document.addEventListener('ml:consent-denied', () => { consentGranted = false })
+
   const send = (name: string, label: string) => {
+    if (!consentGranted) return
     const w = window as unknown as { gtag?: (...args: unknown[]) => void }
     w.gtag?.('event', name, { event_category: 'weddings', event_label: label })
   }

@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import { hotels } from '@/data/hotels'
 
 /**
  * Obsah svatební landing page ve všech čtyřech jazycích.
@@ -8,9 +9,9 @@ import type { Locale } from '@/i18n/config'
  * ensanaLifeContent.ts + EnsanaLifePage.astro).
  *
  * Fakta o sálech pocházejí ze svatebního katalogu Ensana (docs/weddings/
- * ZADANI-svatby.md, §4). Formulace o kolonádě, Zpívající fontáně a kočáru
- * jsou schválně psané jako „lze domluvit", ne „zajistíme" — kdo je reálným
- * pronajímatelem, není potvrzené (§D zadání).
+ * ZADANI-svatby.md, §4). Kolonáda i Zpívající fontána stojí na pozemku
+ * provozovatele, takže se obřad i mimořádná skladba domlouvají přímo — §D
+ * zadání to uváděl jako neověřené, potvrzeno zadavatelem 27. 8. 2026.
  */
 
 export interface WeddingVenue {
@@ -108,9 +109,17 @@ export interface WeddingsContent {
   alts: Record<string, string>
 }
 
-/** Odkaz na Ensana Nové Lázně s UTM podle zadání §11. */
-export const ENSANA_WEDDING_URL =
-  'https://ensanahotels.com/en/hotels/nove-lazne?utm_source=marienbad&utm_medium=landing&utm_campaign=wedding'
+/**
+ * Odkaz na Ensana Nové Lázně s UTM. Základ se bere z hotels.ts, kde jsou
+ * lokalizované adresy udržované na jednom místě — cesty se mezi jazyky liší
+ * (`/cs/hotely/`, `/de/hotels/`, `/ru/oteli/`) a natvrdo zapsaná anglická
+ * by české, německé i ruské návštěvníky posílala na cizojazyčný web.
+ */
+const NOVE_LAZNE = hotels.find((h) => h.slug === 'nove-lazne')!
+
+export function ensanaWeddingUrl(locale: Locale): string {
+  return `${NOVE_LAZNE.bookingUrls[locale]}?utm_source=marienbad&utm_medium=landing&utm_campaign=wedding`
+}
 
 /** Kontakt pro poptávku — stejná adresa jako u ostatních konverzních stránek. */
 export const WEDDING_MAIL = 'info@marienbad.com'
@@ -193,7 +202,7 @@ const cs: WeddingsContent = {
         photo: 'main-colonnade-arcade-wide',
         name: 'Hlavní kolonáda',
         line: 'Sto dvacet metrů litinové krajky z roku 1889, malovaný strop a světlo, které mezi sloupy padá v pruzích. Nejfotografovanější místo ve městě — a ráno, než přijdou lázeňští hosté, také nejtišší.',
-        capacity: 'podle domluvy s městem',
+        capacity: 'podle uspořádání obřadu',
         setting: 'kryté, ale otevřené do parku',
         season: 'květen–září',
         linkLabel: 'Historie kolonády',
@@ -301,7 +310,7 @@ const cs: WeddingsContent = {
     items: [
       {
         title: 'Zpívající fontána na přání',
-        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — lze domluvit; podmínky určuje provozovatel fontány.',
+        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — zajistíme: fontána stojí na našem pozemku, takže se to řeší přímo s námi, ne přes třetí stranu.',
         linkLabel: 'O Zpívající fontáně',
       },
       {
@@ -356,7 +365,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Jde obřad na kolonádě?',
-        a: 'Kolonáda je veřejný prostor, takže obřad na ní není samozřejmost — je potřeba povolení a domluva s městem, které prostor spravuje. Obřady se tam konaly, ale podmínky a poplatky se mění, takže je vždycky nutné ověřit je na aktuální sezónu. Napište nám a zjistíme, co platí pro váš termín.',
+        a: 'Ano. Kolonáda stojí na našem pozemku, takže obřad na ní domlouváte přímo s námi — není potřeba shánět povolení jinde. Řešit se musí hlavně čas: přes den tudy procházejí lázeňští hosté, takže se obřad plánuje na ranní nebo podvečerní hodinu, kdy je promenáda klidná. Napište nám termín a domluvíme okno.',
       },
       {
         q: 'Kdo vyřídí matriku?',
@@ -376,7 +385,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Dá se domluvit Zpívající fontána?',
-        a: 'Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Mimořádnou skladbu v konkrétní čas lze domluvit, podmínky ale určuje provozovatel a je potřeba to řešit s předstihem. Napište nám, kdy má váš obřad končit, a zjistíme, co jde.',
+        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Mimořádnou skladbu v konkrétní čas zajistíme — fontána je na našem pozemku, takže se to domlouvá přímo s námi. Napište nám, kdy má váš obřad končit, a čas nastavíme podle toho.',
       },
     ],
   },
@@ -440,7 +449,7 @@ const de: WeddingsContent = {
         photo: 'main-colonnade-arcade-wide',
         name: 'Hauptkolonnade',
         line: 'Hundertzwanzig Meter gusseiserne Spitze von 1889, eine bemalte Decke und Licht, das zwischen den Säulen in Streifen einfällt. Der meistfotografierte Ort der Stadt — und morgens, bevor die Kurgäste kommen, auch der stillste.',
-        capacity: 'nach Absprache mit der Stadt',
+        capacity: 'je nach Aufbau der Trauung',
         setting: 'überdacht, zum Park hin offen',
         season: 'Mai–September',
         linkLabel: 'Geschichte der Kolonnade',
@@ -548,7 +557,7 @@ const de: WeddingsContent = {
     items: [
       {
         title: 'Die Singende Fontäne auf Wunsch',
-        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — lässt sich vereinbaren; die Bedingungen legt der Betreiber der Fontäne fest.',
+        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — richten wir ein: Die Fontäne steht auf unserem Grund, das klären Sie also direkt mit uns und nicht über Dritte.',
         linkLabel: 'Zur Kolonnade',
       },
       {
@@ -603,7 +612,7 @@ const de: WeddingsContent = {
       },
       {
         q: 'Ist eine Trauung an der Kolonnade möglich?',
-        a: 'Die Kolonnade ist öffentlicher Raum, eine Trauung dort also keine Selbstverständlichkeit — es braucht eine Genehmigung und die Absprache mit der Stadt, die den Platz verwaltet. Trauungen haben dort stattgefunden, aber Bedingungen und Gebühren ändern sich, deshalb muss man sie für jede Saison neu prüfen. Schreiben Sie uns, und wir klären, was für Ihren Termin gilt.',
+        a: 'Ja. Die Kolonnade steht auf unserem Grund, die Trauung dort vereinbaren Sie also direkt mit uns — eine Genehmigung von anderer Stelle braucht es nicht. Zu klären ist vor allem die Uhrzeit: tagsüber gehen hier die Kurgäste entlang, deshalb wird die Trauung auf die Morgen- oder die frühe Abendstunde gelegt, wenn die Promenade ruhig ist. Schreiben Sie uns Ihren Termin, und wir halten ein Zeitfenster frei.',
       },
       {
         q: 'Wer erledigt das Standesamt?',
@@ -623,7 +632,7 @@ const de: WeddingsContent = {
       },
       {
         q: 'Lässt sich die Singende Fontäne vereinbaren?',
-        a: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Ein Sonderstück zu einer bestimmten Zeit lässt sich vereinbaren, die Bedingungen legt aber der Betreiber fest und es braucht Vorlauf. Schreiben Sie uns, wann Ihre Trauung enden soll, und wir klären, was möglich ist.',
+        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Ein Sonderstück zu einer bestimmten Zeit richten wir ein — die Fontäne steht auf unserem Grund, das vereinbaren Sie also direkt mit uns. Schreiben Sie uns, wann Ihre Trauung enden soll, und wir legen die Zeit danach.',
       },
     ],
   },
@@ -687,7 +696,7 @@ const en: WeddingsContent = {
         photo: 'main-colonnade-arcade-wide',
         name: 'The Main Colonnade',
         line: 'A hundred and twenty metres of cast-iron lace from 1889, a painted ceiling, and light that falls between the columns in stripes. The most photographed place in town — and in the morning, before the spa guests arrive, the quietest.',
-        capacity: 'by arrangement with the town',
+        capacity: 'depends on the ceremony layout',
         setting: 'covered, open to the park',
         season: 'May–September',
         linkLabel: 'History of the colonnade',
@@ -795,7 +804,7 @@ const en: WeddingsContent = {
     items: [
       {
         title: 'The Singing Fountain on request',
-        body: 'The fountain plays a fixed repertoire on every odd hour. A special piece at a time of your choosing — lit, if it is after dark — can be arranged; the terms are set by whoever operates the fountain.',
+        body: 'The fountain plays a fixed repertoire on every odd hour. A special piece at a time of your choosing — lit, if it is after dark — we arrange ourselves: the fountain stands on our land, so it is settled directly with us rather than through a third party.',
         linkLabel: 'About the Singing Fountain',
       },
       {
@@ -850,7 +859,7 @@ const en: WeddingsContent = {
       },
       {
         q: 'Can the ceremony be on the colonnade?',
-        a: 'The colonnade is public space, so a ceremony there is not a given — it needs permission and an arrangement with the town, which manages the site. Ceremonies have been held there, but the conditions and fees change, so they have to be checked for the season in question. Write to us and we will find out what applies to your date.',
+        a: 'Yes. The colonnade stands on our land, so a ceremony there is arranged directly with us — no permission from anyone else is needed. What does need settling is the hour: spa guests walk through during the day, so ceremonies are placed in the morning or the early evening, when the promenade is quiet. Send us your date and we will hold a window.',
       },
       {
         q: 'Who handles the paperwork?',
@@ -870,7 +879,7 @@ const en: WeddingsContent = {
       },
       {
         q: 'Can the Singing Fountain be arranged?',
-        a: 'The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. A special piece at a specific time can be arranged, but the terms are set by the operator and it needs notice. Tell us when your ceremony is due to end and we will find out what is possible.',
+        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. A special piece at a specific time we arrange ourselves — the fountain is on our land, so it is settled directly with us. Tell us when your ceremony is due to end and we will set the time around it.',
       },
     ],
   },
@@ -934,7 +943,7 @@ const ru: WeddingsContent = {
         photo: 'main-colonnade-arcade-wide',
         name: 'Главная колоннада',
         line: 'Сто двадцать метров чугунного кружева 1889 года, расписной потолок и свет, падающий между колоннами полосами. Самое фотографируемое место города — и по утрам, пока не пришли курортные гости, самое тихое.',
-        capacity: 'по согласованию с городом',
+        capacity: 'зависит от формата церемонии',
         setting: 'под крышей, открыто в парк',
         season: 'май–сентябрь',
         linkLabel: 'История колоннады',
@@ -1042,7 +1051,7 @@ const ru: WeddingsContent = {
     items: [
       {
         title: 'Поющий фонтан по заказу',
-        body: 'Фонтан играет постоянный репертуар каждый нечётный час. Особую композицию в выбранное время — вечером ещё и с подсветкой — можно договориться; условия определяет оператор фонтана.',
+        body: 'Фонтан играет постоянный репертуар каждый нечётный час. Особую композицию в выбранное время — вечером ещё и с подсветкой — организуем мы сами: фонтан стоит на нашей земле, так что это решается напрямую с нами, а не через третью сторону.',
         linkLabel: 'О Поющем фонтане',
       },
       {
@@ -1097,7 +1106,7 @@ const ru: WeddingsContent = {
       },
       {
         q: 'Возможна ли церемония на колоннаде?',
-        a: 'Колоннада — общественное пространство, поэтому церемония там не сама собой разумеется: нужны разрешение и согласование с городом, который распоряжается площадкой. Церемонии там проходили, но условия и сборы меняются, так что их каждый раз нужно уточнять на конкретный сезон. Напишите нам, и мы выясним, что действует на вашу дату.',
+        a: 'Да. Колоннада стоит на нашей земле, поэтому церемонию вы согласуете напрямую с нами — разрешение со стороны не требуется. Решать нужно прежде всего время: днём здесь ходят курортные гости, поэтому церемонию ставят на утро или ранний вечер, когда променада спокойна. Напишите дату — и мы забронируем окно.',
       },
       {
         q: 'Кто занимается документами?',
@@ -1117,7 +1126,7 @@ const ru: WeddingsContent = {
       },
       {
         q: 'Можно ли договориться о Поющем фонтане?',
-        a: 'Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Особую композицию в конкретное время можно договорить, но условия ставит оператор, и нужен запас времени. Напишите нам, когда должна закончиться ваша церемония, и мы выясним, что возможно.',
+        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Особую композицию в конкретное время организуем мы — фонтан на нашей земле, так что это согласуется напрямую с нами. Напишите, когда должна закончиться церемония, и мы подстроим время.',
       },
     ],
   },

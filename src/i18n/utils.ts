@@ -49,6 +49,7 @@ export function getNavItemsFlat(locale: Locale) {
     ...(locale === 'cs' ? [{ navKey: 'nav.insuranceSpa', section: 'insurance-spa' as SectionKey }] : []),
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
     { navKey: 'nav.dayTrips', section: 'day-trips' },
+    { navKey: 'nav.weddings', section: 'weddings' },
     { navKey: 'nav.accommodation', section: 'accommodation' },
     { navKey: 'nav.history', section: 'history' },
     { navKey: 'nav.practicalInfo', section: 'practical-info' },
