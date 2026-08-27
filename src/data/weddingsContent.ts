@@ -9,9 +9,18 @@ import { hotels } from '@/data/hotels'
  * ensanaLifeContent.ts + EnsanaLifePage.astro).
  *
  * Fakta o sálech pocházejí ze svatebního katalogu Ensana (docs/weddings/
- * ZADANI-svatby.md, §4). Kolonáda i Zpívající fontána stojí na pozemku
- * provozovatele, takže se obřad i mimořádná skladba domlouvají přímo — §D
- * zadání to uváděl jako neověřené, potvrzeno zadavatelem 27. 8. 2026.
+ * ZADANI-svatby.md, §4).
+ *
+ * Vlastnictví (potvrzeno zadavatelem 27. 8. 2026, §D zadání to mělo jako
+ * neověřené): kolonáda je na pozemku provozovatele, obřad se tedy domlouvá
+ * přímo s ním. Zpívající fontánu provozuje **město**, stojí ale hned vedle
+ * kolonády a domluvu vyřizuje provozovatel za hosta — pro hosta je to tedy
+ * jedno místo, kde se domluví všechno.
+ *
+ * Texty proto říkají obojí: „řešíte přímo s námi" (co platí pro hosta)
+ * i „provozuje ji město" (co platí právně). Nezkracovat ani jedno —
+ * bez první části to zní jako přehazování odpovědnosti, bez druhé jako
+ * slib, na který provozovatel nemá nárok.
  */
 
 export interface WeddingVenue {
@@ -325,7 +334,7 @@ const cs: WeddingsContent = {
     items: [
       {
         title: 'Zpívající fontána na přání',
-        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — zajistíme: fontána stojí na našem pozemku, takže se to řeší přímo s námi, ne přes třetí stranu.',
+        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru a stojí hned vedle naší kolonády. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — proto řešíte přímo s námi: provozuje ji město, ale domluvu zařídíme my a vy s nikým dalším jednat nemusíte.',
         linkLabel: 'O Zpívající fontáně',
       },
       {
@@ -350,7 +359,7 @@ const cs: WeddingsContent = {
   morning: {
     eyebrow: 'Ráno',
     heading: 'Než se vyjde ven',
-    lead: 'Většina svatebního dne se odehraje dřív, než začne obřad. Hotel je tou dobou ještě tichý a schodiště patří jednomu člověku.',
+    lead: 'Většina svatebního dne se odehraje dřív, než začne obřad. Hotel je tou dobou ještě tichý a schodiště patří jenom vám!',
     staircase: {
       caption: 'Cesta ze pokoje dolů je první moment, kdy nevěstu uvidí všichni najednou.',
       alt: 'Nevěsta sestupuje po hotelovém schodišti',
@@ -423,7 +432,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Dá se domluvit Zpívající fontána?',
-        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Mimořádnou skladbu v konkrétní čas zajistíme — fontána je na našem pozemku, takže se to domlouvá přímo s námi. Napište nám, kdy má váš obřad končit, a čas nastavíme podle toho.',
+        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Stojí hned vedle naší kolonády, takže mimořádnou skladbu v konkrétní čas řešíte přímo s námi — provozuje ji město, ale domluvu zařídíme my. Napište nám, kdy má váš obřad končit, a zbytek je na nás.',
       },
     ],
   },
@@ -595,7 +604,7 @@ const de: WeddingsContent = {
     items: [
       {
         title: 'Die Singende Fontäne auf Wunsch',
-        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — richten wir ein: Die Fontäne steht auf unserem Grund, das klären Sie also direkt mit uns und nicht über Dritte.',
+        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire und steht direkt neben unserer Kolonnade. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — klären Sie deshalb direkt mit uns: Betrieben wird sie von der Stadt, die Absprache übernehmen aber wir, und Sie müssen mit niemandem sonst verhandeln.',
         linkLabel: 'Zur Kolonnade',
       },
       {
@@ -620,7 +629,7 @@ const de: WeddingsContent = {
   morning: {
     eyebrow: 'Der Morgen',
     heading: 'Bevor es nach draußen geht',
-    lead: 'Der größte Teil des Hochzeitstages spielt sich ab, bevor die Trauung beginnt. Das Hotel ist um diese Zeit noch still, und die Treppe gehört einem einzigen Menschen.',
+    lead: 'Der größte Teil des Hochzeitstages spielt sich ab, bevor die Trauung beginnt. Das Hotel ist um diese Zeit noch still — und die Treppe gehört ganz allein Ihnen!',
     staircase: {
       caption: 'Der Weg vom Zimmer hinunter ist der erste Moment, in dem alle die Braut gleichzeitig sehen.',
       alt: 'Die Braut kommt die Hoteltreppe herunter',
@@ -693,7 +702,7 @@ const de: WeddingsContent = {
       },
       {
         q: 'Lässt sich die Singende Fontäne vereinbaren?',
-        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Ein Sonderstück zu einer bestimmten Zeit richten wir ein — die Fontäne steht auf unserem Grund, das vereinbaren Sie also direkt mit uns. Schreiben Sie uns, wann Ihre Trauung enden soll, und wir legen die Zeit danach.',
+        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Sie steht direkt neben unserer Kolonnade, ein Sonderstück zu einer bestimmten Zeit klären Sie also direkt mit uns — betrieben wird sie von der Stadt, die Absprache übernehmen aber wir. Schreiben Sie uns, wann Ihre Trauung enden soll, um den Rest kümmern wir uns.',
       },
     ],
   },
@@ -865,7 +874,7 @@ const en: WeddingsContent = {
     items: [
       {
         title: 'The Singing Fountain on request',
-        body: 'The fountain plays a fixed repertoire on every odd hour. A special piece at a time of your choosing — lit, if it is after dark — we arrange ourselves: the fountain stands on our land, so it is settled directly with us rather than through a third party.',
+        body: 'The fountain plays a fixed repertoire on every odd hour and stands right beside our colonnade. A special piece at a time of your choosing — lit, if it is after dark — is therefore settled directly with us: the town runs it, but we handle the arrangement and you deal with nobody else.',
         linkLabel: 'About the Singing Fountain',
       },
       {
@@ -890,7 +899,7 @@ const en: WeddingsContent = {
   morning: {
     eyebrow: 'The morning',
     heading: 'Before anyone steps outside',
-    lead: 'Most of a wedding day happens before the ceremony begins. At that hour the hotel is still quiet and the staircase belongs to one person.',
+    lead: 'Most of a wedding day happens before the ceremony begins. At that hour the hotel is still quiet — and the staircase is all yours!',
     staircase: {
       caption: 'The walk down from the room is the first moment everyone sees the bride at once.',
       alt: 'The bride descending the hotel staircase',
@@ -963,7 +972,7 @@ const en: WeddingsContent = {
       },
       {
         q: 'Can the Singing Fountain be arranged?',
-        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. A special piece at a specific time we arrange ourselves — the fountain is on our land, so it is settled directly with us. Tell us when your ceremony is due to end and we will set the time around it.',
+        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. It stands right beside our colonnade, so a special piece at a specific time is settled directly with us — the town runs it, but we handle the arrangement. Tell us when your ceremony is due to end and we will take care of the rest.',
       },
     ],
   },
@@ -1135,7 +1144,7 @@ const ru: WeddingsContent = {
     items: [
       {
         title: 'Поющий фонтан по заказу',
-        body: 'Фонтан играет постоянный репертуар каждый нечётный час. Особую композицию в выбранное время — вечером ещё и с подсветкой — организуем мы сами: фонтан стоит на нашей земле, так что это решается напрямую с нами, а не через третью сторону.',
+        body: 'Фонтан играет постоянный репертуар каждый нечётный час и стоит прямо рядом с нашей колоннадой. Поэтому особую композицию в выбранное время — вечером ещё и с подсветкой — вы решаете напрямую с нами: управляет им город, но согласование берём на себя мы, и вам ни с кем больше договариваться не нужно.',
         linkLabel: 'О Поющем фонтане',
       },
       {
@@ -1160,7 +1169,7 @@ const ru: WeddingsContent = {
   morning: {
     eyebrow: 'Утро',
     heading: 'Пока никто не вышел наружу',
-    lead: 'Большая часть свадебного дня происходит до начала церемонии. В этот час отель ещё тих, а лестница принадлежит одному человеку.',
+    lead: 'Большая часть свадебного дня происходит до начала церемонии. В этот час отель ещё тих — и лестница принадлежит только вам!',
     staircase: {
       caption: 'Путь из номера вниз — первый момент, когда невесту видят все сразу.',
       alt: 'Невеста спускается по лестнице отеля',
@@ -1233,7 +1242,7 @@ const ru: WeddingsContent = {
       },
       {
         q: 'Можно ли договориться о Поющем фонтане?',
-        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Особую композицию в конкретное время организуем мы — фонтан на нашей земле, так что это согласуется напрямую с нами. Напишите, когда должна закончиться церемония, и мы подстроим время.',
+        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Он стоит прямо рядом с нашей колоннадой, поэтому особую композицию в конкретное время вы решаете напрямую с нами — управляет им город, но согласование берём на себя мы. Напишите, когда должна закончиться церемония, и остальное сделаем мы.',
       },
     ],
   },
