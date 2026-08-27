@@ -18,9 +18,14 @@ import { hotels } from '@/data/hotels'
  * jedno místo, kde se domluví všechno.
  *
  * Texty proto říkají obojí: „řešíte přímo s námi" (co platí pro hosta)
- * i „provozuje ji město" (co platí právně). Nezkracovat ani jedno —
+ * i „fontánu provozuje město" (co platí právně). Nezkracovat ani jedno —
  * bez první části to zní jako přehazování odpovědnosti, bez druhé jako
  * slib, na který provozovatel nemá nárok.
+ *
+ * Předmět u slovesa „provozuje" držet **explicitně** („fontánu provozuje
+ * město", ne „provozuje ji město"). Ve větě před tím stojí „mimořádnou
+ * skladbu" — zájmeno se pak dá číst tak, že město provozuje skladbu.
+ * Totéž v EN („the fountain is run by the town", ne „the town runs it").
  */
 
 export interface WeddingVenue {
@@ -75,6 +80,7 @@ export interface WeddingsContent {
     lead: string
     items: WeddingVenue[]
     bandAlt: string
+    introBandAlt: string
     capacityLabel: string
     settingLabel: string
     seasonLabel: string
@@ -220,6 +226,7 @@ const cs: WeddingsContent = {
     settingLabel: 'Prostředí',
     seasonLabel: 'Nejlepší období',
     bandAlt: 'Mramorový sál Společenského domu připravený na svatební hostinu',
+    introBandAlt: 'Svatební pár před Hlavní kolonádou v Mariánských Lázních',
     items: [
       {
         key: 'colonnade',
@@ -334,7 +341,7 @@ const cs: WeddingsContent = {
     items: [
       {
         title: 'Zpívající fontána na přání',
-        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru a stojí hned vedle naší kolonády. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — proto řešíte přímo s námi: provozuje ji město, ale domluvu zařídíme my a vy s nikým dalším jednat nemusíte.',
+        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru a stojí hned vedle naší kolonády. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — proto řešíte přímo s námi: fontánu provozuje město, ale domluvu zařídíme my a vy s nikým dalším jednat nemusíte.',
         linkLabel: 'O Zpívající fontáně',
       },
       {
@@ -396,7 +403,7 @@ const cs: WeddingsContent = {
     p1: 'Květen a červen jsou tady nejzelenější — park rozkvete dřív, než začne hlavní sezóna, a fotky u pavilonu mají to světlo, kvůli kterému se sem fotografové vracejí. Září přinese barvy a teplé večery bez horka.',
     p2: 'Zimní svatba je jiný žánr: obřad i hostina se přesunou dovnitř, do sálů pod lustry, a kolonáda za oknem je zasněžená. Termínů je víc a ceny nižší.',
     linkLabel: 'Nejlepší čas návštěvy',
-    alt: 'Nevěsta s dlouhým závojem u kolonády v Mariánských Lázních',
+    alt: 'Svatební pár na schodech nad rozkvetlým lázeňským parkem v Mariánských Lázních',
   },
   faq: {
     heading: 'Časté otázky',
@@ -432,7 +439,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Dá se domluvit Zpívající fontána?',
-        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Stojí hned vedle naší kolonády, takže mimořádnou skladbu v konkrétní čas řešíte přímo s námi — provozuje ji město, ale domluvu zařídíme my. Napište nám, kdy má váš obřad končit, a zbytek je na nás.',
+        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Stojí hned vedle naší kolonády, takže mimořádnou skladbu v konkrétní čas řešíte přímo s námi — fontánu provozuje město, ale domluvu zařídíme my. Napište nám, kdy má váš obřad končit, a zbytek je na nás.',
       },
     ],
   },
@@ -490,6 +497,7 @@ const de: WeddingsContent = {
     settingLabel: 'Umgebung',
     seasonLabel: 'Beste Zeit',
     bandAlt: 'Der Marmorsaal des Gesellschaftshauses, eingedeckt für das Hochzeitsbankett',
+    introBandAlt: 'Hochzeitspaar vor der Hauptkolonnade in Marienbad',
     items: [
       {
         key: 'colonnade',
@@ -604,7 +612,7 @@ const de: WeddingsContent = {
     items: [
       {
         title: 'Die Singende Fontäne auf Wunsch',
-        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire und steht direkt neben unserer Kolonnade. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — klären Sie deshalb direkt mit uns: Betrieben wird sie von der Stadt, die Absprache übernehmen aber wir, und Sie müssen mit niemandem sonst verhandeln.',
+        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire und steht direkt neben unserer Kolonnade. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — klären Sie deshalb direkt mit uns: Betrieben wird die Fontäne von der Stadt, die Absprache übernehmen aber wir, und Sie müssen mit niemandem sonst verhandeln.',
         linkLabel: 'Zur Kolonnade',
       },
       {
@@ -666,7 +674,7 @@ const de: WeddingsContent = {
     p1: 'Mai und Juni sind hier am grünsten — der Park blüht auf, bevor die Hauptsaison beginnt, und die Bilder am Pavillon bekommen jenes Licht, wegen dem Fotografen wiederkommen. Der September bringt Farben und warme Abende ohne Hitze.',
     p2: 'Eine Winterhochzeit ist ein anderes Genre: Trauung und Bankett ziehen nach drinnen, in die Säle unter die Lüster, und die Kolonnade vor dem Fenster liegt im Schnee. Es gibt mehr freie Termine und niedrigere Preise.',
     linkLabel: 'Beste Reisezeit',
-    alt: 'Braut mit langem Schleier an der Kolonnade in Marienbad',
+    alt: 'Hochzeitspaar auf der Treppe über dem blühenden Kurpark in Marienbad',
   },
   faq: {
     heading: 'Häufige Fragen',
@@ -702,7 +710,7 @@ const de: WeddingsContent = {
       },
       {
         q: 'Lässt sich die Singende Fontäne vereinbaren?',
-        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Sie steht direkt neben unserer Kolonnade, ein Sonderstück zu einer bestimmten Zeit klären Sie also direkt mit uns — betrieben wird sie von der Stadt, die Absprache übernehmen aber wir. Schreiben Sie uns, wann Ihre Trauung enden soll, um den Rest kümmern wir uns.',
+        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Sie steht direkt neben unserer Kolonnade, ein Sonderstück zu einer bestimmten Zeit klären Sie also direkt mit uns — betrieben wird die Fontäne von der Stadt, die Absprache übernehmen aber wir. Schreiben Sie uns, wann Ihre Trauung enden soll, um den Rest kümmern wir uns.',
       },
     ],
   },
@@ -760,6 +768,7 @@ const en: WeddingsContent = {
     settingLabel: 'Setting',
     seasonLabel: 'Best season',
     bandAlt: 'The Marble Hall of the Casino social house set for a wedding banquet',
+    introBandAlt: 'Wedding couple in front of the Main Colonnade in Mariánské Lázně',
     items: [
       {
         key: 'colonnade',
@@ -874,7 +883,7 @@ const en: WeddingsContent = {
     items: [
       {
         title: 'The Singing Fountain on request',
-        body: 'The fountain plays a fixed repertoire on every odd hour and stands right beside our colonnade. A special piece at a time of your choosing — lit, if it is after dark — is therefore settled directly with us: the town runs it, but we handle the arrangement and you deal with nobody else.',
+        body: 'The fountain plays a fixed repertoire on every odd hour and stands right beside our colonnade. A special piece at a time of your choosing — lit, if it is after dark — is therefore settled directly with us: the fountain is run by the town, but we handle the arrangement and you deal with nobody else.',
         linkLabel: 'About the Singing Fountain',
       },
       {
@@ -936,7 +945,7 @@ const en: WeddingsContent = {
     p1: 'May and June are the greenest here — the park comes out before the high season starts, and the light at the pavilion is the reason photographers keep coming back. September brings colour and warm evenings without the heat.',
     p2: 'A winter wedding is a different genre: ceremony and banquet move indoors, into the halls beneath the chandeliers, with the colonnade under snow outside the window. There are more dates free and the prices are lower.',
     linkLabel: 'Best time to visit',
-    alt: 'Bride with a long veil at the colonnade in Mariánské Lázně',
+    alt: 'Wedding couple on the steps above the spa park in flower in Mariánské Lázně',
   },
   faq: {
     heading: 'Frequently asked questions',
@@ -972,7 +981,7 @@ const en: WeddingsContent = {
       },
       {
         q: 'Can the Singing Fountain be arranged?',
-        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. It stands right beside our colonnade, so a special piece at a specific time is settled directly with us — the town runs it, but we handle the arrangement. Tell us when your ceremony is due to end and we will take care of the rest.',
+        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. It stands right beside our colonnade, so a special piece at a specific time is settled directly with us — the fountain is run by the town, but we handle the arrangement. Tell us when your ceremony is due to end and we will take care of the rest.',
       },
     ],
   },
@@ -1030,6 +1039,7 @@ const ru: WeddingsContent = {
     settingLabel: 'Где',
     seasonLabel: 'Лучшее время',
     bandAlt: 'Мраморный зал Общественного дома, накрытый для свадебного банкета',
+    introBandAlt: 'Свадебная пара перед Главной колоннадой в Марианских Лазнях',
     items: [
       {
         key: 'colonnade',
@@ -1144,7 +1154,7 @@ const ru: WeddingsContent = {
     items: [
       {
         title: 'Поющий фонтан по заказу',
-        body: 'Фонтан играет постоянный репертуар каждый нечётный час и стоит прямо рядом с нашей колоннадой. Поэтому особую композицию в выбранное время — вечером ещё и с подсветкой — вы решаете напрямую с нами: управляет им город, но согласование берём на себя мы, и вам ни с кем больше договариваться не нужно.',
+        body: 'Фонтан играет постоянный репертуар каждый нечётный час и стоит прямо рядом с нашей колоннадой. Поэтому особую композицию в выбранное время — вечером ещё и с подсветкой — вы решаете напрямую с нами: фонтаном управляет город, но согласование берём на себя мы, и вам ни с кем больше договариваться не нужно.',
         linkLabel: 'О Поющем фонтане',
       },
       {
@@ -1206,7 +1216,7 @@ const ru: WeddingsContent = {
     p1: 'Май и июнь здесь самые зелёные — парк оживает раньше, чем начинается высокий сезон, а свет у павильона именно тот, ради которого фотографы возвращаются. Сентябрь приносит краски и тёплые вечера без жары.',
     p2: 'Зимняя свадьба — другой жанр: церемония и банкет уходят внутрь, в залы под люстрами, а за окном заснеженная колоннада. Свободных дат больше, а цены ниже.',
     linkLabel: 'Лучшее время для поездки',
-    alt: 'Невеста с длинной фатой у колоннады в Марианских Лазнях',
+    alt: 'Свадебная пара на ступенях над цветущим курортным парком в Марианских Лазнях',
   },
   faq: {
     heading: 'Частые вопросы',
@@ -1242,7 +1252,7 @@ const ru: WeddingsContent = {
       },
       {
         q: 'Можно ли договориться о Поющем фонтане?',
-        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Он стоит прямо рядом с нашей колоннадой, поэтому особую композицию в конкретное время вы решаете напрямую с нами — управляет им город, но согласование берём на себя мы. Напишите, когда должна закончиться церемония, и остальное сделаем мы.',
+        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Он стоит прямо рядом с нашей колоннадой, поэтому особую композицию в конкретное время вы решаете напрямую с нами — фонтаном управляет город, но согласование берём на себя мы. Напишите, когда должна закончиться церемония, и остальное сделаем мы.',
       },
     ],
   },
