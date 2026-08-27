@@ -9,9 +9,13 @@ import { hotels } from '@/data/hotels'
  * ensanaLifeContent.ts + EnsanaLifePage.astro).
  *
  * Fakta o sálech pocházejí ze svatebního katalogu Ensana (docs/weddings/
- * ZADANI-svatby.md, §4). Kolonáda i Zpívající fontána stojí na pozemku
- * provozovatele, takže se obřad i mimořádná skladba domlouvají přímo — §D
- * zadání to uváděl jako neověřené, potvrzeno zadavatelem 27. 8. 2026.
+ * ZADANI-svatby.md, §4).
+ *
+ * Vlastnictví (potvrzeno zadavatelem 27. 8. 2026, §D zadání to mělo jako
+ * neověřené): kolonáda je na pozemku provozovatele, obřad se tedy domlouvá
+ * přímo s ním. Zpívající fontánu naproti tomu provozuje **město** —
+ * provozovatel jen zařizuje domluvu za hosta. Ten rozdíl musí být v textech
+ * vidět, ať stránka neslibuje víc, než na co má nárok.
  */
 
 export interface WeddingVenue {
@@ -325,7 +329,7 @@ const cs: WeddingsContent = {
     items: [
       {
         title: 'Zpívající fontána na přání',
-        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru. Mimořádnou skladbu ve zvolený čas — a večer i s nasvícením — zajistíme: fontána stojí na našem pozemku, takže se to řeší přímo s námi, ne přes třetí stranu.',
+        body: 'Fontána hraje každou lichou hodinu z pevného repertoáru. Provozuje ji město, ne my — mimořádnou skladbu ve zvolený čas, a večer i s nasvícením, ale vyřídíme za vás. Domluvu s městem zařizujeme my, vy se o nic starat nemusíte.',
         linkLabel: 'O Zpívající fontáně',
       },
       {
@@ -423,7 +427,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Dá se domluvit Zpívající fontána?',
-        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Mimořádnou skladbu v konkrétní čas zajistíme — fontána je na našem pozemku, takže se to domlouvá přímo s námi. Napište nám, kdy má váš obřad končit, a čas nastavíme podle toho.',
+        a: 'Ano. Fontána hraje z pevného repertoáru každou lichou hodinu a poslouchat ji může kdokoli zdarma. Mimořádnou skladbu v konkrétní čas provozuje město, ne my — domluvu s ním ale vyřídíme za vás. Napište nám, kdy má váš obřad končit, a zbytek zařídíme.',
       },
     ],
   },
@@ -595,7 +599,7 @@ const de: WeddingsContent = {
     items: [
       {
         title: 'Die Singende Fontäne auf Wunsch',
-        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire. Ein Sonderstück zur gewünschten Zeit — abends auch beleuchtet — richten wir ein: Die Fontäne steht auf unserem Grund, das klären Sie also direkt mit uns und nicht über Dritte.',
+        body: 'Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire. Betrieben wird sie von der Stadt, nicht von uns — ein Sonderstück zur gewünschten Zeit, abends auch beleuchtet, regeln wir aber für Sie. Die Absprache mit der Stadt übernehmen wir, Sie müssen sich um nichts kümmern.',
         linkLabel: 'Zur Kolonnade',
       },
       {
@@ -693,7 +697,7 @@ const de: WeddingsContent = {
       },
       {
         q: 'Lässt sich die Singende Fontäne vereinbaren?',
-        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Ein Sonderstück zu einer bestimmten Zeit richten wir ein — die Fontäne steht auf unserem Grund, das vereinbaren Sie also direkt mit uns. Schreiben Sie uns, wann Ihre Trauung enden soll, und wir legen die Zeit danach.',
+        a: 'Ja. Die Fontäne spielt zu jeder ungeraden Stunde ein festes Repertoire, zuhören kann jeder kostenlos. Ein Sonderstück zu einer bestimmten Zeit liegt bei der Stadt, nicht bei uns — die Absprache übernehmen wir aber für Sie. Schreiben Sie uns, wann Ihre Trauung enden soll, um den Rest kümmern wir uns.',
       },
     ],
   },
@@ -865,7 +869,7 @@ const en: WeddingsContent = {
     items: [
       {
         title: 'The Singing Fountain on request',
-        body: 'The fountain plays a fixed repertoire on every odd hour. A special piece at a time of your choosing — lit, if it is after dark — we arrange ourselves: the fountain stands on our land, so it is settled directly with us rather than through a third party.',
+        body: 'The fountain plays a fixed repertoire on every odd hour. It is run by the town, not by us — but a special piece at a time of your choosing, lit if it is after dark, we sort out on your behalf. We handle the arrangement with the town; you need do nothing.',
         linkLabel: 'About the Singing Fountain',
       },
       {
@@ -963,7 +967,7 @@ const en: WeddingsContent = {
       },
       {
         q: 'Can the Singing Fountain be arranged?',
-        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. A special piece at a specific time we arrange ourselves — the fountain is on our land, so it is settled directly with us. Tell us when your ceremony is due to end and we will set the time around it.',
+        a: 'Yes. The fountain plays a fixed repertoire on every odd hour and anyone can listen for free. A special piece at a specific time is for the town to grant, not us — but we handle the arrangement on your behalf. Tell us when your ceremony is due to end and we will take care of the rest.',
       },
     ],
   },
@@ -1135,7 +1139,7 @@ const ru: WeddingsContent = {
     items: [
       {
         title: 'Поющий фонтан по заказу',
-        body: 'Фонтан играет постоянный репертуар каждый нечётный час. Особую композицию в выбранное время — вечером ещё и с подсветкой — организуем мы сами: фонтан стоит на нашей земле, так что это решается напрямую с нами, а не через третью сторону.',
+        body: 'Фонтан играет постоянный репертуар каждый нечётный час. Управляет им город, а не мы, — но особую композицию в выбранное время, вечером ещё и с подсветкой, мы берём на себя. Согласование с городом делаем мы, вам заниматься ничем не нужно.',
         linkLabel: 'О Поющем фонтане',
       },
       {
@@ -1233,7 +1237,7 @@ const ru: WeddingsContent = {
       },
       {
         q: 'Можно ли договориться о Поющем фонтане?',
-        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Особую композицию в конкретное время организуем мы — фонтан на нашей земле, так что это согласуется напрямую с нами. Напишите, когда должна закончиться церемония, и мы подстроим время.',
+        a: 'Да. Фонтан играет постоянный репертуар каждый нечётный час, и слушать его может кто угодно бесплатно. Особую композицию в конкретное время решает город, а не мы, — но согласование мы берём на себя. Напишите, когда должна закончиться церемония, и остальное сделаем мы.',
       },
     ],
   },
