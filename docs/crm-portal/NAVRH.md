@@ -195,7 +195,8 @@ Kontakty na lidi v CK jsou osobní údaje (byť pracovní), takže:
 - **retenční politika:** komunikace 5 let, agregované statistiky bez omezení, nahrané Excely
   24 měsíců, audit log 12 měsíců. Mazání běží automaticky;
 - **výmaz na žádost** — tlačítko, které kontakt anonymizuje a zachová jen agregáty;
-- **kontakty z veletrhu** mají vlastní režim — vizitka není souhlas s rozesílkou, viz 5.4;
+- **kontakty z veletrhu** se zařazují do rozesílek rovnou; eviduje se u nich `consent_basis`,
+  akce, datum a doklad o tom, jak souhlas vznikl, viz 5.4;
 - **údaje zvláštní kategorie se neukládají** — odpověď Hlídače státu obsahuje u jednatelů
   vazbu na politiku, což jsou podle čl. 9 politické názory. Do CRM se nepřenášejí, viz 5.5;
 - zpracovatelské smlouvy: MailerLite (Litva, EU) i Supabase (region EU-West, Irsko) —
@@ -224,7 +225,9 @@ partners(id, name, legal_name, ico, dic, country, city, website,
          languages[], notes, created_at, updated_at)
 
 partner_contacts(id, partner_id, first_name, last_name, email citext, phone, position,
-                 is_primary, newsletter_opt_in, lawful_basis, opt_in_source, opt_in_at,
+                 is_primary, newsletter_opt_in, lawful_basis,
+                 consent_basis,   -- lead_scanner | business_card | explicit_signup | unknown
+                 opt_in_source, opt_in_at, opt_in_evidence,
                  unsubscribed_at, mailerlite_subscriber_id)
 
 interactions(id, partner_id, contact_id, type, occurred_at, subject, body, created_by)
@@ -463,11 +466,27 @@ Založení jako status = 'prospect', acquisition_source = 'veletrh:ITB-2026'
 - **IČO s vedoucí nulou** — Excel ho zkonvertuje na číslo a nulu sežere. Načítá se jako
   text a doplňuje se zpět na osm míst.
 
-> **Vizitka není souhlas s newsletterem.** Kontakty z veletrhu se zakládají s
-> `newsletter_opt_in = false` a do žádné rozesílky se nedostanou, dokud neprojdou
-> samostatným potvrzením (double opt-in e-mail). Zaznamenává se `lawful_basis`, kde se
-> vizitka získala a kdy. Bez toho by první rozesílka na veletržní seznam byla porušení
-> pravidel pro nevyžádaná obchodní sdělení, ne jen nezdvořilost.
+**Zařazení do newsletteru: zapnuto.** Kontakty z veletrhu se zakládají s
+`newsletter_opt_in = true`. Vizitka podaná na B2B veletrhu je podaná právě proto, aby se
+firma ozvala, a čtečky leadů souhlas obvykle sbírají už při skenu jmenovky.
+
+V průvodci importem je to přepínač, jehož výchozí poloha je **zapnuto** — dá se pro
+konkrétní dávku vypnout, když víte, že sběr proběhl jinak.
+
+Co u toho portál eviduje, protože v případě dotazu se prokazuje **jak** kontakt vznikl:
+
+| Pole | Co nese |
+|---|---|
+| `consent_basis` | `lead_scanner` (souhlas u skenu) / `business_card` / `explicit_signup` |
+| `opt_in_source` | konkrétní akce, např. `veletrh:ITB-2026` |
+| `opt_in_at` | datum akce |
+| `opt_in_evidence` | co přesně bylo zachyceno — text souhlasu ze čtečky, poznámka od obchodníka |
+
+> Jediná výjimka z výchozího zapnuto: dávka, u které se nedá určit původ — třeba
+> přeposlaný seznam odjinud. Tam zůstává `false`, protože tam nikdo nic nepodal.
+> U vlastního veletržního sběru se newsletter zapíná rovnou.
+
+Odhlašovací odkaz je v každé rozesílce a odhlášení se propisuje zpět do CRM (viz 5.1).
 
 Import sdílí veškerou mechaniku s importem výkonnosti — stejná tabulka `imports`, stejná
 validace s náhledem, stejný audit i uchování zdrojového souboru.
@@ -582,7 +601,7 @@ paleta Ensana a font Branding, aby to nepůsobilo jako cizí nástroj.
 |---|---|---|
 | **0. Základ** | Probuzení Supabase, migrace schématu + RLS, Auth s 2FA, middleware, správa uživatelů, audit log | 2–3 dny |
 | **1. CRM** | Partneři, kontakty, komunikace, vyhledávání, prvotní import seznamu partnerů | 3–4 dny |
-| **2. Import z veletrhu** | CSV průvodce, detekce kódování a oddělovače, odstranění duplicit, double opt-in pro veletržní kontakty | 2–3 dny |
+| **2. Import z veletrhu** | CSV průvodce, detekce kódování a oddělovače, odstranění duplicit, evidence původu souhlasu | 2–3 dny |
 | **3. Newsletter** | Koncept → schválení → odeslání, archiv, synchronizace segmentů, testovací odesílání | 3–4 dny |
 | **4. Statistiky rozesílek** | Cron, tabulky statistik, měsíční souhrn e-mailem | 2 dny |
 | **5. Excel + srovnání** | Průvodce importem, mapovací šablony, srovnávací view, reporty, export | 3–4 dny |
@@ -624,11 +643,88 @@ naléhavější než rozesílky, dá se předsadit.
 | Falešný poplach u prověrky partnera | Riziko nese `as_Debtor`, ne počet insolvenčních záznamů; věřitel v cizí insolvenci je stav `ok` |
 | Prověrka přiřazená špatné firmě | Párování na IČO, nikdy automaticky podle názvu; spojení potvrzuje člověk |
 | Zahraniční partner vypadá jako prověřený | Bez českého IČO se stav ukazuje jako `neověřeno`, nikdy jako `ok` |
-| Rozesílka na veletržní kontakty bez souhlasu | `newsletter_opt_in = false` při zakládání, povinný double opt-in před první rozesílkou |
+| Dotaz, odkud kontakt je | U každého kontaktu `consent_basis`, akce, datum a doklad o vzniku souhlasu — původ jde doložit |
+| Dávka neznámého původu | Přepínač v importu; u dávky bez určitelného původu zůstává `newsletter_opt_in = false` |
 
 ---
 
-## 10. Co potřebuji rozhodnout
+## 10. Náměty na další rozšíření
+
+**Tohle není součást odsouhlaseného rozsahu** — je to zásobník, ze kterého se dá vybírat,
+až základ pojede. Seřazeno podle poměru užitku a práce.
+
+### Co bych stavěl první
+
+**Smlouvy, provize a hlídání expirace** · ~2 dny
+Ke každému partnerovi smlouva: výše provize, platnost od–do, sjednané allotmenty, storno
+podmínky, PDF v privátním úložišti. K tomu **upozornění 90, 60 a 30 dní před koncem
+platnosti**. Tiše propadlá smlouva s velkou CK je drahá chyba a stane se právě proto, že
+ji nikdo nehlídá. Ze všech námětů má tenhle nejlepší poměr užitku k práci.
+
+**Úkoly a „další kontakt"** · ~1,5 dne
+Úkol s termínem a odpovědným člověkem přímo na kartě partnera, plus pole „příště se ozvat
+do". Na dashboardu pak seznam „po termínu" a „tento týden". Bez tohohle je CRM databáze,
+ne nástroj — obchodní vztah se rozpadá tichem, ne konfliktem.
+
+**Hlídka propadů výkonu** · ~1 den
+Pravidlo nad daty, která už portál má: „partner spadl meziročně o víc než 30 % ve třech
+měsících po sobě" → upozornění vlastníkovi vztahu. Dashboard ukazuje, co se stalo;
+tohle řekne, kdo má zvednout telefon. Navazuje přímo na srovnávací view.
+
+### Co dává smysl hned potom
+
+**Fam tripy a jejich návratnost** · ~2 dny
+Evidence poznávacích cest pro pracovníky CK: kdo byl pozvaný, kdo přijel, do kterého
+hotelu. A protože portál má měsíční výkonnost partnerů, jde **změřit, jestli se to
+vrátilo** — srovnání šesti měsíců před cestou a po ní. Většina hotelů tohle dělá poslepu.
+
+**Trhy, které partner obsluhuje** · ~0,5 dne
+Značka u partnera, na jaké trhy prodává (DE / AT / CH / IL / TW / …). Podle vlastního
+backlogu webu má izraelská klientela nejdelší pobyty ze všech trhů (průměr 10,6 noci)
+a Tchaj-wan roste meziročně o 16 %. Bez téhle značky se nedá zjistit, kteří partneři ty
+trhy vlastně obsluhují — a tedy koho posílit.
+
+**Rychlý záznam na stánku** · ~2 dny
+Mobilní stránka portálu: vyfotit vizitku, OCR předvyplní jméno, firmu a e-mail, obchodník
+doplní poznámku a uloží jako `prospect`. Doplněk k dávkovému CSV importu — část kontaktů
+na veletrhu vzniká mimo čtečku jmenovek a do večera se na ně zapomene.
+
+**Sledovaný odkaz na partnera** · ~1,5 dne
+Každý partner dostane vlastní krátký odkaz (`marienbad.com/p/{kod}`), který přesměruje na
+rezervační engine s `utm_source=partner-{kod}`. Web už UTM na booking odkazy skládá
+(`src/utils/utm.ts`, cíl `bookings.ensanahotels.com`), takže jde hlavně o evidenci a
+přesměrování. Přínos: **aktivita partnera je vidět průběžně**, ne až s měsíčním Excelem.
+
+### Užitečné doplňky
+
+**Mediatéka a press kity** · ~2 dny
+Ceníky, factsheety hotelů, fotky, loga a prezentace ve čtyřech jazycích. Partner dostane
+odkaz s omezenou platností a v CRM je vidět, co si stáhl. Odpadne posílání příloh mailem
+a je zřejmé, kdo s materiály opravdu pracuje.
+
+**Shrnutí ze schůzek** · ~1 den
+Po jednání se nadiktuje poznámka, Claude z ní udělá strukturovaný zápis do historie
+komunikace — s čím se počítá, co je domluvené, co je úkol. Úkoly se rovnou nabídnou
+k založení. Zápisy ze schůzek jsou to první, co se v CRM přestane dělat.
+
+**Reklamace vázané na partnera** · ~1,5 dne
+Stížnost hosta se přiřadí k partnerovi, který pobyt prodal. Dvojí užitek: podklad pro
+jednání s partnerem a vidět, jestli se problémy kupí u jednoho zdroje.
+
+**Vícejazyčné šablony e-mailů** · ~1 den
+Nejen newsletter, ale i běžná korespondence — potvrzení podmínek, výročí smlouvy, pozvánka
+na fam trip — v DE / EN / CS / RU, předvyplněné údaji partnera.
+
+### Co bych naopak nedělal
+
+- **Fakturace a vyúčtování provizí.** Patří do účetnictví, ne do CRM. Duplicitní evidence
+  peněz je zdroj sporů.
+- **Sledování konkurence u partnera.** Data se nedají spolehlivě získat a odhady by se
+  v CRM rychle tvářily jako fakta.
+
+---
+
+## 11. Co potřebuji rozhodnout
 
 1. **Rozjet fázi 0?** Vyžaduje probuzení Supabase projektu a upgrade na Pro tarif.
 2. **Jaký máme tarif MailerLite?** Pokud ne Advanced, HTML přes API nepůjde a je potřeba
