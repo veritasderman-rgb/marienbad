@@ -87,6 +87,19 @@ export interface WeddingsContent {
     items: { title: string; body: string; linkLabel: string }[]
   }
   gallery: { heading: string; lead: string; photos: { photo: string; alt: string }[] }
+  /**
+   * Ráno před obřadem. Fotky jsou od třetího páru a drží se v jednom bloku —
+   * sada obsahuje snímky ze tří různých svateb a míchat je tak, aby to
+   * vypadalo jako jeden den, by bylo zavádějící (IMAGE-MANIFEST-vv.md).
+   */
+  morning: {
+    eyebrow: string
+    heading: string
+    lead: string
+    staircase: { caption: string; alt: string }
+    entrance: { caption: string; alt: string }
+    edward: { heading: string; body: string; linkLabel: string; alt: string }
+  }
   guests: {
     heading: string
     lead: string
@@ -94,6 +107,8 @@ export interface WeddingsContent {
     cardTitle: string
     linkAccommodation: string
     linkTrips: string
+    photoAlt: string
+    photoCaption: string
   }
   when: { heading: string; p1: string; p2: string; linkLabel: string; alt: string }
   faq: { heading: string; lead: string; items: WeddingFaq[] }
@@ -272,7 +287,7 @@ const cs: WeddingsContent = {
     items: [
       {
         key: 'eve',
-        photo: 'banquet-chair-gold-sash',
+        photo: 'bridal-dress-lacing',
         title: 'Předvečer',
         items: [
           'Příjezd hostů a ubytování v jednom ze sedmi hotelů',
@@ -325,10 +340,31 @@ const cs: WeddingsContent = {
     lead: 'Prostírání, květiny, prsteny — věci, které na fotkách zůstanou i po letech.',
     photos: [
       { photo: 'banquet-place-setting-detail', alt: 'Detail prostírání se jmenovkou na svatební tabuli' },
-      { photo: 'cross-spring-pavilion-couple', alt: 'Nevěsta a ženich u bílé kolonády Křížového pramene' },
+      { photo: 'bridal-gown-lace-detail', alt: 'Detail krajkového živůtku svatebních šatů' },
+      { photo: 'wedding-rings-wooden-box', alt: 'Snubní prsteny v dřevěné krabičce na svatební tabuli' },
       { photo: 'casino-hall-floral-centrepiece', alt: 'Vysoká květinová dekorace na svatební tabuli v historickém sále' },
       { photo: 'main-colonnade-fresco-portrait', alt: 'Portrét svatebního páru před freskou Hlavní kolonády' },
+      { photo: 'cross-spring-pavilion-couple', alt: 'Nevěsta a ženich u bílé kolonády Křížového pramene' },
     ],
+  },
+  morning: {
+    eyebrow: 'Ráno',
+    heading: 'Než se vyjde ven',
+    lead: 'Většina svatebního dne se odehraje dřív, než začne obřad. Hotel je tou dobou ještě tichý a schodiště patří jednomu člověku.',
+    staircase: {
+      caption: 'Cesta ze pokoje dolů je první moment, kdy nevěstu uvidí všichni najednou.',
+      alt: 'Nevěsta sestupuje po hotelovém schodišti',
+    },
+    entrance: {
+      caption: 'Červený koberec před Novými Lázněmi — odsud je to k obřadu pár minut pěšky.',
+      alt: 'Nevěsta na červeném koberci před vstupem do hotelu Nové Lázně',
+    },
+    edward: {
+      heading: 'Pod portrétem Eduarda VII.',
+      body: 'V hale Nových Lázní visí portrét krále Eduarda VII., který do Mariánských Lázní jezdil od roku 1897 a založil tu golfový klub. Fotit se pod ním je zdejší tradice — a nevěsta tak stojí přesně tam, kde stával on.',
+      linkLabel: 'Slavní návštěvníci',
+      alt: 'Nevěsta pod portrétem krále Eduarda VII. v hotelu Nové Lázně',
+    },
   },
   guests: {
     heading: 'Pro hosty',
@@ -343,6 +379,8 @@ const cs: WeddingsContent = {
     cardTitle: 'Kam dál',
     linkAccommodation: 'Kde budou spát hosté',
     linkTrips: 'Co s hosty den před a den po',
+    photoAlt: 'Svatební hosté u hotelového baru',
+    photoCaption: 'Hotelový bar je mezi obřadem a hostinou nejvytíženější místo celého dne.',
   },
   when: {
     heading: 'Kdy',
@@ -411,7 +449,7 @@ const cs: WeddingsContent = {
     park: 'Svatební pár před pavilonem Křížového pramene v lázeňském parku',
     casino: 'Svatební tabule v historickém sále s freskovým stropem',
     outdoor: 'První polibek novomanželů při obřadu pod širým nebem',
-    eve: 'Detail potahu židle se zlatou mašlí ve svatebním sále',
+    eve: 'Šněrování korzetu svatebních šatů',
     day: 'Novomanželé s přípitkem pod květinovým obloukem',
     after: 'Portrét novomanželů se svatební kyticí z bílých růží',
   },
@@ -519,7 +557,7 @@ const de: WeddingsContent = {
     items: [
       {
         key: 'eve',
-        photo: 'banquet-chair-gold-sash',
+        photo: 'bridal-dress-lacing',
         title: 'Der Vorabend',
         items: [
           'Ankunft der Gäste, Unterkunft in einem der sieben Hotels',
@@ -572,10 +610,31 @@ const de: WeddingsContent = {
     lead: 'Gedeck, Blumen, Ringe — die Dinge, die auf den Bildern auch nach Jahren bleiben.',
     photos: [
       { photo: 'banquet-place-setting-detail', alt: 'Detail des Gedecks mit Namenskarte auf der Hochzeitstafel' },
-      { photo: 'cross-spring-pavilion-couple', alt: 'Braut und Bräutigam an der weißen Kolonnade der Kreuzquelle' },
+      { photo: 'bridal-gown-lace-detail', alt: 'Detail des Spitzenoberteils des Brautkleids' },
+      { photo: 'wedding-rings-wooden-box', alt: 'Eheringe in einer Holzschatulle auf der Hochzeitstafel' },
       { photo: 'casino-hall-floral-centrepiece', alt: 'Hohe Blumendekoration auf der Hochzeitstafel im historischen Saal' },
       { photo: 'main-colonnade-fresco-portrait', alt: 'Porträt des Brautpaars vor dem Fresko der Hauptkolonnade' },
+      { photo: 'cross-spring-pavilion-couple', alt: 'Braut und Bräutigam an der weißen Kolonnade der Kreuzquelle' },
     ],
+  },
+  morning: {
+    eyebrow: 'Der Morgen',
+    heading: 'Bevor es nach draußen geht',
+    lead: 'Der größte Teil des Hochzeitstages spielt sich ab, bevor die Trauung beginnt. Das Hotel ist um diese Zeit noch still, und die Treppe gehört einem einzigen Menschen.',
+    staircase: {
+      caption: 'Der Weg vom Zimmer hinunter ist der erste Moment, in dem alle die Braut gleichzeitig sehen.',
+      alt: 'Die Braut kommt die Hoteltreppe herunter',
+    },
+    entrance: {
+      caption: 'Der rote Teppich vor dem Neuen Bad — von hier sind es wenige Minuten zu Fuß bis zur Trauung.',
+      alt: 'Die Braut auf dem roten Teppich vor dem Eingang des Hotels Nové Lázně',
+    },
+    edward: {
+      heading: 'Unter dem Porträt Edwards VII.',
+      body: 'In der Halle des Neuen Bades hängt das Porträt von König Edward VII., der seit 1897 nach Marienbad kam und hier den Golfclub gründete. Sich darunter fotografieren zu lassen ist hier Tradition — die Braut steht damit genau dort, wo er stand.',
+      linkLabel: 'Berühmte Gäste',
+      alt: 'Die Braut unter dem Porträt von König Edward VII. im Hotel Nové Lázně',
+    },
   },
   guests: {
     heading: 'Für die Gäste',
@@ -590,6 +649,8 @@ const de: WeddingsContent = {
     cardTitle: 'Weiterlesen',
     linkAccommodation: 'Wo die Gäste schlafen',
     linkTrips: 'Was mit den Gästen davor und danach',
+    photoAlt: 'Hochzeitsgäste an der Hotelbar',
+    photoCaption: 'Die Hotelbar ist zwischen Trauung und Bankett der belebteste Ort des ganzen Tages.',
   },
   when: {
     heading: 'Wann',
@@ -658,7 +719,7 @@ const de: WeddingsContent = {
     park: 'Hochzeitspaar vor dem Pavillon der Kreuzquelle im Kurpark',
     casino: 'Hochzeitstafel im historischen Saal mit Freskendecke',
     outdoor: 'Der erste Kuss des Brautpaars bei der Trauung im Freien',
-    eve: 'Detail einer Stuhlhusse mit goldener Schleife im Hochzeitssaal',
+    eve: 'Das Schnüren des Korsetts am Brautkleid',
     day: 'Brautpaar stößt unter einem Blumenbogen an',
     after: 'Porträt des Brautpaars mit einem Strauß weißer Rosen',
   },
@@ -766,7 +827,7 @@ const en: WeddingsContent = {
     items: [
       {
         key: 'eve',
-        photo: 'banquet-chair-gold-sash',
+        photo: 'bridal-dress-lacing',
         title: 'The evening before',
         items: [
           'Guests arrive and settle into one of the seven hotels',
@@ -819,10 +880,31 @@ const en: WeddingsContent = {
     lead: 'The place settings, the flowers, the rings — the things that stay in the photographs years later.',
     photos: [
       { photo: 'banquet-place-setting-detail', alt: 'Close-up of a place setting with name card at the wedding table' },
-      { photo: 'cross-spring-pavilion-couple', alt: 'Bride and groom by the white Cross Spring colonnade' },
+      { photo: 'bridal-gown-lace-detail', alt: 'Close-up of the lace bodice of the wedding gown' },
+      { photo: 'wedding-rings-wooden-box', alt: 'Wedding rings in a wooden box on the wedding table' },
       { photo: 'casino-hall-floral-centrepiece', alt: 'Tall floral centrepiece on the wedding table in the historic hall' },
       { photo: 'main-colonnade-fresco-portrait', alt: 'Portrait of the wedding couple in front of the Main Colonnade fresco' },
+      { photo: 'cross-spring-pavilion-couple', alt: 'Bride and groom by the white Cross Spring colonnade' },
     ],
+  },
+  morning: {
+    eyebrow: 'The morning',
+    heading: 'Before anyone steps outside',
+    lead: 'Most of a wedding day happens before the ceremony begins. At that hour the hotel is still quiet and the staircase belongs to one person.',
+    staircase: {
+      caption: 'The walk down from the room is the first moment everyone sees the bride at once.',
+      alt: 'The bride descending the hotel staircase',
+    },
+    entrance: {
+      caption: 'The red carpet outside Nové Lázně — from here it is a few minutes on foot to the ceremony.',
+      alt: 'The bride on the red carpet at the entrance to Hotel Nové Lázně',
+    },
+    edward: {
+      heading: 'Beneath the portrait of Edward VII',
+      body: 'The hall of Nové Lázně holds a portrait of King Edward VII, who came to Marienbad from 1897 and founded the golf club here. Being photographed beneath it is a local tradition — and it puts the bride exactly where he used to stand.',
+      linkLabel: 'Famous visitors',
+      alt: 'The bride beneath the portrait of King Edward VII at Hotel Nové Lázně',
+    },
   },
   guests: {
     heading: 'For your guests',
@@ -837,6 +919,8 @@ const en: WeddingsContent = {
     cardTitle: 'Where next',
     linkAccommodation: 'Where your guests will sleep',
     linkTrips: 'What to do with them either side of the day',
+    photoAlt: 'Wedding guests at the hotel bar',
+    photoCaption: 'Between ceremony and banquet, the hotel bar is the busiest place of the day.',
   },
   when: {
     heading: 'When',
@@ -905,7 +989,7 @@ const en: WeddingsContent = {
     park: 'Wedding couple in front of the Cross Spring pavilion in the spa park',
     casino: 'Wedding tables in the historic hall with its frescoed ceiling',
     outdoor: "The couple's first kiss at an outdoor ceremony",
-    eve: 'Chair cover with a gold sash in the wedding hall',
+    eve: 'Lacing the corset of the wedding dress',
     day: 'Newlyweds raising a toast beneath a floral arch',
     after: 'Portrait of the newlyweds with a bouquet of white roses',
   },
@@ -1013,7 +1097,7 @@ const ru: WeddingsContent = {
     items: [
       {
         key: 'eve',
-        photo: 'banquet-chair-gold-sash',
+        photo: 'bridal-dress-lacing',
         title: 'Накануне',
         items: [
           'Приезд гостей и заселение в один из семи отелей',
@@ -1066,10 +1150,31 @@ const ru: WeddingsContent = {
     lead: 'Сервировка, цветы, кольца — то, что останется на снимках и через годы.',
     photos: [
       { photo: 'banquet-place-setting-detail', alt: 'Деталь сервировки с именной карточкой на свадебном столе' },
-      { photo: 'cross-spring-pavilion-couple', alt: 'Невеста и жених у белой колоннады Крестового источника' },
+      { photo: 'bridal-gown-lace-detail', alt: 'Деталь кружевного лифа свадебного платья' },
+      { photo: 'wedding-rings-wooden-box', alt: 'Обручальные кольца в деревянной шкатулке на свадебном столе' },
       { photo: 'casino-hall-floral-centrepiece', alt: 'Высокая цветочная композиция на свадебном столе в историческом зале' },
       { photo: 'main-colonnade-fresco-portrait', alt: 'Портрет свадебной пары на фоне фрески Главной колоннады' },
+      { photo: 'cross-spring-pavilion-couple', alt: 'Невеста и жених у белой колоннады Крестового источника' },
     ],
+  },
+  morning: {
+    eyebrow: 'Утро',
+    heading: 'Пока никто не вышел наружу',
+    lead: 'Большая часть свадебного дня происходит до начала церемонии. В этот час отель ещё тих, а лестница принадлежит одному человеку.',
+    staircase: {
+      caption: 'Путь из номера вниз — первый момент, когда невесту видят все сразу.',
+      alt: 'Невеста спускается по лестнице отеля',
+    },
+    entrance: {
+      caption: 'Красная дорожка у Nové Lázně — отсюда до церемонии несколько минут пешком.',
+      alt: 'Невеста на красной дорожке у входа в отель Nové Lázně',
+    },
+    edward: {
+      heading: 'Под портретом Эдуарда VII',
+      body: 'В холле Nové Lázně висит портрет короля Эдуарда VII, который приезжал в Марианские Лазни с 1897 года и основал здесь гольф-клуб. Фотографироваться под ним — местная традиция, и невеста оказывается ровно там, где стоял он.',
+      linkLabel: 'Знаменитые гости',
+      alt: 'Невеста под портретом короля Эдуарда VII в отеле Nové Lázně',
+    },
   },
   guests: {
     heading: 'Для гостей',
@@ -1084,6 +1189,8 @@ const ru: WeddingsContent = {
     cardTitle: 'Читать дальше',
     linkAccommodation: 'Где будут жить гости',
     linkTrips: 'Чем занять гостей до и после',
+    photoAlt: 'Гости свадьбы у бара отеля',
+    photoCaption: 'Между церемонией и банкетом бар отеля — самое оживлённое место дня.'
   },
   when: {
     heading: 'Когда',
@@ -1152,7 +1259,7 @@ const ru: WeddingsContent = {
     park: 'Свадебная пара перед павильоном Крестового источника в курортном парке',
     casino: 'Свадебные столы в историческом зале с расписным потолком',
     outdoor: 'Первый поцелуй молодожёнов на церемонии под открытым небом',
-    eve: 'Чехол на стул с золотым бантом в свадебном зале',
+    eve: 'Шнуровка корсета свадебного платья',
     day: 'Молодожёны поднимают бокалы под цветочной аркой',
     after: 'Портрет молодожёнов с букетом белых роз',
   },
