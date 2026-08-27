@@ -31,6 +31,15 @@ const related = relatedLinks[locale]
 const IMG = '/images/library/wedding/'
 const mailto = `mailto:${WEDDING_MAIL}?subject=${encodeURIComponent(c.hero.heading)}`
 
+/** Pilíř Slavní návštěvníci nemá klíč v routes — slugy jsou tu proto ručně. */
+const FAMOUS_VISITORS: Record<Locale, string> = {
+  cs: '/cs/slavni-navstevnici',
+  de: '/de/beruehmte-gaeste',
+  en: '/en/famous-visitors',
+  ru: '/ru/znamenitye-gosti',
+}
+const famousVisitorsHref = FAMOUS_VISITORS[locale]
+
 const breadcrumbItems = [
   { label: c.breadcrumb, href: `/${locale}/${routes.weddings[locale]}` },
 ]
@@ -258,6 +267,51 @@ const serviceSchema = JSON.stringify({
   </div>
 </section>
 
+<!-- ── Ráno v hotelu ────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-wider text-turquoise-600">{c.morning.eyebrow}</p>
+      <h2 class="mt-2 font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.morning.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.morning.lead}</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6 lg:gap-8">
+      {[c.morning.staircase, c.morning.entrance].map((m, i) => (
+        <figure>
+          <div class="aspect-[3/4] overflow-hidden rounded-3xl shadow-card">
+            <Pic
+              src={`${IMG}${i === 0 ? 'bride-descending-staircase' : 'nove-lazne-entrance-red-carpet'}.jpg`}
+              alt={m.alt}
+              class="w-full h-full object-cover"
+              sizes="(min-width: 768px) 46vw, 100vw"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-beige-700 leading-relaxed">{m.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    {/* Eduard VII. je jedna z hlavních postav historie města — z portrétu
+        v hale vede přirozený můstek na pilíř Slavní návštěvníci. */}
+    <div class="mt-14 grid lg:grid-cols-[0.8fr_1fr] gap-10 lg:gap-16 items-center">
+      <div class="overflow-hidden rounded-3xl shadow-card">
+        <Pic
+          src={`${IMG}bride-edward-vii-portrait.jpg`}
+          alt={c.morning.edward.alt}
+          class="w-full h-full object-cover"
+          sizes="(min-width: 1024px) 36vw, 100vw"
+        />
+      </div>
+      <div>
+        <h3 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-snug">{c.morning.edward.heading}</h3>
+        <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.morning.edward.body}</p>
+        <a href={famousVisitorsHref} class="btn-ghost mt-7">{c.morning.edward.linkLabel}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── Den ve třech aktech ──────────────────────────────────────────── -->
 <section class="section bg-indigo-700 text-white relative overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
@@ -330,14 +384,14 @@ const serviceSchema = JSON.stringify({
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.gallery.heading}</h2>
       <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.gallery.lead}</p>
     </div>
-    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
       {c.gallery.photos.map((p) => (
         <div class="aspect-[3/4] overflow-hidden rounded-2xl">
           <Pic
             src={`${IMG}${p.photo}.jpg`}
             alt={p.alt}
             class="w-full h-full object-cover"
-            sizes="(min-width: 768px) 24vw, 48vw"
+            sizes="(min-width: 768px) 32vw, 48vw"
           />
         </div>
       ))}
@@ -362,7 +416,18 @@ const serviceSchema = JSON.stringify({
         </ul>
       </div>
 
-      <div class="rounded-3xl border border-beige-200 bg-white p-7 md:p-9">
+      <div>
+        <figure class="overflow-hidden rounded-3xl shadow-card">
+          <Pic
+            src={`${IMG}hotel-bar-wedding-guests.jpg`}
+            alt={c.guests.photoAlt}
+            class="w-full aspect-[3/2] object-cover"
+            sizes="(min-width: 1024px) 46vw, 100vw"
+          />
+        </figure>
+        <p class="mt-3 text-sm text-beige-700 leading-relaxed">{c.guests.photoCaption}</p>
+
+        <div class="mt-8 rounded-3xl border border-beige-200 bg-white p-7 md:p-9">
         <h3 class="font-heading text-xl font-bold text-indigo-700">{c.guests.cardTitle}</h3>
         <div class="mt-6 flex flex-col gap-3">
           <a href={`/${locale}/${routes.accommodation[locale]}`} class="btn-ghost justify-between">
@@ -373,6 +438,7 @@ const serviceSchema = JSON.stringify({
             {c.guests.linkTrips}
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
+        </div>
         </div>
       </div>
     </div>
