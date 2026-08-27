@@ -29,6 +29,14 @@ const figure: Schema = {
     src: { type: String, required: true, errorLevel: 'critical' },
     alt: { type: String, required: true },
     caption: { type: String },
+    /**
+     * Uvedení autora a licence. Povinné u cizích snímků pod CC — fotky
+     * v /images/trips/ jsou převzaté z Wikimedia Commons a bez atribuce
+     * bychom porušili jejich licenci.
+     */
+    credit: { type: String },
+    /** Odkaz na zdroj snímku (stránka na Commons), pokud je. */
+    creditHref: { type: String },
     width: {
       type: String,
       default: 'default',

@@ -452,6 +452,20 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0.25rem;
 }
 
+/* Autor a licence cizího snímku — drží se popisku, ale ustupuje mu. */
+.figure-credit {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  color: var(--color-warm-grey, #6E6875);
+  opacity: 0.75;
+}
+
+a.figure-credit:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 /* ─── Article Gallery ─── */
 .article-gallery {
   display: grid;

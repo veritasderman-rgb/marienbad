@@ -1019,6 +1019,12 @@
     "width": 1400,
     "height": 933
   },
+  "/images/library/colonnade/kolonada-dome-detail.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
   "/images/library/colonnade/main-colonnade-16a4646.jpg": {
     "webp": true,
     "w800": true,
@@ -1223,6 +1229,18 @@
     "width": 1600,
     "height": 1067
   },
+  "/images/library/hotels/grand-lobby-archway.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1076
+  },
+  "/images/library/hotels/hotel-reception-lobby.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1068
+  },
   "/images/library/mineral-bath/co2-apparatus-tub.jpg": {
     "webp": true,
     "w800": true,
@@ -1313,11 +1331,23 @@
     "width": 1600,
     "height": 1066
   },
+  "/images/library/town/ornate-facade-corner.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
+  },
   "/images/library/town/rococo-facade-detail.jpg": {
     "webp": true,
     "w800": true,
     "width": 1600,
     "height": 1067
+  },
+  "/images/library/town/row-of-spa-hotel-facades.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1076
   },
   "/images/library/town/townhouse-street-corner.jpg": {
     "webp": true,
@@ -1325,11 +1355,23 @@
     "width": 1600,
     "height": 1067
   },
+  "/images/library/treatments/co2-gas-wrap-relax.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1065
+  },
   "/images/library/treatments/co2-pool-relaxation.jpg": {
     "webp": true,
     "w800": true,
     "width": 1600,
     "height": 1037
+  },
+  "/images/library/treatments/co2-therapy-neck-probe.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1600,
+    "height": 1067
   },
   "/images/library/treatments/electrode-pad-shoulder.jpg": {
     "webp": true,
@@ -1348,6 +1390,18 @@
     "w800": true,
     "width": 1600,
     "height": 1067
+  },
+  "/images/library/treatments/peat-wrap-rose-petals.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1067,
+    "height": 1600
+  },
+  "/images/library/treatments/peat-wrap-shoulder-closeup.jpg": {
+    "webp": true,
+    "w800": true,
+    "width": 1200,
+    "height": 1600
   },
   "/images/library/treatments/poolside-peat-wrap.jpg": {
     "webp": true,
