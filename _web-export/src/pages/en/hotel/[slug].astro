@@ -1,0 +1,79 @@
+---
+import Base from '@/layouts/Base.astro'
+import HotelDetail from '@/components/HotelDetail.astro'
+import { hotels, type Hotel } from '@/data/hotels'
+import { detailsOf } from '@/data/hotelDetails'
+import { hotelPhotos, heroPhoto } from '@/lib/hotelPhotos'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return hotels.map((hotel) => ({
+    params: { slug: hotel.slug },
+    props: { hotel },
+  }))
+}
+
+const locale = 'en' as const
+const { hotel } = Astro.props as { hotel: Hotel }
+
+const description = hotel.description.en ?? hotel.description.en
+const details = detailsOf(hotel.slug)
+const photos = hotelPhotos(hotel.slug)
+const hero = heroPhoto(hotel.slug)
+
+const pageTitle = `${hotel.name} — ${hotel.stars}-Star Spa Hotel in Marienbad`
+const pageDescription = description.slice(0, 155).replace(/\s+\S*$/, '') + '…'
+
+const pathname = Astro.url.pathname.replace(/\/$/, '')
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
+const canonicalUrl = `${siteUrl}${pathname}`
+
+const lodgingSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: hotel.name,
+  description: description.slice(0, 300),
+  url: canonicalUrl,
+  image: photos.slice(0, 8).map((p) => `${siteUrl}${p.base}-1600.webp`),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: hotel.address.split(',')[0]?.trim(),
+    addressLocality: 'Mariánské Lázně',
+    addressRegion: 'Karlovarský kraj',
+    postalCode: '353 01',
+    addressCountry: 'CZ',
+  },
+  starRating: { '@type': 'Rating', ratingValue: hotel.stars, bestRating: 5 },
+  ...(details ? { numberOfRooms: details.rooms } : {}),
+  ...(details?.email ? { email: details.email } : {}),
+  ...(details?.phone ? { telephone: details.phone } : {}),
+  ...(details ? { checkinTime: details.checkIn, checkoutTime: details.checkOut } : {}),
+  amenityFeature: (hotel.features.en ?? hotel.features.en).map((f) => ({
+    '@type': 'LocationFeatureSpecification',
+    name: f,
+    value: true,
+  })),
+  sameAs: hotel.bookingUrl,
+  currenciesAccepted: 'CZK, EUR',
+  paymentAccepted: 'Cash, Credit Card',
+  priceRange: hotel.stars >= 5 ? '€€€€' : hotel.stars >= 4 ? '€€€' : '€€',
+})
+---
+
+<Base
+  locale={locale}
+  section="accommodation"
+  title={pageTitle}
+  description={pageDescription}
+  ogImage={hero ? `${hero.base}-1600.webp` : undefined}
+  alternateUrls={{
+    de: `/de/hotel/${hotel.slug}`,
+    en: `/en/hotel/${hotel.slug}`,
+    cs: `/cs/hotel/${hotel.slug}`,
+    ru: `/ru/hotel/${hotel.slug}`,
+  }}
+>
+  <script type="application/ld+json" set:html={lodgingSchema} />
+  <HotelDetail locale={locale} hotel={hotel} />
+</Base>
