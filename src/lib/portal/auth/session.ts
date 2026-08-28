@@ -105,14 +105,20 @@ export async function validateSessionCookie(cookieValue: string | undefined): Pr
   const rotationDue =
     matchesCurrent && now - new Date(row.rotated_at).getTime() > ROTATE_AFTER_MINUTES * 60_000
   if (rotationDue) {
+    // Rotace podmíněná otiskem, který jsme četli: ze dvou souběžných požadavků
+    // rotuje jen jeden a jen ten pošle prohlížeči novou cookie — jinak by
+    // druhý zápis zneplatnil tajemství vydané prvním.
     const newSecret = randomToken(32)
-    await q(
+    const updated = await q<{ id: string }>(
       `UPDATE crm.portal_sessions
        SET prev_token_hash = token_hash, token_hash = $2, rotated_at = now(), last_seen_at = now()
-       WHERE id = $1 AND revoked_at IS NULL`,
-      [sessionId, sha256hex(newSecret)],
+       WHERE id = $1 AND token_hash = $3 AND revoked_at IS NULL
+       RETURNING id`,
+      [sessionId, sha256hex(newSecret), row.token_hash],
     )
-    refreshedCookieValue = `${sessionId}.${newSecret}`
+    if (updated.length === 1) {
+      refreshedCookieValue = `${sessionId}.${newSecret}`
+    }
   } else if (now - new Date(row.last_seen_at).getTime() > TOUCH_THROTTLE_MINUTES * 60_000) {
     await q(`UPDATE crm.portal_sessions SET last_seen_at = now() WHERE id = $1`, [sessionId])
   }

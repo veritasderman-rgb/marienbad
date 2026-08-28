@@ -1,4 +1,4 @@
-import { q, qOne } from '../db'
+import { q, qOne, withTx } from '../db'
 import { randomToken, sha256hex } from '../crypto'
 import { sendMail } from '../mail'
 import type { PortalRole } from './session'
@@ -36,16 +36,21 @@ async function createToken(userId: string, kind: 'invite' | 'password_reset', tt
   return raw
 }
 
+/**
+ * Atomicky spotřebuje jednorázový token: podmíněný UPDATE `used_at` zaručuje,
+ * že ze dvou souběžných požadavků se stejným odkazem uspěje právě jeden.
+ */
 export async function consumeToken(
   kind: 'invite' | 'password_reset',
   rawToken: string,
 ): Promise<{ userId: string; tokenId: string } | null> {
   const row = await qOne<{ id: string; user_id: string }>(
-    `SELECT t.id, t.user_id
-     FROM crm.user_tokens t
-     JOIN crm.portal_users u ON u.id = t.user_id
-     WHERE t.kind = $1 AND t.token_hash = $2
-       AND t.used_at IS NULL AND t.expires_at > now() AND u.is_active`,
+    `UPDATE crm.user_tokens t SET used_at = now()
+     FROM crm.portal_users u
+     WHERE u.id = t.user_id
+       AND t.kind = $1 AND t.token_hash = $2
+       AND t.used_at IS NULL AND t.expires_at > now() AND u.is_active
+     RETURNING t.id, t.user_id`,
     [kind, sha256hex(rawToken)],
   )
   if (!row) return null
@@ -66,10 +71,6 @@ export async function peekToken(
     [kind, sha256hex(rawToken)],
   )
   return row ? { userId: row.user_id, email: row.email } : null
-}
-
-export async function markTokenUsed(tokenId: string): Promise<void> {
-  await q(`UPDATE crm.user_tokens SET used_at = now() WHERE id = $1`, [tokenId])
 }
 
 export async function inviteUser(
@@ -132,13 +133,33 @@ export async function setUserActive(userId: string, active: boolean): Promise<vo
   await q(`UPDATE crm.portal_users SET is_active = $2 WHERE id = $1`, [userId, active])
 }
 
-export async function setUserRole(userId: string, role: PortalRole): Promise<void> {
-  await q(`UPDATE crm.portal_users SET role = $2 WHERE id = $1`, [userId, role])
-}
-
-export async function countActiveOwners(): Promise<number> {
-  const row = await qOne<{ n: string }>(
-    `SELECT count(*) AS n FROM crm.portal_users WHERE role = 'owner' AND is_active AND password_hash IS NOT NULL`,
-  )
-  return Number(row?.n ?? 0)
+/**
+ * Deaktivace / degradace s pojistkou posledního ownera — v jedné transakci
+ * se zámkem owner řádků (FOR UPDATE), aby dvě souběžné žádosti nemohly
+ * portál připravit o posledního aktivního správce.
+ */
+export async function updateOwnerGuarded(
+  userId: string,
+  change: { action: 'deactivate' } | { action: 'set_role'; role: PortalRole },
+): Promise<{ ok: true } | { error: 'last_owner' | 'not_found' }> {
+  return withTx(async (client) => {
+    const owners = await client.query(
+      `SELECT id FROM crm.portal_users
+       WHERE role = 'owner' AND is_active AND password_hash IS NOT NULL
+       FOR UPDATE`,
+    )
+    const target = await client.query(`SELECT id, role FROM crm.portal_users WHERE id = $1 FOR UPDATE`, [userId])
+    if (target.rows.length === 0) return { error: 'not_found' as const }
+    const isActiveOwner = owners.rows.some((r) => r.id === userId)
+    const removesOwner = change.action === 'deactivate' || change.role !== 'owner'
+    if (isActiveOwner && removesOwner && owners.rows.length <= 1) {
+      return { error: 'last_owner' as const }
+    }
+    if (change.action === 'deactivate') {
+      await client.query(`UPDATE crm.portal_users SET is_active = false WHERE id = $1`, [userId])
+    } else {
+      await client.query(`UPDATE crm.portal_users SET role = $2 WHERE id = $1`, [userId, change.role])
+    }
+    return { ok: true as const }
+  })
 }

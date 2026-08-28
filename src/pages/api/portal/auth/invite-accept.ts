@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 import { q } from '../../../../lib/portal/db'
-import { consumeToken, markTokenUsed, setPassword } from '../../../../lib/portal/auth/users'
+import { consumeToken, setPassword } from '../../../../lib/portal/auth/users'
 import { hashPassword, validatePasswordPolicy, isPwnedPassword } from '../../../../lib/portal/auth/passwords'
 import { signState } from '../../../../lib/portal/crypto'
 import { json, jsonError } from '../../../../lib/portal/auth/guard'
@@ -38,7 +38,6 @@ export const POST: APIRoute = async (context) => {
   if (displayName) {
     await q(`UPDATE crm.portal_users SET display_name = $2 WHERE id = $1`, [consumed.userId, displayName])
   }
-  await markTokenUsed(consumed.tokenId)
   const { ip, userAgent } = requestMeta(context.request)
   await audit({ actorId: consumed.userId, action: 'invite_accepted', entity: 'portal_users', entityId: consumed.userId, ip, userAgent })
   return json({ status: 'totp_setup', state: signState('totp_setup', consumed.userId) })

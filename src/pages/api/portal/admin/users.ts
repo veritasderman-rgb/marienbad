@@ -4,8 +4,7 @@ import {
   inviteUser,
   sendInviteMail,
   setUserActive,
-  setUserRole,
-  countActiveOwners,
+  updateOwnerGuarded,
 } from '../../../../lib/portal/auth/users'
 import { qOne } from '../../../../lib/portal/db'
 import { revokeAllSessions, type PortalRole } from '../../../../lib/portal/auth/session'
@@ -71,11 +70,11 @@ export const PATCH: APIRoute = async (context) => {
 
   switch (body.action) {
     case 'deactivate': {
-      // pojistka proti zamčení: poslední aktivní owner se deaktivovat nedá
-      if (target.role === 'owner' && (await countActiveOwners()) <= 1) {
-        return jsonError(409, 'last_owner')
+      // pojistka proti zamčení běží transakčně se zámkem owner řádků
+      const result = await updateOwnerGuarded(id, { action: 'deactivate' })
+      if ('error' in result) {
+        return result.error === 'last_owner' ? jsonError(409, 'last_owner') : jsonError(404, 'not_found')
       }
-      await setUserActive(id, false)
       const revoked = await revokeAllSessions(id)
       await audit({ actorId: actor.id, action: 'user_deactivated', entity: 'portal_users', entityId: id, diff: { revoked }, ip, userAgent })
       return json({ ok: true })
@@ -88,10 +87,10 @@ export const PATCH: APIRoute = async (context) => {
     case 'set_role': {
       const role = String(body.role ?? '') as PortalRole
       if (!ROLES.includes(role)) return jsonError(400, 'invalid_role')
-      if (target.role === 'owner' && role !== 'owner' && (await countActiveOwners()) <= 1) {
-        return jsonError(409, 'last_owner')
+      const result = await updateOwnerGuarded(id, { action: 'set_role', role })
+      if ('error' in result) {
+        return result.error === 'last_owner' ? jsonError(409, 'last_owner') : jsonError(404, 'not_found')
       }
-      await setUserRole(id, role)
       await audit({ actorId: actor.id, action: 'role_changed', entity: 'portal_users', entityId: id, diff: { from: target.role, to: role }, ip, userAgent })
       return json({ ok: true })
     }
