@@ -21,6 +21,8 @@ const SERVER_ENV_NAMES = [
   'RESEND_API_KEY',
   'PORTAL_MAIL_FROM',
   'PORTAL_ALERT_EMAIL',
+  'NEWSLETTER_FROM_EMAIL',
+  'NEWSLETTER_FROM_NAME',
 ] as const
 
 export type ServerEnvName = (typeof SERVER_ENV_NAMES)[number]
