@@ -1,0 +1,24 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import NewslettersList from '../../../components/portal/NewslettersList'
+import { canEdit } from '../../../lib/portal/auth/guard'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || role === 'viewer') {
+  return Astro.redirect('/portal', 302)
+}
+---
+
+<PortalLayout title="Newslettery">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Newslettery</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">
+        Archiv rozesílek pro partnery a kontakty z veletrhů — návrh, schválení a odeslání přes MailerLite.
+      </p>
+    </div>
+    <NewslettersList client:load canWrite={canEdit(role)} />
+  </div>
+</PortalLayout>

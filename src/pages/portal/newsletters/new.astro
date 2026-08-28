@@ -1,0 +1,23 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import NewsletterEditor from '../../../components/portal/NewsletterEditor'
+import { canEdit } from '../../../lib/portal/auth/guard'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || !canEdit(role)) {
+  return Astro.redirect(role === 'analyst' ? '/portal/newsletters' : '/portal', 302)
+}
+---
+
+<PortalLayout title="Nový newsletter">
+  <div class="space-y-6">
+    <div>
+      <a href="/portal/newsletters" class="text-sm font-semibold text-[#0E6EA8] hover:underline">← Zpět na newslettery</a>
+      <h1 class="mt-2 font-heading text-2xl font-bold text-[#004F71]">Nový newsletter</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">Založte koncept — text, publikum i náhled doladíte v dalším kroku.</p>
+    </div>
+    <NewsletterEditor client:load role={role} />
+  </div>
+</PortalLayout>

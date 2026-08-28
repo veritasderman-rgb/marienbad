@@ -1,0 +1,20 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import NewsletterEditor from '../../../components/portal/NewsletterEditor'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || role === 'viewer') {
+  return Astro.redirect('/portal', 302)
+}
+
+const { id } = Astro.params
+---
+
+<PortalLayout title="Detail newsletteru">
+  <div class="space-y-6">
+    <a href="/portal/newsletters" class="text-sm font-semibold text-[#0E6EA8] hover:underline">← Zpět na newslettery</a>
+    <NewsletterEditor client:load newsletterId={id as string} role={role} />
+  </div>
+</PortalLayout>

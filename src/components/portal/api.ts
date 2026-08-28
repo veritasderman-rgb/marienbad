@@ -61,3 +61,30 @@ export async function portalFetch<T = any>(
 
   return { ok: response.ok, status: response.status, data: data as T }
 }
+
+/**
+ * Multipart upload varianta portalFetch — bez Content-Type (prohlížeč si ho
+ * nastaví sám s boundary), CSRF token a credentials jako portalFetch.
+ */
+export async function portalUpload<T = any>(
+  path: string,
+  formData: FormData,
+): Promise<PortalFetchResult<T>> {
+  const response = await fetch(path, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'x-csrf-token': readCsrfToken(),
+    },
+    body: formData,
+  })
+
+  let data: unknown = null
+  try {
+    data = await response.json()
+  } catch {
+    data = null
+  }
+
+  return { ok: response.ok, status: response.status, data: data as T }
+}

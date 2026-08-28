@@ -37,24 +37,35 @@ async function createToken(userId: string, kind: 'invite' | 'password_reset', tt
 }
 
 /**
- * Atomicky spotřebuje jednorázový token: podmíněný UPDATE `used_at` zaručuje,
- * že ze dvou souběžných požadavků se stejným odkazem uspěje právě jeden.
+ * Atomicky spotřebuje jednorázový token A nastaví heslo v JEDNÉ transakci:
+ * podmíněný UPDATE `used_at` zaručuje, že ze dvou souběžných požadavků se
+ * stejným odkazem uspěje právě jeden, a rollback při selhání zápisu hesla
+ * vrací i spotřebu tokenu — platný odkaz se chybou serveru nespálí.
  */
-export async function consumeToken(
+export async function consumeTokenAndSetPassword(
   kind: 'invite' | 'password_reset',
   rawToken: string,
-): Promise<{ userId: string; tokenId: string } | null> {
-  const row = await qOne<{ id: string; user_id: string }>(
-    `UPDATE crm.user_tokens t SET used_at = now()
-     FROM crm.portal_users u
-     WHERE u.id = t.user_id
-       AND t.kind = $1 AND t.token_hash = $2
-       AND t.used_at IS NULL AND t.expires_at > now() AND u.is_active
-     RETURNING t.id, t.user_id`,
-    [kind, sha256hex(rawToken)],
-  )
-  if (!row) return null
-  return { userId: row.user_id, tokenId: row.id }
+  passwordHash: string,
+  displayName?: string,
+): Promise<{ userId: string } | null> {
+  return withTx(async (client) => {
+    const claimed = await client.query(
+      `UPDATE crm.user_tokens t SET used_at = now()
+       FROM crm.portal_users u
+       WHERE u.id = t.user_id
+         AND t.kind = $1 AND t.token_hash = $2
+         AND t.used_at IS NULL AND t.expires_at > now() AND u.is_active
+       RETURNING t.user_id`,
+      [kind, sha256hex(rawToken)],
+    )
+    const userId: string | undefined = claimed.rows[0]?.user_id
+    if (!userId) return null
+    await client.query(`UPDATE crm.portal_users SET password_hash = $2 WHERE id = $1`, [userId, passwordHash])
+    if (displayName) {
+      await client.query(`UPDATE crm.portal_users SET display_name = $2 WHERE id = $1`, [userId, displayName])
+    }
+    return { userId }
+  })
 }
 
 /** Náhled tokenu bez spotřebování (pro render stránky s formulářem). */

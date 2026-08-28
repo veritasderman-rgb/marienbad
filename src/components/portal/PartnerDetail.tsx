@@ -121,18 +121,20 @@ export default function PartnerDetail({ partnerId, role }: PartnerDetailProps) {
     try {
       const res = await portalFetch(`/api/portal/partners/${partnerId}`, {
         method: 'PATCH',
+        // vyprázdněná pole jako null — undefined by JSON.stringify zahodil
+        // a PATCH by starou hodnotu tiše ponechal
         body: {
           name: form.name,
-          legal_name: form.legal_name || undefined,
-          ico: form.ico || undefined,
-          dic: form.dic || undefined,
+          legal_name: form.legal_name || null,
+          ico: form.ico || null,
+          dic: form.dic || null,
           country: form.country,
-          city: form.city || undefined,
-          website: form.website || undefined,
+          city: form.city || null,
+          website: form.website || null,
           segment: form.segment,
-          tier: form.tier || undefined,
+          tier: form.tier || null,
           status: form.status,
-          notes: form.notes || undefined,
+          notes: form.notes || null,
         },
       })
       if (!res.ok) {
