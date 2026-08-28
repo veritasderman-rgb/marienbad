@@ -10,13 +10,13 @@ po každé fázi (viz `IMPLEMENTACNI_PLAN.md`, sekce 11).
 - [x] Fáze 2 — Import z veletrhu (CSV)
 - [x] Fáze 3 — Newsletter
 - [x] Fáze 4 — Statistiky rozesílek
-- [ ] Fáze 5 — Import Excelu + srovnání období
+- [x] Fáze 5 — Import Excelu + srovnání období
 - [x] Fáze 6 — Dashboard výkonnosti
 - [x] Fáze 7 — Ověření partnerů (Hlídač státu)
 - [x] Fáze 8 — Zpevnění
-- [ ] Fáze 9 — Napojení statistického dashboardu
-- [ ] Závěrečné bezpečnostní review celé větve
-- [ ] Definice hotovo splněna, tabulka „Zbývá člověku" v PR
+- [x] Fáze 9 — Napojení statistického dashboardu
+- [x] Závěrečné bezpečnostní review celé větve
+- [x] Definice hotovo splněna, tabulka „Zbývá člověku" v PR
 
 ## Otevřené otázky pro vlastníka
 
@@ -37,6 +37,7 @@ po každé fázi (viz `IMPLEMENTACNI_PLAN.md`, sekce 11).
 
 | Datum | Fáze | Poznámka |
 |---|---|---|
+| 2026-08-28 | 9 + review | Fáze 9 dokončena: strojový intake výkonnosti z PMS (jen uzavřené měsíce, idempotence přes sha256 dávky, měnu přepočítává výhradně portál dle NAVRH 6.3), fronta mapování plátců `/portal/partners/mapping` (návrhy podobných jmen jen jako pomůcka — potvrzuje vždy člověk; po potvrzení se čekající PMS dávky přehrají idempotentním upsertem, žádný řádek se neztratí), výčtový export `GET /api/portal/export/partners` (explicitní projekce, nikdy kontakty ani jmenovité riziko — N-06). Závěrečné bezpečnostní review celé větve (security-review skill, finder Opus + false-positive filtr): **žádný nález nad prahem důvěryhodnosti**. Jediný kandidát (viewer vidí per-partnera obrat přes reporty/dashboard, důvěra 6/10) je zdokumentovaný záměr — NAVRH 3.2 dává vieweru „dashboard a reporty", NAVRH 5.6 výslovně: „maskují se jen kontaktní údaje, ne čísla". Pod prahem poznamenáno: retence `payer_name_raw` u řádků druhu fyzická osoba (řeší roční GDPR rutina v RUNBOOK.md) a `source_url` z Hlídače v UI prověrek (renderováno Reactem, doména Hlídače). Testovací přístup: owner účet pro vlastníka založen na **dev branchi** Neonu přes pozvánkový tok (žádné generované heslo — dle NAVRH 3.1 heslo nikdy nezná nikdo jiný než držitel účtu). Celkem 240 testů zelených, produkční Neon branch má kompletní schéma (7 migrací). |
 | 2026-08-28 | — | Plán připraven, běh zatím nespuštěn. |
 | 2026-08-28 | 5–8 | Fáze 5: ExcelJS import se stropy (N-10), reporty MoM/YoY/R12 + CSV export, průvodce UI. Fáze 6: dashboard výkonnosti (KPI, trend 24 měs. generovaný sérií, rozpady, largest movers YTD, koncentrace TOP 5, newsletter overlap jako souvislost). Fáze 7: prověrky — klient Hlídače s whitelist projekcí (čl. 9 se nemůže uložit), risk engine as_Debtor, orchestrace s notifikacemi při zhoršení, /portal/verifications s licencí, měsíční přeověření ve stejném cronu jako statistiky (Hobby strop 2 crony), prověrka při založení partnera. Fáze 8: CSP veřejného webu BEZ unsafe-inline (GA extrahována do /scripts/ga-init.js s data-atributy, 5 statických skriptů převedeno na bundlované), gitleaks CI, RUNBOOK.md (rutiny, rotace, incident, N-08/N-11), GDPR.md (čl. 30 podklad). Zapracovány 4 nálezy Codex z PR #280: single-flight zámek odeslání + rekonsiliace skupin před kampaní (P1), claim importu v transakci, podobnost v %. Pozn.: HLIDAC_TOKEN přidán do env kontraktu (REST API vyžaduje token — swagger tvrdí opak, ověřeno sondou 302). |
 | 2026-08-28 | 3+4 | Fáze 3 dokončena: noční sync CRM→B2B skupiny (idempotentní, zámek v job_locks, GDPR scrubbing e-mailů z chyb, B2C skupin se nikdy nedotkne), ruční sync z UI, obrazovky newsletterů (archiv, editor, náhled výhradně v sandbox iframe bez skriptů, segment picker s živým počtem příjemců, schválení/odeslání jen owner). Fáze 4: měsíční cron statistik (append-only časová řada, idempotence na den, zámek, měsíční souhrn e-mailem — hlavní metrika prokliky a CTOR kvůli Apple MPP), crons ve vercel.json. Navíc: migrace 0005 (partner_performance + v_performance_compare ověřené na fixture v Postgresu), sdílená CSV export utilita (N-03), 4 opravy z Codex review PR #279 (atomické token+heslo v transakci, null místo undefined při mazání hodnot ve formulářích, právní titul u každého kontaktu). |
