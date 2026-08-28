@@ -4,6 +4,8 @@ Allow: /api/og
 Disallow: /admin/
 Disallow: /keystatic/
 Disallow: /api/
+Disallow: /portal
+Disallow: /portal/
 
 # AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, ...)
 # are intentionally allowed — being citable in AI answers is part of the

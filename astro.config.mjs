@@ -26,6 +26,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/admin') &&
         !page.includes('/keystatic') &&
+        !page.includes('/portal') &&
         // root "/" only redirects by Accept-Language — not an indexable page
         new URL(page).pathname !== '/' &&
         !NOINDEXED_PATHS.some((p) => page.includes(`/${p}`)),
