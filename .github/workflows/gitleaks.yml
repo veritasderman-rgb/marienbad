@@ -1,0 +1,42 @@
+# Sken commitů na omylem přidané klíče a tajemství (NAVRH.md 3.4: „Doplním do CI
+# gitleaks — sken commitů na omylem přidané klíče"; IMPLEMENTACNI_PLAN.md fáze 8).
+# Repozitář je veřejný, takže únik má být odhalený hned při pushi/PR, ne až někdo
+# klíč najde v historii ručně.
+#
+# Běží na push i pull_request, na libovolnou větev (žádný filtr `branches:`).
+# `fetch-depth: 0` je nutné — bez plné historie by gitleaks viděl jen poslední commit
+# a starší omylem přidané tajemství by mu proteklo mezi prsty.
+#
+# Licence: oficiální akce gitleaks/gitleaks-action@v2 vyžaduje GITLEAKS_LICENSE jen
+# pro repozitáře pod GitHub organizací. Pro osobní/free účet (stav tohoto repozitáře)
+# licence potřeba není — stačí vestavěný GITHUB_TOKEN. Kdyby se repozitář někdy
+# přesunul pod organizaci, akce sama tenhle krok shodí hláškou, že GITLEAKS_LICENSE
+# chybí; v tu chvíli je potřeba buď licenci koupit/získat a doplnit ji jako GitHub
+# Secret (a přidat `GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}` do env kroku
+# níže), nebo zůstat na osobním účtu. Neobcházet to podstrčením prázdné hodnoty.
+
+name: gitleaks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: Sken tajemství v historii commitů
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout (celá historie, ne jen poslední commit)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

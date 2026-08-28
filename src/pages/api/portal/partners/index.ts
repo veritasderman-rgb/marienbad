@@ -9,6 +9,7 @@ import {
   parsePartnerInput,
   parsePartnerListQuery,
 } from '../../../../lib/portal/crm/partners'
+import { verifyPartner } from '../../../../lib/portal/verifications/run'
 
 export const prerender = false
 
@@ -57,5 +58,9 @@ export const POST: APIRoute = async (context) => {
     ip,
     userAgent,
   })
+  // prověrka v Hlídači státu na pozadí (NAVRH 5.5) — odpověď na ni nečeká
+  void verifyPartner(result.id).catch((err) =>
+    console.error('[portal/verifications] prověrka při založení partnera selhala:', err),
+  )
   return json({ ok: true, id: result.id })
 }

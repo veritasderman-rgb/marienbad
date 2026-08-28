@@ -719,7 +719,7 @@ export default function LeadsImportWizard() {
                                 checked={decisions[row.row_index] === `merge:${c.id}`}
                                 onChange={() => setDecision(row.row_index, `merge:${c.id}`)}
                               />
-                              Přiřadit k „{c.name}" (IČO {c.ico ?? '—'}, {Math.round(c.similarity)} % shoda)
+                              Přiřadit k „{c.name}" (IČO {c.ico ?? '—'}, {Math.round(c.similarity * 100)} % shoda)
                             </label>
                           ))}
                           <label className="flex items-center gap-2">
