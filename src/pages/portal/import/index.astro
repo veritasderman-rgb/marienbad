@@ -1,0 +1,52 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import ImportHistory from '../../../components/portal/ImportHistory'
+import { canEdit } from '../../../lib/portal/auth/guard'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || !canEdit(role)) {
+  return Astro.redirect('/portal', 302)
+}
+---
+
+<PortalLayout title="Import">
+  <div class="space-y-8">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Import</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">Import dat z veletrhů a exportů — mapování sloupců, kontrola duplicit před uložením.</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <a
+        href="/portal/import/leads"
+        class="portal-card group flex flex-col gap-2 p-6 transition-shadow hover:shadow-[0_8px_24px_rgba(28,43,51,0.12)]"
+      >
+        <h2 class="font-heading text-lg font-semibold text-[#004F71] group-hover:underline">Import z veletrhu (CSV)</h2>
+        <p class="text-sm text-[#5F6B72]">
+          Nahrání CSV z veletrhu (ITB, Holiday World), mapování sloupců, odstranění duplicit proti CRM a založení
+          nových partnerů jako prospektů.
+        </p>
+        <span class="mt-auto pt-2 text-xs font-semibold uppercase tracking-wide text-[#0E6EA8]">
+          Spustit průvodce →
+        </span>
+      </a>
+
+      <div class="portal-card flex flex-col gap-2 p-6 opacity-70">
+        <div class="flex items-center justify-between gap-2">
+          <h2 class="font-heading text-lg font-semibold text-[#004F71]">Výkonnost partnerů (Excel)</h2>
+          <span class="portal-badge portal-badge-pending whitespace-nowrap">přijde ve fázi 5</span>
+        </div>
+        <p class="text-sm text-[#5F6B72]">
+          Nahrání měsíčního Excelu s výkonností partnerů, validace a uložení do databáze pro srovnání období.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="portal-label mb-3">Historie importů</h2>
+      <ImportHistory client:load />
+    </div>
+  </div>
+</PortalLayout>

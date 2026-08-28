@@ -1,0 +1,25 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import LeadsImportWizard from '../../../components/portal/LeadsImportWizard'
+import { canEdit } from '../../../lib/portal/auth/guard'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || !canEdit(role)) {
+  return Astro.redirect('/portal', 302)
+}
+---
+
+<PortalLayout title="Import z veletrhu">
+  <div class="space-y-6">
+    <div>
+      <a href="/portal/import" class="text-sm font-semibold text-[#0E6EA8] hover:underline">← Zpět na import</a>
+      <h1 class="mt-2 font-heading text-2xl font-bold text-[#004F71]">Import z veletrhu (CSV)</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">
+        Nahrajte export z veletrhu, namapujte sloupce a zkontrolujte duplicity před uložením do CRM.
+      </p>
+    </div>
+    <LeadsImportWizard client:load />
+  </div>
+</PortalLayout>
