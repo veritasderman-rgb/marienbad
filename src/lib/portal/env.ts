@@ -23,6 +23,8 @@ const SERVER_ENV_NAMES = [
   'PORTAL_ALERT_EMAIL',
   'NEWSLETTER_FROM_EMAIL',
   'NEWSLETTER_FROM_NAME',
+  'PORTAL_FX_CZK_EUR',
+  'HLIDAC_TOKEN',
 ] as const
 
 export type ServerEnvName = (typeof SERVER_ENV_NAMES)[number]
