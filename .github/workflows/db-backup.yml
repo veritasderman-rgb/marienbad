@@ -1,0 +1,542 @@
+# Denní šifrovaná záloha databáze partnerského portálu (Neon → age → Cloudflare R2).
+#
+# Návaznost: NAVRH.md 3.6 (denní pg_dump, šifrování age, R2, retence 30 dní
+# + 12 měsíčních, RPO 24 h) a IMPLEMENTACNI_PLAN.md 5 a 9 (env kontrakt).
+# Runbook obnovy: scripts/backup/README.md
+#
+# BEZPEČNOST — repozitář je veřejný:
+#   * žádné tajemství se nikdy nevypisuje do logu (`echo`, `cat`, `env`),
+#   * `set -x` je v tomto workflow ZAKÁZANÉ (vypsalo by connection string),
+#   * connection string se předává výhradně přes env, nikdy na příkazové řádce,
+#   * záloha se nikdy neukládá jako GitHub artefakt — jde rovnou do R2,
+#   * privátní age klíč v tomto workflow není a nikdy být nesmí (drží ho vlastník offline).
+
+name: DB backup (portal)
+
+on:
+  schedule:
+    # 02:17 UTC denně — mimo špičku a mimo celou hodinu (méně zahlcený scheduler).
+    - cron: '17 2 * * *'
+  workflow_dispatch:
+    # Ruční spuštění pro první ostrý test a pro doběh po výpadku.
+
+permissions:
+  contents: read
+
+concurrency:
+  group: db-backup
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  backup:
+    name: pg_dump → age → R2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    env:
+      # --- R2 / AWS CLI (S3-kompatibilní API) ---
+      AWS_DEFAULT_REGION: auto
+      AWS_EC2_METADATA_DISABLED: 'true'
+      # R2 neumí nové výchozí CRC32 checksumy AWS CLI v2 (≥ 2.23) — vypnout,
+      # jinak PUT končí chybou. Integritu hlídáme vlastním head-object ověřením.
+      AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+      AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+      # --- retence (NAVRH 3.6) ---
+      DAILY_RETENTION_DAYS: '30'
+      MONTHLY_KEEP: '12'
+      # --- verze klienta: Neon jede na PostgreSQL 18 ---
+      PG_MAJOR: '18'
+
+    steps:
+      # -------------------------------------------------------------------
+      # 1) Kontrola tajemství — chybějící secret musí workflow shodit hned
+      #    a se srozumitelnou hláškou, ne až uprostřed dumpu.
+      # -------------------------------------------------------------------
+      - name: Kontrola nastavených secrets
+        env:
+          DATABASE_URL_DIRECT: ${{ secrets.DATABASE_URL_DIRECT }}
+          BACKUP_AGE_PUBLIC_KEY: ${{ secrets.BACKUP_AGE_PUBLIC_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          set -euo pipefail
+
+          missing=()
+          for name in DATABASE_URL_DIRECT BACKUP_AGE_PUBLIC_KEY \
+                      R2_ENDPOINT R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET; do
+            if [ -z "${!name:-}" ]; then
+              missing+=("$name")
+            fi
+          done
+
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "::error title=Chybí GitHub Secrets::Nenastavené: ${missing[*]}"
+            {
+              echo "## ❌ Záloha neproběhla — chybí konfigurace"
+              echo
+              echo "Nenastavené GitHub Secrets:"
+              for m in "${missing[@]}"; do echo "- \`$m\`"; done
+              echo
+              echo "Doplň je v **Settings → Secrets and variables → Actions → New repository secret**."
+              echo "Popis jednotlivých hodnot je v \`scripts/backup/README.md\`."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+          # age recipient musí být VEŘEJNÝ klíč (age1…). Když někdo omylem vloží
+          # privátní klíč, chceme to zjistit tady, ne až po jeho úniku.
+          case "$BACKUP_AGE_PUBLIC_KEY" in
+            AGE-SECRET-KEY-*)
+              echo "::error title=Špatný age klíč::BACKUP_AGE_PUBLIC_KEY obsahuje PRIVÁTNÍ klíč (AGE-SECRET-KEY-…). Okamžitě ho v Neon/GitHubu zneplatni, vygeneruj nový pár a vlož jen veřejnou část (age1…)."
+              exit 1
+              ;;
+            age1*)
+              : # ok
+              ;;
+            *)
+              echo "::error title=Špatný age klíč::BACKUP_AGE_PUBLIC_KEY není age recipient — očekává se řetězec začínající 'age1'."
+              exit 1
+              ;;
+          esac
+
+          case "$R2_ENDPOINT" in
+            https://*) : ;;
+            *)
+              echo "::error title=Špatný R2_ENDPOINT::R2_ENDPOINT musí být plné https:// URL účtu (např. https://<account-id>.eu.r2.cloudflarestorage.com), bez názvu bucketu."
+              exit 1
+              ;;
+          esac
+
+          echo "Všech 6 secrets je nastaveno."
+
+      # -------------------------------------------------------------------
+      # 2) Názvy objektů — počítáme z data běhu, ne z cronu, aby i ruční
+      #    spuštění prvního dne v měsíci vytvořilo měsíční kopii.
+      # -------------------------------------------------------------------
+      - name: Odvození názvů záloh
+        id: names
+        run: |
+          set -euo pipefail
+
+          run_date="$(date -u +%Y-%m-%d)"
+          run_month="$(date -u +%Y-%m)"
+          day_of_month="$(date -u +%d)"
+
+          daily_key="backups/daily/portal-${run_date}.dump.age"
+          monthly_key="backups/monthly/portal-${run_month}.dump.age"
+
+          if [ "$day_of_month" = "01" ]; then
+            is_monthly=true
+          else
+            is_monthly=false
+          fi
+
+          {
+            echo "run_date=$run_date"
+            echo "run_month=$run_month"
+            echo "daily_key=$daily_key"
+            echo "monthly_key=$monthly_key"
+            echo "is_monthly=$is_monthly"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Denní klíč:   $daily_key"
+          echo "Měsíční kopie: $is_monthly ($monthly_key)"
+
+      # -------------------------------------------------------------------
+      # 3) Nástroje: postgresql-client 18 z PGDG (runner image má jen starší
+      #    major verzi; pg_dump musí být ≥ verze serveru) a age.
+      # -------------------------------------------------------------------
+      - name: Instalace postgresql-client-18 (PGDG) a age
+        run: |
+          set -euo pipefail
+
+          # PGDG repo přidáváme jen když ho image ještě nemá.
+          if ! grep -Rqs 'apt.postgresql.org' /etc/apt/sources.list /etc/apt/sources.list.d/ ; then
+            sudo install -d /usr/share/postgresql-common/pgdg
+            sudo curl -fsSL --retry 3 \
+              -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc \
+              https://www.postgresql.org/media/keys/ACCC4CF8.asc
+            echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
+              | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+          fi
+
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends \
+            "postgresql-client-${PG_MAJOR}" age
+
+          # Voláme binárky přímo, ať nezáleží na tom, kterou verzi vybere wrapper.
+          "/usr/lib/postgresql/${PG_MAJOR}/bin/pg_dump" --version
+          "/usr/lib/postgresql/${PG_MAJOR}/bin/pg_restore" --version
+          age --version
+          aws --version
+
+      # -------------------------------------------------------------------
+      # 4) Dump + šifrování v JEDNOM kroku: rozložené přihlašovací údaje
+      #    (PGPASSWORD atd.) tak zůstanou jen v paměti tohoto procesu —
+      #    nejdou do $GITHUB_ENV, na disk ani na příkazovou řádku.
+      # -------------------------------------------------------------------
+      - name: pg_dump (custom format) a šifrování age
+        id: dump
+        env:
+          DATABASE_URL_DIRECT: ${{ secrets.DATABASE_URL_DIRECT }}
+          BACKUP_AGE_PUBLIC_KEY: ${{ secrets.BACKUP_AGE_PUBLIC_KEY }}
+        run: |
+          set -euo pipefail
+          umask 077
+          # POZOR: žádné `set -x` — vypsalo by heslo z connection stringu.
+
+          DUMP="$RUNNER_TEMP/portal.dump"
+          ENC="$RUNNER_TEMP/portal.dump.age"
+
+          # Connection string rozložíme na standardní libpq proměnné.
+          # Python píše jen shell-quoted `export …` řádky, nikdy hodnotu do logu.
+          conn_exports="$(python3 - <<'PY'
+          import os, shlex, sys
+          from urllib.parse import urlparse, parse_qsl, unquote
+
+          raw = os.environ.get("DATABASE_URL_DIRECT", "")
+          try:
+              u = urlparse(raw)
+          except Exception:
+              print("CHYBA: DATABASE_URL_DIRECT není platné URI.", file=sys.stderr)
+              raise SystemExit(1)
+
+          if u.scheme not in ("postgres", "postgresql"):
+              print("CHYBA: DATABASE_URL_DIRECT musí začínat postgres:// nebo postgresql://.", file=sys.stderr)
+              raise SystemExit(1)
+
+          host = u.hostname or ""
+          if not host:
+              print("CHYBA: DATABASE_URL_DIRECT neobsahuje hostname.", file=sys.stderr)
+              raise SystemExit(1)
+
+          # NAVRH 2.x: dump musí jít na PŘÍMÝ endpoint, ne na PgBouncer pooler.
+          if "-pooler" in host:
+              print("CHYBA: DATABASE_URL_DIRECT míří na Neon pooler (host obsahuje '-pooler'). "
+                    "Použij přímý endpoint — stejná adresa bez '-pooler'.", file=sys.stderr)
+              raise SystemExit(1)
+
+          dbname = unquote((u.path or "").lstrip("/"))
+          if not dbname:
+              print("CHYBA: DATABASE_URL_DIRECT neobsahuje název databáze.", file=sys.stderr)
+              raise SystemExit(1)
+
+          params = dict(parse_qsl(u.query))
+          out = [
+              f"export PGHOST={shlex.quote(host)}",
+              f"export PGPORT={shlex.quote(str(u.port or 5432))}",
+              f"export PGDATABASE={shlex.quote(dbname)}",
+              f"export PGSSLMODE={shlex.quote(params.get('sslmode', 'require'))}",
+              f"export PGCONNECT_TIMEOUT=15",
+          ]
+          if u.username:
+              out.append(f"export PGUSER={shlex.quote(unquote(u.username))}")
+          if u.password:
+              out.append(f"export PGPASSWORD={shlex.quote(unquote(u.password))}")
+          if "channel_binding" in params:
+              out.append(f"export PGCHANNELBINDING={shlex.quote(params['channel_binding'])}")
+          if "options" in params:
+              out.append(f"export PGOPTIONS={shlex.quote(params['options'])}")
+
+          print("\n".join(out))
+          PY
+          )"
+          eval "$conn_exports"
+          unset conn_exports DATABASE_URL_DIRECT
+
+          echo "Dumpuji databázi '${PGDATABASE}' z přímého endpointu…"
+          "/usr/lib/postgresql/${PG_MAJOR}/bin/pg_dump" \
+            --format=custom \
+            --compress=9 \
+            --no-password \
+            --file="$DUMP"
+
+          # Přihlašovací údaje už nejsou potřeba.
+          unset PGPASSWORD PGUSER PGHOST PGPORT PGDATABASE PGSSLMODE PGCHANNELBINDING PGOPTIONS || true
+
+          dump_bytes="$(stat -c %s "$DUMP")"
+          if [ "$dump_bytes" -lt 4096 ]; then
+            echo "::error title=Podezřele malý dump::pg_dump vytvořil jen ${dump_bytes} B — záloha se nenahraje."
+            exit 1
+          fi
+
+          # Sanity check: dump musí být čitelný custom archiv (chytí useknutý soubor).
+          "/usr/lib/postgresql/${PG_MAJOR}/bin/pg_restore" --list "$DUMP" > "$RUNNER_TEMP/toc.txt"
+          toc_entries="$(grep -c ';' "$RUNNER_TEMP/toc.txt" || true)"
+          echo "Dump OK: ${dump_bytes} B, ${toc_entries} položek v obsahu archivu."
+
+          # Šifrování veřejným klíčem — dešifrovat půjde jen privátním klíčem vlastníka.
+          age -r "$BACKUP_AGE_PUBLIC_KEY" -o "$ENC" "$DUMP"
+
+          # Plaintext dump okamžitě pryč (runner je efemérní, ale hygiena je hygiena).
+          shred -u "$DUMP" 2>/dev/null || rm -f "$DUMP"
+          rm -f "$RUNNER_TEMP/toc.txt"
+
+          # Ověření, že soubor je opravdu age archiv.
+          if ! head -c 21 "$ENC" | grep -q 'age-encryption.org'; then
+            echo "::error title=Šifrování selhalo::Výstup není age archiv."
+            exit 1
+          fi
+
+          enc_bytes="$(stat -c %s "$ENC")"
+          echo "Zašifrováno: ${enc_bytes} B"
+
+          {
+            echo "enc_path=$ENC"
+            echo "enc_bytes=$enc_bytes"
+            echo "dump_bytes=$dump_bytes"
+          } >> "$GITHUB_OUTPUT"
+
+      # -------------------------------------------------------------------
+      # 5) Nahrání do R2 (+ měsíční kopie 1. dne v měsíci) a ověření velikosti.
+      # -------------------------------------------------------------------
+      - name: Nahrání do Cloudflare R2
+        id: upload
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          ENC_PATH: ${{ steps.dump.outputs.enc_path }}
+          ENC_BYTES: ${{ steps.dump.outputs.enc_bytes }}
+          DAILY_KEY: ${{ steps.names.outputs.daily_key }}
+          MONTHLY_KEY: ${{ steps.names.outputs.monthly_key }}
+          IS_MONTHLY: ${{ steps.names.outputs.is_monthly }}
+        run: |
+          set -euo pipefail
+
+          put() {
+            aws s3api put-object \
+              --bucket "$R2_BUCKET" \
+              --key "$1" \
+              --body "$ENC_PATH" \
+              --content-type application/octet-stream \
+              --endpoint-url "$R2_ENDPOINT" \
+              > /dev/null
+          }
+
+          verify() {
+            local key="$1"
+            local remote
+            remote="$(aws s3api head-object \
+              --bucket "$R2_BUCKET" --key "$key" \
+              --endpoint-url "$R2_ENDPOINT" \
+              --query 'ContentLength' --output text)"
+            if [ "$remote" != "$ENC_BYTES" ]; then
+              echo "::error title=Neúplný upload::$key má v R2 ${remote} B, lokálně ${ENC_BYTES} B."
+              exit 1
+            fi
+            echo "  ověřeno: $key (${remote} B)"
+          }
+
+          echo "Nahrávám denní zálohu…"
+          put "$DAILY_KEY"
+          verify "$DAILY_KEY"
+
+          if [ "$IS_MONTHLY" = "true" ]; then
+            echo "První den v měsíci — nahrávám i měsíční kopii…"
+            put "$MONTHLY_KEY"
+            verify "$MONTHLY_KEY"
+          else
+            echo "Není 1. den v měsíci — měsíční kopie se nevytváří."
+          fi
+
+          # Zašifrovaná záloha už je v R2; z runneru ji smažeme.
+          rm -f "$ENC_PATH"
+
+      # -------------------------------------------------------------------
+      # 6) Retence. Mažeme VÝHRADNĚ objekty, jejichž klíč přesně odpovídá
+      #    našemu vzoru v backups/daily/ resp. backups/monthly/. Cokoli
+      #    jiného v bucketu (nahrané Excely, CSV…) se nikdy nedotkneme.
+      # -------------------------------------------------------------------
+      - name: Retence denních záloh (30 dní)
+        id: retention_daily
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          RUN_DATE: ${{ steps.names.outputs.run_date }}
+          DAILY_KEY: ${{ steps.names.outputs.daily_key }}
+        run: |
+          set -euo pipefail
+
+          cutoff="$(date -u -d "${RUN_DATE} -${DAILY_RETENTION_DAYS} days" +%Y-%m-%d)"
+          echo "Mažu denní zálohy s datem starším než ${cutoff}."
+
+          listing="$(aws s3api list-objects-v2 \
+            --bucket "$R2_BUCKET" --prefix 'backups/daily/' \
+            --endpoint-url "$R2_ENDPOINT" \
+            --query 'Contents[].Key' --output text)"
+
+          mapfile -t keys < <(printf '%s\n' "$listing" | tr '\t' '\n' | sed '/^$/d; /^None$/d')
+
+          deleted=0; kept=0; skipped=0
+          for key in "${keys[@]:-}"; do
+            [ -z "$key" ] && continue
+            if [[ ! "$key" =~ ^backups/daily/portal-([0-9]{4}-[0-9]{2}-[0-9]{2})\.dump\.age$ ]]; then
+              echo "  NEMAŽU (neodpovídá vzoru denní zálohy): $key"
+              skipped=$((skipped + 1))
+              continue
+            fi
+            key_date="${BASH_REMATCH[1]}"
+
+            # Dnešní zálohu nikdy nemažeme, ať se retence nekousne s uploadem.
+            if [ "$key" = "$DAILY_KEY" ]; then
+              kept=$((kept + 1)); continue
+            fi
+
+            if [[ "$key_date" < "$cutoff" ]]; then
+              aws s3api delete-object --bucket "$R2_BUCKET" --key "$key" \
+                --endpoint-url "$R2_ENDPOINT" > /dev/null
+              echo "  smazáno: $key"
+              deleted=$((deleted + 1))
+            else
+              kept=$((kept + 1))
+            fi
+          done
+
+          echo "Denní retence: ponecháno ${kept}, smazáno ${deleted}, přeskočeno ${skipped}."
+          {
+            echo "deleted=$deleted"
+            echo "kept=$kept"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Retence měsíčních záloh (12 posledních)
+        id: retention_monthly
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          set -euo pipefail
+
+          echo "Ponechávám ${MONTHLY_KEEP} nejnovějších měsíčních záloh."
+
+          listing="$(aws s3api list-objects-v2 \
+            --bucket "$R2_BUCKET" --prefix 'backups/monthly/' \
+            --endpoint-url "$R2_ENDPOINT" \
+            --query 'Contents[].Key' --output text)"
+
+          mapfile -t raw < <(printf '%s\n' "$listing" | tr '\t' '\n' | sed '/^$/d; /^None$/d')
+
+          valid=(); skipped=0
+          for key in "${raw[@]:-}"; do
+            [ -z "$key" ] && continue
+            if [[ "$key" =~ ^backups/monthly/portal-[0-9]{4}-[0-9]{2}\.dump\.age$ ]]; then
+              valid+=("$key")
+            else
+              echo "  NEMAŽU (neodpovídá vzoru měsíční zálohy): $key"
+              skipped=$((skipped + 1))
+            fi
+          done
+
+          deleted=0; kept=0
+          if [ "${#valid[@]}" -gt 0 ]; then
+            # Klíče jsou YYYY-MM, takže sestupné řazení textem = od nejnovější.
+            mapfile -t sorted < <(printf '%s\n' "${valid[@]}" | sort -r)
+            index=0
+            for key in "${sorted[@]}"; do
+              index=$((index + 1))
+              if [ "$index" -le "$MONTHLY_KEEP" ]; then
+                kept=$((kept + 1))
+                continue
+              fi
+              aws s3api delete-object --bucket "$R2_BUCKET" --key "$key" \
+                --endpoint-url "$R2_ENDPOINT" > /dev/null
+              echo "  smazáno: $key"
+              deleted=$((deleted + 1))
+            done
+          fi
+
+          echo "Měsíční retence: ponecháno ${kept}, smazáno ${deleted}, přeskočeno ${skipped}."
+          {
+            echo "deleted=$deleted"
+            echo "kept=$kept"
+          } >> "$GITHUB_OUTPUT"
+
+      # -------------------------------------------------------------------
+      # 7) Shrnutí do Summary — úspěch i selhání. Selhaný běh navíc GitHub
+      #    automaticky pošle mailem vlastníkovi repozitáře.
+      # -------------------------------------------------------------------
+      - name: Shrnutí běhu
+        if: success()
+        env:
+          DAILY_KEY: ${{ steps.names.outputs.daily_key }}
+          MONTHLY_KEY: ${{ steps.names.outputs.monthly_key }}
+          IS_MONTHLY: ${{ steps.names.outputs.is_monthly }}
+          ENC_BYTES: ${{ steps.dump.outputs.enc_bytes }}
+          DUMP_BYTES: ${{ steps.dump.outputs.dump_bytes }}
+          D_DEL: ${{ steps.retention_daily.outputs.deleted }}
+          D_KEPT: ${{ steps.retention_daily.outputs.kept }}
+          M_DEL: ${{ steps.retention_monthly.outputs.deleted }}
+          M_KEPT: ${{ steps.retention_monthly.outputs.kept }}
+        run: |
+          set -euo pipefail
+          {
+            echo "## ✅ Záloha portálu proběhla"
+            echo
+            echo "| Položka | Hodnota |"
+            echo "|---|---|"
+            echo "| Denní objekt | \`$DAILY_KEY\` |"
+            if [ "$IS_MONTHLY" = "true" ]; then
+              echo "| Měsíční kopie | \`$MONTHLY_KEY\` |"
+            else
+              echo "| Měsíční kopie | nevytvářena (není 1. den v měsíci) |"
+            fi
+            echo "| Velikost dumpu | ${DUMP_BYTES} B |"
+            echo "| Velikost po šifrování | ${ENC_BYTES} B |"
+            echo "| Denní retence | ponecháno ${D_KEPT}, smazáno ${D_DEL} |"
+            echo "| Měsíční retence | ponecháno ${M_KEPT}, smazáno ${M_DEL} |"
+            echo
+            echo "Obnova: \`scripts/backup/README.md\`. RPO 24 h."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Shrnutí selhání
+        if: failure()
+        env:
+          RUN_DATE: ${{ steps.names.outputs.run_date }}
+        run: |
+          set -euo pipefail
+          echo "::error title=Denní záloha portálu SELHALA::Databáze nemá dnešní zálohu. Postup viz scripts/backup/README.md, sekce „Když workflow spadne“."
+          {
+            echo "## ❌ Denní záloha portálu SELHALA"
+            echo
+            echo "**Datum běhu:** ${RUN_DATE:-neurčeno} (UTC)"
+            echo
+            echo "Databáze partnerského portálu **nemá dnešní zálohu**. Poslední použitelná"
+            echo "záloha je ta z předchozího dne — do vyřešení je reálné RPO delší než 24 h."
+            echo
+            echo "### Co udělat"
+            echo
+            echo "1. Otevři log jobu výše a najdi první červený krok."
+            echo "2. Nejčastější příčiny:"
+            echo "   - **Kontrola nastavených secrets** → chybí nebo je prázdný některý secret;"
+            echo "     doplň v Settings → Secrets and variables → Actions."
+            echo "   - **pg_dump** → vypršelé heslo Neonu, uspaná/smazaná branch, nebo"
+            echo "     \`DATABASE_URL_DIRECT\` omylem míří na pooler (\`-pooler\` v hostname)."
+            echo "   - **Nahrání do Cloudflare R2** → neplatné/odvolané R2 klíče, špatný"
+            echo "     \`R2_ENDPOINT\` nebo \`R2_BUCKET\`, případně vyčerpaná kapacita free plánu."
+            echo "   - **Retence** → tytéž R2 příčiny; záloha sama je v takovém případě už nahraná."
+            echo "3. Po opravě spusť workflow ručně: **Actions → DB backup (portal) → Run workflow**."
+            echo "4. Když selže dvakrát po sobě, ověř podle runbooku, že poslední záloha v R2"
+            echo "   jde skutečně dešifrovat a obnovit."
+            echo
+            echo "Runbook: \`scripts/backup/README.md\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # -------------------------------------------------------------------
+      # 8) Úklid pro jistotu i po selhání uprostřed kroku.
+      # -------------------------------------------------------------------
+      - name: Úklid dočasných souborů
+        if: always()
+        run: |
+          set -euo pipefail
+          rm -f "$RUNNER_TEMP/portal.dump" "$RUNNER_TEMP/portal.dump.age" "$RUNNER_TEMP/toc.txt" || true

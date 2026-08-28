@@ -1,0 +1,24 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import AuthFlow from '../../../components/portal/AuthFlow'
+
+export const prerender = false
+
+// Token se nevaliduje na serveru — jen se předá ostrůvku, který ho pošle
+// spolu s heslem na /api/portal/auth/invite-accept. Neplatnost/vypršení
+// vyřeší až API odpověď (400 invalid_token).
+const { token } = Astro.params
+---
+
+<PortalLayout title="Přijetí pozvánky">
+  <div class="mx-auto flex min-h-[70vh] max-w-md items-center">
+    <div class="portal-card w-full p-8">
+      <div class="mb-6 text-center">
+        <p class="font-heading text-xs font-bold uppercase tracking-[0.15em] text-[#5F6B72]">ENSANA</p>
+        <h1 class="mt-1 font-heading text-2xl font-bold text-[#004F71]">Dokončení registrace</h1>
+        <p class="mt-2 text-sm text-[#5F6B72]">Nastavte si jméno a heslo pro přístup do partnerského portálu.</p>
+      </div>
+      <AuthFlow mode="invite" inviteToken={token} client:load />
+    </div>
+  </div>
+</PortalLayout>

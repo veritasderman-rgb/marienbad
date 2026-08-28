@@ -1,0 +1,77 @@
+/* ─── Partnerský portál — doplňkové třídy nad rámec Tailwindu ───
+   Barvy a rozměry dle docs/crm-portal/IMPLEMENTACNI_PLAN.md sekce 10. */
+
+:root {
+  --portal-header: #004f71;
+  --portal-header-active: #8ad8ed;
+  --portal-bg: #f5eee1;
+  --portal-card-bg: #ffffff;
+  --portal-text: #1c2b33;
+  --portal-text-secondary: #5f6b72;
+  --portal-positive: #1e7a4f;
+  --portal-negative: #b3264f;
+  --portal-warning: #e8a400;
+  --portal-accent-1: #0e6ea8;
+  --portal-accent-2: #4fb3d9;
+  --portal-accent-3: #8ad8ed;
+}
+
+body.portal-body {
+  background-color: var(--portal-bg);
+  color: var(--portal-text);
+}
+
+.portal-card {
+  background-color: var(--portal-card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(28, 43, 51, 0.08);
+}
+
+.portal-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--portal-text-secondary);
+}
+
+/* Stavové/rolové odznaky */
+.portal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.portal-badge-owner { background: rgba(0, 79, 113, 0.1); color: #004f71; }
+.portal-badge-editor { background: rgba(14, 110, 168, 0.12); color: #0e6ea8; }
+.portal-badge-analyst { background: rgba(79, 179, 217, 0.18); color: #267a8f; }
+.portal-badge-viewer { background: rgba(95, 107, 114, 0.12); color: #5f6b72; }
+
+.portal-badge-active { background: rgba(30, 122, 79, 0.12); color: var(--portal-positive); }
+.portal-badge-inactive { background: rgba(179, 38, 79, 0.1); color: var(--portal-negative); }
+.portal-badge-pending { background: rgba(232, 164, 0, 0.14); color: var(--portal-warning); }
+
+/* Jednoduchý spinner pro odesílání formulářů */
+@keyframes portal-spin {
+  to { transform: rotate(360deg); }
+}
+.portal-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: portal-spin 0.7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-spinner {
+    animation-duration: 1.4s;
+  }
+}

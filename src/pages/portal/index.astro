@@ -1,0 +1,48 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+
+export const prerender = false
+
+const user = Astro.locals.portalUser
+
+const tiles: { href: string; title: string; description: string }[] = [
+  { href: '/portal/partners', title: 'Partneři', description: 'Databáze CK, pojišťoven a dalších partnerů, kontakty a historie komunikace.' },
+  { href: '/portal/newsletters', title: 'Newslettery', description: 'Přehled rozesílek, návrh a schvalování nových kampaní pro B2B partnery.' },
+  { href: '/portal/import', title: 'Import', description: 'Import dat z Excelu (PMS) a veletržních formulářů, průvodce mapováním sloupců.' },
+  { href: '/portal/dashboard', title: 'Dashboard', description: 'Výkonnost partnerů podle segmentu, hotelu a období — KPI a trendy.' },
+  { href: '/portal/reports', title: 'Reporty', description: 'Meziměsíční a meziroční srovnání, export dat do CSV.' },
+  { href: '/portal/verifications', title: 'Ověření', description: 'Ověření partnerů proti veřejným rejstříkům, přehled rizikových stavů.' },
+]
+---
+
+<PortalLayout title="Přehled">
+  <div class="space-y-8">
+    <div class="portal-card p-8">
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">
+        Vítejte v partnerském portálu{user ? `, ${user.display_name || user.email}` : ''}
+      </h1>
+      <p class="mt-2 max-w-2xl text-[#5F6B72]">
+        Tento portál slouží ke správě partnerů, newsletterů, importu dat a přehledů výkonnosti.
+        Jednotlivé sekce jsou postupně ve výstavbě — níže najdete rozcestník.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="portal-label mb-3">Sekce portálu</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {tiles.map((tile) => (
+          <a
+            href={tile.href}
+            class="portal-card group flex flex-col gap-2 p-5 transition-shadow hover:shadow-[0_8px_24px_rgba(28,43,51,0.12)]"
+          >
+            <h3 class="font-heading text-lg font-semibold text-[#004F71] group-hover:underline">{tile.title}</h3>
+            <p class="text-sm text-[#5F6B72]">{tile.description}</p>
+            <span class="mt-auto pt-2 text-xs font-semibold uppercase tracking-wide text-[#0E6EA8]">
+              Sekce ve výstavbě →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</PortalLayout>

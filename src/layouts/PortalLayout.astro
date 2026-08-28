@@ -1,0 +1,104 @@
+---
+import '../styles/global.css'
+import '../styles/portal.css'
+import LogoutButton from '../components/portal/LogoutButton'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+const user = Astro.locals.portalUser
+const csrf = Astro.locals.portalCsrf ?? ''
+
+const navItems: { href: string; label: string; ownerOnly?: boolean }[] = [
+  { href: '/portal/partners', label: 'Partneři' },
+  { href: '/portal/newsletters', label: 'Newslettery' },
+  { href: '/portal/import', label: 'Import' },
+  { href: '/portal/dashboard', label: 'Dashboard' },
+  { href: '/portal/reports', label: 'Reporty' },
+  { href: '/portal/verifications', label: 'Ověření' },
+  { href: '/portal/admin/users', label: 'Uživatelé', ownerOnly: true },
+  { href: '/portal/admin/audit', label: 'Audit', ownerOnly: true },
+]
+
+const currentPath = Astro.url.pathname
+
+function isActive(href: string): boolean {
+  return currentPath === href || currentPath.startsWith(`${href}/`)
+}
+
+const roleLabels: Record<string, string> = {
+  owner: 'vlastník',
+  editor: 'editor',
+  analyst: 'analytik',
+  viewer: 'divák',
+}
+---
+
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} · Portál Marienbad</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="csrf" content={csrf} />
+    <link rel="preload" href="/fonts/Branding-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Branding-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="portal-body min-h-screen flex flex-col font-body">
+    <a
+      href="#portal-main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-yellow-400 focus:text-black focus:rounded-lg focus:font-semibold"
+    >
+      Přeskočit na obsah
+    </a>
+
+    <header style="background-color:#004F71;" class="text-white">
+      <div class="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 md:px-8">
+        <a href="/portal" class="flex items-center gap-2 font-heading text-sm font-bold tracking-wide whitespace-nowrap">
+          <span class="opacity-80">ENSANA</span>
+          <span aria-hidden="true" class="opacity-50">·</span>
+          <span>Partnerský portál</span>
+        </a>
+
+        {user && (
+          <nav aria-label="Hlavní navigace" class="flex flex-1 flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            {navItems
+              .filter((item) => !item.ownerOnly || user.role === 'owner')
+              .map((item) => (
+                <a
+                  href={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  class:list={[
+                    'border-b-2 pb-0.5 transition-colors',
+                    isActive(item.href)
+                      ? 'border-[#8AD8ED] text-white font-semibold'
+                      : 'border-transparent text-white/75 hover:text-white hover:border-white/40',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              ))}
+          </nav>
+        )}
+
+        {user && (
+          <div class="ml-auto flex items-center gap-3 text-sm whitespace-nowrap">
+            <span class="text-white/85">
+              {user.email} · <span class="text-white/65">{roleLabels[user.role] ?? user.role}</span>
+            </span>
+            <LogoutButton client:load />
+          </div>
+        )}
+      </div>
+    </header>
+
+    <main id="portal-main" class="flex-1">
+      <div class="mx-auto max-w-[1440px] px-4 py-6 md:px-8 md:py-8">
+        <slot />
+      </div>
+    </main>
+  </body>
+</html>
