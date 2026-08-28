@@ -11,13 +11,13 @@ const { title } = Astro.props
 const user = Astro.locals.portalUser
 const csrf = Astro.locals.portalCsrf ?? ''
 
-const navItems: { href: string; label: string; ownerOnly?: boolean }[] = [
-  { href: '/portal/partners', label: 'Partneři' },
-  { href: '/portal/newsletters', label: 'Newslettery' },
-  { href: '/portal/import', label: 'Import' },
+const navItems: { href: string; label: string; ownerOnly?: boolean; hiddenForViewer?: boolean }[] = [
+  { href: '/portal/partners', label: 'Partneři', hiddenForViewer: true },
+  { href: '/portal/newsletters', label: 'Newslettery', hiddenForViewer: true },
+  { href: '/portal/import', label: 'Import', hiddenForViewer: true },
   { href: '/portal/dashboard', label: 'Dashboard' },
   { href: '/portal/reports', label: 'Reporty' },
-  { href: '/portal/verifications', label: 'Ověření' },
+  { href: '/portal/verifications', label: 'Ověření', hiddenForViewer: true },
   { href: '/portal/admin/users', label: 'Uživatelé', ownerOnly: true },
   { href: '/portal/admin/audit', label: 'Audit', ownerOnly: true },
 ]
@@ -67,6 +67,7 @@ const roleLabels: Record<string, string> = {
           <nav aria-label="Hlavní navigace" class="flex flex-1 flex-wrap items-center gap-x-5 gap-y-2 text-sm">
             {navItems
               .filter((item) => !item.ownerOnly || user.role === 'owner')
+              .filter((item) => !item.hiddenForViewer || user.role !== 'viewer')
               .map((item) => (
                 <a
                   href={item.href}

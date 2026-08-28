@@ -1,0 +1,21 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import PartnersList from '../../../components/portal/PartnersList'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (role === 'viewer') {
+  return Astro.redirect('/portal', 302)
+}
+---
+
+<PortalLayout title="Partneři">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Partneři</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">Databáze CK, pojišťoven a dalších partnerů, kontakty a historie komunikace.</p>
+    </div>
+    <PartnersList client:load canWrite={role !== 'analyst'} />
+  </div>
+</PortalLayout>

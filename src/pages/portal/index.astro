@@ -5,14 +5,16 @@ export const prerender = false
 
 const user = Astro.locals.portalUser
 
-const tiles: { href: string; title: string; description: string }[] = [
-  { href: '/portal/partners', title: 'Partneři', description: 'Databáze CK, pojišťoven a dalších partnerů, kontakty a historie komunikace.' },
-  { href: '/portal/newsletters', title: 'Newslettery', description: 'Přehled rozesílek, návrh a schvalování nových kampaní pro B2B partnery.' },
-  { href: '/portal/import', title: 'Import', description: 'Import dat z Excelu (PMS) a veletržních formulářů, průvodce mapováním sloupců.' },
+const tiles: { href: string; title: string; description: string; hiddenForViewer?: boolean }[] = [
+  { href: '/portal/partners', title: 'Partneři', description: 'Databáze CK, pojišťoven a dalších partnerů, kontakty a historie komunikace.', hiddenForViewer: true },
+  { href: '/portal/newsletters', title: 'Newslettery', description: 'Přehled rozesílek, návrh a schvalování nových kampaní pro B2B partnery.', hiddenForViewer: true },
+  { href: '/portal/import', title: 'Import', description: 'Import dat z Excelu (PMS) a veletržních formulářů, průvodce mapováním sloupců.', hiddenForViewer: true },
   { href: '/portal/dashboard', title: 'Dashboard', description: 'Výkonnost partnerů podle segmentu, hotelu a období — KPI a trendy.' },
   { href: '/portal/reports', title: 'Reporty', description: 'Meziměsíční a meziroční srovnání, export dat do CSV.' },
-  { href: '/portal/verifications', title: 'Ověření', description: 'Ověření partnerů proti veřejným rejstříkům, přehled rizikových stavů.' },
+  { href: '/portal/verifications', title: 'Ověření', description: 'Ověření partnerů proti veřejným rejstříkům, přehled rizikových stavů.', hiddenForViewer: true },
 ]
+
+const visibleTiles = tiles.filter((tile) => !tile.hiddenForViewer || user?.role !== 'viewer')
 ---
 
 <PortalLayout title="Přehled">
@@ -30,7 +32,7 @@ const tiles: { href: string; title: string; description: string }[] = [
     <div>
       <h2 class="portal-label mb-3">Sekce portálu</h2>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tiles.map((tile) => (
+        {visibleTiles.map((tile) => (
           <a
             href={tile.href}
             class="portal-card group flex flex-col gap-2 p-5 transition-shadow hover:shadow-[0_8px_24px_rgba(28,43,51,0.12)]"
