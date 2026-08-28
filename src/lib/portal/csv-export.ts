@@ -13,11 +13,15 @@ export interface CsvColumn {
 }
 
 const FORMULA_PREFIX = /^[=+\-@\t\r]/
+// čistě číselná hodnota (i záporná, s čárkou/tečkou) vzorec spustit nemůže —
+// apostrof by ji v Excelu zbytečně degradoval na text
+const PURE_NUMBER = /^-?\d+(?:[.,]\d+)?\s?%?$/
 
 export function escapeCsvCell(value: unknown): string {
   if (value === null || value === undefined) return ''
+  if (typeof value === 'number' && Number.isFinite(value)) return String(value)
   let text = String(value)
-  if (FORMULA_PREFIX.test(text)) {
+  if (FORMULA_PREFIX.test(text) && !PURE_NUMBER.test(text)) {
     text = `'${text}`
   }
   if (/[";\n\r]/.test(text)) {

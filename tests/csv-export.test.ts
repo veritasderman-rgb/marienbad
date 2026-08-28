@@ -5,9 +5,16 @@ describe('CSV export (N-03)', () => {
   it('prefixuje rizikové buňky apostrofem', () => {
     expect(escapeCsvCell('=1+1')).toBe("'=1+1")
     expect(escapeCsvCell('+420123')).toBe("'+420123")
-    expect(escapeCsvCell('-5')).toBe("'-5")
+    expect(escapeCsvCell('-5+A1')).toBe("'-5+A1")
     expect(escapeCsvCell('@SUM(A1)')).toBe("'@SUM(A1)")
     expect(escapeCsvCell('=HYPERLINK("https://evil.example")')).toContain("'=HYPERLINK")
+  })
+
+  it('čistě číselné hodnoty nechává bez apostrofu (nejsou vzorec)', () => {
+    expect(escapeCsvCell(-12.3)).toBe('-12.3')
+    expect(escapeCsvCell('-12,3')).toBe('-12,3')
+    expect(escapeCsvCell('-5')).toBe('-5')
+    expect(escapeCsvCell('-12.3 %')).toBe('-12.3 %')
   })
 
   it('běžné hodnoty nechává být', () => {

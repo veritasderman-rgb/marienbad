@@ -49,7 +49,10 @@ describe('crypto', () => {
     expect(stored).not.toContain(secret)
     expect(decryptSecret(stored)).toBe(secret)
     const [iv, ct, tag] = stored.split('.')
-    const tampered = `${iv}.${ct.slice(0, -2)}AA.${tag}`
+    // deterministické poškození: flip prvního bajtu ciphertextu
+    const ctBytes = Buffer.from(ct, 'base64url')
+    ctBytes[0] ^= 0xff
+    const tampered = `${iv}.${ctBytes.toString('base64url')}.${tag}`
     expect(() => decryptSecret(tampered)).toThrow()
   })
 })
