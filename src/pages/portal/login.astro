@@ -1,0 +1,18 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+import AuthFlow from '../../components/portal/AuthFlow'
+
+export const prerender = false
+---
+
+<PortalLayout title="Přihlášení">
+  <div class="mx-auto flex min-h-[70vh] max-w-md items-center">
+    <div class="portal-card w-full p-8">
+      <div class="mb-6 text-center">
+        <p class="font-heading text-xs font-bold uppercase tracking-[0.15em] text-[#5F6B72]">ENSANA</p>
+        <h1 class="mt-1 font-heading text-2xl font-bold text-[#004F71]">Partnerský portál</h1>
+      </div>
+      <AuthFlow mode="login" client:load />
+    </div>
+  </div>
+</PortalLayout>

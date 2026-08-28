@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro'
-import { consumeToken, markTokenUsed, setPassword } from '../../../../lib/portal/auth/users'
+import { consumeToken, setPassword } from '../../../../lib/portal/auth/users'
 import { hashPassword, validatePasswordPolicy, isPwnedPassword } from '../../../../lib/portal/auth/passwords'
 import { revokeAllSessions } from '../../../../lib/portal/auth/session'
 import { json, jsonError } from '../../../../lib/portal/auth/guard'
@@ -29,7 +29,6 @@ export const POST: APIRoute = async (context) => {
   if (!consumed) return jsonError(400, 'invalid_token')
 
   await setPassword(consumed.userId, await hashPassword(password))
-  await markTokenUsed(consumed.tokenId)
   await revokeAllSessions(consumed.userId)
   const { ip, userAgent } = requestMeta(context.request)
   await audit({ actorId: consumed.userId, action: 'password_reset', entity: 'portal_users', entityId: consumed.userId, ip, userAgent })

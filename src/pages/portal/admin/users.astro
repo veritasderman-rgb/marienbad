@@ -1,0 +1,16 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import UsersAdmin from '../../../components/portal/UsersAdmin'
+
+export const prerender = false
+---
+
+<PortalLayout title="Uživatelé">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Uživatelé</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">Správa přístupů do partnerského portálu — role, pozvánky a deaktivace účtů.</p>
+    </div>
+    <UsersAdmin client:load />
+  </div>
+</PortalLayout>

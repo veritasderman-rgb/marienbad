@@ -1,0 +1,20 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import ResetPasswordForm from '../../../components/portal/ResetPasswordForm'
+
+export const prerender = false
+
+const token = Astro.params.token
+if (!token) return Astro.redirect('/portal/login', 302)
+---
+
+<PortalLayout title="Nastavení hesla">
+  <div class="mx-auto flex min-h-[70vh] max-w-md items-center">
+    <div class="portal-card w-full p-8">
+      <div class="mb-6 text-center">
+        <h1 class="font-heading text-2xl font-bold text-[#004F71]">Nastavení nového hesla</h1>
+      </div>
+      <ResetPasswordForm token={token} client:load />
+    </div>
+  </div>
+</PortalLayout>

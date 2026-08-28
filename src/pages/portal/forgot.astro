@@ -1,0 +1,23 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+import ForgotPasswordForm from '../../components/portal/ForgotPasswordForm'
+
+export const prerender = false
+---
+
+<PortalLayout title="Zapomenuté heslo">
+  <div class="mx-auto flex min-h-[70vh] max-w-md items-center">
+    <div class="portal-card w-full p-8">
+      <div class="mb-6 text-center">
+        <h1 class="font-heading text-2xl font-bold text-[#004F71]">Zapomenuté heslo</h1>
+        <p class="mt-2 text-sm text-[#5F6B72]">
+          Zadejte e-mail spojený s vaším účtem a pošleme vám odkaz pro nastavení nového hesla.
+        </p>
+      </div>
+      <ForgotPasswordForm client:load />
+      <p class="mt-6 text-center text-sm">
+        <a href="/portal/login" class="text-[#0E6EA8] hover:underline">Zpět na přihlášení</a>
+      </p>
+    </div>
+  </div>
+</PortalLayout>
