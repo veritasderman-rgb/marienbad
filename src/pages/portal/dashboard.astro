@@ -1,0 +1,18 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+import DashboardView from '../../components/portal/DashboardView'
+
+export const prerender = false
+---
+
+<PortalLayout title="Dashboard">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Dashboard výkonnosti</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">
+        Souhrn přes všechny partnery — obrat, trend, struktura tržeb, největší meziroční pohyby a průnik s rozesílkami.
+      </p>
+    </div>
+    <DashboardView client:load />
+  </div>
+</PortalLayout>

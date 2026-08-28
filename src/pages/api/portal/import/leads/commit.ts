@@ -4,6 +4,7 @@ import { audit, requestMeta } from '../../../../../lib/portal/audit'
 import { q, qOne } from '../../../../../lib/portal/db'
 import { isUuid, type ConsentBasis } from '../../../../../lib/portal/crm/partners'
 import {
+  ImportAlreadyCommittedError,
   commitImport,
   dedupRows,
   isConsentBasis,
@@ -128,16 +129,22 @@ export const POST: APIRoute = async (context) => {
     })
   }
 
-  const result = await commitImport(dedup, {
-    importId,
-    actorId: actor.id,
-    optIn,
-    consentBasis,
-    optInSource,
-    decisions: decisionsParsed.values,
-    params,
-    errors,
-  })
+  let result
+  try {
+    result = await commitImport(dedup, {
+      importId,
+      actorId: actor.id,
+      optIn,
+      consentBasis,
+      optInSource,
+      decisions: decisionsParsed.values,
+      params,
+      errors,
+    })
+  } catch (err) {
+    if (err instanceof ImportAlreadyCommittedError) return jsonError(409, 'already_committed')
+    throw err
+  }
 
   const { ip, userAgent } = requestMeta(context.request)
   await audit({

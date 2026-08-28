@@ -592,7 +592,7 @@ export default function PerformanceImportWizard() {
                                 checked={decisions[row.row_index] === `assign:${c.id}`}
                                 onChange={() => setDecision(row.row_index, `assign:${c.id}`)}
                               />
-                              Přiřadit k „{c.name}" (IČO {c.ico ?? '—'}, {Math.round(c.similarity)} % shoda)
+                              Přiřadit k „{c.name}" (IČO {c.ico ?? '—'}, {Math.round(c.similarity * 100)} % shoda)
                             </label>
                           ))}
                           <label className="flex items-center gap-2">

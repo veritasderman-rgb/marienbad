@@ -1,0 +1,25 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+import VerificationsView from '../../components/portal/VerificationsView'
+import { canEdit } from '../../lib/portal/auth/guard'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || role === 'viewer') {
+  return Astro.redirect('/portal', 302)
+}
+---
+
+<PortalLayout title="Ověření partnerů">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Ověření partnerů</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">
+        Lustrace v insolvenčním rejstříku, registru nespolehlivých plátců DPH a trestním rejstříku právnických
+        osob — přes Hlídač státu.
+      </p>
+    </div>
+    <VerificationsView client:load canWrite={canEdit(role)} />
+  </div>
+</PortalLayout>

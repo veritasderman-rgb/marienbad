@@ -10,6 +10,13 @@ import {
 } from '../crm/partners'
 import { MAX_COLUMNS } from './csv'
 
+/** Import už byl (souběžně) potvrzen — endpoint překládá na 409. */
+export class ImportAlreadyCommittedError extends Error {
+  constructor() {
+    super('Import už byl potvrzen.')
+  }
+}
+
 /**
  * Import partnerů z veletržního CSV (NAVRH sekce 5.4).
  *
@@ -710,6 +717,18 @@ export async function commitImport(
   options: CommitOptions,
 ): Promise<CommitResult> {
   return withTx(async (client) => {
+    // Claim importu hned na začátku transakce (Codex P2): podmíněný přechod
+    // uploaded → committed pustí dál jen jeden ze souběžných/opakovaných
+    // commitů — druhý skončí chybou místo duplicitních partnerů a kontaktů.
+    const claimed = await client.query(
+      `UPDATE crm.imports SET status = 'committed'
+       WHERE id = $1 AND status = 'uploaded'
+       RETURNING id`,
+      [options.importId],
+    )
+    if (claimed.rows.length === 0) {
+      throw new ImportAlreadyCommittedError()
+    }
     let createdPartners = 0
     let createdContacts = 0
     let duplicates = 0
