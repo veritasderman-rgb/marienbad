@@ -11,6 +11,7 @@ export interface ContactRow {
   position: string | null
   is_primary: boolean
   newsletter_opt_in: boolean
+  lawful_basis?: string | null
   unsubscribed_at: string | null
   anonymized_at: string | null
 }
@@ -36,6 +37,8 @@ export default function ContactForm({ partnerId, contact, onCancel, onSaved }: C
   const [position, setPosition] = useState(contact?.position ?? '')
   const [isPrimary, setIsPrimary] = useState(contact?.is_primary ?? false)
   const [newsletterOptIn, setNewsletterOptIn] = useState(contact?.newsletter_opt_in ?? false)
+  // každý kontakt má právní titul (GDPR) — u B2B kontaktu je výchozí oprávněný zájem
+  const [lawfulBasis, setLawfulBasis] = useState(contact?.lawful_basis ?? 'legitimate_interest')
 
   const [consentBasis, setConsentBasis] = useState('')
   const [optInSource, setOptInSource] = useState('')
@@ -49,14 +52,17 @@ export default function ContactForm({ partnerId, contact, onCancel, onSaved }: C
     setError(null)
     setPending(true)
     try {
+      // vyprázdněná pole se posílají jako null — undefined by JSON.stringify
+      // zahodil a PATCH by starou hodnotu tiše ponechal
       const basePayload = {
-        first_name: firstName.trim() || undefined,
-        last_name: lastName.trim() || undefined,
-        email: email.trim() || undefined,
-        phone: phone.trim() || undefined,
-        position: position.trim() || undefined,
+        first_name: firstName.trim() || null,
+        last_name: lastName.trim() || null,
+        email: email.trim() || null,
+        phone: phone.trim() || null,
+        position: position.trim() || null,
         is_primary: isPrimary,
         newsletter_opt_in: newsletterOptIn,
+        lawful_basis: lawfulBasis || null,
       }
 
       if (isEdit) {
@@ -73,7 +79,6 @@ export default function ContactForm({ partnerId, contact, onCancel, onSaved }: C
           ...basePayload,
           ...(newsletterOptIn
             ? {
-                lawful_basis: 'consent',
                 consent_basis: consentBasis.trim() || undefined,
                 opt_in_source: optInSource.trim() || undefined,
                 opt_in_at: new Date().toISOString(),
@@ -125,16 +130,32 @@ export default function ContactForm({ partnerId, contact, onCancel, onSaved }: C
           <label className={labelClass} htmlFor="cf_phone">Telefon</label>
           <input id="cf_phone" value={phone} onChange={(e) => setPhone(e.currentTarget.value)} className={inputClass} />
         </div>
-        <div className="sm:col-span-2">
+        <div>
           <label className={labelClass} htmlFor="cf_position">Pozice</label>
           <input id="cf_position" value={position} onChange={(e) => setPosition(e.currentTarget.value)} className={inputClass} />
+        </div>
+        <div>
+          <label className={labelClass} htmlFor="cf_lawful_basis">Právní titul (GDPR)</label>
+          <select id="cf_lawful_basis" value={lawfulBasis} onChange={(e) => setLawfulBasis(e.currentTarget.value)} className={inputClass}>
+            <option value="legitimate_interest">Oprávněný zájem (B2B)</option>
+            <option value="contract">Plnění smlouvy</option>
+            <option value="consent">Souhlas</option>
+          </select>
         </div>
         <div className="flex items-center gap-2">
           <input id="cf_primary" type="checkbox" checked={isPrimary} onChange={(e) => setIsPrimary(e.currentTarget.checked)} />
           <label htmlFor="cf_primary" className="text-sm text-[#1C2B33]">Hlavní kontakt</label>
         </div>
         <div className="flex items-center gap-2">
-          <input id="cf_newsletter" type="checkbox" checked={newsletterOptIn} onChange={(e) => setNewsletterOptIn(e.currentTarget.checked)} />
+          <input
+            id="cf_newsletter"
+            type="checkbox"
+            checked={newsletterOptIn}
+            onChange={(e) => {
+              setNewsletterOptIn(e.currentTarget.checked)
+              if (e.currentTarget.checked) setLawfulBasis('consent')
+            }}
+          />
           <label htmlFor="cf_newsletter" className="text-sm text-[#1C2B33]">Souhlas s newsletterem</label>
         </div>
 

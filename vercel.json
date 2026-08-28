@@ -3,6 +3,10 @@
   "framework": "astro",
   "regions": ["fra1"],
   "trailingSlash": false,
+  "crons": [
+    { "path": "/api/portal/cron/mailerlite-sync", "schedule": "0 3 * * *" },
+    { "path": "/api/portal/cron/newsletter-stats", "schedule": "0 4 1 * *" }
+  ],
   "git": {
     "deploymentEnabled": {
       "claude/marienbad-website-plan-V22c5": true,
