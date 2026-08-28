@@ -72,7 +72,37 @@ try {
          ('viewer@example.com',  'viewer',  'Demo Viewer')
        ON CONFLICT (email) DO NOTHING`,
     )
-    console.log('Demo uživatelé založeni (bez hesel — přihlášení přes pozvánkový tok).')
+    // fiktivní partneři + kontakty + výkonnost, ať mají dashboard a reporty co ukázat
+    await client.query(`
+      WITH p AS (
+        INSERT INTO crm.partners (name, ico, segment, tier, status, country, city, languages, acquisition_source)
+        VALUES
+          ('CK Alfa a.s.',        NULL, 'travel_agency', 'A', 'active',   'CZ', 'Praha',  '{cs}', 'manual'),
+          ('Beta Reisen GmbH',    NULL, 'tour_operator', 'A', 'active',   'DE', 'Berlín', '{de}', 'manual'),
+          ('Gamma Tours s.r.o.',  NULL, 'travel_agency', 'B', 'active',   'CZ', 'Brno',   '{cs}', 'manual'),
+          ('Delta Insurance',     NULL, 'insurer',       'B', 'active',   'CZ', 'Praha',  '{cs}', 'manual'),
+          ('Epsilon Trade GmbH',  NULL, 'corporate',     'C', 'prospect', 'AT', 'Vídeň',  '{de}', 'veletrh:DEMO-2026')
+        ON CONFLICT DO NOTHING
+        RETURNING id, name
+      ), c AS (
+        INSERT INTO crm.partner_contacts (partner_id, first_name, last_name, email, newsletter_opt_in, lawful_basis, consent_basis, opt_in_source, opt_in_at)
+        SELECT id, 'Demo', 'Kontakt', lower(replace(name, ' ', '.')) || '@example.com', true, 'consent', 'explicit_signup', 'demo-seed', CURRENT_DATE
+        FROM p
+      )
+      INSERT INTO crm.partner_performance (partner_id, period_month, hotel_slug, revenue_eur, revenue_amount, currency, room_nights)
+      SELECT p.id,
+             (date_trunc('month', CURRENT_DATE) - (m.n || ' months')::interval)::date,
+             h.slug,
+             round((2000 + random() * 8000)::numeric, 2),
+             round((50000 + random() * 200000)::numeric, 2),
+             'CZK',
+             (50 + random() * 300)::int
+      FROM p
+      CROSS JOIN generate_series(1, 18) AS m(n)
+      CROSS JOIN (VALUES ('NL'), ('CL')) AS h(slug)
+      ON CONFLICT DO NOTHING
+    `)
+    console.log('Demo uživatelé a fiktivní partneři s výkonností založeni (přihlášení přes pozvánkový tok).')
   }
 } finally {
   await client.end()
