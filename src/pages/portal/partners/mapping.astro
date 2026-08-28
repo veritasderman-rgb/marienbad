@@ -1,0 +1,25 @@
+---
+import PortalLayout from '../../../layouts/PortalLayout.astro'
+import MappingQueue from '../../../components/portal/MappingQueue'
+import { canEdit } from '../../../lib/portal/auth/guard'
+
+export const prerender = false
+
+const role = Astro.locals.portalUser?.role
+if (!role || role === 'viewer') {
+  return Astro.redirect('/portal', 302)
+}
+---
+
+<PortalLayout title="Fronta mapování plátců">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Fronta mapování plátců</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">
+        Plátci z PMS čekající na lidské rozhodnutí — jejich obrat se zatím nezapočítává. Po potvrzení se doplní
+        zpětně, žádný řádek se neztratí.
+      </p>
+    </div>
+    <MappingQueue client:load canWrite={canEdit(role)} />
+  </div>
+</PortalLayout>
