@@ -1,0 +1,18 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro'
+import ReportsView from '../../components/portal/ReportsView'
+
+export const prerender = false
+---
+
+<PortalLayout title="Reporty">
+  <div class="space-y-6">
+    <div>
+      <h1 class="font-heading text-2xl font-bold text-[#004F71]">Reporty</h1>
+      <p class="mt-1 text-sm text-[#5F6B72]">
+        Měsíční výkonnost partnerů — obrat, meziměsíční a meziroční srovnání, klouzavý R12 a noci.
+      </p>
+    </div>
+    <ReportsView client:load />
+  </div>
+</PortalLayout>
