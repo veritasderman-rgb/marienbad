@@ -6,6 +6,7 @@ import { getPage, extractFaqs } from '@/content/reader'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { hotels } from '@/data/hotels'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'de' as const
 const page = await getPage('de-praktische-infos')
@@ -69,5 +70,12 @@ const quizTranslations = {
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/de/roemisches-bad', title: 'Römisches Bad', text: 'Geschichte des Saals von 1896, königliche Kabinen und Besuchsregeln.' },
+        { href: '/de/ambulante-behandlung', title: 'Ambulante Behandlung', text: 'Anwendungen auch ohne Übernachtung — Termin über die Spa-Rezeption.' },
+      ]}
+    />
   </PillarPage>
 </Base>

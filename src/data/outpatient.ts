@@ -38,6 +38,7 @@ export interface OutpatientUI {
   stepsHeading: string
   stepsLead: string
   steps: Step[]
+  contactLabel: string
   /** Doplní se, až budeme mít potvrzenou provozní dobu spa recepce. */
   receptionHours?: string
   receptionHoursLabel: string
@@ -91,6 +92,7 @@ export const ui: Record<Locale, OutpatientUI> = {
         text: 'Podle domluveného harmonogramu docházíte na jednotlivé procedury do lázeňského oddělení. Rozvrh se sestavuje podle volné kapacity provozu.',
       },
     ],
+    contactLabel: 'Objednávky a dotazy',
     receptionHoursLabel: 'Provozní doba spa recepce',
 
     bringHeading: 'Co si vzít s sebou',
@@ -184,6 +186,7 @@ export const ui: Record<Locale, OutpatientUI> = {
         text: 'Nach dem vereinbarten Zeitplan kommen Sie zu den einzelnen Anwendungen in die Kurabteilung. Der Plan richtet sich nach der freien Kapazität des Betriebs.',
       },
     ],
+    contactLabel: 'Terminvereinbarung und Fragen',
     receptionHoursLabel: 'Öffnungszeiten der Spa-Rezeption',
 
     bringHeading: 'Was Sie mitbringen sollten',
@@ -277,6 +280,7 @@ export const ui: Record<Locale, OutpatientUI> = {
         text: 'You come to the spa department for the individual treatments according to the agreed schedule, which is set around the available capacity of the department.',
       },
     ],
+    contactLabel: 'Bookings and enquiries',
     receptionHoursLabel: 'Spa reception opening hours',
 
     bringHeading: 'What to bring',
@@ -370,6 +374,7 @@ export const ui: Record<Locale, OutpatientUI> = {
         text: 'По согласованному графику вы приходите на отдельные процедуры в курортное отделение. График составляется исходя из свободной загрузки отделения.',
       },
     ],
+    contactLabel: 'Запись и вопросы',
     receptionHoursLabel: 'Часы работы спа-ресепшн',
 
     bringHeading: 'Что взять с собой',

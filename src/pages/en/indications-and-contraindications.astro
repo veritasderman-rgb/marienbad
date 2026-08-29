@@ -5,6 +5,7 @@ import IndicationsContent from '@/components/IndicationsContent.astro'
 import { getIndications } from '@/data/indications'
 import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'en' as const
 const data = getIndications(locale)
@@ -29,5 +30,11 @@ const breadcrumbs = [
 >
   <PillarPage locale={locale} title={data.title} description={data.metaDescription} breadcrumbs={breadcrumbs}>
     <IndicationsContent locale={locale} />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/en/outpatient-treatment', title: 'Outpatient treatment', text: 'Treatments without a stay — book a doctor via the spa reception.' },
+      ]}
+    />
   </PillarPage>
 </Base>

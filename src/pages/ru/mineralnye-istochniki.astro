@@ -12,6 +12,7 @@ import { exelyBookingUrl } from '@/utils/booking'
 import SectionCard from '@/components/SectionCard.astro'
 import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'ru' as const
 const page = await getPage('ru-mineralnye-istochniki')
@@ -80,6 +81,12 @@ const quizTranslations = {
       description="Пятизвёздочный отель Ensana Nové Lázně располагает собственными минеральными ваннами и единственными Римскими банями в Центральной Европе — идеальное место для знакомства с целебными источниками Марианских Лазней."
       bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'ru', utmMedium: 'editorial', utmCampaign: 'mineral-springs' })}
       bookingLabel="Забронировать отель"
+    />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/ru/ambulatornoe-lechenie', title: 'Амбулаторное лечение', text: 'Процедуры без проживания — запись к врачу через спа-ресепшн.' },
+      ]}
     />
   </PillarPage>
 </Base>

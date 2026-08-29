@@ -4,6 +4,7 @@ import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'ru' as const
 const page = await getPage('ru-arkhitektura')
@@ -13,5 +14,11 @@ const page = await getPage('ru-arkhitektura')
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/ru/rimskie-bani', title: 'Римские бани', text: 'История зала 1896 года, королевские кабины и правила посещения.' },
+      ]}
+    />
   </PillarPage>
 </Base>

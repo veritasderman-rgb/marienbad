@@ -8,6 +8,7 @@ import RelatedArticles from '@/components/RelatedArticles.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'en' as const
 const page = await getPage('en-history')
@@ -27,6 +28,12 @@ const hotel = getHotelBySlug('nove-lazne')!
       description="Experience Marienbad's history first-hand at the Ensana Nové Lázně, one of Europe's most storied spa hotels. Its Roman Bath, preserved since 1896, is a living monument to the golden age of Bohemian spa culture."
       bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'en', utmMedium: 'editorial', utmCampaign: 'history' })}
       bookingLabel="Book historic hotel"
+    />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/en/roman-baths', title: 'The Roman Baths', text: 'The 1896 hall, its royal cabins and how a visit works.' },
+      ]}
     />
   </PillarPage>
 </Base>

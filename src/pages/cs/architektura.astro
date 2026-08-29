@@ -4,6 +4,7 @@ import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'cs' as const
 const page = await getPage('cs-architektura')
@@ -13,5 +14,11 @@ const page = await getPage('cs-architektura')
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/cs/rimske-lazne', title: 'Římské lázně', text: 'Historie sálu z roku 1896, královské kabiny a pravidla návštěvy.' },
+      ]}
+    />
   </PillarPage>
 </Base>

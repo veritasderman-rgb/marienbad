@@ -7,6 +7,7 @@ import { getPage } from '@/content/reader'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { hotels } from '@/data/hotels'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'en' as const
 const page = await getPage('en-practical-info')
@@ -60,5 +61,12 @@ const quizTranslations = {
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/en/roman-baths', title: 'The Roman Baths', text: 'The 1896 hall, its royal cabins and how a visit works.' },
+        { href: '/en/outpatient-treatment', title: 'Outpatient treatment', text: 'Treatments without a stay — book a doctor via the spa reception.' },
+      ]}
+    />
   </PillarPage>
 </Base>

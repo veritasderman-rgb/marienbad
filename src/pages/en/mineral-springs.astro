@@ -13,6 +13,7 @@ import { exelyBookingUrl } from '@/utils/booking'
 import SectionCard from '@/components/SectionCard.astro'
 import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'en' as const
 const page = await getPage('en-mineral-springs')
@@ -82,6 +83,12 @@ const quizTranslations = {
       description="The 5-star Ensana Nové Lázně features its own mineral baths and the only Roman Bath in Central Europe — the perfect base for experiencing Marienbad's healing springs."
       bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'en', utmMedium: 'editorial', utmCampaign: 'mineral-springs' })}
       bookingLabel="Book spa hotel"
+    />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/en/outpatient-treatment', title: 'Outpatient treatment', text: 'Treatments without a stay — book a doctor via the spa reception.' },
+      ]}
     />
   </PillarPage>
 </Base>
