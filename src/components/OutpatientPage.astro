@@ -122,6 +122,17 @@ const hero = hotelPhotos('nove-lazne').find((p) => p.category === 'spa' && p.ori
       </article>
     ))}
   </div>
+
+  <aside class="mt-8 rounded-2xl bg-yellow-50 border-l-4 border-yellow-400 p-6 md:p-8">
+    <h3 class="font-heading text-lg font-bold text-indigo-800 mb-2">{t.doctorOnlyHeading}</h3>
+    <p class="text-beige-800 leading-relaxed mb-4 max-w-4xl">{t.doctorOnlyText}</p>
+    <a
+      href={`mailto:${SPA_EMAIL}`}
+      class="text-turquoise-700 hover:text-turquoise-800 font-semibold underline underline-offset-2 break-all"
+    >
+      {SPA_EMAIL}
+    </a>
+  </aside>
 </section>
 
 <!-- Ceník + kontraindikace -->
