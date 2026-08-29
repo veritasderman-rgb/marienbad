@@ -177,7 +177,9 @@ export const hotelDetails: Record<string, HotelDetails> = {
       },
     ],
     wellness: [
-      { kind: 'roman-bath', detail: '3 × bazén 7×4 m, 4×4 m, 6×4 m · 29–30 °C', hours: '7:00–21:00' },
+      // Bez podstatných jmen — `detail` se vypisuje syrově ve všech čtyřech
+      // jazycích, název „Římské lázně / Roman Baths / …" dodává `kind`.
+      { kind: 'roman-bath', detail: '7×4 m, 4×4 m, 6×4 m · 29–30 °C', hours: '7:00–21:00' },
       { kind: 'whirlpool' },
       { kind: 'sauna', detail: '2×' },
       { kind: 'steam' },
