@@ -1,0 +1,204 @@
+---
+/**
+ * Obsah stránky o Římských lázních. Fotky se berou z hotelové fotobanky
+ * (WebP ve třech šířkách), proto přímo <img srcset> a ne komponenta <Pic>.
+ */
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import { ui, romanBathPhotos, SPA_EMAIL } from '@/data/romanBaths'
+import { srcset } from '@/lib/hotelPhotos'
+import { exelyBookingUrl } from '@/utils/booking'
+import { hotels } from '@/data/hotels'
+
+interface Props {
+  locale: Locale
+}
+const { locale } = Astro.props
+const t = ui[locale]
+
+const photos = romanBathPhotos()
+const hero = photos.find((p) => p.orientation === 'landscape') ?? photos[0]
+const gallery = photos.filter((p) => p.id !== hero?.id)
+
+const bookingUrl = (slug: string) => {
+  const hotel = hotels.find((h) => h.slug === slug)
+  return hotel
+    ? exelyBookingUrl({
+        hotelId: hotel.exelyHotelId,
+        locale,
+        utmMedium: 'roman-baths',
+        utmCampaign: slug,
+      })
+    : `/${locale}/${routes.accommodation[locale]}`
+}
+---
+
+<!-- Hero -->
+<section class="relative bg-indigo-900 text-white">
+  {hero && (
+    <img
+      src={`${hero.base}-1600.webp`}
+      srcset={srcset(hero)}
+      sizes="100vw"
+      alt={t.photoAlt}
+      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  )}
+  <div class="relative container-wide py-16 md:py-24">
+    <p class="text-turquoise-200 font-semibold tracking-wide uppercase text-sm mb-3">{t.eyebrow}</p>
+    <h1 class="font-heading text-3xl md:text-5xl font-bold leading-tight max-w-3xl">{t.h1}</h1>
+    <p class="mt-5 text-white/90 leading-relaxed max-w-2xl text-lg">{t.heroLead}</p>
+  </div>
+</section>
+
+<!-- Jak se dovnitř dostat — vědomě hned pod heroem, je to nejčastější dotaz -->
+<section class="container-wide py-12 md:py-16">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{t.accessHeading}</h2>
+  <p class="text-beige-700 leading-relaxed max-w-3xl mb-8">{t.accessLead}</p>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <article class="rounded-2xl border-2 border-turquoise-300 bg-turquoise-50 p-6 md:p-8">
+      <h3 class="font-heading text-xl font-bold text-indigo-800 mb-3">{t.accessStayTitle}</h3>
+      <p class="text-beige-800 leading-relaxed mb-5">{t.accessStayText}</p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={bookingUrl('nove-lazne')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+        >
+          {t.accessStayNl}
+        </a>
+        <a
+          href={bookingUrl('centralni-lazne')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 border border-indigo-300 text-indigo-700 bg-white rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+        >
+          {t.accessStayCl}
+        </a>
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-beige-300 bg-white p-6 md:p-8">
+      <h3 class="font-heading text-xl font-bold text-indigo-800 mb-3">{t.accessVisitorTitle}</h3>
+      <p class="text-beige-800 leading-relaxed mb-4">{t.accessVisitorText}</p>
+      <p class="text-sm text-beige-700 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg p-4 mb-5">
+        {t.accessWarning}
+      </p>
+      <p class="text-sm text-beige-600 mb-1">{t.accessMailLabel}</p>
+      <a
+        href={`mailto:${SPA_EMAIL}`}
+        class="text-turquoise-700 hover:text-turquoise-800 font-semibold underline underline-offset-2 break-all"
+      >
+        {SPA_EMAIL}
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- Historie -->
+<section class="bg-beige-100">
+  <div class="container-wide py-12 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{t.historyHeading}</h2>
+    <p class="text-beige-700 leading-relaxed max-w-3xl mb-10">{t.historyLead}</p>
+
+    <ol class="relative border-l-2 border-turquoise-300 ml-3 space-y-8">
+      {t.timeline.map((item) => (
+        <li class="pl-6 md:pl-8">
+          <span class="absolute -left-[9px] mt-1.5 w-4 h-4 rounded-full bg-turquoise-500 ring-4 ring-beige-100"></span>
+          <p class="text-turquoise-700 font-bold text-sm tracking-wide uppercase">{item.year}</p>
+          <h3 class="font-heading text-lg md:text-xl font-bold text-indigo-800 mt-1 mb-2">{item.title}</h3>
+          <p class="text-beige-800 leading-relaxed max-w-3xl">{item.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- Architektura -->
+<section class="container-wide py-12 md:py-16">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{t.architectureHeading}</h2>
+  <p class="text-beige-700 leading-relaxed max-w-3xl mb-8">{t.architectureLead}</p>
+  <dl class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {t.facts.map((f) => (
+      <div class="rounded-xl border border-beige-300 bg-white p-5">
+        <dt class="text-xs font-semibold tracking-wide uppercase text-turquoise-700 mb-1.5">{f.label}</dt>
+        <dd class="text-beige-900 leading-snug">{f.value}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<!-- Královské kabiny -->
+<section class="bg-indigo-800 text-white">
+  <div class="container-wide py-12 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold mb-3">{t.cabinsHeading}</h2>
+    <p class="text-white/85 leading-relaxed max-w-3xl mb-6">{t.cabinsLead}</p>
+    <p class="text-white/90 leading-relaxed max-w-3xl mb-4">{t.cabinsRoyal}</p>
+    <p class="text-turquoise-200 font-medium">{t.cabinsImperial}</p>
+  </div>
+</section>
+
+<!-- Dnešní wellness -->
+<section class="container-wide py-12 md:py-16">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-3">{t.todayHeading}</h2>
+  <p class="text-beige-700 leading-relaxed max-w-3xl mb-6">{t.todayLead}</p>
+  <ul class="flex flex-wrap gap-3 mb-8">
+    {t.todayItems.map((item) => (
+      <li class="px-4 py-2 rounded-full bg-turquoise-50 text-turquoise-800 border border-turquoise-200 font-medium">
+        {item}
+      </li>
+    ))}
+  </ul>
+  <p class="text-beige-800 leading-relaxed max-w-3xl bg-beige-100 rounded-xl p-5 border-l-4 border-turquoise-400">
+    {t.waterNote}
+  </p>
+</section>
+
+<!-- Galerie -->
+{gallery.length > 0 && (
+  <section class="bg-beige-100">
+    <div class="container-wide py-12 md:py-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-800 mb-2">{t.galleryHeading}</h2>
+      <p class="text-beige-600 text-sm mb-8">{t.galleryNote}</p>
+      <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {gallery.map((p) => (
+          <a href={`${p.base}-1600.webp`} target="_blank" rel="noopener noreferrer" class="block group">
+            <img
+              src={`${p.base}-800.webp`}
+              srcset={srcset(p)}
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+              alt={t.photoAlt}
+              width={p.w}
+              height={p.h}
+              class="w-full h-56 object-cover rounded-xl transition-transform duration-300 group-hover:scale-[1.02]"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Odkaz na ambulantní léčbu -->
+<section class="container-wide py-12 md:py-16">
+  <aside class="rounded-2xl bg-beige-200 p-6 md:p-8 border-l-4 border-turquoise-400">
+    <h2 class="font-heading text-xl font-bold text-indigo-800 mb-2">{t.outpatientHeading}</h2>
+    <p class="text-beige-800 leading-relaxed mb-5">{t.outpatientText}</p>
+    <a
+      href={`/${locale}/${routes.outpatient[locale]}`}
+      class="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+    >
+      {t.outpatientCta}
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </aside>
+</section>
