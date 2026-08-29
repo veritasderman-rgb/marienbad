@@ -52,6 +52,7 @@ export interface RomanBathsUI {
   accessMailLabel: string
   accessStayNl: string
   accessStayCl: string
+  accessHvezda: string
 
   historyHeading: string
   historyLead: string
@@ -103,6 +104,8 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessWarning:
       'Bez předchozí rezervace vstup není možný. Kapacita se řídí provozem lázeňského oddělení a hostům na pobytu, proto ji nelze zaručit dopředu ani přislíbit na konkrétní hodinu.',
     accessMailLabel: 'Rezervace a dotazy',
+    accessHvezda:
+      'Hosté hotelu Ensana Hvězda mají přístup do bazénu v Římských lázních při pobytu delším než tři noci.',
     accessStayNl: 'Ubytování v Nových Lázních',
     accessStayCl: 'Ubytování v Centrálních Lázních',
 
@@ -189,6 +192,8 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessWarning:
       'Ohne vorherige Reservierung ist der Eintritt nicht möglich. Die Kapazität richtet sich nach dem Betrieb der Kurabteilung und nach den Hausgästen und kann daher weder im Voraus garantiert noch für eine bestimmte Uhrzeit zugesagt werden.',
     accessMailLabel: 'Reservierung und Fragen',
+    accessHvezda:
+      'Gäste des Hotels Ensana Hvězda haben ab einem Aufenthalt von mehr als drei Nächten Zugang zum Becken im Römischen Bad.',
     accessStayNl: 'Aufenthalt im Nové Lázně',
     accessStayCl: 'Aufenthalt im Centrální Lázně',
 
@@ -275,6 +280,8 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessWarning:
       'Without a prior reservation entry is not possible. Capacity follows the operation of the spa department and the needs of resident guests, so it cannot be guaranteed in advance or promised for a specific hour.',
     accessMailLabel: 'Reservations and enquiries',
+    accessHvezda:
+      'Guests of the Ensana Hvězda hotel have access to the pool in the Roman Baths with a stay of more than three nights.',
     accessStayNl: 'Stay at Nové Lázně',
     accessStayCl: 'Stay at Centrální Lázně',
 
@@ -361,6 +368,8 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessWarning:
       'Без предварительного бронирования вход невозможен. Загруженность зависит от работы курортного отделения и от гостей отеля, поэтому её нельзя гарантировать заранее или обещать на конкретный час.',
     accessMailLabel: 'Бронирование и вопросы',
+    accessHvezda:
+      'Гости отеля Ensana Hvězda получают доступ в бассейн Римских бань при проживании более трёх ночей.',
     accessStayNl: 'Проживание в Nové Lázně',
     accessStayCl: 'Проживание в Centrální Lázně',
 

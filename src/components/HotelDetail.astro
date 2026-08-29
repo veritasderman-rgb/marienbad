@@ -9,6 +9,7 @@ import type { Locale } from '@/i18n/config'
 import { hotels, type Hotel } from '@/data/hotels'
 import { detailsOf } from '@/data/hotelDetails'
 import {
+  minNightsNote,
   ui,
   amenityLabels,
   facilityLabels,
@@ -326,7 +327,7 @@ function priceLine(priceCzk?: number, priceLong?: number) {
             <div>
               <p class="font-semibold text-indigo-700">{facilityLabels[locale][f.kind]}</p>
               <p class="text-sm text-beige-600">
-                {[f.detail, f.hours ? `${t.hours} ${f.hours}` : null, f.inHotel ? inHotelNote[locale](f.inHotel) : null]
+                {[f.detail, f.hours ? `${t.hours} ${f.hours}` : null, f.inHotel ? inHotelNote[locale](f.inHotel) : null, f.minNights ? minNightsNote[locale](f.minNights) : null]
                   .filter(Boolean)
                   .join(' · ')}
               </p>

@@ -84,6 +84,8 @@ export interface Facility {
   hours?: string
   /** Zařízení je v jiném hotelu komplexu, přístupné spojovací chodbou. */
   inHotel?: string
+  /** Přístup jen při pobytu od tolika nocí (Hvězda → bazén Římských lázní). */
+  minNights?: number
 }
 
 export interface Dining {
@@ -294,7 +296,7 @@ export const hotelDetails: Record<string, HotelDetails> = {
       { kind: 'salt-cave', hours: '12:00/9:00–20:00' },
       { kind: 'gym', detail: '59 m²' },
       { kind: 'fitness', inHotel: 'Centrální Lázně', hours: '7:00–21:00' },
-      { kind: 'roman-bath', inHotel: 'Nové Lázně' },
+      { kind: 'roman-bath', inHotel: 'Nové Lázně', minNights: 4 },
     ],
     spring: 'balbin',
     mineralBaths: 5,
