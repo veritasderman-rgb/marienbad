@@ -86,10 +86,19 @@ export function heroPhoto(slug: string): HotelPhoto | undefined {
 }
 
 export function srcset(photo: HotelPhoto): string {
-  return [400, 800, 1600]
-    .filter((w) => w <= Math.max(photo.w, 400))
-    .map((w) => `${photo.base}-${w}.webp ${w}w`)
-    .join(', ')
+  // Varianty se generují bez zvětšování, takže u fotky užší než 1600 px má
+  // soubor `-1600.webp` jen šířku originálu. Deskriptor proto musí být
+  // skutečná šířka souboru — kdyby se stupeň jen zahodil (dřívější chování),
+  // prohlížeč by se u takové fotky zastavil na 800 px a galerie by byla měkká.
+  const widths = new Set<number>()
+  const out: string[] = []
+  for (const step of [400, 800, MAX_WIDTH]) {
+    const real = Math.min(step, photo.w)
+    if (widths.has(real)) continue
+    widths.add(real)
+    out.push(`${photo.base}-${step}.webp ${real}w`)
+  }
+  return out.join(', ')
 }
 
 /** Rozměry největší varianty — do width/height atributů, aby stránka neposkakovala. */
