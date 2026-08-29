@@ -49,6 +49,8 @@ export interface OutpatientUI {
   proceduresHeading: string
   proceduresLead: string
   groups: ProcedureGroup[]
+  doctorOnlyHeading: string
+  doctorOnlyText: string
 
   priceHeading: string
   priceText: string
@@ -136,6 +138,10 @@ export const ui: Record<Locale, OutpatientUI> = {
         items: ['Fyzioterapie a léčebný tělocvik'],
       },
     ],
+
+    doctorOnlyHeading: 'Procedury pouze s lékařem',
+    doctorOnlyText:
+      'Část procedur je vázaná na lékaře a bez jeho indikace a dohledu je poskytnout nelze — patří mezi ně například plynové injekce (pneumopunktura) nebo slatinný zábal. Není to formalita: jde o zákroky, u kterých lékař posuzuje zdravotní stav a možná rizika. Přesné informace, které procedury to jsou a za jakých podmínek je lze absolvovat, vám poskytne spa recepce.',
 
     priceHeading: 'Ceník',
     priceText:
@@ -226,6 +232,10 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
     ],
 
+    doctorOnlyHeading: 'Anwendungen nur mit ärztlicher Indikation',
+    doctorOnlyText:
+      'Ein Teil der Anwendungen ist an den Arzt gebunden und kann ohne seine Indikation und Aufsicht nicht durchgeführt werden — dazu gehören etwa Gasinjektionen (Pneumopunktur) oder der Moorumschlag. Das ist keine Formalität: Bei diesen Eingriffen beurteilt der Arzt Ihren Gesundheitszustand und mögliche Risiken. Welche Anwendungen das genau sind und unter welchen Bedingungen sie möglich sind, erfahren Sie an der Spa-Rezeption.',
+
     priceHeading: 'Preisliste',
     priceText:
       'Die aktuelle Preisliste der ambulanten Anwendungen senden wir Ihnen auf Anfrage — auf der Website führen wir sie bewusst nicht auf, damit Sie keine veralteten Preise sehen. Fordern Sie sie an der Spa-Rezeption an.',
@@ -315,6 +325,10 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
     ],
 
+    doctorOnlyHeading: 'Treatments available only with a physician',
+    doctorOnlyText:
+      'Some treatments are tied to a physician and cannot be provided without their indication and supervision — gas injections (pneumopuncture) or the peat compress, for example. This is not a formality: these are procedures where the physician assesses your health and the possible risks. The spa reception will tell you exactly which treatments these are and under what conditions they can be given.',
+
     priceHeading: 'Price list',
     priceText:
       'We provide the current outpatient price list on request — we deliberately do not publish it here so that it never shows you outdated prices. Ask for it at the spa reception.',
@@ -403,6 +417,10 @@ export const ui: Record<Locale, OutpatientUI> = {
         items: ['Физиотерапия и лечебная гимнастика'],
       },
     ],
+
+    doctorOnlyHeading: 'Процедуры только по назначению врача',
+    doctorOnlyText:
+      'Часть процедур привязана к врачу, и без его назначения и наблюдения их провести нельзя — к ним относятся, например, газовые инъекции (пневмопунктура) или грязевое обёртывание. Это не формальность: при таких процедурах врач оценивает состояние здоровья и возможные риски. Точную информацию о том, какие это процедуры и на каких условиях они возможны, вам даст спа-ресепшн.',
 
     priceHeading: 'Прейскурант',
     priceText:

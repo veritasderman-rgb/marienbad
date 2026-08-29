@@ -3,10 +3,6 @@ import { withUtm } from './utm'
 
 type Locale = keyof typeof EXELY_LOCALE_MAP
 
-function formatDate(d: Date): string {
-  return d.toISOString().slice(0, 10)
-}
-
 export function exelyBookingUrl(opts: {
   hotelId: number
   locale: Locale
@@ -18,12 +14,6 @@ export function exelyBookingUrl(opts: {
   utmMedium?: string
   utmCampaign?: string
 }): string {
-  const today = new Date()
-  const defaultArrive = new Date(today)
-  defaultArrive.setDate(today.getDate() + 30)
-  const defaultDepart = new Date(today)
-  defaultDepart.setDate(today.getDate() + 37)
-
   const params = new URLSearchParams({
     chain: String(EXELY_CHAIN_ID),
     hotel: String(opts.hotelId),
@@ -34,9 +24,15 @@ export function exelyBookingUrl(opts: {
     adult: String(opts.adults ?? 2),
     child: String(opts.children ?? 0),
     rooms: String(opts.rooms ?? 1),
-    arrive: opts.arrive ?? formatDate(defaultArrive),
-    depart: opts.depart ?? formatDate(defaultDepart),
   })
+
+  // Termín se doplňuje jen tehdy, když ho volající opravdu zná. Dřív se sem
+  // dosazovalo „dnes + 30 / + 37 dní", jenže drtivá většina stránek je
+  // předgenerovaná — datum se zapeklo do HTML v okamžiku buildu a po pár
+  // měsících posílalo návštěvníky na hledání v minulosti. Bez parametrů
+  // otevře rezervační systém vlastní výběr termínu, což je vždy správně.
+  if (opts.arrive) params.set('arrive', opts.arrive)
+  if (opts.depart) params.set('depart', opts.depart)
 
   const url = `https://bookings.ensanahotels.com/?${params.toString()}`
   return opts.utmMedium
