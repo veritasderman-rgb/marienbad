@@ -1,0 +1,24 @@
+---
+/**
+ * Ambulantní lázeňské procedury pro hosty, kteří u nás nebydlí.
+ * Obsah a překlady viz src/data/outpatient.ts + OutpatientPage.astro.
+ */
+import Base from '@/layouts/Base.astro'
+import OutpatientPage from '@/components/OutpatientPage.astro'
+import { ui, outpatientUrls } from '@/data/outpatient'
+
+export const prerender = true
+
+const locale = 'ru' as const
+const t = ui[locale]
+---
+
+<Base
+  locale={locale}
+  section="practical-info"
+  title={t.metaTitle}
+  description={t.metaDescription}
+  alternateUrls={outpatientUrls}
+>
+  <OutpatientPage locale={locale} />
+</Base>

@@ -1,0 +1,24 @@
+---
+/**
+ * Římské lázně v hotelu Ensana Nové Lázně — historie a pravidla návštěvy.
+ * Obsah a překlady viz src/data/romanBaths.ts + RomanBathsPage.astro.
+ */
+import Base from '@/layouts/Base.astro'
+import RomanBathsPage from '@/components/RomanBathsPage.astro'
+import { ui, romanBathsUrls } from '@/data/romanBaths'
+
+export const prerender = true
+
+const locale = 'en' as const
+const t = ui[locale]
+---
+
+<Base
+  locale={locale}
+  section="history"
+  title={t.metaTitle}
+  description={t.metaDescription}
+  alternateUrls={romanBathsUrls}
+>
+  <RomanBathsPage locale={locale} />
+</Base>
