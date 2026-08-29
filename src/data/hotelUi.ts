@@ -582,6 +582,14 @@ export const fromFiveNights: Record<Locale, string> = {
   ru: 'от 5 ночей',
 }
 /** Vysvětlivka u zařízení, které je v jiném hotelu komplexu. */
+/** Přístup podmíněný délkou pobytu — u Hvězdy bazén v Římských lázních. */
+export const minNightsNote: Record<Locale, (n: number) => string> = {
+  cs: (n) => `přístup do bazénu při pobytu od ${n} nocí`,
+  de: (n) => `Zugang zum Becken ab ${n} Nächten Aufenthalt`,
+  en: (n) => `pool access with a stay of ${n} nights or more`,
+  ru: (n) => `доступ в бассейн при проживании от ${n} ночей`,
+}
+
 export const inHotelNote: Record<Locale, (hotel: string) => string> = {
   cs: (h) => `v hotelu ${h}, přístup krytou chodbou`,
   de: (h) => `im Hotel ${h}, über den überdachten Gang erreichbar`,
