@@ -11,6 +11,7 @@ import { exelyBookingUrl } from '@/utils/booking'
 import SectionCard from '@/components/SectionCard.astro'
 import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'cs' as const
 const page = await getPage('cs-mineralni-prameny')
@@ -90,6 +91,12 @@ const faqSchema = faqs.length > 0 ? {
       description="Historický komplex s jedinými Římskými lázněmi ve střední Evropě — pětihvězdičkový hotel Ensana Nové Lázně je ideální místo pro zážitek z mariánskolázeňských léčivých pramenů."
       bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'cs', utmMedium: 'editorial', utmCampaign: 'mineral-springs' })}
       bookingLabel="Rezervovat hotel"
+    />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/cs/ambulantni-lecba', title: 'Ambulantní léčení', text: 'Procedury i bez ubytování — objednání k lékaři přes spa recepci.' },
+      ]}
     />
   </PillarPage>
 </Base>

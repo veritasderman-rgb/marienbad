@@ -7,6 +7,7 @@ import { getPage } from '@/content/reader'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { hotels } from '@/data/hotels'
 import { t } from '@/i18n/ui'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'cs' as const
 const page = await getPage('cs-prakticke-informace')
@@ -60,5 +61,12 @@ const quizTranslations = {
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
     <TreatmentQuiz client:visible locale={locale} hotels={quizHotels} translations={quizTranslations} />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/cs/rimske-lazne', title: 'Římské lázně', text: 'Historie sálu z roku 1896, královské kabiny a pravidla návštěvy.' },
+        { href: '/cs/ambulantni-lecba', title: 'Ambulantní léčení', text: 'Procedury i bez ubytování — objednání k lékaři přes spa recepci.' },
+      ]}
+    />
   </PillarPage>
 </Base>

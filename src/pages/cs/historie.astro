@@ -6,6 +6,7 @@ import { getPage, extractFaqs } from '@/content/reader'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import { getHotelBySlug } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'cs' as const
 const page = await getPage('cs-historie')
@@ -35,6 +36,12 @@ const faqSchema = faqs.length > 0 ? {
       description="Prožijte historii Mariánských Lázní na vlastní kůži v hotelu Ensana Nové Lázně, jednom z nejslavnějších lázeňských hotelů Evropy. Římské lázně, zachované v původním stavu z roku 1896, jsou živou památkou české lázeňské kultury."
       bookingUrl={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'cs', utmMedium: 'editorial', utmCampaign: 'history' })}
       bookingLabel="Rezervovat historický hotel"
+    />
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/cs/rimske-lazne', title: 'Římské lázně', text: 'Historie sálu z roku 1896, královské kabiny a pravidla návštěvy.' },
+      ]}
     />
   </PillarPage>
 </Base>

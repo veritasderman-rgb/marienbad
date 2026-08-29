@@ -4,6 +4,7 @@ import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import { getPage } from '@/content/reader'
+import RelatedLinks from '@/components/RelatedLinks.astro'
 
 const locale = 'en' as const
 const page = await getPage('en-architecture')
@@ -13,5 +14,11 @@ const page = await getPage('en-architecture')
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <RelatedLinks
+      locale={locale}
+      items={[
+        { href: '/en/roman-baths', title: 'The Roman Baths', text: 'The 1896 hall, its royal cabins and how a visit works.' },
+      ]}
+    />
   </PillarPage>
 </Base>

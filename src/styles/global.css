@@ -183,7 +183,13 @@ h1, h2, h3, h4, h5, h6 {
 .container-wide {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 3vw, 2rem);
+  /* Jen vodorovné odsazení, a to longhandem. Zkratka `padding: 0 clamp(…)`
+     tu zároveň nulovala padding-top/bottom, a protože tenhle předpis není
+     v žádné vrstvě, přebíjel v Tailwindu 4 utility z `@layer utilities`.
+     Výsledek: každá sekce psaná jako `container-wide py-16` se vykreslila
+     bez svislého odsazení — na webu jich je přes 140 a celý web působil
+     stlačeně. Longhand nechává `py-*` fungovat tak, jak autor zamýšlel. */
+  padding-inline: clamp(1rem, 3vw, 2rem);
 }
 
 /* ─── Section Spacing ─── */
