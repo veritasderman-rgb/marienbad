@@ -18,6 +18,30 @@ po každé fázi (viz `IMPLEMENTACNI_PLAN.md`, sekce 11).
 - [x] Závěrečné bezpečnostní review celé větve
 - [x] Definice hotovo splněna, tabulka „Zbývá člověku" v PR
 
+## Oprava po fázi 8 — CSP a Astro islands
+
+Fáze 8 tvrdila „CSP veřejného webu BEZ unsafe-inline". V praxi to bylo **rozbité**:
+Astro vkládá runtime svých islands jako inline `<script>` přímo do HTML, takže
+`script-src 'self'` ho zablokoval. Ověřeno reálným Chromiem proti hlavičce
+z `vercel.json`: 2 porušení CSP na stránku a **0 ze 2 islands nastartovalo**.
+Dopad: vyhledávání v hlavičce, léčebný kvíz, průvodce prameny, průzkumník výletů —
+a hlavně **celé portálové UI včetně přihlašovacího formuláře** (18 stránek
+s `client:load`).
+
+Řešení v tomto commitu:
+
+- `vite.build.assetsInlineLimit: 0` — Astro přestalo vkládat malé skripty inline,
+  ze sedmi inline bloků na stránku zbyly dva (vlastní runtime islands),
+- `script-src` má zpátky `'unsafe-inline'` (veřejný web i portál).
+
+Ověřeno stejným testem: 0 porušení, 2/2 islands hydratované.
+
+Proč ne hashe: Astro umí `experimental.csp` s hashi, ale jeho seznam povolených
+direktiv neobsahuje `style-src-attr`. Web má 1072 inline `style=` atributů, které
+by hashové `style-src` zablokovalo (hash vypíná `'unsafe-inline'`) — rozbil by se
+vzhled. Správné řešení je nonce z middleware pro SSR stránky (portál) a hashe
+skriptů pro předgenerované; chce to preview deploy na ověření, viz „Zbývá člověku".
+
 ## Otevřené otázky pro vlastníka
 
 - Transakční e-maily: plán volí Resend jako výchozí (plán, sekce 5). Pokud chcete
