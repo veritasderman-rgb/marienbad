@@ -65,6 +65,14 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Astro jinak malé hoistované skripty vkládá přímo do HTML. Veřejný web
+      // běží s CSP `script-src 'self'` bez `unsafe-inline` (fáze zpevnění), takže
+      // inline blok by prohlížeč zablokoval — mobilní menu, consent banner ani
+      // lightbox galerie by nefungovaly. Nula vynutí, že každý skript je
+      // samostatný soubor v /_astro/.
+      assetsInlineLimit: 0,
+    },
   },
   i18n: {
     defaultLocale: 'de',

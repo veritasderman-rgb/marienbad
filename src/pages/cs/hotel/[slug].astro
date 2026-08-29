@@ -1,8 +1,9 @@
 ---
 import Base from '@/layouts/Base.astro'
-import PillarPage from '@/components/PillarPage.astro'
+import HotelDetail from '@/components/HotelDetail.astro'
 import { hotels, type Hotel } from '@/data/hotels'
-import { exelyBookingUrl } from '@/utils/booking'
+import { detailsOf } from '@/data/hotelDetails'
+import { hotelPhotos, heroPhoto } from '@/lib/hotelPhotos'
 
 export const prerender = true
 
@@ -17,17 +18,16 @@ const locale = 'cs' as const
 const { hotel } = Astro.props as { hotel: Hotel }
 
 const description = hotel.description.cs ?? hotel.description.en
-const features = hotel.features.cs ?? hotel.features.en
-const treatments = hotel.treatments.cs ?? hotel.treatments.en
+const details = detailsOf(hotel.slug)
+const photos = hotelPhotos(hotel.slug)
+const hero = heroPhoto(hotel.slug)
 
-const starsDisplay = '★'.repeat(hotel.stars) + '☆'.repeat(5 - hotel.stars)
 const pageTitle = `${hotel.name} — ${hotel.stars}hvězdičkový lázeňský hotel v Mariánských Lázních`
-// Zkrácený popis slouží jen pro <meta description>; v hlavičce stránky
-// se zobrazuje tagline, aby se úvodní věta popisu neopakovala dvakrát.
 const pageDescription = description.slice(0, 155).replace(/\s+\S*$/, '') + '…'
 
 const pathname = Astro.url.pathname.replace(/\/$/, '')
-const canonicalUrl = `${(import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')}${pathname}`
+const siteUrl = (import.meta.env.SITE ?? 'https://marienbad.com').replace(/\/$/, '')
+const canonicalUrl = `${siteUrl}${pathname}`
 
 const lodgingSchema = JSON.stringify({
   '@context': 'https://schema.org',
@@ -35,6 +35,7 @@ const lodgingSchema = JSON.stringify({
   name: hotel.name,
   description: description.slice(0, 300),
   url: canonicalUrl,
+  image: photos.slice(0, 8).map((p) => `${siteUrl}${p.base}-1600.webp`),
   address: {
     '@type': 'PostalAddress',
     streetAddress: hotel.address.split(',')[0]?.trim(),
@@ -43,12 +44,12 @@ const lodgingSchema = JSON.stringify({
     postalCode: '353 01',
     addressCountry: 'CZ',
   },
-  starRating: {
-    '@type': 'Rating',
-    ratingValue: hotel.stars,
-    bestRating: 5,
-  },
-  amenityFeature: features.map((f) => ({
+  starRating: { '@type': 'Rating', ratingValue: hotel.stars, bestRating: 5 },
+  ...(details ? { numberOfRooms: details.rooms } : {}),
+  ...(details?.email ? { email: details.email } : {}),
+  ...(details?.phone ? { telephone: details.phone } : {}),
+  ...(details ? { checkinTime: details.checkIn, checkoutTime: details.checkOut } : {}),
+  amenityFeature: (hotel.features.cs ?? hotel.features.en).map((f) => ({
     '@type': 'LocationFeatureSpecification',
     name: f,
     value: true,
@@ -60,82 +61,19 @@ const lodgingSchema = JSON.stringify({
 })
 ---
 
-<Base locale={locale} section="accommodation" title={pageTitle} description={pageDescription} alternateUrls={{ de: `/de/hotel/${hotel.slug}`, en: `/en/hotel/${hotel.slug}`, cs: `/cs/hotel/${hotel.slug}`, ru: `/ru/hotel/${hotel.slug}` }}>
+<Base
+  locale={locale}
+  section="accommodation"
+  title={pageTitle}
+  description={pageDescription}
+  ogImage={hero ? `${hero.base}-1600.webp` : undefined}
+  alternateUrls={{
+    de: `/de/hotel/${hotel.slug}`,
+    en: `/en/hotel/${hotel.slug}`,
+    cs: `/cs/hotel/${hotel.slug}`,
+    ru: `/ru/hotel/${hotel.slug}`,
+  }}
+>
   <script type="application/ld+json" set:html={lodgingSchema} />
-
-  <PillarPage locale={locale} title={hotel.name} description={hotel.tagline[locale]}>
-    <!-- Star Rating & Year -->
-    <div class="flex flex-wrap items-center gap-4 mb-8 text-sm">
-      <span class="text-yellow-500 text-lg tracking-wide" aria-label={`${hotel.stars} z 5 hvězd`}>{starsDisplay}</span>
-      <span class="px-2.5 py-0.5 bg-turquoise-50 text-turquoise-800 rounded-full font-medium">{hotel.stars} hvězdy</span>
-      <span class="text-beige-600">Postaveno {hotel.yearBuilt}</span>
-      <span class="text-beige-600">·</span>
-      <span class="text-beige-600">{hotel.style[locale]}</span>
-    </div>
-
-    <!-- Description -->
-    <div class="prose-marienbad mb-12">
-      {description.split('\n\n').map((paragraph) => (
-        <p>{paragraph}</p>
-      ))}
-    </div>
-
-    <!-- Features -->
-    <div class="mb-12">
-      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Vybavení a zajímavosti</h2>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {features.map((feature) => (
-          <li class="flex items-start gap-3 text-beige-800">
-            <svg class="w-5 h-5 text-turquoise-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Treatments -->
-    <div class="mb-12">
-      <h2 class="font-heading text-2xl font-bold text-indigo-700 mb-6">Dostupné procedury</h2>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {treatments.map((treatment) => (
-          <li class="flex items-start gap-3 text-beige-800">
-            <svg class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
-              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
-            </svg>
-            <span>{treatment}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Booking CTA -->
-    <aside class="bg-beige-200 rounded-xl p-6 md:p-8 border-l-4 border-turquoise-400">
-      <h2 class="font-heading text-xl font-bold text-indigo-700 mb-3">Rezervovat pobyt v {hotel.name}</h2>
-      <p class="text-beige-700 text-sm leading-relaxed mb-5">
-        Naplánujte si lázeňský pobyt v {hotel.name} v Mariánských Lázních. Využijte spojení lékařské péče a {hotel.stars === 5 ? 'luxusního' : hotel.stars === 3 ? 'komfortního' : 'nadstandardního'} prostředí.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a
-          href={exelyBookingUrl({ hotelId: hotel.exelyHotelId, locale: 'cs', utmMedium: 'hotel-detail', utmCampaign: hotel.slug })}
-          class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Zkontrolovat dostupnost
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-        <a
-          href={`/${locale}/ubytovani`}
-          class="inline-flex items-center gap-2 px-6 py-3 border border-indigo-300 text-indigo-700 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
-        >
-          Porovnat všechny hotely
-        </a>
-      </div>
-    </aside>
-  </PillarPage>
+  <HotelDetail locale={locale} hotel={hotel} />
 </Base>

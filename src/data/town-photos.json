@@ -1,0 +1,1222 @@
+[
+ {
+  "id": "town/20160106-img-6298-hdr-pano",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/20160106-img-6298-hdr-pano",
+  "w": 2702,
+  "h": 2077,
+  "orientation": "landscape",
+  "season": null,
+  "source": "20160106-IMG_6298-HDR-Pano.jpg"
+ },
+ {
+  "id": "colonnade/aerial-image-0487",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/aerial-image-0487",
+  "w": 3500,
+  "h": 2738,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Aerial Image_0487.jpg"
+ },
+ {
+  "id": "colonnade/cross-spring-pavilion-16a1598",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/cross-spring-pavilion-16a1598",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Cross Spring pavilion_16A1598.jpg"
+ },
+ {
+  "id": "colonnade/cross-spring-pavilion-16a2252",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/cross-spring-pavilion-16a2252",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Cross Spring pavilion_16A2252.jpg"
+ },
+ {
+  "id": "colonnade/ferdinand-spring-colonnade-0361",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/ferdinand-spring-colonnade-0361",
+  "w": 3500,
+  "h": 2621,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Ferdinand Spring Colonnade_0361.jpg"
+ },
+ {
+  "id": "colonnade/ferdinand-spring-colonnade-16a0897",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/ferdinand-spring-colonnade-16a0897",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Ferdinand Spring Colonnade_16A0897.jpg"
+ },
+ {
+  "id": "colonnade/ferdinand-spring-colonnade-8728",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/ferdinand-spring-colonnade-8728",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Ferdinand Spring Colonnade_8728.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a0817",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a0817",
+  "w": 2333,
+  "h": 3500,
+  "orientation": "portrait",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A0817.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a4646",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a4646",
+  "w": 4500,
+  "h": 3000,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A4646.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a4703",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a4703",
+  "w": 2882,
+  "h": 3500,
+  "orientation": "portrait",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A4703.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a4713",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a4713",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A4713.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a6314",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a6314",
+  "w": 4500,
+  "h": 3000,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A6314.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a9041",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a9041",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A9041.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a9748",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a9748",
+  "w": 2333,
+  "h": 3500,
+  "orientation": "portrait",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A9748.jpg"
+ },
+ {
+  "id": "colonnade/main-spa-colonnade-16a9784",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/main-spa-colonnade-16a9784",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Main Spa Colonnade_16A9784.jpg"
+ },
+ {
+  "id": "colonnade/park-area-16a1369",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/park-area-16a1369",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Park area_16A1369.jpg"
+ },
+ {
+  "id": "colonnade/rudolph-and-caroline-springs-colonnade-16a0270",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/rudolph-and-caroline-springs-colonnade-16a0270",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Rudolph and Caroline Springs Colonnade_16A0270.jpg"
+ },
+ {
+  "id": "colonnade/rudolph-and-caroline-springs-colonnade-16a1687",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/rudolph-and-caroline-springs-colonnade-16a1687",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Rudolph and Caroline Springs Colonnade_16A1687.jpg"
+ },
+ {
+  "id": "colonnade/rudolph-and-caroline-springs-colonnade-16a4444",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/rudolph-and-caroline-springs-colonnade-16a4444",
+  "w": 4500,
+  "h": 3000,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Rudolph and Caroline Springs Colonnade_16A4444.jpg"
+ },
+ {
+  "id": "colonnade/rudolph-and-caroline-springs-colonnade-16a4583",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/rudolph-and-caroline-springs-colonnade-16a4583",
+  "w": 4500,
+  "h": 3000,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Rudolph and Caroline Springs Colonnade_16A4583.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a3313",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a3313",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A3313.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a4611",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a4611",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A4611.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a4620",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a4620",
+  "w": 4500,
+  "h": 3000,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A4620.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a4669",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a4669",
+  "w": 2333,
+  "h": 3500,
+  "orientation": "portrait",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A4669.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a4742",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a4742",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A4742.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a6502",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a6502",
+  "w": 4500,
+  "h": 3000,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A6502.jpg"
+ },
+ {
+  "id": "fountain/singing-fountain-16a8594",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/singing-fountain-16a8594",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_Singing Fountain_16A8594.jpg"
+ },
+ {
+  "id": "colonnade/park-area-16a4873",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/park-area-16a4873",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "COLONNADE_park area_16A4873.jpg"
+ },
+ {
+  "id": "colonnade/winter-main-spa-colonnade-16a2947",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-main-spa-colonnade-16a2947",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "COLONNADE_winter_Main Spa Colonnade_16A2947.jpg"
+ },
+ {
+  "id": "colonnade/winter-main-spa-colonnade-16a3695",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-main-spa-colonnade-16a3695",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "COLONNADE_winter_Main Spa Colonnade_16A3695.jpg"
+ },
+ {
+  "id": "colonnade/winter-main-spa-colonnade-16a3984",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-main-spa-colonnade-16a3984",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "COLONNADE_winter_Main Spa Colonnade_16A3984.jpg"
+ },
+ {
+  "id": "colonnade/winter-rudolph-and-caroline-springs-colonnade-16a2964",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-rudolph-and-caroline-springs-colonnade-16a2964",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "COLONNADE_winter_Rudolph and Caroline Springs Colonnade_16A2964.jpg"
+ },
+ {
+  "id": "fountain/winter-singing-fountain-16a2837",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/winter-singing-fountain-16a2837",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "COLONNADE_winter_Singing Fountain_16A2837.jpg"
+ },
+ {
+  "id": "fountain/winter-singing-fountain-16a4046",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/winter-singing-fountain-16a4046",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "COLONNADE_winter_Singing Fountain_16A4046.jpg"
+ },
+ {
+  "id": "colonnade/xmas-main-spa-colonnade-16a3399",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/xmas-main-spa-colonnade-16a3399",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "christmas",
+  "source": "COLONNADE_xmas_Main Spa Colonnade_16A3399.jpg"
+ },
+ {
+  "id": "colonnade/xmas-main-spa-colonnade-16a3438",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/xmas-main-spa-colonnade-16a3438",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "christmas",
+  "source": "COLONNADE_xmas_Main Spa Colonnade_16A3438.jpg"
+ },
+ {
+  "id": "colonnade/xmas-main-spa-colonnade-16a3876",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/xmas-main-spa-colonnade-16a3876",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "christmas",
+  "source": "COLONNADE_xmas_Main Spa Colonnade_16A3876.jpg"
+ },
+ {
+  "id": "colonnade/xmas-main-spa-colonnade-16a4073",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/xmas-main-spa-colonnade-16a4073",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "christmas",
+  "source": "COLONNADE_xmas_Main Spa Colonnade_16A4073.jpg"
+ },
+ {
+  "id": "fountain/xmas-singing-fountain-16a4058",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/xmas-singing-fountain-16a4058",
+  "w": 3500,
+  "h": 2328,
+  "orientation": "landscape",
+  "season": "christmas",
+  "source": "COLONNADE_xmas_Singing Fountain_16A4058.jpg"
+ },
+ {
+  "id": "town/family-vacation-1",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-1",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (1).jpg"
+ },
+ {
+  "id": "town/family-vacation-10",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-10",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (10).jpg"
+ },
+ {
+  "id": "town/family-vacation-11",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-11",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (11).jpg"
+ },
+ {
+  "id": "town/family-vacation-14",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-14",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (14).jpg"
+ },
+ {
+  "id": "town/family-vacation-15",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-15",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (15).jpg"
+ },
+ {
+  "id": "town/family-vacation-3",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-3",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (3).jpg"
+ },
+ {
+  "id": "town/family-vacation-4",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-4",
+  "w": 2960,
+  "h": 1909,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (4).jpg"
+ },
+ {
+  "id": "town/family-vacation-6",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-6",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (6).jpg"
+ },
+ {
+  "id": "town/family-vacation-8",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-8",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (8).jpg"
+ },
+ {
+  "id": "town/family-vacation-9",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/family-vacation-9",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Family vacation (9).jpg"
+ },
+ {
+  "id": "town/hvezda-img-6754-hdr-edit",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/hvezda-img-6754-hdr-edit",
+  "w": 4889,
+  "h": 2809,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Hvezda_IMG_6754-HDR-Edit.jpg"
+ },
+ {
+  "id": "town/img-2209",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2209",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2209.jpg"
+ },
+ {
+  "id": "town/img-2310",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2310",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2310.jpg"
+ },
+ {
+  "id": "town/img-2358",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2358",
+  "w": 2981,
+  "h": 1677,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2358.jpg"
+ },
+ {
+  "id": "town/img-2363",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2363",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2363.jpg"
+ },
+ {
+  "id": "town/img-2383",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2383",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2383.jpg"
+ },
+ {
+  "id": "town/img-2457",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2457",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2457.jpg"
+ },
+ {
+  "id": "town/img-2485",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2485",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2485.jpg"
+ },
+ {
+  "id": "town/img-2508",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2508",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2508.jpg"
+ },
+ {
+  "id": "town/img-2544",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-2544",
+  "w": 2738,
+  "h": 1825,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_2544.jpg"
+ },
+ {
+  "id": "town/img-5625-1-conflict-20131028-135006",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-5625-1-conflict-20131028-135006",
+  "w": 2916,
+  "h": 2304,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_5625_1_conflict-20131028-135006.jpg"
+ },
+ {
+  "id": "town/img-5671-1-conflict-20131028-135054",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-5671-1-conflict-20131028-135054",
+  "w": 2292,
+  "h": 1528,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_5671_1_conflict-20131028-135054.jpg"
+ },
+ {
+  "id": "town/img-6705-hdr",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-6705-hdr",
+  "w": 3576,
+  "h": 2384,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_6705-HDR.jpg"
+ },
+ {
+  "id": "town/img-6708-hdr-edit",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-6708-hdr-edit",
+  "w": 2736,
+  "h": 1824,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_6708-HDR-Edit.jpg"
+ },
+ {
+  "id": "town/img-6714",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-6714",
+  "w": 2833,
+  "h": 2625,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_6714.jpg"
+ },
+ {
+  "id": "town/img-6727-hdr",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-6727-hdr",
+  "w": 3922,
+  "h": 2615,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_6727-HDR.jpg"
+ },
+ {
+  "id": "town/img-6760-hdr-edit",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-6760-hdr-edit",
+  "w": 5472,
+  "h": 2881,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_6760-HDR-Edit.jpg"
+ },
+ {
+  "id": "town/img-7768-1-conflict-20131028-135356",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/img-7768-1-conflict-20131028-135356",
+  "w": 3323,
+  "h": 1787,
+  "orientation": "landscape",
+  "season": null,
+  "source": "IMG_7768_1_conflict-20131028-135356.jpg"
+ },
+ {
+  "id": "town/jaro-2025-1",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-1",
+  "w": 3289,
+  "h": 2463,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (1).jpg"
+ },
+ {
+  "id": "town/jaro-2025-10",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-10",
+  "w": 2625,
+  "h": 1750,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (10).jpg"
+ },
+ {
+  "id": "town/jaro-2025-12",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-12",
+  "w": 4880,
+  "h": 1960,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (12).jpg"
+ },
+ {
+  "id": "town/jaro-2025-16",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-16",
+  "w": 3120,
+  "h": 2080,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (16).jpg"
+ },
+ {
+  "id": "town/jaro-2025-17",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-17",
+  "w": 2887,
+  "h": 1925,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (17).jpg"
+ },
+ {
+  "id": "town/jaro-2025-20",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-20",
+  "w": 3025,
+  "h": 2017,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (20).jpg"
+ },
+ {
+  "id": "town/jaro-2025-3",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-3",
+  "w": 3234,
+  "h": 2215,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (3).jpg"
+ },
+ {
+  "id": "town/jaro-2025-5",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-5",
+  "w": 4016,
+  "h": 3008,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Jaro 2025 (5).jpg"
+ },
+ {
+  "id": "town/jaro-2025-8",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jaro-2025-8",
+  "w": 2080,
+  "h": 3120,
+  "orientation": "portrait",
+  "season": null,
+  "source": "Jaro 2025 (8).jpg"
+ },
+ {
+  "id": "sport/kolobezky-3",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/kolobezky-3",
+  "w": 3840,
+  "h": 2160,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Kolobezky-3.jpg"
+ },
+ {
+  "id": "sport/kolobezky-5",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/kolobezky-5",
+  "w": 3840,
+  "h": 2160,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Kolobezky-5.jpg"
+ },
+ {
+  "id": "colonnade/kolonada-leto-1",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/kolonada-leto-1",
+  "w": 2729,
+  "h": 1820,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Kolonada leto (1).jpg"
+ },
+ {
+  "id": "colonnade/kolonada-leto-3",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/kolonada-leto-3",
+  "w": 2729,
+  "h": 1820,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Kolonada leto (3).jpg"
+ },
+ {
+  "id": "colonnade/kolonada-img-6746-edit",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/kolonada-img-6746-edit",
+  "w": 2736,
+  "h": 1824,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Kolonada_IMG_6746-Edit.jpg"
+ },
+ {
+  "id": "colonnade/kolonada-detail01",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/kolonada-detail01",
+  "w": 1465,
+  "h": 2000,
+  "orientation": "portrait",
+  "season": null,
+  "source": "Kolonada_detail01.jpg"
+ },
+ {
+  "id": "colonnade/kolonada-detail03",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/kolonada-detail03",
+  "w": 1178,
+  "h": 1617,
+  "orientation": "portrait",
+  "season": null,
+  "source": "Kolonada_detail03.jpg"
+ },
+ {
+  "id": "town/ml-pitna-kura-12",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/ml-pitna-kura-12",
+  "w": 2808,
+  "h": 1872,
+  "orientation": "landscape",
+  "season": null,
+  "source": "ML Pitná kúra 12.jpg"
+ },
+ {
+  "id": "town/marianske-lazne-6",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/marianske-lazne-6",
+  "w": 1920,
+  "h": 1080,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Marianske Lazne (6).png"
+ },
+ {
+  "id": "town/nove-lazne-img-6778-hdr-edit",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/nove-lazne-img-6778-hdr-edit",
+  "w": 5472,
+  "h": 2594,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Nove Lazne_IMG_6778-HDR-Edit.jpg"
+ },
+ {
+  "id": "town/okoli-ml-4",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/okoli-ml-4",
+  "w": 2207,
+  "h": 2469,
+  "orientation": "portrait",
+  "season": null,
+  "source": "Okoli ML (4).jpg"
+ },
+ {
+  "id": "town/okoli-ml-5",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/okoli-ml-5",
+  "w": 2728,
+  "h": 1819,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Okoli ML (5).jpg"
+ },
+ {
+  "id": "town/pacifik-img-6711-hdr-edit",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/pacifik-img-6711-hdr-edit",
+  "w": 2491,
+  "h": 1640,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Pacifik_IMG_6711-HDR-Edit.jpg"
+ },
+ {
+  "id": "town/podzim-2016-2",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/podzim-2016-2",
+  "w": 2400,
+  "h": 1156,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Podzim 2016 (2).jpg"
+ },
+ {
+  "id": "town/podzim-2016-3",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/podzim-2016-3",
+  "w": 2400,
+  "h": 1600,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Podzim 2016 (3).jpg"
+ },
+ {
+  "id": "town/podzim-2016-4",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/podzim-2016-4",
+  "w": 2400,
+  "h": 1600,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Podzim 2016 (4).jpg"
+ },
+ {
+  "id": "town/proceduryb-01",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/proceduryb-01",
+  "w": 1971,
+  "h": 2991,
+  "orientation": "portrait",
+  "season": null,
+  "source": "ProceduryB-01.jpg"
+ },
+ {
+  "id": "town/proceduryb-02",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/proceduryb-02",
+  "w": 2064,
+  "h": 3096,
+  "orientation": "portrait",
+  "season": null,
+  "source": "ProceduryB-02.jpg"
+ },
+ {
+  "id": "town/proceduryb-04",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/proceduryb-04",
+  "w": 2064,
+  "h": 3096,
+  "orientation": "portrait",
+  "season": null,
+  "source": "ProceduryB-04.jpg"
+ },
+ {
+  "id": "town/proceduryb-07",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/proceduryb-07",
+  "w": 2969,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "ProceduryB-07.jpg"
+ },
+ {
+  "id": "town/proceduryb-19",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/proceduryb-19",
+  "w": 2064,
+  "h": 3096,
+  "orientation": "portrait",
+  "season": null,
+  "source": "ProceduryB-19.jpg"
+ },
+ {
+  "id": "springs/forest-spring-pavilion-16a0609",
+  "category": "springs",
+  "base": "/images/library/marianske-lazne/springs/forest-spring-pavilion-16a0609",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "SPA PARKS_Forest Spring Pavilion_16A0609.jpg"
+ },
+ {
+  "id": "nature/spa-forest-16a9402",
+  "category": "nature",
+  "base": "/images/library/marianske-lazne/nature/spa-forest-16a9402",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": null,
+  "source": "SPA PARKS_Spa forest_16A9402.jpg"
+ },
+ {
+  "id": "town/summer-party14",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/summer-party14",
+  "w": 3096,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "Summer Party14.jpg"
+ },
+ {
+  "id": "colonnade/winter-main-spa-colonnade-16a3695",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-main-spa-colonnade-16a3695",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_winter_Main Spa Colonnade_16A3695.jpg"
+ },
+ {
+  "id": "colonnade/winter-main-spa-colonnade-16a3984",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-main-spa-colonnade-16a3984",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_winter_Main Spa Colonnade_16A3984.jpg"
+ },
+ {
+  "id": "colonnade/winter-rudolph-and-caroline-springs-colonnade-16a3122",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/winter-rudolph-and-caroline-springs-colonnade-16a3122",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_winter_Rudolph and Caroline Springs Colonnade_16A3122.jpg"
+ },
+ {
+  "id": "fountain/winter-singing-fountain-16a2837",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/winter-singing-fountain-16a2837",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_winter_Singing Fountain_16A2837.jpg"
+ },
+ {
+  "id": "fountain/winter-singing-fountain-16a4046",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/winter-singing-fountain-16a4046",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_winter_Singing Fountain_16A4046.jpg"
+ },
+ {
+  "id": "colonnade/xmas-main-spa-colonnade-16a3399",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/xmas-main-spa-colonnade-16a3399",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_xmas_Main Spa Colonnade_16A3399.jpg"
+ },
+ {
+  "id": "colonnade/xmas-main-spa-colonnade-16a3590",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/xmas-main-spa-colonnade-16a3590",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_xmas_Main Spa Colonnade_16A3590.jpg"
+ },
+ {
+  "id": "fountain/xmas-singing-fountain-16a4058",
+  "category": "fountain",
+  "base": "/images/library/marianske-lazne/fountain/xmas-singing-fountain-16a4058",
+  "w": 3500,
+  "h": 2328,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/COLONNADE_xmas_Singing Fountain_16A4058.jpg"
+ },
+ {
+  "id": "springs/jprerovsky-ensana-ferdinanduv-pramen-16a3980",
+  "category": "springs",
+  "base": "/images/library/marianske-lazne/springs/jprerovsky-ensana-ferdinanduv-pramen-16a3980",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Ferdinanduv Pramen_16A3980.jpg"
+ },
+ {
+  "id": "town/jprerovsky-ensana-hvezda-exterior-winter-16a4056",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jprerovsky-ensana-hvezda-exterior-winter-16a4056",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Hvezda_Exterior_Winter_16A4056.jpg"
+ },
+ {
+  "id": "colonnade/jprerovsky-ensana-kolonada-winter-16a3026",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/jprerovsky-ensana-kolonada-winter-16a3026",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Kolonada_Winter_16A3026.jpg"
+ },
+ {
+  "id": "colonnade/jprerovsky-ensana-kolonada-xmas-tree-winter-16a3126",
+  "category": "colonnade",
+  "base": "/images/library/marianske-lazne/colonnade/jprerovsky-ensana-kolonada-xmas-tree-winter-16a3126",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Kolonada_Xmas Tree_Winter_16A3126.jpg"
+ },
+ {
+  "id": "town/jprerovsky-ensana-marianske-lazne-drone-winter-0588",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jprerovsky-ensana-marianske-lazne-drone-winter-0588",
+  "w": 3500,
+  "h": 2621,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Marianske Lazne_Drone_Winter_0588.jpg"
+ },
+ {
+  "id": "town/jprerovsky-ensana-novy-lazne-exterior-winter-16a4253",
+  "category": "town",
+  "base": "/images/library/marianske-lazne/town/jprerovsky-ensana-novy-lazne-exterior-winter-16a4253",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Novy Lazne_Exterior_Winter_16A4253.jpg"
+ },
+ {
+  "id": "sport/jprerovsky-ensana-ski-16a3318",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/jprerovsky-ensana-ski-16a3318",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Ski_16A3318.jpg"
+ },
+ {
+  "id": "sport/jprerovsky-ensana-ski-16a3635",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/jprerovsky-ensana-ski-16a3635",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Ski_16A3635.jpg"
+ },
+ {
+  "id": "sport/jprerovsky-ensana-ski-drone-winter-0324",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/jprerovsky-ensana-ski-drone-winter-0324",
+  "w": 3500,
+  "h": 2621,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Ski_Drone_Winter_0324.jpg"
+ },
+ {
+  "id": "sport/jprerovsky-ensana-ski-winter-16a3797",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/jprerovsky-ensana-ski-winter-16a3797",
+  "w": 3500,
+  "h": 2333,
+  "orientation": "landscape",
+  "season": "winter",
+  "source": "Winter/JPrerovsky_Ensana_Ski_Winter_16A3797.jpg"
+ },
+ {
+  "id": "sport/padel1",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/padel1",
+  "w": 3840,
+  "h": 2160,
+  "orientation": "landscape",
+  "season": null,
+  "source": "padel1.jpg"
+ },
+ {
+  "id": "sport/padel2",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/padel2",
+  "w": 3840,
+  "h": 2160,
+  "orientation": "landscape",
+  "season": null,
+  "source": "padel2.jpg"
+ },
+ {
+  "id": "sport/padel8",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/padel8",
+  "w": 2064,
+  "h": 2064,
+  "orientation": "landscape",
+  "season": null,
+  "source": "padel8.jpg"
+ },
+ {
+  "id": "sport/strom-32",
+  "category": "sport",
+  "base": "/images/library/marianske-lazne/sport/strom-32",
+  "w": 2064,
+  "h": 3096,
+  "orientation": "portrait",
+  "season": null,
+  "source": "strom-32.jpg"
+ }
+]

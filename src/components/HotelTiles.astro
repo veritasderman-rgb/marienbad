@@ -4,6 +4,8 @@ import { hotels } from '@/data/hotels'
 import { getHotelGallery } from '@/content/reader'
 import { exelyBookingUrl } from '@/utils/booking'
 import Pic from '@/components/Pic.astro'
+import { ui } from '@/data/hotelUi'
+import { hotelPhotos, heroPhoto, srcset } from '@/lib/hotelPhotos'
 
 interface Props {
   locale: Locale
@@ -20,6 +22,8 @@ const hotelOrder = [
   'vltava',
   'svoboda',
 ]
+
+const t = ui[locale]
 
 const orderedHotels = hotelOrder
   .map((slug) => {
@@ -68,41 +72,78 @@ const placeholder = '/images/hotels/placeholder.svg'
       const features = (hotel.features[locale] ?? hotel.features.de).slice(0, 4)
       const hotelName = hotel.name
 
-      // Build 5-image array: fill with gallery, pad with placeholder
+      const detailUrl = `/${locale}/hotel/${hotel.slug}`
+
+      // Mozaika 5 fotek: nová fotobanka (hero + čtyři z různých kategorií),
+      // jinak fallback na starou Keystatic galerii a placeholder.
+      const bank = hotelPhotos(hotel.slug)
+      const cover = heroPhoto(hotel.slug)
+      const bankTiles = cover
+        ? [cover, ...bank.filter((p) => p.id !== cover.id && p.category !== cover.category).slice(0, 4)]
+        : []
       const imgs = Array.from({ length: 5 }, (_, i) => {
+        const b = bankTiles[i]
+        if (b) return { src: `${b.base}-800.webp`, srcset: srcset(b), alt: hotelName }
         const g = hotel.gallery[i]
-        return g ? { src: g.image!, alt: g.alt || hotelName } : { src: placeholder, alt: hotelName }
+        return g ? { src: g.image!, srcset: undefined, alt: g.alt || hotelName } : { src: placeholder, srcset: undefined, alt: hotelName }
       })
 
-      const hasGallery = hotel.gallery.length > 1
+      const galleryCount = bank.length || hotel.gallery.length
+      const hasGallery = galleryCount > 1
 
       return (
-        <a href={url} target="_blank" rel="noopener noreferrer" class="block">
-        <article class="group relative overflow-hidden rounded-2xl bg-white border border-beige-200 transition-all duration-300 hover:shadow-xl hover:border-turquoise-300 cursor-pointer">
+        <article class="group relative overflow-hidden rounded-2xl bg-white border border-beige-200 transition-all duration-300 hover:shadow-xl hover:border-turquoise-300">
+          <a href={detailUrl} class="absolute inset-0 z-10" aria-label={`${hotelName} — ${t.detail}`}></a>
           {/* Masonry photo grid */}
           <div class="grid grid-cols-4 grid-rows-2 gap-1 md:gap-1.5 h-56 sm:h-64 md:h-80 lg:h-96" data-lightbox>
             {/* Hero image — spans 2 cols + 2 rows */}
             <div class="col-span-2 row-span-2 relative overflow-hidden cursor-pointer" data-img={0}>
-              <Pic
-                src={imgs[0].src}
-                alt={imgs[0].alt}
-                sizes="(max-width: 768px) 50vw, 33vw"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              {imgs[0].srcset ? (
+                <img
+                  src={imgs[0].src}
+                  srcset={imgs[0].srcset}
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  alt={imgs[0].alt}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <Pic
+                  src={imgs[0].src}
+                  alt={imgs[0].alt}
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
             </div>
             {/* 4 smaller images */}
             {imgs.slice(1).map((img, i) => (
               <div class="relative overflow-hidden cursor-pointer" data-img={i + 1}>
-                <Pic
-                  src={img.src}
-                  alt={img.alt}
-                  sizes="(max-width: 768px) 25vw, 15vw"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                {img.srcset ? (
+                  <img
+                    src={img.src}
+                    srcset={img.srcset}
+                    sizes="(max-width: 768px) 25vw, 15vw"
+                    alt={img.alt}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <Pic
+                    src={img.src}
+                    alt={img.alt}
+                    sizes="(max-width: 768px) 25vw, 15vw"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
                 {/* "All photos" overlay on last thumbnail */}
-                {hasGallery && i === 3 && hotel.gallery.length > 5 && (
-                  <div class="absolute inset-0 bg-indigo-900/50 flex items-center justify-center">
-                    <span class="text-white text-xs font-medium">{photosLabel[locale]}</span>
+                {hasGallery && i === 3 && galleryCount > 5 && (
+                  <div class="absolute inset-0 bg-indigo-900/55 flex items-center justify-center">
+                    <span class="text-white text-xs font-medium text-center px-1">
+                      {photosLabel[locale]} ({galleryCount})
+                    </span>
                   </div>
                 )}
               </div>
@@ -138,18 +179,28 @@ const placeholder = '/images/hotels/placeholder.svg'
               </ul>
             </div>
 
-            {/* Right: CTA (visual only, link is on the whole card) */}
-            <span
-              class="shrink-0 inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-yellow-400 text-indigo-900 text-sm font-semibold group-hover:bg-yellow-300 transition-colors shadow-sm self-start sm:self-center"
-            >
-              {ctaLabel[locale]}
-              <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </span>
+            {/* Right: detail (vizuál — odkaz je přes celou kartu) + rezervace (vlastní odkaz nad ním) */}
+            <div class="shrink-0 flex flex-col gap-2 self-start sm:self-center">
+              <span class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-indigo-700 text-white text-sm font-semibold group-hover:bg-indigo-800 transition-colors shadow-sm">
+                {t.detail}
+                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative z-20 inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-yellow-400 text-indigo-900 text-sm font-semibold hover:bg-yellow-300 transition-colors shadow-sm"
+              >
+                {ctaLabel[locale]}
+                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
           </div>
         </article>
-        </a>
       )
     })}
   </div>
