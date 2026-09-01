@@ -123,6 +123,28 @@ p  { margin: 0; }
 
 /* ---------- hlavička ---------- */
 
+/* Oznámení o ukončení soutěže. Stojí nad hlavičkou, aby bylo první, co
+   člověk uvidí — nástroj pod ním zůstává funkční kvůli dohledatelnosti
+   a případnému přepočtu už proběhlého losování. */
+.ended {
+  border: 1px solid var(--prize);
+  border-left-width: 4px;
+  border-radius: 12px;
+  background: rgba(246, 186, 0, 0.08);
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.ended h2 { font-family: var(--display); font-size: var(--step-2); color: var(--prize); }
+.ended .prose { max-width: 62ch; }
+.ended a {
+  color: var(--accent);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.ended a:hover { color: var(--ink); }
+
 .masthead { display: flex; flex-direction: column; gap: 0.85rem; }
 .masthead .lede { max-width: 56ch; }
 
@@ -400,6 +422,7 @@ pre.commit {
 
 /* ---------- režim nahrávání ---------- */
 
+body.recording .ended,
 body.recording .masthead,
 body.recording .phases,
 body.recording #panel-prep,
@@ -489,6 +512,18 @@ body.recording .stage-cta.is-ready { display: flex; }
 </head>
 <body>
 <div class="wrap">
+
+  <aside class="ended">
+    <h2>Soutěž byla ukončena k 31. 8. 2026</h2>
+    <p class="prose">
+      Přihlášky do soutěže Ensana Summer se už nepřijímají. Děkujeme všem, kdo se zúčastnili.
+    </p>
+    <p class="prose">
+      Chcete zůstat v kontaktu a nepřijít o další nabídky? Zaregistrujte se do
+      <a href="/cs/ensana-life">Ensana Life</a> — je to zdarma, otevřené komukoli
+      a členům chodí výhodné slevy na pobyty i novinky z Mariánských Lázní jako prvním.
+    </p>
+  </aside>
 
   <header class="masthead">
     <p class="eyebrow">Ensana Summer</p>
