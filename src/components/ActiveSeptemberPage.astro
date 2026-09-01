@@ -19,6 +19,21 @@ const { locale } = Astro.props
 
 const PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLMj3cJtcC8RtqiDsdBxO_-N0QbUQhvnLR'
 
+/**
+ * Aktivní září je celostátní kampaň Nadačního fondu Aktivní Česko; kalendář
+ * akcí běží na Kudy z nudy (CzechTourism). Loga jsou bílá negativní, proto
+ * jen na tmavém podkladu. Názvy značek se nepřekládají, takže `alt` nepatří
+ * do jazykových mutací a zůstává tady.
+ */
+const CAMPAIGN_URL = 'https://www.kudyznudy.cz/aktivni-cesko'
+const CAMPAIGN_LOGOS = [
+  // Značka Aktivního září je plná plocha s vyseknutým písmem — na výšku ji
+  // držíme níž než linkovou grafiku, jinak by opticky přebila zbytek řádku.
+  { src: '/images/partners/aktivni-zari/aktivni-zari-white.png', alt: 'Aktivní září', size: 'h-14 md:h-16' },
+  { src: '/images/partners/aktivni-zari/aktivni-cesko-white.png', alt: 'Aktivní Česko', size: 'h-12 md:h-14' },
+  { src: '/images/partners/aktivni-zari/kudy-z-nudy-white.png', alt: 'kudyznudy.cz — CzechTourism', size: 'h-8 md:h-10' },
+]
+
 interface Content {
   eyebrow: string
   titleHtml: string
@@ -51,6 +66,9 @@ interface Content {
   events: { label: string; note: string }[]
   eventsMoreHtml: string
   colonnadeAlt: string
+  campaignHeading: string
+  campaignText: string
+  campaignCta: string
   closingHeading: string
   closingText: string
   closingBook: string
@@ -143,6 +161,10 @@ const content: Record<Locale, Content> = {
     eventsMoreHtml:
       'Kompletní kulturní přehled najdou hosté na <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
     colonnadeAlt: 'Interiér litinové Hlavní kolonády se stropními freskami',
+    campaignHeading: 'Součást celostátní kampaně Aktivní Česko',
+    campaignText:
+      'Aktivní září je celorepubliková výzva Nadačního fondu Aktivní Česko: celý měsíc otevírá sport a pohyb všem bez ohledu na věk, výkonnost i peněženku. Mariánské Lázně se přidávají tím, čím jsou od začátku — městem, kde je pohyb součástí léčby. Kalendář akcí po celém Česku najdete na Kudy z nudy.',
+    campaignCta: 'Kampaň na Kudy z nudy',
     closingHeading: 'Září je nejlepší kondička roku',
     closingText:
       'Klidnější město, barvící se lesy a pohyb, který tu má dvousetletou tradici. Vyberte si hotel a přijeďte si zazávodit sami se sebou.',
@@ -225,6 +247,10 @@ const content: Record<Locale, Content> = {
     eventsMoreHtml:
       'Den vollständigen Kulturüberblick finden Ihre Gäste auf <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
     colonnadeAlt: 'Innenraum der gusseisernen Hauptkolonnade mit Deckenfresken',
+    campaignHeading: 'Teil der landesweiten Kampagne Aktivní Česko',
+    campaignText:
+      'Der Aktive September ist eine landesweite Initiative des Stiftungsfonds Aktivní Česko: Einen ganzen Monat lang öffnet er Sport und Bewegung für alle — unabhängig von Alter, Leistungsstand und Geldbeutel. Marienbad bringt genau das ein, wofür es seit jeher steht: eine Stadt, in der Bewegung zur Kur gehört. Den Veranstaltungskalender für ganz Tschechien finden Sie auf Kudy z nudy.',
+    campaignCta: 'Zur Kampagne auf Kudy z nudy',
     closingHeading: 'Der September ist die beste Kondition des Jahres',
     closingText:
       'Eine ruhigere Stadt, sich färbende Wälder und Bewegung mit zweihundertjähriger Tradition. Wählen Sie Ihr Hotel und treten Sie gegen sich selbst an.',
@@ -307,6 +333,10 @@ const content: Record<Locale, Content> = {
     eventsMoreHtml:
       'The full cultural listings are at <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
     colonnadeAlt: 'Interior of the cast-iron Main Colonnade with ceiling frescoes',
+    campaignHeading: 'Part of the nationwide Aktivní Česko campaign',
+    campaignText:
+      'Active September is a country-wide initiative of the Aktivní Česko foundation: for a whole month it opens sport and movement to everyone, whatever their age, fitness or budget. Mariánské Lázně joins in with what it has always been — a town where movement is part of the treatment. The full calendar of events across Czechia is on Kudy z nudy.',
+    campaignCta: 'See the campaign on Kudy z nudy',
     closingHeading: 'September is the best workout of the year',
     closingText:
       'A quieter town, forests turning colour and movement with a two-hundred-year tradition. Pick a hotel and come race against yourself.',
@@ -389,6 +419,10 @@ const content: Record<Locale, Content> = {
     eventsMoreHtml:
       'Полная культурная афиша — на <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-semibold underline underline-offset-4 hover:text-indigo-800">news.lazneml.cz</a>.',
     colonnadeAlt: 'Интерьер чугунной Главной колоннады с потолочными фресками',
+    campaignHeading: 'Часть общенациональной кампании Aktivní Česko',
+    campaignText:
+      '«Активный сентябрь» — общечешская инициатива фонда Aktivní Česko: целый месяц спорт и движение открыты для всех независимо от возраста, физической формы и бюджета. Марианске-Лазне присоединяются тем, чем город был всегда, — местом, где движение является частью лечения. Календарь мероприятий по всей Чехии есть на портале Kudy z nudy.',
+    campaignCta: 'Кампания на Kudy z nudy',
     closingHeading: 'Сентябрь — лучшая форма года',
     closingText:
       'Спокойный город, окрашивающиеся леса и движение с двухсотлетней традицией. Выберите отель и приезжайте посоревноваться с самим собой.',
@@ -598,6 +632,34 @@ const c = content[locale]
           sizes="(min-width: 1024px) 50vw, 100vw"
         />
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Loga kampaně ─────────────────────────────────────────────────── -->
+<section class="section bg-indigo-900 text-white">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-heading text-2xl md:text-3xl font-bold leading-tight">{c.campaignHeading}</h2>
+        <p class="mt-4 text-white/80 leading-relaxed">{c.campaignText}</p>
+        <a
+          href={CAMPAIGN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/35 font-semibold hover:bg-white/10 transition-colors"
+        >
+          {c.campaignCta}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+      <ul class="flex flex-wrap items-center gap-x-10 gap-y-8 lg:justify-end">
+        {CAMPAIGN_LOGOS.map((logo) => (
+          <li>
+            <Pic src={logo.src} alt={logo.alt} class={`${logo.size} w-auto`} sizes="220px" />
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
