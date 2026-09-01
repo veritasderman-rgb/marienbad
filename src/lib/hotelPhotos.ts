@@ -1,6 +1,10 @@
 /**
  * Fotobanka hotelů — přístup k WebP variantám vygenerovaným z archivu
- * `MARIENBAD_MARKETING` (viz `_web-export/README.md`).
+ * `MARIENBAD_MARKETING`. Původní importní složka `_web-export/` (README,
+ * převodní skripty, soupis fotek) byla po nasazení smazána, protože všechny
+ * fotky i manifesty už bajt po bajtu žijí v `public/images/` a `src/data/`.
+ * Kdyby bylo potřeba postup zopakovat u nové dávky fotek, celá složka je
+ * v historii gitu — přidaly ji commity `0aaa745` a `3336ae3`.
  *
  * Pro každou fotku existují tři soubory:
  *   `<base>-1600.webp`  galerie / lightbox / hero
