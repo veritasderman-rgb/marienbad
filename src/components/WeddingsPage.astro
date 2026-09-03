@@ -543,7 +543,7 @@ const serviceSchema = JSON.stringify({
 <section class="section bg-white">
   <div class="container-wide">
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-tight">{c.related.heading}</h2>
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
+    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       {c.related.items.map((r, i) => (
         <a href={related[i]} class="group block rounded-2xl border border-beige-200 p-6 hover:border-turquoise-300 hover:shadow-md transition-all">
           <h3 class="font-heading text-lg font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors leading-snug">{r.title}</h3>

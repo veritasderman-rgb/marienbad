@@ -1,0 +1,25 @@
+---
+/**
+ * Firemní akce — evergreen landing page, ne kampaň. Obsah drží sdílená
+ * komponenta CorporateEventsPage, texty src/data/corporateEventsContent.ts.
+ */
+import Base from '@/layouts/Base.astro'
+import CorporateEventsPage from '@/components/CorporateEventsPage.astro'
+import { corporateEventsContent } from '@/data/corporateEventsContent'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const c = corporateEventsContent[locale]
+---
+
+<Base
+  locale={locale}
+  section="corporate-events"
+  title={`${c.metaTitle} | Marienbad.com`}
+  description={c.metaDescription}
+  ogImage="/images/library/wedding/casino-marble-hall-banquet.jpg"
+  alternateUrls={{ cs: '/cs/firemni-akce', de: '/de/firmenevents', en: '/en/corporate-events', ru: '/ru/korporativnye-meropriyatiya' }}
+>
+  <CorporateEventsPage locale={locale} />
+</Base>
