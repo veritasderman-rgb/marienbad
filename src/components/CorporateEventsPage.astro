@@ -26,6 +26,7 @@ import {
   CONFERENCE_MANAGER_MAIL,
   CONFERENCE_PHONE,
   CONFERENCE_PHONE_HREF,
+  BROCHURE_PDF,
 } from '@/data/corporateEventsContent'
 
 interface Props {
@@ -322,6 +323,23 @@ const serviceSchema = JSON.stringify({
     </div>
 
     <p class="mt-5 text-sm text-beige-700 leading-relaxed max-w-2xl">{c.halls.note}</p>
+
+    {/* Brožura hned pod tabulkou — plánovač akce si ji stáhne v okamžiku, kdy
+        čísla porovnává, ne až v patičce. Bez `download`: PDF se má otevřít
+        v prohlížeči, uložení nechť si zvolí sám. */}
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <a
+        href={BROCHURE_PDF}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-ghost"
+        data-ga="corporate-brochure"
+      >
+        {c.brochure.cta}
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" /></svg>
+      </a>
+      <p class="text-sm text-beige-700 leading-relaxed max-w-xl">{c.brochure.note}</p>
+    </div>
   </div>
 </section>
 

@@ -87,6 +87,8 @@ export interface CorporateContent {
     note: string
     dash: string
   }
+  /** Odkaz ke stažení MICE brožury — leží pod tabulkou sálů. */
+  brochure: { cta: string; note: string }
   gastronomy: { eyebrow: string; heading: string; lead: string; items: string[]; note: string; restaurants: string }
   day: { eyebrow: string; heading: string; lead: string; items: { time: string; title: string; text: string }[]; footnote: string }
   after: { heading: string; lead: string; items: { key: string; title: string; text: string; linkLabel: string }[] }
@@ -108,6 +110,12 @@ export interface CorporateContent {
 export const CONFERENCE_MAIL = 'conference.cz@ensanahotels.com'
 export const CONFERENCE_PHONE = '+420 354 655 505'
 export const CONFERENCE_PHONE_HREF = '+420354655505'
+/**
+ * MICE brožura Ensana 2025 (28 stran, česky a anglicky). Stejný soubor, na
+ * který odkazuje partnerská stránka /introduce — existuje jednou, ať se
+ * neaktualizuje na dvou místech.
+ */
+export const BROCHURE_PDF = '/partners/mice-meetings-and-events.pdf'
 /**
  * Conference manager. Na web patří kontaktem, ne jménem (zadání 1. 9. 2026),
  * proto se tu neobjevuje nikde jinde než v této konstantě.
@@ -151,19 +159,19 @@ export function corporateLinks(locale: Locale) {
 const cs: CorporateContent = {
   metaTitle: 'Firemní akce v Mariánských Lázních — konference, večírky, zasedání',
   metaDescription:
-    'Sál z roku 1867 pro 450 lidí, tři hotely propojené s Casinem krytým koridorem a lázně 200 metrů od jednací místnosti. Kapacity 11 sálů, gastronomie, WellMeeting® a kontakt na konferenční oddělení.',
+    'Sál z roku 1867 pro 450 lidí, tři hotely propojené s Casinem krytým koridorem a lázně 200 metrů od jednací místnosti. Kapacity deseti sálů a salonků, gastronomie, WellMeeting® a kontakt na konferenční oddělení.',
   breadcrumb: 'Firemní akce',
   hero: {
     eyebrow: 'Konference · večírky · zasedání',
     heading: 'Firemní akce v lázních, kde máte vše na jednom místě!',
-    lead: 'Sedm hotelů, 900 pokojů, jedenáct sálů a Římské lázně. Vaši lidé přespí v hotelech propojených chodbou se Společenským domem Casino a nikdo neřeší přesuny — od zasedání představenstva pro dvacet lidí po kongres pro pět set.',
+    lead: 'Sedm hotelů, 900 pokojů, deset sálů a Římské lázně. Vaši lidé přespí v hotelech propojených chodbou se Společenským domem Casino a nikdo neřeší přesuny — od zasedání představenstva pro dvacet lidí po kongres pro pět set.',
     ctaPrimary: 'Poptat termín',
     ctaSecondary: 'Kapacity sálů',
   },
   facts: [
     { value: '500', label: 'osob v Casinu', note: 'Mramorový sál z roku 1867' },
     { value: '900+', label: 'pokojů', note: 'sedm hotelů, jedna destinace' },
-    { value: '11', label: 'sálů a salonků', note: 'od 20 do 450 míst' },
+    { value: '10', label: 'sálů a salonků', note: 'od 20 do 450 míst' },
     { value: '160 km', label: 'z Prahy', note: 'Norimberk 170, Mnichov 280' },
   ],
   corridor: {
@@ -217,7 +225,7 @@ const cs: CorporateContent = {
   },
   halls: {
     heading: 'Kapacity sálů a salonků',
-    lead: 'Jedenáct prostor v Casinu a čtyřech hotelech. Čísla jsou z konferenční brožury Ensana; konkrétní uspořádání, pódium a techniku potvrdí konferenční oddělení při rezervaci.',
+    lead: 'Deset sálů a salonků v Casinu a třech hotelech, k tomu Café Imperial ve Hvězdě. Čísla jsou z konferenční brožury Ensana; konkrétní uspořádání, pódium a techniku potvrdí konferenční oddělení při rezervaci.',
     cols: { name: 'Prostor', area: 'Plocha', theatre: 'Divadlo', classroom: 'Škola', banquet: 'Banket', ushape: 'U-tabule', reception: 'Recepce', boardroom: 'Boardroom' },
     groups: {
       casino: 'Společenský dům Casino',
@@ -241,6 +249,10 @@ const cs: CorporateContent = {
     },
     note: 'Sály v Casinu mají parkety, salonky v hotelech koberec. Casino má navíc litinovou venkovní terasu (sezónně) a kavárnu ve foyer.',
     dash: '—',
+  },
+  brochure: {
+    cta: 'Stáhnout MICE brožuru (PDF)',
+    note: 'Kompletní konferenční brožura Ensana Mariánské Lázně — sály s půdorysy, hotely, gastronomie, aktivity. Česky a anglicky, 28 stran, 4 MB.',
   },
   gastronomy: {
     eyebrow: 'Gastronomie',
@@ -350,19 +362,19 @@ const cs: CorporateContent = {
 const de: CorporateContent = {
   metaTitle: 'Firmenevents in Marienbad — Konferenzen, Weihnachtsfeiern, Sitzungen',
   metaDescription:
-    'Ein Saal von 1867 für 450 Gäste, drei Hotels durch einen überdachten Korridor mit dem Casino verbunden und das Kurbad 200 Meter vom Sitzungsraum. Kapazitäten von 11 Sälen, Gastronomie, WellMeeting® und Kontakt zur Konferenzabteilung.',
+    'Ein Saal von 1867 für 450 Gäste, drei Hotels durch einen überdachten Korridor mit dem Casino verbunden und das Kurbad 200 Meter vom Sitzungsraum. Kapazitäten von zehn Sälen und Salons, Gastronomie, WellMeeting® und Kontakt zur Konferenzabteilung.',
   breadcrumb: 'Firmenevents',
   hero: {
     eyebrow: 'Konferenzen · Feiern · Sitzungen',
     heading: 'Firmenevents im Kurort, in dem Sie alles an einem Ort haben',
-    lead: 'Sieben Hotels, 900 Zimmer, elf Säle und das Römische Bad. Ihre Leute übernachten in Hotels, die ein überdachter Korridor mit dem Gesellschaftshaus Casino verbindet — niemand organisiert Transfers. Von der Vorstandssitzung für zwanzig bis zum Kongress für fünfhundert.',
+    lead: 'Sieben Hotels, 900 Zimmer, zehn Säle und das Römische Bad. Ihre Leute übernachten in Hotels, die ein überdachter Korridor mit dem Gesellschaftshaus Casino verbindet — niemand organisiert Transfers. Von der Vorstandssitzung für zwanzig bis zum Kongress für fünfhundert.',
     ctaPrimary: 'Termin anfragen',
     ctaSecondary: 'Saalkapazitäten',
   },
   facts: [
     { value: '500', label: 'Gäste im Casino', note: 'Marmorsaal von 1867' },
     { value: '900+', label: 'Zimmer', note: 'sieben Hotels, ein Ort' },
-    { value: '11', label: 'Säle und Salons', note: 'von 20 bis 450 Plätzen' },
+    { value: '10', label: 'Säle und Salons', note: 'von 20 bis 450 Plätzen' },
     { value: '170 km', label: 'von Nürnberg', note: 'München 280, Prag 160' },
   ],
   corridor: {
@@ -416,7 +428,7 @@ const de: CorporateContent = {
   },
   halls: {
     heading: 'Kapazitäten der Säle und Salons',
-    lead: 'Elf Räume im Casino und in vier Hotels. Die Zahlen stammen aus der Konferenzbroschüre von Ensana; Bestuhlung, Bühne und Technik bestätigt die Konferenzabteilung bei der Reservierung.',
+    lead: 'Zehn Säle und Salons im Casino und in drei Hotels, dazu das Café Imperial im Hvězda. Die Zahlen stammen aus der Konferenzbroschüre von Ensana; Bestuhlung, Bühne und Technik bestätigt die Konferenzabteilung bei der Reservierung.',
     cols: { name: 'Raum', area: 'Fläche', theatre: 'Theater', classroom: 'Parlament', banquet: 'Bankett', ushape: 'U-Form', reception: 'Empfang', boardroom: 'Boardroom' },
     groups: {
       casino: 'Gesellschaftshaus Casino',
@@ -440,6 +452,10 @@ const de: CorporateContent = {
     },
     note: 'Die Säle im Casino haben Parkett, die Salons in den Hotels Teppich. Das Casino verfügt zusätzlich über eine gusseiserne Außenterrasse (saisonal) und ein Café im Foyer.',
     dash: '—',
+  },
+  brochure: {
+    cta: 'MICE-Broschüre herunterladen (PDF)',
+    note: 'Die vollständige Konferenzbroschüre von Ensana Marienbad — Säle mit Grundrissen, Hotels, Gastronomie, Aktivitäten. Tschechisch und Englisch, 28 Seiten, 4 MB.',
   },
   gastronomy: {
     eyebrow: 'Gastronomie',
@@ -549,19 +565,19 @@ const de: CorporateContent = {
 const en: CorporateContent = {
   metaTitle: 'Corporate Events in Mariánské Lázně — Conferences, Parties, Board Meetings',
   metaDescription:
-    'A ballroom from 1867 for 450 guests, three hotels linked to the Casino by a covered corridor and a spa 200 metres from the meeting room. Capacities of 11 halls, catering, WellMeeting® and a direct line to the conference team.',
+    'A ballroom from 1867 for 450 guests, three hotels linked to the Casino by a covered corridor and a spa 200 metres from the meeting room. Capacities of ten halls and lounges, catering, WellMeeting® and a direct line to the conference team.',
   breadcrumb: 'Corporate events',
   hero: {
     eyebrow: 'Conferences · parties · board meetings',
     heading: 'Corporate events in a spa town with everything in one place',
-    lead: 'Seven hotels, 900 rooms, eleven halls and the Roman Baths. Your people sleep in hotels joined to the Casino Conference Centre by a covered corridor — nobody organises transfers. From a board meeting for twenty to a congress for five hundred.',
+    lead: 'Seven hotels, 900 rooms, ten halls and the Roman Baths. Your people sleep in hotels joined to the Casino Conference Centre by a covered corridor — nobody organises transfers. From a board meeting for twenty to a congress for five hundred.',
     ctaPrimary: 'Request a date',
     ctaSecondary: 'Hall capacities',
   },
   facts: [
     { value: '500', label: 'guests in the Casino', note: 'Marble Hall from 1867' },
     { value: '900+', label: 'rooms', note: 'seven hotels, one destination' },
-    { value: '11', label: 'halls and lounges', note: 'from 20 to 450 seats' },
+    { value: '10', label: 'halls and lounges', note: 'from 20 to 450 seats' },
     { value: '160 km', label: 'from Prague', note: 'Nuremberg 170, Munich 280' },
   ],
   corridor: {
@@ -615,7 +631,7 @@ const en: CorporateContent = {
   },
   halls: {
     heading: 'Hall and lounge capacities',
-    lead: 'Eleven spaces across the Casino and four hotels. Figures are from the Ensana conference brochure; layout, stage and equipment are confirmed by the conference team on booking.',
+    lead: 'Ten halls and lounges across the Casino and three hotels, plus Café Imperial at the Hvězda. Figures are from the Ensana conference brochure; layout, stage and equipment are confirmed by the conference team on booking.',
     cols: { name: 'Room', area: 'Area', theatre: 'Theatre', classroom: 'Classroom', banquet: 'Banquet', ushape: 'U-shape', reception: 'Reception', boardroom: 'Boardroom' },
     groups: {
       casino: 'Casino Conference Centre',
@@ -639,6 +655,10 @@ const en: CorporateContent = {
     },
     note: 'The Casino halls have parquet floors, the hotel lounges carpet. The Casino also has a cast-iron outdoor terrace (seasonal) and a café in the foyer.',
     dash: '—',
+  },
+  brochure: {
+    cta: 'Download the MICE brochure (PDF)',
+    note: 'The complete Ensana Mariánské Lázně conference brochure — halls with floor plans, hotels, catering, activities. Czech and English, 28 pages, 4 MB.',
   },
   gastronomy: {
     eyebrow: 'Catering',
@@ -748,19 +768,19 @@ const en: CorporateContent = {
 const ru: CorporateContent = {
   metaTitle: 'Корпоративные мероприятия в Марианских Лазнях — конференции, вечеринки, заседания',
   metaDescription:
-    'Зал 1867 года на 450 гостей, три отеля, соединённых с Казино крытым коридором, и курорт в 200 метрах от переговорной. Вместимость 11 залов, гастрономия, WellMeeting® и контакт конференц-отдела.',
+    'Зал 1867 года на 450 гостей, три отеля, соединённых с Казино крытым коридором, и курорт в 200 метрах от переговорной. Вместимость десяти залов и салонов, гастрономия, WellMeeting® и контакт конференц-отдела.',
   breadcrumb: 'Корпоративные мероприятия',
   hero: {
     eyebrow: 'Конференции · вечеринки · заседания',
     heading: 'Корпоративные мероприятия на курорте, где всё в одном месте',
-    lead: 'Семь отелей, 900 номеров, одиннадцать залов и Римские бани. Ваши люди ночуют в отелях, соединённых крытым коридором с Общественным домом Казино, — никому не нужно организовывать трансферы. От заседания правления на двадцать человек до конгресса на пятьсот.',
+    lead: 'Семь отелей, 900 номеров, десять залов и Римские бани. Ваши люди ночуют в отелях, соединённых крытым коридором с Общественным домом Казино, — никому не нужно организовывать трансферы. От заседания правления на двадцать человек до конгресса на пятьсот.',
     ctaPrimary: 'Запросить дату',
     ctaSecondary: 'Вместимость залов',
   },
   facts: [
     { value: '500', label: 'гостей в Казино', note: 'Мраморный зал 1867 года' },
     { value: '900+', label: 'номеров', note: 'семь отелей, одно место' },
-    { value: '11', label: 'залов и салонов', note: 'от 20 до 450 мест' },
+    { value: '10', label: 'залов и салонов', note: 'от 20 до 450 мест' },
     { value: '160 км', label: 'от Праги', note: 'Нюрнберг 170, Мюнхен 280' },
   ],
   corridor: {
@@ -814,7 +834,7 @@ const ru: CorporateContent = {
   },
   halls: {
     heading: 'Вместимость залов и салонов',
-    lead: 'Одиннадцать пространств в Казино и четырёх отелях. Цифры — из конференц-брошюры Ensana; рассадку, сцену и технику подтверждает конференц-отдел при бронировании.',
+    lead: 'Десять залов и салонов в Казино и трёх отелях плюс Café Imperial в отеле Hvězda. Цифры — из конференц-брошюры Ensana; рассадку, сцену и технику подтверждает конференц-отдел при бронировании.',
     cols: { name: 'Зал', area: 'Площадь', theatre: 'Театр', classroom: 'Класс', banquet: 'Банкет', ushape: 'U-стол', reception: 'Фуршет', boardroom: 'Boardroom' },
     groups: {
       casino: 'Общественный дом Казино',
@@ -838,6 +858,10 @@ const ru: CorporateContent = {
     },
     note: 'В залах Казино — паркет, в салонах отелей — ковёр. У Казино есть также чугунная открытая терраса (сезонно) и кафе в фойе.',
     dash: '—',
+  },
+  brochure: {
+    cta: 'Скачать MICE-брошюру (PDF)',
+    note: 'Полная конференц-брошюра Ensana Марианские Лазни — залы с планами, отели, гастрономия, активности. На чешском и английском, 28 страниц, 4 МБ.',
   },
   gastronomy: {
     eyebrow: 'Гастрономия',
