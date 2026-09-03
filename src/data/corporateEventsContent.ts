@@ -149,19 +149,19 @@ export function corporateLinks(locale: Locale) {
 const cs: CorporateContent = {
   metaTitle: 'Firemní akce v Mariánských Lázních — konference, večírky, zasedání',
   metaDescription:
-    'Sál z roku 1867 pro 450 lidí, sedm hotelů propojených krytým koridorem a lázně 200 metrů od jednací místnosti. Kapacity sálů, gastronomie, WellMeeting® a kontakt na konferenční oddělení.',
+    'Sál z roku 1867 pro 450 lidí, tři hotely propojené s Casinem krytým koridorem a lázně 200 metrů od jednací místnosti. Kapacity 11 sálů, gastronomie, WellMeeting® a kontakt na konferenční oddělení.',
   breadcrumb: 'Firemní akce',
   hero: {
     eyebrow: 'Konference · večírky · zasedání',
     heading: 'Firemní akce v lázních, kde se nikam nejezdí',
-    lead: 'Sedm hotelů, 900 pokojů, deset sálů a Římské lázně — všechno propojené krytým koridorem. Účastník od příjezdu do odjezdu nepotřebuje kabát ani taxík. Od zasedání představenstva pro dvacet lidí po kongres pro pět set.',
+    lead: 'Sedm hotelů, 900 pokojů, jedenáct sálů a Římské lázně. Casino a tři hotely spojuje krytý koridor, zbylé čtyři stojí pár minut pěšky přes park — účastník od příjezdu do odjezdu nepotřebuje taxík. Od zasedání představenstva pro dvacet lidí po kongres pro pět set.',
     ctaPrimary: 'Poptat termín',
     ctaSecondary: 'Kapacity sálů',
   },
   facts: [
     { value: '500', label: 'osob v Casinu', note: 'Mramorový sál z roku 1867' },
     { value: '900+', label: 'pokojů', note: 'sedm hotelů, jedna destinace' },
-    { value: '10', label: 'sálů a salonků', note: 'od 20 do 450 míst' },
+    { value: '11', label: 'sálů a salonků', note: 'od 20 do 450 míst' },
     { value: '160 km', label: 'z Prahy', note: 'Norimberk 170, Mnichov 280' },
   ],
   corridor: {
@@ -348,19 +348,19 @@ const cs: CorporateContent = {
 const de: CorporateContent = {
   metaTitle: 'Firmenevents in Marienbad — Konferenzen, Weihnachtsfeiern, Sitzungen',
   metaDescription:
-    'Ein Saal von 1867 für 450 Gäste, sieben Hotels durch einen überdachten Korridor verbunden und das Kurbad 200 Meter vom Sitzungsraum. Saalkapazitäten, Gastronomie, WellMeeting® und Kontakt zur Konferenzabteilung.',
+    'Ein Saal von 1867 für 450 Gäste, drei Hotels durch einen überdachten Korridor mit dem Casino verbunden und das Kurbad 200 Meter vom Sitzungsraum. Kapazitäten von 11 Sälen, Gastronomie, WellMeeting® und Kontakt zur Konferenzabteilung.',
   breadcrumb: 'Firmenevents',
   hero: {
     eyebrow: 'Konferenzen · Feiern · Sitzungen',
     heading: 'Firmenevents im Kurort, in dem niemand fahren muss',
-    lead: 'Sieben Hotels, 900 Zimmer, zehn Säle und das Römische Bad — alles durch einen überdachten Korridor verbunden. Ihre Teilnehmer brauchen von der Ankunft bis zur Abreise weder Mantel noch Taxi. Von der Vorstandssitzung für zwanzig bis zum Kongress für fünfhundert.',
+    lead: 'Sieben Hotels, 900 Zimmer, elf Säle und das Römische Bad. Das Casino und drei Hotels verbindet ein überdachter Korridor, die übrigen vier stehen wenige Gehminuten entfernt am Park — Ihre Teilnehmer brauchen von der Ankunft bis zur Abreise kein Taxi. Von der Vorstandssitzung für zwanzig bis zum Kongress für fünfhundert.',
     ctaPrimary: 'Termin anfragen',
     ctaSecondary: 'Saalkapazitäten',
   },
   facts: [
     { value: '500', label: 'Gäste im Casino', note: 'Marmorsaal von 1867' },
     { value: '900+', label: 'Zimmer', note: 'sieben Hotels, ein Ort' },
-    { value: '10', label: 'Säle und Salons', note: 'von 20 bis 450 Plätzen' },
+    { value: '11', label: 'Säle und Salons', note: 'von 20 bis 450 Plätzen' },
     { value: '170 km', label: 'von Nürnberg', note: 'München 280, Prag 160' },
   ],
   corridor: {
@@ -547,19 +547,19 @@ const de: CorporateContent = {
 const en: CorporateContent = {
   metaTitle: 'Corporate Events in Mariánské Lázně — Conferences, Parties, Board Meetings',
   metaDescription:
-    'A ballroom from 1867 for 450 guests, seven hotels linked by a covered corridor and a spa 200 metres from the meeting room. Hall capacities, catering, WellMeeting® and a direct line to the conference team.',
+    'A ballroom from 1867 for 450 guests, three hotels linked to the Casino by a covered corridor and a spa 200 metres from the meeting room. Capacities of 11 halls, catering, WellMeeting® and a direct line to the conference team.',
   breadcrumb: 'Corporate events',
   hero: {
     eyebrow: 'Conferences · parties · board meetings',
     heading: 'Corporate events in a spa town where nobody needs a car',
-    lead: 'Seven hotels, 900 rooms, ten halls and the Roman Baths — all joined by a covered corridor. From arrival to departure, your people need neither a coat nor a taxi. From a board meeting for twenty to a congress for five hundred.',
+    lead: 'Seven hotels, 900 rooms, eleven halls and the Roman Baths. A covered corridor joins the Casino to three of the hotels; the other four are a few minutes on foot across the park — from arrival to departure, your people never need a taxi. From a board meeting for twenty to a congress for five hundred.',
     ctaPrimary: 'Request a date',
     ctaSecondary: 'Hall capacities',
   },
   facts: [
     { value: '500', label: 'guests in the Casino', note: 'Marble Hall from 1867' },
     { value: '900+', label: 'rooms', note: 'seven hotels, one destination' },
-    { value: '10', label: 'halls and lounges', note: 'from 20 to 450 seats' },
+    { value: '11', label: 'halls and lounges', note: 'from 20 to 450 seats' },
     { value: '160 km', label: 'from Prague', note: 'Nuremberg 170, Munich 280' },
   ],
   corridor: {
@@ -746,19 +746,19 @@ const en: CorporateContent = {
 const ru: CorporateContent = {
   metaTitle: 'Корпоративные мероприятия в Марианских Лазнях — конференции, вечеринки, заседания',
   metaDescription:
-    'Зал 1867 года на 450 гостей, семь отелей, соединённых крытым коридором, и курорт в 200 метрах от переговорной. Вместимость залов, гастрономия, WellMeeting® и контакт конференц-отдела.',
+    'Зал 1867 года на 450 гостей, три отеля, соединённых с Казино крытым коридором, и курорт в 200 метрах от переговорной. Вместимость 11 залов, гастрономия, WellMeeting® и контакт конференц-отдела.',
   breadcrumb: 'Корпоративные мероприятия',
   hero: {
     eyebrow: 'Конференции · вечеринки · заседания',
     heading: 'Корпоративные мероприятия на курорте, где никуда не нужно ехать',
-    lead: 'Семь отелей, 900 номеров, десять залов и Римские бани — всё соединено крытым коридором. Вашим участникам от приезда до отъезда не понадобятся ни пальто, ни такси. От заседания правления на двадцать человек до конгресса на пятьсот.',
+    lead: 'Семь отелей, 900 номеров, одиннадцать залов и Римские бани. Казино и три отеля соединяет крытый коридор, остальные четыре — в нескольких минутах ходьбы через парк; вашим участникам от приезда до отъезда не понадобится такси. От заседания правления на двадцать человек до конгресса на пятьсот.',
     ctaPrimary: 'Запросить дату',
     ctaSecondary: 'Вместимость залов',
   },
   facts: [
     { value: '500', label: 'гостей в Казино', note: 'Мраморный зал 1867 года' },
     { value: '900+', label: 'номеров', note: 'семь отелей, одно место' },
-    { value: '10', label: 'залов и салонов', note: 'от 20 до 450 мест' },
+    { value: '11', label: 'залов и салонов', note: 'от 20 до 450 мест' },
     { value: '160 км', label: 'от Праги', note: 'Нюрнберг 170, Мюнхен 280' },
   ],
   corridor: {
