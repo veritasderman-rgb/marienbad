@@ -48,10 +48,14 @@ function hp(id: string): HotelPhoto {
   return found
 }
 
-/** Fotky k situacím. Vánoce mají jen svatební sadu (na výšku), zbytek fotobanku. */
+/**
+ * Fotky k situacím. Vánoce a konference berou Casino ze svatební sady (jiné
+ * fotky Casina ve fotobance nejsou, obě jsou na výšku), zbytek hotelovou
+ * fotobanku. Konference schválně Casino, ne hotelový salonek — zadání 3. 9.
+ */
 const SITUATION_PHOTO: Record<string, { kind: 'lib'; src: string; portrait?: boolean } | { kind: 'hotel'; photo: HotelPhoto }> = {
   christmas: { kind: 'lib', src: `${LIB}wedding/casino-hall-floral-centrepiece.jpg`, portrait: true },
-  conference: { kind: 'hotel', photo: hp('butterfly/mice/butterfly-mice-salon-bellevue-16a3746') },
+  conference: { kind: 'lib', src: `${LIB}wedding/casino-marble-hall-tables.jpg`, portrait: true },
   offsite: { kind: 'hotel', photo: hp('pacifik/mice/pacifik-mice-cpt-james-cook-s-lounge-16a4301') },
   // Knihovna v uspořádání boardroom — přesně to, co představenstvo hledá.
   board: { kind: 'hotel', photo: hp('nove-lazne/mice/nove-lazne-mice-edward-s-library-16a6283') },
