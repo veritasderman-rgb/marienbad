@@ -194,10 +194,10 @@ export const venueLinks: Record<Locale, Record<string, string>> = {
 
 /** Odkazy na související čtení — stejné pravidlo degradace jako výše. */
 export const relatedLinks: Record<Locale, string[]> = {
-  cs: ['/cs/magazin/svatba-v-laznich', '/cs/magazin/historie-kolonady', '/cs/magazin/zpivajici-fontana'],
-  de: ['/de/magazin/hochzeit-in-marienbad', '/de/magazin/geschichte-der-kolonnade', '/de/kolonnade'],
-  en: ['/en/magazine/wedding-in-marienbad', '/en/magazine/history-of-the-colonnade', '/en/magazine/singing-fountain'],
-  ru: ['/ru/zhurnal/svadba-v-marianskikh-laznyakh', '/ru/kolonnada', '/ru/zhurnal/poyushchij-fontan'],
+  cs: ['/cs/magazin/svatba-v-laznich', '/cs/magazin/historie-kolonady', '/cs/magazin/zpivajici-fontana', '/cs/firemni-akce'],
+  de: ['/de/magazin/hochzeit-in-marienbad', '/de/magazin/geschichte-der-kolonnade', '/de/kolonnade', '/de/firmenevents'],
+  en: ['/en/magazine/wedding-in-marienbad', '/en/magazine/history-of-the-colonnade', '/en/magazine/singing-fountain', '/en/corporate-events'],
+  ru: ['/ru/zhurnal/svadba-v-marianskikh-laznyakh', '/ru/kolonnada', '/ru/zhurnal/poyushchij-fontan', '/ru/korporativnye-meropriyatiya'],
 }
 
 const cs: WeddingsContent = {
@@ -456,6 +456,7 @@ const cs: WeddingsContent = {
       { title: 'Svatba v lázních', note: 'Jak ji naplánovat krok za krokem' },
       { title: 'Historie kolonády', note: 'Proč vypadá tak, jak vypadá' },
       { title: 'Zpívající fontána', note: 'Repertoár, časy a jak vznikla' },
+      { title: 'Firemní akce', note: 'Stejné sály pro konference, večírky a zasedání' },
     ],
   },
   alts: {
@@ -727,6 +728,7 @@ const de: WeddingsContent = {
       { title: 'Hochzeit in Marienbad', note: 'Wie man sie Schritt für Schritt plant' },
       { title: 'Geschichte der Kolonnade', note: 'Warum sie so aussieht, wie sie aussieht' },
       { title: 'Die Kolonnade', note: 'Quellen, Fontäne und was drumherum liegt' },
+      { title: 'Firmenevents', note: 'Dieselben Säle für Konferenzen, Feiern und Sitzungen' },
     ],
   },
   alts: {
@@ -998,6 +1000,7 @@ const en: WeddingsContent = {
       { title: 'A wedding in the spa town', note: 'How to plan it, step by step' },
       { title: 'History of the colonnade', note: 'Why it looks the way it does' },
       { title: 'The Singing Fountain', note: 'The repertoire, the times, and how it came about' },
+      { title: 'Corporate events', note: 'The same halls for conferences, parties and board meetings' },
     ],
   },
   alts: {
@@ -1269,6 +1272,7 @@ const ru: WeddingsContent = {
       { title: 'Свадьба в Марианских Лазнях', note: 'Как спланировать её шаг за шагом' },
       { title: 'Колоннада', note: 'Источники, фонтан и всё вокруг' },
       { title: 'Поющий фонтан', note: 'Репертуар, расписание и как он появился' },
+      { title: 'Корпоративные мероприятия', note: 'Те же залы для конференций, вечеринок и заседаний' },
     ],
   },
   alts: {

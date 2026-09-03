@@ -1,0 +1,572 @@
+---
+/**
+ * Landing page pro firemní akce — obsah sdílený všemi čtyřmi jazyky.
+ * Texty drží src/data/corporateEventsContent.ts, sem patří jen rozvržení
+ * a výběr fotek (fotky jsou jazykově neutrální, proto je nemají data).
+ *
+ * Dva zdroje obrázků, dva způsoby vložení:
+ *  - knihovna (/images/library/…) přes <Pic>, který si najde WebP v manifestu
+ *  - hotelová fotobanka přes srcset() z hotelPhotos.ts — ta má vlastní
+ *    manifest a tři pevné šířky, <Pic> by ji nenašel
+ *
+ * Zrcadlový a Červený sál ve fotobance chybí, proto je stránka popisuje jen
+ * slovy; jakmile fotky dorazí, patří do bloku situací a do tabulky.
+ */
+import Pic from '@/components/Pic.astro'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import type { Locale } from '@/i18n/config'
+import { routes } from '@/i18n/config'
+import { hotelPhotos, srcset, displaySize, type HotelPhoto } from '@/lib/hotelPhotos'
+import {
+  corporateEventsContent,
+  corporateLinks,
+  inquiryMailto,
+  HALLS,
+  CONFERENCE_MAIL,
+  CONFERENCE_MANAGER_MAIL,
+  CONFERENCE_PHONE,
+  CONFERENCE_PHONE_HREF,
+} from '@/data/corporateEventsContent'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const c = corporateEventsContent[locale]
+const links = corporateLinks(locale)
+
+const LIB = '/images/library/'
+const mailto = inquiryMailto(locale, c.hero.heading)
+const benefitsMailto = inquiryMailto(locale, c.benefits.heading)
+
+/** Fotka z hotelové fotobanky podle id — chybějící id shodí build, ne stránku. */
+function hp(id: string): HotelPhoto {
+  const slug = id.split('/')[0]
+  const found = hotelPhotos(slug).find((p) => p.id === id)
+  if (!found) throw new Error(`Hotelová fotka ${id} není ve fotobance`)
+  return found
+}
+
+/** Fotky k situacím. Vánoce mají jen svatební sadu (na výšku), zbytek fotobanku. */
+const SITUATION_PHOTO: Record<string, { kind: 'lib'; src: string; portrait?: boolean } | { kind: 'hotel'; photo: HotelPhoto }> = {
+  christmas: { kind: 'lib', src: `${LIB}wedding/casino-hall-floral-centrepiece.jpg`, portrait: true },
+  conference: { kind: 'hotel', photo: hp('butterfly/mice/butterfly-mice-salon-bellevue-16a3746') },
+  offsite: { kind: 'hotel', photo: hp('pacifik/mice/pacifik-mice-cpt-james-cook-s-lounge-16a4301') },
+  // Knihovna v uspořádání boardroom — přesně to, co představenstvo hledá.
+  board: { kind: 'hotel', photo: hp('nove-lazne/mice/nove-lazne-mice-edward-s-library-16a6283') },
+}
+/** Vitríny s knihami: důkaz, že „knihovna" není jen jméno místnosti. */
+const BOARD_LIBRARY = hp('nove-lazne/mice/nove-lazne-mice-edward-s-library-16a7081')
+const BOARD_GREEN = hp('nove-lazne/mice/nove-lazne-mice-green-lounge-16a6955')
+const CAFE_IMPERIAL = hp('hvezda/dining/hvezda-cafe-imperial-16a3412')
+
+const SITUATION_LINK: Record<string, string> = {
+  christmas: links.christmas,
+  conference: '#saly',
+  offsite: '#den',
+  board: links.hotel('nove-lazne'),
+}
+const AFTER_LINK: Record<string, string> = {
+  spa: links.romanBaths,
+  golf: links.golf,
+  trips: links.trips,
+}
+const relatedHrefs = [links.weddings, links.christmas, links.accommodation]
+
+/** Skupiny sálů v pořadí, v jakém je má brožura: Casino, pak hotely. */
+const GROUP_ORDER = ['casino', 'nove-lazne', 'pacifik', 'butterfly', 'hvezda']
+const hallGroups = GROUP_ORDER.map((g) => ({ key: g, rows: HALLS.filter((h) => h.group === g) }))
+const cap = (n: number | null) => (n === null ? c.halls.dash : String(n))
+
+const breadcrumbItems = [{ label: c.breadcrumb, href: `/${locale}/${routes['corporate-events'][locale]}` }]
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.faq.items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+})
+
+const serviceSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: c.breadcrumb,
+  name: c.hero.heading,
+  description: c.metaDescription,
+  areaServed: { '@type': 'City', name: 'Mariánské Lázně' },
+  provider: { '@type': 'Organization', name: 'Marienbad.com', url: 'https://marienbad.com' },
+})
+---
+
+<script type="application/ld+json" set:html={serviceSchema} is:inline />
+<script type="application/ld+json" set:html={faqSchema} is:inline />
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="relative min-h-[72vh] flex items-end overflow-hidden bg-indigo-950 text-white">
+  <div class="absolute inset-0">
+    <Pic
+      src={`${LIB}wedding/casino-marble-hall-banquet.jpg`}
+      alt={c.alts.hero}
+      class="w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/95 via-indigo-950/60 to-indigo-950/20"></div>
+
+  <div class="relative container-wide pt-32 pb-14 md:pb-20">
+    <Breadcrumbs items={breadcrumbItems} locale={locale} />
+    <p class="mt-6 text-turquoise-200 font-semibold tracking-wide uppercase text-sm">{c.hero.eyebrow}</p>
+    <h1 class="mt-3 font-heading font-bold leading-tight max-w-3xl" style="font-size: var(--text-h1);">{c.hero.heading}</h1>
+    <p class="mt-6 text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl">{c.hero.lead}</p>
+    <div class="mt-9 flex flex-wrap gap-4">
+      <a href="#poptavka" class="btn-primary" data-ga="corporate-hero-cta">
+        {c.hero.ctaPrimary}
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+      </a>
+      <a href="#saly" class="btn-ghost !border-white/40 !text-white hover:!bg-white/10">{c.hero.ctaSecondary}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Čtyři čísla ──────────────────────────────────────────────────── -->
+<section class="bg-white border-b border-beige-200">
+  <div class="container-wide">
+    <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-beige-200">
+      {c.facts.map((f) => (
+        <div class="px-5 py-8 md:px-8 md:py-10">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 tabular-nums">{f.value}</div>
+          <div class="mt-2 font-semibold text-beige-950 leading-snug">{f.label}</div>
+          <div class="mt-1 text-sm text-beige-700 leading-snug">{f.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Jedna pravda: koridor ────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.corridor.heading}</h2>
+      <p class="mt-5 text-lg text-beige-900 leading-relaxed">{c.corridor.body}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Čtyři situace ────────────────────────────────────────────────── -->
+<section id="situace" class="section bg-white scroll-mt-24">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-wider text-turquoise-600">{c.situations.eyebrow}</p>
+      <h2 class="mt-2 font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.situations.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.situations.lead}</p>
+    </div>
+
+    <div class="mt-14 space-y-16 lg:space-y-24">
+      {c.situations.items.map((s, i) => {
+        const photo = SITUATION_PHOTO[s.key]
+        const flip = i % 2 === 1
+        return (
+          <article class="grid lg:grid-cols-[1fr_0.9fr] gap-10 lg:gap-16 items-center">
+            <div class={flip ? 'lg:order-2' : ''}>
+              <p class="text-sm font-semibold text-turquoise-700">{s.tagline}</p>
+              <h3 class="mt-2 font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-snug">{s.title}</h3>
+              <p class="mt-4 text-lg text-beige-900 leading-relaxed">{s.body}</p>
+              <dl class="mt-6 grid sm:grid-cols-[auto_1fr] gap-x-6 gap-y-3 text-sm">
+                <dt class="font-semibold text-beige-950">{c.situations.roomLabel}</dt>
+                <dd class="text-beige-800">{s.room}</dd>
+                <dt class="font-semibold text-beige-950">{c.situations.sizeLabel}</dt>
+                <dd class="text-beige-800 tabular-nums">{s.size}</dd>
+              </dl>
+              <a href={SITUATION_LINK[s.key]} class="btn-ghost mt-7" data-ga={`corporate-situation-${s.key}`}>{s.linkLabel}</a>
+            </div>
+
+            <div class={flip ? 'lg:order-1' : ''}>
+              {photo.kind === 'lib' ? (
+                <div class={`overflow-hidden rounded-3xl shadow-card ${photo.portrait ? 'aspect-[4/5] max-w-md lg:max-w-none mx-auto' : ''}`}>
+                  <Pic src={photo.src} alt={c.alts[s.key]} class="w-full h-full object-cover" sizes="(min-width: 1024px) 42vw, 100vw" />
+                </div>
+              ) : (
+                <div class="overflow-hidden rounded-3xl shadow-card">
+                  <img
+                    src={`${photo.photo.base}-1600.webp`}
+                    srcset={srcset(photo.photo)}
+                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    alt={c.alts[s.key]}
+                    width={displaySize(photo.photo).width}
+                    height={displaySize(photo.photo).height}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+
+              {/* Představenstvo má nejvíc na ukázku: vitríny knihovny a Zelený salonek. */}
+              {s.key === 'board' && (
+                <div class="mt-4 grid grid-cols-2 gap-4">
+                  {[
+                    { p: BOARD_LIBRARY, alt: c.alts.boardLibrary },
+                    { p: BOARD_GREEN, alt: c.alts.boardGreen },
+                  ].map(({ p, alt }) => (
+                    <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+                      <img
+                        src={`${p.base}-800.webp`}
+                        srcset={srcset(p)}
+                        sizes="(min-width: 1024px) 20vw, 50vw"
+                        alt={alt}
+                        width={displaySize(p).width}
+                        height={displaySize(p).height}
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        )
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- ── Tabulka sálů ─────────────────────────────────────────────────── -->
+<section id="saly" class="section bg-beige-50 scroll-mt-24">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.halls.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.halls.lead}</p>
+    </div>
+
+    {/* Na mobilu karty, od lg tabulka — osm sloupců by na telefonu nikdo nečetl. */}
+    <div class="mt-10 space-y-8 lg:hidden">
+      {hallGroups.map((g) => (
+        <div>
+          <h3 class="font-heading text-sm font-bold uppercase tracking-wider text-turquoise-700">{c.halls.groups[g.key]}</h3>
+          <div class="mt-3 grid gap-3 sm:grid-cols-2">
+            {g.rows.map((r) => (
+              <div class="rounded-2xl border border-beige-200 bg-white p-5">
+                <div class="flex items-baseline justify-between gap-3">
+                  <h4 class="font-heading text-lg font-bold text-indigo-700 leading-snug">{c.halls.names[r.key]}</h4>
+                  <span class="text-sm text-beige-700 tabular-nums whitespace-nowrap">{r.area}</span>
+                </div>
+                <dl class="mt-3 grid grid-cols-3 gap-x-3 gap-y-2 text-sm">
+                  {[
+                    [c.halls.cols.theatre, r.theatre],
+                    [c.halls.cols.classroom, r.classroom],
+                    [c.halls.cols.banquet, r.banquet],
+                    [c.halls.cols.ushape, r.ushape],
+                    [c.halls.cols.reception, r.reception],
+                    [c.halls.cols.boardroom, r.boardroom],
+                  ].map(([label, n]) => (
+                    <div>
+                      <dt class="text-beige-700">{label}</dt>
+                      <dd class="font-semibold text-beige-950 tabular-nums">{cap(n as number | null)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="hidden lg:block mt-10 overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b-2 border-beige-300">
+            <th class="py-3 pr-4 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700">{c.halls.cols.name}</th>
+            <th class="py-3 px-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.area}</th>
+            <th class="py-3 px-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.theatre}</th>
+            <th class="py-3 px-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.classroom}</th>
+            <th class="py-3 px-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.banquet}</th>
+            <th class="py-3 px-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.ushape}</th>
+            <th class="py-3 px-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.reception}</th>
+            <th class="py-3 pl-3 font-heading text-sm font-bold uppercase tracking-wider text-indigo-700 text-right">{c.halls.cols.boardroom}</th>
+          </tr>
+        </thead>
+        {hallGroups.map((g) => (
+          <tbody>
+            <tr>
+              <th colspan="8" class="pt-6 pb-2 text-left font-heading text-xs font-bold uppercase tracking-wider text-turquoise-700">{c.halls.groups[g.key]}</th>
+            </tr>
+            {g.rows.map((r) => (
+              <tr class="border-b border-beige-200">
+                <td class="py-3.5 pr-4 font-semibold text-beige-950">{c.halls.names[r.key]}</td>
+                <td class="py-3.5 px-3 text-beige-700 text-right tabular-nums whitespace-nowrap">{r.area}</td>
+                <td class="py-3.5 px-3 text-beige-900 text-right tabular-nums">{cap(r.theatre)}</td>
+                <td class="py-3.5 px-3 text-beige-900 text-right tabular-nums">{cap(r.classroom)}</td>
+                <td class="py-3.5 px-3 text-beige-900 text-right tabular-nums">{cap(r.banquet)}</td>
+                <td class="py-3.5 px-3 text-beige-900 text-right tabular-nums">{cap(r.ushape)}</td>
+                <td class="py-3.5 px-3 text-beige-900 text-right tabular-nums">{cap(r.reception)}</td>
+                <td class="py-3.5 pl-3 text-beige-900 text-right tabular-nums">{cap(r.boardroom)}</td>
+              </tr>
+            ))}
+          </tbody>
+        ))}
+      </table>
+    </div>
+
+    <p class="mt-5 text-sm text-beige-700 leading-relaxed max-w-2xl">{c.halls.note}</p>
+  </div>
+</section>
+
+<!-- ── Gastronomie ──────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-turquoise-600">{c.gastronomy.eyebrow}</p>
+        <h2 class="mt-2 font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.gastronomy.heading}</h2>
+        <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.gastronomy.lead}</p>
+        <ul class="mt-7 flex flex-wrap gap-2.5">
+          {c.gastronomy.items.map((item) => (
+            <li class="px-4 py-2 rounded-full bg-turquoise-50 text-turquoise-800 border border-turquoise-200 text-sm font-medium">{item}</li>
+          ))}
+        </ul>
+        <p class="mt-7 text-sm text-beige-800 leading-relaxed bg-beige-100 rounded-xl p-5 border-l-4 border-turquoise-400">{c.gastronomy.note}</p>
+        <p class="mt-4 text-sm text-beige-700 leading-relaxed">{c.gastronomy.restaurants}</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        {[
+          { src: `${LIB}cuisine/soup-pour-tableside.jpg`, alt: c.alts.gastro1 },
+          { src: `${LIB}cuisine/flambe-vegetable-pan.jpg`, alt: c.alts.gastro2 },
+          { src: `${LIB}cuisine/chocolate-poached-pears.jpg`, alt: c.alts.gastro3 },
+        ].map((p) => (
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+            <Pic src={p.src} alt={p.alt} class="w-full h-full object-cover" sizes="(min-width: 1024px) 24vw, 48vw" />
+          </div>
+        ))}
+        <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+          <img
+            src={`${CAFE_IMPERIAL.base}-800.webp`}
+            srcset={srcset(CAFE_IMPERIAL)}
+            sizes="(min-width: 1024px) 24vw, 48vw"
+            alt={c.alts.gastro4}
+            width={displaySize(CAFE_IMPERIAL).width}
+            height={displaySize(CAFE_IMPERIAL).height}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Den v lázních (WellMeeting®) ──────────────────────────────────── -->
+<section id="den" class="section bg-indigo-700 text-white relative overflow-hidden scroll-mt-24">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.18)_0%,_transparent_60%)]"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-wider text-turquoise-300">{c.day.eyebrow}</p>
+      <h2 class="mt-2 font-heading text-3xl md:text-4xl font-bold leading-tight">{c.day.heading}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{c.day.lead}</p>
+    </div>
+
+    <ol class="mt-12 relative border-l-2 border-turquoise-300/50 ml-3 space-y-7">
+      {c.day.items.map((d) => (
+        <li class="pl-6 md:pl-8 grid md:grid-cols-[5rem_1fr] gap-x-6 gap-y-1">
+          <span class="absolute -left-[9px] mt-1.5 w-4 h-4 rounded-full bg-turquoise-300 ring-4 ring-indigo-700"></span>
+          <span class="font-heading font-bold text-turquoise-200 tabular-nums">{d.time}</span>
+          <div>
+            <h3 class="font-heading text-lg md:text-xl font-bold leading-snug">{d.title}</h3>
+            <p class="mt-1 text-white/80 leading-relaxed max-w-2xl">{d.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <p class="mt-10 text-sm text-turquoise-100/90 max-w-2xl">{c.day.footnote}</p>
+  </div>
+</section>
+
+<!-- ── Po jednání ───────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.after.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.after.lead}</p>
+    </div>
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      {c.after.items.map((a) => (
+        <a href={AFTER_LINK[a.key]} class="group block rounded-2xl border border-beige-200 bg-white p-7 hover:border-turquoise-300 hover:shadow-md transition-all" data-ga={`corporate-after-${a.key}`}>
+          <h3 class="font-heading text-xl font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors leading-snug">{a.title}</h3>
+          <p class="mt-3 text-beige-800 leading-relaxed">{a.text}</p>
+          <span class="mt-5 inline-flex items-center gap-2 font-semibold text-turquoise-700">
+            {a.linkLabel}
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Jak k nám ────────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-[1fr_0.9fr] gap-10 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.travel.heading}</h2>
+        <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.travel.lead}</p>
+        <dl class="mt-7 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
+          {c.travel.distances.map((d) => (
+            <div>
+              <dt class="text-sm text-beige-700">{d.place}</dt>
+              <dd class="font-heading text-xl font-bold text-indigo-700 tabular-nums">{d.km}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-7 text-beige-800 leading-relaxed">{c.travel.parking} <a href={links.parking} class="text-turquoise-700 font-semibold underline underline-offset-4 hover:text-turquoise-800">→</a></p>
+        <p class="mt-3 text-beige-800 leading-relaxed">{c.travel.wifi}</p>
+      </div>
+      <div class="overflow-hidden rounded-3xl shadow-card">
+        <Pic src={`${LIB}town/aerial-spa-quarter.jpg`} alt={c.alts.travel} class="w-full h-full object-cover" sizes="(min-width: 1024px) 42vw, 100vw" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Zaměstnanecké benefity — jiná cílovka, proto jen pruh ────────── -->
+<section class="bg-beige-100 border-y border-beige-200">
+  <div class="container-wide py-10 md:py-12">
+    <div class="grid lg:grid-cols-[1fr_auto] gap-6 items-center">
+      <div>
+        <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 leading-snug">{c.benefits.heading}</h2>
+        <p class="mt-2 text-beige-800 leading-relaxed max-w-3xl">{c.benefits.body}</p>
+      </div>
+      <a href={benefitsMailto} class="btn-ghost whitespace-nowrap" data-ga="corporate-benefits">{c.benefits.cta}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+<section class="section bg-beige-50">
+  <div class="container-wide">
+    <div class="max-w-3xl">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-indigo-700 leading-tight">{c.faq.heading}</h2>
+      <p class="mt-4 text-lg text-beige-900 leading-relaxed">{c.faq.lead}</p>
+    </div>
+
+    <div class="mt-10 max-w-3xl space-y-3">
+      {c.faq.items.map((f) => (
+        <details class="group rounded-2xl border border-beige-200 bg-white overflow-hidden" data-ga="corporate-faq">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 font-semibold text-beige-950 hover:text-indigo-700 transition-colors">
+            <span>{f.q}</span>
+            <svg class="w-5 h-5 shrink-0 text-turquoise-500 transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+          </summary>
+          <div class="px-6 pb-6 -mt-1 text-beige-900 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Poptávka ─────────────────────────────────────────────────────── -->
+<section id="poptavka" class="relative overflow-hidden bg-aubergine-900 text-white scroll-mt-24">
+  <div class="absolute inset-0">
+    <Pic src={`${LIB}colonnade/colonnade-interior-hall.jpg`} alt="" class="w-full h-full object-cover" sizes="100vw" />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/85 to-aubergine-950/50"></div>
+
+  <div class="relative container-wide">
+    <div class="max-w-2xl py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold leading-tight">{c.finalCta.heading}</h2>
+      <p class="mt-5 text-lg text-white/85 leading-relaxed">{c.finalCta.body}</p>
+      <div class="mt-9">
+        <a href={mailto} class="btn-primary" data-ga="corporate-footer-cta">
+          {c.finalCta.cta}
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      {/* Conference manager je na webu kontaktem, ne jménem — zadání 1. 9. 2026. */}
+      <dl class="mt-10 grid sm:grid-cols-2 gap-6 text-sm">
+        <div>
+          <dt class="text-white/60 uppercase tracking-wider text-xs font-semibold">{c.finalCta.managerLabel}</dt>
+          <dd class="mt-1.5">
+            <a href={`mailto:${CONFERENCE_MANAGER_MAIL}`} class="font-semibold text-turquoise-200 hover:text-white underline underline-offset-4 break-all" data-ga="corporate-manager-mail">{CONFERENCE_MANAGER_MAIL}</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-white/60 uppercase tracking-wider text-xs font-semibold">{c.finalCta.deptLabel}</dt>
+          <dd class="mt-1.5 space-y-1">
+            <a href={`mailto:${CONFERENCE_MAIL}`} class="block font-semibold text-turquoise-200 hover:text-white underline underline-offset-4 break-all" data-ga="corporate-dept-mail">{CONFERENCE_MAIL}</a>
+            <a href={`tel:${CONFERENCE_PHONE_HREF}`} class="block font-semibold text-turquoise-200 hover:text-white underline underline-offset-4 tabular-nums" data-ga="corporate-phone">{CONFERENCE_PHONE}</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ── Související ──────────────────────────────────────────────────── -->
+<section class="section bg-white">
+  <div class="container-wide">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 leading-tight">{c.related.heading}</h2>
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      {c.related.items.map((r, i) => (
+        <a href={relatedHrefs[i]} class="group block rounded-2xl border border-beige-200 p-6 hover:border-turquoise-300 hover:shadow-md transition-all">
+          <h3 class="font-heading text-lg font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors leading-snug">{r.title}</h3>
+          <p class="mt-2 text-sm text-beige-700 leading-relaxed">{r.note}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Stejná brána souhlasu jako u svateb — gtag existuje i před souhlasem,
+  // takže se nesmí posílat naslepo (viz GoogleAnalytics.astro).
+  let consentGranted = false
+  try {
+    consentGranted = localStorage.getItem('ml-consent') === 'granted'
+  } catch {
+    /* localStorage může být nedostupné */
+  }
+  document.addEventListener('ml:consent-granted', () => { consentGranted = true })
+  document.addEventListener('ml:consent-denied', () => { consentGranted = false })
+
+  const send = (name: string, label: string) => {
+    if (!consentGranted) return
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void }
+    w.gtag?.('event', name, { event_category: 'corporate', event_label: label })
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ga]').forEach((el) => {
+    el.addEventListener('click', () => send('corporate_click', el.dataset.ga ?? ''), { passive: true })
+  })
+
+  document.querySelectorAll<HTMLDetailsElement>('details[data-ga="corporate-faq"]').forEach((d) => {
+    d.addEventListener('toggle', () => {
+      if (d.open) send('corporate_faq_open', d.querySelector('summary')?.textContent?.trim() ?? '')
+    })
+  })
+
+  const halls = document.getElementById('saly')
+  if (halls && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          send('corporate_reach_halls', 'saly')
+          io.disconnect()
+        }
+      },
+      { threshold: 0.25 },
+    )
+    io.observe(halls)
+  }
+</script>

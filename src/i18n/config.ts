@@ -44,6 +44,13 @@ export const routes = {
    * ve výsledcích vyhledávání nepřebíjejí.
    */
   weddings: { de: 'hochzeit', en: 'weddings', cs: 'svatba', ru: 'svadba' },
+  /** Landing page pro firemní akce — konference, večírky, výjezdní zasedání, představenstvo. */
+  'corporate-events': {
+    de: 'firmenevents',
+    en: 'corporate-events',
+    cs: 'firemni-akce',
+    ru: 'korporativnye-meropriyatiya',
+  },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>
 
 export type SectionKey = keyof typeof routes
