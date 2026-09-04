@@ -107,6 +107,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   const response = await next()
+  // Vestavěné i18n Astra běží *kolem* tohoto middlewaru se strategií
+  // „prefix vždy, bez přesměrování" (astro.config: prefixDefaultLocale: true,
+  // redirectToDefaultLocale: false). Každou stránku bez jazykového prefixu
+  // /de|/en|/cs|/ru proto obalí stavem 404 — vykreslí ji, ale odpoví 404.
+  // Portál prefix nemá, takže /portal/login tak končil jako 404 v produkci.
+  // Jediný únik, který Astro nabízí, je tahle interní hlavička: i18n
+  // middleware ji čte (astro/dist/i18n/index.js, notFound) a odpověď nechá
+  // být; před odesláním ji Astro samo odstraní (core/app/index.js).
+  if (!isApi) response.headers.set('X-Astro-Reroute', 'no')
   response.headers.set('X-Robots-Tag', 'noindex, nofollow')
   response.headers.set('Cache-Control', 'no-store')
   if (!isApi) response.headers.set('Content-Security-Policy', PORTAL_CSP)
