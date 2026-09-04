@@ -42,7 +42,16 @@ function isPublicBrowserPath(path: string): boolean {
 
 const PORTAL_CSP = [
   "default-src 'self'",
-  "script-src 'self'",
+  // 'unsafe-inline' je nutné: Astro vkládá runtime ostrůvků (<astro-island>)
+  // a hydratační direktivy client:load přímo do HTML jako inline <script>
+  // (astro/dist/runtime/server/scripts.js) — vite.build.assetsInlineLimit
+  // na to nemá vliv. Se samotným 'self' prohlížeč tyhle skripty zablokoval,
+  // React formuláře (AuthFlow) se nehydratovaly a tlačítka přihlášení
+  // i pozvánky nic nedělala; formulář pak odešel nativně jako GET.
+  // vercel.json má pro /portal 'unsafe-inline' od srpnové opravy CSP —
+  // při dvou CSP hlavičkách ale platí průnik, takže rozhodovala tahle.
+  // Zpřísnění na hashe/nonce je samostatný krok (experimental.csp).
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
