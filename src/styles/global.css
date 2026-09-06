@@ -760,6 +760,31 @@ a.figure-credit:hover {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  overflow: hidden;
+}
+/* fotka pramene: na šířku karty, s atribucí CC přímo pod snímkem */
+.spring-card-media {
+  margin: -1.25rem -1.25rem 0.75rem;
+}
+.spring-card-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0;
+  margin: 0;
+}
+.spring-card-credit,
+.prose-marienbad .spring-card-credit {
+  margin: 0;
+  padding: 0.3rem 1.25rem 0;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--color-warm-grey, #6E6875);
+}
+.spring-card-credit a {
+  color: inherit;
+  text-decoration: underline;
 }
 .spring-card-location {
   font-size: 0.6875rem;
