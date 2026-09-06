@@ -618,6 +618,346 @@ a.figure-credit:hover {
   margin: 0.6rem 0 0;
 }
 
+/* Seznamy uvnitř vsuvek nejsou próza: .prose-marienbad ul/ol má vyšší
+   specificitu než třída, proto se odrážky a číslování vypínají výslovně. */
+.prose-marienbad .cure-path-steps,
+.prose-marienbad .ip-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.prose-marienbad .cure-path-step,
+.prose-marienbad .ip-item {
+  margin-bottom: 0;
+  line-height: inherit;
+  font-size: inherit;
+}
+
+/* ─── Article Cure Path ({% cure-path %} — čtyři kroky pitné kúry) ─── */
+.article-cure-path {
+  margin: 2.5rem 0;
+  max-width: 56rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+  background: var(--color-beige, #F5EEE1);
+  border-radius: 1rem;
+}
+.cure-path-title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-indigo-dark, #004F71);
+  margin: 0 0 1.5rem;
+}
+.cure-path-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem 1rem;
+  position: relative;
+}
+.cure-path-step {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+}
+.cure-path-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid var(--color-turquoise, #00A6A6);
+  color: var(--color-turquoise, #00A6A6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cure-path-marker svg {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+/* spojnice mezi kroky: svisle na mobilu, vodorovně od tabletu výš */
+.cure-path-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: calc(1.375rem - 1px);
+  top: 2.75rem;
+  bottom: -1.5rem;
+  border-left: 2px dotted var(--color-turquoise, #00A6A6);
+  opacity: 0.6;
+}
+.cure-path-label {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-indigo-dark, #004F71);
+  margin: 0.4rem 0 0.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.cure-path-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-turquoise, #00A6A6);
+  letter-spacing: 0.05em;
+}
+.cure-path-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-warm-grey, #6E6875);
+  margin: 0;
+}
+.cure-path-note {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 79, 113, 0.12);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-indigo-dark, #004F71);
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .cure-path-steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .cure-path-step {
+    padding: 3.5rem 0 0;
+  }
+  .cure-path-step:not(:last-child)::before {
+    left: 3rem;
+    right: -1.25rem;
+    top: calc(1.375rem - 1px);
+    bottom: auto;
+    border-left: 0;
+    border-top: 2px dotted var(--color-turquoise, #00A6A6);
+  }
+}
+
+/* ─── Article Spring Cards ({% spring-cards %} — prameny pro indikaci) ─── */
+.article-spring-cards {
+  margin: 2.5rem 0;
+  max-width: 56rem;
+}
+.spring-cards-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .spring-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.spring-card {
+  background: #fff;
+  border: 1px solid rgba(0, 79, 113, 0.12);
+  border-top: 3px solid var(--color-turquoise, #00A6A6);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.25rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.spring-card-location {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-warm-grey, #6E6875);
+  margin: 0;
+}
+.spring-card-name {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-indigo-dark, #004F71);
+  margin: 0;
+  line-height: 1.25;
+}
+.spring-card-character {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-turquoise-dark, #007A7A);
+  margin: 0;
+}
+.spring-card-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-warm-grey, #6E6875);
+  margin: 0.25rem 0 0.5rem;
+  flex: 1;
+}
+.spring-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-indigo, #005F87);
+  text-decoration: none;
+}
+.spring-card-link:hover { text-decoration: underline; }
+.spring-cards-note {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-warm-grey, #6E6875);
+}
+
+/* ─── Article Indication Picker ({% indication-picker %}) ─── */
+.article-indication-picker {
+  margin: 2.5rem 0;
+  max-width: 56rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+  background: var(--color-beige, #F5EEE1);
+  border-radius: 1rem;
+}
+.ip-title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-indigo-dark, #004F71);
+  margin: 0 0 1.25rem;
+}
+.ip-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
+}
+.ip-select-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-indigo-dark, #004F71);
+}
+.ip-select {
+  width: 100%;
+  max-width: 36rem;
+  padding: 0.7rem 2.5rem 0.7rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-indigo-dark, #004F71);
+  background-color: #fff;
+  border: 1px solid rgba(0, 79, 113, 0.25);
+  border-radius: 0.625rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004F71' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+.ip-select:focus-visible {
+  outline: 2px solid var(--color-turquoise, #00A6A6);
+  outline-offset: 2px;
+}
+.ip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.ip-item {
+  margin: 0;
+  padding: 1rem 1.125rem;
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 79, 113, 0.1);
+}
+.ip-list-plain .ip-item {
+  padding: 0.75rem 1rem;
+}
+.ip-filtered .ip-item {
+  border-color: var(--color-turquoise, #00A6A6);
+}
+.ip-item-head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.ip-code {
+  flex: 0 0 auto;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--color-indigo-dark, #004F71);
+  border-radius: 0.375rem;
+  padding: 0.2rem 0.5rem;
+  margin-top: 0.1rem;
+}
+.ip-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-dark, #1F2933);
+}
+.ip-coverage {
+  display: grid;
+  gap: 0.5rem 1.5rem;
+  margin: 0.875rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(0, 79, 113, 0.15);
+}
+@media (min-width: 640px) {
+  .ip-coverage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.ip-coverage > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+.ip-coverage dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-warm-grey, #6E6875);
+  margin-right: 0.25rem;
+}
+.ip-coverage dd {
+  margin: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.ip-chip {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+.ip-chip-k {
+  background: rgba(0, 166, 166, 0.14);
+  color: var(--color-turquoise-dark, #007A7A);
+}
+.ip-chip-p {
+  background: rgba(0, 79, 113, 0.1);
+  color: var(--color-indigo-dark, #004F71);
+}
+.ip-chip-none {
+  color: var(--color-warm-grey, #6E6875);
+  padding-left: 0;
+}
+.ip-legend,
+.ip-note {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-warm-grey, #6E6875);
+  margin: 1rem 0 0;
+}
+.ip-legend:empty { display: none; }
+.ip-note {
+  margin-top: 0.5rem;
+}
+
 /* ─── Button Styles ─── */
 .btn-primary {
   display: inline-flex;

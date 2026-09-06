@@ -1,4 +1,8 @@
-import type { Config, Schema } from '@markdoc/markdoc'
+// @markdoc/markdoc je CommonJS — Vite z něj pojmenovaný export `Tag` nenabídne,
+// proto přes výchozí export (stejně jako reader.ts používá `Markdoc.parse`).
+import Markdoc, { type Config, type Node, type Schema } from '@markdoc/markdoc'
+
+const { Tag } = Markdoc
 
 /**
  * CONTENT GOVERNANCE — Markdoc Render Rules
@@ -14,6 +18,9 @@ import type { Config, Schema } from '@markdoc/markdoc'
  *   pullquote   — styled editorial blockquote (text, cite)
  *   stat-counter — grid of animated key figures (columns: 2|3|4, caption)
  *   stat        — a single figure inside stat-counter (value, prefix, suffix, label)
+ *   cure-path   — diagram „cesta pohárku" (čtyři kroky pitné kúry, bez atributů)
+ *   spring-cards — karty pramenů pro indikaci (indication, title)
+ *   indication-picker — výběr diagnózy v indikační skupině (group, title)
  *
  * Raw HTML is NOT allowed — Markdoc strips it by default.
  * All custom tag attributes are escaped (escapeHtml/escapeAttr) in MarkdocRenderer.
@@ -105,6 +112,62 @@ const stat: Schema = {
   },
 }
 
+/**
+ * Redakční vsuvky, které si jazyk berou z frontmatteru článku: reader.ts
+ * předává Markdocu proměnnou `locale`, transform ji vloží do atributů, takže
+ * redaktor píše jen {% cure-path /%} a renderer ví, v jakém jazyce kreslit.
+ */
+function withLocale(render: string) {
+  return (node: Node, config: Config) => {
+    const attributes = { ...node.transformAttributes(config), locale: config.variables?.locale ?? '' }
+    return new Tag(render, attributes, node.transformChildren(config))
+  }
+}
+
+/** Diagram „cesta pohárku" — čtyři kroky pitné kúry bez jakéhokoli objemu. */
+const curePath: Schema = {
+  render: 'cure-path',
+  selfClosing: true,
+  attributes: {},
+  transform: withLocale('cure-path'),
+}
+
+/** Karty pramenů pro danou indikaci, data ze springs.ts. */
+const springCards: Schema = {
+  render: 'spring-cards',
+  selfClosing: true,
+  attributes: {
+    indication: {
+      type: String,
+      required: true,
+      errorLevel: 'critical',
+      matches: ['digestion', 'metabolism', 'kidneys', 'respiratory', 'blood', 'bones', 'heart'],
+    },
+    title: { type: String },
+  },
+  transform: withLocale('spring-cards'),
+}
+
+/**
+ * Výběr diagnózy v indikační skupině, data z indications.ts. Česky s kódy,
+ * délkou a typem hrazené péče (K/P); v ostatních jazycích jen seznam diagnóz,
+ * protože cizojazyčné seznamy provozovatele kódy ani K/P nemají.
+ */
+const indicationPicker: Schema = {
+  render: 'indication-picker',
+  selfClosing: true,
+  attributes: {
+    group: {
+      type: String,
+      required: true,
+      errorLevel: 'critical',
+      matches: ['oncology', 'circulatory', 'digestive', 'metabolic', 'respiratory', 'nervous', 'musculoskeletal', 'urinary', 'skin'],
+    },
+    title: { type: String },
+  },
+  transform: withLocale('indication-picker'),
+}
+
 const youtube: Schema = {
   render: 'youtube',
   selfClosing: true,
@@ -149,5 +212,8 @@ export const markdocConfig: Config = {
     'hotel-box': hotelBox,
     'book-cta': bookCta,
     youtube,
+    'cure-path': curePath,
+    'spring-cards': springCards,
+    'indication-picker': indicationPicker,
   },
 }
