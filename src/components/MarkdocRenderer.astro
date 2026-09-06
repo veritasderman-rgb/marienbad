@@ -267,6 +267,27 @@ function firstSentence(text: string): string {
   return text.split(/(?<=[.!?])\s+(?=\p{Lu})/u)[0] ?? text
 }
 
+/**
+ * Fotka pramene do karty. Snímky v springs.ts jsou z Wikimedia Commons pod CC,
+ * takže autor a licence musí zůstat u obrázku — stejně jako na detailu pramene
+ * (SpringDetailPage) a u {% figure credit %}.
+ */
+function springCardMedia(s: (typeof springs)[number]): string {
+  if (!s.image) return ''
+  const optim = lookup(s.image.src)
+  const dims = optim.width ? ' width="' + optim.width + '" height="' + optim.height + '"' : ''
+  const img = '<img src="' + escapeAttr(s.image.src) + '" alt=""' + dims + ' loading="lazy" decoding="async" />'
+  const media = optim.webpSrcset
+    ? '<picture style="display:contents"><source type="image/webp" srcset="' + escapeAttr(optim.webpSrcset) + '" sizes="(max-width: 640px) 100vw, 400px" />' + img + '</picture>'
+    : img
+  const license = s.image.licenseUrl
+    ? '<a href="' + escapeAttr(s.image.licenseUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(s.image.license) + '</a>'
+    : escapeHtml(s.image.license)
+  return '<div class="spring-card-media">' + media
+    + '<p class="spring-card-credit">© <a href="' + escapeAttr(s.image.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(s.image.author) + '</a> · ' + license + ' · Wikimedia Commons</p>'
+    + '</div>'
+}
+
 /** Karty pramenů pro jednu indikaci ze springs.ts (jen pitné prameny). */
 function renderSpringCards(attrs: any): string {
   const locale = widgetLocale(attrs)
@@ -281,6 +302,7 @@ function renderSpringCards(attrs: any): string {
   const cards = list
     .map((s) =>
       '<article class="spring-card">'
+      + springCardMedia(s)
       + '<p class="spring-card-location">' + escapeHtml(c.locationLabels[s.location]) + '</p>'
       + '<h3 class="spring-card-name">' + escapeHtml(s.name[locale]) + '</h3>'
       + '<p class="spring-card-character">' + escapeHtml(s.character[locale]) + '</p>'
