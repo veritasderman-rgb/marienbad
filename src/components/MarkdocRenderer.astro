@@ -3,6 +3,11 @@ import Markdoc, { type RenderableTreeNode } from '@markdoc/markdoc'
 import { getHotelBySlug, EXELY_LOCALE_MAP } from '@/data/hotels'
 import { exelyBookingUrl } from '@/utils/booking'
 import { lookup } from '@/lib/imageOptim'
+import { springs, type SpringIndication } from '@/data/springs'
+import { indications } from '@/data/indications'
+import { curePath, springCards, indicationPicker } from '@/data/articleWidgets'
+import { localizedHref } from '@/i18n/utils'
+import type { Locale } from '@/i18n/config'
 
 interface Props {
   content: RenderableTreeNode
@@ -153,6 +158,11 @@ function renderCustomHtml(node: RenderableTreeNode): string {
       return renderBookCta(attrs)
     }
 
+    // Redakční vsuvky s jazykem z frontmatteru (viz withLocale v markdoc/config.ts)
+    if (name === 'cure-path') return renderCurePath(attrs)
+    if (name === 'spring-cards') return renderSpringCards(attrs)
+    if (name === 'indication-picker') return renderIndicationPicker(attrs)
+
     // Default: render standard Markdoc tags as HTML
     return Markdoc.renderers.html([node])
   }
@@ -212,6 +222,165 @@ function renderBookCta(attrs: any): string {
     + '</a></p>'
 }
 
+const LOCALES: Locale[] = ['de', 'en', 'cs', 'ru']
+
+/** Jazyk z atributu, který doplnil Markdoc transform; bez něj výchozí jazyk webu. */
+function widgetLocale(attrs: any): Locale {
+  const l = String(attrs.locale ?? '')
+  return (LOCALES as string[]).includes(l) ? (l as Locale) : 'de'
+}
+
+const CURE_PATH_ICONS: Record<string, string> = {
+  spring: '<path d="M7 4h9v8a4.5 4.5 0 0 1-9 0z"/><path d="M16 6.5h1.5a2 2 0 0 1 0 4H16"/><path d="M6.5 20h10"/><path d="M11.5 16.5V20"/>',
+  temperature: '<path d="M12 3a2 2 0 0 0-2 2v9.3a4 4 0 1 0 4 0V5a2 2 0 0 0-2-2z"/><path d="M12 9v6.5"/>',
+  interval: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  walk: '<circle cx="13.5" cy="4.5" r="1.5"/><path d="M9.5 21l2.2-6.2-2.2-1.8.8-5.2 3 1.4 1.8 3.3H18"/><path d="M8 11.2l1.7-3.4 3-1.2"/><path d="M14.3 21l-2-5.2"/>',
+}
+
+/**
+ * Diagram „cesta pohárku": čtyři kroky pitné kúry. Záměrně bez čísel u objemu —
+ * dávku určuje lázeňský lékař, což je hlavní sdělení článků o pitné kúře.
+ */
+function renderCurePath(attrs: any): string {
+  const locale = widgetLocale(attrs)
+  const c = curePath[locale]
+  const steps = c.steps
+    .map((s, i) => {
+      const icon = CURE_PATH_ICONS[s.icon] ?? CURE_PATH_ICONS.spring
+      return '<li class="cure-path-step">'
+        + '<div class="cure-path-marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icon + '</svg></div>'
+        + '<p class="cure-path-label"><span class="cure-path-num">' + (i + 1) + '</span>' + escapeHtml(s.label) + '</p>'
+        + '<p class="cure-path-text">' + escapeHtml(s.text) + '</p>'
+        + '</li>'
+    })
+    .join('')
+  return '<section class="article-cure-path">'
+    + '<p class="stat-grid-caption">' + escapeHtml(c.caption) + '</p>'
+    + '<h3 class="cure-path-title">' + escapeHtml(c.title) + '</h3>'
+    + '<ol class="cure-path-steps">' + steps + '</ol>'
+    + '<p class="cure-path-note">' + escapeHtml(c.note) + '</p>'
+    + '</section>'
+}
+
+/** První věta popisu; „16. století" nesmí větu ukončit, proto podmínka na velké písmeno. */
+function firstSentence(text: string): string {
+  return text.split(/(?<=[.!?])\s+(?=\p{Lu})/u)[0] ?? text
+}
+
+/** Karty pramenů pro jednu indikaci ze springs.ts (jen pitné prameny). */
+function renderSpringCards(attrs: any): string {
+  const locale = widgetLocale(attrs)
+  const c = springCards[locale]
+  const indication = String(attrs.indication ?? '') as SpringIndication
+  const list = springs.filter((s) => s.type === 'drinking' && s.indications.includes(indication))
+  if (!list.length) return ''
+  const overview = localizedHref(locale, 'springs-overview')
+  const title = attrs.title
+    ? String(attrs.title)
+    : c.titleTemplate.replace('{indication}', c.indicationLabels[indication] ?? indication)
+  const cards = list
+    .map((s) =>
+      '<article class="spring-card">'
+      + '<p class="spring-card-location">' + escapeHtml(c.locationLabels[s.location]) + '</p>'
+      + '<h3 class="spring-card-name">' + escapeHtml(s.name[locale]) + '</h3>'
+      + '<p class="spring-card-character">' + escapeHtml(s.character[locale]) + '</p>'
+      + '<p class="spring-card-text">' + escapeHtml(firstSentence(s.description[locale])) + '</p>'
+      + '<a class="spring-card-link" href="' + escapeAttr(overview + '/' + s.id) + '">' + escapeHtml(c.detailLink)
+      + '<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>'
+      + '</article>',
+    )
+    .join('')
+  return '<section class="article-spring-cards">'
+    + '<p class="stat-grid-caption">' + escapeHtml(title) + '</p>'
+    + '<div class="spring-cards-grid">' + cards + '</div>'
+    + '<p class="spring-cards-note">' + escapeHtml(c.note) + ' <a href="' + escapeAttr(overview) + '">' + escapeHtml(c.overviewLink) + '</a></p>'
+    + '</section>'
+}
+
+/**
+ * Rozklad textu „základní pobyt K 21, P 21, opakovaný pobyt P 21 (P 14)" na
+ * štítky. Tokeny se nechávají doslova, jak stojí v indikačním seznamu —
+ * „(P 14)" i „P 21/14" — jen se rozdělí do dvou řádků a obarví podle K/P.
+ */
+function parseCoverage(coverage: string): { basic: string[]; repeat: string[] } {
+  const [basicPart = '', repeatPart = ''] = coverage.split(/,?\s*opakovaný pobyt\s*/)
+  const tokens = (s: string) => s.split(/,\s*|\s+(?=\()/).map((t) => t.trim()).filter(Boolean)
+  return {
+    basic: tokens(basicPart.replace(/^základní pobyt\s*/, '')),
+    repeat: tokens(repeatPart),
+  }
+}
+
+function coverageChips(tokens: string[]): string {
+  if (!tokens.length) return '<span class="ip-chip ip-chip-none">—</span>'
+  return tokens
+    .map((t) => {
+      const kind = /^\(?K/.test(t) ? 'k' : /^\(?P/.test(t) ? 'p' : 'none'
+      return '<span class="ip-chip ip-chip-' + kind + '">' + escapeHtml(t) + '</span>'
+    })
+    .join('')
+}
+
+/**
+ * Výběr diagnózy v indikační skupině. Česky: kódy, K/P a délka pobytu, nahoře
+ * <select>, který skript níže zapne jako filtr (bez JS zůstává celý seznam).
+ * DE/EN/RU: seznam diagnóz ze seznamu pro samoplátce — kódy ani K/P nemá.
+ */
+function renderIndicationPicker(attrs: any): string {
+  const locale = widgetLocale(attrs)
+  const c = indicationPicker[locale]
+  const group = indications[locale].groups.find((g) => g.id === String(attrs.group ?? ''))
+  if (!group) return ''
+  const title = attrs.title ? String(attrs.title) : c.title
+  const fullList = localizedHref(locale, 'indications')
+  const withCodes = locale === 'cs' && group.items.some((i) => i.code)
+
+  if (!withCodes) {
+    const items = group.items
+      .map((i) => '<li class="ip-item"><p class="ip-text">' + escapeHtml(i.text) + '</p></li>')
+      .join('')
+    return '<section class="article-indication-picker">'
+      + '<p class="stat-grid-caption">' + escapeHtml(group.title) + '</p>'
+      + '<h3 class="ip-title">' + escapeHtml(title) + '</h3>'
+      + '<ul class="ip-list ip-list-plain">' + items + '</ul>'
+      + '<p class="ip-note">' + escapeHtml(c.note) + ' <a href="' + escapeAttr(fullList) + '">' + escapeHtml(c.fullListLink) + '</a></p>'
+      + '</section>'
+  }
+
+  const selectId = 'ip-select-' + group.id
+  const options = group.items
+    .map((i) => {
+      // do nabídky jen první klauzule diagnózy, celý text je v seznamu pod ní
+      const short = i.text.split(/;\s*/)[0]
+      const label = short.length > 88 ? short.slice(0, 85).replace(/\s+\S*$/, '') + '…' : short
+      return '<option value="' + escapeAttr(i.code ?? '') + '">' + escapeHtml(i.code + ' · ' + label) + '</option>'
+    })
+    .join('')
+  const items = group.items
+    .map((i) => {
+      const cov = parseCoverage(i.coverage ?? '')
+      return '<li class="ip-item" data-ip-code="' + escapeAttr(i.code ?? '') + '">'
+        + '<div class="ip-item-head"><span class="ip-code">' + escapeHtml(i.code ?? '') + '</span><p class="ip-text">' + escapeHtml(i.text) + '</p></div>'
+        + '<dl class="ip-coverage">'
+        + '<div><dt>' + escapeHtml(c.basicStay) + '</dt><dd>' + coverageChips(cov.basic) + '</dd></div>'
+        + '<div><dt>' + escapeHtml(c.repeatStay) + '</dt><dd>' + coverageChips(cov.repeat) + '</dd></div>'
+        + '</dl>'
+        + '</li>'
+    })
+    .join('')
+  return '<section class="article-indication-picker" data-indication-picker>'
+    + '<p class="stat-grid-caption">' + escapeHtml(group.title) + '</p>'
+    + '<h3 class="ip-title">' + escapeHtml(title) + '</h3>'
+    + '<div class="ip-controls" hidden data-ip-controls>'
+    + '<label class="ip-select-label" for="' + selectId + '">' + escapeHtml(c.selectLabel) + '</label>'
+    + '<select class="ip-select" id="' + selectId + '" data-ip-select><option value="">' + escapeHtml(c.placeholder) + '</option>' + options + '</select>'
+    + '</div>'
+    + '<ul class="ip-list" data-ip-list>' + items + '</ul>'
+    + '<p class="ip-legend">' + escapeHtml(c.legend) + '</p>'
+    + '<p class="ip-note">' + escapeHtml(c.note) + ' <a href="' + escapeAttr(fullList) + '">' + escapeHtml(c.fullListLink) + '</a></p>'
+    + '</section>'
+}
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -244,7 +413,7 @@ function hasCustomTags(node: any): boolean {
   if (!node || typeof node !== 'object') return false
   if ('$$mdtype' in node) {
     const name = node.name
-    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote' || name === 'treatment-box' || name === 'stat-counter' || name === 'stat' || name === 'hotel-box' || name === 'book-cta' || name === 'youtube') return true
+    if (name === 'figure' || name === 'gallery' || name === 'gallery-image' || name === 'pullquote' || name === 'treatment-box' || name === 'stat-counter' || name === 'stat' || name === 'hotel-box' || name === 'book-cta' || name === 'youtube' || name === 'cure-path' || name === 'spring-cards' || name === 'indication-picker') return true
     if (node.children) return node.children.some(hasCustomTags)
   }
   if (Array.isArray(node)) return node.some(hasCustomTags)
@@ -259,6 +428,23 @@ const html = hasCustomTags(content)
 <Fragment set:html={html} />
 
 <script>
+  // Filtr diagnóz pro {% indication-picker %}: <select> je v HTML skrytý a bez
+  // JS zůstává vidět celý seznam; se skriptem výběr schová ostatní položky.
+  document.querySelectorAll<HTMLElement>('[data-indication-picker]').forEach((root) => {
+    const controls = root.querySelector<HTMLElement>('[data-ip-controls]')
+    const select = root.querySelector<HTMLSelectElement>('[data-ip-select]')
+    const items = root.querySelectorAll<HTMLElement>('[data-ip-code]')
+    if (!controls || !select || !items.length) return
+    controls.hidden = false
+    select.addEventListener('change', () => {
+      const code = select.value
+      root.classList.toggle('ip-filtered', code !== '')
+      items.forEach((item) => {
+        item.hidden = code !== '' && item.dataset.ipCode !== code
+      })
+    })
+  }); // středník nutný: následuje IIFE v závorce a bez něj by se volal výsledek forEach
+
   // Animated count-up for {% stat-counter %} figures.
   // Reuses the same IntersectionObserver + reduced-motion contract as .reveal.
   (() => {
