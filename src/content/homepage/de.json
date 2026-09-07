@@ -7,17 +7,17 @@
     "ctaText2": "Unterkunft wählen",
     "ctaHref2": "/de/unterkunft",
     "badges": [
-      "UNESCO Welterbe",
+      "UNESCO-Welterbe",
       "40+ Quellen",
-      "4 Heilressourcen",
+      "4 Heilmittel",
       "4,8 ★ Google"
     ],
     "image": "/images/content/hero/hero/image.jpg"
   },
   "emotionalBlock": {
-    "headline": "Sie kommen wegen der Behandlung. Sie kehren zurück wegen der Ruhe.",
-    "text": "Marienbad ist mehr als ein Kurort — es sind Tage, an denen Sie langsamer werden, durchatmen und wieder zu sich finden.",
-    "proof": "UNESCO Welterbe · 40+ Mineralquellen · 4 natürliche Heilressourcen · 4,8/5 Google"
+    "headline": "Sie kommen wegen der Kur. Und kehren wegen der Ruhe zurück.",
+    "text": "Marienbad ist mehr als ein Kurort: Hier werden die Tage langsamer — Sie atmen durch und finden wieder zu sich.",
+    "proof": "UNESCO-Welterbe · 40+ Mineralquellen · 4 natürliche Heilmittel · 4,8/5 Google"
   },
   "quickFacts": [
     {
@@ -43,12 +43,12 @@
   ],
   "healingElements": {
     "sectionLabel": "Was Marienbad einzigartig macht",
-    "title": "Vier natürliche Heilressourcen",
-    "description": "Eines der seltenen Kurbäder, das alle vier Elemente der natürlichen Heilung vereint.",
+    "title": "Vier natürliche Heilmittel",
+    "description": "Einer der wenigen Kurorte, der alle vier natürlichen Heilmittel an einem Ort vereint.",
     "items": [
       {
         "name": "Wasser",
-        "description": "Über 40 Mineralquellen mit einzigartiger Zusammensetzung — von Trinkkuren bis zu heilenden Bädern.",
+        "description": "Über 40 Mineralquellen mit eigener Zusammensetzung — von der Trinkkur bis zum Mineralbad.",
         "href": "/de/mineralquellen"
       },
       {
@@ -58,12 +58,12 @@
       },
       {
         "name": "Gas",
-        "description": "99,7% reines CO₂ — „Marias Gas“ — wird traditionell zur Förderung der peripheren Durchblutung eingesetzt.",
+        "description": "99,7 % reines CO₂ — „Marias Gas“ — wird traditionell zur Förderung der peripheren Durchblutung eingesetzt.",
         "href": "/de/co2-therapie"
       },
       {
         "name": "Klima",
-        "description": "Zertifiziertes Heilklima auf 630m — reine Waldluft mit natürlichen Aerosolen. Seit 2023 trägt Marienbad offiziell den Titel eines Klimakurortes.",
+        "description": "Zertifiziertes Heilklima auf 630 m — reine Waldluft mit natürlichen Aerosolen. Seit 2023 ist Marienbad offiziell auch Klimakurort.",
         "href": "/de/klimatherapie"
       }
     ]
@@ -71,23 +71,23 @@
   "discover": {
     "sectionLabel": "Willkommen",
     "title": "Entdecken Sie die Stadt",
-    "description": "Mariánské Lázně — das weltberühmte Marienbad — verzaubert seit über 200 Jahren Besucher aus aller Welt mit heilenden Quellen, prächtiger Architektur und atemberaubender Natur."
+    "description": "Mariánské Lázně — das weltberühmte Marienbad — empfängt seine Gäste seit über 200 Jahren mit Heilquellen, prächtiger Bäderarchitektur und weiten Wäldern ringsum."
   },
   "hotels": {
     "sectionLabel": "Unterkünfte",
     "title": "Wo übernachten in Marienbad",
-    "description": "Von historischen 5-Sterne-Kurhotels bis zu 3-Sterne-Hotels.",
+    "description": "Von historischen 5-Sterne-Kurhotels bis zu komfortablen 3-Sterne-Häusern.",
     "allHotelsLabel": "Alle Hotels entdecken →",
     "items": [
       {
         "name": "Ensana Nové Lázně",
         "stars": 5,
         "badge": "130 Jahre · 1896–2026",
-        "description": "Historisches 5-Sterne-Juwel mit original Römischem Bad — das Flaggschiff der Ensana Spa Hotels.",
+        "description": "Historisches 5-Sterne-Juwel mit dem originalen Römischen Bad — das Flaggschiff der Ensana Spa Hotels.",
         "image": "/images/content/hotels/hotels/items/0/image.jpg",
         "tags": [
           "Römisches Bad",
-          "CO₂ Therapie",
+          "CO₂-Therapie",
           "Pool"
         ],
         "bookingUrl": "https://ensanahotels.com/de/hotels/nove-lazne?utm_source=marienbad&utm_medium=editorial&utm_campaign=homepage-hotel",
@@ -101,7 +101,7 @@
         "description": "Direkt an der Kolonnade — traditionelle Kur in zentraler Lage mit modernen Behandlungsräumen.",
         "image": "/images/content/hotels/hotels/items/1/image.jpg",
         "tags": [
-          "Kolonnade-Lage",
+          "An der Kolonnade",
           "Trinkkur",
           "Wellness"
         ],
@@ -124,7 +124,7 @@
       {
         "name": "Ensana Pacifik",
         "stars": 4,
-        "description": "Grandhotel an der Hauptstraße mit Blick auf den Skalník-Park und umfassender Kur.",
+        "description": "Grandhotel an der Hauptstraße mit Blick auf den Skalník-Park und umfassendem Kurprogramm.",
         "image": "/images/content/hotels/hotels/items/3/image.jpg",
         "tags": [
           "Hauptstraße",
@@ -140,7 +140,7 @@
         "description": "Modernes Kurhotel an der Hauptstraße, wenige Schritte von der Kolonnade.",
         "image": "/images/content/hotels/hotels/items/4/image.jpg",
         "tags": [
-          "Nahe Kolonnade",
+          "Nahe der Kolonnade",
           "Modern",
           "Wellness"
         ],
@@ -150,10 +150,10 @@
       {
         "name": "Ensana Vltava",
         "stars": 3,
-        "description": "Angenehmes Kurhotel mit voller Kur zum günstigen Preis.",
+        "description": "Freundliches Kurhotel mit vollem Kurprogramm zum günstigen Preis.",
         "image": "/images/content/hotels/hotels/items/5/image.jpg",
         "tags": [
-          "Gutes Preis-Leistung",
+          "Preis-Leistung",
           "Kurbehandlung",
           "Zentrum"
         ],
@@ -211,7 +211,7 @@
     "badge": "Aktuell",
     "season": "Highlights",
     "title": "Die Quellen erwarten Sie — Ihre Kur in Marienbad",
-    "description": "Zu jeder Jahreszeit hat Marienbad etwas Besonderes zu bieten: Die Skalníkovy-Gärten begeistern mit wechselnden Farben, die Singende Fontäne verzaubert mit ihren legendären Wasserspielen, und die milde Bergluft auf 630 Metern ist das natürliche Heilmittel für die Atemwege.",
+    "description": "Zu jeder Jahreszeit hat Marienbad etwas Besonderes zu bieten: Der Kurpark Skalníkovy sady wechselt seine Farben, die Singende Fontäne spielt ihr Wasserspiel zu klassischer Musik, und die milde Höhenluft auf 630 Metern tut den Atemwegen gut.",
     "ctaText": "Mehr erfahren",
     "image": "/images/content/seasonal/seasonal/image.jpg"
   },
@@ -220,8 +220,8 @@
     "title": "Aktuelles aus Marienbad"
   },
   "newsletter": {
-    "title": "Ihr kostenloser Marienbad-Guide",
-    "description": "Die besten Insidertipps, saisonale Empfehlungen und neue Geschichten direkt in Ihr Postfach.",
+    "title": "Der kostenlose Marienbad-Newsletter",
+    "description": "Tipps aus der Stadt, saisonale Empfehlungen und neue Geschichten direkt in Ihr Postfach.",
     "placeholder": "Ihre E-Mail-Adresse",
     "buttonText": "Anmelden",
     "successMessage": "Vielen Dank! Sie wurden erfolgreich angemeldet.",

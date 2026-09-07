@@ -1,12 +1,12 @@
 {
   "slug": "ensana-sommer",
   "title": "Sommer mit Ensana in Marienbad",
-  "metaDescription": "Machen Sie mit beim Ensana-Sommergewinnspiel: 10 unterhaltsame Fragen über Marienbad und Verlosung eines Aufenthalts für 2 Personen im Hotel Hvězda.",
+  "metaDescription": "Machen Sie mit beim Ensana-Sommergewinnspiel: 10 unterhaltsame Fragen zu Marienbad und die Verlosung eines Aufenthalts für 2 Personen im Hotel Hvězda.",
   "active": true,
   "intro": {
     "badge": "Sommer-Gewinnspiel",
-    "text": "Wir haben ein Sommer-Gewinnspiel für Sie vorbereitet. Es erwarten Sie 10 Fragen über Marienbad — einige testen Ihr Gedächtnis, andere Ihre Fantasie. Wer bis zum Ende durchhält und uns seine E-Mail-Adresse hinterlässt, nimmt an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil.",
-    "prize": "Hauptgewinn: 2 Nächte für 2 Personen — Healthy in im Hotel Ensana Hvězda",
+    "text": "Wir haben ein Sommer-Gewinnspiel für Sie vorbereitet. Es erwarten Sie 10 Fragen zu Marienbad — einige testen Ihr Gedächtnis, andere Ihre Fantasie. Wer bis zum Ende durchhält und uns seine E-Mail-Adresse hinterlässt, nimmt an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil.",
+    "prize": "Hauptgewinn: 2 Nächte für 2 Personen mit dem Paket Healthy in im Hotel Ensana Hvězda",
     "drawNote": "Die Verlosung findet am 1. September statt.",
     "startLabel": "Los geht's"
   },
@@ -28,12 +28,12 @@
       "type": "single",
       "text": "Welcher gekrönte Gast liebte Marienbad so sehr, dass er hier bis heute eine eigene Kurkabine hat?",
       "options": [
-        { "id": "a", "text": "Der englische König Edward VII.", "correct": true },
+        { "id": "a", "text": "Der englische König Eduard VII.", "correct": true },
         { "id": "b", "text": "Der französische Kaiser Napoleon III." },
         { "id": "c", "text": "Der schwedische König Gustav" },
         { "id": "d", "text": "Der russische Zar Nikolaus II." }
       ],
-      "explanation": "König Edward VII. — seine königliche Kabine finden Sie bis heute im Hotel Ensana Nové Lázně."
+      "explanation": "König Eduard VII. — seine Königskabine finden Sie bis heute im Hotel Ensana Nové Lázně."
     },
     {
       "id": "festival",
@@ -57,12 +57,12 @@
         { "id": "c", "text": "Europäische Städte der Fontänen" },
         { "id": "d", "text": "Gartenstädte der Welt" }
       ],
-      "explanation": "Gemeinsam mit weiteren berühmten Kurorten bildet Marienbad seit 2021 die UNESCO-Serie „Bedeutende Kurstädte Europas“."
+      "explanation": "Gemeinsam mit weiteren berühmten Kurorten gehört Marienbad seit 2021 zum UNESCO-Welterbe „Bedeutende Kurstädte Europas“."
     },
     {
       "id": "fountain",
       "type": "single",
-      "text": "Was kann die berühmte Fontäne vor der Kolonnade, das immer wieder Menschenmengen anzieht?",
+      "text": "Was kann die berühmte Fontäne vor der Kolonnade, die immer wieder Menschen anzieht?",
       "options": [
         { "id": "a", "text": "Sie singt — sie spielt Musik", "correct": true },
         { "id": "b", "text": "Ihr Wasser perlt wie Champagner" },
@@ -81,7 +81,7 @@
         { "id": "c", "text": "Heilschlamm" },
         { "id": "d", "text": "Nichts — alles nur Legende" }
       ],
-      "explanation": "Das Mariengas besteht zu 99,7 % aus Kohlendioxid vulkanischen Ursprungs und wird für Gasinjektionen und trockene Gasbäder genutzt."
+      "explanation": "„Marias Gas“ besteht zu 99,7 % aus Kohlendioxid vulkanischen Ursprungs und wird für Gasinjektionen und trockene Gasbäder genutzt."
     },
     {
       "id": "hvezda",
@@ -93,19 +93,19 @@
         { "id": "c", "text": "Mit dem ältesten Aufzug Europas" },
         { "id": "d", "text": "Mit einer eigenen Skipiste" }
       ],
-      "explanation": "Das Hotel Hvězda besitzt den größten Hotelpool in Marienbad (18 × 8 Meter) — dazu mehrere Saunen und eine Salzgrotte."
+      "explanation": "Das Hotel Hvězda besitzt den größten Hotelpool in Marienbad (18 × 8 Meter) — dazu mehrere Saunen und eine Salzhöhle."
     },
     {
       "id": "roman-baths",
       "type": "single",
-      "text": "In welchem Hotel baden Sie in den historischen Römischen Bädern von 1896?",
+      "text": "In welchem Hotel baden Sie im historischen Römischen Bad von 1896?",
       "options": [
         { "id": "a", "text": "Ensana Nové Lázně", "correct": true },
         { "id": "b", "text": "Ensana Hvězda" },
         { "id": "c", "text": "Ensana Pacifik" },
         { "id": "d", "text": "Ensana Butterfly" }
       ],
-      "explanation": "Die Römischen Bäder im Fünf-Sterne-Hotel Nové Lázně empfangen Gäste seit 1896."
+      "explanation": "Das Römische Bad im Fünf-Sterne-Hotel Nové Lázně empfängt seine Gäste seit 1896."
     },
     {
       "id": "tradition",
@@ -123,7 +123,7 @@
       "id": "dream-summer",
       "type": "open",
       "text": "Und zum Schluss ganz ohne Fallen: Wie sieht Ihr Traumsommer im Kurort aus? Verraten Sie es uns in ein paar Worten.",
-      "placeholder": "Morgens frisch von der Quelle auf der Kolonnade kosten, nachmittags am Pool, abends bei einem Glas Wein – und Sie?",
+      "placeholder": "Morgens ein Becher frisch von der Quelle, nachmittags am Pool, abends ein Glas Wein – und bei Ihnen?",
       "maxLength": 500
     }
   ],
@@ -131,7 +131,7 @@
     {
       "minPercent": 85,
       "title": "Kurort-Kenner!",
-      "message": "Großartig! Sie könnten glatt Führungen über die Kolonnade geben. Jetzt fehlt nur noch eins — den Sommer mit Ensana live zu erleben."
+      "message": "Großartig! Sie könnten glatt selbst Führungen auf der Kolonnade geben. Jetzt fehlt nur noch eines: der Sommer mit Ensana — live erlebt."
     },
     {
       "minPercent": 50,
@@ -150,10 +150,10 @@
   },
   "emailGate": {
     "heading": "Geschafft — jetzt in den Lostopf!",
-    "text": "Hinterlassen Sie uns Name und E-Mail-Adresse und Sie nehmen an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil: 2 Nächte für 2 Personen mit Healthy in. Der Gewinner wird am 1. September ausgelost und per E-Mail benachrichtigt.",
+    "text": "Hinterlassen Sie uns Ihren Namen und Ihre E-Mail-Adresse, und Sie nehmen an der Verlosung eines Aufenthalts im Hotel Ensana Hvězda teil: 2 Nächte für 2 Personen mit dem Paket Healthy in. Der Gewinner wird am 1. September ausgelost und per E-Mail benachrichtigt.",
     "consentCompetitionLabel": "Ich stimme den Teilnahmebedingungen zu und willige in die Verarbeitung meiner personenbezogenen Daten (Vorname, Nachname, E-Mail) zur Teilnahme am Gewinnspiel und zur Kontaktaufnahme mit den Gewinnern ein. (erforderlich)",
     "consentNewsletterLabel": "Ich willige ein, dass mir die Léčebné lázně Mariánské Lázně a.s. kommerzielle Mitteilungen (Newsletter) an die angegebene E-Mail-Adresse sendet. Die Einwilligung kann ich jederzeit über den Link in jeder E-Mail oder unter webmaster.cz@ensanahotels.com widerrufen. (optional)",
     "successTitle": "Fertig — Sie sind im Lostopf!",
-    "successText": "Drücken Sie die Daumen — die Verlosung findet am 1. September statt. Bis dahin: auf Wiedersehen, vielleicht an den Quellen."
+    "successText": "Wir drücken Ihnen die Daumen — die Verlosung findet am 1. September statt. Bis dahin: auf Wiedersehen, vielleicht an den Quellen."
   }
 }
