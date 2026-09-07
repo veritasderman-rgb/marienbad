@@ -20,9 +20,13 @@ export function negotiateLocale(acceptLanguage: string | null | undefined, fallb
   const langs = acceptLanguage
     .split(',')
     .map((part) => {
-      const [lang, q] = part.trim().split(';q=')
-      const weight = q ? Number.parseFloat(q) : 1
-      return { lang: lang.trim().toLowerCase(), q: Number.isFinite(weight) ? weight : 0 }
+      // Gramatika hlavičky dovoluje mezery kolem středníku i rovnítka
+      // ("en; q=0"), proto se parametry berou po rozdělení středníkem,
+      // ne hledáním doslovného ";q=".
+      const [lang, ...params] = part.split(';').map((s) => s.trim())
+      const qParam = params.find((p) => /^q\s*=/i.test(p))
+      const weight = qParam ? Number.parseFloat(qParam.split('=')[1]) : 1
+      return { lang: lang.toLowerCase(), q: Number.isFinite(weight) ? weight : 0 }
     })
     .filter((entry) => entry.lang && entry.q > 0)
     .sort((a, b) => b.q - a.q)

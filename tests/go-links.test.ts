@@ -21,6 +21,12 @@ describe('negotiateLocale', () => {
     expect(negotiateLocale('cs;q=0,en;q=0.5')).toBe('en')
     expect(negotiateLocale('cs;q=abc,en;q=0.5')).toBe('en')
   })
+
+  it('snese mezery kolem středníku a rovnítka (Codex, PR #307)', () => {
+    expect(negotiateLocale('en; q=0, de;q=0.5')).toBe('de')
+    expect(negotiateLocale('cs ; q = 0.9 , en ; q = 0.8')).toBe('cs')
+    expect(negotiateLocale('en; q=0.3, de; q=0.9')).toBe('de')
+  })
 })
 
 describe('resolveGoLink', () => {
