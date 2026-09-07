@@ -8,6 +8,7 @@ import SocialShare from '@/components/SocialShare.astro'
 import WhyTrustUs from '@/components/WhyTrustUs.astro'
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
 import { getArticle, getArticles } from '@/content/reader'
+import { pickRelated } from '@/content/related'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
 import { hotels } from '@/data/hotels'
 import { t } from '@/i18n/ui'
@@ -37,6 +38,7 @@ const articleSchema: Record<string, unknown> = {
   inLanguage: locale,
   articleSection: article.category,
 }
+if (article.keywords.length) articleSchema.keywords = article.keywords.join(', ')
 if (article.coverImage) articleSchema.image = article.coverImage.startsWith('/') ? `${siteUrl}${article.coverImage}` : article.coverImage
 
 const breadcrumbs = [
@@ -89,9 +91,7 @@ const quizTranslations = {
 }
 
 const allArticles = await getArticles(locale)
-const relatedArticles = allArticles
-  .filter(a => a.slug !== `${locale}-${slug}`)
-  .slice(0, 3)
+const relatedArticles = pickRelated(allArticles, article, 3)
 ---
 
 <Base locale={locale} section="magazine" ogType="article" title={`${article.title} — Magazín Marienbad`} description={article.excerpt} alternateUrls={{ [locale]: Astro.url.pathname }} switcherUrls={{ de: '/de/magazin', en: '/en/magazine', cs: '/cs/magazin', ru: '/ru/zhurnal' }} ogImage={article.coverImage || undefined}>

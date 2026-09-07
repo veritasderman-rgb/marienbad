@@ -10,6 +10,7 @@ import {
   snapshotRecipients,
 } from '../../../../../lib/portal/newsletter/data'
 import { createCampaign, scheduleCampaignInstant } from '../../../../../lib/portal/newsletter/mailerlite'
+import { tagLinks } from '../../../../../lib/utm'
 import { acquireJobLock, releaseJobLock, runSyncWithLock } from '../../../../../lib/portal/newsletter/sync'
 import { env } from '../../../../../lib/portal/env'
 
@@ -72,13 +73,16 @@ export const POST: APIRoute = async (context) => {
 
     let campaignId = newsletter.mailerlite_campaign_id
     if (!campaignId) {
+      // Odkazy na marienbad.com dostanou zdroj až při odeslání, aby v GA4
+      // nebyly „přímé". Ručně označené odkazy tagLinks nepřepisuje.
+      const utm = { source: 'newsletter', medium: 'email', campaign: `b2b-${newsletter.slug}` }
       const campaign = await createCampaign({
         name: `B2B ${newsletter.slug}`,
         subject: newsletter.subject,
         preheader: newsletter.preheader,
         groupIds,
-        html: newsletter.html_body,
-        plain: newsletter.plain_body,
+        html: tagLinks(newsletter.html_body, utm),
+        plain: newsletter.plain_body ? tagLinks(newsletter.plain_body, utm) : newsletter.plain_body,
       })
       campaignId = campaign.id
       await q(`UPDATE crm.newsletters SET mailerlite_campaign_id = $2 WHERE id = $1`, [id, campaignId])

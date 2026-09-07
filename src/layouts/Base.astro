@@ -29,6 +29,17 @@ interface Props {
 
 const { locale, section, alternateUrls, switcherUrls, noindex } = Astro.props
 
+/** Ověření vlastnictví webu pro Seznam Webmaster a Google Search Console.
+ *  Kódy nejsou tajemství, ale patří do prostředí Vercelu, ne do repozitáře. */
+const seznamWmt = (import.meta.env.PUBLIC_SEZNAM_WMT ?? '').trim()
+const googleSiteVerification = (import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '').trim()
+
+/** Vercel Web Analytics — bezcookie měření návštěvnosti (bez souhlasu, žádný
+ *  identifikátor v prohlížeči). Skript existuje jen na Vercelu, lokálně by
+ *  vracel 404, proto jen v produkčním buildu. Zapíná se v projektu na Vercelu
+ *  (Analytics → Enable); do té doby skript vrací 404 a nic se neměří. */
+const vercelAnalytics = import.meta.env.PROD
+
 // CDN edge caching: all Base-rendered pages are anonymous content pages (no auth/session)
 Astro.response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=3600')
 
@@ -93,6 +104,8 @@ const langSwitcherUrls = Object.fromEntries(
     <meta name="theme-color" content="#2d2a6e" />
 
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+    {seznamWmt && <meta name="seznam-wmt" content={seznamWmt} />}
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 
     <!-- Hreflang -->
     {hreflangUrl('de') && <link rel="alternate" hreflang="de" href={hreflangUrl('de')} />}
@@ -169,8 +182,10 @@ const langSwitcherUrls = Object.fromEntries(
     <link rel="preload" href="/fonts/Branding-Medium.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Branding-Bold.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Google Analytics 4 (gtag.js) -->
+    <!-- Google Analytics 4 (gtag.js) — až po souhlasu -->
     <GoogleAnalytics locale={locale} />
+    <!-- Vercel Web Analytics — bez cookies, bez souhlasu -->
+    {vercelAnalytics && <script is:inline defer src="/_vercel/insights/script.js"></script>}
   </head>
   <body class="min-h-screen flex flex-col bg-white text-black">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-yellow-400 focus:text-black focus:rounded-lg focus:font-semibold">

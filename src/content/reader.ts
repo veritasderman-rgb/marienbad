@@ -191,8 +191,23 @@ export interface Article {
   youtubeVideoId?: string
   youtubeTitle?: string
   youtubeDescription?: string
+  /** primaryKeyword + secondaryKeywords z frontmatteru — pro související články a Article.keywords. */
+  keywords: string[]
   body: any
   rawBody: string
+}
+
+/** secondaryKeywords je čárkami oddělený text (někdy YAML folded), primaryKeyword jedna fráze. */
+function articleKeywords(meta: Record<string, unknown>): string[] {
+  const out: string[] = []
+  const primary = typeof meta.primaryKeyword === 'string' ? meta.primaryKeyword.trim() : ''
+  if (primary) out.push(primary)
+  const secondary = typeof meta.secondaryKeywords === 'string' ? meta.secondaryKeywords : ''
+  for (const k of secondary.split(',')) {
+    const v = k.replace(/\s+/g, ' ').trim()
+    if (v && !out.includes(v)) out.push(v)
+  }
+  return out
 }
 
 /** Validate required article fields; logs warnings for missing data */
@@ -240,6 +255,7 @@ function parseArticle(slug: string, raw: string): Article | null {
     youtubeVideoId: meta.youtubeVideoId ?? '',
     youtubeTitle: meta.youtubeTitle ?? '',
     youtubeDescription: meta.youtubeDescription ?? '',
+    keywords: articleKeywords(meta),
     body: content,
     rawBody,
   }

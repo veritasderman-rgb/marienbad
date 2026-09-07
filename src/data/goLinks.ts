@@ -116,3 +116,20 @@ export function resolveGoLink(key: string, locale: Locale, now: Date = new Date(
 }
 
 export const GO_KEYS = Object.keys(GO_LINKS)
+
+/**
+ * Odkud zkratka přišla: /go/<klíč>?src=duve. Klíč se stane utm_source,
+ * médium je dané tabulkou, aby se v GA4 nemíchalo „duve" jednou jako
+ * referral a podruhé jako app. Neznámý src se ignoruje (žádné utm), takže
+ * nikdo nemůže přes URL podstrčit libovolný zdroj do statistik.
+ */
+export const GO_SOURCES: Record<string, string> = {
+  duve: 'guest-app',
+  qr: 'qr',
+  print: 'print',
+  email: 'email',
+  social: 'social',
+  wifi: 'captive-portal',
+  reception: 'referral',
+  tv: 'hotel-tv',
+}
