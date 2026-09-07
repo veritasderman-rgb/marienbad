@@ -52,6 +52,7 @@ export function getNavItemsFlat(locale: Locale) {
     { navKey: 'nav.weddings', section: 'weddings' },
     { navKey: 'nav.corporateEvents', section: 'corporate-events' },
     { navKey: 'nav.accommodation', section: 'accommodation' },
+    { navKey: 'nav.ensanaLife', section: 'ensana-life' },
     { navKey: 'nav.history', section: 'history' },
     { navKey: 'nav.practicalInfo', section: 'practical-info' },
     { navKey: 'nav.parking', section: 'parking' },
@@ -102,7 +103,16 @@ export function getNavItems(locale: Locale): NavItem[] {
         link('nav.corporateEvents', 'corporate-events'),
       ],
     },
-    link('nav.accommodation', 'accommodation'),
+    // Ubytování je rozbalovací kvůli věrnostnímu programu — host má na
+    // Ensana Life kliknout přímo z menu, ne ho hledat v patičce.
+    {
+      type: 'dropdown',
+      navKey: 'nav.accommodation',
+      children: [
+        link('nav.overview', 'accommodation'),
+        link('nav.ensanaLife', 'ensana-life'),
+      ],
+    },
     {
       type: 'dropdown',
       navKey: 'nav.aboutTown',

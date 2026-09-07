@@ -19,6 +19,8 @@ export const routes = {
   culture: { de: 'kultur', en: 'culture', cs: 'kultura', ru: 'kultura' },
   nature: { de: 'natur', en: 'nature', cs: 'priroda', ru: 'priroda' },
   accommodation: { de: 'unterkunft', en: 'accommodation', cs: 'ubytovani', ru: 'prozhivanie' },
+  /** Věrnostní program Ensana Life — název programu je značka, slug je ve všech jazycích stejný. */
+  'ensana-life': { de: 'ensana-life', en: 'ensana-life', cs: 'ensana-life', ru: 'ensana-life' },
   history: { de: 'geschichte', en: 'history', cs: 'historie', ru: 'istoriya' },
   'practical-info': { de: 'praktische-infos', en: 'practical-info', cs: 'prakticke-informace', ru: 'prakticheskaya-informaciya' },
   parking: { de: 'parken', en: 'parking', cs: 'parkovani', ru: 'parkovka' },
