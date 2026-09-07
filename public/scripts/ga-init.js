@@ -8,6 +8,16 @@
   if (!el) return;
   var GA_MEASUREMENT_ID = el.dataset.gaId;
   var locale = el.dataset.locale || 'de';
+
+  // Vercel Web Analytics — bezcookie měření bez souhlasu (žádný identifikátor
+  // návštěvníka se neukládá do prohlížeče). Fronta window.va se zakládá tady,
+  // aby vlastní události nepropadly, když se /_vercel/insights/script.js
+  // načte později než první klik; skript frontu po načtení přehraje.
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  function vaEvent(name, data) {
+    try { window.va('event', { name: name, data: data }); } catch (e) { /* ignore */ }
+  }
+
   if (!GA_MEASUREMENT_ID) return;
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
@@ -81,9 +91,6 @@
     }
 
     document.addEventListener('click', function (e) {
-      // Without consent, do not even queue events into dataLayer — queued
-      // hits would be replayed to gtag.js if the visitor accepts later.
-      if (!consentGranted) return;
       var a = findAnchor(e.target);
       if (!a) return;
 
@@ -95,6 +102,16 @@
       if (/(^|\.)ensanahotels\.com$/.test(url.hostname)) {
         var params = url.searchParams;
         var pathParts = url.pathname.split('/').filter(Boolean);
+        // Bezcookie kopie klíčové události — jen hotel a jazyk, žádná URL
+        // ani parametry kampaně, aby se do Vercelu nedostalo nic osobního.
+        vaEvent('book_now', { hotel: pathParts[2] || '(not set)', locale: locale });
+      }
+
+      // Without consent, do not even queue events into dataLayer — queued
+      // hits would be replayed to gtag.js if the visitor accepts later.
+      if (!consentGranted) return;
+
+      if (/(^|\.)ensanahotels\.com$/.test(url.hostname)) {
         gtag('event', 'book_now', {
           link_url: href,
           link_domain: url.hostname,
@@ -121,11 +138,12 @@
 
     // Newsletter / story form submissions → generate_lead
     document.addEventListener('submit', function (e) {
-      if (!consentGranted) return;
       var form = e.target;
       if (!form || form.tagName !== 'FORM') return;
       var kind = form.getAttribute('data-ga-form');
       if (!kind) return;
+      vaEvent('generate_lead', { form: kind, locale: locale });
+      if (!consentGranted) return;
       gtag('event', 'generate_lead', { form: kind, locale: locale });
     }, true);
   })();

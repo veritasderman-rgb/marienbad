@@ -104,6 +104,10 @@ src/content/
 | Variable | Purpose |
 |----------|---------|
 | `PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID override (falls back to the built-in property; set to an empty string to disable GA4). |
+| `PUBLIC_SEZNAM_WMT` | Seznam Webmaster site-verification code → `<meta name="seznam-wmt">` (omitted when unset). |
+| `PUBLIC_GOOGLE_SITE_VERIFICATION` | Google Search Console verification code → `<meta name="google-site-verification">` (omitted when unset). |
+
+Vercel Web Analytics (cookieless) is loaded from `/_vercel/insights/script.js` in production builds; it must be enabled in the Vercel project (Analytics → Enable), otherwise the script 404s silently.
 
 ## Design Principles
 
