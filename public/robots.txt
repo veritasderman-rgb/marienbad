@@ -6,6 +6,8 @@ Disallow: /keystatic/
 Disallow: /api/
 Disallow: /portal
 Disallow: /portal/
+# Jazykove neutralni zkratky (/go/<klic>) jen presmerovavaji podle jazyka prohlizece.
+Disallow: /go/
 
 # AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, ...)
 # are intentionally allowed — being citable in AI answers is part of the
