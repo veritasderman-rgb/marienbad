@@ -50,12 +50,14 @@ function hp(id: string): HotelPhoto {
 }
 
 /**
- * Fotky k situacím. Vánoce a konference berou Casino ze svatební sady (jiné
- * fotky Casina ve fotobance nejsou, obě jsou na výšku), zbytek hotelovou
- * fotobanku. Konference schválně Casino, ne hotelový salonek — zadání 3. 9.
+ * Fotky k situacím. Vánoční večírek má zasněženou kolonádu s vánočními
+ * ozdobami (svatební fotka Casina s květinovou výzdobou působila jako svatba,
+ * zadání 7. 9.), konference bere Casino ze svatební sady (jiné fotky Casina
+ * ve fotobance nejsou, je na výšku), zbytek hotelovou fotobanku. Konference
+ * schválně Casino, ne hotelový salonek — zadání 3. 9.
  */
 const SITUATION_PHOTO: Record<string, { kind: 'lib'; src: string; portrait?: boolean } | { kind: 'hotel'; photo: HotelPhoto }> = {
-  christmas: { kind: 'lib', src: `${LIB}wedding/casino-hall-floral-centrepiece.jpg`, portrait: true },
+  christmas: { kind: 'lib', src: `${LIB}xmas/main-colonnade-16a3438.jpg` },
   conference: { kind: 'lib', src: `${LIB}wedding/casino-marble-hall-tables.jpg`, portrait: true },
   offsite: { kind: 'hotel', photo: hp('pacifik/mice/pacifik-mice-cpt-james-cook-s-lounge-16a4301') },
   // Knihovna v uspořádání boardroom — přesně to, co představenstvo hledá.
