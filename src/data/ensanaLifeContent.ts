@@ -134,8 +134,8 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       ],
       badgeValue: 'bez expirace',
       badgeNote: 'Základní členství platí neomezeně.',
-      imageAlt: 'Lázeňská hostka s pohárkem na kolonádě v ranním světle',
-      bathAlt: 'Historická lázeňská hala s tyrkysovou minerální vodou a mramorovými sloupy',
+      imageAlt: 'Litinová kolonáda Mariánských Lázní prozářená ranním sluncem',
+      bathAlt: 'Římské lázně v Nových Lázních: bazén s minerální vodou mezi sloupy z červeného mramoru',
     },
     tiers: {
       heading: 'Čtyři úrovně členství',
@@ -261,8 +261,8 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       ],
       badgeValue: 'ohne Verfall',
       badgeNote: 'Die Basis-Mitgliedschaft gilt unbegrenzt.',
-      imageAlt: 'Kurgästin mit Trinkbecher auf der Kolonnade im Morgenlicht',
-      bathAlt: 'Historische Badehalle mit türkisfarbenem Mineralwasser und Marmorsäulen',
+      imageAlt: 'Gusseiserne Kolonnade von Marienbad im Morgenlicht',
+      bathAlt: 'Römisches Bad im Neubad: Mineralwasserbecken zwischen Säulen aus rotem Marmor',
     },
     tiers: {
       heading: 'Vier Mitgliedschaftsstufen',
@@ -382,8 +382,8 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       ],
       badgeValue: 'never expires',
       badgeNote: 'Basic membership is valid indefinitely.',
-      imageAlt: 'Spa guest with a drinking cup on the colonnade in morning light',
-      bathAlt: 'Historic bath hall with turquoise mineral water and marble columns',
+      imageAlt: 'Cast-iron colonnade of Mariánské Lázně in morning sunlight',
+      bathAlt: 'Roman Baths at Nové Lázně: mineral-water pool between red marble columns',
     },
     tiers: {
       heading: 'Four membership tiers',
@@ -509,8 +509,8 @@ export const ensanaLifeContent: Record<Locale, EnsanaLifeContent> = {
       ],
       badgeValue: 'бессрочно',
       badgeNote: 'Базовое членство действует без ограничений.',
-      imageAlt: 'Гостья курорта с питьевой кружечкой на колоннаде в утреннем свете',
-      bathAlt: 'Историческая купальная зала с бирюзовой минеральной водой и мраморными колоннами',
+      imageAlt: 'Чугунная колоннада Марианских Лазней в утреннем свете',
+      bathAlt: 'Римские бани в Нове-Лазне: бассейн с минеральной водой между колоннами из красного мрамора',
     },
     tiers: {
       heading: 'Четыре уровня членства',

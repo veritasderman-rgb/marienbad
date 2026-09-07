@@ -2,10 +2,15 @@
 /**
  * Ensana Life — obsah stránky věrnostního programu, sdílený všemi čtyřmi
  * jazykovými mutacemi. Texty drží src/data/ensanaLifeContent.ts.
+ *
+ * Fotky: reálné snímky z fotobanky (kolonáda, Římské lázně v Nových Lázních)
+ * přes <Pic> a hotelová fotobanka přes srcset() z hotelPhotos.ts. Původní tři
+ * generované obrázky v /images/content/ensana-life/ byly odstraněny.
  */
 import Pic from '@/components/Pic.astro'
 import type { Locale } from '@/i18n/config'
 import { ensanaLifeContent, CONTACT_MAIL } from '@/data/ensanaLifeContent'
+import { hotelPhotos, srcset, displaySize, type HotelPhoto } from '@/lib/hotelPhotos'
 
 interface Props {
   locale: Locale
@@ -13,6 +18,21 @@ interface Props {
 
 const { locale } = Astro.props
 const c = ensanaLifeContent[locale]
+
+const HERO_PHOTO = '/images/library/colonnade/colonnade-interior-hall.jpg'
+const BATH_PHOTO = '/images/library/mineral-bath/grand-thermal-bath-hall.jpg'
+
+/** Fotka z hotelové fotobanky podle id — chybějící id shodí build, ne stránku. */
+function hp(id: string): HotelPhoto {
+  const slug = id.split('/')[0]
+  const found = hotelPhotos(slug).find((p) => p.id === id)
+  if (!found) throw new Error(`Hotelová fotka ${id} není ve fotobance`)
+  return found
+}
+
+/** Závěrečná výzva: Nové Lázně, průčelí od parku. */
+const CLOSING_PHOTO = hp('nove-lazne/exterior/nove-lazne-exterior-nove-lazne-16a4425')
+const closingSize = displaySize(CLOSING_PHOTO)
 
 /** Vzhled karet úrovní podle klíče (jazykově nezávislý). */
 const tierStyles: Record<string, { face: string; ink: string; chip: string }> = {
@@ -38,7 +58,7 @@ const legalHtml = c.conditions.legal.replace(
 <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-indigo-950">
   <div class="absolute inset-0">
     <Pic
-      src="/images/content/ensana-life/kolonada-hero.jpg"
+      src={HERO_PHOTO}
       alt={c.about.imageAlt}
       class="w-full h-full object-cover"
       loading="eager"
@@ -119,7 +139,7 @@ const legalHtml = c.conditions.legal.replace(
       <div class="relative">
         <div class="overflow-hidden rounded-3xl shadow-card">
           <Pic
-            src="/images/content/ensana-life/rimske-lazne.jpg"
+            src={BATH_PHOTO}
             alt={c.about.bathAlt}
             class="w-full h-full object-cover"
             sizes="(min-width: 1024px) 45vw, 100vw"
@@ -322,11 +342,16 @@ const legalHtml = c.conditions.legal.replace(
 <!-- ── Závěrečná výzva ─────────────────────────────────────────────── -->
 <section class="relative overflow-hidden bg-aubergine-900 text-white">
   <div class="absolute inset-0">
-    <Pic
-      src="/images/content/ensana-life/hotel-vecer.jpg"
+    <img
+      src={`${CLOSING_PHOTO.base}-1600.webp`}
+      srcset={srcset(CLOSING_PHOTO)}
+      sizes="100vw"
+      width={closingSize.width}
+      height={closingSize.height}
       alt=""
       class="w-full h-full object-cover"
-      sizes="100vw"
+      loading="lazy"
+      decoding="async"
     />
   </div>
   <div class="absolute inset-0 bg-gradient-to-r from-aubergine-950/95 via-aubergine-950/80 to-aubergine-950/35"></div>
