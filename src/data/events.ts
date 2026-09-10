@@ -119,7 +119,7 @@ export const events: MarienbadEvent[] = [
     description: {
       de: 'Wasser tanzt zu Musik vor der Hauptkolonnade — abends mit spektakulärer Beleuchtung.',
       en: 'Water dances to music in front of the Main Colonnade — with spectacular lighting in the evenings.',
-      cs: 'Voda tančí na hudbu před Hlavní kolonádou — večer se spektakulárním osvětlením.',
+      cs: 'Vodní program před Hlavní kolonádou doprovází hudba a večer také osvětlení.',
       ru: 'Вода танцует под музыку перед Главной колоннадой — вечером с эффектной подсветкой.',
     },
     // fontána: střik a mísa
