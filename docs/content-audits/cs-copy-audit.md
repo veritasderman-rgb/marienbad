@@ -1,16 +1,8 @@
 # Audit českých textů: další kroky
 
 **Rozsah:** 24 hlavních českých obsahových stránek v `src/content/pages/cs-*` a související texty českých rout.  
-**Stav:** schváleno a realizováno v navazující obsahové revizi.
+**Stav:** návrh redakčního plánu; tento dokument sám texty na webu nemění.  
 **Mimo rozsah:** články magazínu, právní správnost zdravotních tvrzení a úplná faktická rešerše. Tyto oblasti doporučuji projít samostatně.
-
-## Stav realizace
-
-- Přepracovány byly prioritní stránky Architektura, Historie, Co dělat a Výlety.
-- Výraznou revizí prošly také rozcestníky Magazín, Lidé z kolonády, Slavní návštěvníci a Praktické informace.
-- U léčebných, ubytovacích a sezonních stránek byly odstraněny nejvýraznější překladové konstrukce, nejasné superlativy a zbytečné cizojazyčné výrazy.
-- Napříč českou mutací se sjednotil název památky UNESCO a české názvy příjezdu, odjezdu a hotelových služeb.
-- Právní stránky zůstaly beze změny, protože jejich význam má před jazykovým přepisem potvrdit právník. Samostatný medicínský a faktografický audit zůstává doporučeným následným krokem.
 
 ## Co se v textech opakuje
 
