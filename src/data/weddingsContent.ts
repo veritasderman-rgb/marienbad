@@ -203,12 +203,12 @@ export const relatedLinks: Record<Locale, string[]> = {
 const cs: WeddingsContent = {
   metaTitle: 'Svatba v Mariánských Lázních — místa, sály a termíny',
   metaDescription:
-    'Obřad na kolonádě, hostina pod křišťálovými lustry a sedm hotelů pěšky. Místa, kapacity sálů a odpovědi na nejčastější otázky svatebčanů.',
+    'Obřad na kolonádě, hostina pod křišťálovými lustry a ubytování jen pár kroků odtud. Objevte místa pro svatbu v Mariánských Lázních.',
   breadcrumb: 'Svatba',
   hero: {
     eyebrow: 'Svatba v Mariánských Lázních',
     heading: 'Svatba v Mariánských Lázních',
-    lead: 'Litinová kolonáda, zpívající fontána, sály pod křišťálovými lustry a sedm hotelů v docházkové vzdálenosti. Celý váš den se odehraje na ploše, kterou přejdete pěšky za deset minut.',
+    lead: 'Litinová kolonáda, Zpívající fontána, historické sály a sedm hotelů v pěší vzdálenosti. Obřad, hostinu i ubytování můžete mít během jediného dne jen pár minut od sebe.',
     ctaPrimary: 'Nezávazně poptat termín',
     ctaSecondary: 'Prohlédnout místa',
   },
@@ -216,12 +216,12 @@ const cs: WeddingsContent = {
     { value: '120 m', label: 'litinové kolonády', note: 'z roku 1889' },
     { value: '5', label: 'historických sálů', note: 'Společenský dům Casino' },
     { value: '50–450', label: 'hostů', note: 'podle sálu a uspořádání' },
-    { value: '10 min', label: 'pěšky', note: 'obřad → hostina → postel' },
+    { value: '10 min', label: 'pěšky', note: 'z obřadu na hostinu i do hotelu' },
   ],
   venues: {
     eyebrow: 'Místa',
     heading: 'Kde si řeknete ano',
-    lead: 'Pět míst v docházkové vzdálenosti od sebe. Dvě pod střechou, tři pod širým nebem — a mezi tím parky, ve kterých se fotí cestou.',
+    lead: 'Vyberte si z pěti míst, která od sebe dělí jen krátká procházka. Dvě jsou pod střechou, tři pod širým nebem a cestou mezi nimi projdete lázeňskými parky.',
     capacityLabel: 'Kapacita',
     settingLabel: 'Prostředí',
     seasonLabel: 'Nejlepší období',
@@ -232,7 +232,7 @@ const cs: WeddingsContent = {
         key: 'colonnade',
         photo: 'main-colonnade-arcade-wide',
         name: 'Hlavní kolonáda',
-        line: 'Sto dvacet metrů litinové krajky z roku 1889, malovaný strop a světlo, které mezi sloupy padá v pruzích. Nejfotografovanější místo ve městě — a ráno, než přijdou lázeňští hosté, také nejtišší.',
+        line: 'Sto dvacet metrů dlouhá litinová kolonáda z roku 1889, malovaný strop a světlo pronikající mezi sloupy. Patří k nejfotografovanějším místům ve městě; brzy ráno je tu navíc příjemný klid.',
         capacity: 'podle uspořádání obřadu',
         setting: 'kryté, ale otevřené do parku',
         season: 'květen–září',
@@ -242,7 +242,7 @@ const cs: WeddingsContent = {
         key: 'fountain',
         photo: 'cross-spring-pavilion-bouquet',
         name: 'Zpívající fontána',
-        line: 'Kruhová fontána před kolonádou hraje každou lichou hodinu. Po setmění k hudbě přibude nasvícení a z prostranství se stane hlediště — což je zážitek, který se dá naplánovat na přesný čas.',
+        line: 'Kruhová fontána před kolonádou hraje každou lichou hodinu. Po setmění hudbu doplňují světelné efekty. Představení má pevný začátek, a tak je můžete snadno zařadit do svatebního programu.',
         capacity: 'volné prostranství',
         setting: 'venku',
         season: 'duben–říjen',
@@ -252,7 +252,7 @@ const cs: WeddingsContent = {
         key: 'park',
         photo: 'cross-spring-pavilion-couple-walking',
         name: 'Pavilon Křížového pramene a lázeňský park',
-        line: 'Bílý pavilon s měděnou kupolí, trávník před ním a les hned za ním. Místo pro komorní obřad, po kterém se jde do hostiny pěšky přes park.',
+        line: 'Bílý pavilon s měděnou kupolí obklopuje trávník a v pozadí začíná les. Hodí se pro komorní obřad, ze kterého můžete dojít na hostinu pěšky přes park.',
         capacity: 'komorní obřad',
         setting: 'venku',
         season: 'květen–červen, září',
@@ -262,7 +262,7 @@ const cs: WeddingsContent = {
         key: 'casino',
         photo: 'casino-marble-hall-tables',
         name: 'Společenský dům Casino — Mramorový sál',
-        line: 'Freskový strop, křišťálové lustry a parkety, po kterých se tančí od roku 1900. Největší z historických sálů ve městě a jediný, kam se vejde svatba, kterou nemusíte krátit.',
+        line: 'Freskový strop, křišťálové lustry a parket, na kterém se tančí od roku 1900. Největší historický sál ve městě nabízí dostatek místa i pro početnou svatbu.',
         capacity: 'až 300 na banket, 450 na recepci',
         setting: 'uvnitř',
         season: 'celoročně',
@@ -272,7 +272,7 @@ const cs: WeddingsContent = {
         key: 'outdoor',
         photo: 'outdoor-ceremony-first-kiss',
         name: 'Obřad pod širým nebem',
-        line: 'Když chcete obřad mimo město: louka, altán nebo okraj lesa ve Slavkovském lese, patnáct minut autem. Hosté si sednou do trávy a nad hlavami mají jen stromy.',
+        line: 'Pokud toužíte po obřadu mimo město, vyberte si louku, altán nebo místo na okraji Slavkovského lesa, vzdálené asi patnáct minut autem. Čeká vás klid a příroda všude kolem.',
         capacity: 'podle místa',
         setting: 'venku',
         season: 'červen–září',
@@ -282,7 +282,7 @@ const cs: WeddingsContent = {
   },
   halls: {
     heading: 'Sály Společenského domu',
-    lead: 'Pět historických sálů pod jednou střechou. Banket znamená sezení u stolů, recepce stání s rautem — u téhož sálu se čísla liší skoro dvojnásobně.',
+    lead: 'Pět historických sálů najdete pod jednou střechou. Uvedená kapacita se liší podle uspořádání: při banketu hosté sedí u stolů, zatímco recepce počítá převážně se stáním a rautem.',
     colName: 'Sál',
     colBanquet: 'Banket',
     colReception: 'Recepce',
@@ -294,12 +294,12 @@ const cs: WeddingsContent = {
       { name: 'Růžový salonek s Galerií', banquet: '140', reception: '190', character: 'dva propojené prostory, dobré na raut' },
       { name: 'Edwardova knihovna', banquet: '50', reception: '50', character: 'knihovna, nejintimnější z pěti' },
     ],
-    note: 'Čísla jsou ze svatebního katalogu Ensana. Konkrétní uspořádání, parket a místo pro kapelu potvrdí sál při rezervaci.',
+    note: 'Kapacity vycházejí ze svatebního katalogu Ensana. Konkrétní uspořádání stolů, velikost parketu a místo pro kapelu s vámi upřesníme při rezervaci.',
   },
   acts: {
     eyebrow: 'Průběh',
-    heading: 'Den ve třech aktech',
-    lead: 'Svatba v lázních má tu výhodu, že hosté nikam nejezdí. Přijedou den předem a odjedou den po — a mezi tím se nemusí ani jednou sedat do auta.',
+    heading: 'Svatba od příjezdu až po společnou snídani',
+    lead: 'V lázních mohou hosté přijet už den před svatbou a odjet až následující ráno. Obřad, hostina i hotel jsou blízko sebe, takže se během oslav obejdou bez auta.',
     items: [
       {
         key: 'eve',
@@ -329,15 +329,15 @@ const cs: WeddingsContent = {
         title: 'Ráno po',
         items: [
           'Snídaně bez spěchu, hosté odjíždějí postupně',
-          'Procházka ke kolonádě a pitná kúra na kocovinu',
+          'Procházka ke kolonádě a ochutnávka minerálních pramenů',
           'Lázeňské líbánky — pár dní navíc ve stejném hotelu',
         ],
       },
     ],
   },
   draws: {
-    heading: 'Dva tahy, které jinde nedostanete',
-    lead: 'Věci, které nejsou na seznamu služeb, ale pamatují si je hosté.',
+    heading: 'Dva zážitky, které patří k Mariánským Lázním',
+    lead: 'Drobnosti, díky kterým si hosté vaši svatbu spojí právě s tímto místem.',
     items: [
       {
         title: 'Zpívající fontána na přání',
@@ -346,14 +346,14 @@ const cs: WeddingsContent = {
       },
       {
         title: 'Vyjížďka kočárem',
-        body: 'Historický kočár od obřadu k hostině: lázeňským parkem kolem pramenů a podél kolonády. Trasa se dá zkrátit i protáhnout podle toho, kolik času mezi obřadem a hostinou zbývá.',
+        body: 'Z obřadu na hostinu se můžete vydat historickým kočárem. Trasa vede lázeňským parkem kolem pramenů a podél kolonády a její délku přizpůsobíme času mezi obřadem a hostinou.',
         linkLabel: 'Napsat nám',
       },
     ],
   },
   gallery: {
     heading: 'Detaily',
-    lead: 'Prostírání, květiny, prsteny — věci, které na fotkách zůstanou i po letech.',
+    lead: 'Prostírání, květiny a prsteny — právě drobné detaily dotvářejí atmosféru dne a zůstávají na fotografiích.',
     photos: [
       { photo: 'banquet-place-setting-detail', alt: 'Detail prostírání se jmenovkou na svatební tabuli' },
       { photo: 'bridal-gown-lace-detail', alt: 'Detail krajkového živůtku svatebních šatů' },
@@ -365,10 +365,10 @@ const cs: WeddingsContent = {
   },
   morning: {
     eyebrow: 'Ráno',
-    heading: 'Než se vyjde ven',
-    lead: 'Většina svatebního dne se odehraje dřív, než začne obřad. Hotel je tou dobou ještě tichý a schodiště patří jenom vám!',
+    heading: 'Než začne obřad',
+    lead: 'Přípravy začínají dlouho před obřadem. Hotel je ráno ještě tichý a jeho historické interiéry poskytují klid i krásné místo pro první fotografie.',
     staircase: {
-      caption: 'Cesta ze pokoje dolů je první moment, kdy nevěstu uvidí všichni najednou.',
+      caption: 'Cesta z pokoje po schodišti bývá prvním okamžikem, kdy nevěstu spatří všichni hosté.',
       alt: 'Nevěsta sestupuje po hotelovém schodišti',
     },
     entrance: {
@@ -376,15 +376,15 @@ const cs: WeddingsContent = {
       alt: 'Nevěsta na červeném koberci před vstupem do hotelu Nové Lázně',
     },
     edward: {
-      heading: 'Pod portrétem Eduarda VII.',
-      body: 'V hale Nových Lázní visí portrét krále Eduarda VII., který do Mariánských Lázní jezdil od roku 1897 a založil tu golfový klub. Fotit se pod ním je zdejší tradice — a nevěsta tak stojí přesně tam, kde stával on.',
+      heading: 'Pod portrétem Edwarda VII.',
+      body: 'V hale Nových Lázní visí portrét krále Edwarda VII., který Mariánské Lázně navštěvoval od roku 1897 a založil zdejší golfový klub. Fotografování pod portrétem se stalo místní svatební tradicí.',
       linkLabel: 'Slavní návštěvníci',
       alt: 'Nevěsta pod portrétem krále Eduarda VII. v hotelu Nové Lázně',
     },
   },
   guests: {
     heading: 'Pro hosty',
-    lead: 'Většina starostí kolem svatby je logistika. Tady jí ubývá tím, že je všechno vedle sebe.',
+    lead: 'Organizaci usnadňuje krátká vzdálenost mezi hotely, obřadními místy a sály.',
     bullets: [
       'Sedm lázeňských hotelů v docházkové vzdálenosti — od pětihvězdičkových po komfortní',
       'Wellness a bazény pro hosty, kteří přijedou dřív',
@@ -399,15 +399,15 @@ const cs: WeddingsContent = {
     photoCaption: 'Hotelový bar je mezi obřadem a hostinou nejvytíženější místo celého dne.',
   },
   when: {
-    heading: 'Kdy',
-    p1: 'Květen a červen jsou tady nejzelenější — park rozkvete dřív, než začne hlavní sezóna, a fotky u pavilonu mají to světlo, kvůli kterému se sem fotografové vracejí. Září přinese barvy a teplé večery bez horka.',
-    p2: 'Zimní svatba je jiný žánr: obřad i hostina se přesunou dovnitř, do sálů pod lustry, a kolonáda za oknem je zasněžená. Termínů je víc a ceny nižší.',
+    heading: 'Kdy uspořádat svatbu',
+    p1: 'V květnu a červnu jsou parky svěže zelené a plné květů, přitom ještě nezačala hlavní sezona. Září přináší teplé barvy a příjemné večery bez letních veder.',
+    p2: 'Zimní svatba má zcela jinou atmosféru. Obřad i hostina se odehrávají v historických sálech pod křišťálovými lustry, zatímco venku může být kolonáda zasněžená. Výhodou bývá větší výběr termínů i příznivější ceny.',
     linkLabel: 'Nejlepší čas návštěvy',
     alt: 'Svatební pár na schodech nad rozkvetlým lázeňským parkem v Mariánských Lázních',
   },
   faq: {
     heading: 'Časté otázky',
-    lead: 'Odpovědi na to, co se svatebčané ptají nejčastěji.',
+    lead: 'Odpovědi na otázky, které snoubenci řeší nejčastěji.',
     items: [
       {
         q: 'Jak dlouho dopředu rezervovat?',
@@ -423,7 +423,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Kdo vyřídí matriku?',
-        a: 'Matriční úřad v Mariánských Lázních. Doklady a lhůty se liší podle toho, jestli je někdo ze snoubenců cizinec — u cizinců je potřeba vysvědčení o právní způsobilosti k uzavření manželství a úřední překlad. Na svatbu ze zahraničí si na papírování nechte měsíce dva.',
+        a: 'Matriční úřad v Mariánských Lázních. Doklady a lhůty se liší podle toho, jestli je někdo ze snoubenců cizinec — u cizinců je potřeba vysvědčení o právní způsobilosti k uzavření manželství a úřední překlad. Pokud přijíždíte ze zahraničí, začněte potřebné doklady vyřizovat alespoň dva měsíce předem.',
       },
       {
         q: 'Můžeme mít civilní i církevní obřad?',
@@ -435,7 +435,7 @@ const cs: WeddingsContent = {
       },
       {
         q: 'Ubytujeme hosty na jednom místě?',
-        a: 'Většinou ano. Sedm lázeňských hotelů stojí v docházkové vzdálenosti a větší svatby se běžně dělí mezi dva sousední domy — hosté to poznají jen podle toho, kterými dveřmi jdou spát. Blok pokojů rezervujte současně se sálem.',
+        a: 'Většinou ano. Sedm lázeňských hotelů stojí v docházkové vzdálenosti a větší svatby se běžně dělí mezi dva sousední domy — pro hosty to přesto znamená jen několik minut chůze. Blok pokojů rezervujte současně se sálem.',
       },
       {
         q: 'Dá se domluvit Zpívající fontána?',
@@ -445,7 +445,7 @@ const cs: WeddingsContent = {
   },
   finalCta: {
     heading: 'Řekněte nám o svém dni',
-    body: 'Napište nám termín, počet hostů a jestli chcete obřad venku, nebo pod střechou. Ozveme se s tím, co je na daný den volné, kolik to bude stát a co je potřeba zařídit dřív než ostatní. Poptávka je nezávazná a rezervace termínu i pokojů je u nás zdarma.',
+    body: 'Napište nám plánovaný termín, počet hostů a zda si přejete obřad venku, nebo pod střechou. Sdělíme vám, které prostory jsou volné, jaká bude předběžná cena a co je potřeba zařídit s předstihem. Poptávka je nezávazná; za rezervaci termínu ani pokojů nic neplatíte.',
     cta: 'Napsat nám',
     ensanaLabel: 'Ubytování Ensana',
     alt: 'Novomanželé na schodech pod freskou na konci Hlavní kolonády',
