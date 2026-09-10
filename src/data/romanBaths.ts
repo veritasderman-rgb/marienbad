@@ -93,76 +93,75 @@ export const ui: Record<Locale, RomanBathsUI> = {
     eyebrow: 'Ensana Nové Lázně · od roku 1896',
     h1: 'Římské lázně',
     heroLead:
-      'Prosklený strop, jedenadvacet sloupů z tmavě rudého mramoru a zlacené lví hlavy nad hladinou. Římské lázně nejsou kulisa — koupete se v památce, která slouží svému účelu bez přerušení od roku 1896.',
+      'Pod proskleným stropem, mezi sloupy z tmavě rudého mramoru, si můžete dopřát odpočinek v lázních s více než stoletou historií. Římské lázně jsou součástí hotelu Nové Lázně v Mariánských Lázních a svému účelu slouží od roku 1896.',
 
-    accessHeading: 'Jak se do Římských lázní dostanete',
+    accessHeading: 'Jak navštívit Římské lázně',
     accessLead:
-      'Římské lázně jsou součástí pětihvězdičkového hotelu Nové Lázně, ne veřejný bazén se vstupenkami u pokladny. Právě proto v nich nikdy nepotkáte dav.',
-    accessStayTitle: 'Nejjistější cesta — ubytujte se',
+      'Římské lázně slouží především hotelovým hostům. Navštívit je můžete i bez ubytování, vstup ale závisí na aktuální obsazenosti.',
+    accessStayTitle: 'Vstup pro hotelové hosty',
     accessStayText:
-      'Hosté hotelů Ensana Nové Lázně a Ensana Centrální Lázně mají vstup do Římských lázní v rámci pobytu. Je to nejpohodlnější a nejspolehlivější cesta — o volná místa se nemusíte starat.',
+      'Hosté hotelů Ensana Nové Lázně a Ensana Centrální Lázně mají vstup do Římských lázní zahrnutý v pobytu.',
     accessVisitorTitle: 'Návštěva bez ubytování',
     accessVisitorText:
-      'Vstup je možný i pro hosty, kteří u nás nebydlí. Prodává se výhradně na místě, a to jen na dva denní termíny — v 11:00 a ve 14:00 hodin — podle aktuální obsazenosti.',
+      'Pokud v hotelu nebydlíte, můžete si vstup zakoupit pouze na místě, denně na termíny v 11:00 a ve 14:00.',
     accessWarning:
-      'Rezervace dopředu e-mailem ani telefonicky nepřijímáme. O volných místech rozhoduje aktuální obsazenost lázeňského provozu a hosty na pobytu, proto vstup nelze zaručit předem ani přislíbit na konkrétní den.',
+      'Počet volných míst závisí na obsazenosti lázní a využití hotelovými hosty. Vstup proto nelze předem zaručit. Rezervace telefonicky ani e-mailem nepřijímáme.',
     accessSaleLabel: 'Prodej vstupů na místě',
-    accessSaleTimes: 'Denně v 11:00 a ve 14:00 hodin',
+    accessSaleTimes: 'Denně v 11:00 a ve 14:00',
     accessHvezda:
       'Hosté hotelu Ensana Hvězda mají přístup do bazénu v Římských lázních při pobytu delším než tři noci.',
     accessStayNl: 'Ubytování v Nových Lázních',
     accessStayCl: 'Ubytování v Centrálních Lázních',
 
-    historyHeading: 'Z historie',
+    historyHeading: 'Z historie Nových Lázní',
     historyLead:
-      'Nové Lázně vznikly z prosté potřeby: město přestalo stačit náporu hostů. Stavba, kterou dnes obdivujeme jako architektonický skvost, byla především odpovědí na nedostatek koupelových kabin.',
+      'S rostoucí oblibou Mariánských Lázní přibývalo hostů a původní koupelové prostory přestávaly stačit. Dnešní podoba Nových Lázní vznikla při rozsáhlé přestavbě na konci 19. století.',
     timeline: [
       {
         year: '1872',
-        title: 'Přijíždí první vlak',
-        text: 'Železnice otevřela Mariánské Lázně Evropě a počty hostů prudce vzrostly. Dosavadní kapacity přestaly stačit a velká přestavba se stala nutností.',
+        title: 'Příjezd železnice',
+        text: 'Železniční spojení usnadnilo cestu do Mariánských Lázní a přivedlo do města další návštěvníky. Brzy bylo potřeba rozšířit také lázeňský provoz.',
       },
       {
-        year: 'před 1890',
-        title: 'Staré Nové Lázně a „ocelové koupele"',
-        text: 'Původní budova měla 42 kabin, mezi nimi i ty pro takzvané ocelové koupele (Stahlbäder). Tak se v 19. století říkalo koupeli v Ambrožově prameni — voda byla tak bohatá na železo, že obarvila vanu do rezava a slibovala pacientům „ocelové zdraví".',
+        year: 'před rokem 1890',
+        title: 'Původní lázeňská budova',
+        text: 'Původní Nové Lázně měly 42 koupelových kabin. Poskytovaly se zde mimo jiné takzvané ocelové koupele, při nichž se používala voda z Ambrožova pramene bohatá na železo.',
       },
       {
         year: '1892–1896',
-        title: 'Stavba, která nesměla rušit sezonu',
-        text: 'Podnět dal opat Alfred Clemens: rozhodl o stavbě, zajistil peníze a dal projektu jasnou představu. Stavělo se čtyři roky, vždy jen v zimě mimo sezonu, aby lázeňský provoz nestál. Po Schafferově přestavbě se počet kabin zdvojnásobil.',
+        title: 'Přestavba pod vedením Josefa Schaffera',
+        text: 'Přestavbu inicioval opat Alfred Clemens, který zajistil také její financování. Projekt připravil mariánskolázeňský rodák a architekt Josef Schaffer. Práce probíhaly čtyři roky, vždy v zimních měsících, aby nenarušovaly lázeňskou sezonu. Počet koupelových kabin se přestavbou zdvojnásobil.',
       },
       {
         year: '1. června 1896',
         title: 'Slavnostní otevření',
-        text: 'Budovu navrhl mariánskolázeňský rodák Josef Schaffer. Inspiraci přivezl z cest po Itálii — z Benátek, Boloně a Florencie; prvky italské renesance daly stavbě nadčasový ráz. Iniciály opata A. C. a A. T. (Abbas Teplensis) jsou dodnes vytesané ve štítu budovy.',
+        text: 'Nová budova čerpala inspiraci z italské renesance, kterou Schaffer poznal při cestách do Benátek, Boloně a Florencie. Ve štítu jsou dodnes vytesány iniciály opata A. C. a zkratka A. T. — Abbas Teplensis, tedy opat tepelský.',
       },
     ],
 
-    architectureHeading: 'Sál, který nikdy nepřestal sloužit',
+    architectureHeading: 'Historický sál',
     architectureLead:
-      'Prosklený strop zaplavuje sál měkkým denním světlem, které se odráží od hladiny bazénů a zdůrazňuje jeho monumentalitu. Římské lázně patří k nejcennějším a nejlépe dochovaným ukázkám evropské lázeňské architektury konce 19. století.',
+      'Denní světlo proniká proskleným stropem a odráží se na hladině bazénů. Sál si dodnes zachoval řadu původních prvků, od mramorových sloupů po zdobené obklady.',
     facts: [
-      { label: 'Sloupy', value: '21 sloupů z tmavě rudého salcburského mramoru' },
-      { label: 'Hlavice', value: 'Bílý carrarský kámen' },
-      { label: 'Chrliče', value: 'Zlacené, ve tvaru lvích hlav' },
+      { label: 'Sloupy', value: '21 sloupů z tmavě rudého salcburského mramoru s hlavicemi z bílého carrarského kamene' },
+      { label: 'Chrliče', value: 'Zlacené lví hlavy nad hladinou' },
       { label: 'Obklady', value: 'Barevné majolikové dlaždice' },
-      { label: 'Bazény', value: 'Dva původní, třetí s protiproudem z moderní rekonstrukce' },
-      { label: 'Světlo', value: 'Prosklený strop, denní světlo po celé délce sálu' },
+      { label: 'Bazény', value: 'Dva původní bazény a třetí s protiproudem, který přibyl při novodobé rekonstrukci' },
+      { label: 'Strop', value: 'Prosklení po celé délce sálu, které přivádí do interiéru přirozené světlo' },
     ],
 
-    cabinsHeading: 'Královské kabiny',
+    cabinsHeading: 'Královská a císařská kabina',
     cabinsLead:
-      'Nové Lázně se brzy staly cílem evropské šlechty. Součástí komplexu jsou dvě soukromé koupelové kabiny, které dodnes slouží speciální balneoterapii.',
+      'Nové Lázně navštěvovali také evropští panovníci. Jejich pobyty připomínají dvě soukromé koupelové kabiny, které se dodnes využívají k lázeňským procedurám.',
     cabinsRoyal:
-      'Královská kabina patřila britskému králi Edwardu VII., který Mariánské Lázně navštívil celkem devětkrát; jeho uhličité koupele se staly symbolem prestiže zdejší léčby. Kabina si zachovala původní vybavení — měděný parní kotel, historická kamna, majolikové obklady a malby ptáků na stěnách. Dveře do lodžie zdobí původní malovaná skla z proslulé tyrolské dílny Geyling, která se na slunci rozzáří všemi barvami. Pobyt v kabině měl připomínat zahradní pavilon uprostřed přírody.',
+      'Královskou kabinu využíval britský král Edward VII., který Mariánské Lázně navštívil devětkrát a podstupoval zde uhličité koupele. Dochovalo se v ní původní vybavení: měděný parní kotel, historická kamna, majolikové obklady i nástěnné malby ptáků. Dveře do lodžie zdobí malovaná skla z dílny Geyling. Výzdoba měla navodit pocit pobytu v zahradním pavilonu.',
     cabinsImperial: 'Císařská kabina nese jméno Františka Josefa I.',
 
-    todayHeading: 'Co k Římským lázním patří dnes',
-    todayLead: 'K historickému sálu přiléhá moderní wellness zázemí.',
+    todayHeading: 'Wellness a lázeňské procedury',
+    todayLead: 'Na historický sál navazuje wellness zázemí.',
     todayItems: ['Sauna 80 °C', 'Parní lázeň', 'Kneippova terapie'],
     waterNote:
-      'V bazénech je obyčejná voda, jen šetrněji chlorovaná než v plaveckém bazénu. Minerální voda je vyhrazena vanovým koupelím — a obojí se dobře doplňuje: nejdřív koupel jako procedura, potom odpočinek pod mramorovou klenbou.',
+      'V bazénech se používá běžná chlorovaná voda. Minerální voda je určena pro samostatné vanové koupele, které se poskytují jako lázeňské procedury. Návštěvu Římských lázní tak můžete spojit s léčebnou koupelí i odpočinkem v bazénech a wellness.',
 
     galleryHeading: 'Fotogalerie',
     galleryNote: 'Klikněte pro zvětšení.',
