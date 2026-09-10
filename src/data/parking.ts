@@ -232,12 +232,12 @@ const hotelOptionsByLocale: Record<Locale, HotelOptions> = {
       { name: 'Podzemní garáže v resortu', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: '38 míst, nutná rezervace předem. Sdílené garáže komplexu Nové Lázně / Centrální Lázně / Hvězda, fyzicky u hotelu Hvězda. Zákaz vjezdu elektromobilů, hybridních vozidel a vozidel na LPG.' },
     ] },
     { location: 'Poloha u parku a kolonády.', options: [
-      { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
+      { name: '4 místa před hotelem', note: 'Pouze pro příjezd a odjezd hostů' },
       { name: 'Parkovací dům u Městského divadla', note: 'cca 5 minut chůze od hotelu', href: CITY_GARAGE },
     ] },
     { location: 'Poloha v centru města přímo u lázeňského parku.', options: [
       { name: 'Podzemní garáž', price: '380 Kč/den · od 5 nocí 250 Kč/den', note: 'Nutná rezervace předem. Vjezd pro elektromobily, hybridní vozidla a vozidla na LPG je zakázán.' },
-      { name: '4 místa před hotelem', note: 'Pouze pro check-in a check-out' },
+      { name: '4 místa před hotelem', note: 'Pouze pro příjezd a odjezd hostů' },
       { name: 'Parkovací dům u Městského divadla', note: 'Alternativně', href: CITY_GARAGE },
     ] },
     { location: 'Poloha u lesoparku.', options: [
@@ -382,12 +382,12 @@ const tableRowsByLocale: Record<Locale, TableRowsByHotel> = {
       { option: 'Podzemní garáže v resortu', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: '38 míst, sdílené garáže u hotelu Hvězda; nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
     ],
     [
-      { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
+      { option: '4 místa před hotelem', price: '–', note: 'Pouze pro příjezd a odjezd hostů' },
       { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'cca 5 min chůze od hotelu', href: CITY_GARAGE },
     ],
     [
       { option: 'Podzemní garáž', price: '380 Kč/den, od 5 nocí 250 Kč/den', note: 'Nutná rezervace; zákaz vjezdu elektro, hybridů a LPG' },
-      { option: '4 místa před hotelem', price: '–', note: 'Pouze pro check-in a check-out' },
+      { option: '4 místa před hotelem', price: '–', note: 'Pouze pro příjezd a odjezd hostů' },
       { option: 'Parkovací dům u Městského divadla', price: 'dle ceníku města', note: 'Alternativně', href: CITY_GARAGE },
     ],
     [
