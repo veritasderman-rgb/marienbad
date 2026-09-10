@@ -50,6 +50,8 @@ export interface OutpatientUI {
   proceduresHeading: string
   proceduresLead: string
   groups: ProcedureGroup[]
+  /** Výčet není úplný — celý seznam procedur má spa recepce. */
+  proceduresMore: string
   doctorOnlyHeading: string
   doctorOnlyText: string
 
@@ -119,7 +121,7 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
       {
         title: 'Plynová terapie CO₂',
-        items: ['Suchá plynová koupel CO₂', 'Plynové injekce (pneumopunktura)'],
+        items: ['Suchá plynová koupel CO₂', 'Plynové injekce'],
       },
       {
         title: 'Peloidy a zábaly',
@@ -143,9 +145,11 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
     ],
 
+    proceduresMore: 'A mnohé další procedury — úplný seznam vám dají na spa recepci.',
+
     doctorOnlyHeading: 'Procedury pouze s lékařem',
     doctorOnlyText:
-      'Část procedur je vázaná na lékaře a bez jeho indikace a dohledu je poskytnout nelze — patří mezi ně například plynové injekce (pneumopunktura) nebo slatinný zábal. Není to formalita: jde o zákroky, u kterých lékař posuzuje zdravotní stav a možná rizika. Přesné informace, které procedury to jsou a za jakých podmínek je lze absolvovat, vám poskytne spa recepce.',
+      'Část procedur je vázaná na lékaře a bez jeho indikace a dohledu je poskytnout nelze — patří mezi ně například plynové injekce nebo slatinný zábal. Není to formalita: jde o zákroky, u kterých lékař posuzuje zdravotní stav a možná rizika. Přesné informace, které procedury to jsou a za jakých podmínek je lze absolvovat, vám poskytne spa recepce.',
 
     priceHeading: 'Ceník',
     priceText:
@@ -215,7 +219,7 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
       {
         title: 'CO₂-Gastherapie',
-        items: ['Trockenes CO₂-Gasbad', 'Gasinjektionen (Pneumopunktur)'],
+        items: ['Trockenes CO₂-Gasbad', 'Gasinjektionen'],
       },
       {
         title: 'Peloide und Packungen',
@@ -239,9 +243,11 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
     ],
 
+    proceduresMore: 'Und viele weitere Anwendungen — die vollständige Liste erhalten Sie an der Spa-Rezeption.',
+
     doctorOnlyHeading: 'Anwendungen nur mit ärztlicher Indikation',
     doctorOnlyText:
-      'Ein Teil der Anwendungen ist an den Arzt gebunden und kann ohne seine Indikation und Aufsicht nicht durchgeführt werden — dazu gehören etwa Gasinjektionen (Pneumopunktur) oder der Moorumschlag. Das ist keine Formalität: Bei diesen Eingriffen beurteilt der Arzt Ihren Gesundheitszustand und mögliche Risiken. Welche Anwendungen das genau sind und unter welchen Bedingungen sie möglich sind, erfahren Sie an der Spa-Rezeption.',
+      'Ein Teil der Anwendungen ist an den Arzt gebunden und kann ohne seine Indikation und Aufsicht nicht durchgeführt werden — dazu gehören etwa Gasinjektionen oder der Moorumschlag. Das ist keine Formalität: Bei diesen Eingriffen beurteilt der Arzt Ihren Gesundheitszustand und mögliche Risiken. Welche Anwendungen das genau sind und unter welchen Bedingungen sie möglich sind, erfahren Sie an der Spa-Rezeption.',
 
     priceHeading: 'Preisliste',
     priceText:
@@ -311,7 +317,7 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
       {
         title: 'CO₂ gas therapy',
-        items: ['Dry CO₂ gas bath', 'Gas injections (pneumopuncture)'],
+        items: ['Dry CO₂ gas bath', 'Gas injections'],
       },
       {
         title: 'Peloids and wraps',
@@ -335,9 +341,11 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
     ],
 
+    proceduresMore: 'And many further treatments — the spa reception will give you the full list.',
+
     doctorOnlyHeading: 'Treatments available only with a physician',
     doctorOnlyText:
-      'Some treatments are tied to a physician and cannot be provided without their indication and supervision — gas injections (pneumopuncture) or the peat compress, for example. This is not a formality: these are procedures where the physician assesses your health and the possible risks. The spa reception will tell you exactly which treatments these are and under what conditions they can be given.',
+      'Some treatments are tied to a physician and cannot be provided without their indication and supervision — gas injections or the peat compress, for example. This is not a formality: these are procedures where the physician assesses your health and the possible risks. The spa reception will tell you exactly which treatments these are and under what conditions they can be given.',
 
     priceHeading: 'Price list',
     priceText:
@@ -407,7 +415,7 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
       {
         title: 'Газовая CO₂-терапия',
-        items: ['Сухая углекислая газовая ванна', 'Газовые инъекции (пневмопунктура)'],
+        items: ['Сухая углекислая газовая ванна', 'Газовые инъекции'],
       },
       {
         title: 'Пелоиды и обёртывания',
@@ -431,9 +439,11 @@ export const ui: Record<Locale, OutpatientUI> = {
       },
     ],
 
+    proceduresMore: 'И многие другие процедуры — полный список вам дадут на спа-ресепшн.',
+
     doctorOnlyHeading: 'Процедуры только по назначению врача',
     doctorOnlyText:
-      'Часть процедур привязана к врачу, и без его назначения и наблюдения их провести нельзя — к ним относятся, например, газовые инъекции (пневмопунктура) или грязевое обёртывание. Это не формальность: при таких процедурах врач оценивает состояние здоровья и возможные риски. Точную информацию о том, какие это процедуры и на каких условиях они возможны, вам даст спа-ресепшн.',
+      'Часть процедур привязана к врачу, и без его назначения и наблюдения их провести нельзя — к ним относятся, например, газовые инъекции или грязевое обёртывание. Это не формальность: при таких процедурах врач оценивает состояние здоровья и возможные риски. Точную информацию о том, какие это процедуры и на каких условиях они возможны, вам даст спа-ресепшн.',
 
     priceHeading: 'Прейскурант',
     priceText:
