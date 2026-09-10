@@ -10,11 +10,13 @@ import { hotelPhotos, type HotelPhoto } from '@/lib/hotelPhotos'
  * (src/content/articles/en-130-years-nove-lazne) a z ensana_knowledge_base.json.
  * Nic se sem nedoplňuje „od oka" — co není v těchto zdrojích, na stránce není.
  *
- * Provozní doba spa recepce zatím chybí (v pasportech 2026 není), proto se
- * nikde neuvádí a návštěvník se objednává e-mailem nebo na recepci.
+ * Vstup pro nebydlící hosty (stav 9/2026 dle provozu): rezervace dopředu
+ * e-mailem ani telefonem se nepřijímají, prodej výhradně na místě a jen na
+ * dva denní termíny — 11:00 a 14:00 — podle aktuální obsazenosti. E-mail spa
+ * recepce proto na této stránce není; slouží dál jen ambulantní léčbě.
  */
 
-/** Spa recepce Nových Lázní — objednávky procedur a návštěv Římských lázní. */
+/** Spa recepce Nových Lázní — objednávky ambulantních procedur (ne Římských lázní). */
 export const SPA_EMAIL = 'spa.nl@ensanahotels.com'
 
 export const romanBathsUrls = Object.fromEntries(
@@ -49,7 +51,8 @@ export interface RomanBathsUI {
   accessVisitorTitle: string
   accessVisitorText: string
   accessWarning: string
-  accessMailLabel: string
+  accessSaleLabel: string
+  accessSaleTimes: string
   accessStayNl: string
   accessStayCl: string
   accessHvezda: string
@@ -90,28 +93,29 @@ export const ui: Record<Locale, RomanBathsUI> = {
     eyebrow: 'Ensana Nové Lázně · od roku 1896',
     h1: 'Římské lázně',
     heroLead:
-      'Prosklený strop, dvacet jedna sloupů z tmavě rudého mramoru a zlacené lví hlavy nad hladinou. Římské lázně nejsou kulisa — koupete se v památce, která slouží svému účelu nepřetržitě od roku 1896.',
+      'Prosklený strop, jedenadvacet sloupů z tmavě rudého mramoru a zlacené lví hlavy nad hladinou. Římské lázně nejsou kulisa — koupete se v památce, která slouží svému účelu bez přerušení od roku 1896.',
 
     accessHeading: 'Jak se do Římských lázní dostanete',
     accessLead:
-      'Římské lázně jsou součástí pětihvězdičkového hotelu Nové Lázně, ne veřejným bazénem na vstupné. Právě proto v nich nikdy nepotkáte dav.',
+      'Římské lázně jsou součástí pětihvězdičkového hotelu Nové Lázně, ne veřejný bazén se vstupenkami u pokladny. Právě proto v nich nikdy nepotkáte dav.',
     accessStayTitle: 'Nejjistější cesta — ubytujte se',
     accessStayText:
-      'Hosté hotelů Ensana Nové Lázně a Ensana Centrální Lázně mají do Římských lázní přístup v rámci pobytu. Je to zdaleka nejpohodlnější a nejspolehlivější způsob, jak si je užít bez ohlížení na kapacitu.',
-    accessVisitorTitle: 'Návštěva zvenčí',
+      'Hosté hotelů Ensana Nové Lázně a Ensana Centrální Lázně mají vstup do Římských lázní v rámci pobytu. Je to nejpohodlnější a nejspolehlivější cesta — o volná místa se nemusíte starat.',
+    accessVisitorTitle: 'Návštěva bez ubytování',
     accessVisitorText:
-      'Vstup je možný i pro hosty, kteří u nás nebydlí — vždy však výhradně po předchozí rezervaci a podle aktuální volné kapacity. Termín si domluvte předem e-mailem na spa recepci.',
+      'Vstup je možný i pro hosty, kteří u nás nebydlí. Prodává se výhradně na místě, a to jen na dva denní termíny — v 11:00 a ve 14:00 hodin — podle aktuální obsazenosti.',
     accessWarning:
-      'Bez předchozí rezervace vstup není možný. Kapacita se řídí provozem lázeňského oddělení a hostům na pobytu, proto ji nelze zaručit dopředu ani přislíbit na konkrétní hodinu.',
-    accessMailLabel: 'Rezervace a dotazy',
+      'Rezervace dopředu e-mailem ani telefonicky nepřijímáme. O volných místech rozhoduje aktuální obsazenost lázeňského provozu a hosty na pobytu, proto vstup nelze zaručit předem ani přislíbit na konkrétní den.',
+    accessSaleLabel: 'Prodej vstupů na místě',
+    accessSaleTimes: 'Denně v 11:00 a ve 14:00 hodin',
     accessHvezda:
       'Hosté hotelu Ensana Hvězda mají přístup do bazénu v Římských lázních při pobytu delším než tři noci.',
     accessStayNl: 'Ubytování v Nových Lázních',
     accessStayCl: 'Ubytování v Centrálních Lázních',
 
-    historyHeading: 'Co nám přináší historie',
+    historyHeading: 'Z historie',
     historyLead:
-      'Nové Lázně vyrostly z prostého faktu: město přestalo stačit vlastnímu úspěchu. To, co dnes obdivujeme jako architektonický skvost, byla především odpověď na nedostatek kabin.',
+      'Nové Lázně vznikly z prosté potřeby: město přestalo stačit náporu hostů. Stavba, kterou dnes obdivujeme jako architektonický skvost, byla především odpovědí na nedostatek koupelových kabin.',
     timeline: [
       {
         year: '1872',
@@ -126,18 +130,18 @@ export const ui: Record<Locale, RomanBathsUI> = {
       {
         year: '1892–1896',
         title: 'Stavba, která nesměla rušit sezonu',
-        text: 'Podnět dal opat Alfred Clemens: rozhodl o stavbě, zajistil financování a dal projektu jasnou vizi. Stavělo se čtyři roky a vždy jen v zimě, mimo hlavní sezonu, aby lázeňský provoz nestál. Po Schafferově přestavbě se počet kabin zdvojnásobil.',
+        text: 'Podnět dal opat Alfred Clemens: rozhodl o stavbě, zajistil peníze a dal projektu jasnou představu. Stavělo se čtyři roky, vždy jen v zimě mimo sezonu, aby lázeňský provoz nestál. Po Schafferově přestavbě se počet kabin zdvojnásobil.',
       },
       {
         year: '1. června 1896',
         title: 'Slavnostní otevření',
-        text: 'Budovu navrhl rodák z Mariánských Lázní Josef Schaffer. Inspiraci našel na cestách po Itálii — v Benátkách, Boloni a Florencii; prvky italské renesance daly stavbě její nadčasový charakter. Iniciály opata A. C. a A. T. (Abbas Teplensis) jsou dodnes vytesané ve štítu budovy.',
+        text: 'Budovu navrhl mariánskolázeňský rodák Josef Schaffer. Inspiraci přivezl z cest po Itálii — z Benátek, Boloně a Florencie; prvky italské renesance daly stavbě nadčasový ráz. Iniciály opata A. C. a A. T. (Abbas Teplensis) jsou dodnes vytesané ve štítu budovy.',
       },
     ],
 
-    architectureHeading: 'Sál, který se nepřestal používat',
+    architectureHeading: 'Sál, který nikdy nepřestal sloužit',
     architectureLead:
-      'Prosklený strop zaplavuje interiér měkkým denním světlem, které se odráží od hladin bazénů a podtrhuje monumentalitu celého sálu. Římské lázně patří k nejcennějším a nejlépe dochovaným příkladům evropské lázeňské architektury konce 19. století.',
+      'Prosklený strop zaplavuje sál měkkým denním světlem, které se odráží od hladiny bazénů a zdůrazňuje jeho monumentalitu. Římské lázně patří k nejcennějším a nejlépe dochovaným ukázkám evropské lázeňské architektury konce 19. století.',
     facts: [
       { label: 'Sloupy', value: '21 sloupů z tmavě rudého salcburského mramoru' },
       { label: 'Hlavice', value: 'Bílý carrarský kámen' },
@@ -149,23 +153,23 @@ export const ui: Record<Locale, RomanBathsUI> = {
 
     cabinsHeading: 'Královské kabiny',
     cabinsLead:
-      'Nové Lázně se brzy staly cílem evropské aristokracie. Součástí komplexu jsou dvě soukromé koupelové kabiny, které dodnes slouží speciální balneoterapii.',
+      'Nové Lázně se brzy staly cílem evropské šlechty. Součástí komplexu jsou dvě soukromé koupelové kabiny, které dodnes slouží speciální balneoterapii.',
     cabinsRoyal:
-      'Královská kabina patřila britskému králi Edwardu VII., který Mariánské Lázně navštívil celkem devětkrát; jeho uhličité koupele se staly symbolem prestiže zdejší léčby. Kabina si dochovala původní vybavení — měděný parní kotel, historická kamna, luxusní majolikové obklady a obrazy ptáků na stěnách. Dveře do lodžie zdobí původní malovaná skla z proslulé tyrolské dílny Geyling, která se na slunci rozzáří všemi barvami. Pobyt v kabině měl evokovat zahradní pavilon uprostřed přírody.',
+      'Královská kabina patřila britskému králi Edwardu VII., který Mariánské Lázně navštívil celkem devětkrát; jeho uhličité koupele se staly symbolem prestiže zdejší léčby. Kabina si zachovala původní vybavení — měděný parní kotel, historická kamna, majolikové obklady a malby ptáků na stěnách. Dveře do lodžie zdobí původní malovaná skla z proslulé tyrolské dílny Geyling, která se na slunci rozzáří všemi barvami. Pobyt v kabině měl připomínat zahradní pavilon uprostřed přírody.',
     cabinsImperial: 'Císařská kabina nese jméno Františka Josefa I.',
 
     todayHeading: 'Co k Římským lázním patří dnes',
     todayLead: 'K historickému sálu přiléhá moderní wellness zázemí.',
-    todayItems: ['Sauna 80 °C', 'Sanarium 50 °C', 'Parní lázeň', 'Kneippova terapie'],
+    todayItems: ['Sauna 80 °C', 'Parní lázeň', 'Kneippova terapie'],
     waterNote:
-      'V bazénech je běžná voda, jen šetrněji chlorovaná než v běžném plaveckém bazénu. Minerální voda je vyhrazená pro vanové koupele — ty se s Římskými lázněmi krásně doplňují: nejdřív koupel jako procedura, pak odpočinek pod mramorovou klenbou.',
+      'V bazénech je obyčejná voda, jen šetrněji chlorovaná než v plaveckém bazénu. Minerální voda je vyhrazena vanovým koupelím — a obojí se dobře doplňuje: nejdřív koupel jako procedura, potom odpočinek pod mramorovou klenbou.',
 
     galleryHeading: 'Fotogalerie',
     galleryNote: 'Klikněte pro zvětšení.',
 
     outpatientHeading: 'Chcete jen proceduru, ne pobyt?',
     outpatientText:
-      'Vybrané procedury nabízíme i ambulantně, po objednání k lékaři přes spa recepci.',
+      'Vybrané procedury nabízíme i ambulantně — po objednání k lékaři přes spa recepci.',
     outpatientCta: 'Ambulantní léčení',
 
     photoAlt: 'Římské lázně — Ensana Nové Lázně, Mariánské Lázně',
@@ -186,12 +190,13 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessStayTitle: 'Der sicherste Weg — übernachten Sie',
     accessStayText:
       'Gäste der Hotels Ensana Nové Lázně und Ensana Centrální Lázně haben im Rahmen ihres Aufenthalts Zugang zum Römischen Bad. Das ist mit Abstand die bequemste und verlässlichste Art, es ohne Rücksicht auf die Kapazität zu genießen.',
-    accessVisitorTitle: 'Besuch von außerhalb',
+    accessVisitorTitle: 'Besuch ohne Übernachtung',
     accessVisitorText:
-      'Der Eintritt ist auch für Gäste möglich, die nicht bei uns wohnen — jedoch ausschließlich nach vorheriger Reservierung und nach aktuell freier Kapazität. Vereinbaren Sie Ihren Termin vorab per E-Mail an der Spa-Rezeption.',
+      'Der Eintritt ist auch für Gäste möglich, die nicht bei uns wohnen. Er wird ausschließlich vor Ort verkauft, und zwar nur für zwei Zeiten am Tag — 11:00 und 14:00 Uhr — je nach aktueller Auslastung.',
     accessWarning:
-      'Ohne vorherige Reservierung ist der Eintritt nicht möglich. Die Kapazität richtet sich nach dem Betrieb der Kurabteilung und nach den Hausgästen und kann daher weder im Voraus garantiert noch für eine bestimmte Uhrzeit zugesagt werden.',
-    accessMailLabel: 'Reservierung und Fragen',
+      'Eine Reservierung im Voraus per E-Mail oder Telefon ist nicht möglich. Über freie Plätze entscheidet die aktuelle Auslastung des Kurbetriebs und der Hausgäste; der Eintritt kann daher weder im Voraus garantiert noch für einen bestimmten Tag zugesagt werden.',
+    accessSaleLabel: 'Verkauf vor Ort',
+    accessSaleTimes: 'Täglich um 11:00 und 14:00 Uhr',
     accessHvezda:
       'Gäste des Hotels Ensana Hvězda haben ab einem Aufenthalt von mehr als drei Nächten Zugang zum Becken im Römischen Bad.',
     accessStayNl: 'Aufenthalt im Nové Lázně',
@@ -244,7 +249,7 @@ export const ui: Record<Locale, RomanBathsUI> = {
 
     todayHeading: 'Was heute dazugehört',
     todayLead: 'An den historischen Saal schließt ein modernes Wellnessangebot an.',
-    todayItems: ['Sauna 80 °C', 'Sanarium 50 °C', 'Dampfbad', 'Kneipp-Therapie'],
+    todayItems: ['Sauna 80 °C', 'Dampfbad', 'Kneipp-Therapie'],
     waterNote:
       'In den Becken ist gewöhnliches Wasser, nur schonender gechlort als in einem normalen Schwimmbad. Das Mineralwasser bleibt den Wannenbädern vorbehalten — beides ergänzt sich wunderbar: zuerst das Bad als Anwendung, dann die Ruhe unter dem Marmorgewölbe.',
 
@@ -274,12 +279,13 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessStayTitle: 'The surest way — stay with us',
     accessStayText:
       'Guests of the Ensana Nové Lázně and Ensana Centrální Lázně hotels have access to the Roman Baths as part of their stay. By far the most comfortable and reliable way to enjoy them without worrying about capacity.',
-    accessVisitorTitle: 'Visiting from outside',
+    accessVisitorTitle: 'Visiting without a stay',
     accessVisitorText:
-      'Entry is possible for visitors not staying with us as well — but strictly by prior reservation and subject to currently available capacity. Arrange your slot in advance by e-mail with the spa reception.',
+      'Entry is possible for visitors not staying with us as well. It is sold exclusively on site, for two slots a day only — 11:00 and 14:00 — and subject to current occupancy.',
     accessWarning:
-      'Without a prior reservation entry is not possible. Capacity follows the operation of the spa department and the needs of resident guests, so it cannot be guaranteed in advance or promised for a specific hour.',
-    accessMailLabel: 'Reservations and enquiries',
+      'Advance reservations by e-mail or telephone are not accepted. Availability depends on the current occupancy of the spa and its resident guests, so entry cannot be guaranteed in advance or promised for a specific day.',
+    accessSaleLabel: 'Sold on site',
+    accessSaleTimes: 'Daily at 11:00 and 14:00',
     accessHvezda:
       'Guests of the Ensana Hvězda hotel have access to the pool in the Roman Baths with a stay of more than three nights.',
     accessStayNl: 'Stay at Nové Lázně',
@@ -332,7 +338,7 @@ export const ui: Record<Locale, RomanBathsUI> = {
 
     todayHeading: 'What belongs to the Roman Baths today',
     todayLead: 'A modern wellness area adjoins the historical hall.',
-    todayItems: ['Sauna 80 °C', 'Sanarium 50 °C', 'Steam bath', 'Kneipp therapy'],
+    todayItems: ['Sauna 80 °C', 'Steam bath', 'Kneipp therapy'],
     waterNote:
       'The pools hold ordinary water, simply more gently chlorinated than a standard swimming pool. Mineral water is reserved for the tub baths — and the two combine beautifully: first the bath as a treatment, then rest beneath the marble vault.',
 
@@ -362,12 +368,13 @@ export const ui: Record<Locale, RomanBathsUI> = {
     accessStayTitle: 'Самый надёжный путь — остановиться у нас',
     accessStayText:
       'Гости отелей Ensana Nové Lázně и Ensana Centrální Lázně получают доступ в Римские бани в рамках проживания. Это самый удобный и надёжный способ насладиться ими, не оглядываясь на загруженность.',
-    accessVisitorTitle: 'Посещение со стороны',
+    accessVisitorTitle: 'Посещение без проживания',
     accessVisitorText:
-      'Вход возможен и для гостей, которые не проживают у нас, — но исключительно по предварительному бронированию и при наличии свободных мест. Время согласуйте заранее по электронной почте со спа-ресепшн.',
+      'Вход возможен и для гостей, которые у нас не проживают. Он продаётся исключительно на месте, только на два времени в день — 11:00 и 14:00 — и в зависимости от текущей загруженности.',
     accessWarning:
-      'Без предварительного бронирования вход невозможен. Загруженность зависит от работы курортного отделения и от гостей отеля, поэтому её нельзя гарантировать заранее или обещать на конкретный час.',
-    accessMailLabel: 'Бронирование и вопросы',
+      'Предварительное бронирование по электронной почте или телефону не принимается. Наличие мест определяется текущей загруженностью курортного отделения и гостями отеля, поэтому вход нельзя гарантировать заранее или обещать на конкретный день.',
+    accessSaleLabel: 'Продажа на месте',
+    accessSaleTimes: 'Ежедневно в 11:00 и 14:00',
     accessHvezda:
       'Гости отеля Ensana Hvězda получают доступ в бассейн Римских бань при проживании более трёх ночей.',
     accessStayNl: 'Проживание в Nové Lázně',
@@ -420,7 +427,7 @@ export const ui: Record<Locale, RomanBathsUI> = {
 
     todayHeading: 'Что относится к Римским баням сегодня',
     todayLead: 'К историческому залу примыкает современная велнес-зона.',
-    todayItems: ['Сауна 80 °C', 'Санариум 50 °C', 'Паровая баня', 'Терапия Кнейпа'],
+    todayItems: ['Сауна 80 °C', 'Паровая баня', 'Терапия Кнейпа'],
     waterNote:
       'В бассейнах обычная вода, только хлорируется мягче, чем в обычном плавательном бассейне. Минеральная вода остаётся для ванн — и одно прекрасно дополняет другое: сначала ванна как процедура, затем отдых под мраморным сводом.',
 
