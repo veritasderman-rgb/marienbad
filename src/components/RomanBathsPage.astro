@@ -5,7 +5,7 @@
  */
 import type { Locale } from '@/i18n/config'
 import { routes } from '@/i18n/config'
-import { ui, romanBathPhotos, SPA_EMAIL } from '@/data/romanBaths'
+import { ui, romanBathPhotos } from '@/data/romanBaths'
 import { srcset } from '@/lib/hotelPhotos'
 import { exelyBookingUrl } from '@/utils/booking'
 import { hotels } from '@/data/hotels'
@@ -90,13 +90,8 @@ const bookingUrl = (slug: string) => {
       <p class="text-sm text-beige-700 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg p-4 mb-5">
         {t.accessWarning}
       </p>
-      <p class="text-sm text-beige-600 mb-1">{t.accessMailLabel}</p>
-      <a
-        href={`mailto:${SPA_EMAIL}`}
-        class="text-turquoise-700 hover:text-turquoise-800 font-semibold underline underline-offset-2 break-all"
-      >
-        {SPA_EMAIL}
-      </a>
+      <p class="text-sm text-beige-600 mb-1">{t.accessSaleLabel}</p>
+      <p class="text-indigo-800 font-heading text-lg font-bold">{t.accessSaleTimes}</p>
     </article>
   </div>
 </section>

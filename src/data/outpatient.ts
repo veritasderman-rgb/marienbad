@@ -114,14 +114,16 @@ export const ui: Record<Locale, OutpatientUI> = {
         items: [
           'Minerální koupele s přírodní pramenitou vodou',
           'CO₂ koupele (uhličité koupele)',
-          'Suchá plynová koupel CO₂',
-          'Plynové injekce (pneumopunktura)',
           'Podvodní masáže',
         ],
       },
       {
+        title: 'Plynová terapie CO₂',
+        items: ['Suchá plynová koupel CO₂', 'Plynové injekce (pneumopunktura)'],
+      },
+      {
         title: 'Peloidy a zábaly',
-        items: ['Rašelinové zábaly a přírodní slatinné obklady', 'Parafínové zábaly na klouby'],
+        items: ['Rašelinové zábaly a přírodní slatinné obklady', 'Parafínové zábaly na ruce'],
       },
       {
         title: 'Masáže',
@@ -157,7 +159,7 @@ export const ui: Record<Locale, OutpatientUI> = {
 
     romanHeading: 'Římské lázně',
     romanText:
-      'Historický sál z roku 1896 je součástí hotelu Nové Lázně. Návštěva zvenčí je možná jen po předchozí rezervaci a podle volné kapacity.',
+      'Historický sál z roku 1896 je součástí hotelu Nové Lázně. Vstup bez ubytování se prodává jen na místě, denně v 11:00 a ve 14:00 podle aktuální obsazenosti; rezervace předem nepřijímáme.',
     romanCta: 'Více o Římských lázních',
   },
 
@@ -208,14 +210,16 @@ export const ui: Record<Locale, OutpatientUI> = {
         items: [
           'Mineralbäder mit natürlichem Quellwasser',
           'CO₂-Bäder (Kohlensäurebäder)',
-          'Trockenes CO₂-Gasbad',
-          'Gasinjektionen (Pneumopunktur)',
           'Unterwassermassagen',
         ],
       },
       {
+        title: 'CO₂-Gastherapie',
+        items: ['Trockenes CO₂-Gasbad', 'Gasinjektionen (Pneumopunktur)'],
+      },
+      {
         title: 'Peloide und Packungen',
-        items: ['Moorpackungen und Naturmoorumschläge', 'Paraffinwickel für Gelenke'],
+        items: ['Moorpackungen und Naturmoorumschläge', 'Paraffinpackungen für die Hände'],
       },
       {
         title: 'Massagen',
@@ -251,7 +255,7 @@ export const ui: Record<Locale, OutpatientUI> = {
 
     romanHeading: 'Römisches Bad',
     romanText:
-      'Der historische Saal von 1896 gehört zum Hotel Nové Lázně. Ein Besuch von außerhalb ist nur nach vorheriger Reservierung und nach freier Kapazität möglich.',
+      'Der historische Saal von 1896 gehört zum Hotel Nové Lázně. Der Eintritt ohne Übernachtung wird nur vor Ort verkauft, täglich um 11:00 und 14:00 Uhr je nach Auslastung; Reservierungen im Voraus sind nicht möglich.',
     romanCta: 'Mehr über das Römische Bad',
   },
 
@@ -302,14 +306,16 @@ export const ui: Record<Locale, OutpatientUI> = {
         items: [
           'Mineral baths with natural spring water',
           'CO₂ baths (carbon dioxide baths)',
-          'Dry CO₂ gas bath',
-          'Gas injections (pneumopuncture)',
           'Underwater massages',
         ],
       },
       {
+        title: 'CO₂ gas therapy',
+        items: ['Dry CO₂ gas bath', 'Gas injections (pneumopuncture)'],
+      },
+      {
         title: 'Peloids and wraps',
-        items: ['Peat wraps and natural peat compresses', 'Paraffin wraps for joints'],
+        items: ['Peat wraps and natural peat compresses', 'Paraffin hand wraps'],
       },
       {
         title: 'Massages',
@@ -345,7 +351,7 @@ export const ui: Record<Locale, OutpatientUI> = {
 
     romanHeading: 'The Roman Baths',
     romanText:
-      'The historical hall of 1896 is part of the Nové Lázně hotel. A visit from outside is possible only by prior reservation and subject to available capacity.',
+      'The historical hall of 1896 is part of the Nové Lázně hotel. Entry without a stay is sold on site only, daily at 11:00 and 14:00 subject to occupancy; advance reservations are not accepted.',
     romanCta: 'More about the Roman Baths',
   },
 
@@ -396,14 +402,16 @@ export const ui: Record<Locale, OutpatientUI> = {
         items: [
           'Минеральные ванны с природной родниковой водой',
           'Углекислые ванны (CO₂)',
-          'Сухая углекислая газовая ванна',
-          'Газовые инъекции (пневмопунктура)',
           'Подводный массаж',
         ],
       },
       {
+        title: 'Газовая CO₂-терапия',
+        items: ['Сухая углекислая газовая ванна', 'Газовые инъекции (пневмопунктура)'],
+      },
+      {
         title: 'Пелоиды и обёртывания',
-        items: ['Торфяные обёртывания и природные грязевые компрессы', 'Парафиновые обёртывания для суставов'],
+        items: ['Торфяные обёртывания и природные грязевые компрессы', 'Парафиновые обёртывания для рук'],
       },
       {
         title: 'Массажи',
@@ -439,7 +447,7 @@ export const ui: Record<Locale, OutpatientUI> = {
 
     romanHeading: 'Римские бани',
     romanText:
-      'Исторический зал 1896 года — часть отеля Nové Lázně. Посещение со стороны возможно только по предварительному бронированию и при наличии свободных мест.',
+      'Исторический зал 1896 года — часть отеля Nové Lázně. Вход без проживания продаётся только на месте, ежедневно в 11:00 и 14:00 в зависимости от загруженности; предварительное бронирование не принимается.',
     romanCta: 'Подробнее о Римских банях',
   },
 }
