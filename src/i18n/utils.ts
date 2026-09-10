@@ -45,6 +45,7 @@ export type NavItem = NavLink | NavDropdown
 export function getNavItemsFlat(locale: Locale) {
   const sectionKeys: { navKey: string; section: SectionKey }[] = [
     { navKey: 'nav.mineralSprings', section: 'mineral-springs' },
+    { navKey: 'nav.romanBaths', section: 'roman-baths' },
     // Sekce o péči hrazené pojišťovnou existuje jen česky.
     ...(locale === 'cs' ? [{ navKey: 'nav.insuranceSpa', section: 'insurance-spa' as SectionKey }] : []),
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
@@ -73,20 +74,19 @@ export function getNavItems(locale: Locale): NavItem[] {
     href: `/${locale}/${routes[section][locale]}`,
   })
 
-  // Česká verze má navíc sekci o lázeňské péči hrazené pojišťovnou, takže se
-  // z prostého odkazu stává rozbalovací nabídka. Ostatní jazyky ji nemají.
-  const mineralSprings: NavItem =
-    locale === 'cs'
-      ? {
-          type: 'dropdown',
-          navKey: 'nav.mineralSprings',
-          children: [
-            link('nav.overview', 'mineral-springs'),
-            link('nav.insuranceSpa', 'insurance-spa'),
-            link('nav.indications', 'indications'),
-          ],
-        }
-      : link('nav.mineralSprings', 'mineral-springs')
+  // Rozbalovací nabídka léčivých pramenů. Římské lázně sem patří proto, že
+  // je host hledá pod lázněmi, ne pod hotelem — z menu na ně klikne přímo.
+  // Česká verze má navíc sekci o péči hrazené pojišťovnou, ostatní jazyky ne.
+  const mineralSprings: NavItem = {
+    type: 'dropdown',
+    navKey: 'nav.mineralSprings',
+    children: [
+      link('nav.overview', 'mineral-springs'),
+      link('nav.romanBaths', 'roman-baths'),
+      ...(locale === 'cs' ? [link('nav.insuranceSpa', 'insurance-spa')] : []),
+      link('nav.indications', 'indications'),
+    ],
+  }
 
   return [
     mineralSprings,
