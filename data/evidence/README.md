@@ -20,6 +20,6 @@ Ověřené studie a oficiální dokumenty pro zdravotní tvrzení na marienbad.c
 1. Najít téma: `jq '.entries[] | select(.topics[] == "ledviny") | {citation, finding_cs, claim_level}' data/evidence/balneology_evidence.json`
 2. Tvrzení kategorie C psát jen se záznamem `claim_level: C`; kategorie B stačí `B`.
 3. Do frontmatteru článku zkopírovat `citation` → `title`, `url` → `url` a stručný `finding_cs` + omezení → `note`.
-4. Nový zdroj přidat sem dřív, než se použije v článku. Záznamy označené štítkem `upozorneni` jsou studie, které tvrzení **nepodporují** (např. negativní RCT plynových injekcí) — slouží k tomu, aby se chyba neopakovala.
+4. Nový zdroj přidat sem dřív, než se použije v článku. Záznamy označené štítkem `upozorneni` jsou studie, které tvrzení **nepodporují** (např. negativní RCT plynových injekcí). Do článků se **necitují**; slouží redakci k tomu, aby se dané tvrzení o přínosu vůbec nepoužilo a procedura se popsala bez slibu.
 
 Redakční pravidla: `CLAUDE.md` → „Zdravotní tvrzení". Plán auditu: `docs/content-audits/cs-medicinsky-audit-plan.md`.

@@ -13,6 +13,18 @@ const page = await getPage('en-accommodation')
 <Base locale={locale} section="accommodation" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""}>
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
+    <img
+      slot="hero-badge"
+      src="/images/partners/ensana/ensana-marianske-lazne-white-800.png"
+      srcset="/images/partners/ensana/ensana-marianske-lazne-white-400.png 400w, /images/partners/ensana/ensana-marianske-lazne-white-800.png 800w"
+      sizes="(min-width: 768px) 224px, 176px"
+      alt="Ensana Health Spa Hotels – Mariánské Lázně"
+      width="800"
+      height="527"
+      class="h-28 md:h-36 w-auto mb-6 md:mb-8"
+      loading="eager"
+      decoding="async"
+    />
     <HotelTiles locale={locale} />
     { page?.body && <MarkdocRenderer content={page.body} /> }
   </PillarPage>
