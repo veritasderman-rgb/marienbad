@@ -65,6 +65,7 @@ Naopak **správně dohledatelné** citace: `cs-burnout-prevence-lazne` ř. 55 (j
 ### 2.3 Rozpory mezi stránkami (stejná informace, různá čísla)
 
 - **Délka kúry:** 7 nocí (Ubytování) · 10–14 dní (Imunita) · 14–21 dní (Průvodce léčbou, Klimatoterapie) · „přesně 21 dní" (Třítýdenní kúra, Pohybový aparát, Ledviny). Potřebuje jednu autoritativní větu — viz 4.13.
+- **Délka příspěvkové péče:** „14 nebo 21 dní" (Trávicí ústrojí ř. 44) vs. „obvykle 21 dní" (Lázeňský poukaz ř. 42).
 - **Trvání efektu:** 4–6 měsíců (Pohybový aparát ř. 68) · 6–9 měsíců (tamtéž ř. 129) · 3–6 měsíců (Ledviny) · „až 6 měsíců" (Peloidy).
 - **Počet pramenů:** „více než 40" vs. „40" vs. „šest se využívá ke koupelím" — sjednotit s `data/ensana_knowledge_base.json`.
 
@@ -77,8 +78,10 @@ Naopak **správně dohledatelné** citace: `cs-burnout-prevence-lazne` ř. 55 (j
 | Kategorie | Co lze napsat | Jak to formulovat | Co je nutné doložit |
 |---|---|---|---|
 | **A. Oficiální indikace** | že se dané onemocnění v Mariánských Lázních léčí a hradí | „Onemocnění X patří mezi indikace lázeňské léčby v Mariánských Lázních (indikační skupina …)." | odkaz na indikační seznam (vyhláška č. 2/2015 Sb., příloha) a na `data/ensana_knowledge_base.json` → `medical_indications` |
-| **B. Možný / obvyklý přínos** | k čemu se procedura používá, co je jejím cílem | „může pomoci", „cílem je", „používá se ke", „u části pacientů", „podle zkušeností lázeňských lékařů" | nic navíc, ale **žádná čísla, žádné „prokazatelně"** |
+| **B. Možný / obvyklý přínos** | k čemu se procedura používá, co je jejím cílem | „používá se ke", „cílem je", „lázeňští lékaři ji zařazují u", „v některých studiích bylo pozorováno" | **buď** výslovné označení jako tradiční / praktické použití s odkazem na indikační seznam nebo léčebný program Ensana, **nebo** alespoň jeden přehledový zdroj (§4). Žádná čísla, žádné „prokazatelně". **Kde není ani jedno, přínos vůbec neuvádět** a popsat jen, co procedura je a jak probíhá. |
 | **C. Prokázaný účinek** | konkrétní výsledek s velikostí efektu | „V randomizované studii s N pacienty s diagnózou Y … (autor, rok, DOI)." + věta o omezeních | citace s DOI, populace, délka sledování, hlavní limit |
+
+Změkčení slovesa („může pomoci" místo „pomáhá") samo o sobě tvrzení nedokládá. U procedur, pro které kontrolované studie chybějí (například plynové injekce CO₂, §4.4), je jediná přípustná forma kategorie B věta typu „v Mariánských Lázních se používají u … na základě dlouholeté lázeňské praxe; kontrolované studie zatím chybějí".
 
 ### 3.2 Slovník: co nahradit
 
@@ -261,7 +264,9 @@ Podle PubMed a Consensus. U každého tématu: **síla důkazů → co lze na we
 **Síla důkazů:** žádná přímá studie 14 vs. 21 dní. Účinek je doložen pro dvoutýdenní (Fioravanti 2010, Karagülle 2018, Takinaci 2019) i třítýdenní programy (Guillemin 1994, Forestier 2025). Odborná korespondence uvádí jako normu 2–3 týdny s 10–21 procedurami.
 
 **Doporučená jednotná formulace pro celý web:**
-> Délku léčebného pobytu určuje lázeňský lékař podle diagnózy. Komplexní lázeňská péče hrazená pojišťovnou trvá u dospělých zpravidla 21 dní (u některých indikací 28), příspěvková péče 21 dní; samoplátci volí nejčastěji 1–3 týdny. Kratší pobyty mají spíše regenerační než léčebný charakter.
+> Délku léčebného pobytu určuje indikační seznam a návrh ošetřujícího lékaře, ne obecné pravidlo. U komplexní lázeňské péče hrazené pojišťovnou je to podle indikace 21 nebo 28 dní, u příspěvkové péče 14 nebo 21 dní. Samoplátci volí nejčastěji 1–3 týdny po dohodě s lázeňským lékařem. Kratší pobyty mají spíše regenerační než léčebný charakter.
+
+V článcích o konkrétní indikační skupině vždy uvést délku platnou pro danou položku seznamu (jak to už dělá `cs-lazenska-lecba-traviciho-ustroji` ř. 44 pomocí `indication-picker`), ne souhrnnou větu. Pozor: `cs-lazensky-poukaz-pruvodce` ř. 42 uvádí u příspěvkové péče „obvykle 21 dní" — opravit na „14 nebo 21 dní podle indikace".
 
 Zdroj pro hrazené délky: indikační seznam (vyhláška č. 2/2015 Sb.) — před publikací ověřit aktuální znění. Zdroj pro „normu 2–3 týdny": Karagülle MZ et al. 2021, *Int J Biometeorol* [Consensus](https://consensus.app/papers/details/14ac08e16e2d5bbb804b6330ab17303b/?utm_source=claude_desktop).
 
@@ -293,7 +298,7 @@ Věty „přesně 21 dní", „plný efekt ve třetím týdnu", „10–14 dní 
 | `pages/cs-klimatoterapie` ř. 35–39, 99 | erytropoéza, fytoncidy podle sezóny, 14–21 dnů | přepsat podle osnovy v §6 (co je / jak probíhá / kdy ne / kdo rozhoduje / co čekat) | Fontana 2025 |
 | `pages/cs-peloidni-terapie` ř. 73–78 | CRP, IL‑6, „až 6 měsíců" | „bolest a ztuhlost, efekt měsíce" s citací | Fioravanti 2010, French 2022 |
 | `pages/cs-ubytovani` ř. 168, 178–180 | 7 / 14–21 nocí | přesunout do zdravotní sekce, nahradit jednotnou větou z 4.13 | — |
-| všechny „21 dní" pasáže | „přesně 21", „klinické důkazy" | jednotná věta z 4.13 | Karagülle 2021, vyhláška 2/2015 |
+| všechny „21 dní" pasáže | „přesně 21", „klinické důkazy" | věta z 4.13 + délka podle konkrétní položky indikačního seznamu | Karagülle 2021, vyhláška 2/2015 |
 
 ---
 
@@ -338,8 +343,8 @@ Po PR 1 doporučuji **odbornou revizi lázeňským lékařem Ensana** (jedno odp
 - [ ] Kategorie C má citaci s DOI, počet účastníků a jednu větu o omezení.
 - [ ] Žádné „prokazatelně", „posiluje imunitu", „detox", „reset", „les léčí", „bez vedlejších účinků".
 - [ ] Žádná instituce citována bez konkrétní publikace.
-- [ ] Délka pobytu podle jednotné věty (§4.13).
-- [ ] Trvání efektu podle §4.1 (3–6, někdy 9 měsíců), ne jiná čísla.
+- [ ] Délka pobytu podle §4.13 a podle konkrétní položky indikačního seznamu (K: 21/28 dní, P: 14/21 dní), ne paušálně.
+- [ ] Trvání efektu uvedeno jen tam, kde ho dokládá studie pro danou diagnózu a proceduru (pohybový aparát a bolesti zad: §4.1–4.2; ostatní témata jen s konkrétním zdrojem z §4). Kde zdroj chybí, dobu trvání vynechat.
 - [ ] Věta „o zařazení do léčebného plánu rozhoduje lázeňský lékař" + odkaz na kontraindikace.
 - [ ] U psychiky/vyhoření věta, že pobyt nenahrazuje psychoterapii ani psychiatrickou péči.
 - [ ] Interní data Ensana označena jako interní.
