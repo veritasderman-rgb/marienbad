@@ -79,6 +79,8 @@ export async function getPage(slug: string) {
       metaTitle: meta.metaTitle ?? '',
       metaDescription: meta.metaDescription ?? '',
       pullQuote: meta.pullQuote ?? '',
+      medicalReviewDate: meta.medicalReviewDate ?? '',
+      sources: articleSources(meta),
       body: content,
       rawBody,
     }

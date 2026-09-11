@@ -926,6 +926,22 @@ export default config({
           label: 'Meta Description',
           multiline: true,
         }),
+        medicalReviewDate: fields.text({
+          label: 'Medical review date (ISO)',
+          description: 'Date of the last review of health claims, e.g. 2026-09-11. Fill in for treatment pages.',
+        }),
+        sources: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Citation', description: 'e.g. Forestier R et al. 2025, Int J Biometeorol — RCT, 145 patients, 6 months' }),
+            url: fields.text({ label: 'URL / DOI link', description: 'e.g. https://doi.org/10.1007/s00484-025-02891-x' }),
+            note: fields.text({ label: 'Note (optional)', description: 'What the source supports and its main limitation' }),
+          }),
+          {
+            label: 'Sources',
+            description: 'Studies and official documents the page relies on. Rendered as a "Sources" section under the page.',
+            itemLabel: (props) => props.fields.title.value || 'Source',
+          }
+        ),
         body: fields.markdoc({
           label: 'Page Content',
           components: markdocComponents,

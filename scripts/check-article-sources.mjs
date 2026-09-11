@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Build-time kontrola zdravotních tvrzení (CLAUDE.md → „Zdravotní tvrzení").
-// Projde src/content/articles/*/index.mdoc a ověří frontmatter:
+// Projde src/content/articles/*/index.mdoc a src/content/pages/*/index.mdoc a ověří frontmatter:
 //  - `sources` je pole objektů {title, url?, note?}; každá položka má neprázdný title (chyba)
 //  - `medicalReviewDate` má tvar YYYY-MM-DD (chyba)
 //  - článek kategorie healing/health bez `sources` → varování (souhrn), s STRICT_ARTICLE_SOURCES=1 chyba
@@ -9,7 +9,7 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import yaml from 'js-yaml'
 
-const ROOT = 'src/content/articles'
+const ROOTS = ['src/content/articles', 'src/content/pages']
 const HEALTH_CATEGORIES = new Set(['healing', 'health'])
 const STRICT = process.env.STRICT_ARTICLE_SOURCES === '1'
 
@@ -28,7 +28,7 @@ const missing = []
 let checked = 0
 let withSources = 0
 
-for (const slug of readdirSync(ROOT).sort()) {
+for (const [ROOT, slug] of ROOTS.flatMap((r) => readdirSync(r).sort().map((s) => [r, s]))) {
   const file = join(ROOT, slug, 'index.mdoc')
   if (!existsSync(file)) continue
   const meta = splitFrontmatter(readFileSync(file, 'utf8'))
@@ -59,7 +59,7 @@ for (const slug of readdirSync(ROOT).sort()) {
   }
 }
 
-console.log(`check-article-sources: ${checked} článků, ${withSources} se zdroji`)
+console.log(`check-article-sources: ${checked} článků a stránek, ${withSources} se zdroji`)
 if (missing.length) {
   const level = STRICT ? 'CHYBA' : 'varování'
   console.log(`check-article-sources: ${level} — ${missing.length} zdravotních článků bez \`sources\` (viz CLAUDE.md → Zdravotní tvrzení):`)
