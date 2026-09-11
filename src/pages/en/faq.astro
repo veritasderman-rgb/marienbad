@@ -37,9 +37,7 @@ const faqSchema = JSON.stringify({
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </summary>
-          <div class="px-5 md:px-6 pb-5 md:pb-6 text-beige-700 leading-relaxed">
-            {faq.answer}
-          </div>
+          <div class="px-5 md:px-6 pb-5 md:pb-6 text-beige-700 leading-relaxed" set:html={faq.answerHtml} />
         </details>
       ))}
     </div>

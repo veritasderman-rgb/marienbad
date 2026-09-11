@@ -116,6 +116,24 @@ export function getPagesIndex(locale: Locale): PageIndexEntry[] {
 }
 
 /** Strip markdown links and bold markers so FAQ schema/UI text stays plain */
+/** FAQ answer as safe HTML: markdown links become <a>, bold markers are dropped, everything else is escaped. */
+function faqAnswerHtml(s: string): string {
+  const escaped = s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+  return escaped
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_m, text, href) => {
+      const safeHref = /^(\/|https?:\/\/|mailto:)/.test(href) ? href : '#'
+      const external = /^https?:\/\//.test(safeHref)
+      return `<a href="${safeHref}" class="text-turquoise-700 underline underline-offset-2 hover:text-indigo-700"${external ? ' rel="noopener" target="_blank"' : ''}>${text}</a>`
+    })
+    .replace(/\*\*/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 function cleanFaqText(s: string): string {
   return s
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
@@ -127,8 +145,8 @@ function cleanFaqText(s: string): string {
 /** Extract FAQ Q&A pairs from raw Markdoc content for FAQPage schema.
  *  Questions are either `### Heading` lines (pillar pages) or standalone
  *  `**bold**` lines (magazine articles) inside the FAQ section. */
-export function extractFaqs(rawBody: string): { question: string; answer: string }[] {
-  const faqs: { question: string; answer: string }[] = []
+export function extractFaqs(rawBody: string): { question: string; answer: string; answerHtml: string }[] {
+  const faqs: { question: string; answer: string; answerHtml: string }[] = []
   const lines = rawBody.split('\n')
   let inFaqSection = false
   let currentQuestion = ''
@@ -136,14 +154,14 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
 
   for (const line of lines) {
     // Detect FAQ section heading (## level)
-    if (/^##\s+.*(FAQ|[Čč]asto|[Hh]äufig|[Ff]requently|[Чч]асто)/i.test(line)) {
+    if (/^##\s+.*(FAQ|[Čč]ast[oé]|[Hh]äufig|[Ff]requently|[Чч]асто)/i.test(line)) {
       inFaqSection = true
       continue
     }
     // If we hit another ## heading, stop collecting
     if (inFaqSection && /^##\s+/.test(line) && !/^###/.test(line)) {
       if (currentQuestion && currentAnswer.length) {
-        faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() })
+        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')), answerHtml: faqAnswerHtml(currentAnswer.join(' ')) })
       }
       inFaqSection = false
       continue
@@ -153,7 +171,7 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
     // A horizontal rule ends the FAQ section (used before closing disclaimers)
     if (/^-{3,}\s*$/.test(line)) {
       if (currentQuestion && currentAnswer.length) {
-        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')) })
+        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')), answerHtml: faqAnswerHtml(currentAnswer.join(' ')) })
       }
       inFaqSection = false
       currentQuestion = ''
@@ -164,7 +182,7 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
     // `### Heading` or a standalone `**bold**` line is a question
     if (/^###\s+/.test(line) || /^\*\*[^*]+\*\*\s*$/.test(line.trim())) {
       if (currentQuestion && currentAnswer.length) {
-        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')) })
+        faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')), answerHtml: faqAnswerHtml(currentAnswer.join(' ')) })
       }
       currentQuestion = cleanFaqText(line.replace(/^###\s+/, ''))
       currentAnswer = []
@@ -174,7 +192,7 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
   }
   // Don't forget the last one
   if (currentQuestion && currentAnswer.length) {
-    faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')) })
+    faqs.push({ question: currentQuestion, answer: cleanFaqText(currentAnswer.join(' ')), answerHtml: faqAnswerHtml(currentAnswer.join(' ')) })
   }
   return faqs
 }
