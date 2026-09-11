@@ -27,6 +27,7 @@
       "imunita",
       "inhalace",
       "karcinom-prsu",
+      "klimatoterapie",
       "ledviny",
       "lesni-koupel",
       "marianske-lazne",
@@ -63,6 +64,7 @@
       "spotreba-leku",
       "stres",
       "sucha-koupel",
+      "terenni-kura",
       "ticho",
       "traveni",
       "upozorneni",
@@ -70,7 +72,7 @@
       "vyhoreni",
       "zanety-mocovych-cest"
     ],
-    "count": 170
+    "count": 173
   },
   "entries": [
     {
@@ -3555,6 +3557,69 @@
       "claim_level": "C",
       "url": "https://doi.org/10.1002/14651858.CD005523.pub3",
       "source": "PubMed PMID 27007113",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "muller-2018-matra-climate-asthma-copd",
+      "topics": [
+        "dychaci-cesty",
+        "klimatoterapie",
+        "delka-pobytu"
+      ],
+      "title": "The effect of complex climate therapy on rehabilitation results of elderly asthmatic and chronic obstructive airways disease (COPD) patients",
+      "citation": "Müller A et al. 2018, Eur J Integr Med",
+      "year": 2018,
+      "journal": "Eur J Integr Med",
+      "design": "před–po (jednoramenná)",
+      "n": 678,
+      "population": "astma, CHOPN nebo alergická rýma; průměrný věk 61 let; lázeňské středisko Mátra, Maďarsko, cca 700 m n. m.",
+      "finding_cs": "Třítýdenní program (dechová cvičení venku 2× denně, rehabilitační cvičení 1× denně, lékařský dohled): průměrná FEV1 stoupla ze 71,0 na 77,7 % náležité hodnoty. Autoři: klimatický efekt je patrný i v nižší nadmořské výšce (700 m).",
+      "limitations_cs": "Bez kontrolní skupiny; nelze oddělit vliv klimatu od cvičení a dohledu; časopis není indexován v MEDLINE, abstrakt ověřen přes Consensus.",
+      "claim_level": "C",
+      "url": "https://doi.org/10.1016/j.eujim.2018.04.007",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "wootton-2014-walking-copd-rct",
+      "topics": [
+        "dychaci-cesty",
+        "cviceni",
+        "terenni-kura"
+      ],
+      "title": "Ground-based walking training improves quality of life and exercise capacity in COPD",
+      "citation": "Wootton SL et al. 2014, Eur Respir J",
+      "year": 2014,
+      "journal": "Eur Respir J",
+      "design": "RCT (multicentrická)",
+      "n": 143,
+      "population": "CHOPN, průměrný věk 69 let, FEV1 43 % náležité hodnoty, Austrálie",
+      "finding_cs": "Řízená chůze po rovině 2–3× týdně po 8–10 týdnů vs. běžná péče: lepší kvalita života (SGRQ −6 bodů, CRQ +7 bodů) a delší vytrvalostní chůze (+208 s). Opora pro řízenou chůzi jako trénink u CHOPN, ne přímo pro lázeňskou terénní kúru.",
+      "limitations_cs": "Ambulantní program 8–10 týdnů, ne lázeňský pobyt; bez klimatické složky. Na stránce cs-klimatoterapie zatím nepoužito.",
+      "claim_level": "C",
+      "url": "https://doi.org/10.1183/09031936.00078014",
+      "source": "pubmed",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "massimo-2014-moderate-altitude-asthma-sr",
+      "topics": [
+        "dychaci-cesty",
+        "klimatoterapie",
+        "upozorneni"
+      ],
+      "title": "Does climate therapy at moderate altitudes improve pulmonary function in asthma patients? A systematic review",
+      "citation": "Massimo T et al. 2014, Sleep Breath",
+      "year": 2014,
+      "journal": "Sleep Breath",
+      "design": "systematický přehled",
+      "n": null,
+      "population": "astma, klimatoterapie 1 500–2 500 m n. m.; 3 RCT, 2 CCT, 15 jednoramenných studií",
+      "finding_cs": "Většina studií ukazuje tendenci ke zlepšení FEV1/PC20, ale autoři uzavírají, že data nedovolují platná a zobecnitelná doporučení (malé soubory, heterogenita). NECITOVAT jako doklad přínosu; slouží redakci, aby se u klimatoterapie netvrdilo 'prokázané' zlepšení plicních funkcí.",
+      "limitations_cs": "Nejednoznačný závěr; týká se výšek 1 500–2 500 m, ne 630 m.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1007/s11325-013-0870-z",
+      "source": "consensus",
       "added": "2026-09-11"
     }
   ]

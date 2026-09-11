@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro'
 import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
 
@@ -19,5 +20,6 @@ const breadcrumbs = [
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <ArticleSources locale={locale} sources={page?.sources} medicalReviewDate={page?.medicalReviewDate} />
   </PillarPage>
 </Base>

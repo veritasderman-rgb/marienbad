@@ -154,4 +154,4 @@ Platí pro všechny články kategorie `healing` a `health` a pro léčebné pil
 
 **Vždy:** věta, že o zařazení do léčebného plánu rozhoduje lázeňský lékař; délka pobytu podle konkrétní položky indikačního seznamu (K 21/28, P 14/21), ne paušálně; u psychiky věta, že pobyt nenahrazuje psychoterapii ani psychiatrickou péči; interní data Ensana označit jako interní.
 
-**Frontmatter:** `sources` (seznam `{title, url, note}`) a `medicalReviewDate` (ISO). Zdravotní článek bez `sources` vypíše varování při buildu. Sekce „Zdroje" se vykresluje automaticky (`src/components/ArticleSources.astro`).
+**Frontmatter:** `sources` (seznam `{title, url, note}`) a `medicalReviewDate` (ISO). Zdravotní článek bez `sources` vypíše varování při buildu. Sekce „Zdroje" se vykresluje automaticky (`src/components/ArticleSources.astro`). Stejná pole mají i léčebné pilířové stránky (`src/content/pages/*-co2-terapie`, `*-klimatoterapie`, `*-peloidni-terapie`), psané podle osnovy v plánu auditu §6.
