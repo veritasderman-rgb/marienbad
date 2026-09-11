@@ -1,0 +1,58 @@
+---
+/**
+ * ArticleSources — sekce „Zdroje" pod článkem.
+ * Vykreslí studie a oficiální dokumenty z frontmatteru (`sources`) a datum poslední
+ * odborné revize (`medicalReviewDate`). Nic nevykreslí, pokud článek zdroje nemá.
+ * Usage: <ArticleSources locale={locale} sources={article.sources} medicalReviewDate={article.medicalReviewDate} />
+ */
+import type { Locale } from '@/i18n/config'
+import type { ArticleSource } from '@/content/reader'
+import { t } from '@/i18n/ui'
+
+interface Props {
+  locale: Locale
+  sources?: ArticleSource[]
+  medicalReviewDate?: string
+}
+
+const { locale, sources = [], medicalReviewDate = '' } = Astro.props
+
+const intlLocale: Record<Locale, string> = { de: 'de-DE', en: 'en-GB', cs: 'cs-CZ', ru: 'ru-RU' }
+
+function formatDate(iso: string): string {
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return iso
+  return new Intl.DateTimeFormat(intlLocale[locale] ?? 'de-DE', { day: 'numeric', month: 'long', year: 'numeric' }).format(d)
+}
+
+const hasSources = sources.length > 0
+const hasReview = Boolean(medicalReviewDate)
+---
+
+{(hasSources || hasReview) && (
+  <section class="mt-12 pt-8 border-t border-beige-200" aria-labelledby="article-sources-heading">
+    {hasSources && (
+      <>
+        <h2 id="article-sources-heading" class="font-heading text-xl font-semibold mb-2">{t(locale, 'article.sources')}</h2>
+        <p class="text-sm text-beige-600 mb-4">{t(locale, 'article.sourcesIntro')}</p>
+        <ol class="list-decimal pl-5 space-y-2 text-sm text-beige-800">
+          {sources.map((s) => (
+            <li>
+              {s.url ? (
+                <a href={s.url} rel="noopener" target="_blank" class="text-turquoise-700 hover:text-turquoise-900 underline underline-offset-2">{s.title}</a>
+              ) : (
+                <span>{s.title}</span>
+              )}
+              {s.note && <span class="text-beige-600"> — {s.note}</span>}
+            </li>
+          ))}
+        </ol>
+      </>
+    )}
+    {hasReview && (
+      <p class="text-xs text-beige-500 mt-4">
+        {t(locale, 'article.medicalReview')} <time datetime={medicalReviewDate}>{formatDate(medicalReviewDate)}</time>
+      </p>
+    )}
+  </section>
+)}

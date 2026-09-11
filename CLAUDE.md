@@ -135,3 +135,21 @@ Authoritative reference data from official Ensana marketing materials is stored 
 ## Images
 
 New images added under `public/images/` require running `pnpm images` to generate WebP siblings.
+
+## Zdravotní tvrzení (redakční standard)
+
+Platí pro všechny články kategorie `healing` a `health` a pro léčebné pilířové stránky. Podrobný plán a rešerše: `docs/content-audits/cs-medicinsky-audit-plan.md`. Databáze ověřených studií: `data/evidence/balneology_evidence.json` (čerpat z ní, ne z paměti).
+
+**Tři kategorie tvrzení**
+
+| Kategorie | Co lze napsat | Nutná opora |
+|---|---|---|
+| A. Oficiální indikace | že se nemoc v Mariánských Lázních léčí a hradí | kód indikačního seznamu (`src/data/indications.ts`) nebo léčebný program Ensana |
+| B. Možný / obvyklý přínos | „používá se ke", „cílem je", „v některých studiích bylo pozorováno" | výslovné označení jako tradiční použití **nebo** přehledový zdroj z databáze; bez obojího přínos neuvádět |
+| C. Prokázaný účinek | konkrétní výsledek s velikostí efektu | citace s DOI/URL, populace, délka sledování, hlavní omezení |
+
+**Nikdy:** „prokazatelně" bez citace, „posiluje imunitu", „detox", „reset", „les léčí", „bez vedlejších účinků", „zpomaluje artrózu", instituce citovaná bez konkrétní publikace, číslo (%, mmHg, měsíce) bez zdroje.
+
+**Vždy:** věta, že o zařazení do léčebného plánu rozhoduje lázeňský lékař; délka pobytu podle konkrétní položky indikačního seznamu (K 21/28, P 14/21), ne paušálně; u psychiky věta, že pobyt nenahrazuje psychoterapii ani psychiatrickou péči; interní data Ensana označit jako interní.
+
+**Frontmatter:** `sources` (seznam `{title, url, note}`) a `medicalReviewDate` (ISO). Zdravotní článek bez `sources` vypíše varování při buildu. Sekce „Zdroje" se vykresluje automaticky (`src/components/ArticleSources.astro`).
