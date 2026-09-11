@@ -197,6 +197,75 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
   return faqs
 }
 
+export interface FaqItem { question: string; answer: string; answerHtml: string }
+export interface FaqFigure { src: string; alt: string; caption?: string }
+export interface FaqSection { title: string; figure?: FaqFigure; faqs: FaqItem[] }
+
+/** FAQ page as sections: every `##` heading opens a section, an optional `{% figure %}` tag
+ *  inside it becomes the section image, `###` lines are questions. Text before the first
+ *  `##` is the intro (returned as safe HTML). Used by the FAQ routes; `extractFaqs` stays
+ *  for FAQPage schema on other pages. */
+export function extractFaqSections(rawBody: string): { introHtml: string; sections: FaqSection[] } {
+  const sections: FaqSection[] = []
+  const intro: string[] = []
+  let current: FaqSection | null = null
+  let question = ''
+  let answer: string[] = []
+  let figureBuf: string[] | null = null
+
+  const flushQuestion = () => {
+    if (current && question && answer.length) {
+      const raw = answer.join(' ')
+      current.faqs.push({ question, answer: cleanFaqText(raw), answerHtml: faqAnswerHtml(raw) })
+    }
+    question = ''
+    answer = []
+  }
+  const attr = (tag: string, name: string) => {
+    const m = tag.match(new RegExp(`${name}="([^"]*)"`))
+    return m ? m[1] : undefined
+  }
+
+  for (const line of rawBody.split('\n')) {
+    if (figureBuf) {
+      figureBuf.push(line)
+      if (/\/%}/.test(line)) {
+        const tag = figureBuf.join(' ')
+        const src = attr(tag, 'src')
+        if (current && src && !current.figure) current.figure = { src, alt: attr(tag, 'alt') ?? '', caption: attr(tag, 'caption') }
+        figureBuf = null
+      }
+      continue
+    }
+    if (/^\{%\s*figure\b/.test(line)) {
+      figureBuf = [line]
+      if (/\/%}/.test(line)) {
+        const src = attr(line, 'src')
+        if (current && src && !current.figure) current.figure = { src, alt: attr(line, 'alt') ?? '', caption: attr(line, 'caption') }
+        figureBuf = null
+      }
+      continue
+    }
+    if (/^\{%/.test(line)) continue // other tags are ignored on FAQ pages
+    if (/^##\s+/.test(line) && !/^###/.test(line)) {
+      flushQuestion()
+      current = { title: cleanFaqText(line.replace(/^##\s+/, '')), faqs: [] }
+      sections.push(current)
+      continue
+    }
+    if (/^###\s+/.test(line)) {
+      flushQuestion()
+      question = cleanFaqText(line.replace(/^###\s+/, ''))
+      continue
+    }
+    if (!line.trim()) continue
+    if (!current) intro.push(line.trim())
+    else if (question) answer.push(line.trim())
+  }
+  flushQuestion()
+  return { introHtml: intro.length ? faqAnswerHtml(intro.join(' ')) : '', sections: sections.filter((x) => x.faqs.length) }
+}
+
 export interface ArticleSource {
   title: string
   url?: string
