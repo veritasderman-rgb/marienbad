@@ -2927,6 +2927,42 @@
     "width": 355,
     "height": 336
   },
+  "/images/partners/ensana/ensana-logo-indigo-320.png": {
+    "webp": true,
+    "w800": false,
+    "width": 320,
+    "height": 302
+  },
+  "/images/partners/ensana/ensana-logo-indigo-640.png": {
+    "webp": true,
+    "w800": false,
+    "width": 640,
+    "height": 605
+  },
+  "/images/partners/ensana/ensana-logo-indigo-src.png": {
+    "webp": false,
+    "w800": false,
+    "width": 1064,
+    "height": 1005
+  },
+  "/images/partners/ensana/ensana-logo-white-320.png": {
+    "webp": true,
+    "w800": false,
+    "width": 320,
+    "height": 302
+  },
+  "/images/partners/ensana/ensana-logo-white-640.png": {
+    "webp": true,
+    "w800": false,
+    "width": 640,
+    "height": 605
+  },
+  "/images/partners/ensana/ensana-logo-white-src.png": {
+    "webp": false,
+    "w800": false,
+    "width": 1064,
+    "height": 1005
+  },
   "/images/partners/ensana/ensana-marianske-lazne-indigo-400.png": {
     "webp": true,
     "w800": false,
