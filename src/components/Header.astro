@@ -38,10 +38,16 @@ const searchTranslations = {
 <header id="site-header" class="sticky top-0 z-50 transition-all duration-300 will-change-transform" data-transparent="true">
   <div class="container-wide">
     <div class="flex items-center justify-between h-16 md:h-20">
-      <!-- Logo -->
-      <a href={`/${locale}`} class="shrink-0 group font-bold text-white text-xl md:text-2xl tracking-[-0.01em] leading-none hover:opacity-80 transition-opacity" aria-label="Marienbad.com — Mariánské Lázně">
-        marienbad<span class="text-turquoise-300">.</span>com
-      </a>
+      <!-- Logo + Ensana emblem -->
+      <div class="shrink-0 flex items-center gap-2.5 md:gap-3">
+        <a href={`/${locale}`} class="group font-bold text-white text-xl md:text-2xl tracking-[-0.01em] leading-none hover:opacity-80 transition-opacity" aria-label="Marienbad.com — Mariánské Lázně">
+          marienbad<span class="text-turquoise-300">.</span>com
+        </a>
+        <span class="h-5 w-px bg-white/25" aria-hidden="true"></span>
+        <a href="https://ensanahotels.com" rel="noopener" target="_blank" class="opacity-75 hover:opacity-100 transition-opacity" aria-label="Ensana Health Spa Hotels" title="Ensana Health Spa Hotels">
+          <img src="/images/partners/ensana/ensana-emblem-white-96.png" alt="Ensana" width="101" height="96" class="h-5 md:h-6 w-auto" loading="eager" decoding="async" />
+        </a>
+      </div>
 
       <!-- Desktop nav (center) -->
       <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-1">
@@ -110,7 +116,7 @@ const searchTranslations = {
         <!-- CTA Button (yellow pill) -->
         <a
           href={bookingUrl}
-          class="hidden lg:inline-flex items-center gap-1.5 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold rounded-full transition-all duration-200"
+          class="hidden lg:inline-flex items-center gap-1.5 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-beige-950 text-sm font-semibold rounded-full whitespace-nowrap transition-all duration-200"
         >
           {bookingCta}
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">

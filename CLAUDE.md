@@ -148,6 +148,8 @@ Platí pro všechny články kategorie `healing` a `health` a pro léčebné pil
 | B. Možný / obvyklý přínos | „používá se ke", „cílem je", „v některých studiích bylo pozorováno" | výslovné označení jako tradiční použití **nebo** přehledový zdroj z databáze; bez obojího přínos neuvádět |
 | C. Prokázaný účinek | konkrétní výsledek s velikostí efektu | citace s DOI/URL, populace, délka sledování, hlavní omezení |
 
+**Bez měřitelného výstupu nic.** Pokud pro proceduru nebo tvrzení neexistuje jasný, měřitelný a doložený výstup, odstavec o přínosu se nepíše vůbec: proceduru popsat (co je, jak probíhá, kdo o ní rozhoduje) a přínos vynechat. Negativní, neprůkazné nebo „zatím chybějící" důkazy do článků nepatří — web je PR portál; říká, co je doložené, a mlčí o tom, co doložené není. Takové studie se evidují v databázi se štítkem `upozorneni`, aby se dané tvrzení nepoužilo.
+
 **Nikdy:** „prokazatelně" bez citace, „posiluje imunitu", „detox", „reset", „les léčí", „bez vedlejších účinků", „zpomaluje artrózu", instituce citovaná bez konkrétní publikace, číslo (%, mmHg, měsíce) bez zdroje.
 
 **Vždy:** věta, že o zařazení do léčebného plánu rozhoduje lázeňský lékař; délka pobytu podle konkrétní položky indikačního seznamu (K 21/28, P 14/21), ne paušálně; u psychiky věta, že pobyt nenahrazuje psychoterapii ani psychiatrickou péči; interní data Ensana označit jako interní.

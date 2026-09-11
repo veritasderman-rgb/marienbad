@@ -83,6 +83,8 @@ Naopak **správně dohledatelné** citace: `cs-burnout-prevence-lazne` ř. 55 (j
 
 Změkčení slovesa („může pomoci" místo „pomáhá") samo o sobě tvrzení nedokládá. U procedur, pro které kontrolované studie chybějí (například plynové injekce CO₂, §4.4), je jediná přípustná forma kategorie B věta typu „v Mariánských Lázních se používají u … na základě dlouholeté lázeňské praxe; kontrolované studie zatím chybějí".
 
+**Pravidlo „bez měřitelného výstupu nic":** kde chybí jasný, měřitelný a doložený výstup, přínos se neuvádí vůbec; procedura se jen popíše. Negativní nebo neprůkazné studie do textu nepatří (web je PR portál) — evidují se v databázi se štítkem `upozorneni`, aby se tvrzení nepoužilo.
+
 ### 3.2 Slovník: co nahradit
 
 | Vyřadit | Nahradit |

@@ -41,6 +41,7 @@ const breadcrumbItems = breadcrumbs ?? defaultBreadcrumbs
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-turquoise-400/30 to-transparent"></div>
   <div class="relative container-wide pt-28 pb-16 md:pt-36 md:pb-20">
     <Breadcrumbs items={breadcrumbItems} locale={locale} />
+    <slot name="hero-badge" />
     <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{title}</h1>
     <p class="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">{description}</p>
   </div>
