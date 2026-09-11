@@ -177,6 +177,12 @@ export function extractFaqs(rawBody: string): { question: string; answer: string
   return faqs
 }
 
+export interface ArticleSource {
+  title: string
+  url?: string
+  note?: string
+}
+
 export interface Article {
   slug: string
   title: string
@@ -191,6 +197,10 @@ export interface Article {
   youtubeVideoId?: string
   youtubeTitle?: string
   youtubeDescription?: string
+  /** Datum poslední odborné revize zdravotních tvrzení (ISO). */
+  medicalReviewDate?: string
+  /** Studie a oficiální dokumenty, o které se článek opírá — vykreslují se jako sekce „Zdroje". */
+  sources: ArticleSource[]
   /** primaryKeyword + secondaryKeywords z frontmatteru — pro související články a Article.keywords. */
   keywords: string[]
   body: any
@@ -210,7 +220,34 @@ function articleKeywords(meta: Record<string, unknown>): string[] {
   return out
 }
 
-/** Validate required article fields; logs warnings for missing data */
+/** `sources` z frontmatteru: pole objektů {title, url, note}; toleruje i prosté řetězce. */
+function articleSources(meta: Record<string, unknown>): ArticleSource[] {
+  const raw = meta.sources
+  if (!Array.isArray(raw)) return []
+  const out: ArticleSource[] = []
+  for (const item of raw) {
+    if (typeof item === 'string') {
+      const title = item.trim()
+      if (title) out.push({ title })
+      continue
+    }
+    if (item && typeof item === 'object') {
+      const o = item as Record<string, unknown>
+      const title = typeof o.title === 'string' ? o.title.trim() : ''
+      if (!title) continue
+      const url = typeof o.url === 'string' && o.url.trim() ? o.url.trim() : undefined
+      const note = typeof o.note === 'string' && o.note.trim() ? o.note.trim() : undefined
+      out.push({ title, url, note })
+    }
+  }
+  return out
+}
+
+/**
+ * Validate required article fields; logs warnings for missing data.
+ * Kontrola `sources` a `medicalReviewDate` běží při buildu ve scripts/check-article-sources.mjs
+ * (web je SSR, stránky článků se při buildu nerenderují).
+ */
 function validateArticleMeta(slug: string, meta: Record<string, string>): string[] {
   const warnings: string[] = []
   if (!meta.title) warnings.push(`Article "${slug}": missing title`)
@@ -255,6 +292,8 @@ function parseArticle(slug: string, raw: string): Article | null {
     youtubeVideoId: meta.youtubeVideoId ?? '',
     youtubeTitle: meta.youtubeTitle ?? '',
     youtubeDescription: meta.youtubeDescription ?? '',
+    medicalReviewDate: meta.medicalReviewDate ?? '',
+    sources: articleSources(meta),
     keywords: articleKeywords(meta),
     body: content,
     rawBody,

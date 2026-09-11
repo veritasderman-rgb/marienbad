@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/check-client-bundle.mjs",
+    "build": "node scripts/check-article-sources.mjs && astro build && node scripts/check-client-bundle.mjs",
     "preview": "astro preview",
     "images": "node scripts/optimize-images.mjs",
     "test": "vitest run",

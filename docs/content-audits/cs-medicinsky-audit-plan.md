@@ -2,7 +2,7 @@
 
 **Rozsah:** 80 českých magazínových článků v `src/content/articles/cs-*`, léčebné pilířové stránky (`cs-co2-terapie`, `cs-klimatoterapie`, `cs-peloidni-terapie`, `cs-mineralni-prameny`, `cs-prehled-pramenu`), FAQ a Ubytování.
 **Stav:** návrh redakčního plánu. Tento dokument texty na webu nemění. Navazuje na `cs-copy-audit.md`, který medicínská tvrzení výslovně vynechal.
-**Zdroje rešerše:** PubMed (MCP konektor, výsledky uvedeny s DOI) a Consensus (Semantic Scholar/Scopus, odkazy na consensus.app). Rešerše proběhla 11. 9. 2026.
+**Zdroje rešerše:** PubMed (MCP konektor, výsledky uvedeny s DOI) a Consensus (Semantic Scholar/Scopus, odkazy na consensus.app). Rešerše proběhla 11. 9. 2026. Všechny ověřené studie jsou uloženy v `data/evidence/balneology_evidence.json` (viz `data/evidence/README.md`); nové zdroje přidávat tam.
 
 ---
 
@@ -172,7 +172,7 @@ Podle PubMed a Consensus. U každého tématu: **síla důkazů → co lze na we
 
 **Lze tvrdit:** CO₂ pronikající kůží rozšiřuje kožní cévy a zvyšuje prokrvení (dobře popsaný mechanismus); indikace v literatuře: periferní tepenné onemocnění, poruchy mikrocirkulace, mírná hypertenze, chronické rány; v malých studiích klesl tlak u pacientů s vyššími výchozími hodnotami po třítýdenní kúře (35 pacientů, bez kontrolní skupiny) a v RCT suchých CO₂ koupelí u žen v menopauze (70 žen) klesl průměrný systolický tlak o 13,7 %.
 
-**Nelze tvrdit:** „nejdůkladněji prozkoumaná forma balneoterapie"; „bez jakýchkoliv vedlejších účinků"; „trvale rozšiřují cévy"; u injekcí žádná z citovaných „studií" (Balneologický ústav, UK, bioklimatologie 2020).
+**Nelze tvrdit:** „nejdůkladněji prozkoumaná forma balneoterapie"; „bez jakýchkoliv vedlejších účinků"; „trvale rozšiřují cévy"; u injekcí žádná z citovaných „studií" (Balneologický ústav, UK, bioklimatologie 2020). Dvě německé randomizované studie podkožních CO₂ insuflací u bolestí krku a zad navíc **nenašly přínos** oproti standardní léčbě ani oproti placebu (Brockow 2001, 2008); v textech o plynových injekcích to musí zaznít.
 
 **Zdroje:**
 - Pagourelias ED et al. 2011, *Int J Biometeorol* — přehled CO₂ balneoterapie u kardiovaskulárních nemocí. [Consensus](https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/?utm_source=claude_desktop)
@@ -181,6 +181,8 @@ Podle PubMed a Consensus. U každého tématu: **síla důkazů → co lze na we
 - Chekhoeva AN et al. 2024, *Bull Rehabil Med* — RCT suché CO₂ koupele, 70 žen. [Consensus](https://consensus.app/papers/details/e4851982210856378938913590dccac8/?utm_source=claude_desktop)
 - Zbroja H et al. 2021, *IJERPH* — suché CO₂ koupele, termografie, 46 pacientů. [Consensus](https://consensus.app/papers/details/55f7781cf9f7502ea76768a853ffc7da/?utm_source=claude_desktop)
 - Prazeres J et al. 2025, *Biomedicines* — scoping review CO₂ a hojení ran. [DOI 10.3390/biomedicines13010228](https://doi.org/10.3390/biomedicines13010228)
+- Brockow T et al. 2001, *Complement Ther Med* — RCT, CO₂ insuflace + rehabilitace vs. rehabilitace: bez významného rozdílu. [DOI 10.1054/ctim.2001.0434](https://doi.org/10.1054/ctim.2001.0434)
+- Brockow T et al. 2008, *Eur J Pain* — RCT s placebem, 126 pacientů, akutní bolest krku: CO₂ injekce = falešný ultrazvuk. [DOI 10.1016/j.ejpain.2007.01.002](https://doi.org/10.1016/j.ejpain.2007.01.002)
 - Bunyatyan N et al. 2018 a Bofanova N et al. 2023, *Vopr Kurortol* — karboxyterapie: přehled, „off‑label", nedostatek dat. [Consensus 1](https://consensus.app/papers/details/f5f852c28bed5790b90e2dad7c5e411e/?utm_source=claude_desktop), [Consensus 2](https://consensus.app/papers/details/80ccd991d11758ef84275f79988a35d2/?utm_source=claude_desktop)
 
 ### 4.5 Peloidy (rašelina)

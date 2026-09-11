@@ -6,6 +6,7 @@ import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import SocialShare from '@/components/SocialShare.astro'
 import WhyTrustUs from '@/components/WhyTrustUs.astro'
+import ArticleSources from '@/components/ArticleSources.astro'
 import YouTubeEmbed from '@/components/YouTubeEmbed.astro'
 import { getArticle, getArticles } from '@/content/reader'
 import { pickRelated } from '@/content/related'
@@ -32,7 +33,7 @@ const articleSchema: Record<string, unknown> = {
   headline: article.title,
   description: article.excerpt,
   datePublished: article.date,
-  dateModified: article.date,
+  dateModified: article.medicalReviewDate || article.date,
   author: { '@type': 'Organization', name: 'Marienbad.com' },
   publisher: { '@type': 'Organization', name: 'Marienbad.com', url: 'https://marienbad.com' },
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
@@ -109,6 +110,7 @@ const relatedArticles = pickRelated(allArticles, article, 3)
       </div>
     )}
     <MarkdocRenderer content={article.body} />
+    <ArticleSources locale={locale} sources={article.sources} medicalReviewDate={article.medicalReviewDate} />
     <WhyTrustUs locale={locale} />
     {article.youtubeVideoId && (
       <YouTubeEmbed
