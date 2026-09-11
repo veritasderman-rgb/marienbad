@@ -2,6 +2,7 @@
 import Base from '@/layouts/Base.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage, extractFaqs } from '@/content/reader'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
 import TreatmentQuiz from '@/components/TreatmentQuiz.tsx'
@@ -76,6 +77,7 @@ const faqSchema = faqs.length > 0 ? {
   {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <ArticleSources locale={locale} sources={page?.sources} medicalReviewDate={page?.medicalReviewDate} />
     <SectionCard
       title="Indikace a kontraindikace"
       description="Které diagnózy se v Mariánských Lázních léčí, jaké typy péče hradí pojišťovna a kdy lázeňskou léčbu naopak nelze poskytnout."

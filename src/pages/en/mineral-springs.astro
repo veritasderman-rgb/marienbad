@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro'
 import FaqSchema from '@/components/FaqSchema.astro'
 import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
+import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage } from '@/content/reader'
 import RelatedArticles from '@/components/RelatedArticles.astro'
 import HotelRecommendationBox from '@/components/HotelRecommendationBox.astro'
@@ -67,6 +68,7 @@ const quizTranslations = {
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
+    <ArticleSources locale={locale} sources={page?.sources} medicalReviewDate={page?.medicalReviewDate} />
     <SectionCard
       title="Indications and contraindications"
       description="Which conditions are treated in Marienbad — and the circumstances under which spa treatment cannot be given."

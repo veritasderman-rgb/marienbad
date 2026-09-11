@@ -72,7 +72,7 @@
       "vyhoreni",
       "zanety-mocovych-cest"
     ],
-    "count": 173
+    "count": 179
   },
   "entries": [
     {
@@ -3619,6 +3619,128 @@
       "limitations_cs": "Nejednoznačný závěr; týká se výšek 1 500–2 500 m, ne 630 m.",
       "claim_level": "B",
       "url": "https://doi.org/10.1007/s11325-013-0870-z",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "bothe-2015-sulphate-water-constipation-rct",
+      "topics": [
+        "pitna-kura",
+        "traveni"
+      ],
+      "title": "Efficacy and safety of a natural mineral water rich in magnesium and sulphate for bowel function: a double-blind, randomized, placebo-controlled study",
+      "citation": "Bothe G et al. 2015, Eur J Nutr",
+      "year": 2015,
+      "journal": "European Journal of Nutrition",
+      "design": "dvojitě zaslepená placebem kontrolovaná RCT",
+      "n": 106,
+      "population": "funkční zácpa, jinak zdraví dospělí; 75 osob v ramenech 500 ml/den",
+      "finding_cs": "Šest týdnů 500 ml vody bohaté na síran hořečnatý a síran sodný (Donat Mg) denně zvýšilo počet spontánních stolic, zlepšilo konzistenci stolice a subjektivní příznaky zácpy oproti placebové vodě.",
+      "limitations_cs": "Ramena 300 ml předčasně ukončena; primární výstup významný jen jednostranně (p = 0,036); slovinská voda jiného složení než mariánskolázeňské prameny.",
+      "claim_level": "C",
+      "url": "https://doi.org/10.1007/s00394-015-1094-8",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "costantino-2019-sulphate-waters-review",
+      "topics": [
+        "pitna-kura",
+        "traveni",
+        "prehled"
+      ],
+      "title": "Sulphate mineral waters: A medical resource in several disorders",
+      "citation": "Costantino M et al. 2019, J Tradit Complement Med",
+      "year": 2019,
+      "journal": "Journal of Traditional and Complementary Medicine",
+      "design": "narativní přehled",
+      "n": null,
+      "population": "—",
+      "finding_cs": "Shrnuje použití síranových minerálních vod (převládající anion SO₄²⁻) v pitných kúrách u trávicích, žlučových a dalších obtíží a zdůrazňuje, že lázeňská léčba má doplňovat ostatní léčbu.",
+      "limitations_cs": "Narativní přehled bez metaanalýzy; opora jen pro kategorii B (tradiční/obvyklé použití).",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1016/j.jtcme.2019.04.004",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "mennuni-2014-sulphate-bicarbonate-biliary",
+      "topics": [
+        "pitna-kura",
+        "traveni"
+      ],
+      "title": "The therapeutic activity of sulphate-bicarbonate-calcium-magnesiac mineral water in the functional disorders of the biliary tract",
+      "citation": "Mennuni G et al. 2014, Clin Ter",
+      "year": 2014,
+      "journal": "La Clinica Terapeutica",
+      "design": "longitudinální observační (před/po)",
+      "n": 43,
+      "population": "funkční poruchy žlučových cest, žlučový písek, postcholecystektomický syndrom; Chianciano, Itálie",
+      "finding_cs": "Po dvou (u 20 osob třech) cyklech pitné kúry síranovo-hydrogenuhličitanovou vodou byla frekvence jedenácti sledovaných příznaků významně nižší než před léčbou.",
+      "limitations_cs": "Bez kontrolní skupiny, malý soubor, italská voda jiného složení.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.7417/ct.2014.1761",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "mckenna-2003-iron-mineral-water-pregnancy-rct",
+      "topics": [
+        "pitna-kura",
+        "prevence"
+      ],
+      "title": "A randomized trial investigating an iron-rich natural mineral water as a prophylaxis against iron deficiency in pregnancy",
+      "citation": "McKenna D et al. 2003, Clin Lab Haematol",
+      "year": 2003,
+      "journal": "Clinical and Laboratory Haematology",
+      "design": "dvojitě zaslepená placebem kontrolovaná RCT",
+      "n": 102,
+      "population": "těhotné ženy 22.–28. týden, které netolerovaly tablety síranu železnatého; Wales",
+      "finding_cs": "48 ml přírodní železnaté minerální vody (Spatone, cca 0,2 mg Fe/ml) denně: pokles ferritinu o 24 % oproti 51 % u placeba; bez rozdílu v trávicích obtížích.",
+      "limitations_cs": "Voda s řádově vyšším obsahem železa než mariánskolázeňské prameny, podávaná v malé odměřené dávce, ne jako pitná kúra u pramene; specifická populace (těhotenství). Nelze přenášet na Ambrožův či Ferdinandův pramen — železo v místních pramenech uvádět jen jako tradiční použití.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1046/j.1365-2257.2003.00501.x",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "schwarz-2010-iron-heilwasser-controlled",
+      "topics": [
+        "pitna-kura",
+        "prevence"
+      ],
+      "title": "Der Einfluss von eisenhaltigen Heil- und Mineralwässern auf die Eisenversorgung des menschlichen Organismus – eine kontrollierte Interventionsstudie",
+      "citation": "Schwarz J et al. 2010, Phys Med Rehab Kuror",
+      "year": 2010,
+      "journal": "Physikalische Medizin, Rehabilitationsmedizin, Kurortmedizin",
+      "design": "randomizovaná kontrolovaná intervenční studie + nerandomizovaná podskupina",
+      "n": 68,
+      "population": "převážně zdraví dospělí (58 členů církevní obce + 10 pacientů), Německo; 16 osob s nízkým ferritinem sledováno zvlášť",
+      "finding_cs": "Nejméně 750 ml železnaté léčivé vody denně po 6 týdnů: u zdravých bez statisticky významné změny krevních parametrů; v nerandomizované podskupině s deficitem železa (ferritin < 12 ng/ml) vzestup ferritinu a méně hypochromních erytrocytů.",
+      "limitations_cs": "Efekt jen v nerandomizované podskupině 16 osob; německá voda jiného složení; jen abstrakt. Opora nanejvýš pro tradiční použití, ne pro tvrzení o léčbě chudokrevnosti.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1055/s-0030-1261928",
+      "source": "consensus",
+      "added": "2026-09-11"
+    },
+    {
+      "id": "dsouza-2024-mineral-water-heartburn-sr",
+      "topics": [
+        "pitna-kura",
+        "traveni",
+        "upozorneni"
+      ],
+      "title": "How Effective Is Drinking Natural Mineral Water against Heartburn from Functional Dyspepsia, Gastroesophageal Reflux Disease, or Other Causes? A Systematic Review of Clinical Intervention Studies",
+      "citation": "Dsouza A et al. 2024, Complement Med Res",
+      "year": 2024,
+      "journal": "Complementary Medicine Research",
+      "design": "systematický přehled",
+      "n": 393,
+      "population": "pálení žáhy při funkční dyspepsii, refluxní nemoci a z jiných příčin; 9 studií (3 RCT, 6 před/po) z Itálie, Ruska, Ukrajiny a Německa",
+      "finding_cs": "Autoři na základě dostupných studií nemohou pití přírodních minerálních vod při pálení žáhy doporučit ani od něj odradit; všechny tři RCT měly nízkou metodickou kvalitu. NECITOVAT jako doklad přínosu — na webu netvrdit, že pitná kúra pomáhá při pálení žáhy nebo refluxu.",
+      "limitations_cs": "Nejednoznačný závěr; slouží redakci jako upozornění.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1159/000536528",
       "source": "consensus",
       "added": "2026-09-11"
     }
