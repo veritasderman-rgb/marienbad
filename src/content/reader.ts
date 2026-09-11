@@ -243,17 +243,13 @@ function articleSources(meta: Record<string, unknown>): ArticleSource[] {
   return out
 }
 
-const HEALTH_CATEGORIES = new Set(['healing', 'health'])
-
-/** Validate required article fields; logs warnings for missing data */
+/**
+ * Validate required article fields; logs warnings for missing data.
+ * Kontrola `sources` a `medicalReviewDate` běží při buildu ve scripts/check-article-sources.mjs
+ * (web je SSR, stránky článků se při buildu nerenderují).
+ */
 function validateArticleMeta(slug: string, meta: Record<string, string>): string[] {
   const warnings: string[] = []
-  if (HEALTH_CATEGORIES.has(meta.category) && articleSources(meta).length === 0) {
-    warnings.push(`Article "${slug}": health article without \`sources\` (see CLAUDE.md → Zdravotní tvrzení)`)
-  }
-  if (meta.medicalReviewDate && !/^\d{4}-\d{2}-\d{2}/.test(meta.medicalReviewDate)) {
-    warnings.push(`Article "${slug}": invalid medicalReviewDate "${meta.medicalReviewDate}" (expected YYYY-MM-DD)`)
-  }
   if (!meta.title) warnings.push(`Article "${slug}": missing title`)
   if (!meta.locale) warnings.push(`Article "${slug}": missing locale`)
   if (!meta.excerpt) warnings.push(`Article "${slug}": missing excerpt`)
