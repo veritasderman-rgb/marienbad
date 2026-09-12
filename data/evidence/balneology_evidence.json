@@ -60,6 +60,7 @@
       "revmatologie",
       "sauna",
       "seniori",
+      "sezonnost",
       "spanek",
       "spotreba-leku",
       "stres",
@@ -72,7 +73,7 @@
       "vyhoreni",
       "zanety-mocovych-cest"
     ],
-    "count": 179
+    "count": 184
   },
   "entries": [
     {
@@ -3743,6 +3744,119 @@
       "url": "https://doi.org/10.1159/000536528",
       "source": "consensus",
       "added": "2026-09-11"
+    },
+    {
+      "id": "narita-2021-seasonal-bp-review",
+      "topics": [
+        "obehovy-system",
+        "hypertenze",
+        "sezonnost"
+      ],
+      "title": "Seasonal variation in blood pressure: current evidence and recommendations for hypertension management",
+      "citation": "Narita K, Hoshide S, Kario K 2021, Hypertens Res",
+      "year": 2021,
+      "journal": "Hypertens Res",
+      "design": "narativní přehled",
+      "n": null,
+      "population": "hypertonici, obecná populace",
+      "finding_cs": "Denní krevní tlak je v zimě vyšší než v létě, hlavně vlivem chladu; zimní zvýšení denního tlaku pravděpodobně souvisí s vyšším výskytem kardiovaskulárních příhod v zimě. Autoři doporučují celoroční domácí měření tlaku a včasnou úpravu léčby před zimou a létem.",
+      "limitations_cs": "Přehled bez metaanalýzy; netýká se lázeňské léčby — opora jen pro sezónní argument.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1038/s41440-021-00732-z",
+      "pmid": "34489592",
+      "source": "pubmed",
+      "added": "2026-09-12"
+    },
+    {
+      "id": "modesti-2018-seasonal-bp-risk",
+      "topics": [
+        "obehovy-system",
+        "hypertenze",
+        "sezonnost"
+      ],
+      "title": "Seasonal blood pressure variation: implications for cardiovascular risk stratification",
+      "citation": "Modesti PA et al. 2018, Hypertens Res",
+      "year": 2018,
+      "journal": "Hypertens Res",
+      "design": "narativní přehled",
+      "n": null,
+      "population": "hypertonici, obecná populace",
+      "finding_cs": "Dlouhodobé sezónní kolísání tlaku přispívá k vyššímu riziku kardiovaskulárních příhod v chladném období; v zimě bývají vyšší i další rizikové faktory, takže odhad individuálního rizika se během roku mění.",
+      "limitations_cs": "Přehled bez metaanalýzy; netýká se lázeňské léčby.",
+      "claim_level": "B",
+      "url": "https://doi.org/10.1038/s41440-018-0048-y",
+      "pmid": "29760460",
+      "source": "pubmed",
+      "added": "2026-09-12"
+    },
+    {
+      "id": "christensen-2007-weight-loss-koa-ma",
+      "topics": [
+        "obezita",
+        "artroza",
+        "pohybovy-aparat"
+      ],
+      "title": "Effect of weight reduction in obese patients diagnosed with knee osteoarthritis: a systematic review and meta-analysis",
+      "citation": "Christensen R et al. 2007, Ann Rheum Dis",
+      "year": 2007,
+      "journal": "Ann Rheum Dis",
+      "design": "metaanalýza RCT (4 studie)",
+      "n": 454,
+      "population": "pacienti s nadváhou/obezitou a artrózou kolene",
+      "finding_cs": "Pokles hmotnosti (v průměru 6,1 kg) zmírnil bolest i funkční omezení (velikost účinku 0,20 a 0,23); metaregrese ukázala, že funkce se významně zlepší při poklesu hmotnosti nad 5 % (nebo >0,24 % týdně).",
+      "limitations_cs": "Jen 4 RCT, malé účinky; netýká se lázeňské léčby — opora pro cíl hubnutí, ne pro lázně.",
+      "claim_level": "C",
+      "url": "https://doi.org/10.1136/ard.2006.065904",
+      "pmid": "17204567",
+      "source": "pubmed",
+      "added": "2026-09-12"
+    },
+    {
+      "id": "lane-2017-exercise-claudication-cochrane",
+      "topics": [
+        "ichdk",
+        "obehovy-system",
+        "cviceni",
+        "terenni-kura",
+        "guidelines"
+      ],
+      "title": "Exercise for intermittent claudication (Cochrane review)",
+      "citation": "Lane R et al. 2017, Cochrane Database Syst Rev",
+      "year": 2017,
+      "journal": "Cochrane Database Syst Rev",
+      "design": "systematický přehled a metaanalýza (32 RCT)",
+      "n": 1835,
+      "population": "pacienti s klaudikacemi při ICHDK",
+      "finding_cs": "Cvičební programy (většinou řízená chůze ≥2× týdně) prodloužily bezbolestnou vzdálenost chůze v průměru o 82 m a maximální vzdálenost o 120 m oproti běžné péči (vysoká jistota důkazů), s efektem až 2 roky; zlepšení kvality života; bez vlivu na ABI, amputace a úmrtnost.",
+      "limitations_cs": "Ambulantní cvičební programy, ne lázeňská terénní kúra; většina studií malá.",
+      "claim_level": "C",
+      "url": "https://doi.org/10.1002/14651858.CD000990.pub4",
+      "pmid": "29278423",
+      "source": "pubmed",
+      "added": "2026-09-12"
+    },
+    {
+      "id": "dibben-2021-cardiac-rehab-cochrane",
+      "topics": [
+        "obehovy-system",
+        "cviceni",
+        "terenni-kura",
+        "guidelines"
+      ],
+      "title": "Exercise-based cardiac rehabilitation for coronary heart disease (Cochrane review)",
+      "citation": "Dibben G et al. 2021, Cochrane Database Syst Rev",
+      "year": 2021,
+      "journal": "Cochrane Database Syst Rev",
+      "design": "systematický přehled a metaanalýza (85 RCT)",
+      "n": 23430,
+      "population": "pacienti s ischemickou chorobou srdeční (po infarktu, revaskularizaci, s anginou)",
+      "finding_cs": "Pohybová kardiorehabilitace snížila do 12 měsíců riziko infarktu (RR 0,72) a hospitalizace (RR 0,58), pravděpodobně mírně i celkovou úmrtnost; dlouhodobě nižší kardiovaskulární úmrtnost; mírně lepší kvalita života; nákladově efektivní.",
+      "limitations_cs": "Ambulantní a nemocniční programy, ne lázeňská léčba; méně než 15 % žen; kvalita reportování studií kolísá.",
+      "claim_level": "C",
+      "url": "https://doi.org/10.1002/14651858.CD001800.pub4",
+      "pmid": "34741536",
+      "source": "pubmed",
+      "added": "2026-09-12"
     }
   ]
 }
