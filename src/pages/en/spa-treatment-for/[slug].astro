@@ -8,7 +8,11 @@ import { medicalWebPage } from '@/lib/medicalSchema'
 export const prerender = true
 
 export function getStaticPaths() {
-  return diagnoses.map((d) => ({ params: { slug: d.content.en.slug }, props: { diagnosis: d } }))
+  // Diagnóza bez obsahu v tomto jazyce routu nevytváří. Překlady vznikají
+  // postupně a chybějící jazyk nesmí shodit build ostatních.
+  return diagnoses
+    .filter((d) => d.content.en?.slug)
+    .map((d) => ({ params: { slug: d.content.en.slug }, props: { diagnosis: d } }))
 }
 
 const locale = 'en' as const

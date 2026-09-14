@@ -48,7 +48,7 @@ const ui = {
 
 <div class="container-wide py-14 md:py-20 flex flex-col gap-10">
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
-    {diagnoses.map((d) => (
+    {diagnoses.filter((d) => d.content[locale]?.slug).map((d) => (
       <li class="m-0">
         <a href={diagnosisHref(locale, d)} class="group flex flex-col gap-2 bg-white border border-beige-200 p-5 hover:border-turquoise-400 hover:shadow-card transition-all duration-300 h-full" style="border-radius: var(--radius-card);">
           <span class="font-heading font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors">{d.content[locale].navLabel}</span>

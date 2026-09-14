@@ -3716,6 +3716,10 @@ export const diagnoses: Diagnosis[] = [
         ],
         procedures: [
           {
+            name: 'Quellenwahl nach Steinzusammensetzung',
+            detail: 'Die Quellen des Ortes unterscheiden sich chemisch erheblich, deshalb richtet sich die Auswahl nach der Steinart: die Karolinenquelle bei Steinen unbekannter Zusammensetzung und bei Oxalatsteinen, die Waldquelle mit ihrem hohen Hydrogenkarbonatgehalt bei Harnsäuresteinen, die Ambrosiusquelle bei Kalzium-Phosphat-Steinen. Die Rudolfsquelle ist bei Phosphatsteinen nicht geeignet.',
+          },
+          {
             name: 'Trinkkur an den Mineralquellen',
             detail: 'Hydrogenkarbonatreiches Mineralwasser erhöht Harnmenge, Urin-pH und Zitratausscheidung und senkt so die Übersättigung, aus der sich Kalziumoxalatsteine bilden.',
           },
@@ -3751,6 +3755,10 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Ob und in welchem Umfang eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer Bildgebung und Nierenfunktion. Diese Seite informiert und ersetzt keine urologische Beratung.',
         faqs: [
           {
+            question: 'Welche Quelle trinkt man bei welchem Nierenstein?',
+            answer: 'Die Zuordnung nimmt der Kurarzt vor und richtet sich nach der Zusammensetzung des Steins. Bei Steinen unbekannter Zusammensetzung und bei Oxalatsteinen wird die Karolinenquelle verordnet. Bei Harnsäuresteinen die Waldquelle: Sie enthält viel Hydrogenkarbonat und alkalisiert den Harn, und Harnsäuresteine lassen sich durch Alkalisierung auflösen. Bei Kalzium-Phosphat-Steinen die Ambrosiusquelle. Die Rudolfsquelle, sonst die bekannteste des Ortes, ist bei Phosphatsteinen ausdrücklich nicht geeignet. Trinken Sie deshalb nie eine andere Quelle oder eine andere Menge als verordnet.',
+          },
+          {
             question: 'Welche Kur hilft bei Nierensteinen?',
             answer: 'Marienbad führt Nephrolithiasis ohne Harnstauung als offizielle Indikation (Position VIII/2) und setzt dafür eine strukturierte Trinkkur aus den hydrogenkarbonatreichen Mineralquellen ein. Kontrollierte Studien zeigen, dass solches Wasser den Urin-pH und die Zitratausscheidung erhöht und die Übersättigung für Kalziumoxalat senkt.',
           },
@@ -3772,6 +3780,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — Behandlung urologischer Erkrankungen',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Seite des Betreibers: Zuordnung der Quellen zur Steinart — Karolinenquelle bei unbekannter Zusammensetzung und Oxalatsteinen, Waldquelle bei Harnsäuresteinen, Ambrosiusquelle bei Kalzium-Phosphat-Steinen. Tschechischer Text.',
+          },
           {
             title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VIII — Krankheiten des Harnsystems',
             url: '/de/indikationen-und-kontraindikationen',
@@ -3870,6 +3883,10 @@ export const diagnoses: Diagnosis[] = [
         ],
         procedures: [
           {
+            name: 'Spring selection according to stone composition',
+            detail: 'The town’s springs differ considerably in their chemistry, so the choice depends on the type of stone: the Caroline Spring for stones of unknown composition and for oxalate stones, the Forest Spring, with its high bicarbonate content, for uric acid stones, and the Ambrose Spring for calcium phosphate stones. The Rudolph Spring is not suitable for phosphate stones.',
+          },
+          {
             name: 'Drinking cure at the mineral springs',
             detail: 'Bicarbonate-rich mineral water increases urine volume, urinary pH and citrate excretion, lowering the supersaturation from which calcium oxalate stones form.',
           },
@@ -3905,6 +3922,10 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Whether and to what extent a spa cure is right for you is decided by the spa physician at the initial examination, based on your imaging and kidney function. This page provides information and does not replace urological advice.',
         faqs: [
           {
+            question: 'Which spring should you drink for which kidney stone?',
+            answer: 'The assignment is made by the spa physician and depends on the composition of the stone. For stones of unknown composition and for oxalate stones, the Caroline Spring is prescribed. For uric acid stones, the Forest Spring: it contains a great deal of bicarbonate and alkalinises the urine, and uric acid stones can be dissolved by alkalinisation. For calcium phosphate stones, the Ambrose Spring. The Rudolph Spring, otherwise the best known in the town, is explicitly not suitable for phosphate stones. So never drink a different spring, or a different amount, than prescribed.',
+          },
+          {
             question: 'Which spa cure helps with kidney stones?',
             answer: 'Marienbad lists nephrolithiasis without urinary obstruction as an official indication (position VIII/2) and uses a structured drinking cure from the bicarbonate-rich mineral springs for it. Controlled studies show that such water raises urinary pH and citrate excretion and lowers supersaturation for calcium oxalate.',
           },
@@ -3926,6 +3947,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — treatment of urological conditions',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'The operator’s page: assignment of the springs to stone type — Caroline Spring for unknown composition and oxalate stones, Forest Spring for uric acid stones, Ambrose Spring for calcium phosphate stones. Czech text.',
+          },
           {
             title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VIII — diseases of the urinary system',
             url: '/en/indications-and-contraindications',
@@ -4316,6 +4342,8 @@ export const diagnoses: Diagnosis[] = [
         lead: 'Unter urologischen Beschwerden führt die tschechische Indikationsliste unter anderem chronische, therapieresistente Nieren- und Harnwegsentzündungen, Zustände nach Operationen an Niere und Harnwegen sowie chronische Prostatitis. Marienbad behandelt diese Gruppe seit dem 19. Jahrhundert vor allem über die Trinkkur aus den ortseigenen Mineralquellen, ergänzt um urologisch verordnete physikalische Therapie.',
         teaser: 'Chronische Harnwegsentzündungen, Zustände nach Prostataoperation und chronische Prostatitis: Trinkkur, Beckenbodentherapie und urologische Verlaufskontrolle.',
         treats: [
+          'Zustand nach Nierentransplantation sowie Nierenspender — in Marienbad ein neu aufgenommener Behandlungsbereich',
+          'Harninkontinenz und Schwäche der Beckenbodenmuskulatur, auch nach einer Prostataoperation',
           'Rezidivierende und chronische, nicht-tuberkulöse Nieren- und Harnwegsentzündungen, die auf Antibiotika nicht ausreichend ansprechen, in laufender urologischer Betreuung seit mindestens 12 Monaten',
           'Zystische Nierenerkrankungen',
           'Zustände nach Operationen an Niere und Harnwegen, einschließlich endovesikaler Eingriffe und komplizierter Prostatektomie',
@@ -4346,6 +4374,10 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         procedures: [
+          {
+            name: 'PelviPower — Diagnostik und Training des Beckenbodens',
+            detail: 'Die Léčebné lázně Mariánské Lázně haben PelviPower als erster Betreiber in Tschechien eingeführt; das Gerät steht im Haus Nové Lázně. Es misst zunächst die Funktion der Beckenbodenmuskulatur und kräftigt sie anschließend mit magnetischen Impulsen, ohne Eingriff und im Sitzen. Ergänzend wird die Aktivierung und Entspannung des Beckenbodens mit diagnostischem Ultraschall durch die Bauchdecke beurteilt.',
+          },
           {
             name: 'Trinkkur an den Mineralquellen',
             detail: 'Regelmäßiges Trinken zur Erhöhung der Harnmenge; traditionell bei chronischen Nieren- und Harnwegsentzündungen eingesetzt.',
@@ -4386,6 +4418,14 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Ob und in welchem Umfang eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer urologischen Vorgeschichte. Diese Seite informiert und ersetzt keine urologische Beratung.',
         faqs: [
           {
+            question: 'Können Nierenspender und Menschen nach einer Nierentransplantation zur Kur?',
+            answer: 'Ja, das ist in Marienbad ein neu aufgenommener Behandlungsbereich: Der Betreiber nennt Klienten nach einer Nierentransplantation und Nierenspender ausdrücklich unter den behandelten Gruppen. Voraussetzung ist ein stabiler Verlauf und der Befund Ihres behandelnden Nephrologen oder Transplantationszentrums; bringen Sie ihn mit, weil Trinkmenge und Anwendungen danach ausgerichtet werden. Über die Aufnahme entscheidet der Kurarzt im Einzelfall.',
+          },
+          {
+            question: 'Hilft eine Kur bei Inkontinenz?',
+            answer: 'Inkontinenz und Prostataerkrankungen sind in Marienbad ein eigener Schwerpunkt. Der Betreiber hat dafür als erster in Tschechien PelviPower eingeführt, ein Gerät, das im Haus Nové Lázně steht: Es misst zuerst die Funktion der Beckenbodenmuskulatur und kräftigt sie danach mit magnetischen Impulsen, ohne Eingriff. Ob das Training für Sie infrage kommt und wie es mit den übrigen Anwendungen zusammenspielt, entscheidet der Kurarzt bei der Eingangsuntersuchung.',
+          },
+          {
             question: 'Welche Kurorte sind für urologische Beschwerden geeignet?',
             answer: 'Geeignet sind Kurorte, die chronische Harnwegsentzündungen, Zustände nach urologischen Operationen oder chronische Prostatitis als offizielle Indikation führen und urologische Betreuung während des Aufenthalts anbieten. Marienbad erfüllt das über die Positionen VIII/1, VIII/3 und VIII/4 der tschechischen Indikationsliste und stützt sich dabei auf die Trinkkur aus den ortseigenen Mineralquellen.',
           },
@@ -4407,6 +4447,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — Behandlung urologischer Erkrankungen',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Seite des Betreibers: behandelte Diagnosen einschließlich Inkontinenz, Prostataerkrankungen sowie neu Klienten nach Nierentransplantation und Nierenspender; Einführung von PelviPower als erster Betreiber in Tschechien, Gerät im Haus Nové Lázně. Tschechischer Text.',
+          },
           {
             title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VIII — Krankheiten des Harnsystems',
             url: '/de/indikationen-und-kontraindikationen',
@@ -4469,6 +4514,8 @@ export const diagnoses: Diagnosis[] = [
           'Among urological conditions, the Czech indication list lists chronic, treatment-resistant kidney and urinary tract infections, conditions after operations on the kidneys and urinary tract, and chronic prostatitis, among others. Marienbad has treated this group since the 19th century mainly through the drinking cure from its own mineral springs, supplemented by urologically prescribed physical therapy.',
         teaser: 'Chronic urinary tract infections, conditions after prostate surgery and chronic prostatitis: drinking cure, pelvic floor therapy and urological monitoring.',
         treats: [
+          'Condition after kidney transplantation, and kidney donors — a newly added area of treatment in Marienbad',
+          'Urinary incontinence and weakness of the pelvic floor muscles, including after prostate surgery',
           'Recurrent and chronic, non-tuberculous kidney and urinary tract infections that do not respond sufficiently to antibiotics, under ongoing urological care for at least 12 months',
           'Cystic kidney disease',
           'Conditions after operations on the kidneys and urinary tract, including endovesical procedures and complicated prostatectomy',
@@ -4499,6 +4546,10 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         procedures: [
+          {
+            name: 'PelviPower — pelvic floor diagnostics and training',
+            detail: 'Léčebné lázně Mariánské Lázně introduced PelviPower as the first operator in the Czech Republic; the device is in the Nové Lázně house. It first measures the function of the pelvic floor muscles, then strengthens them with magnetic impulses, without any procedure and while seated. Activation and relaxation of the pelvic floor are additionally assessed with diagnostic ultrasound through the abdominal wall.',
+          },
           {
             name: 'Drinking cure at the mineral springs',
             detail: 'Regular drinking to increase urine volume; traditionally used for chronic kidney and urinary tract infections.',
@@ -4539,6 +4590,14 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Whether and to what extent a spa cure is right for you is decided by the spa physician at the initial examination, based on your urological history. This page provides information and does not replace urological advice.',
         faqs: [
           {
+            question: 'Can kidney donors and people after a kidney transplant go for a spa cure?',
+            answer: 'Yes — this is a newly added area of treatment in Marienbad: the operator explicitly names clients after a kidney transplant and kidney donors among the groups it treats. The requirement is a stable course and the findings of your treating nephrologist or transplant centre; bring them along, because the amount you drink and the treatments are set accordingly. Admission is decided by the spa physician case by case.',
+          },
+          {
+            question: 'Does a spa cure help with incontinence?',
+            answer: 'Incontinence and prostate conditions are a dedicated focus in Marienbad. For them, the operator was the first in the Czech Republic to introduce PelviPower, a device housed in the Nové Lázně: it first measures the function of the pelvic floor muscles, then strengthens them with magnetic impulses, without any procedure. Whether this training is right for you, and how it fits with the other treatments, is decided by the spa physician at the initial examination.',
+          },
+          {
             question: 'Which spa resorts are suitable for urological conditions?',
             answer: 'Suitable resorts list chronic urinary tract infections, conditions after urological operations or chronic prostatitis as official indications and offer urological care during the stay. Marienbad meets this through positions VIII/1, VIII/3 and VIII/4 of the Czech indication list, drawing on the drinking cure from its own mineral springs.',
           },
@@ -4560,6 +4619,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — treatment of urological conditions',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'The operator’s page: conditions treated, including incontinence, prostate conditions, and newly, clients after a kidney transplant and kidney donors; introduction of PelviPower as the first operator in the Czech Republic, device housed in the Nové Lázně. Czech text.',
+          },
           {
             title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VIII — diseases of the urinary system',
             url: '/en/indications-and-contraindications',
@@ -11060,6 +11124,314 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
+    },
+  },
+  {
+    id: 'tendon-pain',
+    groupId: 'musculoskeletal',
+    roman: 'VII',
+    codes: [
+      'VII/6',
+    ],
+    conditionName: 'Tendinopathy',
+    icd10: 'M77',
+    image: '/images/library/treatments/electrode-pad-shoulder.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Therapeutin legt eine Elektrode an die Schulter einer Kurgästin vor der Elektrotherapie',
+      en: 'A therapist attaching an electrode to a spa guest’s shoulder before electrotherapy',
+      cs: 'Therapeutin legt eine Elektrode an die Schulter einer Kurgästin vor der Elektrotherapie',
+      ru: 'Therapeutin legt eine Elektrode an die Schulter einer Kurgästin vor der Elektrotherapie',
+    },
+    content: {
+      de: {
+        slug: 'sehnen-und-sehnenansaetze',
+        navLabel: 'Sehnen und Ansätze',
+        title: 'Kur bei Sehnen- und Ansatzbeschwerden in Marienbad',
+        h1: 'Kur bei Sehnen-, Schleimbeutel- und Ansatzbeschwerden',
+        metaTitle: 'Kur bei Sehnenbeschwerden in Marienbad — Anwendungen',
+        metaDescription: 'Karpaltunnel, Fersensporn, Tennisellenbogen, Schleimbeutel: Laser, Stoßwelle, Ultraschall und Kryotherapie in Marienbad — Ablauf und Dauer.',
+        lead: 'Karpaltunnelsyndrom, Fersensporn, Tennisellenbogen, entzündeter Schleimbeutel: Beschwerden an Sehnen, Sehnenscheiden und Muskelansätzen stehen als eigene Position auf der tschechischen Indikationsliste — einschließlich der Fälle, die durch Vibration oder jahrelange einseitige Überlastung als Berufskrankheit entstanden sind.',
+        teaser: 'Karpaltunnel, Fersensporn, Tennisellenbogen und Schleimbeutel: Laser, Stoßwelle, Ultraschall und Kryotherapie unter ärztlicher Kontrolle.',
+        treats: [
+          'Karpaltunnelsyndrom in leichter bis mittlerer Ausprägung, solange keine Operationsindikation besteht',
+          'Plantarfasziitis und Fersenschmerz durch Überlastung, umgangssprachlich Fersensporn',
+          'Epikondylitis am Ellenbogen, also Tennis- und Golferellenbogen',
+          'Schleimbeutelentzündung an Schulter, Ellenbogen, Hüfte oder Knie',
+          'Enthesopathien, also schmerzhafte Reizzustände an den Ansätzen von Sehnen und Bändern',
+          'Beschwerden durch Vibration oder langjährige einseitige Überlastung, die als Berufskrankheit anerkannt sind',
+        ],
+        notFor: [
+          'Frische Sehnenruptur oder ein Befund, der operativ versorgt gehört',
+          'Karpaltunnelsyndrom mit fortschreitendem Muskelschwund oder deutlichem Ausfall — das gehört zur Entlastungsoperation, nicht in die Kur',
+          'Akute eitrige Entzündung eines Schleimbeutels oder Gelenks',
+          'Nicht abgeheilte Wunde im Anwendungsgebiet',
+          'Akute Erkrankungen, Schwangerschaft, Epilepsie sowie Unfähigkeit zur selbstständigen Versorgung',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt tastet die schmerzhafte Region ab, prüft Kraft, Gefühl und Beweglichkeit und sichtet mitgebrachte Befunde — bei Verdacht auf ein Karpaltunnelsyndrom ist die Elektroneurografie Ihres Neurologen wichtig, weil sie über die Schwere entscheidet. Danach steht der Anwendungsplan.',
+          },
+          {
+            heading: 'Erste Woche: Reizzustand beruhigen',
+            body: 'Zuerst geht es um die Entlastung des gereizten Gewebes: Laser, Ultraschall und lokale Kryotherapie auf den Schmerzpunkt, dazu Physiotherapie, die die Region vorerst nicht belastet.',
+          },
+          {
+            heading: 'Zweite Woche: Belastbarkeit aufbauen',
+            body: 'Mit nachlassendem Schmerz kommen Dehnung, exzentrisches Training der betroffenen Sehne und die Korrektur der Bewegung dazu, die den Reiz überhaupt ausgelöst hat — bei Berufskrankheiten ist genau das der entscheidende Teil.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Befund und Beweglichkeit werden erneut beurteilt und schriftlich festgehalten. Sie erhalten ein Übungsprogramm und Hinweise zur Entlastung am Arbeitsplatz; ohne die kehrt der Reiz zurück.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Lasertherapie',
+            detail: 'Der Laserscanner wird in Marienbad unter anderem bei Arthroseschmerz, Chondropathie, Karpaltunnelsyndrom, akuter Muskelverletzung, Epikondylitis, Bandentzündung, Diskopathie, Schleimbeutelentzündung, Enthesopathie, Muskelverspannung und Plantarfasziitis durch Überlastung eingesetzt.',
+          },
+          {
+            name: 'Lokale Kryotherapie',
+            detail: 'Behandlung mit extremer Kälte auf den Schmerzpunkt; in Marienbad wechseln dabei Kälte von etwa −18 °C und Wärme von etwa +41 °C in rascher Folge. Temperatur und Zahl der Zyklen legt der Arzt je nach Befund fest.',
+          },
+          {
+            name: 'Stoßwelle und Ultraschall',
+            detail: 'Physikalische Anwendungen auf die betroffene Sehne oder den Ansatz, Teil des Angebots der physikalischen Therapie vor Ort.',
+          },
+          {
+            name: 'Magnetfeldtherapie',
+            detail: 'Einschließlich Hochinduktionsmagnet; wird auf die schmerzhafte Region angewandt und vom Arzt verordnet.',
+          },
+          {
+            name: 'Elektrotherapie',
+            detail: 'Diadynamische und Interferenzströme zur Schmerzlinderung und Lösung der begleitenden Muskelverspannung.',
+          },
+          {
+            name: 'Einzelphysiotherapie',
+            detail: 'Täglich, mit Dehnung, exzentrischem Training der betroffenen Sehne und der Korrektur der auslösenden Bewegung.',
+          },
+          {
+            name: 'Moorpackung',
+            detail: 'Wärmeintensive Anwendung bei bis zu 40 °C auf die betroffene Region; sie belastet Herz und Kreislauf und wird nur nach ärztlicher Entscheidung verordnet.',
+          },
+          {
+            name: 'Klassische Massage',
+            detail: 'Auf die Regionen, in denen sich als Reaktion auf die Schonhaltung sekundäre Verspannungen gebildet haben.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Schmerzhafte Syndrome der Sehnen, Sehnenscheiden, Schleimbeutel, Muskelansätze, Skelettmuskeln oder Gelenke stehen als Position VII/6 auf der tschechischen Indikationsliste, ausdrücklich einschließlich der Erkrankungen durch Vibration und durch langjährige, übermäßige, einseitige Überlastung als Berufskrankheit. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind als Grundaufenthalt 21 Tage komplexe oder 21 Tage Zuschussbehandlung vorgesehen; der Wiederholungsaufenthalt läuft über 21 Tage komplexe oder Zuschussbehandlung, in bestimmten Fällen über 14. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage. Eine Jahreszeit ist medizinisch nicht vorgegeben.',
+        },
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Laser, Ultraschall, Stoßwelle und Magnetfeld gehören in Marienbad seit langem zur physikalischen Therapie bei Sehnen- und Ansatzbeschwerden; der Kurarzt stellt sie nach Befund und aus klinischer Erfahrung zusammen. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Für die Kurmedizin als Fach entsteht derzeit erstmals seit Langem systematische Evidenz. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch. Sie betrifft urologische und nephrologische Diagnosen, nicht die auf dieser Seite beschriebene: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc.; Ergebnisse liegen noch nicht vor. Die Studie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was solche Arbeit erbringen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
+        physicianNote: 'Ob und in welchem Umfang eine Kur bei Ihren Sehnen- oder Ansatzbeschwerden infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des Befunds. Ein Karpaltunnelsyndrom mit fortschreitendem Ausfall gehört in die Hand eines Operateurs, nicht in eine Kurplanung. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Hilft eine Kur beim Karpaltunnelsyndrom?',
+            answer: 'Bei leichter bis mittlerer Ausprägung gehört das Karpaltunnelsyndrom zu den Diagnosen, für die der Laserscanner in Marienbad eingesetzt wird, ergänzt um Physiotherapie und physikalische Anwendungen. Entscheidend ist der Schweregrad: Zeigt die Elektroneurografie einen fortschreitenden Ausfall oder bildet sich die Daumenballenmuskulatur zurück, ist die Entlastungsoperation das Mittel der Wahl und die Kur nicht der richtige Weg. Bringen Sie den Befund Ihres Neurologen mit, damit der Kurarzt das beurteilen kann.',
+          },
+          {
+            question: 'Was hilft beim Fersensporn?',
+            answer: 'Gemeint ist meist die Plantarfasziitis, ein Reizzustand der Sehnenplatte an der Fußsohle durch Überlastung. In Marienbad wird sie mit Laser, Stoßwelle und Ultraschall auf den Schmerzpunkt behandelt, dazu kommen Dehnung, exzentrisches Training der Wadenmuskulatur und die Korrektur der Belastung. Den Plan stellt der Kurarzt nach der Eingangsuntersuchung zusammen.',
+          },
+          {
+            question: 'Zahlt die Krankenkasse eine Kur bei Sehnenbeschwerden?',
+            answer: 'Für Versicherte einer tschechischen Krankenkasse gilt Position VII/6 der Indikationsliste: 21 Tage komplexe oder 21 Tage Zuschussbehandlung als Grundaufenthalt, der Wiederholungsaufenthalt über 21 oder 14 Tage. Die Position nennt ausdrücklich auch Beschwerden durch Vibration und durch langjährige einseitige Überlastung, die als Berufskrankheit anerkannt sind. Gäste mit einer Versicherung außerhalb Tschechiens klären die Kostenübernahme vorab mit ihrem eigenen Kostenträger.',
+          },
+          {
+            question: 'Wie fühlt sich die lokale Kryotherapie an?',
+            answer: 'Kälte und Wärme wechseln in rascher Folge, in Marienbad etwa zwischen −18 °C und +41 °C. Das ist kurz unangenehm, aber nicht schmerzhaft. Temperatur und Zahl der Zyklen legt der Arzt je nach Befund fest; wenn Sie eine Anwendung nicht vertragen, sagen Sie es, damit der Plan geändert wird.',
+          },
+          {
+            question: 'Kommt eine Kur auch bei einer anerkannten Berufskrankheit infrage?',
+            answer: 'Ja. Position VII/6 schließt ausdrücklich Erkrankungen ein, die durch die Einwirkung von Vibrationen oder durch langjährige, übermäßige, einseitige Überlastung entstanden und nach der tschechischen Liste der Berufskrankheiten anerkannt sind. In der Kur liegt der Schwerpunkt dann nicht nur auf der Schmerzlinderung, sondern vor allem auf der Korrektur der Bewegung und der Entlastung am Arbeitsplatz.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VII — Position VII/6',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Schmerzhafte Syndrome der Sehnen, Sehnenscheiden, Schleimbeutel, Muskelansätze, Skelettmuskeln oder Gelenke, einschließlich Vibrations- und Überlastungsschäden als Berufskrankheit: Grundaufenthalt 21 Tage komplexe oder Zuschussbehandlung, Wiederholungsaufenthalt 21 (in bestimmten Fällen 14) Tage.',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe VII',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Erkrankungen des Bewegungsapparats samt Kontraindikationen. Tschechischer Text.',
+          },
+          {
+            title: 'Klinische Studie zu den objektiven Wirkungen der komplexen Kurbehandlung bei urologischen und nephrologischen Diagnosen (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Laufende Studie des Instituts lázeňství a balneologie mit den Léčebné lázně Mariánské Lázně, mehr als hundert Patienten, Beginn 2026. Sie betrifft urologische und nephrologische Diagnosen; Ergebnisse liegen noch nicht vor.',
+          },
+        ],
+        related: [
+          {
+            label: 'Kur bei Arthrose',
+            href: '/de/kur-bei/arthrose',
+          },
+          {
+            label: 'Kur bei Wirbelsäulenbeschwerden',
+            href: '/de/kur-bei/wirbelsaeule',
+          },
+          {
+            label: 'Bewegungsapparat, Moor und Mineralwasser',
+            href: '/de/magazin/bewegungsapparat-moor-mineralwasser',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {
+        slug: 'carpal-tunnel-and-heel-spur',
+        navLabel: 'Tendons and attachments',
+        title: 'Spa treatment for tendon and attachment pain in Marienbad',
+        h1: 'Spa treatment for tendon, bursa and attachment pain',
+        metaTitle: 'Spa treatment for carpal tunnel and heel spur | Marienbad.com',
+        metaDescription: 'Carpal tunnel, heel spur, tennis elbow, bursitis: laser, shock wave, ultrasound and cryotherapy in Marienbad — course and length of stay.',
+        lead: 'Carpal tunnel syndrome, heel spur, tennis elbow, an inflamed bursa: complaints of the tendons, tendon sheaths and muscle attachments have their own position on the Czech indication list — including cases that arose as an occupational disease through vibration or years of one-sided overload.',
+        teaser: 'Carpal tunnel, heel spur, tennis elbow and bursitis: laser, shock wave, ultrasound and cryotherapy under medical supervision.',
+        treats: [
+          'Carpal tunnel syndrome of mild to moderate severity, as long as there is no indication for surgery',
+          'Plantar fasciitis and heel pain from overload, commonly known as a heel spur',
+          'Epicondylitis of the elbow, that is, tennis and golfer’s elbow',
+          'Bursitis of the shoulder, elbow, hip or knee',
+          'Enthesopathies, that is, painful irritation at the attachments of tendons and ligaments',
+          'Complaints from vibration or years of one-sided overload that are recognised as an occupational disease',
+        ],
+        notFor: [
+          'A recent tendon rupture, or a finding that belongs in surgical care',
+          'Carpal tunnel syndrome with progressive muscle wasting or a marked deficit — this calls for decompression surgery, not a spa cure',
+          'Acute purulent inflammation of a bursa or joint',
+          'An unhealed wound in the treatment area',
+          'Acute illness, pregnancy, epilepsy, and an inability to manage personal care independently',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: 'The spa physician palpates the painful region, checks strength, sensation and mobility, and reviews any findings you bring — if carpal tunnel syndrome is suspected, your neurologist’s electroneurography is important, because it determines the severity. The treatment plan follows from this.',
+          },
+          {
+            heading: 'First week: calming the irritation',
+            body: 'The first priority is relieving the irritated tissue: laser, ultrasound and local cryotherapy on the painful point, together with physiotherapy that does not load the region for now.',
+          },
+          {
+            heading: 'Second week: building up load tolerance',
+            body: 'As pain eases, stretching, eccentric training of the affected tendon and correction of the movement that triggered the irritation in the first place are added — for occupational diseases, this is exactly the decisive part.',
+          },
+          {
+            heading: 'Final examination and plan for home',
+            body: 'Findings and mobility are assessed again and recorded in writing. You receive an exercise programme and guidance on relieving strain at the workplace; without it, the irritation returns.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Laser therapy',
+            detail: 'The laser scanner is used in Marienbad for, among other things, osteoarthritis pain, chondropathy, carpal tunnel syndrome, acute muscle injury, epicondylitis, ligament inflammation, discopathy, bursitis, enthesopathy, muscle tension and plantar fasciitis from overload.',
+          },
+          {
+            name: 'Local cryotherapy',
+            detail: 'Treatment with extreme cold applied to the painful point; in Marienbad, cold at around −18 °C and heat at around +41 °C alternate in rapid succession. The physician sets the temperature and number of cycles according to the findings.',
+          },
+          {
+            name: 'Shock wave and ultrasound',
+            detail: 'Physical treatments applied to the affected tendon or attachment, part of the on-site physical therapy programme.',
+          },
+          {
+            name: 'Magnetic field therapy',
+            detail: 'Including a high-induction magnet; applied to the painful region and prescribed by the physician.',
+          },
+          {
+            name: 'Electrotherapy',
+            detail: 'Diadynamic and interferential currents to relieve pain and ease the accompanying muscle tension.',
+          },
+          {
+            name: 'Individual physiotherapy',
+            detail: 'Daily, with stretching, eccentric training of the affected tendon and correction of the triggering movement.',
+          },
+          {
+            name: 'Peat pack',
+            detail: 'A heat-intensive treatment at up to 40 °C on the affected region; it places a load on the heart and circulation and is prescribed only at the physician’s discretion.',
+          },
+          {
+            name: 'Classic massage',
+            detail: 'On the regions where secondary tension has built up in reaction to the protective posture.',
+          },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'Painful syndromes of the tendons, tendon sheaths, bursae, muscle attachments, skeletal muscles or joints are listed as position VII/6 of the Czech indication list, explicitly including diseases caused by vibration and by years of excessive, one-sided overload recognised as an occupational disease. For stays covered by Czech public health insurance, the basic stay is set at 21 days of comprehensive or 21 days of contributory care; the repeat stay runs to 21 days of comprehensive or contributory care, in certain cases 14. Self-paying guests agree the length with the spa physician; the professional minimum is at least 10 treatments over at least 10 days. There is no medical rule for the season.',
+        },
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Laser, ultrasound, shock wave and magnetic field therapy have long been part of physical therapy for tendon and attachment complaints in Marienbad; the spa physician puts them together according to the findings and clinical experience. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Systematic evidence for spa medicine as a field is being built for the first time in a long while. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně. It covers urological and nephrological diagnoses rather than the one described on this page: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor, and results are not yet available. The study runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
+        physicianNote: 'Whether and to what extent a spa cure is right for your tendon or attachment complaints is decided by the spa physician at the initial examination, based on the findings. Carpal tunnel syndrome with a progressive deficit belongs in the hands of a surgeon, not in spa cure planning. This page provides information and does not replace medical advice.',
+        faqs: [
+          {
+            question: 'Does a spa cure help with carpal tunnel syndrome?',
+            answer: 'At mild to moderate severity, carpal tunnel syndrome is one of the diagnoses for which the laser scanner is used in Marienbad, supplemented by physiotherapy and physical treatments. The severity is decisive: if electroneurography shows a progressive deficit, or the thumb muscle bulk is wasting, decompression surgery is the treatment of choice and a spa cure is not the right path. Bring your neurologist’s findings so the spa physician can assess this.',
+          },
+          {
+            question: 'What helps with a heel spur?',
+            answer: 'This usually means plantar fasciitis, an irritation of the tendon plate on the sole of the foot caused by overload. In Marienbad it is treated with laser, shock wave and ultrasound on the painful point, together with stretching, eccentric training of the calf muscles and correction of the load. The spa physician puts the plan together after the initial examination.',
+          },
+          {
+            question: 'Does health insurance cover a spa cure for tendon complaints?',
+            answer: 'For people insured with a Czech health insurance fund, position VII/6 of the indication list applies: 21 days of comprehensive or 21 days of contributory care as the basic stay, with the repeat stay running to 21 or 14 days. The position also explicitly names complaints from vibration and from years of one-sided overload that are recognised as an occupational disease. Guests insured outside the Czech Republic should clarify cost coverage with their own insurer in advance.',
+          },
+          {
+            question: 'What does local cryotherapy feel like?',
+            answer: 'Cold and heat alternate in rapid succession, in Marienbad at around −18 °C and +41 °C. This is briefly unpleasant but not painful. The physician sets the temperature and number of cycles according to the findings; if you do not tolerate a treatment well, say so, so the plan can be changed.',
+          },
+          {
+            question: 'Can a spa cure also be an option for a recognised occupational disease?',
+            answer: 'Yes. Position VII/6 explicitly includes diseases that arose through exposure to vibration or through years of excessive, one-sided overload and are recognised under the Czech list of occupational diseases. In that case, the cure focuses not only on relieving pain but above all on correcting movement and relieving strain at the workplace.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VII — position VII/6',
+            url: '/en/indications-and-contraindications',
+            note: 'Painful syndromes of the tendons, tendon sheaths, bursae, muscle attachments, skeletal muscles or joints, including vibration and overload damage recognised as an occupational disease: basic stay 21 days of comprehensive or contributory care, repeat stay 21 (in certain cases 14) days.',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa rehabilitation care — Group VII',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for diseases of the musculoskeletal system, including contraindications. Czech text.',
+          },
+          {
+            title: 'Clinical study of the objective effects of comprehensive spa care in kidney and urological conditions (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Ongoing study by the Institute of Spa Medicine and Balneology with Léčebné lázně Mariánské Lázně, more than a hundred patients, started 2026. It covers urological and nephrological diagnoses; results are not yet available.',
+          },
+        ],
+        related: [
+          {
+            label: 'Spa treatment for osteoarthritis',
+            href: '/en/spa-treatment-for/osteoarthritis',
+          },
+          {
+            label: 'Spa treatment for spine and back pain',
+            href: '/en/spa-treatment-for/spine-and-back-pain',
+          },
+          {
+            label: 'Musculoskeletal treatment: peat and mineral water',
+            href: '/en/magazine/musculoskeletal-treatment-peat-mineral',
+          },
+          {
+            label: 'Indications and contraindications',
+            href: '/en/indications-and-contraindications',
+          },
+        ],
+      },
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
     },
   },
 ]
