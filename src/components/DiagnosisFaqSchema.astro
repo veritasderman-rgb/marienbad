@@ -1,0 +1,27 @@
+---
+/**
+ * FAQPage JSON-LD pro stránku diagnózy. Oddělené od FaqSchema.astro, které
+ * čte Markdoc tělo z CMS; tady jsou otázky strukturovaná data, ne text.
+ */
+import type { DiagnosisFaq } from '@/data/treatmentFor'
+
+interface Props {
+  faqs: DiagnosisFaq[]
+}
+
+const { faqs } = Astro.props
+
+const schema = faqs.length > 0
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    })
+  : null
+---
+
+{schema && <script type="application/ld+json" set:html={schema} />}

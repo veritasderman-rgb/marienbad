@@ -1,0 +1,40 @@
+---
+import Base from '@/layouts/Base.astro'
+import DiagnosisPage from '@/components/DiagnosisPage.astro'
+import DiagnosisFaqSchema from '@/components/DiagnosisFaqSchema.astro'
+import { diagnoses, diagnosisAlternates, diagnosisHref } from '@/data/treatmentFor'
+import { medicalWebPage } from '@/lib/medicalSchema'
+
+export const prerender = true
+
+export function getStaticPaths() {
+  return diagnoses.map((d) => ({ params: { slug: d.content.de.slug }, props: { diagnosis: d } }))
+}
+
+const locale = 'de' as const
+const { diagnosis } = Astro.props
+const c = diagnosis.content[locale]
+
+const schema = medicalWebPage({
+  locale,
+  path: diagnosisHref(locale, diagnosis),
+  name: c.title,
+  description: c.metaDescription,
+  conditionName: diagnosis.conditionName,
+  icd10: diagnosis.icd10,
+  therapies: c.procedures.map((p) => p.name),
+  lastReviewed: diagnosis.medicalReviewDate,
+})
+---
+
+<Base
+  locale={locale}
+  section="treatment-for"
+  title={c.metaTitle}
+  description={c.metaDescription}
+  alternateUrls={diagnosisAlternates(diagnosis)}
+  schema={schema}
+>
+  <DiagnosisFaqSchema faqs={c.faqs} />
+  <DiagnosisPage locale={locale} diagnosis={diagnosis} />
+</Base>

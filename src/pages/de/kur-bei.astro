@@ -1,0 +1,20 @@
+---
+import Base from '@/layouts/Base.astro'
+import DiagnosisHub from '@/components/DiagnosisHub.astro'
+import { getAlternateLinks } from '@/i18n/utils'
+
+export const prerender = true
+
+const locale = 'de' as const
+const alternateUrls = Object.fromEntries(getAlternateLinks('treatment-for').map((a) => [a.locale, a.href]))
+---
+
+<Base
+  locale={locale}
+  section="treatment-for"
+  title={'Kur nach Diagnose in Marienbad — was hier behandelt wird | Marienbad.com'}
+  description={'Arthrose, Wirbelsäule, Psoriasis, Nierensteine, Kur nach Hüft- oder Knieoperation: was in Marienbad behandelt wird, wie die Kur abläuft und wie lange sie dauert.'}
+  alternateUrls={alternateUrls}
+>
+  <DiagnosisHub locale={locale} />
+</Base>

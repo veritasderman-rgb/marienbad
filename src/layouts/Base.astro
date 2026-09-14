@@ -25,9 +25,12 @@ interface Props {
   switcherUrls?: Partial<Record<Locale, string>>
   /** Emit `<meta name="robots" content="noindex, follow">` instead of the default `index, follow`. */
   noindex?: boolean
+  /** Page-level JSON-LD appended after the site-wide graph. Used for medical
+   *  pages (MedicalWebPage, MedicalTherapy) — see src/lib/medicalSchema.ts. */
+  schema?: Record<string, unknown>[]
 }
 
-const { locale, section, alternateUrls, switcherUrls, noindex } = Astro.props
+const { locale, section, alternateUrls, switcherUrls, noindex, schema = [] } = Astro.props
 
 /** Ověření vlastnictví webu pro Seznam Webmaster a Google Search Console.
  *  Kódy nejsou tajemství, ale patří do prostředí Vercelu, ne do repozitáře. */
@@ -139,6 +142,7 @@ const langSwitcherUrls = Object.fromEntries(
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
         "name": "Marienbad.com",
         "url": siteUrl,
         "inLanguage": locales,
@@ -174,7 +178,8 @@ const langSwitcherUrls = Object.fromEntries(
           "name": "Czech Republic"
         },
         "award": "UNESCO World Heritage Site — Great Spa Towns of Europe (2021)"
-      }
+      },
+      ...schema
     ])} />
 
     <!-- Branding font preload (critical weights). Semilight is deliberately not

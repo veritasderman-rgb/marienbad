@@ -1,0 +1,20 @@
+---
+import Base from '@/layouts/Base.astro'
+import DiagnosisHub from '@/components/DiagnosisHub.astro'
+import { getAlternateLinks } from '@/i18n/utils'
+
+export const prerender = true
+
+const locale = 'ru' as const
+const alternateUrls = Object.fromEntries(getAlternateLinks('treatment-for').map((a) => [a.locale, a.href]))
+---
+
+<Base
+  locale={locale}
+  section="treatment-for"
+  title={'Курортное лечение по диагнозу в Марианских Лазне | Marienbad.com'}
+  description={'Артроз, позвоночник, псориаз, камни в почках, восстановление после операций на суставах: что лечат в Марианских Лазне и как проходит курс.'}
+  alternateUrls={alternateUrls}
+>
+  <DiagnosisHub locale={locale} />
+</Base>
