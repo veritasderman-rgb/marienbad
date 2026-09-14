@@ -7325,4 +7325,1025 @@ export const diagnoses: Diagnosis[] = [
       },
     },
   },
+  {
+    id: 'parkinsons',
+    groupId: 'nervous',
+    roman: 'VI',
+    codes: [
+      'VI/11',
+    ],
+    conditionName: 'Parkinson disease',
+    icd10: 'G20',
+    image: '/images/library/treatments/aqua-therapy-noodles.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
+      en: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
+      cs: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
+      ru: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
+    },
+    content: {
+      de: {
+        slug: 'parkinson',
+        navLabel: 'Parkinson-Krankheit',
+        title: 'Kur bei Parkinson in Marienbad',
+        h1: 'Kur bei der Parkinson-Krankheit',
+        metaTitle: 'Kur bei Parkinson in Marienbad — Ablauf und Dauer',
+        metaDescription: 'Kur bei der Parkinson-Krankheit in Marienbad: Gang- und Gleichgewichtstraining, Bewegungstherapie im Wasser, Kohlensäurebäder — Ablauf und Dauer.',
+        lead: 'Die Parkinson-Krankheit steht als eigene Position auf der tschechischen Indikationsliste, und Marienbad behandelt sie als Rehabilitationsaufenthalt: mit täglichem Gang- und Gleichgewichtstraining, Bewegungstherapie im warmen Wasser und Anwendungen aus den örtlichen Heilmitteln. Die Kur ergänzt die neurologische Behandlung, sie tritt nicht an ihre Stelle.',
+        teaser: 'Gang- und Gleichgewichtstraining, Übungen im Wasser und Kohlensäurebäder — als Ergänzung zur neurologischen Behandlung.',
+        treats: [
+          'Parkinson-Krankheit in einem Stadium, in dem selbstständiges Gehen und die eigene Versorgung noch möglich sind',
+          'Gangunsicherheit, verkürzte Schrittlänge und Starthemmung im Alltag',
+          'Gleichgewichtsstörungen mit erhöhtem Sturzrisiko',
+          'Muskelsteifigkeit und schmerzhafte Verspannungen des Rumpfes und der Schultern',
+          'Nachlassende körperliche Belastbarkeit und Rückzug aus der Bewegung',
+        ],
+        notFor: [
+          'Unfähigkeit, ohne fremde Hilfe zu gehen und die täglichen Verrichtungen selbst zu erledigen — die Indikationsliste setzt beides voraus',
+          'Fortgeschrittene Demenz oder ausgeprägte Verwirrtheit, die ein Üben nach Anleitung unmöglich macht',
+          'Akute Erkrankung, unbehandelte Herzinsuffizienz oder frische Verletzung',
+          'Epilepsie sowie Abhängigkeit von Alkohol oder anderen Suchtmitteln',
+          'Schwangerschaft',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt geht den neurologischen Befund und die aktuelle Medikation durch, prüft Gangbild, Gleichgewicht und Belastbarkeit und stellt danach den Anwendungsplan zusammen. Bringen Sie den letzten Bericht Ihres Neurologen und eine vollständige Medikamentenliste mit — die Einnahmezeiten bestimmen, wann die Übungseinheiten sinnvoll liegen.',
+          },
+          {
+            heading: 'Erste Woche: Rhythmus finden',
+            body: 'Die Anwendungen werden um die Wirkzeiten der Medikation herum gelegt, damit die Bewegungstherapie in die beweglichen Phasen fällt. Gang- und Gleichgewichtsübungen beginnen mit einfachen Abläufen; im Wasser sind Schritte und Drehungen leichter, weil der Auftrieb das Sturzrisiko nimmt.',
+          },
+          {
+            heading: 'Zweite Woche: Belastung steigern',
+            body: 'Schrittlänge, Tempowechsel und Richtungswechsel kommen dazu, ebenso das Üben an Alltagssituationen: Aufstehen, Umdrehen, Durchgehen durch eine Tür. Balneologische Anwendungen wie Kohlensäurebäder und Massagen lockern die begleitende Muskelsteifigkeit.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Zum Abschluss werden Gangbild und Gleichgewicht erneut beurteilt und schriftlich festgehalten. Sie erhalten ein Übungsprogramm für zu Hause; ohne regelmäßiges Weiterüben hält das Erreichte nicht an.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Einzelphysiotherapie',
+            detail: 'Täglich, mit Schwerpunkt auf Gangbild, Schrittlänge, Aufrichtung und dem sicheren Umdrehen.',
+          },
+          {
+            name: 'Gleichgewichts- und Gangschule',
+            detail: 'Übungen an Standsicherheit, Gewichtsverlagerung und Richtungswechseln, um das Sturzrisiko im Alltag zu senken.',
+          },
+          {
+            name: 'Bewegungstherapie im Becken',
+            detail: 'Der Auftrieb des warmen Wassers erlaubt Bewegungsumfänge, die an Land zu unsicher wären, und nimmt die Angst vor dem Sturz.',
+          },
+          {
+            name: 'Gruppenübungen',
+            detail: 'Geleitete Einheiten mit Gästen ähnlicher Diagnose, mit Atemtechnik und Übungen für Haltung und Beweglichkeit.',
+          },
+          {
+            name: 'Kohlensäurebad im Mineralwasser',
+            detail: 'Bad bei rund 34 °C; das aus dem Wasser aufgenommene Kohlendioxid fördert die Hautdurchblutung und wird zur Entspannung verordnet.',
+          },
+          {
+            name: 'Trockenes Gasbad im Mariengas',
+            detail: 'Anwendung des natürlichen Kohlendioxids aus der Marienquelle in einem abgedichteten Beutel, ohne Wasser und ohne Kreislaufbelastung durch Wärme.',
+          },
+          {
+            name: 'Klassische und Reflexmassage',
+            detail: 'Gegen die begleitende Muskelsteifigkeit von Rumpf, Nacken und Schultergürtel; die Reflexmassage verordnet ausschließlich der Arzt.',
+          },
+          {
+            name: 'Klimatherapie und geführte Spaziergänge',
+            detail: 'Gehen im Gelände unter Anleitung, mit steigender Wegstrecke entsprechend der aktuellen Belastbarkeit.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Die Parkinson-Krankheit ist eine eigene Position der tschechischen Indikationsliste (VI/11). Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind 21 Tage komplexe Kurbehandlung vorgesehen, und für den Wiederholungsaufenthalt ebenfalls 21 Tage komplexe Behandlung; eine Zuschussposition sieht die Liste hier nicht vor. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze einer Balneotherapie gelten mindestens 10 Anwendungen über mindestens 10 Tage. Für die Jahreszeit gibt es keine medizinische Vorgabe — im Spätsommer und Herbst ist der Kurort ruhiger und die Wege sind sicherer begehbar als bei Glätte.',
+        },
+        evidence: {
+          heading: 'Was die Studien zeigen',
+          body: 'Die Studienlage ist schmal, aber vorhanden. In einer randomisierten Crossover-Studie mit 31 Patienten mit Parkinson-Krankheit verbesserte eine dreiwöchige Kurbehandlung vier Wochen nach der Kur die Lebensqualität (PDQ-39 und SF-36), Teil IV der UPDRS-Skala und das psychische Wohlbefinden (GHQ-28); in der 20. Woche war der Unterschied nicht mehr nachweisbar, der Effekt ist also kurzfristig belegt (Brefel-Courbon et al., 2003, Mov Disord; kleines Kollektiv). Ein Scoping Review zur Kurrehabilitation bei neurodegenerativen Erkrankungen fasst drei Studien zur Parkinson-Krankheit zusammen, die Verbesserungen von Motorik, Gleichgewicht, Lebensqualität und psychischem Wohlbefinden beschreiben (Maccarone et al., 2022, Int J Biometeorol; nur drei Studien, begrenzte Literatur). Keine dieser Studien zeigt einen Einfluss auf das Fortschreiten der Erkrankung, und keine ersetzt die neurologische Behandlung oder die Medikation.',
+        },
+        physicianNote: 'Ob und in welchem Umfang eine Kur bei Ihrer Parkinson-Krankheit infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des neurologischen Befunds und Ihrer Medikation. Ein Kuraufenthalt ergänzt die neurologische Behandlung und ersetzt weder sie noch die verordneten Medikamente. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Wird eine Kur bei Parkinson bezahlt?',
+            answer: 'Die Parkinson-Krankheit steht als Position VI/11 auf der tschechischen Indikationsliste: Für Versicherte einer tschechischen Krankenkasse sind 21 Tage komplexe Kurbehandlung vorgesehen, beim Wiederholungsaufenthalt ebenfalls 21 Tage. Gäste mit einer Versicherung außerhalb Tschechiens klären die Kostenübernahme vorab mit ihrem eigenen Kostenträger; wer selbst zahlt, bucht den Aufenthalt direkt beim Kurhotel.',
+          },
+          {
+            question: 'Was bringt eine Kur bei Parkinson?',
+            answer: 'Das Ziel ist die Beweglichkeit im Alltag: sicheres Gehen, Gleichgewicht, Schrittlänge und Umdrehen, dazu die Lockerung der begleitenden Muskelsteifigkeit. Eine randomisierte Crossover-Studie mit 31 Patienten fand vier Wochen nach einer dreiwöchigen Kur eine bessere Lebensqualität und ein besseres psychisches Wohlbefinden, in der 20. Woche war der Unterschied nicht mehr nachweisbar. Auf das Fortschreiten der Erkrankung wirkt die Kur nach den vorliegenden Studien nicht.',
+          },
+          {
+            question: 'Ab welchem Stadium ist eine Kur nicht mehr sinnvoll?',
+            answer: 'Die Indikationsliste setzt voraus, dass der Gast selbstständig gehen und die täglichen Verrichtungen ohne fremde Hilfe erledigen kann. Wer darauf angewiesen ist, gepflegt zu werden, oder wegen fortgeschrittener Demenz nicht nach Anleitung üben kann, wird nicht aufgenommen. Die Entscheidung trifft der Kurarzt im Einzelfall bei der Eingangsuntersuchung.',
+          },
+          {
+            question: 'Muss ich meine Medikamente während der Kur absetzen?',
+            answer: 'Nein, und Sie sollten Ihre zu Hause verordnete Medikation ohne Zustimmung Ihres Arztes auch nicht verändern. Bei Parkinson bestimmen die Einnahmezeiten sogar den Ablauf: Die Anwendungen werden so gelegt, dass die Bewegungstherapie in die beweglichen Phasen fällt. Bringen Sie deshalb eine vollständige Medikamentenliste mit Uhrzeiten mit.',
+          },
+          {
+            question: 'Kann eine Begleitperson mitkommen?',
+            answer: 'Ja, eine Begleitperson kann im selben Haus untergebracht werden. Sie ersetzt allerdings nicht die Voraussetzung der Indikationsliste, dass der Kurgast selbst gehen und sich selbst versorgen kann; eine Kur ist keine Pflegeleistung.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VI — Position VI/11',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Parkinson-Krankheit: 21 Tage komplexe Kurbehandlung als Grundaufenthalt, 21 Tage komplexe Behandlung beim Wiederholungsaufenthalt; keine Zuschussposition.',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Nervenkrankheiten samt allgemeiner Kontraindikationen. Tschechischer Text.',
+          },
+          {
+            title: 'Brefel-Courbon C et al. 2003, Mov Disord — randomisierte Crossover-Studie, 31 Patienten mit Parkinson-Krankheit',
+            url: 'https://consensus.app/papers/details/a9e96b9dd21d545fbb2795b2537ed0d6/',
+            note: 'Dreiwöchige Kurbehandlung verbesserte vier Wochen danach Lebensqualität, Teil IV der UPDRS und psychisches Wohlbefinden; in der 20. Woche kein Unterschied mehr. Kleines Kollektiv.',
+          },
+          {
+            title: 'Maccarone MC et al. 2022, Int J Biometeorol — Scoping Review zur Kurrehabilitation bei neurodegenerativen Erkrankungen',
+            url: 'https://consensus.app/papers/details/6e6a5d578d1c52f9b0e1411ea6617dce/',
+            note: 'Drei Studien zur Parkinson-Krankheit beschreiben bessere Motorik, Gleichgewicht und Lebensqualität nach Kurrehabilitation; die Literatur ist bisher begrenzt.',
+          },
+        ],
+        related: [
+          {
+            label: 'Tag des Gehirns und Nervensystems',
+            href: '/de/magazin/gehirn-nervensystem',
+          },
+          {
+            label: 'Kur bei Polyneuropathie',
+            href: '/de/kur-bei/polyneuropathie',
+          },
+          {
+            label: 'Bewegung im Kurort',
+            href: '/de/magazin/bewegung-im-kurort',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {} as unknown as DiagnosisContent,
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
+    },
+  },
+  {
+    id: 'nerve-root',
+    groupId: 'nervous',
+    roman: 'VI',
+    codes: [
+      'VI/3',
+    ],
+    conditionName: 'Radiculopathy',
+    icd10: 'M54.1',
+    image: '/images/library/treatments/co2-therapy-back-probe.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
+      en: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
+      cs: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
+      ru: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
+    },
+    content: {
+      de: {
+        slug: 'nervenwurzel-und-ischias',
+        navLabel: 'Ischias und Nervenwurzel',
+        title: 'Kur bei Ischias und Nervenwurzelreizung in Marienbad',
+        h1: 'Kur bei Ischias und gereizter Nervenwurzel',
+        metaTitle: 'Kur bei Ischias in Marienbad — Anwendungen und Dauer',
+        metaDescription: 'Kur bei Ischias und Nervenwurzelreizung in Marienbad: Gasinjektionen, Moorpackungen, Elektrotherapie und Rückenschule — Ablauf und Dauer.',
+        lead: 'Wenn der Schmerz nicht im Rücken bleibt, sondern ins Bein oder in den Arm zieht, und Taubheit, Kribbeln oder Kraftverlust dazukommen, liegt das an der Nervenwurzel. Die tschechische Indikationsliste führt solche Wurzelsyndrome unter den Nervenkrankheiten — in einer eigenen Gruppe, getrennt vom gewöhnlichen Rückenschmerz.',
+        teaser: 'Wurzelsyndrome mit Reiz- und Ausfallerscheinungen: Gasinjektionen, Moor, Elektrotherapie und tägliche Physiotherapie.',
+        treats: [
+          'Wurzelsyndrom mit Reiz- und Ausfallerscheinungen, lumbal wie zervikal',
+          'Ischiasschmerz, der vom Kreuz über das Gesäß ins Bein zieht',
+          'Zervikobrachiales Syndrom mit Ausstrahlung in Schulter, Arm und Hand',
+          'Taubheit, Kribbeln oder Kraftverlust im Versorgungsgebiet der betroffenen Wurzel',
+          'Schonhaltung und muskuläre Verspannung, die sich um den Wurzelschmerz herum aufgebaut haben',
+        ],
+        notFor: [
+          'Akutes Kaudasyndrom, fortschreitende Lähmung oder Blasen- und Mastdarmstörung — das gehört sofort in die Klinik, nicht in die Kur',
+          'Unabgeklärter Wurzelschmerz ohne neurologischen Befund und ohne Bildgebung',
+          'Frische Operationswunde ohne abgeschlossene Wundheilung',
+          'Akute Erkrankungen, Schwangerschaft sowie Unfähigkeit zur selbstständigen Versorgung',
+          'Epilepsie sowie Abhängigkeit von Alkohol oder anderen Suchtmitteln',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt prüft den neurologischen Befund, die Reflexe, die Kraft und das Gefühl im betroffenen Bein oder Arm und sichtet die mitgebrachte Bildgebung. Erst danach steht fest, welche Anwendungen infrage kommen; ohne den Befund Ihres Neurologen oder Orthopäden fällt der Plan vorsichtiger aus.',
+          },
+          {
+            heading: 'Erste Woche: Schmerz und Verspannung lösen',
+            body: 'Zunächst geht es um die Entlastung: Moorpackungen und Elektrotherapie gegen die muskuläre Verspannung, Gasinjektionen entlang der betroffenen Segmente, dazu Physiotherapie ohne Belastung der gereizten Wurzel.',
+          },
+          {
+            heading: 'Zweite Woche: Beweglichkeit und Ansteuerung',
+            body: 'Mit nachlassendem Schmerz kommen Mobilisation, Rückenschule und gezieltes Training der abgeschwächten Muskulatur dazu. Im Wasser lassen sich Bewegungen üben, die an Land noch schmerzen.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Der Befund wird erneut erhoben und schriftlich festgehalten. Sie erhalten ein Übungsprogramm und Hinweise zur Haltung bei der Arbeit; ohne das bleibt die Entlastung nicht bestehen.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Gasinjektionen mit Mariengas',
+            detail: 'Unter die Haut gesetzte Injektionen des natürlichen Kohlendioxids entlang der Wirbelsäule; sie werden in Marienbad seit langem bei Beschwerden der Wirbelsäule und der Gelenke eingesetzt und ausschließlich vom Arzt verordnet.',
+          },
+          {
+            name: 'Moorpackung',
+            detail: 'Wärmeintensive Anwendung bei bis zu 40 °C auf die verspannte Region; sie ist eine Belastung für Kreislauf und Herz und wird nur nach ärztlicher Entscheidung verordnet.',
+          },
+          {
+            name: 'Elektrotherapie',
+            detail: 'Diadynamische und Interferenzströme zur Schmerzlinderung und Lösung der begleitenden Muskelverspannung.',
+          },
+          {
+            name: 'Einzelphysiotherapie',
+            detail: 'Täglich, mit Mobilisation, Entlastungsstellungen und gezieltem Aufbau der abgeschwächten Muskulatur.',
+          },
+          {
+            name: 'Rückenschule in der Gruppe',
+            detail: 'Übungen für Haltung, Beckenstellung und die Stabilisierung der Lendenwirbelsäule, dazu die richtige Atemtechnik.',
+          },
+          {
+            name: 'Bewegungstherapie im Becken',
+            detail: 'Der Auftrieb nimmt Last von der Wirbelsäule, sodass Bewegungsumfänge geübt werden können, die an Land noch schmerzen.',
+          },
+          {
+            name: 'Kohlensäurebad im Mineralwasser',
+            detail: 'Bad bei rund 34 °C aus dem örtlichen Mineralwasser; es fördert die Hautdurchblutung und wird zur Lockerung verordnet.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Wurzelsyndrome mit Reiz- und Ausfallerscheinungen stehen als Position VI/3 unter den Nervenkrankheiten. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind 21 Tage komplexe Kurbehandlung als Grundaufenthalt vorgesehen; beim Wiederholungsaufenthalt sind es 21 Tage als Zuschussbehandlung, in bestimmten Fällen 14. Geht es dagegen um chronischen Rückenschmerz ohne Wurzelbeteiligung oder um den Zustand nach einer Bandscheibenoperation, greifen die Positionen VII/9 und VII/11 aus der Gruppe der Bewegungsorgane — dafür ist die Seite zu Wirbelsäulenbeschwerden zuständig. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage.',
+        },
+        physicianNote: 'Ob und in welcher Form eine Kur bei Ihrem Wurzelsyndrom infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des neurologischen Befunds und der Bildgebung. Eine fortschreitende Lähmung oder eine Blasen- und Mastdarmstörung ist ein Notfall und gehört umgehend in ärztliche Behandlung, nicht in eine Kurplanung. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Hilft eine Kur bei Ischias?',
+            answer: 'Wurzelsyndrome mit Reiz- und Ausfallerscheinungen sind eine eigene Position der tschechischen Indikationsliste (VI/3), und Marienbad behandelt sie regelmäßig: mit Gasinjektionen, Moorpackungen, Elektrotherapie und täglicher Physiotherapie unter ärztlicher Kontrolle. Ziel sind weniger Schmerz, mehr Beweglichkeit und die Ansteuerung der abgeschwächten Muskulatur. Über die Zusammenstellung entscheidet der Kurarzt nach der Eingangsuntersuchung.',
+          },
+          {
+            question: 'Was ist der Unterschied zur Kur bei Wirbelsäulenbeschwerden?',
+            answer: 'Die Zuordnung richtet sich nach dem Befund. Ist die Nervenwurzel beteiligt — Schmerz zieht ins Bein oder in den Arm, dazu Taubheit, Kribbeln oder Kraftverlust —, gilt Position VI/3 aus der Gruppe der Nervenkrankheiten. Chronischer Rückenschmerz funktionellen Ursprungs ohne Wurzelbeteiligung und der Zustand nach einer Bandscheibenoperation fallen dagegen unter VII/9 und VII/11 bei den Bewegungsorganen. Welche Position zutrifft, entscheidet der Arzt.',
+          },
+          {
+            question: 'Wann darf ich nach einer Bandscheibenoperation zur Kur?',
+            answer: 'Erst wenn die Wunde verheilt ist und der Operateur die Belastung freigegeben hat. Der Zustand nach einer Operation an den Bandscheiben läuft dann über Position VII/11 bei den Bewegungsorganen, nicht über VI/3. Bringen Sie den Operationsbericht und die Freigabe mit — ohne sie fällt der Anwendungsplan deutlich vorsichtiger aus.',
+          },
+          {
+            question: 'Sind Gasinjektionen schmerzhaft?',
+            answer: 'Es sind Injektionen unter die Haut, also ein kurzer Einstich; das Gas verteilt sich anschließend im Gewebe und kann für kurze Zeit ein Spannungsgefühl machen. Sie werden ausschließlich vom Arzt verordnet und in Marienbad mit dem natürlichen Kohlendioxid der Marienquelle gesetzt. Wenn Sie eine Anwendung nicht vertragen, sagen Sie es Ihrem Kurarzt, damit der Plan geändert wird.',
+          },
+          {
+            question: 'Wie lange dauert eine Kur bei einem Wurzelsyndrom?',
+            answer: 'Für Versicherte einer tschechischen Krankenkasse sieht Position VI/3 einen Grundaufenthalt von 21 Tagen komplexer Kurbehandlung vor; der Wiederholungsaufenthalt läuft über 21 Tage als Zuschussbehandlung, in bestimmten Fällen über 14. Selbstzahler wählen die Dauer nach Absprache mit dem Kurarzt, wobei mindestens 10 Anwendungen über mindestens 10 Tage als fachliche Untergrenze gelten.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VI — Position VI/3',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Wurzelsyndrome mit Reiz- und Ausfallerscheinungen: Grundaufenthalt 21 Tage komplexe Kurbehandlung, Wiederholungsaufenthalt 21 Tage Zuschussbehandlung (in bestimmten Fällen 14).',
+          },
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VII — Positionen VII/9 und VII/11',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Abgrenzung: chronischer vertebragener Schmerz funktionellen Ursprungs und Zustände nach Bandscheibenoperationen laufen über die Bewegungsorgane, nicht über die Nervenkrankheiten.',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Nervenkrankheiten samt Kontraindikationen und geforderter Eingangsuntersuchungen. Tschechischer Text.',
+          },
+        ],
+        related: [
+          {
+            label: 'Kur bei Wirbelsäulenbeschwerden',
+            href: '/de/kur-bei/wirbelsaeule',
+          },
+          {
+            label: 'Gasinjektionen mit Mariengas',
+            href: '/de/magazin/gas-injektionen-co2',
+          },
+          {
+            label: 'CO2-Therapie in Marienbad',
+            href: '/de/co2-therapie',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {} as unknown as DiagnosisContent,
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
+    },
+  },
+  {
+    id: 'polyneuropathy',
+    groupId: 'nervous',
+    roman: 'VI',
+    codes: [
+      'VI/2',
+    ],
+    conditionName: 'Polyneuropathy',
+    icd10: 'G62',
+    image: '/images/library/treatments/massage-hands-closeup.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
+      en: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
+      cs: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
+      ru: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
+    },
+    content: {
+      de: {
+        slug: 'polyneuropathie',
+        navLabel: 'Polyneuropathie',
+        title: 'Kur bei Polyneuropathie in Marienbad',
+        h1: 'Kur bei Polyneuropathie',
+        metaTitle: 'Kur bei Polyneuropathie in Marienbad — Ablauf, Dauer',
+        metaDescription: 'Kur bei Polyneuropathie mit Lähmungserscheinungen in Marienbad: Gangschule, Übungen im Wasser, Kohlensäurebäder — Ablauf, Dauer und Grenzen.',
+        lead: 'Wenn die Nerven in Füßen und Händen nicht mehr richtig melden und die Kraft nachlässt, wird jeder Schritt zur Konzentrationsaufgabe. Die tschechische Indikationsliste führt die Polyneuropathie mit paretischen Erscheinungen unter den Nervenkrankheiten. In Marienbad geht es dabei um das, was sich üben lässt: Gang, Standsicherheit und Kraft.',
+        teaser: 'Polyneuropathie mit Lähmungserscheinungen: Gangschule, Standsicherheit, Übungen im Wasser und Kohlensäurebäder.',
+        treats: [
+          'Polyneuropathie mit paretischen Erscheinungen, also mit nachweisbarem Kraftverlust',
+          'Diabetische Polyneuropathie bei eingestelltem Diabetes',
+          'Polyneuropathie nach einer Chemotherapie, wenn die onkologische Behandlung abgeschlossen ist',
+          'Unsicherer Gang und Standunsicherheit durch fehlende Rückmeldung aus den Füßen',
+          'Muskelabbau und nachlassende Belastbarkeit durch Schonung',
+        ],
+        notFor: [
+          'Polyneuropathie ohne Lähmungserscheinungen — die Position der Indikationsliste setzt paretische Erscheinungen voraus',
+          'Unabgeklärte Nervenstörung ohne neurologischen Befund',
+          'Nicht abgeheilte Wunden oder Geschwüre an den Füßen, etwa beim diabetischen Fußsyndrom',
+          'Laufende onkologische Behandlung; nach Abschluss ist eine Kur möglich',
+          'Akute Erkrankungen, Schwangerschaft, Epilepsie sowie Unfähigkeit zur selbstständigen Versorgung',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt erhebt den neurologischen Befund, prüft Kraft, Gefühl und Reflexe und sieht sich die Füße an — offene Stellen oder Druckschäden entscheiden mit darüber, welche Anwendungen möglich sind. Bringen Sie den Befund Ihres Neurologen und, bei Diabetes, die aktuellen Laborwerte mit.',
+          },
+          {
+            heading: 'Erste Woche: sicher stehen',
+            body: 'Der Schwerpunkt liegt auf Standsicherheit und Gangbild. Geübt wird mit Blickkontrolle und an unterschiedlichen Untergründen, weil die Rückmeldung aus den Füßen fehlt und über Augen und Hüfte ersetzt werden muss.',
+          },
+          {
+            heading: 'Zweite Woche: Kraft und Ausdauer',
+            body: 'Gezielter Aufbau der abgeschwächten Muskulatur, Gehstrecken im Gelände und Übungen im Wasser, wo der Auftrieb Bewegungen erlaubt, die an Land unsicher wären. Bei begleitenden Verspannungen kommen Massagen dazu.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Kraft, Gang und Standsicherheit werden erneut beurteilt und festgehalten. Sie erhalten ein Übungsprogramm sowie Hinweise zur täglichen Fußkontrolle, die bei fehlendem Gefühl über kleine Verletzungen hinwegtäuscht.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Einzelphysiotherapie',
+            detail: 'Täglich, mit Aufbau der abgeschwächten Muskulatur und Übung des sicheren Abrollens beim Gehen.',
+          },
+          {
+            name: 'Gang- und Gleichgewichtsschule',
+            detail: 'Standsicherheit auf wechselndem Untergrund und Gehen mit Blickkontrolle, um die fehlende Rückmeldung aus den Füßen auszugleichen.',
+          },
+          {
+            name: 'Bewegungstherapie im Becken',
+            detail: 'Im warmen Wasser lassen sich Kraft und Gang ohne Sturzangst üben, weil der Auftrieb das Körpergewicht trägt.',
+          },
+          {
+            name: 'Kohlensäurebad im Mineralwasser',
+            detail: 'Bad bei rund 34 °C; das aus dem Mineralwasser aufgenommene Kohlendioxid fördert die Hautdurchblutung.',
+          },
+          {
+            name: 'Trockenes Gasbad im Mariengas',
+            detail: 'Das natürliche Kohlendioxid der Marienquelle wird ohne Wasser und ohne Wärmebelastung angewandt — geeignet, wenn warme Bäder nicht infrage kommen.',
+          },
+          {
+            name: 'Klassische Massage',
+            detail: 'Gegen die begleitenden Verspannungen, die aus Schonhaltung und unsicherem Gang entstehen.',
+          },
+          {
+            name: 'Klimatherapie und geführte Spaziergänge',
+            detail: 'Gehstrecken im Gelände unter Anleitung, mit vorsichtig steigender Länge entsprechend der Belastbarkeit.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Die Polyneuropathie mit paretischen Erscheinungen steht als Position VI/2 auf der tschechischen Indikationsliste. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind als Grundaufenthalt 28 Tage komplexe Kurbehandlung oder 21 Tage Zuschussbehandlung vorgesehen; beim Wiederholungsaufenthalt sind es 28 Tage komplexe oder 21 Tage Zuschussbehandlung, in bestimmten Fällen 14. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage. Eine Jahreszeit ist medizinisch nicht vorgegeben, bei fehlendem Gefühl in den Füßen sind schnee- und eisfreie Wege allerdings sicherer.',
+        },
+        physicianNote: 'Ob eine Kur bei Ihrer Polyneuropathie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des neurologischen Befunds und des Zustands Ihrer Füße. Der Aufenthalt ergänzt die Behandlung der Grunderkrankung — etwa die Einstellung eines Diabetes — und ersetzt sie nicht. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Wird eine Kur bei Polyneuropathie bezahlt?',
+            answer: 'Die tschechische Indikationsliste führt die Polyneuropathie mit paretischen Erscheinungen als Position VI/2: Für Versicherte einer tschechischen Krankenkasse sind als Grundaufenthalt 28 Tage komplexe Kurbehandlung oder 21 Tage Zuschussbehandlung vorgesehen. Entscheidend ist der Zusatz „mit paretischen Erscheinungen" — es muss ein Kraftverlust dokumentiert sein. Gäste mit einer Versicherung außerhalb Tschechiens klären die Kostenübernahme vorab mit ihrem eigenen Kostenträger.',
+          },
+          {
+            question: 'Was wird bei Polyneuropathie in der Kur gemacht?',
+            answer: 'Der Schwerpunkt liegt auf dem, was sich trainieren lässt: Gangbild, Standsicherheit und Kraft in den betroffenen Muskeln. Dazu kommen Bewegungstherapie im warmen Wasser, Kohlensäurebäder oder trockene Gasbäder aus den örtlichen Heilmitteln, Massagen gegen die begleitenden Verspannungen und geführte Gehstrecken im Gelände. Den Plan stellt der Kurarzt nach der Eingangsuntersuchung zusammen.',
+          },
+          {
+            question: 'Hilft die Kur bei einer Polyneuropathie nach Chemotherapie?',
+            answer: 'Eine Kur ist möglich, sobald die onkologische Behandlung abgeschlossen ist und Sie sich in Remission befinden; während einer laufenden Tumorbehandlung ist sie ausgeschlossen. Behandelt wird dann dasselbe wie bei anderen Formen: Gang, Standsicherheit und Kraft. Für die Nachsorge nach einer Krebsbehandlung insgesamt gibt es in Marienbad ein eigenes Programm.',
+          },
+          {
+            question: 'Was muss ich bei Diabetes beachten?',
+            answer: 'Bringen Sie aktuelle Laborwerte und Ihre Medikation mit; der Kurarzt richtet den Plan danach aus. Wichtig ist die tägliche Kontrolle der Füße: Wo das Gefühl fehlt, bleiben Druckstellen und kleine Verletzungen unbemerkt. Offene Stellen am Fuß schließen eine Reihe von Anwendungen aus, deshalb werden die Füße bei der Eingangsuntersuchung angesehen.',
+          },
+          {
+            question: 'Werden die Nerven durch die Kur wieder gesund?',
+            answer: 'Nein. Für einen solchen Effekt gibt es bei der Polyneuropathie keine belastbaren Belege, und diese Seite behauptet ihn deshalb nicht. Was sich in der Kur ändern lässt, ist der Umgang mit den Folgen: Gangsicherheit, Kraft in den betroffenen Muskeln und Belastbarkeit im Alltag. Die Behandlung der Grunderkrankung läuft unverändert weiter.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VI — Position VI/2',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Polyneuropathie mit paretischen Erscheinungen: Grundaufenthalt 28 Tage komplexe oder 21 Tage Zuschussbehandlung; Wiederholungsaufenthalt 28 Tage komplexe oder 21 Tage Zuschussbehandlung (in bestimmten Fällen 14).',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Nervenkrankheiten samt Kontraindikationen und geforderter Eingangsuntersuchungen. Tschechischer Text.',
+          },
+        ],
+        related: [
+          {
+            label: 'Kur bei Stoffwechsel und Diabetes',
+            href: '/de/kur-bei/stoffwechsel-und-diabetes',
+          },
+          {
+            label: 'Kur nach einer Krebsbehandlung',
+            href: '/de/kur-bei/nach-krebsbehandlung',
+          },
+          {
+            label: 'Tag des Gehirns und Nervensystems',
+            href: '/de/magazin/gehirn-nervensystem',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {} as unknown as DiagnosisContent,
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
+    },
+  },
+  {
+    id: 'hypertension',
+    groupId: 'circulatory',
+    roman: 'II',
+    codes: [
+      'II/3',
+    ],
+    conditionName: 'Hypertension',
+    icd10: 'I10',
+    image: '/images/library/treatments/co2-pool-relaxation.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
+      en: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
+      cs: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
+      ru: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
+    },
+    content: {
+      de: {
+        slug: 'bluthochdruck',
+        navLabel: 'Bluthochdruck',
+        title: 'Kur bei Bluthochdruck in Marienbad',
+        h1: 'Kur bei Bluthochdruck',
+        metaTitle: 'Kur bei Bluthochdruck in Marienbad — Ablauf und Dauer',
+        metaDescription: 'Kur bei Bluthochdruck in Marienbad: Kohlensäurebäder, Terrainkur und Ernährungsberatung — was die Studien zeigen, wie lange die Kur dauert.',
+        lead: 'Bluthochdruck im zweiten und dritten Grad steht auf der tschechischen Indikationsliste, und Marienbad behandelt ihn mit dem, was hier aus dem Boden kommt: Kohlensäurebädern aus dem örtlichen Mineralwasser und trockenen Gasbädern im Mariengas, dazu Bewegung im Gelände und Ernährungsberatung. Die Kur ergänzt die blutdrucksenkende Medikation, sie ersetzt sie nicht.',
+        teaser: 'Kohlensäurebäder, trockene Gasbäder, Terrainkur und Ernährungsberatung — als Ergänzung zur blutdrucksenkenden Behandlung.',
+        treats: [
+          'Hypertonie im zweiten und dritten Grad unter laufender ärztlicher Behandlung',
+          'Bluthochdruck mit begleitendem Übergewicht oder Bewegungsmangel',
+          'Bluthochdruck mit erhöhten Blutfettwerten oder gestörtem Zuckerstoffwechsel',
+          'Nachlassende körperliche Belastbarkeit, die den Blutdruck mit unterhält',
+          'Der Wunsch, Ernährung und Bewegung unter ärztlicher Aufsicht umzustellen',
+        ],
+        notFor: [
+          'AV-Block zweiten bis dritten Grades, Herzinsuffizienz im Stadium NYHA IV und aktive Endokarditis — die Indikationsliste schließt sie für die ganze Gruppe aus',
+          'Unbehandelter oder nicht eingestellter Bluthochdruck ohne ärztliche Kontrolle',
+          'Schwere Herzerkrankung sowie akute Infektionskrankheiten',
+          'Moorpackungen: sie belasten den Kreislauf stark und werden bei Herz-Kreislauf-Erkrankungen nur nach ärztlicher Einzelentscheidung verordnet',
+          'Die Kreuzquelle: ihr hoher Natriumgehalt macht sie für Menschen mit Bluthochdruck ungeeignet',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt misst den Blutdruck, geht die Medikation durch und sichtet die mitgebrachten Befunde. Zur Gruppe der Kreislaufkrankheiten verlangt die Indikationsliste bestimmte Eingangsuntersuchungen und Nikotinabstinenz. Bringen Sie aktuelle Werte, am besten aus der häuslichen Selbstmessung, und eine vollständige Medikamentenliste mit.',
+          },
+          {
+            heading: 'Erste Woche: Kreislauf an die Belastung gewöhnen',
+            body: 'Die Anwendungen beginnen mit Kohlensäurebädern bei rund 34 °C und kurzen Gehstrecken im Gelände. Der Blutdruck wird regelmäßig kontrolliert, und die Trinkkur wird abgestimmt — nicht jede Quelle im Ort passt bei Bluthochdruck.',
+          },
+          {
+            heading: 'Zweite Woche: Belastung steigern',
+            body: 'Die Gehstrecken werden länger und steiler, Gruppenübungen und Bewegungstherapie im Wasser kommen dazu. Parallel läuft die Ernährungsberatung; bei Übergewicht ist die Gewichtsabnahme der Hebel, der auf den Blutdruck wirkt.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Der Blutdruckverlauf über den Aufenthalt wird ausgewertet und schriftlich festgehalten; den Bericht nehmen Sie für Ihren behandelnden Arzt mit. Ob und wie die Medikation angepasst wird, entscheidet ausschließlich er, nicht der Kurort.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Kohlensäurebad im Mineralwasser',
+            detail: 'Bad im örtlichen Mineralwasser bei rund 34 °C; das über die Haut aufgenommene Kohlendioxid ist der Wirkstoff, die niedrige Temperatur hält die Kreislaufbelastung gering.',
+          },
+          {
+            name: 'Trockenes Gasbad im Mariengas',
+            detail: 'Anwendung des natürlichen Kohlendioxids der Marienquelle in einem abgedichteten Beutel — ohne Wasser und ohne Wärmebelastung, deshalb bei Herz-Kreislauf-Diagnosen häufig die erste Wahl.',
+          },
+          {
+            name: 'Terrainkur und Klimatherapie',
+            detail: 'Geführtes Gehen auf abgestuften Wegen im Kurwald, mit schrittweise steigender Belastung in 630 Metern Höhe.',
+          },
+          {
+            name: 'Gruppenübungen für Herz-Kreislauf-Gäste',
+            detail: 'Geleitete Einheiten mit Ausdauer-, Beweglichkeits- und Atemanteilen, zusammengestellt für Gäste mit ähnlicher Diagnose.',
+          },
+          {
+            name: 'Bewegungstherapie im Becken',
+            detail: 'Übungen im warmen Wasser, die die Gelenke schonen und dennoch Ausdauer aufbauen.',
+          },
+          {
+            name: 'Ernährungsberatung',
+            detail: 'Einzelgespräche zu Salz, Gewicht und Blutfetten, begleitet von der Kurdiät während des Aufenthalts.',
+          },
+          {
+            name: 'Trinkkur nach ärztlicher Verordnung',
+            detail: 'Welche Quelle und welche Menge, legt der Arzt fest. Die Kreuzquelle ist wegen ihres hohen Natriumgehalts bei Bluthochdruck nicht geeignet.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Die hypertone Krankheit im zweiten bis dritten Grad steht als Position II/3 auf der tschechischen Indikationsliste. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind als Grundaufenthalt 28 Tage komplexe Kurbehandlung oder 21 Tage Zuschussbehandlung vorgesehen; der Wiederholungsaufenthalt läuft über 21 Tage Zuschussbehandlung, in bestimmten Fällen über 14. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage. Zur Jahreszeit gibt es eine begründete Überlegung: Der Tagesblutdruck ist im Winter höher als im Sommer, vor allem durch Kälte, und in der kalten Jahreszeit treten mehr kardiovaskuläre Ereignisse auf — ein Aufenthalt im Herbst liegt damit vor der Belastungsspitze.',
+        },
+        evidence: {
+          heading: 'Was die Studien zeigen',
+          body: 'Eine Übersichtsarbeit zum Baden in natürlichem thermalem Mineralwasser bei Bluthochdruck kommt zu dem Ergebnis, dass die Bäder — allein, ergänzend zu Medikamenten oder in Kombination mit weiteren Maßnahmen — keine unerwünschten Wirkungen hatten und den Blutdruck in den meisten eingeschlossenen Studien günstig beeinflussten (Yuan et al., 2019, Int J Biometeorol; sehr unterschiedliche Interventionen, methodisch schwächere Studien, keine Metaanalyse). Eine Mini-Übersicht beschreibt für verschiedene Formen der Hydro- und Balneotherapie eine blutdrucksenkende Wirkung als Ergänzung zur Behandlung und nennt als Mechanismen Wärme, Herzfrequenzregulation und Barorezeptoren; die Autoren fordern weitere klinische Studien (Moini Jazani et al., 2023; Mini-Review ohne systematische Methodik). In einer Vorher-nachher-Studie mit 35 Patienten sank der über 24 Stunden gemessene Blutdruck nach drei Wochen Balneotherapie mit Kohlensäurebädern und Peloiden bei Personen mit mittleren und hohen Ausgangswerten, bei niedrigen Ausgangswerten änderte er sich nicht (Ekmekcioglu et al., 2000, Altern Ther Health Med; ohne Kontrollgruppe). Zur Sicherheit liegt eine randomisierte Studie vor: 15 Bäder bei 38 °C führten bei Patientinnen und Patienten mit Bluthochdruck und Übergewicht zu keinen ungünstigen Veränderungen der Stoffwechsel- und Entzündungswerte, eine Balneotherapie ist bei diesen Diagnosen also nicht kontraindiziert (Oláh et al., 2011; beobachtet wurden Laborwerte, keine klinischen Endpunkte). Keine dieser Studien zeigt, dass eine Kur blutdrucksenkende Medikamente ersetzen kann.',
+        },
+        physicianNote: 'Ob und in welchem Umfang eine Kur bei Ihrem Bluthochdruck infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer Werte und Befunde. Über Ihre Medikation entscheidet ausschließlich Ihr behandelnder Arzt; ändern Sie sie nicht ohne seine Zustimmung. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Senkt eine Kur den Blutdruck?',
+            answer: 'Die vorliegenden Studien deuten darauf hin, dass Bäder in Mineralwasser den Blutdruck als Ergänzung zur Behandlung günstig beeinflussen können. In einer Vorher-nachher-Studie mit 35 Patienten sank der 24-Stunden-Blutdruck nach drei Wochen Balneotherapie bei Personen mit erhöhten Ausgangswerten, bei niedrigen Werten blieb er unverändert; diese Studie hatte keine Kontrollgruppe. Eine Übersichtsarbeit fand in den meisten eingeschlossenen Studien eine günstige Wirkung ohne unerwünschte Effekte, weist aber auf die schwächere Methodik hin. Blutdrucksenkende Medikamente ersetzt die Kur nach diesen Daten nicht.',
+          },
+          {
+            question: 'Wird eine Kur bei Bluthochdruck bezahlt?',
+            answer: 'Die hypertone Krankheit im zweiten bis dritten Grad ist Position II/3 der tschechischen Indikationsliste: Für Versicherte einer tschechischen Krankenkasse sind als Grundaufenthalt 28 Tage komplexe Kurbehandlung oder 21 Tage Zuschussbehandlung vorgesehen, der Wiederholungsaufenthalt läuft über 21 oder 14 Tage Zuschussbehandlung. Gäste mit einer Versicherung außerhalb Tschechiens klären die Kostenübernahme vorab mit ihrem eigenen Kostenträger.',
+          },
+          {
+            question: 'Welche Quelle darf ich bei Bluthochdruck trinken?',
+            answer: 'Das legt der Kurarzt fest, und die Menge ebenso; trinken Sie nie mehr, als verordnet ist. Eine Einschränkung ist bekannt: Die Kreuzquelle enthält viel Natrium und ist für Menschen mit Bluthochdruck sowie für Herzpatienten nicht geeignet. Die Quellen im Ort unterscheiden sich chemisch erheblich, deshalb wird die Trinkkur immer einzeln verordnet.',
+          },
+          {
+            question: 'Sind Moorpackungen bei Bluthochdruck erlaubt?',
+            answer: 'Nur nach ärztlicher Einzelentscheidung. Die Moorpackung ist eine wärmeintensive Anwendung bei bis zu 40 °C und damit eine deutliche Belastung für Herz und Kreislauf; bei Herz-Kreislauf-Erkrankungen und im höheren Alter ist Vorsicht geboten. Wo eine Anwendung mit Kohlendioxid sinnvoll ist, wird stattdessen oft das trockene Gasbad gewählt, das ohne Wärmebelastung auskommt.',
+          },
+          {
+            question: 'Muss ich meine Blutdruckmittel während der Kur absetzen?',
+            answer: 'Nein. Ändern Sie Ihre zu Hause verordnete Medikation nicht ohne Zustimmung Ihres Arztes. Der Kurarzt kontrolliert den Blutdruck während des Aufenthalts und hält den Verlauf im Abschlussbericht fest; ob daraus eine Anpassung folgt, entscheidet Ihr behandelnder Arzt zu Hause.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe II — Position II/3',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Hypertone Krankheit II. bis III. Grades: Grundaufenthalt 28 Tage komplexe oder 21 Tage Zuschussbehandlung; Wiederholungsaufenthalt 21 Tage Zuschussbehandlung (in bestimmten Fällen 14).',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Kreislaufkrankheiten samt Kontraindikationen (AV-Block II. bis III. Grades, NYHA IV, aktive Endokarditis), geforderter Nikotinabstinenz und Eingangsuntersuchungen. Tschechischer Text.',
+          },
+          {
+            title: 'Yuan H et al. 2019, Int J Biometeorol — Übersicht zum Baden in natürlichem thermalem Mineralwasser bei Hypertonie',
+            url: 'https://doi.org/10.1007/s00484-019-01780-4',
+            note: 'Bäder allein, als Ergänzung zu Medikamenten und in Kombination mit weiteren Maßnahmen hatten keine unerwünschten Wirkungen und beeinflussten den Blutdruck in den meisten Studien günstig. Heterogene Interventionen, keine Metaanalyse.',
+          },
+          {
+            title: 'Moini Jazani A et al. 2023, Int J Biometeorol — Mini-Übersicht zur Wirkung von Hydro-, Balneo- und Kurtherapie auf den Blutdruck',
+            url: 'https://doi.org/10.1007/s00484-023-02512-5',
+            note: 'Verschiedene Formen können als ergänzende Behandlung den Blutdruck senken; genannte Mechanismen sind Wärme, Herzfrequenzregulation und Barorezeptoren. Mini-Review ohne systematische Methodik.',
+          },
+          {
+            title: 'Ekmekcioglu C et al. 2000, Altern Ther Health Med — Vorher-nachher-Studie, 35 Patienten, 24-Stunden-Blutdruckmessung',
+            url: 'https://consensus.app/papers/details/39ccd0edaff45a03b6103309fbe833bc/',
+            note: 'Nach 3 Wochen Balneotherapie mit CO₂-Bädern und Peloiden sank der 24-Stunden-Blutdruck bei mittleren und hohen Ausgangswerten; bei niedrigen unverändert. Ohne Kontrollgruppe.',
+          },
+          {
+            title: 'Oláh M et al. 2011 — randomisierte Studie zu Balneotherapie bei Hypertonie und Adipositas (15 Bäder, 38 °C)',
+            url: 'https://consensus.app/papers/details/56a643895d4a59608b3486b000ee0c38/',
+            note: '15 Bäder bei 38 °C führten zu keinen ungünstigen Veränderungen der Stoffwechsel- und Entzündungsparameter; Balneotherapie ist bei diesen Diagnosen nicht kontraindiziert. Beobachtet wurden Laborwerte, keine klinischen Endpunkte.',
+          },
+          {
+            title: 'Narita K, Hoshide S, Kario K 2021, Hypertens Res — Übersicht zur saisonalen Schwankung des Blutdrucks',
+            url: 'https://doi.org/10.1038/s41440-021-00732-z',
+            note: 'Der Tagesblutdruck ist im Winter höher als im Sommer, vor allem durch Kälte; der winterliche Anstieg hängt mit mehr kardiovaskulären Ereignissen zusammen. Betrifft nicht die Kurbehandlung.',
+          },
+          {
+            title: 'Pagourelias ED et al. 2011, Int J Biometeorol — Übersicht zur CO₂-Balneotherapie bei Herz-Kreislauf-Erkrankungen',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Drei Haupteffekte: Abfall der Körpertemperatur, stärkere Hautdurchblutung, Wärmegefühl; die Autoren fordern methodisch bessere Studien.',
+          },
+        ],
+        related: [
+          {
+            label: 'Herz und Gefäße vor dem Winter',
+            href: '/de/magazin/kur-herz-kreislauf-marienbad',
+          },
+          {
+            label: 'Kur bei koronarer Herzkrankheit',
+            href: '/de/kur-bei/koronare-herzkrankheit',
+          },
+          {
+            label: 'Kohlensäurebäder — was die Forschung zeigt',
+            href: '/de/magazin/co2-baeder-wissenschaft',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {} as unknown as DiagnosisContent,
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
+    },
+  },
+  {
+    id: 'ischaemic-heart',
+    groupId: 'circulatory',
+    roman: 'II',
+    codes: [
+      'II/1',
+      'II/2',
+    ],
+    conditionName: 'Ischaemic heart disease',
+    icd10: 'I25',
+    image: '/images/library/treatments/co2-gas-wrap-relax.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
+      en: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
+      cs: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
+      ru: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
+    },
+    content: {
+      de: {
+        slug: 'koronare-herzkrankheit',
+        navLabel: 'Koronare Herzkrankheit',
+        title: 'Kur bei koronarer Herzkrankheit in Marienbad',
+        h1: 'Kur bei koronarer Herzkrankheit und nach Herzinfarkt',
+        metaTitle: 'Kur bei koronarer Herzkrankheit in Marienbad — Dauer',
+        metaDescription: 'Kur bei koronarer Herzkrankheit und nach Herzinfarkt in Marienbad: trockene Gasbäder, Terrainkur, Übungen — Ablauf, Dauer und Grenzen.',
+        lead: 'Die symptomatische koronare Herzkrankheit und der Zustand nach einem Herzinfarkt stehen als eigene Positionen auf der tschechischen Indikationsliste. In Marienbad läuft die Behandlung über dosierte Bewegung im Gelände, Gruppenübungen für Herzgäste und die örtlichen Anwendungen mit Kohlendioxid — immer unter ärztlicher Kontrolle und immer als Ergänzung zur kardiologischen Behandlung.',
+        teaser: 'Trockene Gasbäder, Terrainkur und Übungen für Herzgäste — als Ergänzung zur kardiologischen Behandlung, nach Freigabe des Kardiologen.',
+        treats: [
+          'Symptomatische koronare Herzkrankheit in stabilem, kardiologisch geführtem Zustand',
+          'Zustand nach Herzinfarkt, nach Abschluss der akuten Behandlung und mit Freigabe des Kardiologen',
+          'Nachlassende Belastbarkeit und Unsicherheit beim Wiederaufnehmen von Bewegung',
+          'Begleitende Risikofaktoren wie Übergewicht, erhöhte Blutfette, Bluthochdruck oder Bewegungsmangel',
+          'Zustand nach Eingriffen am Gefäßsystem außerhalb des Herzens und nach perkutaner Angioplastie',
+        ],
+        notFor: [
+          'Instabile Angina pectoris sowie frischer Herzinfarkt ohne abgeschlossene Akutbehandlung',
+          'Herzinsuffizienz im Stadium NYHA IV, AV-Block zweiten bis dritten Grades und aktive Endokarditis — die Indikationsliste schließt sie für die ganze Gruppe aus',
+          'Schwere Herzerkrankung, die in der allgemeinen Kontraindikationsliste des Kurorts steht',
+          'Fehlende Freigabe des Kardiologen oder fehlende Eingangsuntersuchungen, die die Indikationsliste für die Gruppe II verlangt',
+          'Fortgesetztes Rauchen: die Indikationsliste verlangt für die Kreislaufgruppe Nikotinabstinenz',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt sichtet Ihre kardiologischen Befunde und die Medikation, misst Blutdruck und Puls und beurteilt die Belastbarkeit. Bringen Sie die Freigabe Ihres Kardiologen sowie die Untersuchungen mit, die die Indikationsliste für die Gruppe der Kreislaufkrankheiten fordert; ohne sie kann der Plan nicht vollständig aufgestellt werden.',
+          },
+          {
+            heading: 'Erste Woche: Belastung vorsichtig anlegen',
+            body: 'Begonnen wird mit kurzen, flachen Gehstrecken und Gruppenübungen mit niedriger Intensität. Aus den örtlichen Heilmitteln kommt meist das trockene Gasbad zum Einsatz, weil es ohne Wärmebelastung für den Kreislauf auskommt.',
+          },
+          {
+            heading: 'Zweite Woche: Ausdauer aufbauen',
+            body: 'Die Wege werden länger und die Steigungen größer, immer in abgestuften Etappen und mit Kontrolle von Puls und Blutdruck. Parallel läuft die Ernährungsberatung zu Blutfetten, Salz und Gewicht.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Belastbarkeit und Verlauf werden beurteilt und schriftlich festgehalten; den Bericht nehmen Sie für Ihren Kardiologen mit. Sie erhalten ein Bewegungsprogramm für zu Hause — der Nutzen hängt daran, dass es fortgeführt wird.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Trockenes Gasbad im Mariengas',
+            detail: 'Das natürliche Kohlendioxid der Marienquelle wird in einem abgedichteten Beutel angewandt, ohne Wasser und ohne Wärmebelastung — deshalb bei Herzdiagnosen häufig die erste Wahl.',
+          },
+          {
+            name: 'Gasinjektionen mit Mariengas',
+            detail: 'Unter die Haut gesetzte Injektionen des natürlichen Kohlendioxids; sie gehören in Marienbad zum Programm bei ischämischer Herzkrankheit und werden ausschließlich vom Arzt verordnet.',
+          },
+          {
+            name: 'Kohlensäurebad im Mineralwasser',
+            detail: 'Bad bei rund 34 °C; die niedrige Temperatur hält die Kreislaufbelastung gering, während das Kohlendioxid über die Haut aufgenommen wird.',
+          },
+          {
+            name: 'Terrainkur und Klimatherapie',
+            detail: 'Geführtes Gehen auf abgestuften Wegen mit schrittweise steigender Belastung, in 630 Metern Höhe und unter ärztlicher Kontrolle.',
+          },
+          {
+            name: 'Gruppenübungen für Herzgäste',
+            detail: 'Geleitete Einheiten, die eigens für kardiologische Diagnosen zusammengestellt sind, mit Atem-, Ausdauer- und Beweglichkeitsanteilen.',
+          },
+          {
+            name: 'Bewegungstherapie im Becken',
+            detail: 'Übungen im warmen Wasser, die Gelenke schonen und die Belastung gut dosieren lassen.',
+          },
+          {
+            name: 'Ernährungsberatung',
+            detail: 'Einzelgespräche zu Blutfetten, Salz und Gewicht, begleitet von der Kurdiät während des Aufenthalts.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Die tschechische Indikationsliste unterscheidet hier zwei Positionen. Die symptomatische ischämische Herzkrankheit (II/1) sieht als Grundaufenthalt 21 Tage Zuschussbehandlung vor, der Wiederholungsaufenthalt läuft ebenfalls über 21 Tage Zuschussbehandlung, in bestimmten Fällen über 14. Für den Zustand nach einem Herzinfarkt (II/2) sind 28 Tage komplexe Kurbehandlung vorgesehen; eine gesonderte Wiederholungsposition gibt es dafür nicht. Selbstzahler stimmen die Dauer mit dem Kurarzt und dem Kardiologen ab. Der Zeitpunkt richtet sich nach dem kardiologischen Verlauf, nicht nach der Jahreszeit.',
+        },
+        evidence: {
+          heading: 'Was die Studien zeigen',
+          body: 'Am besten belegt ist der Bewegungsanteil der Kur, nicht das Bad. Ein Cochrane-Review zur bewegungsbasierten kardiologischen Rehabilitation bei koronarer Herzkrankheit fand innerhalb von zwölf Monaten ein geringeres Risiko für einen Herzinfarkt (RR 0,72) und für Krankenhausaufenthalte (RR 0,58), wahrscheinlich auch eine leicht niedrigere Gesamtsterblichkeit, langfristig eine niedrigere kardiovaskuläre Sterblichkeit sowie eine etwas bessere Lebensqualität (Dibben et al., 2021, Cochrane Database Syst Rev). Wichtig für die Einordnung: Untersucht wurden ambulante und klinische Rehabilitationsprogramme, nicht Kuraufenthalte, weniger als 15 Prozent der Teilnehmenden waren Frauen, und die Berichtsqualität der Einzelstudien schwankt. Für die Anwendungen mit Kohlendioxid selbst beschreibt eine Übersichtsarbeit drei Haupteffekte — Abfall der Körpertemperatur, stärkere Hautdurchblutung und Wärmegefühl — und fordert methodisch bessere Studien (Pagourelias et al., 2011, Int J Biometeorol). Eine ältere Übersicht hält fest, dass kontrollierte Belege zur CO₂-Balneotherapie nur für einen Teil der Indikationen vorliegen, nämlich periphere arterielle Verschlusskrankheit, trophische Ulzera, Mikroangiopathien und leichte Hypertonie (Resch und Just, 1994, Wien Med Wochenschr). Keine dieser Arbeiten zeigt, dass eine Kur die kardiologische Behandlung oder ihre Medikamente ersetzen kann.',
+        },
+        physicianNote: 'Ob und wann eine Kur bei Ihrer Herzerkrankung infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand der kardiologischen Befunde und der Freigabe Ihres Kardiologen. Der Aufenthalt ergänzt die kardiologische Behandlung und ersetzt weder sie noch Ihre Medikamente; ändern Sie diese nicht ohne Zustimmung Ihres Arztes. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Darf ich nach einem Herzinfarkt zur Kur?',
+            answer: 'Ja, nach Abschluss der Akutbehandlung und mit Freigabe des Kardiologen. Der Zustand nach einem Herzinfarkt ist Position II/2 der tschechischen Indikationsliste und sieht 28 Tage komplexe Kurbehandlung vor. Ausgeschlossen sind instabile Verläufe sowie die Zustände, die die Indikationsliste für die ganze Kreislaufgruppe ausschließt: AV-Block zweiten bis dritten Grades, Herzinsuffizienz im Stadium NYHA IV und aktive Endokarditis.',
+          },
+          {
+            question: 'Was bringt eine Kur bei koronarer Herzkrankheit?',
+            answer: 'Der Teil mit der besten Evidenz ist die dosierte Bewegung. Ein Cochrane-Review zur bewegungsbasierten kardiologischen Rehabilitation fand innerhalb von zwölf Monaten weniger Herzinfarkte und weniger Krankenhausaufenthalte sowie langfristig eine niedrigere kardiovaskuläre Sterblichkeit — allerdings in ambulanten und klinischen Programmen, nicht in Kuraufenthalten. In Marienbad kommen die geführte Terrainkur, Gruppenübungen für Herzgäste und die Anwendungen mit Kohlendioxid zusammen, unter täglicher ärztlicher Kontrolle.',
+          },
+          {
+            question: 'Muss ich für die Kur mit dem Rauchen aufhören?',
+            answer: 'Für Aufenthalte, die über die tschechische Indikationsliste laufen, ja: Für die Gruppe der Kreislaufkrankheiten ist Nikotinabstinenz eine Voraussetzung, die in der Verordnung selbst steht. Unabhängig davon ist das Rauchen der Risikofaktor, der den Nutzen eines Kuraufenthalts bei dieser Diagnose am stärksten begrenzt.',
+          },
+          {
+            question: 'Welche Anwendung ist bei Herzerkrankungen die schonendste?',
+            answer: 'Meist das trockene Gasbad im Mariengas. Es wirkt über das Kohlendioxid, das durch die Haut aufgenommen wird, kommt aber ohne Wasser und ohne Wärmebelastung aus. Moorpackungen sind dagegen eine wärmeintensive Anwendung und für Menschen mit Herz-Kreislauf-Erkrankungen eine deutliche Belastung; über ihre Eignung entscheidet immer der Arzt.',
+          },
+          {
+            question: 'Welche Unterlagen soll ich mitbringen?',
+            answer: 'Die Freigabe und den aktuellen Befund Ihres Kardiologen, eine vollständige Medikamentenliste und die Untersuchungen, die die Indikationsliste für die Gruppe der Kreislaufkrankheiten verlangt. Je vollständiger die Unterlagen, desto genauer kann der Kurarzt die Belastung dosieren; fehlen sie, fällt der Plan vorsichtiger aus.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe II — Positionen II/1 und II/2',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Symptomatische ischämische Herzkrankheit: Grundaufenthalt 21 Tage Zuschussbehandlung, Wiederholungsaufenthalt 21 (in bestimmten Fällen 14) Tage. Zustand nach Herzinfarkt: 28 Tage komplexe Kurbehandlung ohne gesonderte Wiederholungsposition.',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Kreislaufkrankheiten samt Kontraindikationen (AV-Block II. bis III. Grades, NYHA IV, aktive Endokarditis), geforderter Nikotinabstinenz und Eingangsuntersuchungen. Tschechischer Text.',
+          },
+          {
+            title: 'Dibben G et al. 2021, Cochrane Database Syst Rev — Review zur bewegungsbasierten kardiologischen Rehabilitation bei koronarer Herzkrankheit',
+            url: 'https://doi.org/10.1002/14651858.CD001800.pub4',
+            note: 'Innerhalb von 12 Monaten weniger Herzinfarkte (RR 0,72) und Krankenhausaufenthalte (RR 0,58), langfristig niedrigere kardiovaskuläre Sterblichkeit. Ambulante und klinische Programme, nicht Kurbehandlung; unter 15 % Frauen.',
+          },
+          {
+            title: 'Pagourelias ED et al. 2011, Int J Biometeorol — Übersicht zur CO₂-Balneotherapie bei Herz-Kreislauf-Erkrankungen',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Drei Haupteffekte: Abfall der Körpertemperatur, stärkere Hautdurchblutung, Wärmegefühl; die Autoren fordern methodisch bessere Studien.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — Übersicht zu Möglichkeiten und Grenzen der CO₂-Balneotherapie',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Kontrollierte Belege nur für periphere arterielle Verschlusskrankheit, trophische Ulzera, Mikroangiopathien und leichte Hypertonie. Ältere Übersicht.',
+          },
+        ],
+        related: [
+          {
+            label: 'Herz und Gefäße vor dem Winter',
+            href: '/de/magazin/kur-herz-kreislauf-marienbad',
+          },
+          {
+            label: 'Kur bei Bluthochdruck',
+            href: '/de/kur-bei/bluthochdruck',
+          },
+          {
+            label: 'Gasinjektionen mit Mariengas',
+            href: '/de/magazin/gas-injektionen-co2',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {} as unknown as DiagnosisContent,
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
+    },
+  },
+  {
+    id: 'peripheral-arterial',
+    groupId: 'circulatory',
+    roman: 'II',
+    codes: [
+      'II/4',
+      'II/5',
+      'II/8',
+    ],
+    conditionName: 'Peripheral arterial disease',
+    icd10: 'I70.2',
+    image: '/images/library/treatments/co2-pool-lounge.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
+      en: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
+      cs: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
+      ru: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
+    },
+    content: {
+      de: {
+        slug: 'durchblutungsstoerungen-der-beine',
+        navLabel: 'Durchblutung der Beine',
+        title: 'Kur bei Durchblutungsstörungen der Beine in Marienbad',
+        h1: 'Kur bei Durchblutungsstörungen der Beine',
+        metaTitle: 'Kur bei Durchblutungsstörungen der Beine — Marienbad',
+        metaDescription: 'Schaufensterkrankheit, Zustand nach Thrombose, Lymphödem: Kohlensäurebäder, Gehtraining und Lymphdrainage in Marienbad — Ablauf und Dauer.',
+        lead: 'Wenn die Wade nach zweihundert Metern brennt und man stehen bleiben muss, um weitergehen zu können, heißt das Schaufensterkrankheit. Die tschechische Indikationsliste führt Arterienerkrankungen der Gliedmaßen, Zustände nach Thrombosen und das chronische Lymphödem in der Gruppe der Kreislaufkrankheiten — und Marienbad behandelt sie mit Kohlensäurebädern und geführtem Gehtraining.',
+        teaser: 'Schaufensterkrankheit, Zustand nach Thrombose und chronisches Lymphödem: Kohlensäurebäder, Gehtraining und Lymphdrainage.',
+        treats: [
+          'Arterienerkrankung der Gliedmaßen auf atherosklerotischer Grundlage im Stadium II b, also mit Schaufensterkrankheit',
+          'Arterienerkrankung der Gliedmaßen auf entzündlicher Grundlage',
+          'Funktionelle Störungen der peripheren Gefäße',
+          'Zustand nach einer Thrombose, wenn die akute Phase abgeschlossen ist',
+          'Chronisches Lymphödem der Beine',
+          'Zustand nach rekonstruktiven und revaskularisierenden Operationen am Gefäßsystem außerhalb von Herz und Brustaorta sowie nach perkutaner Angioplastie',
+        ],
+        notFor: [
+          'Kritische Extremitätenischämie mit Ruheschmerz oder drohendem Gewebeuntergang — das gehört in die Gefäßchirurgie, nicht in die Kur',
+          'Frische tiefe Beinvenenthrombose in der akuten Phase',
+          'Nicht abgeheilte Wunden und Geschwüre am Bein',
+          'Herzinsuffizienz im Stadium NYHA IV, AV-Block zweiten bis dritten Grades und aktive Endokarditis',
+          'Fortgesetztes Rauchen: die Indikationsliste verlangt für die Kreislaufgruppe Nikotinabstinenz',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt erhebt den Gefäßbefund, prüft Pulse, Hautzustand und Umfänge der Beine und fragt die schmerzfreie Gehstrecke ab — sie ist der Maßstab, an dem sich der Verlauf messen lässt. Bringen Sie den Befund Ihres Angiologen oder Gefäßchirurgen mit.',
+          },
+          {
+            heading: 'Erste Woche: Durchblutung und Gehstrecke',
+            body: 'Kohlensäurebäder und trockene Gasbäder kommen täglich zum Einsatz, dazu geführtes Gehtraining auf flachen Wegen bis knapp unter die Schmerzgrenze — das ist die Belastung, auf die es beim Gehtraining ankommt.',
+          },
+          {
+            heading: 'Zweite Woche: Strecke verlängern',
+            body: 'Die Gehstrecken werden länger, Steigungen kommen dazu. Beim Lymphödem stehen stattdessen manuelle Lymphdrainage und apparative Drainage im Vordergrund, ergänzt um Übungen, die den Rückfluss unterstützen.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Die schmerzfreie Gehstrecke wird erneut gemessen und mit dem Ausgangswert verglichen; der Befund geht in den Abschlussbericht. Sie erhalten ein Gehprogramm für zu Hause — ohne regelmäßiges Weitergehen bildet sich der Gewinn zurück.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Kohlensäurebad im Mineralwasser',
+            detail: 'Bad im örtlichen Mineralwasser bei rund 34 °C; das über die Haut aufgenommene Kohlendioxid ist bei Durchblutungsstörungen der Gliedmaßen die zentrale Anwendung.',
+          },
+          {
+            name: 'Trockenes Gasbad im Mariengas',
+            detail: 'Anwendung des natürlichen Kohlendioxids der Marienquelle ohne Wasser und ohne Wärmebelastung — geeignet auch dort, wo warme Bäder nicht infrage kommen.',
+          },
+          {
+            name: 'Geführtes Gehtraining und Terrainkur',
+            detail: 'Abgestufte Wege im Kurwald, mit Gehen bis knapp unter die Schmerzgrenze und anschließender Pause, in schrittweise längeren Etappen.',
+          },
+          {
+            name: 'Manuelle Lymphdrainage',
+            detail: 'Beim chronischen Lymphödem: Griffe, die den Abfluss der Lymphflüssigkeit aus den Beinen unterstützen.',
+          },
+          {
+            name: 'Apparative Lymphdrainage',
+            detail: 'Geräte wie Lymfoven und Lymfopress ergänzen die manuelle Behandlung des Lymphödems.',
+          },
+          {
+            name: 'Gruppenübungen und Bewegungstherapie im Becken',
+            detail: 'Übungen für Ausdauer und Wadenmuskulatur, im Wasser mit geringerer Gelenkbelastung.',
+          },
+          {
+            name: 'Ernährungsberatung',
+            detail: 'Einzelgespräche zu Blutfetten, Gewicht und Zuckerstoffwechsel, also zu den Risikofaktoren, die dem Gefäßbefund zugrunde liegen.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Drei Positionen der tschechischen Indikationsliste kommen hier infrage. Arterienerkrankungen der Gliedmaßen auf atherosklerotischer Grundlage im Stadium II b oder auf entzündlicher Grundlage (II/4) sehen als Grundaufenthalt 21 Tage komplexe oder 21 Tage Zuschussbehandlung vor, der Wiederholungsaufenthalt ebenso, in bestimmten Fällen 14 Tage Zuschussbehandlung. Funktionelle Störungen der peripheren Gefäße, Zustände nach Thrombosen und das chronische Lymphödem (II/5) laufen über 21 Tage komplexe oder Zuschussbehandlung, der Wiederholungsaufenthalt über 21 oder 14 Tage Zuschussbehandlung. Zustände nach Gefäßoperationen und nach perkutaner Angioplastie (II/8) sehen 21 Tage komplexe oder Zuschussbehandlung vor. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage.',
+        },
+        evidence: {
+          heading: 'Was die Studien zeigen',
+          body: 'Für Durchblutungsstörungen der Beine ist die Studienlage bei den Anwendungen mit Kohlendioxid vergleichsweise am besten. In einer randomisierten Studie erhöhten Fußbäder in kohlensäurehaltigem Wasser (1000 mg CO₂ je Kilogramm, 33 °C, 30 Minuten, fünfmal wöchentlich über vier Wochen) den arteriellen Spitzenfluss, den Gewebesauerstoff und die schmerzfreie Gehstrecke, während gewöhnliches Wasser die Werte nicht veränderte (Hartmann et al., 1997, Angiology; kleines Kollektiv, künstlich angereichertes Wasser, Effektgröße im Abstract nicht angegeben). Eine Cross-over-Studie derselben Arbeitsgruppe mit 18 Patienten fand beim Eintauchen der Füße in Kohlensäurewasser einen Anstieg des laserdopplergemessenen Hautflusses und des Gewebesauerstoffs, in gewöhnlichem Wasser nicht (Hartmann et al., 1997, Angiology; einmaliges Bad, Surrogatparameter). Nach zwanzigminütiger Einwirkung von Kur-Kohlendioxidgas auf die Haut stiegen der Fluss in der Oberschenkelarterie, der Druck an der hinteren Schienbeinarterie und der Gewebesauerstoff des Fußes, während Wasserdampf gleicher Temperatur wirkungslos blieb (Savin et al., 1995, Angiology; sehr kleines Kollektiv, einmalige Anwendung). Für den Bewegungsanteil liegt hohe Evidenz vor: Ein Cochrane-Review zu Gehtraining bei Schaufensterkrankheit fand gegenüber üblicher Versorgung eine um durchschnittlich 82 Meter längere schmerzfreie und um 120 Meter längere maximale Gehstrecke, mit einem Effekt bis zu zwei Jahren (Lane et al., 2017, Cochrane Database Syst Rev; ambulante Übungsprogramme, nicht Kurbehandlung, die meisten Einzelstudien klein). Eine ältere Übersicht ordnet ein, dass kontrollierte Belege zur CO₂-Balneotherapie gerade für die periphere arterielle Verschlusskrankheit, trophische Ulzera und Mikroangiopathien vorliegen (Resch und Just, 1994, Wien Med Wochenschr). Keine dieser Arbeiten zeigt, dass die Kur eine Gefäßoperation oder die gefäßmedizinische Behandlung ersetzt.',
+        },
+        physicianNote: 'Ob und in welchem Umfang eine Kur bei Ihrem Gefäßbefund infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des angiologischen Befunds. Ruheschmerz, eine nicht heilende Wunde am Bein oder ein plötzlich kalt und blass werdendes Bein sind Notfälle und gehören umgehend in ärztliche Behandlung, nicht in eine Kurplanung. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Hilft eine Kur bei Schaufensterkrankheit?',
+            answer: 'Zwei Bausteine der Kur sind untersucht. Für Gehtraining liegt hohe Evidenz vor: Ein Cochrane-Review fand gegenüber üblicher Versorgung eine im Mittel um 82 Meter längere schmerzfreie und um 120 Meter längere maximale Gehstrecke, mit Wirkung bis zu zwei Jahren — allerdings in ambulanten Programmen, nicht in Kuraufenthalten. Für Fußbäder in kohlensäurehaltigem Wasser zeigte eine randomisierte Studie einen Anstieg von arteriellem Spitzenfluss, Gewebesauerstoff und schmerzfreier Gehstrecke, während gewöhnliches Wasser wirkungslos blieb; das Kollektiv war klein. In Marienbad kommen beide Bausteine zusammen.',
+          },
+          {
+            question: 'Wird eine Kur bei Durchblutungsstörungen bezahlt?',
+            answer: 'Für Versicherte einer tschechischen Krankenkasse kommen drei Positionen infrage: Arterienerkrankungen der Gliedmaßen im Stadium II b oder auf entzündlicher Grundlage (II/4), funktionelle Störungen peripherer Gefäße, Zustände nach Thrombosen und chronisches Lymphödem (II/5) sowie Zustände nach Gefäßoperationen und nach Angioplastie (II/8). Vorgesehen sind jeweils 21 Tage komplexe oder Zuschussbehandlung. Gäste mit einer Versicherung außerhalb Tschechiens klären die Kostenübernahme vorab mit ihrem eigenen Kostenträger.',
+          },
+          {
+            question: 'Darf ich nach einer Thrombose zur Kur?',
+            answer: 'Nach Abschluss der akuten Phase ja; der Zustand nach einer Thrombose steht als Teil der Position II/5 auf der Indikationsliste. In der akuten Phase ist eine Kur ausgeschlossen. Wie lange der Abstand sein muss und welche Anwendungen möglich sind, entscheidet der Kurarzt anhand des Befunds Ihres behandelnden Arztes — bringen Sie ihn deshalb mit.',
+          },
+          {
+            question: 'Was wird beim Lymphödem gemacht?',
+            answer: 'Im Vordergrund stehen die manuelle Lymphdrainage und die apparative Drainage mit Geräten wie Lymfoven und Lymfopress, ergänzt um Übungen, die den Rückfluss unterstützen. Das chronische Lymphödem ist Teil der Position II/5 der Indikationsliste. Nicht abgeheilte Wunden am Bein schließen eine Reihe von Anwendungen aus, deshalb werden die Beine bei der Eingangsuntersuchung angesehen.',
+          },
+          {
+            question: 'Muss ich für die Kur mit dem Rauchen aufhören?',
+            answer: 'Für Aufenthalte über die tschechische Indikationsliste ja — Nikotinabstinenz ist für die Gruppe der Kreislaufkrankheiten eine Voraussetzung, die in der Verordnung selbst steht. Bei Arterienerkrankungen der Beine ist das Rauchen zudem der Faktor, der den Verlauf am stärksten bestimmt.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe II — Positionen II/4, II/5 und II/8',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Arterienerkrankungen der Gliedmaßen (II/4), funktionelle Störungen peripherer Gefäße, Zustände nach Thrombosen und chronisches Lymphödem (II/5) sowie Zustände nach Gefäßoperationen und perkutaner Angioplastie (II/8): jeweils 21 Tage komplexe oder Zuschussbehandlung.',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Kreislaufkrankheiten samt Kontraindikationen (AV-Block II. bis III. Grades, NYHA IV, aktive Endokarditis), geforderter Nikotinabstinenz und Eingangsuntersuchungen. Tschechischer Text.',
+          },
+          {
+            title: 'Hartmann BR et al. 1997, Angiology — randomisierte Studie zu wiederholten Kohlensäure-Fußbädern bei Claudicatio intermittens',
+            url: 'https://doi.org/10.1177/000331979704801104',
+            note: 'Fußbäder in Kohlensäurewasser erhöhten arteriellen Spitzenfluss, Gewebesauerstoff und schmerzfreie Gehstrecke; gewöhnliches Wasser nicht. Kleines Kollektiv, künstlich angereichertes Wasser, Effektgröße im Abstract nicht angegeben.',
+          },
+          {
+            title: 'Hartmann BR et al. 1997, Angiology — Cross-over-Studie, 18 Patienten mit peripherer arterieller Verschlusskrankheit',
+            url: 'https://doi.org/10.1177/000331979704800406',
+            note: 'In Kohlensäurewasser stiegen Hautdurchblutung und Gewebesauerstoff, in gewöhnlichem Wasser nicht. Einmaliges Bad, Surrogatparameter.',
+          },
+          {
+            title: 'Savin E et al. 1995, Angiology — Studie zu transkutanem CO₂ bei peripherer arterieller Verschlusskrankheit im Stadium II',
+            url: 'https://doi.org/10.1177/000331979504600904',
+            note: 'Nach 20 Minuten Einwirkung von Kur-CO₂-Gas stiegen femoraler Fluss, Druck an der A. tibialis posterior und Gewebesauerstoff des Fußes; Wasserdampf gleicher Temperatur blieb wirkungslos. Sehr kleines Kollektiv, einmalige Anwendung.',
+          },
+          {
+            title: 'Lane R et al. 2017, Cochrane Database Syst Rev — Review zu Gehtraining bei Claudicatio intermittens',
+            url: 'https://doi.org/10.1002/14651858.CD000990.pub4',
+            note: 'Übungsprogramme verlängerten die schmerzfreie Gehstrecke um durchschnittlich 82 m und die maximale um 120 m gegenüber üblicher Versorgung, mit Effekt bis zu 2 Jahren. Ambulante Programme, nicht Kurbehandlung.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — Übersicht zu Möglichkeiten und Grenzen der CO₂-Balneotherapie',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Kontrollierte Belege nur für periphere arterielle Verschlusskrankheit, trophische Ulzera, Mikroangiopathien und leichte Hypertonie. Ältere Übersicht.',
+          },
+        ],
+        related: [
+          {
+            label: 'Herz und Gefäße vor dem Winter',
+            href: '/de/magazin/kur-herz-kreislauf-marienbad',
+          },
+          {
+            label: 'Kohlensäurebäder — was die Forschung zeigt',
+            href: '/de/magazin/co2-baeder-wissenschaft',
+          },
+          {
+            label: 'Kur nach einer Krebsbehandlung',
+            href: '/de/kur-bei/nach-krebsbehandlung',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {} as unknown as DiagnosisContent,
+      cs: {} as unknown as DiagnosisContent,
+      ru: {} as unknown as DiagnosisContent,
+    },
+  },
 ]
