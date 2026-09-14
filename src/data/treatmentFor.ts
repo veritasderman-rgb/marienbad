@@ -728,10 +728,10 @@ export const diagnoses: Diagnosis[] = [
     image: '/images/library/fitness/senior-stretch-trainer.jpg',
     medicalReviewDate: '2026-09-14',
     imageAlt: {
-      de: 'Ältere Frau dehnt sich seitlich am Holzrahmen, während ein Trainer im türkisfarbenen Shirt in der Nähe zusieht.',
-      en: 'Senior woman stretches sideways on the wooden frame while a trainer in teal looks on nearby.',
-      cs: 'Starší žena se protahuje do strany na dřevěném rámu, poblíž na ni dohlíží trenér v tyrkysovém tričku.',
-      ru: 'Пожилая женщина наклоняется вбок у деревянной рамы, рядом за ней наблюдает тренер в бирюзовой футболке.',
+      de: 'Eine ältere Gästin dehnt sich beim Gruppentraining seitlich an einem hölzernen Übungsgerät, dahinter weitere Teilnehmende bei derselben Übung.',
+      en: 'An older guest stretching sideways on a wooden exercise frame in a group class, with other participants doing the same exercise behind her.',
+      cs: 'Starší hostka se protahuje do strany na dřevěném cvičebním rámu ve skupinovém cvičení, v pozadí další cvičící při stejném cviku.',
+      ru: 'Пожилая гостья наклоняется вбок на деревянном тренажёре во время группового занятия, позади другие занимающиеся выполняют то же упражнение.',
     },
     image2: '/images/library/mineral-bath/indoor-pool-ceiling.jpg',
     imageAlt2: {
@@ -1864,10 +1864,10 @@ export const diagnoses: Diagnosis[] = [
     image: '/images/library/fitness/guided-side-stretch.jpg',
     medicalReviewDate: '2026-09-14',
     imageAlt: {
-      de: 'Trainer im türkisfarbenen Poloshirt leitet eine Frau bei einer seitlichen Vorwärtsdehnung neben einem gekachelten Ofen in einem historischen Kursraum an.',
-      en: 'Trainer in a teal polo guides a woman through a forward side stretch beside a tiled stove in a historic spa room.',
-      cs: 'Trenér v tyrkysové polokošili vede ženu při bočním předklonu vedle kachlových kamen v historické místnosti.',
-      ru: 'Тренер в бирюзовом поло ведёт женщину через боковой наклон рядом с изразцовой печью в историческом зале.',
+      de: 'Der leitende Physiotherapeut der Léčebné lázně Mariánské Lázně – Ensana zeigt physiotherapeutische Übungen.',
+      en: 'The head physiotherapist of Léčebné lázně Mariánské Lázně – Ensana teaching physiotherapy exercises.',
+      cs: 'Hlavní fyzioterapeut společnosti Léčebné lázně Mariánské Lázně – Ensana učí fyzioterapeutické cviky.',
+      ru: 'Главный физиотерапевт компании Léčebné lázně Mariánské Lázně – Ensana обучает физиотерапевтическим упражнениям.',
     },
     image2: '/images/library/mineral-bath/underwater-massage-back-view.jpg',
     imageAlt2: {
