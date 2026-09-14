@@ -5,12 +5,28 @@ import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage } from '@/content/reader'
+import { medicalTherapyPage } from '@/lib/medicalSchema'
 
 const locale = 'en' as const
 const page = await getPage('en-co2-therapy')
+
+const schema = medicalTherapyPage({
+  locale,
+  path: '/en/co2-therapy',
+  name: page?.title ?? '',
+  description: page?.metaDescription ?? '',
+  indications: [
+    'Peripheral arterial disease',
+    'Hypertension',
+    'Intermittent claudication',
+    'Menopausal syndrome',
+    'Chronic wounds',
+  ],
+  lastReviewed: page?.medicalReviewDate,
+})
 ---
 
-<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }}>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }} schema={schema}>
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }

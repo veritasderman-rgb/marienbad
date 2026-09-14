@@ -5,12 +5,29 @@ import PillarPage from '@/components/PillarPage.astro'
 import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage } from '@/content/reader'
+import { medicalTherapyPage } from '@/lib/medicalSchema'
 
 const locale = 'en' as const
 const page = await getPage('en-peloid-therapy')
+
+const schema = medicalTherapyPage({
+  locale,
+  path: '/en/peloid-therapy',
+  name: page?.title ?? '',
+  description: page?.metaDescription ?? '',
+  indications: [
+    'Osteoarthritis',
+    'Chronic back pain',
+    'Rheumatoid arthritis',
+    'Ankylosing spondylitis',
+    'Atopic dermatitis',
+    'Psoriasis',
+  ],
+  lastReviewed: page?.medicalReviewDate,
+})
 ---
 
-<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/peloidtherapie', en: '/en/peloid-therapy', cs: '/cs/peloidni-terapie', ru: '/ru/peloidnaya-terapiya' }}>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/peloidtherapie', en: '/en/peloid-therapy', cs: '/cs/peloidni-terapie', ru: '/ru/peloidnaya-terapiya' }} schema={schema}>
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} pullQuote={page?.pullQuote ?? ""}>
     { page?.body && <MarkdocRenderer content={page.body} /> }

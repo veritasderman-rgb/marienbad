@@ -1,0 +1,65 @@
+---
+/** Rozcestník sekce „léčba podle diagnózy“. */
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import { diagnoses, diagnosisHref } from '@/data/treatmentFor'
+import type { Locale } from '@/i18n/config'
+import { localizedHref } from '@/i18n/utils'
+import { t } from '@/i18n/ui'
+
+interface Props { locale: Locale }
+const { locale } = Astro.props
+
+const ui = {
+  de: {
+    h1: 'Kur nach Diagnose',
+    lead: 'Marienbad behandelt seit über zweihundert Jahren mit Mineralwasser, natürlichem Kohlendioxid, Moor und Heilklima. Wählen Sie Ihre Diagnose: Sie erfahren, was hier behandelt wird, wie die Kur abläuft, wie lange sie dauert und wann sie nicht infrage kommt.',
+    note: 'Über die Aufnahme in den Behandlungsplan entscheidet immer der Kurarzt bei der Eingangsuntersuchung. Diese Seiten informieren, sie ersetzen keine ärztliche Beratung.',
+    all: 'Vollständige Indikationsliste',
+  },
+  en: {
+    h1: 'Spa treatment by condition',
+    lead: 'Mariánské Lázně (Marienbad) has treated with mineral water, natural carbon dioxide, peat and therapeutic climate for over two hundred years. Choose your condition to see what is treated here, how the cure works, how long it lasts and when it is not an option.',
+    note: 'Admission to a treatment plan is always decided by the spa physician at the initial examination. These pages inform; they are no substitute for medical advice.',
+    all: 'Full indication list',
+  },
+  cs: {
+    h1: 'Lázeňská léčba podle diagnózy',
+    lead: 'Mariánské Lázně léčí přes dvě stě let minerální vodou, přírodním oxidem uhličitým, slatinou a léčivým klimatem. Vyberte diagnózu a uvidíte, co se tady léčí, jak léčba probíhá, jak dlouho trvá a kdy nepřipadá v úvahu.',
+    note: 'O zařazení do léčebného plánu rozhoduje vždy lázeňský lékař při vstupní prohlídce. Tyto stránky informují, nenahrazují lékařskou radu.',
+    all: 'Úplný indikační seznam',
+  },
+  ru: {
+    h1: 'Курортное лечение по диагнозу',
+    lead: 'Марианские Лазни лечат более двухсот лет минеральной водой, природным углекислым газом, торфом и целебным климатом. Выберите диагноз: Вы узнаете, что здесь лечат, как проходит курс, сколько он длится и когда он невозможен.',
+    note: 'Вопрос о включении в план лечения всегда решает курортный врач на первичном осмотре. Эти страницы информируют и не заменяют врачебной консультации.',
+    all: 'Полный индикационный список',
+  },
+}[locale]
+---
+
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+  <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-16">
+    <Breadcrumbs items={[{ label: t(locale, 'nav.home'), href: `/${locale}` }, { label: ui.h1 }]} locale={locale} />
+    <h1 class="font-heading text-3xl md:text-5xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{ui.h1}</h1>
+    <p class="text-white/85 text-lg md:text-xl leading-relaxed max-w-3xl">{ui.lead}</p>
+  </div>
+</section>
+
+<div class="container-wide py-14 md:py-20 flex flex-col gap-10">
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
+    {diagnoses.map((d) => (
+      <li class="m-0">
+        <a href={diagnosisHref(locale, d)} class="group flex flex-col gap-2 bg-white border border-beige-200 p-5 hover:border-turquoise-400 hover:shadow-card transition-all duration-300 h-full" style="border-radius: var(--radius-card);">
+          <span class="font-heading font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors">{d.content[locale].navLabel}</span>
+          <span class="text-beige-700 text-sm leading-relaxed">{d.content[locale].teaser}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="text-beige-900 text-base leading-relaxed bg-beige-100 border border-beige-200 px-5 py-4 rounded-xl m-0">
+    {ui.note}{' '}
+    <a href={localizedHref(locale, 'indications')} class="text-turquoise-700 underline underline-offset-2 hover:text-indigo-700">{ui.all}</a>
+  </p>
+</div>

@@ -6,6 +6,7 @@ import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
+import { medicalTherapyPage } from '@/lib/medicalSchema'
 
 const locale = 'cs' as const
 const page = await getPage('cs-peloidni-terapie')
@@ -14,9 +15,25 @@ const breadcrumbs = [
   { label: 'Minerální prameny', href: `/${locale}/mineralni-prameny` },
   { label: 'Peloidní terapie' },
 ]
+
+const schema = medicalTherapyPage({
+  locale,
+  path: '/cs/peloidni-terapie',
+  name: page?.title ?? '',
+  description: page?.metaDescription ?? '',
+  indications: [
+    'Osteoarthritis',
+    'Chronic back pain',
+    'Rheumatoid arthritis',
+    'Ankylosing spondylitis',
+    'Atopic dermatitis',
+    'Psoriasis',
+  ],
+  lastReviewed: page?.medicalReviewDate,
+})
 ---
 
-<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/peloidtherapie', en: '/en/peloid-therapy', cs: '/cs/peloidni-terapie', ru: '/ru/peloidnaya-terapiya' }}>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/peloidtherapie', en: '/en/peloid-therapy', cs: '/cs/peloidni-terapie', ru: '/ru/peloidnaya-terapiya' }} schema={schema}>
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
     { page?.body && <MarkdocRenderer content={page.body} /> }

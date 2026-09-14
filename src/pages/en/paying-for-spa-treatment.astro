@@ -1,0 +1,24 @@
+---
+import Base from '@/layouts/Base.astro'
+import FundingPage from '@/components/FundingPage.astro'
+import DiagnosisFaqSchema from '@/components/DiagnosisFaqSchema.astro'
+import { funding, fundingAlternates } from '@/data/funding'
+
+export const prerender = true
+
+const locale = 'en' as const
+const c = funding[locale]
+---
+
+{c && (
+  <Base
+    locale={locale}
+    section="funding"
+    title={c.metaTitle}
+    description={c.metaDescription}
+    alternateUrls={fundingAlternates()}
+  >
+    <DiagnosisFaqSchema faqs={c.faqs} />
+    <FundingPage locale={locale} content={c} />
+  </Base>
+)}

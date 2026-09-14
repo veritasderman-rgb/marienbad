@@ -39,6 +39,26 @@ export const routes = {
   podcast: { cs: 'podcast' },
   /** Česká sekce o péči hrazené z veřejného zdravotního pojištění — jen cs. */
   'insurance-spa': { cs: 'lazne-s-pojistovnou' },
+  /**
+   * Léčba podle diagnózy. Slug je schválně krátký a čitelný jako začátek věty
+   * („kur bei arthrose“), protože stránky odpovídají na dotaz ve tvaru, jakým
+   * se ptá pacient, ne na název indikační skupiny.
+   */
+  'treatment-for': {
+    de: 'kur-bei',
+    en: 'spa-treatment-for',
+    cs: 'lazenska-lecba',
+    ru: 'kurortnoe-lechenie',
+  },
+  /**
+   * Úhrada lázeňské léčby ze zahraničí. Česky neexistuje: tuzemský pacient má
+   * celou sekci `insurance-spa`, kde je totéž podrobněji.
+   */
+  funding: {
+    de: 'kur-im-ausland-krankenkasse',
+    en: 'paying-for-spa-treatment',
+    ru: 'oplata-kurortnogo-lecheniya',
+  },
   quiz: { de: 'quiz', en: 'quiz', cs: 'kviz', ru: 'viktorina' },
   /**
    * Svatební landing page. Slugy jsou schválně kratší než u magazínových

@@ -31,7 +31,11 @@ const canonicalUrl = `${siteUrl}${pathname}`
 
 const lodgingSchema = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'LodgingBusiness',
+  // Lázeňské domy mají vlastní léčebný provoz s kabinami pro minerální
+  // koupele a procedurami pod lékařským dohledem, proto vícetypový uzel:
+  // `medicalSpecialty` a `availableService` schema.org u LodgingBusiness
+  // nedefinuje, u MedicalClinic ano.
+  '@type': details?.mineralBaths ? ['LodgingBusiness', 'MedicalClinic'] : 'LodgingBusiness',
   name: hotel.name,
   description: description.slice(0, 300),
   url: canonicalUrl,
@@ -49,6 +53,12 @@ const lodgingSchema = JSON.stringify({
   ...(details?.email ? { email: details.email } : {}),
   ...(details?.phone ? { telephone: details.phone } : {}),
   ...(details ? { checkinTime: details.checkIn, checkoutTime: details.checkOut } : {}),
+  ...(details?.mineralBaths
+    ? {
+        medicalSpecialty: 'PhysicalTherapy',
+        availableService: { '@type': 'MedicalTherapy', name: 'Balneotherapy' },
+      }
+    : {}),
   amenityFeature: (hotel.features.cs ?? hotel.features.en).map((f) => ({
     '@type': 'LocationFeatureSpecification',
     name: f,
