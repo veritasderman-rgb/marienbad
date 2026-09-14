@@ -78,14 +78,14 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
       'Ambulante Vorsorgekur, Beihilfe, private Versicherung oder Selbstzahler: wer eine Kur in Marienbad bezahlt und unter welchen Voraussetzungen.',
     lead: 'Deutsche Gäste fragen sich zu Recht, ob und wie sich ein Kuraufenthalt in Marienbad bezahlen lässt. Die Antwort hängt davon ab, wie Sie versichert sind — hier finden Sie die maßgeblichen Wege mit ihrer rechtlichen Grundlage.',
     shortAnswer:
-      'Ja, aber nicht automatisch: Die gesetzliche Krankenkasse erbringt ambulante Vorsorgeleistungen nach § 23 Abs. 2 SGB V in anerkannten Kurorten, wenn der Hausarzt die medizinische Notwendigkeit bescheinigt und die Kasse zustimmt. Bei einer Kur in einem anderen EU-Land wie Tschechien erfolgt die Zahlung in der Praxis meist über Kostenerstattung nach § 13 Abs. 4 SGB V, begrenzt auf die Kosten, die im Inland angefallen wären. Unterkunft, Verpflegung und Anreise zahlt der Gast auch bei Bewilligung selbst. Entscheiden kann darüber ausschließlich die zuständige Krankenkasse im Einzelfall — nicht die Kureinrichtung.',
+      'Ja, aber nicht automatisch: Die gesetzliche Krankenkasse erbringt ambulante Vorsorgeleistungen nach § 23 Abs. 2 SGB V in anerkannten Kurorten, wenn der Hausarzt die medizinische Notwendigkeit bescheinigt und die Kasse zustimmt. Bei einer Kur in einem anderen EU-Land wie Tschechien erfolgt die Zahlung in der Praxis meist über Kostenerstattung nach § 13 Abs. 4 SGB V, begrenzt auf die Kosten, die im Inland angefallen wären. Unterkunft, Verpflegung und Anreise zahlt der Gast auch bei Bewilligung grundsätzlich selbst; die Satzung der Kasse kann dazu einen Zuschuss von bis zu 16 Euro täglich vorsehen (§ 23 Abs. 2 Satz 2 SGB V). Entscheiden kann darüber ausschließlich die zuständige Krankenkasse im Einzelfall — nicht die Kureinrichtung.',
     routesHeading: 'Wege zur Kostenbeteiligung',
     routes: [
       {
         name: 'Ambulante Vorsorgekur nach § 23 SGB V für gesetzlich Versicherte',
         who: 'Gesetzlich krankenversicherte Gäste, bei denen der Hausarzt oder Vertragsarzt eine ambulante Vorsorgekur für medizinisch notwendig hält, weil die Behandlung am Wohnort nicht ausreicht.',
         covers:
-          'Pflichtleistung sind die ärztliche Behandlung sowie Heil- und Hilfsmittel während der Kur (§ 23 Abs. 1–3 SGB V); ein zusätzlicher Tageszuschuss zu weiteren Kurmittelkosten ist dagegen eine Ermessensleistung, die jede Kasse in ihrer Satzung selbst regelt. Unterkunft, Verpflegung und Anreise trägt der Gast bei der ambulanten Kur immer selbst. Findet die Kur außerhalb Deutschlands statt, läuft die Abrechnung in der Praxis über Kostenerstattung nach § 13 Abs. 4 SGB V — begrenzt auf die Vergütung, die im Inland als Sachleistung angefallen wäre. Eine vorherige Zustimmung der Kasse mit Vordruck S2 (Art. 20 VO (EG) Nr. 883/2004) ist für ambulante Kuren gesetzlich nicht zwingend; verpflichtend ist eine vorherige Zustimmung nach § 13 Abs. 5 SGB V nur bei stationären Krankenhausleistungen.',
+          'Pflichtleistung sind die ärztliche Behandlung sowie Heil- und Hilfsmittel während der Kur (§ 23 Abs. 1–3 SGB V); darüber hinaus kann die Satzung der Krankenkasse einen Zuschuss von bis zu 16 Euro täglich zu den übrigen Kosten vorsehen, die den Versicherten im Zusammenhang mit dieser Leistung entstehen — also zu Unterkunft, Verpflegung und Anreise (§ 23 Abs. 2 Satz 2 SGB V). Dieser Zuschuss ist eine Ermessensleistung: ob die Kasse ihn gewährt und in welcher Höhe, steht in ihrer Satzung und ist dort vor der Buchung nachzulesen. Den darüber hinausgehenden Teil dieser Kosten trägt der Gast selbst. Findet die Kur außerhalb Deutschlands statt, läuft die Abrechnung in der Praxis über Kostenerstattung nach § 13 Abs. 4 SGB V — begrenzt auf die Vergütung, die im Inland als Sachleistung angefallen wäre. Eine vorherige Zustimmung der Kasse mit Vordruck S2 (Art. 20 VO (EG) Nr. 883/2004) ist für ambulante Kuren gesetzlich nicht zwingend; verpflichtend ist eine vorherige Zustimmung nach § 13 Abs. 5 SGB V nur bei stationären Krankenhausleistungen.',
         steps: [
           'Beim Hausarzt oder Vertragsarzt die medizinische Notwendigkeit der ambulanten Vorsorgekur feststellen und schriftlich bescheinigen lassen.',
           'Die Krankenkasse vor Reiseantritt über die geplante Kur informieren und den Antrag auf Kostenerstattung stellen (§ 13 Abs. 2 SGB V).',
@@ -123,14 +123,14 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
     ],
     selfPayHeading: 'Was der Gast in jedem Fall selbst zahlt',
     selfPayBody:
-      'Unabhängig vom gewählten Weg zahlt jeder Gast Anreise, Unterkunft und Verpflegung während einer ambulanten Kur grundsätzlich selbst — keiner der genannten Kostenträger übernimmt diese Posten routinemäßig. Wer keinen der oben genannten Wege nutzen möchte oder kann, bucht das Kurpaket einfach direkt beim Kurhotel und bezahlt selbst: Das ist der einfachste und schnellste Weg, weil weder eine ärztliche Verordnung noch eine Genehmigung der Kasse, Beihilfestelle oder Versicherung nötig ist.',
+      'Anreise, Unterkunft und Verpflegung während einer ambulanten Kur zahlt jeder Gast grundsätzlich selbst — kein Kostenträger übernimmt diese Posten in voller Höhe. Die gesetzliche Krankenkasse kann nach ihrer Satzung einen Tageszuschuss von bis zu 16 Euro dazu leisten (§ 23 Abs. 2 Satz 2 SGB V); den Rest trägt der Gast. Wer keinen der oben genannten Wege nutzen möchte oder kann, bucht das Kurpaket einfach direkt beim Kurhotel und bezahlt selbst: Das ist der einfachste und schnellste Weg, weil weder eine ärztliche Verordnung noch eine Genehmigung der Kasse, Beihilfestelle oder Versicherung nötig ist.',
     disclaimer:
       'Über den Anspruch auf Kostenübernahme entscheidet ausschließlich die zuständige Krankenkasse, Festsetzungsstelle oder Versicherung im Einzelfall — Marienbad.com und die Kureinrichtungen vor Ort können weder eine Genehmigung noch eine Erstattung zusagen. Klären Sie Anspruch und Umfang deshalb immer vor Reiseantritt direkt mit Ihrem Kostenträger.',
     faqs: [
       {
         question: 'Zahlt die Krankenkasse eine Kur im Ausland?',
         answer:
-          'Ja, aber nicht automatisch: Die gesetzliche Krankenkasse erbringt ambulante Vorsorgeleistungen nach § 23 Abs. 2 SGB V in anerkannten Kurorten, wenn der Hausarzt die medizinische Notwendigkeit bestätigt und die Kasse zustimmt. Bei einer Kur in einem anderen EU-Land wie Tschechien erfolgt die Zahlung in der Regel über Kostenerstattung nach § 13 Abs. 4 SGB V, begrenzt auf die Kosten, die im Inland angefallen wären. Unterkunft und Verpflegung zahlt der Gast auch bei Bewilligung selbst.',
+          'Ja, aber nicht automatisch: Die gesetzliche Krankenkasse erbringt ambulante Vorsorgeleistungen nach § 23 Abs. 2 SGB V in anerkannten Kurorten, wenn der Hausarzt die medizinische Notwendigkeit bestätigt und die Kasse zustimmt. Bei einer Kur in einem anderen EU-Land wie Tschechien erfolgt die Zahlung in der Regel über Kostenerstattung nach § 13 Abs. 4 SGB V, begrenzt auf die Kosten, die im Inland angefallen wären. Unterkunft und Verpflegung zahlt der Gast auch bei Bewilligung grundsätzlich selbst; ob die Kasse dazu den satzungsmäßigen Zuschuss von bis zu 16 Euro täglich leistet, steht in ihrer Satzung (§ 23 Abs. 2 Satz 2 SGB V).',
       },
       {
         question: 'Wie beantrage ich eine Kur?',
@@ -162,7 +162,7 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
       {
         title: '§ 23 SGB V – Medizinische Vorsorgeleistungen',
         url: 'https://www.gesetze-im-internet.de/sgb_5/__23.html',
-        note: 'Anspruch auf ambulante Vorsorgeleistungen (Vorsorgekur), Pflicht- und Ermessensleistungen, Wartefristen.',
+        note: 'Absatz 2: Anspruch auf ambulante Vorsorgeleistungen in anerkannten Kurorten und der satzungsmäßige Zuschuss von bis zu 16 Euro täglich zu den übrigen Kosten; Absatz 5: Wartefristen.',
       },
       {
         title: '§ 13 SGB V – Kostenerstattung',
@@ -209,7 +209,7 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
     metaTitle: 'Who pays for a spa cure in Marienbad? — Marienbad.com',
     metaDescription: 'EU cross-border rules, the NHS S2 route, Czech public insurance or paying yourself: who can have a spa cure in Marienbad covered, and how to apply.',
     lead: 'Whether anyone other than you pays for a spa cure in Marienbad depends entirely on where you are insured. Four routes exist in law, and each rests on a different rule. Below is what each one covers, who can use it and what it takes to apply.',
-    shortAnswer: 'It depends on where you are insured, and for most international guests the honest answer is that they pay themselves. Patients insured in another EU or EEA country can claim a spa stay in Mariánské Lázně back under the Cross-Border Healthcare Directive (2011/24/EU), reimbursed up to what the same care would have cost at home, or have it covered as Czech state care if their insurer authorises it in advance on form S2 (Article 20 of Regulation (EC) No 883/2004). Patients insured in the Czech Republic receive spa care as a benefit of the public system under the Czech indication list. Residents of the United Kingdom can apply to NHS England under the Planned Treatment (S2) route, but it funds only care the NHS would routinely commission for that patient and cannot deliver within a medically acceptable time. In every route the guest pays for travel, accommodation and meals, and only the insurer decides — never the spa.',
+    shortAnswer: 'It depends on where you are insured, and for most international guests the honest answer is that they pay themselves. Patients insured in another EU or EEA country can claim a spa stay in Mariánské Lázně back under the Cross-Border Healthcare Directive (2011/24/EU), reimbursed up to what the same care would have cost at home, or have it covered as Czech state care if their insurer authorises it in advance on form S2 (Article 20 of Regulation (EC) No 883/2004). Patients insured in the Czech Republic receive spa care as a benefit of the public system under the Czech indication list. Residents of the United Kingdom can apply to NHS England under the Planned Treatment (S2) route, but it funds only care the NHS would routinely commission for that patient and cannot deliver within a medically acceptable time. Travel is the guest’s own cost on every route, and so are accommodation and meals on an outpatient cure; a Czech stay covers them only where the insurer grants comprehensive rather than contributory care. Only the insurer decides — never the spa.',
     routesHeading: 'Routes to having the treatment paid for',
     routes: [
       {
@@ -228,7 +228,7 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
       {
         name: 'Prior authorisation on form S2, for patients insured in the EU or EEA',
         who: 'Guests insured in another EU or EEA country whose insurer agrees in advance to fund planned treatment in the Czech Republic.',
-        covers: 'With an authorised S2 you are treated as if you were insured in the Czech Republic: the Czech public system provides the authorised care on the same terms as for a Czech patient, and you pay only what a Czech patient would pay. The route works only where the provider delivers the care inside the Czech public health insurance system rather than as a private booking, and only for the treatment named in the authorisation. Your insurer must authorise it before you travel and may refuse. Travel, accommodation and meals are not covered.',
+        covers: 'With an authorised S2 you are treated as if you were insured in the Czech Republic: the Czech public system provides the authorised care on the same terms as for a Czech patient, and you pay only what a Czech patient would pay. The route works only where the provider delivers the care inside the Czech public health insurance system rather than as a private booking, and only for the treatment named in the authorisation. Your insurer must authorise it before you travel and may refuse. In practice you register with a Czech health insurance fund on arrival, present the S2 and receive the authorised care without paying for it directly, covering only what a Czech insured person pays, such as a regulatory fee or services above the standard. What comes with the care therefore follows Czech rules: comprehensive spa care includes accommodation and meals, contributory care does not. Travel stays your own cost.',
         steps: [
           'Ask your insurer at home whether it will issue an S2 for spa treatment in the Czech Republic, and on what medical grounds.',
           'Have your doctor document the diagnosis and the reason the treatment is needed.',
@@ -265,12 +265,12 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
       },
     ],
     selfPayHeading: 'What every guest pays for themselves',
-    selfPayBody: 'None of the routes above pays for getting to Marienbad, for the hotel room or for meals during an outpatient cure; those remain the guest’s own cost even when an insurer approves the treatment itself. Booking a package directly with a spa hotel and paying for it is the simplest and by far the fastest option, because it needs no referral, no authorisation and no waiting for a decision — and it is how the large majority of international guests come. The medical side does not change: the spa physician examines you on arrival and sets the treatment plan either way.',
+    selfPayBody: 'No route pays for getting to Marienbad, and on an outpatient cure the hotel room and meals stay with the guest as well; only Czech comprehensive spa care, granted by a Czech insurer or reached through an authorised S2, covers those. Booking a package directly with a spa hotel and paying for it is the simplest and by far the fastest option, because it needs no referral, no authorisation and no waiting for a decision — and it is how the large majority of international guests come. The medical side does not change: the spa physician examines you on arrival and sets the treatment plan either way.',
     disclaimer: 'Only your own insurer, health authority or National Contact Point can decide whether your treatment is covered and at what rate. Neither Marienbad.com nor the spa facilities can promise an approval or a reimbursement, and none of this page is legal advice. Settle the question with whoever is expected to pay before you travel, not afterwards.',
     faqs: [
       {
         question: 'Does health insurance pay for a spa cure in the Czech Republic?',
-        answer: 'It depends on where you are insured. Patients insured in another EU or EEA country can claim the treatment back under the Cross-Border Healthcare Directive, up to what the same care would have cost at home, or have it covered as Czech state care if their insurer authorises it in advance on form S2. Patients insured in the Czech Republic receive spa care as a benefit of the public system under the Czech indication list. Everyone else books and pays directly. Travel, accommodation and meals are the guest’s own cost on every route, and the decision always rests with the insurer rather than with the spa.',
+        answer: 'It depends on where you are insured. Patients insured in another EU or EEA country can claim the treatment back under the Cross-Border Healthcare Directive, up to what the same care would have cost at home, or have it covered as Czech state care if their insurer authorises it in advance on form S2. Patients insured in the Czech Republic receive spa care as a benefit of the public system under the Czech indication list. Everyone else books and pays directly. Travel is the guest’s own cost on every route, and so are accommodation and meals unless a Czech insurer grants comprehensive spa care. The decision always rests with the insurer rather than with the spa.',
       },
       {
         question: 'Can I use my EHIC or GHIC for spa treatment in Marienbad?',
@@ -334,6 +334,11 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
         note: 'The Czech National Contact Point for cross-border healthcare: planned treatment with and without the insurer’s consent, and patients’ rights in the Czech Republic.',
       },
       {
+        title: 'Health Insurance Bureau (Kancelář zdravotního pojištění) — Planned healthcare with the consent of a health insurance fund',
+        url: 'https://kancelarzp.cz/en/planned-health-care-in-cz/planned-healthcare-with-a-consent-of-hif/',
+        note: 'How an authorised S2 works on arrival: auxiliary registration with a Czech fund, care provided without direct payment, and the patient paying only what a Czech insured person pays.',
+      },
+      {
         title: 'Decree No. 2/2015 Coll., on the indication list for spa treatment care',
         url: 'https://www.zakonyprolidi.cz/cs/2015-2',
         note: 'The Czech indication list: which diagnosis qualifies for comprehensive or contributory spa care and for how many days. Czech text.',
@@ -364,7 +369,7 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
       'Что входит в курортный пакет, чем лечение отличается от wellness, координация в рамках ЕС по форме S2 — кто платит за лечение в Марианских Лазнях.',
     lead: 'Большинство гостей, приезжающих в Марианские Лазни из России и других стран без соглашения с чешскими лечебными учреждениями, оплачивают курортное лечение самостоятельно. Ниже — что входит в курортный пакет, чем лечебное пребывание отличается от wellness-отдыха и какая координация возможна, если вы застрахованы в стране Евросоюза.',
     shortAnswer:
-      'Как правило, гость оплачивает курортное лечение в Марианских Лазнях сам: пакет бронируется и оплачивается напрямую в отеле, отдельно от него всегда оплачиваются курортный сбор и проезд. Если вы застрахованы в системе обязательного медицинского страхования страны ЕС или ЕЭП, для планового лечения возможна координация по Регламенту (ЕС) № 883/2004 — но только с предварительным согласием вашего страхового учреждения (форма S2 или аналогичный документ); без него оплата после поездки, как правило, невозможна. Размещение и питание гость в любом случае оплачивает сам. Решение о праве на оплату всегда принимает плательщик — страховое учреждение или страховая компания, — а не курортное заведение.',
+      'Как правило, гость оплачивает курортное лечение в Марианских Лазнях сам: пакет бронируется и оплачивается напрямую в отеле, отдельно от него всегда оплачиваются курортный сбор и проезд. Если вы застрахованы в системе обязательного медицинского страхования страны ЕС или ЕЭП, для планового лечения возможна координация по Регламенту (ЕС) № 883/2004 — но только с предварительным согласием вашего страхового учреждения (форма S2 или аналогичный документ); без него оплата после поездки, как правило, невозможна. Проезд гость оплачивает сам всегда; размещение и питание — тоже, если только речь не идёт о чешском комплексном курортном лечении, которое их включает. Решение о праве на оплату всегда принимает плательщик — страховое учреждение или страховая компания, — а не курортное заведение.',
     routesHeading: 'Пути участия в оплате',
     routes: [
       {
@@ -384,7 +389,7 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
         name: 'Координация в рамках ЕС для застрахованных в странах ЕС/ЕЭП (форма S2)',
         who: 'Гости, застрахованные в системе обязательного медицинского страхования страны ЕС или ЕЭП, которым лечащий врач по месту жительства назначил плановое лечение.',
         covers:
-          'Регламент (ЕС) № 883/2004 позволяет пройти запланированное лечение в другой стране ЕС или ЕЭП, если компетентное учреждение по месту страхования заранее выдаёт согласие — форма S2 согласно статье 20 Регламента. При наличии такого согласия лечение оплачивается в объёме, который покрыло бы это учреждение по месту жительства, то есть по правилам своей страны, а не автоматически в полном объёме чешского лечебного пакета. Размещение, питание и проезд гость в любом случае оплачивает сам. Правило касается только государственного обязательного страхования конкретной страны ЕС или ЕЭП — не любого полиса, названного «европейским».',
+          'Регламент (ЕС) № 883/2004 позволяет пройти запланированное лечение в другой стране ЕС или ЕЭП, если компетентное учреждение по месту страхования заранее выдаёт согласие — форма S2 согласно статье 20 Регламента. При наличии такого согласия лечение предоставляется по чешским правилам: пациент вспомогательно регистрируется в чешской страховой компании, предъявляет форму S2 и получает разрешённое лечение без прямой оплаты, доплачивая лишь то, что платит и чешский застрахованный, — регуляционный сбор или услуги сверх стандарта. Поэтому объём определяется тем, что чешская система предоставляет по разрешённому лечению: комплексное курортное лечение включает размещение и питание, долевое — нет. Проезд гость оплачивает сам. Правило касается только государственного обязательного страхования конкретной страны ЕС или ЕЭП — не любого полиса, названного «европейским».',
         steps: [
           'Уточнить у своего компетентного учреждения (обычно это страховая компания или касса по месту жительства), покрывает ли она плановое лечение за рубежом и на каких условиях.',
           'Получить у лечащего врача направление с обоснованием медицинской необходимости лечения.',
@@ -449,6 +454,11 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
         title: 'Your Europe — плановое лечение в другой стране ЕС',
         url: 'https://europa.eu/youreurope/citizens/health/planned-healthcare/right-to-treatment/index_en.htm',
         note: 'Официальная информация ЕС о процедуре предварительного согласия, о форме S2 и о том, что проезд и проживание остаются расходами пациента. Страница на английском языке.',
+      },
+      {
+        title: 'Kancelář zdravotního pojištění — Plánovaná péče se souhlasem zdravotní pojišťovny',
+        url: 'https://kancelarzp.cz/en/planned-health-care-in-cz/planned-healthcare-with-a-consent-of-hif/',
+        note: 'Чешское национальное контактное бюро: порядок при форме S2 — вспомогательная регистрация, лечение без прямой оплаты, доплата только того, что платит чешский застрахованный. Страница на английском языке.',
       },
       {
         title: 'Закон № 565/1990 Сб., о местных сборах, в действующей редакции',
