@@ -6,6 +6,7 @@
  */
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import ArticleSources from '@/components/ArticleSources.astro'
+import Pic from '@/components/Pic.astro'
 import type { Locale } from '@/i18n/config'
 import type { InfoContent } from '@/data/spaInfoPages'
 import { t } from '@/i18n/ui'
@@ -54,6 +55,16 @@ const faqHeading = { de: 'Häufige Fragen', en: 'Frequently asked questions', cs
             </li>
           ))}
         </ul>
+      )}
+      {s.image && (
+      <figure class="m-0 mt-6 overflow-hidden" style="border-radius: var(--radius-card);">
+        <Pic
+          src={s.image.src}
+          alt={s.image.alt}
+          class="w-full h-56 md:h-72 object-cover"
+          sizes="(max-width: 768px) 100vw, 800px"
+        />
+      </figure>
       )}
     </section>
   ))}

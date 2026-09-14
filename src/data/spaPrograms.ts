@@ -32,6 +32,12 @@ export interface SuperiorProgram {
   body: string
 }
 
+/** Fotografie u sekce. Alt musí být v jazyce stránky, ne převzatý. */
+export interface Figure {
+  src: string
+  alt: string
+}
+
 export interface ProgramSource {
   title: string
   url: string
@@ -50,6 +56,8 @@ export interface ProgramsContent {
   commonBody: string
   staysHeading: string
   stays: StayType[]
+  /** Fotografie ke třem sekcím, které se dají ukázat: pobyty, procedury, Nové Lázně. */
+  images?: { stays?: Figure; menu?: Figure; superior?: Figure }
   /**
    * Poznamka pod nadpisem prehledu. Nese upresneni, ze nejkratsi delka
    * pobytu se lisi podle domu — cisla v kartach plati pro obvyklou nabidku.
@@ -96,6 +104,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     lead: 'Различие между лечебными пакетами определяется прежде всего одной цифрой: сколько процедур за одну ночь размещения включено в стоимость. От этого зависит, идёт ли речь скорее об отдыхе или о лечении под руководством врача. Цены здесь намеренно не указаны — они зависят от отеля, категории номера и сезона и относятся к странице бронирования.',
     commonHeading: 'Что входит в любое лечебное пребывание',
     commonBody: 'В лечебное пребывание входят проживание с полупансионом, первичный и заключительный врачебный осмотр, письменное заключение, назначенные процедуры и питьевой курс у минеральных источников. Более короткое пребывание для отдыха возможно и без врачебного осмотра; тогда это не лечебное пребывание, а wellness-пребывание с отдельными процедурами.',
+    images: {
+      stays: { src: '/images/library/mineral-bath/co2-apparatus-tub.jpg', alt: 'Гость лежит в минеральной ванне в историческом зале, облицованном плиткой' },
+      menu: { src: '/images/library/treatments/peat-wrap-back.jpg', alt: 'Торфяное обёртывание на верхней части спины лежащего гостя' },
+      superior: { src: '/images/partners/roman-baths-hero.jpg', alt: 'Бассейн Римских бань в отеле Nové Lázně с мраморными колоннами и сводчатым потолком' },
+    },
     staysHeading: 'Пакеты в сравнении',
     staysNote:
       'Указанные сроки относятся к обычному предложению мариансколазеньских домов. Минимальная продолжительность зависит от отеля и пакета: в отеле Ensana Butterfly лечебные пребывания начинаются уже от пяти ночей, а интенсивное лечебное пребывание — от шести. Актуальную границу для конкретного дома уточните у оператора.',
@@ -262,6 +275,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     lead: 'Rozdíl mezi léčebnými pobyty je především v jednom čísle: kolik procedur na noc je v ceně zahrnuto. Od toho se odvíjí, jestli je pobyt spíš odpočinkový, nebo jde o léčbu vedenou lékařem. Ceny zde záměrně nejsou uvedeny — liší se podle domu, kategorie pokoje a sezóny a patří na rezervační stránku.',
     commonHeading: 'Co má společné každý léčebný pobyt',
     commonBody: 'K léčebnému pobytu patří ubytování s polopenzí, vstupní a výstupní lékařská prohlídka, písemná závěrečná zpráva, předepsané procedury a pitná kúra u minerálních pramenů. Kratší odpočinkový pobyt existuje i bez lékařské prohlídky; pak ale nejde o léčebný pobyt, ale o wellness pobyt s jednotlivými procedurami.',
+    images: {
+      stays: { src: '/images/library/mineral-bath/co2-apparatus-tub.jpg', alt: 'Host leží v minerální koupeli ve vaně v historické kachlíkové lázeňské místnosti' },
+      menu: { src: '/images/library/treatments/peat-wrap-back.jpg', alt: 'Rašelinový zábal nanesený na horní část zad ležícího hosta' },
+      superior: { src: '/images/partners/roman-baths-hero.jpg', alt: 'Bazén Římských lázní v hotelu Nové Lázně s mramorovými sloupy a klenutým stropem' },
+    },
     staysHeading: 'Pobyty v přehledu',
     staysNote:
       'Uvedené délky platí pro obvyklou nabídku mariánskolázeňských domů. Nejkratší možná délka se ale liší podle hotelu a balíčku: v hotelu Ensana Butterfly začínají léčebné pobyty už od pěti nocí a intenzivní léčebný pobyt od šesti. Aktuální hranici pro konkrétní dům najdete u provozovatele.',
@@ -431,6 +449,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     commonHeading: 'Was jeder Behandlungsaufenthalt enthält',
     commonBody:
       'Zu einem Behandlungsaufenthalt gehören die Unterkunft mit Halbpension, die ärztliche Eingangs- und Abschlussuntersuchung, der schriftliche Abschlussbericht, die verordneten Anwendungen und die Trinkkur an den Mineralquellen. Den kürzeren Erholungsaufenthalt gibt es auch ohne ärztliche Untersuchung; dann ist es kein Behandlungsaufenthalt, sondern ein Wellnessaufenthalt mit einzelnen Anwendungen.',
+    images: {
+      stays: { src: '/images/library/mineral-bath/co2-apparatus-tub.jpg', alt: 'Ein Gast liegt im Mineralbad in einer Wanne in einem historischen, gekachelten Baderaum' },
+      menu: { src: '/images/library/treatments/peat-wrap-back.jpg', alt: 'Eine Moorpackung auf dem oberen Rücken eines liegenden Gastes' },
+      superior: { src: '/images/partners/roman-baths-hero.jpg', alt: 'Das Becken der Römischen Bäder im Haus Nové Lázně mit Marmorsäulen und Gewölbedecke' },
+    },
     staysHeading: 'Die Pakete im Vergleich',
     staysNote:
       'Die genannten Dauern gelten für das übliche Angebot der Marienbader Häuser. Die Mindestdauer hängt jedoch vom Hotel und vom Paket ab: Im Hotel Ensana Butterfly beginnen die Behandlungsaufenthalte bereits ab fünf Nächten, der intensive Behandlungsaufenthalt ab sechs. Die aktuelle Untergrenze für ein bestimmtes Haus erfahren Sie beim Betreiber.',
@@ -608,6 +631,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     commonHeading: 'What every treatment stay includes',
     commonBody:
       'A treatment stay includes accommodation with half board, the initial and final medical examination, the written final report, the prescribed procedures and the drinking cure at the mineral springs. The shorter relaxation stay is also available without a medical examination; in that case it is not a treatment stay but a wellness stay with individual procedures.',
+    images: {
+      stays: { src: '/images/library/mineral-bath/co2-apparatus-tub.jpg', alt: 'A guest lying in a mineral bath in a tub in a historic tiled bath room' },
+      menu: { src: '/images/library/treatments/peat-wrap-back.jpg', alt: 'A peat wrap applied to the upper back of a guest lying down' },
+      superior: { src: '/images/partners/roman-baths-hero.jpg', alt: 'The pool of the Roman Baths at the Nové Lázně house, with marble columns and a vaulted ceiling' },
+    },
     staysHeading: 'The packages compared',
     staysNote:
       'The durations given apply to the usual offer of the Marienbad houses. The minimum length depends on the hotel and the package: at the Ensana Butterfly, treatment stays start from five nights and the intensive treatment stay from six. Ask the operator for the current minimum at a particular house.',
