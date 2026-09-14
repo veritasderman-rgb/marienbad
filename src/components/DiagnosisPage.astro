@@ -9,6 +9,7 @@
  */
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import Pic from '@/components/Pic.astro'
+import { diagnosisIcons } from '@/data/diagnosisIcons'
 import ArticleSources from '@/components/ArticleSources.astro'
 import { indications } from '@/data/indications'
 import { diagnoses, diagnosisHref, treatmentBase, type Diagnosis } from '@/data/treatmentFor'
@@ -72,7 +73,14 @@ const breadcrumbs = [
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
   <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-16">
     <Breadcrumbs items={breadcrumbs} locale={locale} />
-    <p class="text-turquoise-300 text-sm font-semibold uppercase tracking-wider mb-3">{ui.hub}</p>
+    <div class="flex items-center gap-3 mb-3">
+      {diagnosisIcons[diagnosis.id] && (
+        <span class="w-11 h-11 rounded-xl bg-white/12 text-turquoise-300 flex items-center justify-center shrink-0">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={diagnosisIcons[diagnosis.id]} />
+        </span>
+      )}
+      <p class="text-turquoise-300 text-sm font-semibold uppercase tracking-wider m-0">{ui.hub}</p>
+    </div>
     <h1 class="font-heading text-3xl md:text-5xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{c.h1}</h1>
     <p class="text-white/85 text-lg md:text-xl leading-relaxed max-w-3xl">{c.lead}</p>
   </div>
@@ -127,13 +135,11 @@ const breadcrumbs = [
   </section>
 
   {diagnosis.image2 && diagnosis.imageAlt2 && (
-    <figure class="not-prose m-0 overflow-hidden" style="border-radius: var(--radius-card);">
-      <Pic
-        src={diagnosis.image2}
-        alt={diagnosis.imageAlt2[locale]}
-        class="w-full h-56 md:h-80 object-cover block"
-        sizes="(max-width: 768px) 100vw, 900px"
-      />
+    <figure class="not-prose m-0 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center bg-beige-100 border border-beige-200 p-5 md:p-6" style="border-radius: var(--radius-card);">
+      <figcaption class="m-0 text-beige-900 text-base leading-relaxed md:order-1">{diagnosis.imageAlt2[locale]}</figcaption>
+      <div class="overflow-hidden rounded-xl md:order-2">
+        <Pic src={diagnosis.image2} alt={diagnosis.imageAlt2[locale]} class="w-full h-auto block" sizes="(max-width: 768px) 100vw, 420px" />
+      </div>
     </figure>
   )}
 
