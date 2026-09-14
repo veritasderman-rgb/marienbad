@@ -6,6 +6,7 @@ import MarkdocRenderer from '@/components/MarkdocRenderer.astro'
 import ArticleSources from '@/components/ArticleSources.astro'
 import { getPage } from '@/content/reader'
 import { t } from '@/i18n/ui'
+import { medicalTherapyPage } from '@/lib/medicalSchema'
 
 const locale = 'ru' as const
 const page = await getPage('ru-co2-terapiya')
@@ -14,9 +15,24 @@ const breadcrumbs = [
   { label: 'Минеральные источники', href: `/${locale}/mineralnye-istochniki` },
   { label: 'CO₂-терапия' },
 ]
+
+const schema = medicalTherapyPage({
+  locale,
+  path: '/ru/co2-terapiya',
+  name: page?.title ?? '',
+  description: page?.metaDescription ?? '',
+  indications: [
+    'Peripheral arterial disease',
+    'Hypertension',
+    'Intermittent claudication',
+    'Menopausal syndrome',
+    'Chronic wounds',
+  ],
+  lastReviewed: page?.medicalReviewDate,
+})
 ---
 
-<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }}>
+<Base locale={locale} section="mineral-springs" title={page?.metaTitle ?? ""} description={page?.metaDescription ?? ""} alternateUrls={{ de: '/de/co2-therapie', en: '/en/co2-therapy', cs: '/cs/co2-terapie', ru: '/ru/co2-terapiya' }} schema={schema}>
   <FaqSchema rawBody={page?.rawBody} />
   <PillarPage locale={locale} title={page?.title ?? ""} description={page?.metaDescription ?? ""} breadcrumbs={breadcrumbs}>
     { page?.body && <MarkdocRenderer content={page.body} /> }
