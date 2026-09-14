@@ -82,6 +82,324 @@ const LAZNEML = 'https://lazneml.cz/komplexni-lazenska-pece/'
 const ENSANA_OFFERS = 'https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne'
 
 export const programmes: Partial<Record<Locale, ProgramsContent>> = {
+  ru: {
+    navLabel: 'Лечебные пакеты и программы',
+    title: 'Лечебные пакеты в Марианских Лазнях: процедуры, срок, состав',
+    h1: 'Какие есть лечебные пакеты и что в них входит',
+    metaTitle: 'Лечебные пакеты в Марианских Лазнях — сколько процедур?',
+    metaDescription: 'Сколько процедур в сутки, что входит в пакет и какие есть дополнительные программы — обзор лечебных пакетов в Марианских Лазнях.',
+    lead: 'Различие между лечебными пакетами определяется прежде всего одной цифрой: сколько процедур за одну ночь размещения включено в стоимость. От этого зависит, идёт ли речь скорее об отдыхе или о лечении под руководством врача. Цены здесь намеренно не указаны — они зависят от отеля, категории номера и сезона и относятся к странице бронирования.',
+    commonHeading: 'Что входит в любое лечебное пребывание',
+    commonBody: 'В лечебное пребывание входят проживание с полупансионом, первичный и заключительный врачебный осмотр, письменное заключение, назначенные процедуры и питьевой курс у минеральных источников. Более короткое пребывание для отдыха возможно и без врачебного осмотра; тогда это не лечебное пребывание, а wellness-пребывание с отдельными процедурами.',
+    staysHeading: 'Пакеты в сравнении',
+    stays: [
+      {
+        name: 'Короткое пребывание для отдыха',
+        length: '2–6 ночей',
+        treatments: '1 процедура за ночь',
+        includes: [
+          'Проживание с полупансионом, то есть завтраком и ужином',
+          'Одна процедура за каждую ночь размещения, из фиксированного перечня',
+          'Без первичного врачебного осмотра — поэтому это не лечебное пребывание',
+        ],
+        forWhom: 'Для длинных выходных или первого знакомства с курортом, без медицинской программы.',
+      },
+      {
+        name: 'Интенсивное курортное пребывание',
+        length: 'от 7 ночей',
+        treatments: '2 процедуры за ночь',
+        includes: [
+          'Проживание с полупансионом',
+          'Первичный и заключительный врачебный осмотр с письменным заключением',
+          'Базовое лабораторное обследование',
+          'Питьевой курс по назначению врача',
+        ],
+        forWhom: 'Для гостей, которые хотят лечение под руководством врача, но с необременительной дневной программой.',
+      },
+      {
+        name: 'Традиционное курортное пребывание',
+        length: 'от 7 ночей',
+        treatments: '3 процедуры за ночь',
+        includes: [
+          'Проживание с полупансионом',
+          'Первичный и заключительный врачебный осмотр с письменным заключением',
+          'Базовое лабораторное обследование',
+          'Питьевой курс по назначению врача',
+          'Дежурная служба врача и медсестёр',
+        ],
+        forWhom: 'Классический формат лечения в Марианских Лазнях, привычный путь для большинства показаний.',
+      },
+      {
+        name: 'Интенсивное лечебное пребывание',
+        length: 'от 7 ночей',
+        treatments: '4 процедуры за ночь',
+        includes: [
+          'Проживание с полупансионом',
+          'Первичный и заключительный врачебный осмотр с письменным заключением',
+          'Базовое лабораторное обследование',
+          'Питьевой курс по назначению врача',
+          'Дежурная служба врача и медсестёр',
+        ],
+        forWhom: 'Для выраженных жалоб и для реабилитации после операций, когда программа должна быть плотной.',
+      },
+    ],
+    decidesHeading: 'Кто определяет, какие процедуры вы получите',
+    decidesBody: 'Пакет определяет, сколько процедур за ночь входит в программу — а какие именно это процедуры, решает исключительно курортный врач при первичном осмотре, на основании диагноза и вашего текущего состояния. Таким образом, вы не можете составить программу самостоятельно, и именно в этом отличие от wellness-пребывания. Если какая-то процедура вам не подходит, план меняют; в этом случае сообщите об этом своему курортному врачу.',
+    menuHeading: 'Из чего выбирает врач',
+    menuGroups: [
+      {
+        name: 'Процедуры на основе природных лечебных средств',
+        items: 'Минеральные ванны, сухие газовые ванны в «газе Марии», газовые инъекции, торфяные обёртывания (до трёх в неделю), ингаляции, пребывание и движение на свежем воздухе.',
+      },
+      {
+        name: 'Терапевтическая реабилитация',
+        items: 'Индивидуальная или групповая лечебная физкультура, двигательная терапия в бассейне, физиотерапия.',
+      },
+      {
+        name: 'Другие процедуры',
+        items: 'Массаж (до трёх раз в неделю), лимфодренаж, электротерапия, магнитотерапия, лазер, криотерапия, ультразвук, парафиновые обёртывания, кислородная терапия, Lavatherm.',
+      },
+    ],
+    labHeading: 'Что включает базовое лабораторное обследование',
+    labBody: 'Биохимический анализ крови на глюкозу, холестерин и другие показатели жиров крови, показатели функции печени, функции почек и мочевую кислоту, а также анализ мочи. Оно включено во все пребывания от семи ночей и служит курортному врачу основой для составления плана лечения.',
+    superiorHeading: 'Программы в отеле Нове Лазне',
+    superiorLead: 'Помимо лечебных пакетов, в отеле Нове Лазне действуют четыре программы, которые начинаются с подробной диагностики. Все они включают Medical Check-Up и строятся на его основе.',
+    superior: [
+      {
+        name: 'Medical Check-Up',
+        forWhom: 'Для гостей, которые сначала хотят узнать, в каком состоянии они находятся.',
+        body: 'Диагностическая программа с комплексным обследованием текущего состояния здоровья. Её цель — выявить возможные риски и ранние признаки заболеваний. На основании лабораторных показателей, аппаратных исследований и консультации по питанию врачебная команда затем составляет индивидуальный план лечения.',
+      },
+      {
+        name: 'De-Stress',
+        forWhom: 'Для гостей, испытывающих длительную нагрузку.',
+        body: 'Включает Medical Check-Up и дополняет его оценкой текущего уровня стресса и его влияния на здоровье. Затем врачебная команда составляет индивидуальный план процедур; к этому добавляется обучение тому, как распознавать факторы стресса и справляться с ними. Такая программа не заменяет психотерапию и психиатрическое лечение.',
+      },
+      {
+        name: 'Healthy Aging',
+        forWhom: 'Для гостей, для которых важно качество жизни в пожилом возрасте.',
+        body: 'Включает Medical Check-Up, после которого следует индивидуально составленная программа с местными природными лечебными средствами. В центре внимания — привычки, которые можно продолжать дома, и устойчивое равновесие между работой и отдыхом.',
+      },
+      {
+        name: 'Weight Loss',
+        forWhom: 'Для гостей с избыточным весом, под врачебным наблюдением.',
+        body: 'Включает Medical Check-Up и работает с пищевыми привычками и образом жизни. Основание для этого медицинское: избыточный вес и ожирение нагружают опорно-двигательный аппарат и относятся к факторам риска для сердца и системы кровообращения. Программу сопровождает врачебная команда, с принципами сбалансированного питания и большей физической активности в повседневной жизни.',
+      },
+    ],
+    disclaimer: 'Какой пакет подходит вашему диагнозу и какие процедуры в нём целесообразны, решает курортный врач при первичном осмотре. Эта страница описывает структуру пребываний и не заменяет консультацию врача. Цены, наличие мест и актуальные названия пакетов вы найдёте у оператора.',
+    faqs: [
+      {
+        question: 'Сколько процедур в день получают в Марианских Лазнях?',
+        answer: 'Это зависит от забронированного пакета: короткое пребывание для отдыха включает одну процедуру за ночь размещения, интенсивное курортное пребывание — две, традиционное курортное пребывание — три, а интенсивное лечебное пребывание — четыре. Какие именно это процедуры, определяет курортный врач после первичного осмотра.',
+      },
+      {
+        question: 'Что входит в лечебный пакет?',
+        answer: 'В лечебное пребывание входят: проживание с полупансионом, первичный и заключительный врачебный осмотр, письменное заключение, базовое лабораторное обследование, назначенные процедуры и питьевой курс у минеральных источников. Начиная с традиционного пребывания добавляется дежурная служба врача и медсестёр. Проезд и курортный сбор гость оплачивает отдельно.',
+      },
+      {
+        question: 'Какова минимальная продолжительность курортного пребывания?',
+        answer: 'Лечебные пребывания начинаются от семи ночей, поскольку только тогда имеет смысл серия процедур под руководством врача; профессиональным нижним порогом бальнеотерапии считаются не менее десяти процедур за не менее чем десять дней. Более короткие пребывания продолжительностью от двух до шести ночей существуют как формат отдыха с одной процедурой за ночь, но без первичного врачебного осмотра.',
+      },
+      {
+        question: 'Могу ли я сам выбирать процедуры?',
+        answer: 'При лечебном пребывании — нет: количество и состав процедур определяет исключительно курортный врач после первичного осмотра, и именно это отличает лечение от wellness-пребывания. При коротком пребывании для отдыха вы, напротив, выбираете из фиксированного списка. Если назначенная процедура вам не подходит, сообщите об этом своему курортному врачу, чтобы план изменили.',
+      },
+      {
+        question: 'В чём разница между лечением и wellness-пребыванием?',
+        answer: 'Лечение предполагает врачебный осмотр: курортный врач ставит диагноз, назначает индивидуальную программу, наблюдает за её ходом и фиксирует результат в письменном виде. Wellness-пребывание — это свободно забронированная поездка для отдыха с процедурами по собственному вкусу, без медицинских показаний и без наблюдения врача.',
+      },
+    ],
+    sources: [
+      {
+        title: 'Léčebné lázně Mariánské Lázně — комплексное курортное лечение',
+        url: 'https://lazneml.cz/komplexni-lazenska-pece/',
+        note: 'Страница оператора об объёме курортного лечения. Текст на чешском языке.',
+      },
+      {
+        title: 'Ensana Health Spa Hotels — Марианские Лазни, актуальные пакеты и цены',
+        url: 'https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne',
+        note: 'Страница бронирования оператора с актуальными названиями пакетов, количеством процедур за ночь и ценами.',
+      },
+    ],
+    related: [
+      {
+        label: 'Курортное лечение по диагнозу',
+        href: '/ru/kurortnoe-lechenie',
+      },
+      {
+        label: 'Советы курортным гостям',
+        href: '/ru/sovety-kurortnym-gostyam',
+      },
+      {
+        label: 'Врачебная команда',
+        href: '/ru/vrachebnaya-komanda',
+      },
+      {
+        label: 'Оплата лечения',
+        href: '/ru/oplata-kurortnogo-lecheniya',
+      },
+    ],
+    reviewDate: '2026-09-14',
+  },
+  cs: {
+    navLabel: 'Léčebné pobyty a programy',
+    title: 'Léčebné pobyty v Mariánských Lázních: procedury, délka, obsah',
+    h1: 'Jaké léčebné pobyty existují a co je v nich zahrnuto',
+    metaTitle: 'Léčebné pobyty v Mariánských Lázních – kolik procedur?',
+    metaDescription: 'Kolik procedur na noc, co je v pobytu zahrnuto a jaké existují nadstandardní programy — léčebné pobyty v Mariánských Lázních v přehledu.',
+    lead: 'Rozdíl mezi léčebnými pobyty je především v jednom čísle: kolik procedur na noc je v ceně zahrnuto. Od toho se odvíjí, jestli je pobyt spíš odpočinkový, nebo jde o léčbu vedenou lékařem. Ceny zde záměrně nejsou uvedeny — liší se podle domu, kategorie pokoje a sezóny a patří na rezervační stránku.',
+    commonHeading: 'Co má společné každý léčebný pobyt',
+    commonBody: 'K léčebnému pobytu patří ubytování s polopenzí, vstupní a výstupní lékařská prohlídka, písemná závěrečná zpráva, předepsané procedury a pitná kúra u minerálních pramenů. Kratší odpočinkový pobyt existuje i bez lékařské prohlídky; pak ale nejde o léčebný pobyt, ale o wellness pobyt s jednotlivými procedurami.',
+    staysHeading: 'Pobyty v přehledu',
+    stays: [
+      {
+        name: 'Krátký odpočinkový pobyt',
+        length: '2 až 6 nocí',
+        treatments: '1 procedura na noc',
+        includes: [
+          'Ubytování s polopenzí, tedy snídaní a večeří',
+          'Jedna procedura na každou noc, z pevně stanovené nabídky',
+          'Bez vstupní lékařské prohlídky — proto nejde o léčebný pobyt',
+        ],
+        forWhom: 'Pro dlouhý víkend nebo první seznámení s lázeňským místem, bez léčebného programu.',
+      },
+      {
+        name: 'Intenzivní lázeňský pobyt',
+        length: 'od 7 nocí',
+        treatments: '2 procedury na noc',
+        includes: [
+          'Ubytování s polopenzí',
+          'Vstupní a výstupní lékařská prohlídka s písemnou závěrečnou zprávou',
+          'Základní laboratorní vyšetření',
+          'Pitná kúra podle lékařského předpisu',
+        ],
+        forWhom: 'Pro hosty, kteří chtějí kúru vedenou lékařem, ale s mírnějším denním programem.',
+      },
+      {
+        name: 'Tradiční lázeňský pobyt',
+        length: 'od 7 nocí',
+        treatments: '3 procedury na noc',
+        includes: [
+          'Ubytování s polopenzí',
+          'Vstupní a výstupní lékařská prohlídka s písemnou závěrečnou zprávou',
+          'Základní laboratorní vyšetření',
+          'Pitná kúra podle lékařského předpisu',
+          'Lékařská a ošetřovatelská pohotovostní služba',
+        ],
+        forWhom: 'Klasická podoba mariánskolázeňské kúry, obvyklá cesta pro většinu indikací.',
+      },
+      {
+        name: 'Intenzivní léčebný pobyt',
+        length: 'od 7 nocí',
+        treatments: '4 procedury na noc',
+        includes: [
+          'Ubytování s polopenzí',
+          'Vstupní a výstupní lékařská prohlídka s písemnou závěrečnou zprávou',
+          'Základní laboratorní vyšetření',
+          'Pitná kúra podle lékařského předpisu',
+          'Lékařská a ošetřovatelská pohotovostní služba',
+        ],
+        forWhom: 'Pro výrazné obtíže a pro rehabilitaci po operaci, když má být program hustý.',
+      },
+    ],
+    decidesHeading: 'Kdo určuje, jaké procedury dostanete',
+    decidesBody: 'Pobyt určuje, kolik procedur na noc je v ceně zahrnuto — které to konkrétně jsou, rozhoduje výhradně lázeňský lékař při vstupní prohlídce, podle diagnózy a vašeho aktuálního stavu. Program si tedy nemůžete složit sami, a to je rozdíl oproti wellness pobytu. Pokud vám některá procedura nevyhovuje, plán se změní; řekněte to svému lázeňskému lékaři.',
+    menuHeading: 'Z čeho lékař vybírá',
+    menuGroups: [
+      {
+        name: 'Procedury z přírodních léčivých zdrojů',
+        items: 'Minerální koupele, suché plynové koupele v Mariině plynu, plynové injekce, slatinné zábaly (až tři týdně), inhalace, pobyt a pohyb v přírodě.',
+      },
+      {
+        name: 'Léčebná rehabilitace',
+        items: 'Individuální nebo skupinový léčebný tělocvik, pohybová terapie v bazénu, fyzioterapie.',
+      },
+      {
+        name: 'Další procedury',
+        items: 'Masáže (až tři týdně), lymfodrenáž, elektroterapie, magnetoterapie, laser, kryoterapie, ultrazvuk, parafínové zábaly, kyslíková terapie, Lavatherm.',
+      },
+    ],
+    labHeading: 'Co obsahuje základní laboratorní vyšetření',
+    labBody: 'Biochemické vyšetření krve se stanovením krevního cukru, cholesterolu a dalších krevních tuků, jaterních hodnot, funkce ledvin a kyseliny močové, k tomu vyšetření moči. Je součástí všech pobytů od sedmi nocí a slouží lázeňskému lékaři jako podklad pro léčebný plán.',
+    superiorHeading: 'Programy v hotelu Nové Lázně',
+    superiorLead: 'Nad rámec léčebných pobytů nabízí hotel Nové Lázně čtyři programy, které začínají podrobnou diagnostikou. Všechny obsahují Medical Check-Up a na něm dále staví.',
+    superior: [
+      {
+        name: 'Medical Check-Up',
+        forWhom: 'Pro hosty, kteří chtějí nejdřív zjistit, na čem jsou.',
+        body: 'Diagnostický program s komplexním vyšetřením aktuálního zdravotního stavu. Cílem je odhalit možná rizika a raná znamení onemocnění. Na základě laboratorních hodnot, přístrojových vyšetření a nutričního poradenství pak lékařský tým sestaví individuální léčebný plán.',
+      },
+      {
+        name: 'De-Stress',
+        forWhom: 'Pro hosty pod dlouhotrvající zátěží.',
+        body: 'Zahrnuje Medical Check-Up a doplňuje ho o posouzení aktuální úrovně stresu a jeho dopadu na zdraví. Lékařský tým na základě toho sestaví individuální plán procedur; k tomu patří i vedení k rozpoznávání stresových faktorů a ke zvládání zátěže. Takový program nenahrazuje psychoterapii ani psychiatrickou léčbu.',
+      },
+      {
+        name: 'Healthy Aging',
+        forWhom: 'Pro hosty, kterým jde o kvalitu života ve vyšším věku.',
+        body: 'Zahrnuje Medical Check-Up, po kterém následuje individuálně sestavený program s místními přírodními léčivými zdroji. Důraz je na návycích, které lze udržet i doma, a na udržitelné rovnováze mezi prací a odpočinkem.',
+      },
+      {
+        name: 'Weight Loss',
+        forWhom: 'Pro hosty s nadváhou, pod lékařským dohledem.',
+        body: 'Zahrnuje Medical Check-Up a pracuje na stravovacích návycích a životním stylu. Pozadí je medicínské: nadváha a obezita zatěžují pohybový aparát a patří k rizikovým faktorům srdce a oběhu. Program doprovází lékařský tým, se zásadami vyvážené stravy a více pohybu v běžném dni.',
+      },
+    ],
+    disclaimer: 'Který pobyt se hodí k vaší diagnóze a jaké procedury v něm mají smysl, rozhoduje lázeňský lékař při vstupní prohlídce. Tato stránka popisuje strukturu pobytů a nenahrazuje lékařskou konzultaci. Ceny, dostupnost a aktuální názvy pobytů najdete u provozovatele.',
+    faqs: [
+      {
+        question: 'Kolik procedur denně dostanete v Mariánských Lázních?',
+        answer: 'Záleží na zvoleném pobytu: krátký odpočinkový pobyt obsahuje jednu proceduru na noc, intenzivní lázeňský pobyt dvě, tradiční lázeňský pobyt tři a intenzivní léčebný pobyt čtyři. Které procedury to konkrétně budou, určí lázeňský lékař po vstupní prohlídce.',
+      },
+      {
+        question: 'Co je v léčebném pobytu zahrnuto?',
+        answer: 'U léčebného pobytu: ubytování s polopenzí, vstupní a výstupní lékařská prohlídka, písemná závěrečná zpráva, základní laboratorní vyšetření, předepsané procedury a pitná kúra u minerálních pramenů. Od tradičního pobytu přibývá lékařská a ošetřovatelská pohotovostní služba. Cestu a lázeňský poplatek platí host samostatně.',
+      },
+      {
+        question: 'Jak dlouho musí trvat léčebný pobyt minimálně?',
+        answer: 'Léčebné pobyty začínají na sedmi nocích, protože až tehdy má smysl lékařem vedená série procedur; za odbornou spodní hranici balneoterapie se považuje nejméně deset procedur během nejméně deseti dnů. Kratší pobyty od dvou do šesti nocí existují jako odpočinkový formát s jednou procedurou na noc, ale bez vstupní lékařské prohlídky.',
+      },
+      {
+        question: 'Můžu si procedury vybrat sám?',
+        answer: 'U léčebného pobytu ne: počet a skladbu určuje výhradně lázeňský lékař po vstupní prohlídce, a právě to odlišuje kúru od wellness pobytu. U krátkého odpočinkového pobytu naopak vybíráte z pevného seznamu. Pokud vám předepsaná procedura nevyhovuje, řekněte to svému lázeňskému lékaři, aby se plán změnil.',
+      },
+      {
+        question: 'Jaký je rozdíl mezi kúrou a wellness pobytem?',
+        answer: 'Kúra předpokládá lékařskou prohlídku: lázeňský lékař stanoví diagnózu, předepíše individuální program, sleduje jeho průběh a výsledek písemně zaznamená. Wellness pobyt je volně zarezervovaná odpočinková cesta s procedurami podle vlastního vkusu, bez lékařské indikace a bez lékařského dohledu.',
+      },
+    ],
+    sources: [
+      {
+        title: 'Léčebné lázně Mariánské Lázně — komplexní lázeňská péče',
+        url: 'https://lazneml.cz/komplexni-lazenska-pece/',
+        note: 'Stránka provozovatele o rozsahu lázeňské léčby.',
+      },
+      {
+        title: 'Ensana Health Spa Hotels — Mariánské Lázně, aktuální pobyty a ceny',
+        url: 'https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne',
+        note: 'Rezervační stránka provozovatele s aktuálními názvy pobytů, počtem procedur na noc a cenami.',
+      },
+    ],
+    related: [
+      {
+        label: 'Lázeňská léčba podle diagnózy',
+        href: '/cs/lazenska-lecba',
+      },
+      {
+        label: 'Rady pro lázeňské hosty',
+        href: '/cs/rady-pro-lazenske-hosty',
+      },
+      {
+        label: 'Lékařský tým',
+        href: '/cs/lekarsky-tym',
+      },
+      {
+        label: 'Lázně hrazené pojišťovnou',
+        href: '/cs/lazne-s-pojistovnou',
+      },
+    ],
+    reviewDate: '2026-09-14',
+  },
   de: {
     navLabel: 'Kurpakete und Programme',
     title: 'Kurpakete in Marienbad: Anwendungen, Dauer, Inhalt',
