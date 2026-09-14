@@ -1,0 +1,24 @@
+---
+import Base from '@/layouts/Base.astro'
+import ProgramsPage from '@/components/ProgramsPage.astro'
+import DiagnosisFaqSchema from '@/components/DiagnosisFaqSchema.astro'
+import { programmes, programmesAlternates } from '@/data/spaPrograms'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const c = programmes[locale]
+---
+
+{c && (
+  <Base
+    locale={locale}
+    section="spa-programmes"
+    title={c.metaTitle}
+    description={c.metaDescription}
+    alternateUrls={programmesAlternates()}
+  >
+    <DiagnosisFaqSchema faqs={c.faqs} />
+    <ProgramsPage locale={locale} content={c} />
+  </Base>
+)}

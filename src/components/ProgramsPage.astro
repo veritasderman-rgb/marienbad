@@ -1,0 +1,132 @@
+---
+/**
+ * Stránka „léčebné pobyty a programy“ — jedna šablona pro všechny jazyky.
+ *
+ * Tabulka pobytů stojí nahoře schválně: dotaz, kvůli kterému sem člověk
+ * přijde, zní „kolik procedur denně a co je v ceně“, a odpověď na něj má
+ * být vidět bez posouvání.
+ */
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import ArticleSources from '@/components/ArticleSources.astro'
+import type { Locale } from '@/i18n/config'
+import type { ProgramsContent } from '@/data/spaPrograms'
+import { t } from '@/i18n/ui'
+
+interface Props {
+  locale: Locale
+  content: ProgramsContent
+}
+
+const { locale, content: c } = Astro.props
+
+const faqHeading = { de: 'Häufige Fragen', en: 'Frequently asked questions', cs: 'Časté dotazy', ru: 'Частые вопросы' }[locale]
+---
+
+<section class="relative bg-indigo-700 text-white overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,216,237,0.12)_0%,_transparent_60%)]"></div>
+  <div class="relative container-wide pt-28 pb-14 md:pt-36 md:pb-16">
+    <Breadcrumbs items={[{ label: t(locale, 'nav.home'), href: `/${locale}` }, { label: c.navLabel }]} locale={locale} />
+    <h1 class="font-heading text-3xl md:text-5xl font-bold mb-5 leading-tight" style="font-size: var(--text-h1);">{c.h1}</h1>
+    <p class="text-white/85 text-lg md:text-xl leading-relaxed max-w-3xl">{c.lead}</p>
+  </div>
+</section>
+
+<div class="container-wide py-14 md:py-20 flex flex-col gap-12 max-w-5xl">
+
+  <section class="bg-turquoise-50 border-l-4 border-turquoise-400 px-6 py-6 md:px-8 md:py-7 rounded-r-xl">
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{c.commonHeading}</h2>
+    <p class="text-beige-900 text-base md:text-lg leading-relaxed m-0">{c.commonBody}</p>
+  </section>
+
+  <section>
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-6">{c.staysHeading}</h2>
+    <ul class="grid gap-5 md:grid-cols-2 list-none p-0 m-0">
+      {c.stays.map((s) => (
+        <li class="bg-white border border-beige-200 p-6 flex flex-col gap-3 h-full m-0" style="border-radius: var(--radius-card);">
+          <h3 class="font-heading text-lg font-bold text-indigo-700 m-0">{s.name}</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-lg bg-indigo-700 text-white text-xs font-bold px-2.5 py-1">{s.length}</span>
+            <span class="inline-flex items-center rounded-lg bg-yellow-400 text-indigo-900 text-xs font-bold px-2.5 py-1">{s.treatments}</span>
+          </div>
+          <ul class="flex flex-col gap-2 list-none p-0 m-0">
+            {s.includes.map((item) => (
+              <li class="flex gap-2.5 text-beige-800 text-sm leading-relaxed">
+                <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-turquoise-500 mt-2" aria-hidden="true"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-beige-700 text-sm leading-relaxed m-0 mt-auto pt-2 border-t border-beige-200">{s.forWhom}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">{c.decidesHeading}</h2>
+    <p class="text-beige-800 text-base md:text-lg leading-relaxed">{c.decidesBody}</p>
+  </section>
+
+  <section>
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">{c.menuHeading}</h2>
+    <dl class="grid gap-4 m-0">
+      {c.menuGroups.map((g) => (
+        <div class="bg-beige-100 border border-beige-200 p-5" style="border-radius: var(--radius-card);">
+          <dt class="font-heading font-bold text-indigo-700 mb-2">{g.name}</dt>
+          <dd class="text-beige-800 text-base leading-relaxed m-0">{g.items}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section>
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-4">{c.labHeading}</h2>
+    <p class="text-beige-800 text-base md:text-lg leading-relaxed">{c.labBody}</p>
+  </section>
+
+  <section>
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-3">{c.superiorHeading}</h2>
+    <p class="text-beige-800 text-base md:text-lg leading-relaxed mb-6">{c.superiorLead}</p>
+    <ul class="flex flex-col gap-4 list-none p-0 m-0">
+      {c.superior.map((p) => (
+        <li class="bg-white border border-beige-200 p-6 m-0" style="border-radius: var(--radius-card);">
+          <h3 class="font-heading text-lg font-bold text-indigo-700 mb-1">{p.name}</h3>
+          <p class="text-turquoise-700 text-sm font-semibold mb-3">{p.forWhom}</p>
+          <p class="text-beige-800 text-base leading-relaxed m-0">{p.body}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <p class="text-beige-900 text-base leading-relaxed bg-beige-100 border border-beige-200 px-5 py-4 rounded-xl m-0">{c.disclaimer}</p>
+
+  <section>
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-indigo-700 mb-5">{faqHeading}</h2>
+    <div class="flex flex-col gap-3">
+      {c.faqs.map((faq) => (
+        <details class="group bg-white border border-beige-200 rounded-xl overflow-hidden">
+          <summary class="cursor-pointer list-none px-5 py-4 font-heading font-semibold text-indigo-700 flex items-center justify-between gap-4">
+            <span>{faq.question}</span>
+            <svg class="w-5 h-5 shrink-0 text-turquoise-600 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="px-5 pb-5 text-beige-800 text-base leading-relaxed m-0">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <ArticleSources sources={c.sources} locale={locale} medicalReviewDate={c.reviewDate} />
+
+  <nav aria-label={c.navLabel}>
+    <ul class="flex flex-wrap gap-3 list-none p-0 m-0">
+      {c.related.map((r) => (
+        <li class="m-0">
+          <a href={r.href} class="inline-flex items-center gap-2 bg-white border border-beige-200 px-5 py-2.5 rounded-full text-indigo-700 font-semibold hover:border-turquoise-400 transition-colors">
+            {r.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+</div>

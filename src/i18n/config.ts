@@ -54,6 +54,27 @@ export const routes = {
    * Úhrada lázeňské léčby ze zahraničí. Česky neexistuje: tuzemský pacient má
    * celou sekci `insurance-spa`, kde je totéž podrobněji.
    */
+  /** Skladba léčebných pobytů a nadstandardní programy Nových Lázní. */
+  'spa-programmes': {
+    de: 'kurpakete-und-programme',
+    en: 'treatment-packages',
+    cs: 'lecebne-pobyty-a-programy',
+    ru: 'lechebnye-pakety-i-programmy',
+  },
+  /** Praktické rady pro průběh pobytu, přímo od lékařů provozovatele. */
+  'spa-advice': {
+    de: 'hinweise-fuer-kurgaeste',
+    en: 'advice-for-spa-guests',
+    cs: 'rady-pro-lazenske-hosty',
+    ru: 'sovety-kurortnym-gostyam',
+  },
+  /** Kdo léčbu vede: kvalifikace lékařů a sester, výzkum a ocenění. */
+  'medical-team': {
+    de: 'aerzteteam',
+    en: 'medical-team',
+    cs: 'lekarsky-tym',
+    ru: 'vrachebnaya-komanda',
+  },
   funding: {
     de: 'kur-im-ausland-krankenkasse',
     en: 'paying-for-spa-treatment',
