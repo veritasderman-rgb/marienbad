@@ -53,6 +53,13 @@ export interface DiagnosisContent {
   stay: { heading: string; body: string }
   /** Co doložený výzkum říká. Nepovinné: bez doloženého výstupu se sekce vynechá. */
   evidence?: { heading: string; body: string }
+  /**
+   * Klinická zkušenost a probíhající výzkum. Používá se tam, kde k dané
+   * diagnóze kontrolovaná studie lázeňské léčby zatím není: popíše se, co
+   * se tu tradičně podává a co se právě zkoumá, místo konstatování, že
+   * důkaz chybí.
+   */
+  ongoing?: { heading: string; body: string }
   /** Věta o tom, že o zařazení rozhoduje lázeňský lékař. Povinná. */
   physicianNote: string
   faqs: DiagnosisFaq[]
@@ -780,10 +787,14 @@ export const diagnoses: Diagnosis[] = [
         evidence: {
           heading: 'Was die Studien zeigen',
           body:
-            'Kontrollierte Studien speziell zur Kur nach einer Hüftoperation sind selten. Eine italienische Pilotstudie mit 12 Patienten nach Hüfttotalendoprothese fand nach zwei Wochen kombinierter trockener und wasserbasierter Rehabilitation im Kurbetrieb einen größeren Bewegungsumfang, einen höheren Harris Hip Score und eine bessere körperliche Lebensqualität; die Schmerzstärke änderte sich dabei nicht signifikant (Musumeci et al., 2018, Int J Biometeorol; sehr kleine, unkontrollierte Stichprobe). Eine breiter angelegte italienische Beobachtungsstudie mit 123 Patienten mit degenerativen und postoperativen Erkrankungen des Bewegungsapparats — nicht speziell nach Hüftoperation — fand nach zwölf Übungseinheiten im Thermalwasser über zwei Wochen bessere Werte für Schmerz, Stimmung und Lebensqualität (Maccarone et al., 2022, Int J Biometeorol; ohne Kontrollgruppe, kurzes Follow-up). Beide Studien zeigen kurzfristige Effekte einzelner Kurprogramme, keinen Vergleich mit ambulanter Reha und keinen Langzeitverlauf über die untersuchten Wochen hinaus.',
+            'Eine italienische Pilotstudie mit 12 Patienten nach Hüfttotalendoprothese fand nach zwei Wochen kombinierter trockener und wasserbasierter Rehabilitation im Kurbetrieb einen größeren Bewegungsumfang, einen höheren Harris Hip Score und eine bessere körperliche Lebensqualität; die Schmerzstärke änderte sich dabei nicht signifikant (Musumeci et al., 2018, Int J Biometeorol; sehr kleine, unkontrollierte Stichprobe). Eine breiter angelegte italienische Beobachtungsstudie mit 123 Patienten mit degenerativen und postoperativen Erkrankungen des Bewegungsapparats — nicht speziell nach Hüftoperation — fand nach zwölf Übungseinheiten im Thermalwasser über zwei Wochen bessere Werte für Schmerz, Stimmung und Lebensqualität (Maccarone et al., 2022, Int J Biometeorol; ohne Kontrollgruppe, kurzes Follow-up). Beide Studien zeigen kurzfristige Effekte einzelner Kurprogramme, keinen Vergleich mit ambulanter Reha und keinen Langzeitverlauf über die untersuchten Wochen hinaus.',
         },
         physicianNote:
           'Ob und wann eine Kur nach Ihrer Hüftoperation infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des OP-Berichts und der Freigabe Ihres Operateurs. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Die Nachbehandlung nach einem Hüftgelenkersatz gehört in Marienbad seit Jahrzehnten zum Kernprogramm; die Kurärzte verordnen sie nach Operationsbericht, Freigabe des Operateurs und klinischer Erfahrung. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Wohin zur Kur nach einer Hüftoperation?',
@@ -903,10 +914,14 @@ export const diagnoses: Diagnosis[] = [
         evidence: {
           heading: 'What the studies show',
           body:
-            'Controlled studies specifically on spa treatment after hip replacement are rare. An Italian pilot study of 12 patients after total hip replacement found, after two weeks of combined dry and water-based rehabilitation at a spa, a greater range of motion, a higher Harris Hip Score and better physical quality of life; pain intensity did not change significantly (Musumeci et al., 2018, Int J Biometeorol; a very small, uncontrolled sample). A broader Italian observational study of 123 patients with degenerative and post-operative musculoskeletal conditions — not specific to hip surgery — found better scores for pain, mood and quality of life after twelve exercise sessions in thermal water over two weeks (Maccarone et al., 2022, Int J Biometeorol; no control group, short follow-up). Both studies show short-term effects of individual spa programmes, no comparison with outpatient rehabilitation, and no long-term course beyond the weeks studied.',
+            'An Italian pilot study of 12 patients after total hip replacement found, after two weeks of combined dry and water-based rehabilitation at a spa, a greater range of motion, a higher Harris Hip Score and better physical quality of life; pain intensity did not change significantly (Musumeci et al., 2018, Int J Biometeorol; a very small, uncontrolled sample). A broader Italian observational study of 123 patients with degenerative and post-operative musculoskeletal conditions — not specific to hip surgery — found better scores for pain, mood and quality of life after twelve exercise sessions in thermal water over two weeks (Maccarone et al., 2022, Int J Biometeorol; no control group, short follow-up). Both studies show short-term effects of individual spa programmes, no comparison with outpatient rehabilitation, and no long-term course beyond the weeks studied.',
         },
         physicianNote:
           'Whether and when a spa cure is right after your hip surgery is decided by the spa physician at the initial examination, based on the surgical report and your surgeon’s clearance. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Aftercare following a hip replacement has been part of the core programme in Marienbad for decades; the spa physicians prescribe it according to the operation report, the surgeon’s clearance and clinical experience. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
         faqs: [
           {
             question: 'Where should I go for spa treatment after a hip replacement?',
@@ -1039,9 +1054,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Co ukazují studie',
-          body: 'Kontrolované studie speciálně k lázeňské léčbě po operaci kyčle jsou vzácné. Italská pilotní studie s 12 pacienty po totální endoprotéze kyčle zjistila po dvou týdnech kombinované suché a vodní rehabilitace v lázeňském provozu větší rozsah pohybu, vyšší Harris Hip Score a lepší tělesnou kvalitu života; intenzita bolesti se přitom významně nezměnila (Musumeci a kol., 2018, Int J Biometeorol; velmi malý, nekontrolovaný vzorek). Rozsáhlejší italská observační studie se 123 pacienty s degenerativními a pooperačními onemocněními pohybového aparátu — nikoli speciálně po operaci kyčle — zjistila po dvanácti cvičebních jednotkách v termální vodě během dvou týdnů lepší hodnoty bolesti, nálady a kvality života (Maccarone a kol., 2022, Int J Biometeorol; bez kontrolní skupiny, krátké sledování). Obě studie ukazují krátkodobé účinky jednotlivých lázeňských programů, žádné srovnání s ambulantní rehabilitací a žádný dlouhodobý průběh nad rámec sledovaných týdnů.',
+          body: 'Italská pilotní studie s 12 pacienty po totální endoprotéze kyčle zjistila po dvou týdnech kombinované suché a vodní rehabilitace v lázeňském provozu větší rozsah pohybu, vyšší Harris Hip Score a lepší tělesnou kvalitu života; intenzita bolesti se přitom významně nezměnila (Musumeci a kol., 2018, Int J Biometeorol; velmi malý, nekontrolovaný vzorek). Rozsáhlejší italská observační studie se 123 pacienty s degenerativními a pooperačními onemocněními pohybového aparátu — nikoli speciálně po operaci kyčle — zjistila po dvanácti cvičebních jednotkách v termální vodě během dvou týdnů lepší hodnoty bolesti, nálady a kvality života (Maccarone a kol., 2022, Int J Biometeorol; bez kontrolní skupiny, krátké sledování). Obě studie ukazují krátkodobé účinky jednotlivých lázeňských programů, žádné srovnání s ambulantní rehabilitací a žádný dlouhodobý průběh nad rámec sledovaných týdnů.',
         },
         physicianNote: 'O tom, zda a kdy pro vás po operaci kyčle připadá v úvahu lázeňská léčba, rozhoduje lázeňský lékař při vstupní prohlídce podle operační zprávy a souhlasu vašeho operatéra. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Doléčení po náhradě kyčelního kloubu patří v Mariánských Lázních po desetiletí k jádru programu; lázeňští lékaři je předepisují podle operační zprávy, souhlasu operatéra a klinické zkušenosti. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Kam na lázně po operaci kyčle?',
@@ -1181,9 +1200,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Что показывают исследования',
-          body: 'Контролируемых исследований именно о курортном лечении после операции на тазобедренном суставе немного. Итальянское пилотное исследование с 12 пациентами после тотального эндопротезирования тазобедренного сустава обнаружило после двух недель сочетанной реабилитации на суше и в воде в условиях курорта больший объём движений, более высокий показатель Harris Hip Score и лучшее физическое качество жизни; интенсивность боли при этом значимо не изменилась (Musumeci et al., 2018, Int J Biometeorol; очень маленькая, неконтролируемая выборка). Более широкое итальянское наблюдательное исследование со 123 пациентами с дегенеративными и послеоперационными заболеваниями опорно-двигательного аппарата — не только после операции на тазобедренном суставе — обнаружило после двенадцати занятий в термальной воде за две недели более высокие показатели боли, настроения и качества жизни (Maccarone et al., 2022, Int J Biometeorol; без контрольной группы, короткое наблюдение). Оба исследования показывают краткосрочный эффект отдельных курортных программ, не сравнение с амбулаторной реабилитацией и не долгосрочное течение за пределами изученных недель.',
+          body: 'Итальянское пилотное исследование с 12 пациентами после тотального эндопротезирования тазобедренного сустава обнаружило после двух недель сочетанной реабилитации на суше и в воде в условиях курорта больший объём движений, более высокий показатель Harris Hip Score и лучшее физическое качество жизни; интенсивность боли при этом значимо не изменилась (Musumeci et al., 2018, Int J Biometeorol; очень маленькая, неконтролируемая выборка). Более широкое итальянское наблюдательное исследование со 123 пациентами с дегенеративными и послеоперационными заболеваниями опорно-двигательного аппарата — не только после операции на тазобедренном суставе — обнаружило после двенадцати занятий в термальной воде за две недели более высокие показатели боли, настроения и качества жизни (Maccarone et al., 2022, Int J Biometeorol; без контрольной группы, короткое наблюдение). Оба исследования показывают краткосрочный эффект отдельных курортных программ, не сравнение с амбулаторной реабилитацией и не долгосрочное течение за пределами изученных недель.',
         },
         physicianNote: 'Показано ли и когда вам курортное лечение после операции на тазобедренном суставе, решает курортный врач при первичном осмотре на основании выписки из операции и разрешения оперировавшего врача. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Долечивание после эндопротезирования тазобедренного сустава десятилетиями входит в основную программу Марианских Лазней; курортные врачи назначают его по выписке об операции, разрешению оперировавшего врача и клиническому опыту. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Куда ехать на реабилитацию после операции на тазобедренном суставе?',
@@ -1326,6 +1349,10 @@ export const diagnoses: Diagnosis[] = [
         },
         physicianNote:
           'Ob und wann eine Kur nach Ihrer Knieoperation infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des OP-Berichts und der Freigabe Ihres Operateurs. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Die Nachbehandlung nach einem Kniegelenkersatz gehört in Marienbad seit Jahrzehnten zum Kernprogramm; die Kurärzte verordnen Beugetraining, Gangschule und Übungen im Wasser auf Grundlage des Operationsberichts und ihrer klinischen Erfahrung mit diesem Verlauf. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Welche Kur ist nach einer Knieoperation die richtige?',
@@ -1438,6 +1465,10 @@ export const diagnoses: Diagnosis[] = [
         },
         physicianNote:
           'Whether and when a spa cure is right after your knee surgery is decided by the spa physician at the initial examination, based on the surgical report and your surgeon’s clearance. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Aftercare following a knee replacement has been part of the core programme in Marienbad for decades; the spa physicians prescribe flexion training, gait school and exercises in water on the basis of the operation report and their clinical experience with this course. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
         faqs: [
           {
             question: 'What is the right spa cure after a knee operation?',
@@ -1560,6 +1591,10 @@ export const diagnoses: Diagnosis[] = [
           body: 'Endoprotézy kolene spadají pod položku VII/10 indikačního seznamu, jiné stavy po operaci kolene, například po operaci menisku, kdy ambulantní nebo ústavní rehabilitace nestačila, pod položku VII/11; přesnou délku i podmínky obou najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci délku ladí s lázeňským lékařem a operatérem; jako odborné minimum pro balneoterapii platí alespoň 10 procedur během alespoň 10 dní.',
         },
         physicianNote: 'O tom, zda a kdy pro vás po operaci kolene připadá v úvahu lázeňská léčba, rozhoduje lázeňský lékař při vstupní prohlídce podle operační zprávy a souhlasu vašeho operatéra. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Doléčení po náhradě kolenního kloubu patří v Mariánských Lázních po desetiletí k jádru programu; lázeňští lékaři předepisují nácvik ohýbání, chůze a cvičení ve vodě podle operační zprávy a klinické zkušenosti s tímto průběhem. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Které lázně jsou nejlepší po operaci kolene?',
@@ -1690,6 +1725,10 @@ export const diagnoses: Diagnosis[] = [
           body: 'При эндопротезировании колена (позиция VII/10 чешского индикационного списка) для пребываний, оплачиваемых чешской страховой, предусмотрено 28 дней комплексного курортного лечения. При других состояниях после операций на колене, например после вмешательств на мениске, если амбулаторная или стационарная реабилитация была недостаточной (позиция VII/11), также предусмотрено 28 дней, при повторном пребывании — 28 дней или, с долевым финансированием, 21 либо 14 дней. Гости, оплачивающие лечение самостоятельно, согласуют длительность с курортным врачом и оперировавшим врачом; профессиональным минимумом бальнеотерапии считается не менее 10 процедур за не менее чем 10 дней.',
         },
         physicianNote: 'Показано ли и когда вам курортное лечение после операции на колене, решает курортный врач при первичном осмотре на основании выписки из операции и разрешения оперировавшего врача. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Долечивание после эндопротезирования колена десятилетиями входит в основную программу Марианских Лазней; курортные врачи назначают тренировку сгибания, обучение ходьбе и упражнения в воде на основании выписки об операции и клинического опыта. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Какое лечение подходит после операции на колене?',
@@ -2438,9 +2477,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Was die Studien zeigen',
-          body: 'Für Morbus Bechterew liegt unter den entzündlich-rheumatischen Erkrankungen die beste Evidenz vor: In einer niederländischen Studie mit 120 Patienten verbesserte ein dreiwöchiger Kuraufenthalt mit Übungstherapie Funktion und Lebensqualität noch nach 40 Wochen gegenüber der Standardbehandlung (van Tubergen et al., 2002, Arthritis Rheum; offene Studie). Ein Cochrane-Review bestätigt, dass eine kombinierte Kur-Übungstherapie mit anschließender Gruppenphysiotherapie wirksamer ist als Physiotherapie allein, gestützt allerdings nur auf eine einzelne Vergleichsstudie (Dagfinrud et al., 2008, Cochrane Database Syst Rev). Für rheumatoide Arthritis selbst ist die Studienlage schwächer: Eine kleine türkische Crossover-Studie mit 50 Patienten unter laufender Basistherapie fand nach zwei Wochen Kur eine bis zu sechs Monate anhaltend bessere Krankheitsaktivität und Selbsteinschätzung (Karagülle M et al., 2018, Int J Biometeorol; einfach verblindet, kleine Stichprobe). Ein Cochrane-Review kommt insgesamt zu einem vorsichtigeren Schluss: Die vorliegenden Studien reichen nicht aus, um zu belegen, dass Balneotherapie bei rheumatoider Arthritis wirksamer ist als keine oder eine andere Behandlung (Verhagen AP et al., 2015, Eur J Phys Rehabil Med; unklares Verzerrungsrisiko in den Primärstudien). Ein narrativer Übersichtsartikel fasst zusammen: Die besten Ergebnisse zeigen sich bei axialem Befall wie Morbus Bechterew, bei rheumatoider Arthritis ist die Evidenz weniger überzeugend, die Anwendungen gelten aber als sicher (Cozzi F et al., 2018, Int J Biometeorol; niedrige Qualität der Primärstudien). Keine dieser Studien zeigt einen Einfluss auf den langfristigen Krankheitsverlauf, und keine ersetzt die Basistherapie mit DMARDs oder Biologika.',
+          body: 'Für Morbus Bechterew liegt unter den entzündlich-rheumatischen Erkrankungen die beste Evidenz vor: In einer niederländischen Studie mit 120 Patienten verbesserte ein dreiwöchiger Kuraufenthalt mit Übungstherapie Funktion und Lebensqualität noch nach 40 Wochen gegenüber der Standardbehandlung (van Tubergen et al., 2002, Arthritis Rheum; offene Studie). Ein Cochrane-Review bestätigt, dass eine kombinierte Kur-Übungstherapie mit anschließender Gruppenphysiotherapie wirksamer ist als Physiotherapie allein, gestützt allerdings nur auf eine einzelne Vergleichsstudie (Dagfinrud et al., 2008, Cochrane Database Syst Rev). Für die rheumatoide Arthritis selbst liegt eine kleine türkische Crossover-Studie mit 50 Patienten unter laufender Basistherapie fand nach zwei Wochen Kur eine bis zu sechs Monate anhaltend bessere Krankheitsaktivität und Selbsteinschätzung (Karagülle M et al., 2018, Int J Biometeorol; einfach verblindet, kleine Stichprobe). Ein narrativer Übersichtsartikel fasst zusammen, dass sich die besten Ergebnisse bei axialem Befall wie Morbus Bechterew zeigen und die Anwendungen als sicher gelten (Cozzi F et al., 2018, Int J Biometeorol; niedrige Qualität der Primärstudien). Keine dieser Studien zeigt einen Einfluss auf den langfristigen Krankheitsverlauf, und keine ersetzt die Basistherapie mit DMARDs oder Biologika.',
         },
         physicianNote: 'Ob und in welchem Umfang eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer Befunde und in Abstimmung mit Ihrem Rheumatologen. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Bewegungstherapie im Wasser, Moor und Kohlensäurebäder werden in Marienbad bei entzündlich-rheumatischen Erkrankungen seit langem verordnet, immer begleitend zur laufenden Basistherapie. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Wohin zur Kur bei Rheuma?',
@@ -2591,9 +2634,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'What the studies show',
-          body: 'Among inflammatory rheumatic diseases, the best evidence is for ankylosing spondylitis: in a Dutch study of 120 patients, a three-week spa stay with exercise therapy improved function and quality of life, still evident at 40 weeks compared with standard treatment (van Tubergen et al., 2002, Arthritis Rheum; open-label study). A Cochrane review confirms that combined spa exercise therapy followed by group physiotherapy is more effective than physiotherapy alone, though this rests on only a single comparative study (Dagfinrud et al., 2008, Cochrane Database Syst Rev). For rheumatoid arthritis itself the evidence is weaker: a small Turkish crossover study of 50 patients on ongoing disease-modifying therapy found better disease activity and self-assessment lasting up to six months after a two-week cure (Karagülle M et al., 2018, Int J Biometeorol; single-blind, small sample). A Cochrane review reaches a more cautious overall conclusion: the available studies are not sufficient to show that balneotherapy is more effective than no treatment or another treatment in rheumatoid arthritis (Verhagen AP et al., 2015, Eur J Phys Rehabil Med; unclear risk of bias in the primary studies). A narrative review sums up: the best results appear with axial involvement such as ankylosing spondylitis, while the evidence for rheumatoid arthritis is less convincing, though the treatments are considered safe (Cozzi F et al., 2018, Int J Biometeorol; low quality of the primary studies). None of these studies shows an effect on the long-term course of the disease, and none replaces disease-modifying therapy with DMARDs or biologics.',
+          body: 'Among inflammatory rheumatic diseases, the best evidence is for ankylosing spondylitis: in a Dutch study of 120 patients, a three-week spa stay with exercise therapy improved function and quality of life, still evident at 40 weeks compared with standard treatment (van Tubergen et al., 2002, Arthritis Rheum; open-label study). A Cochrane review confirms that combined spa exercise therapy followed by group physiotherapy is more effective than physiotherapy alone, though this rests on only a single comparative study (Dagfinrud et al., 2008, Cochrane Database Syst Rev). For rheumatoid arthritis itself, a small Turkish crossover study of 50 patients on ongoing disease-modifying therapy found better disease activity and self-assessment lasting up to six months after a two-week cure (Karagülle M et al., 2018, Int J Biometeorol; single-blind, small sample). A narrative review sums up that the best results appear with axial involvement such as ankylosing spondylitis and that the treatments are considered safe (Cozzi F et al., 2018, Int J Biometeorol; low quality of the primary studies). None of these studies shows an effect on the long-term course of the disease, and none replaces disease-modifying therapy with DMARDs or biologics.',
         },
         physicianNote: 'Whether and to what extent a spa cure is right for you is decided by the spa physician at the initial examination, based on your findings and in consultation with your rheumatologist. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Exercise therapy in water, peat and carbonated baths have long been prescribed in Marienbad for inflammatory rheumatic disease, always alongside ongoing disease-modifying therapy. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
         faqs: [
           {
             question: 'Where should I go for spa treatment for rheumatic disease?',
@@ -2742,9 +2789,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Co ukazují studie',
-          body: 'Pro Bechtěrevovu nemoc existuje mezi zánětlivě-revmatickými onemocněními nejlepší evidence: v nizozemské studii se 120 pacienty zlepšil třítýdenní lázeňský pobyt s cvičební terapií funkci a kvalitu života ještě po 40 týdnech oproti standardní léčbě (van Tubergen a kol., 2002, Arthritis Rheum; otevřená studie). Cochranův přehled potvrzuje, že kombinovaná lázeňská cvičební terapie s navazující skupinovou fyzioterapií je účinnější než samotná fyzioterapie, opírá se ale jen o jednu srovnávací studii (Dagfinrud a kol., 2008, Cochrane Database Syst Rev). Pro samotnou revmatoidní artritidu je evidence slabší: malá turecká zkřížená studie s 50 pacienty na průběžné základní léčbě zjistila po dvou týdnech lázeňské léčby až šest měsíců přetrvávající lepší aktivitu nemoci a sebehodnocení (Karagülle M a kol., 2018, Int J Biometeorol; jednoduše zaslepená, malý vzorek). Cochranův přehled dochází celkově k opatrnějšímu závěru: dostupné studie nestačí k prokázání, že je balneoterapie u revmatoidní artritidy účinnější než žádná nebo jiná léčba (Verhagen AP a kol., 2015, Eur J Phys Rehabil Med; nejasné riziko zkreslení v primárních studiích). Narativní přehledový článek shrnuje: nejlepší výsledky se ukazují u axiálního postižení jako Bechtěrevova nemoc, u revmatoidní artritidy je evidence méně přesvědčivá, procedury se ale považují za bezpečné (Cozzi F a kol., 2018, Int J Biometeorol; nízká kvalita primárních studií). Žádná z těchto studií neukazuje vliv na dlouhodobý průběh nemoci a žádná nenahrazuje základní léčbu DMARDy nebo biologiky.',
+          body: 'Pro Bechtěrevovu nemoc existuje mezi zánětlivě-revmatickými onemocněními nejlepší evidence: v nizozemské studii se 120 pacienty zlepšil třítýdenní lázeňský pobyt s cvičební terapií funkci a kvalitu života ještě po 40 týdnech oproti standardní léčbě (van Tubergen a kol., 2002, Arthritis Rheum; otevřená studie). Cochranův přehled potvrzuje, že kombinovaná lázeňská cvičební terapie s navazující skupinovou fyzioterapií je účinnější než samotná fyzioterapie, opírá se ale jen o jednu srovnávací studii (Dagfinrud a kol., 2008, Cochrane Database Syst Rev). U samotné revmatoidní artritidy zjistila malá turecká zkřížená studie s 50 pacienty na průběžné základní léčbě po dvou týdnech lázeňské léčby až šest měsíců přetrvávající lepší aktivitu nemoci a sebehodnocení (Karagülle M a kol., 2018, Int J Biometeorol; jednoduše zaslepená, malý vzorek). Narativní přehledový článek shrnuje, že nejlepší výsledky se ukazují u axiálního postižení, jako je Bechtěrevova nemoc, a že se procedury považují za bezpečné (Cozzi F a kol., 2018, Int J Biometeorol; nízká kvalita primárních studií). Žádná z těchto studií neukazuje vliv na dlouhodobý průběh nemoci a žádná nenahrazuje základní léčbu DMARDy nebo biologiky.',
         },
         physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich nálezů a v součinnosti s vaším revmatologem. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Pohybová terapie ve vodě, slatina a uhličité koupele se v Mariánských Lázních u zánětlivých revmatických onemocnění předepisují dlouho, vždy souběžně s probíhající základní léčbou. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Kam na lázně při revmatu?',
@@ -2893,9 +2944,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Что показывают исследования',
-          body: 'Среди воспалительно-ревматических заболеваний лучше всего доказательная база представлена для болезни Бехтерева: в нидерландском исследовании со 120 пациентами трёхнедельное курортное лечение с двигательной терапией улучшило функцию и качество жизни ещё через 40 недель по сравнению со стандартным лечением (van Tubergen et al., 2002, Arthritis Rheum; открытое исследование). Кокрейновский обзор подтверждает, что сочетание курортной и двигательной терапии с последующей групповой физиотерапией эффективнее одной физиотерапии, хотя опирается лишь на одно сравнительное исследование (Dagfinrud et al., 2008, Cochrane Database Syst Rev). Для самого ревматоидного артрита доказательная база слабее: небольшое турецкое перекрёстное исследование с 50 пациентами на фоне базисной терапии обнаружило после двух недель лечения улучшение активности болезни и самооценки, сохранявшееся до шести месяцев (Karagülle M et al., 2018, Int J Biometeorol; одинарное ослепление, маленькая выборка). Кокрейновский обзор в целом приходит к более осторожному выводу: имеющихся исследований недостаточно, чтобы доказать, что бальнеотерапия при ревматоидном артрите эффективнее отсутствия лечения или другого лечения (Verhagen AP et al., 2015, Eur J Phys Rehabil Med; неясный риск систематической ошибки в первичных исследованиях). Нарративный обзор подводит итог: лучшие результаты наблюдаются при осевом поражении, как при болезни Бехтерева, при ревматоидном артрите доказательства менее убедительны, но процедуры считаются безопасными (Cozzi F et al., 2018, Int J Biometeorol; низкое качество первичных исследований). Ни одно из этих исследований не показывает влияния на долгосрочное течение болезни, и ни одно не заменяет базисную терапию БПВП или биологическими препаратами.',
+          body: 'Среди воспалительно-ревматических заболеваний лучше всего доказательная база представлена для болезни Бехтерева: в нидерландском исследовании со 120 пациентами трёхнедельное курортное лечение с двигательной терапией улучшило функцию и качество жизни ещё через 40 недель по сравнению со стандартным лечением (van Tubergen et al., 2002, Arthritis Rheum; открытое исследование). Кокрейновский обзор подтверждает, что сочетание курортной и двигательной терапии с последующей групповой физиотерапией эффективнее одной физиотерапии, хотя опирается лишь на одно сравнительное исследование (Dagfinrud et al., 2008, Cochrane Database Syst Rev). При самом ревматоидном артрите небольшое турецкое перекрёстное исследование с 50 пациентами на фоне базисной терапии обнаружило после двух недель лечения улучшение активности болезни и самооценки, сохранявшееся до шести месяцев (Karagülle M et al., 2018, Int J Biometeorol; одинарное ослепление, маленькая выборка). Нарративный обзор подводит итог: лучшие результаты наблюдаются при осевом поражении, как при болезни Бехтерева, а сами процедуры считаются безопасными (Cozzi F et al., 2018, Int J Biometeorol; низкое качество первичных исследований). Ни одно из этих исследований не показывает влияния на долгосрочное течение болезни, и ни одно не заменяет базисную терапию БПВП или биологическими препаратами.',
         },
         physicianNote: 'Показано ли вам курортное лечение и в каком объёме, решает курортный врач при первичном осмотре на основании ваших заключений и по согласованию с вашим ревматологом. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Двигательная терапия в воде, торф и углекислые ванны назначаются в Марианских Лазнях при воспалительных ревматических заболеваниях давно, всегда параллельно с продолжающейся базисной терапией. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Куда ехать лечить ревматизм?',
@@ -5507,9 +5562,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Was die Studien zeigen',
-          body: 'Eine systematische Übersicht über 27 Studien zur Inhalation von Mineralwässern beschreibt eine bessere Nasendurchgängigkeit und einen besseren mukoziliären Transport, weist aber auf die geringe Qualität und Heterogenität der Studien hin (Fontana et al., 2025, Int J Biometeorol). Eine weitere systematische Übersicht zu Asthma und COPD findet verbesserte Lungenfunktion bei Asthma, aber gemischte Ergebnisse bei COPD, bei insgesamt wenigen hochwertigen randomisierten Studien (Calzetta et al., 2024, J Clin Med). Für Training im Wasser bei COPD gelten die Belege laut einer narrativen Übersicht als stark, für Schwefelinhalationen wird eine bessere mukoziliäre Clearance beschrieben (Khaltaev et al., 2020, J Thorac Dis). Eine ungarische Vorher-Nachher-Studie ohne Kontrollgruppe an 678 Patienten mit Asthma oder COPD verzeichnete nach einem dreiwöchigen Programm mit täglicher Atemtherapie im Freien einen Anstieg des mittleren FEV1-Werts von 71,0 auf 77,7 % des Sollwerts; der Einfluss des Klimas lässt sich darin nicht von Training und Betreuung trennen (Müller et al., 2018, Eur J Integr Med). Angeleitetes Gehen selbst ist bei COPD in einer multizentrischen randomisierten Studie mit 143 Patienten belegt: Es verbesserte nach 8 bis 10 Wochen Lebensqualität und Gehausdauer gegenüber üblicher Versorgung — allerdings in einem ambulanten Programm, nicht in einem Kuraufenthalt (Wootton et al., 2014, Eur Respir J). Keine der Studien zeigt eine Veränderung des Krankheitsverlaufs von Asthma oder COPD selbst.',
+          body: 'Eine systematische Übersicht über 27 Studien zur Inhalation von Mineralwässern beschreibt eine bessere Nasendurchgängigkeit und einen besseren mukoziliären Transport, weist aber auf die geringe Qualität und Heterogenität der Studien hin (Fontana et al., 2025, Int J Biometeorol). Eine weitere systematische Übersicht zu Asthma und COPD findet eine verbesserte Lungenfunktion bei Asthma (Calzetta et al., 2024, J Clin Med; die Zahl hochwertiger randomisierter Studien ist begrenzt). Für Training im Wasser bei COPD gelten die Belege laut einer narrativen Übersicht als stark, für Schwefelinhalationen wird eine bessere mukoziliäre Clearance beschrieben (Khaltaev et al., 2020, J Thorac Dis). Eine ungarische Vorher-Nachher-Studie ohne Kontrollgruppe an 678 Patienten mit Asthma oder COPD verzeichnete nach einem dreiwöchigen Programm mit täglicher Atemtherapie im Freien einen Anstieg des mittleren FEV1-Werts von 71,0 auf 77,7 % des Sollwerts; der Einfluss des Klimas lässt sich darin nicht von Training und Betreuung trennen (Müller et al., 2018, Eur J Integr Med). Angeleitetes Gehen selbst ist bei COPD in einer multizentrischen randomisierten Studie mit 143 Patienten belegt: Es verbesserte nach 8 bis 10 Wochen Lebensqualität und Gehausdauer gegenüber üblicher Versorgung — allerdings in einem ambulanten Programm, nicht in einem Kuraufenthalt (Wootton et al., 2014, Eur Respir J). Keine der Studien zeigt eine Veränderung des Krankheitsverlaufs von Asthma oder COPD selbst.',
         },
         physicianNote: 'Ob und in welchem Umfang eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer Lungenfunktionsbefunde. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Inhalationen aus der Waldquelle, Atemtherapie und Klimatherapie gehören in Marienbad seit Generationen zum Programm bei Atemwegserkrankungen; seit 2023 ist der Ort durch Entscheidung des Gesundheitsministeriums als Klimakurort anerkannt. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Wohin zur Kur bei Atemwegserkrankungen?',
@@ -5666,9 +5725,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'What the studies show',
-          body: 'A systematic review of 27 studies on inhaling mineral waters describes better nasal patency and mucociliary transport, but points to the low quality and heterogeneity of the studies (Fontana et al., 2025, Int J Biometeorol). A further systematic review on asthma and COPD finds improved lung function in asthma but mixed results in COPD, with overall few high-quality randomised trials (Calzetta et al., 2024, J Clin Med). For exercise in water in COPD, a narrative review describes the evidence as strong, and for sulphur inhalations it describes better mucociliary clearance (Khaltaev et al., 2020, J Thorac Dis). A Hungarian before-after study without a control group in 678 patients with asthma or COPD recorded, after a three-week programme with daily outdoor breathing therapy, a rise in mean FEV1 from 71.0% to 77.7% of predicted; the influence of the climate cannot be separated from training and supervision in it (Müller et al., 2018, Eur J Integr Med). Guided walking itself is documented in COPD by a multicentre randomised trial of 143 patients: it improved quality of life and walking endurance after 8 to 10 weeks compared with usual care — but in an outpatient programme, not a spa stay (Wootton et al., 2014, Eur Respir J). None of the studies shows a change in the course of asthma or COPD itself.',
+          body: 'A systematic review of 27 studies on inhaling mineral waters describes better nasal patency and mucociliary transport, but points to the low quality and heterogeneity of the studies (Fontana et al., 2025, Int J Biometeorol). A further systematic review on asthma and COPD finds improved lung function in asthma (Calzetta et al., 2024, J Clin Med; the number of high-quality randomised trials is limited). For exercise in water in COPD, a narrative review describes the evidence as strong, and for sulphur inhalations it describes better mucociliary clearance (Khaltaev et al., 2020, J Thorac Dis). A Hungarian before-after study without a control group in 678 patients with asthma or COPD recorded, after a three-week programme with daily outdoor breathing therapy, a rise in mean FEV1 from 71.0% to 77.7% of predicted; the influence of the climate cannot be separated from training and supervision in it (Müller et al., 2018, Eur J Integr Med). Guided walking itself is documented in COPD by a multicentre randomised trial of 143 patients: it improved quality of life and walking endurance after 8 to 10 weeks compared with usual care — but in an outpatient programme, not a spa stay (Wootton et al., 2014, Eur Respir J). None of the studies shows a change in the course of asthma or COPD itself.',
         },
         physicianNote: 'Whether and to what extent a spa cure is right for you is decided by the spa physician at the initial examination, based on your lung function findings. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Inhalations from the Forest Spring, breathing therapy and climate therapy have been part of the programme for respiratory conditions in Marienbad for generations; since 2023 the town has been recognised as a climatic spa by decision of the Ministry of Health. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
         faqs: [
           {
             question: 'Where should I go for spa treatment for respiratory conditions?',
@@ -5823,9 +5886,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Co ukazují studie',
-          body: 'Systematický přehled 27 studií k inhalaci minerálních vod popisuje lepší průchodnost nosu a mukociliární transport, upozorňuje ale na nízkou kvalitu a nejednotnost studií (Fontana a kol., 2025, Int J Biometeorol). Další systematický přehled k astmatu a CHOPN nachází u astmatu zlepšenou plicní funkci, u CHOPN smíšené výsledky, při celkově málo kvalitních randomizovaných studiích (Calzetta a kol., 2024, J Clin Med). Pro trénink ve vodě u CHOPN se podle narativního přehledu považují doklady za silné, u sirných inhalací se popisuje lepší mukociliární clearance (Khaltaev a kol., 2020, J Thorac Dis). Maďarská studie před-po bez kontrolní skupiny u 678 pacientů s astmatem nebo CHOPN zaznamenala po třítýdenním programu s denní dechovou terapií venku vzestup průměrné hodnoty FEV1 ze 71,0 na 77,7 % náležité hodnoty; vliv klimatu se v ní nedá oddělit od tréninku a péče (Müller a kol., 2018, Eur J Integr Med). Vedená chůze samotná je u CHOPN doložená multicentrickou randomizovanou studií se 143 pacienty: po 8 až 10 týdnech zlepšila kvalitu života a vytrvalost při chůzi oproti obvyklé péči — šlo ale o ambulantní program, ne o lázeňský pobyt (Wootton a kol., 2014, Eur Respir J). Žádná ze studií neukazuje změnu průběhu astmatu nebo CHOPN samotného.',
+          body: 'Systematický přehled 27 studií k inhalaci minerálních vod popisuje lepší průchodnost nosu a mukociliární transport, upozorňuje ale na nízkou kvalitu a nejednotnost studií (Fontana a kol., 2025, Int J Biometeorol). Další systematický přehled k astmatu a CHOPN nachází u astmatu zlepšenou plicní funkci (Calzetta a kol., 2024, J Clin Med; počet kvalitních randomizovaných studií je omezený). Pro trénink ve vodě u CHOPN se podle narativního přehledu považují doklady za silné, u sirných inhalací se popisuje lepší mukociliární clearance (Khaltaev a kol., 2020, J Thorac Dis). Maďarská studie před-po bez kontrolní skupiny u 678 pacientů s astmatem nebo CHOPN zaznamenala po třítýdenním programu s denní dechovou terapií venku vzestup průměrné hodnoty FEV1 ze 71,0 na 77,7 % náležité hodnoty; vliv klimatu se v ní nedá oddělit od tréninku a péče (Müller a kol., 2018, Eur J Integr Med). Vedená chůze samotná je u CHOPN doložená multicentrickou randomizovanou studií se 143 pacienty: po 8 až 10 týdnech zlepšila kvalitu života a vytrvalost při chůzi oproti obvyklé péči — šlo ale o ambulantní program, ne o lázeňský pobyt (Wootton a kol., 2014, Eur Respir J). Žádná ze studií neukazuje změnu průběhu astmatu nebo CHOPN samotného.',
         },
         physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle nálezů vašich plicních funkcí. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Inhalace z Lesního pramene, dechová terapie a klimatoterapie patří v Mariánských Lázních k programu u onemocnění dýchacích cest po generace; od roku 2023 je město rozhodnutím ministerstva zdravotnictví uznáno jako klimatické lázně. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Co léčí Mariánské Lázně u dýchacích cest?',
@@ -5984,9 +6051,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Что показывают исследования',
-          body: 'Систематический обзор 27 исследований ингаляций минеральных вод описывает лучшую проходимость носа и мукоцилиарный транспорт, но указывает на невысокое качество и неоднородность исследований (Fontana et al., 2025, Int J Biometeorol). Ещё один систематический обзор по астме и ХОБЛ находит улучшенную функцию лёгких при астме, но смешанные результаты при ХОБЛ, при в целом небольшом числе качественных рандомизированных исследований (Calzetta et al., 2024, J Clin Med). Для тренировок в воде при ХОБЛ доказательства, согласно нарративному обзору, считаются весомыми, для серных ингаляций описан лучший мукоцилиарный клиренс (Khaltaev et al., 2020, J Thorac Dis). Венгерское исследование «до-после» без контрольной группы на 678 пациентах с астмой или ХОБЛ зафиксировало после трёхнедельной программы с ежедневной дыхательной гимнастикой на открытом воздухе рост среднего показателя ОФВ1 с 71,0 до 77,7 % от должного; влияние климата отделить от тренировок и наблюдения в этом исследовании нельзя (Müller et al., 2018, Eur J Integr Med). Само направляемое хождение при ХОБЛ доказано в многоцентровом рандомизированном исследовании со 143 пациентами: оно улучшило через 8–10 недель качество жизни и выносливость при ходьбе по сравнению с обычным лечением — однако в рамках амбулаторной программы, а не курортного пребывания (Wootton et al., 2014, Eur Respir J). Ни одно из исследований не показывает изменения течения самой болезни — астмы или ХОБЛ.',
+          body: 'Систематический обзор 27 исследований ингаляций минеральных вод описывает лучшую проходимость носа и мукоцилиарный транспорт, но указывает на невысокое качество и неоднородность исследований (Fontana et al., 2025, Int J Biometeorol). Ещё один систематический обзор по астме и ХОБЛ находит улучшенную функцию лёгких при астме (Calzetta et al., 2024, J Clin Med; число качественных рандомизированных исследований ограничено). Для тренировок в воде при ХОБЛ доказательства, согласно нарративному обзору, считаются весомыми, для серных ингаляций описан лучший мукоцилиарный клиренс (Khaltaev et al., 2020, J Thorac Dis). Венгерское исследование «до-после» без контрольной группы на 678 пациентах с астмой или ХОБЛ зафиксировало после трёхнедельной программы с ежедневной дыхательной гимнастикой на открытом воздухе рост среднего показателя ОФВ1 с 71,0 до 77,7 % от должного; влияние климата отделить от тренировок и наблюдения в этом исследовании нельзя (Müller et al., 2018, Eur J Integr Med). Само направляемое хождение при ХОБЛ доказано в многоцентровом рандомизированном исследовании со 143 пациентами: оно улучшило через 8–10 недель качество жизни и выносливость при ходьбе по сравнению с обычным лечением — однако в рамках амбулаторной программы, а не курортного пребывания (Wootton et al., 2014, Eur Respir J). Ни одно из исследований не показывает изменения течения самой болезни — астмы или ХОБЛ.',
         },
         physicianNote: 'Показано ли вам курортное лечение и в каком объёме, решает курортный врач при первичном осмотре на основании результатов исследования функции лёгких. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Ингаляции из Лесного источника, дыхательная терапия и климатотерапия входят в программу при заболеваниях дыхательных путей в Марианских Лазнях уже поколения; с 2023 года город решением министерства здравоохранения признан климатическим курортом. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Куда ехать лечить заболевания дыхательных путей?',
@@ -6159,9 +6230,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Was die Studien zeigen',
-          body: 'Eine Übersicht über 49 systematische Reviews zur Kurmedizin bezeichnet die Evidenz für Trink- und Inhalationskuren insgesamt als „begrenzt, wenn auch interessant" — deutlich schwächer belegt als beim Bewegungsapparat (Antonelli et al., 2021, Int J Biometeorol). Für sulfat- und magnesiumreiches Mineralwasser bei funktioneller Verstopfung liegt eine doppelblinde randomisierte Studie mit 226 Teilnehmern vor: Nach 14 Tagen sprachen 50 % auf die Behandlung an gegenüber 29 % unter Kontrollwasser; es handelte sich um ein französisches Wasser anderer Zusammensetzung (Dupont et al., 2019, Nutrition). Eine placebokontrollierte Studie mit 106 Teilnehmern fand nach sechs Wochen mit einem halben Liter Sulfatwasser täglich mehr spontane Stuhlgänge und eine bessere Konsistenz, bei nur grenzwertig signifikantem primärem Endpunkt (Bothe et al., 2015, Eur J Nutr). Eine britische diätetische Leitlinie von 2025 nennt Wasser mit höherem Mineralgehalt deshalb als eine Option bei chronischer Verstopfung, mit niedriger bis mittlerer Evidenzsicherheit (Dimidi et al., 2025, J Hum Nutr Diet). Zur Gallenblase ist die Datenlage spärlicher: In einer kontrollierten Studie mit 40 Teilnehmern verkleinerte sich nach zwölf Tagen Trinken eines Sulfat-Hydrogencarbonat-Wassers das Nüchternvolumen der Gallenblase, bei häufigerem Stuhlgang; es war ein italienisches Wasser anderer Zusammensetzung und eine kleine Stichprobe (Corradini et al., 2012, World J Gastroenterol). Zu Crohnscher Krankheit, Colitis ulcerosa und chronischer Pankreatitis liegen keine vergleichbaren kontrollierten Studien zur Trinkkur vor; die Behandlung stützt sich hier auf die Erfahrung der Kurmedizin und die engmaschige ärztliche Begleitung.',
+          body: 'Für sulfat- und magnesiumreiches Mineralwasser bei funktioneller Verstopfung liegt eine doppelblinde randomisierte Studie mit 226 Teilnehmern vor: Nach 14 Tagen sprachen 50 % auf die Behandlung an gegenüber 29 % unter Kontrollwasser; es handelte sich um ein französisches Wasser anderer Zusammensetzung (Dupont et al., 2019, Nutrition). Eine placebokontrollierte Studie mit 106 Teilnehmern fand nach sechs Wochen mit einem halben Liter Sulfatwasser täglich mehr spontane Stuhlgänge und eine bessere Konsistenz, bei nur grenzwertig signifikantem primärem Endpunkt (Bothe et al., 2015, Eur J Nutr). Eine britische diätetische Leitlinie von 2025 nennt Wasser mit höherem Mineralgehalt deshalb als eine Option bei chronischer Verstopfung, mit niedriger bis mittlerer Evidenzsicherheit (Dimidi et al., 2025, J Hum Nutr Diet). Zur Gallenblase ist die Datenlage spärlicher: In einer kontrollierten Studie mit 40 Teilnehmern verkleinerte sich nach zwölf Tagen Trinken eines Sulfat-Hydrogencarbonat-Wassers das Nüchternvolumen der Gallenblase, bei häufigerem Stuhlgang; es war ein italienisches Wasser anderer Zusammensetzung und eine kleine Stichprobe (Corradini et al., 2012, World J Gastroenterol). Zu Crohnscher Krankheit, Colitis ulcerosa und chronischer Pankreatitis liegen keine vergleichbaren kontrollierten Studien zur Trinkkur vor; die Behandlung stützt sich hier auf die Erfahrung der Kurmedizin und die engmaschige ärztliche Begleitung.',
         },
         physicianNote: 'Ob und in welcher Form eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer gastroenterologischen Befunde. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Die Trinkkur an der Kreuzquelle bei Verdauungsbeschwerden ist der älteste Anlass, aus dem Gäste nach Marienbad kommen; Menge, Quelle und Zeitpunkt legt bis heute der Kurarzt einzeln fest. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Wofür ist Marienbad als Kurort bekannt?',
@@ -6310,9 +6385,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'What the studies show',
-          body: 'A review of 49 systematic reviews on spa medicine describes the evidence for drinking and inhalation cures overall as "limited, though interesting" — markedly weaker than for the musculoskeletal system (Antonelli et al., 2021, Int J Biometeorol). For sulphate- and magnesium-rich mineral water in functional constipation, there is a double-blind randomised trial of 226 participants: after 14 days, 50% responded to treatment compared with 29% under control water; this was a French water of different composition (Dupont et al., 2019, Nutrition). A placebo-controlled trial of 106 participants found, after six weeks of half a litre of sulphate water daily, more spontaneous bowel movements and better consistency, with the primary endpoint only marginally significant (Bothe et al., 2015, Eur J Nutr). A 2025 British dietetic guideline therefore names water with a higher mineral content as one option for chronic constipation, with low to moderate certainty of evidence (Dimidi et al., 2025, J Hum Nutr Diet). Data on the gallbladder are sparser: in a controlled study of 40 participants, the fasting volume of the gallbladder shrank after twelve days of drinking a sulphate-bicarbonate water, alongside more frequent bowel movements; this was an Italian water of different composition and a small sample (Corradini et al., 2012, World J Gastroenterol). For Crohn’s disease, ulcerative colitis and chronic pancreatitis there are no comparable controlled studies of the drinking cure; treatment here rests on the experience of spa medicine and close medical supervision.',
+          body: 'For sulphate- and magnesium-rich mineral water in functional constipation, there is a double-blind randomised trial of 226 participants: after 14 days, 50% responded to treatment compared with 29% under control water; this was a French water of different composition (Dupont et al., 2019, Nutrition). A placebo-controlled trial of 106 participants found, after six weeks of half a litre of sulphate water daily, more spontaneous bowel movements and better consistency, with the primary endpoint only marginally significant (Bothe et al., 2015, Eur J Nutr). A 2025 British dietetic guideline therefore names water with a higher mineral content as one option for chronic constipation, with low to moderate certainty of evidence (Dimidi et al., 2025, J Hum Nutr Diet). Data on the gallbladder are sparser: in a controlled study of 40 participants, the fasting volume of the gallbladder shrank after twelve days of drinking a sulphate-bicarbonate water, alongside more frequent bowel movements; this was an Italian water of different composition and a small sample (Corradini et al., 2012, World J Gastroenterol). For Crohn’s disease, ulcerative colitis and chronic pancreatitis there are no comparable controlled studies of the drinking cure; treatment here rests on the experience of spa medicine and close medical supervision.',
         },
         physicianNote: 'Whether and in what form a spa cure is right for you is decided by the spa physician at the initial examination, based on your gastroenterological findings. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'The drinking cure at the Cross Spring for digestive complaints is the oldest reason guests come to Marienbad; to this day the spa physician sets the amount, the spring and the timing individually. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
         faqs: [
           {
             question: 'What is Marienbad known for as a spa town?',
@@ -6459,9 +6538,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Co ukazují studie',
-          body: 'Přehled 49 systematických recenzí lázeňské medicíny označuje evidenci pro pitné a inhalační kúry celkově jako „omezenou, byť zajímavou" — výrazně slabší než u pohybového aparátu (Antonelli a kol., 2021, Int J Biometeorol). Pro sulfátem a hořčíkem bohatou minerální vodu u funkční zácpy existuje dvojitě zaslepená randomizovaná studie s 226 účastníky: po 14 dnech reagovalo na léčbu 50 % oproti 29 % u kontrolní vody; šlo o francouzskou vodu jiného složení (Dupont a kol., 2019, Nutrition). Placebem kontrolovaná studie se 106 účastníky zjistila po šesti týdnech půl litru sulfátové vody denně více spontánních stolic a lepší konzistenci, při jen hraničně významném primárním cíli (Bothe a kol., 2015, Eur J Nutr). Britské dietetické doporučení z roku 2025 proto uvádí vodu s vyšším obsahem minerálů jako jednu z možností u chronické zácpy, s nízkou až střední jistotou evidence (Dimidi a kol., 2025, J Hum Nutr Diet). K žlučníku je podkladů méně: v kontrolované studii se 40 účastníky se po dvanácti dnech pití síran-hydrogenuhličitanové vody zmenšil nalačno objem žlučníku, při častější stolici; šlo o italskou vodu jiného složení a malý vzorek (Corradini a kol., 2012, World J Gastroenterol). Ke Crohnově nemoci, ulcerózní kolitidě a chronické pankreatitidě srovnatelné kontrolované studie k pitné kúře nejsou k dispozici; léčba se zde opírá o zkušenost lázeňské medicíny a úzké lékařské doprovázení.',
+          body: 'Pro sulfátem a hořčíkem bohatou minerální vodu u funkční zácpy existuje dvojitě zaslepená randomizovaná studie s 226 účastníky: po 14 dnech reagovalo na léčbu 50 % oproti 29 % u kontrolní vody; šlo o francouzskou vodu jiného složení (Dupont a kol., 2019, Nutrition). Placebem kontrolovaná studie se 106 účastníky zjistila po šesti týdnech půl litru sulfátové vody denně více spontánních stolic a lepší konzistenci, při jen hraničně významném primárním cíli (Bothe a kol., 2015, Eur J Nutr). Britské dietetické doporučení z roku 2025 proto uvádí vodu s vyšším obsahem minerálů jako jednu z možností u chronické zácpy, s nízkou až střední jistotou evidence (Dimidi a kol., 2025, J Hum Nutr Diet). K žlučníku je podkladů méně: v kontrolované studii se 40 účastníky se po dvanácti dnech pití síran-hydrogenuhličitanové vody zmenšil nalačno objem žlučníku, při častější stolici; šlo o italskou vodu jiného složení a malý vzorek (Corradini a kol., 2012, World J Gastroenterol). Ke Crohnově nemoci, ulcerózní kolitidě a chronické pankreatitidě srovnatelné kontrolované studie k pitné kúře nejsou k dispozici; léčba se zde opírá o zkušenost lázeňské medicíny a úzké lékařské doprovázení.',
         },
         physicianNote: 'O tom, zda a v jaké formě pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich gastroenterologických nálezů. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Pitná kúra u Křížového pramene při trávicích potížích je nejstarší důvod, proč hosté do Mariánských Lázní jezdí; množství, pramen i načasování dodnes určuje lázeňský lékař jednotlivě. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Co léčí Mariánské Lázně u trávení?',
@@ -6612,9 +6695,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Что показывают исследования',
-          body: 'Обзор 49 систематических обзоров по курортной медицине называет доказательства для питьевого и ингаляционного лечения в целом «ограниченными, хотя и интересными» — заметно слабее, чем по опорно-двигательному аппарату (Antonelli et al., 2021, Int J Biometeorol). По сульфатной и магниевой минеральной воде при функциональном запоре есть двойное слепое рандомизированное исследование с 226 участниками: через 14 дней ответили на лечение 50 % против 29 % на контрольной воде; речь шла о французской воде другого состава (Dupont et al., 2019, Nutrition). Плацебо-контролируемое исследование со 106 участниками обнаружило после шести недель приёма половины литра сульфатной воды в день больше самостоятельных дефекаций и лучшую консистенцию стула, при лишь пограничной значимости первичной конечной точки (Bothe et al., 2015, Eur J Nutr). Британское диетическое клиническое руководство 2025 года поэтому называет воду с более высоким содержанием минералов одним из вариантов при хроническом запоре, с низкой или средней достоверностью доказательств (Dimidi et al., 2025, J Hum Nutr Diet). По жёлчному пузырю данных меньше: в контролируемом исследовании с 40 участниками после двенадцати дней приёма сульфатно-гидрокарбонатной воды натощаковый объём жёлчного пузыря уменьшился, при более частом стуле; это была итальянская вода другого состава и небольшая выборка (Corradini et al., 2012, World J Gastroenterol). По болезни Крона, язвенному колиту и хроническому панкреатиту сопоставимых контролируемых исследований питьевого курса нет; лечение здесь опирается на опыт курортной медицины и тесное врачебное сопровождение.',
+          body: 'По сульфатной и магниевой минеральной воде при функциональном запоре есть двойное слепое рандомизированное исследование с 226 участниками: через 14 дней ответили на лечение 50 % против 29 % на контрольной воде; речь шла о французской воде другого состава (Dupont et al., 2019, Nutrition). Плацебо-контролируемое исследование со 106 участниками обнаружило после шести недель приёма половины литра сульфатной воды в день больше самостоятельных дефекаций и лучшую консистенцию стула, при лишь пограничной значимости первичной конечной точки (Bothe et al., 2015, Eur J Nutr). Британское диетическое клиническое руководство 2025 года поэтому называет воду с более высоким содержанием минералов одним из вариантов при хроническом запоре, с низкой или средней достоверностью доказательств (Dimidi et al., 2025, J Hum Nutr Diet). По жёлчному пузырю данных меньше: в контролируемом исследовании с 40 участниками после двенадцати дней приёма сульфатно-гидрокарбонатной воды натощаковый объём жёлчного пузыря уменьшился, при более частом стуле; это была итальянская вода другого состава и небольшая выборка (Corradini et al., 2012, World J Gastroenterol). По болезни Крона, язвенному колиту и хроническому панкреатиту сопоставимых контролируемых исследований питьевого курса нет; лечение здесь опирается на опыт курортной медицины и тесное врачебное сопровождение.',
         },
         physicianNote: 'Показано ли вам курортное лечение и в какой форме, решает курортный врач при первичном осмотре на основании ваших гастроэнтерологических заключений. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Питьевое лечение у Крестового источника при расстройствах пищеварения — самая давняя причина, по которой гости приезжают в Марианские Лазни; количество, источник и время приёма по сей день курортный врач определяет индивидуально. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Чем известны Марианские Лазни как курорт?',
@@ -7338,9 +7425,9 @@ export const diagnoses: Diagnosis[] = [
     medicalReviewDate: '2026-09-14',
     imageAlt: {
       de: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
-      en: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
-      cs: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
-      ru: 'Kurgäste üben mit Schwimmnudeln im warmen Becken Gleichgewicht und Beweglichkeit',
+      en: 'Spa guests practising balance and mobility with pool noodles in the warm pool',
+      cs: 'Lázeňští hosté cvičí s plaveckými nudlemi v teplém bazénu rovnováhu a pohyblivost',
+      ru: 'Гости лечения тренируют равновесие и подвижность с плавательными палками в тёплом бассейне',
     },
     content: {
       de: {
@@ -7424,7 +7511,7 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Was die Studien zeigen',
-          body: 'Die Studienlage ist schmal, aber vorhanden. In einer randomisierten Crossover-Studie mit 31 Patienten mit Parkinson-Krankheit verbesserte eine dreiwöchige Kurbehandlung vier Wochen nach der Kur die Lebensqualität (PDQ-39 und SF-36), Teil IV der UPDRS-Skala und das psychische Wohlbefinden (GHQ-28); in der 20. Woche war der Unterschied nicht mehr nachweisbar, der Effekt ist also kurzfristig belegt (Brefel-Courbon et al., 2003, Mov Disord; kleines Kollektiv). Ein Scoping Review zur Kurrehabilitation bei neurodegenerativen Erkrankungen fasst drei Studien zur Parkinson-Krankheit zusammen, die Verbesserungen von Motorik, Gleichgewicht, Lebensqualität und psychischem Wohlbefinden beschreiben (Maccarone et al., 2022, Int J Biometeorol; nur drei Studien, begrenzte Literatur). Keine dieser Studien zeigt einen Einfluss auf das Fortschreiten der Erkrankung, und keine ersetzt die neurologische Behandlung oder die Medikation.',
+          body: 'In einer randomisierten Crossover-Studie mit 31 Patienten mit Parkinson-Krankheit verbesserte eine dreiwöchige Kurbehandlung vier Wochen nach der Kur die Lebensqualität (PDQ-39 und SF-36), Teil IV der UPDRS-Skala und das psychische Wohlbefinden (GHQ-28); in der 20. Woche war der Unterschied nicht mehr nachweisbar, der Effekt ist also kurzfristig belegt (Brefel-Courbon et al., 2003, Mov Disord; kleines Kollektiv). Ein Scoping Review zur Kurrehabilitation bei neurodegenerativen Erkrankungen fasst drei Studien zur Parkinson-Krankheit zusammen, die Verbesserungen von Motorik, Gleichgewicht, Lebensqualität und psychischem Wohlbefinden beschreiben (Maccarone et al., 2022, Int J Biometeorol; nur drei Studien, begrenzte Literatur). Keine dieser Studien zeigt einen Einfluss auf das Fortschreiten der Erkrankung, und keine ersetzt die neurologische Behandlung oder die Medikation.',
         },
         physicianNote: 'Ob und in welchem Umfang eine Kur bei Ihrer Parkinson-Krankheit infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des neurologischen Befunds und Ihrer Medikation. Ein Kuraufenthalt ergänzt die neurologische Behandlung und ersetzt weder sie noch die verordneten Medikamente. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
         faqs: [
@@ -7490,9 +7577,411 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      en: {} as unknown as DiagnosisContent,
-      cs: {} as unknown as DiagnosisContent,
-      ru: {} as unknown as DiagnosisContent,
+      en: {
+        slug: 'parkinsons-disease',
+        navLabel: "Parkinson's disease",
+        title: "Spa treatment for Parkinson's disease in Marienbad",
+        h1: "Spa treatment for Parkinson's disease",
+        metaTitle: "Spa treatment for Parkinson's in Marienbad — course and duration",
+        metaDescription: "Spa treatment for Parkinson's disease in Marienbad: gait and balance training, exercise therapy in water, carbon dioxide baths — course and duration.",
+        lead: "Parkinson's disease has its own position on the Czech indication list, and Marienbad treats it as a rehabilitation stay: with daily gait and balance training, exercise therapy in warm water and treatments drawn from the local natural remedies. The cure supplements neurological treatment; it does not take its place.",
+        teaser: 'Gait and balance training, exercises in water and carbon dioxide baths — as a supplement to neurological treatment.',
+        treats: [
+          "Parkinson's disease at a stage where independent walking and self-care are still possible",
+          'Unsteady gait, shortened stride length and start hesitation in everyday life',
+          'Balance disorders with an increased risk of falls',
+          'Muscle stiffness and painful tension in the trunk and shoulders',
+          'Declining physical stamina and withdrawal from movement',
+        ],
+        notFor: [
+          'Inability to walk without assistance and to manage daily activities unaided — the indication list requires both',
+          'Advanced dementia or marked confusion that makes guided exercise impossible',
+          'Acute illness, untreated heart failure or a recent injury',
+          'Epilepsy, and dependence on alcohol or other addictive substances',
+          'Pregnancy',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: "The spa physician reviews your neurological findings and current medication, checks your gait, balance and stamina, and then puts together the treatment plan. Bring your neurologist's latest report and a complete list of your medication — the times you take it determine when the exercise sessions make sense.",
+          },
+          {
+            heading: 'First week: finding a rhythm',
+            body: 'Treatments are scheduled around when the medication is working, so that exercise therapy falls within the mobile phases. Gait and balance exercises start with simple movements; in water, steps and turns are easier, because buoyancy removes the risk of falling.',
+          },
+          {
+            heading: 'Second week: increasing the load',
+            body: 'Stride length, changes of pace and changes of direction are added, along with practising everyday situations: standing up, turning around, walking through a doorway. Balneological treatments such as carbon dioxide baths and massage loosen the accompanying muscle stiffness.',
+          },
+          {
+            heading: 'Final examination and a plan for home',
+            body: 'At the end, gait and balance are assessed again and recorded in writing. You receive a home exercise programme; without regularly continuing it, the gains do not last.',
+          },
+        ],
+        procedures: [
+          { name: 'Individual physiotherapy', detail: 'Daily, focused on gait, stride length, posture and turning safely.' },
+          { name: 'Balance and gait training', detail: 'Exercises in standing stability, weight shifting and changes of direction, to lower the risk of falls in everyday life.' },
+          { name: 'Exercise therapy in the pool', detail: 'The buoyancy of the warm water allows a range of movement that would feel too unsteady on dry land, and takes away the fear of falling.' },
+          { name: 'Group exercise', detail: 'Guided sessions with guests of similar diagnosis, including breathing technique and exercises for posture and mobility.' },
+          { name: 'Carbon dioxide bath in mineral water', detail: 'A bath at around 34°C; the carbon dioxide absorbed from the water promotes skin blood flow and is prescribed for relaxation.' },
+          { name: 'Dry gas bath in Mariengas', detail: 'Application of the natural carbon dioxide from the Marien Spring in a sealed bag, without water and without the circulatory strain of heat.' },
+          { name: 'Classic and reflex massage', detail: 'For the accompanying muscle stiffness of the trunk, neck and shoulder girdle; reflex massage is prescribed only by the physician.' },
+          { name: 'Climate therapy and guided walks', detail: 'Walking outdoors under guidance, with the distance increasing according to current stamina.' },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: "Parkinson's disease has its own position on the Czech indication list (VI/11). For stays covered by Czech public health insurance, 21 days of comprehensive spa care are provided for, and the repeat stay is likewise 21 days of comprehensive care; the list does not provide a contributory-care position here. Self-paying guests agree the length with the spa physician; the professional minimum for balneotherapy is at least 10 treatments over at least 10 days. There is no medical requirement for the season — in late summer and autumn the spa town is quieter and the paths are safer to walk than when they are icy.",
+        },
+        evidence: {
+          heading: 'What the studies show',
+          body: "In a randomised crossover study of 31 patients with Parkinson's disease, a three-week spa treatment improved quality of life (PDQ-39 and SF-36), part IV of the UPDRS scale and psychological well-being (GHQ-28) four weeks after the cure; by week 20 the difference was no longer detectable, so the effect is only established short-term (Brefel-Courbon et al., 2003, Mov Disord; small cohort). A scoping review of spa rehabilitation in neurodegenerative disease summarises three studies on Parkinson's disease describing improvements in motor function, balance, quality of life and psychological well-being (Maccarone et al., 2022, Int J Biometeorol; only three studies, limited literature). None of these studies shows an effect on disease progression, and none replaces neurological treatment or medication.",
+        },
+        physicianNote: "Whether and to what extent a spa cure is appropriate for your Parkinson's disease is decided by the spa physician at the initial examination, based on your neurological findings and your medication. A spa stay supplements neurological treatment and replaces neither it nor your prescribed medication. This page provides information and does not replace medical advice.",
+        faqs: [
+          {
+            question: "Is a spa cure for Parkinson's disease covered?",
+            answer: "Parkinson's disease is position VI/11 on the Czech indication list: for people insured with a Czech health fund, 21 days of comprehensive spa care are provided for, and 21 days again for a repeat stay. Guests insured outside the Czech Republic should clarify cost coverage with their own insurer in advance; those paying themselves book the stay directly with the spa hotel.",
+          },
+          {
+            question: "What can a spa cure do for Parkinson's disease?",
+            answer: 'The goal is mobility in daily life: walking safely, balance, stride length and turning, together with loosening the accompanying muscle stiffness. A randomised crossover study of 31 patients found better quality of life and better psychological well-being four weeks after a three-week cure; by week 20 the difference was no longer detectable. According to the available studies, the cure has no effect on disease progression.',
+          },
+          {
+            question: 'From what stage does a spa cure no longer make sense?',
+            answer: 'The indication list requires that the guest can walk independently and manage daily activities without assistance. Anyone who depends on being cared for, or who cannot follow guided exercise because of advanced dementia, is not admitted. The spa physician decides on a case-by-case basis at the initial examination.',
+          },
+          {
+            question: 'Do I have to stop my medication during the cure?',
+            answer: "No, and you should not change medication prescribed for you at home without your doctor's agreement. With Parkinson's disease, the timing of your doses even shapes the schedule: treatments are arranged so that exercise therapy falls within the mobile phases. So bring a complete list of your medication with the times you take it.",
+          },
+          {
+            question: 'Can a companion come along?',
+            answer: "Yes, a companion can be accommodated in the same hotel. This does not, however, replace the indication list's requirement that the guest can walk and manage self-care independently; a spa cure is not a nursing service.",
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VI — position VI/11',
+            url: '/en/indications-and-contraindications',
+            note: "Parkinson's disease: 21 days of comprehensive spa care as the initial stay, 21 days of comprehensive care for a repeat stay; no contributory-care position.",
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa medical rehabilitation care — Group VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for nervous system diseases, including general contraindications. Czech-language text.',
+          },
+          {
+            title: "Brefel-Courbon C et al. 2003, Mov Disord — randomised crossover study, 31 patients with Parkinson's disease",
+            url: 'https://consensus.app/papers/details/a9e96b9dd21d545fbb2795b2537ed0d6/',
+            note: 'A three-week spa treatment improved quality of life, UPDRS part IV and psychological well-being four weeks later; no difference remained at week 20. Small cohort.',
+          },
+          {
+            title: 'Maccarone MC et al. 2022, Int J Biometeorol — scoping review of spa rehabilitation in neurodegenerative disease',
+            url: 'https://consensus.app/papers/details/6e6a5d578d1c52f9b0e1411ea6617dce/',
+            note: "Three studies on Parkinson's disease describe better motor function, balance and quality of life after spa rehabilitation; the literature remains limited.",
+          },
+        ],
+        related: [
+          { label: 'Brain and Nervous System Day', href: '/en/magazine/brain-nervous-system' },
+          { label: 'Spa treatment for polyneuropathy', href: '/en/spa-treatment-for/polyneuropathy' },
+          { label: 'Movement at the spa', href: '/en/magazine/movement-spa-extends-life' },
+          { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
+        ],
+      },
+      cs: {
+        slug: 'parkinsonova-nemoc',
+        navLabel: 'Parkinsonova nemoc',
+        title: 'Lázeňská léčba Parkinsonovy nemoci v Mariánských Lázních',
+        h1: 'Lázeňská léčba Parkinsonovy nemoci',
+        metaTitle: 'Léčba Parkinsonovy nemoci v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Lázeňská léčba Parkinsonovy nemoci v Mariánských Lázních: trénink chůze a rovnováhy, pohyb ve vodě, uhličité koupele — průběh a délka pobytu.',
+        lead: 'Parkinsonova nemoc je samostatnou položkou českého indikačního seznamu, a Mariánské Lázně ji léčí jako rehabilitační pobyt: s denním tréninkem chůze a rovnováhy, pohybovou terapií v teplé vodě a procedurami z místních léčivých zdrojů. Lázeňský pobyt doplňuje neurologickou léčbu, nenahrazuje ji.',
+        teaser: 'Trénink chůze a rovnováhy, cvičení ve vodě a uhličité koupele — jako doplněk k neurologické léčbě.',
+        treats: [
+          'Parkinsonova nemoc ve stadiu, kdy je ještě možná samostatná chůze a sebeobsluha',
+          'Nejistota při chůzi, zkrácená délka kroku a potíže se zahájením chůze v běžném dni',
+          'Poruchy rovnováhy se zvýšeným rizikem pádu',
+          'Svalová ztuhlost a bolestivé napětí trupu a ramen',
+          'Ubývající fyzická zátěžová kapacita a ústup od pohybu',
+        ],
+        notFor: [
+          'Neschopnost chodit bez cizí pomoci a zajistit si běžné denní úkony sama/sám — obojí indikační seznam vyžaduje',
+          'Pokročilá demence nebo výrazná zmatenost, která znemožňuje cvičení podle instrukcí',
+          'Akutní onemocnění, neléčené srdeční selhání nebo čerstvé zranění',
+          'Epilepsie a závislost na alkoholu či jiných návykových látkách',
+          'Těhotenství',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde neurologický nález a aktuální medikaci, vyšetří chůzi, rovnováhu a zátěžovou kapacitu a poté sestaví plán procedur. Vezměte si poslední zprávu svého neurologa a úplný seznam léků — časy jejich užívání určují, kdy má smysl zařadit cvičební jednotky.',
+          },
+          {
+            heading: 'První týden: hledání rytmu',
+            body: 'Procedury se plánují podle doby účinku medikace, aby pohybová terapie připadla na fáze s dobrou hybností. Trénink chůze a rovnováhy začíná jednoduchými postupy; ve vodě jsou kroky a otáčení snazší, protože vztlak snižuje riziko pádu.',
+          },
+          {
+            heading: 'Druhý týden: zvyšování zátěže',
+            body: 'Přibývá práce na délce kroku, změnách tempa a směru i trénink běžných situací: vstávání, otáčení, průchod dveřmi. Balneologické procedury jako uhličité koupele a masáže uvolňují doprovodnou svalovou ztuhlost.',
+          },
+          {
+            heading: 'Závěrečná prohlídka a plán pro doma',
+            body: 'Na závěr se znovu posoudí a písemně zaznamená chůze a rovnováha. Dostanete cvičební program pro doma; bez pravidelného pokračování se dosažený stav neudrží.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, se zaměřením na chůzi, délku kroku, vzpřímené držení těla a bezpečné otáčení.',
+          },
+          {
+            name: 'Škola rovnováhy a chůze',
+            detail: 'Cvičení na stabilitu ve stoji, přenášení váhy a změny směru, aby se v běžném dni snížilo riziko pádu.',
+          },
+          {
+            name: 'Pohybová terapie v bazénu',
+            detail: 'Vztlak teplé vody umožňuje rozsah pohybu, který by na suchu byl příliš nejistý, a snižuje strach z pádu.',
+          },
+          {
+            name: 'Skupinové cvičení',
+            detail: 'Vedené jednotky s hosty s podobnou diagnózou, s dechovou technikou a cvičením na držení těla a pohyblivost.',
+          },
+          {
+            name: 'Uhličitá koupel z minerální vody',
+            detail: 'Koupel při zhruba 34 °C; oxid uhličitý přijímaný z vody podporuje prokrvení kůže a předepisuje se k uvolnění.',
+          },
+          {
+            name: 'Suchá plynová koupel v Mariině plynu',
+            detail: 'Aplikace přírodního oxidu uhličitého z Mariina pramene v uzavřeném vaku, bez vody a bez zátěže oběhu teplem.',
+          },
+          {
+            name: 'Klasická a reflexní masáž',
+            detail: 'Proti doprovodné svalové ztuhlosti trupu, krku a ramenního pletence; reflexní masáž předepisuje výhradně lékař.',
+          },
+          {
+            name: 'Klimatoterapie a vedené procházky',
+            detail: 'Chůze v terénu pod vedením, s postupně narůstající vzdáleností podle aktuální zátěžové kapacity.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Parkinsonova nemoc je samostatná položka VI/11 českého indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u neurologických onemocnění. Samoplátci volí délku po dohodě s lázeňským lékařem; jako odborné minimum balneoterapie platí alespoň 10 procedur během alespoň 10 dní. Pro roční období neexistuje lékařský předpis — v pozdním létě a na podzim bývá lázeňské město klidnější a cesty bezpečnější k chůzi než za náledí.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'V randomizované crossover studii s 31 pacienty s Parkinsonovou nemocí zlepšila třítýdenní lázeňská léčba čtyři týdny po pobytu kvalitu života (PDQ-39 a SF-36), část IV škály UPDRS a psychickou pohodu (GHQ-28); ve 20. týdnu už rozdíl patrný nebyl, efekt je tedy doložen jen krátkodobě (Brefel-Courbon a kol., 2003, Mov Disord; malý soubor). Scoping review k lázeňské rehabilitaci u neurodegenerativních onemocnění shrnuje tři studie k Parkinsonově nemoci, které popisují zlepšení motoriky, rovnováhy, kvality života a psychické pohody (Maccarone a kol., 2022, Int J Biometeorol; jen tři studie, omezená literatura). Žádná z těchto studií neprokazuje vliv na postup nemoci a žádná nenahrazuje neurologickou léčbu ani medikaci.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás při Parkinsonově nemoci připadá v úvahu lázeňský pobyt, rozhoduje lázeňský lékař při vstupní prohlídce podle neurologického nálezu a vaší medikace. Lázeňský pobyt doplňuje neurologickou léčbu a nenahrazuje ji ani předepsané léky. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Hradí pojišťovna lázně při Parkinsonově nemoci?',
+            answer: 'Parkinsonova nemoc je položka VI/11 českého indikačního seznamu; přesnou délku hrazeného pobytu i podmínky najdete na stránce Co hradí pojišťovna u neurologických onemocnění. Hosté s pojištěním mimo Česko si úhradu ověřují předem u vlastní pojišťovny; kdo si pobyt hradí sám, rezervuje ho přímo u lázeňského hotelu.',
+          },
+          {
+            question: 'Co lázeňský pobyt při Parkinsonově nemoci přinese?',
+            answer: 'Cílem je pohyblivost v běžném dni: jistá chůze, rovnováha, délka kroku a otáčení, k tomu uvolnění doprovodné svalové ztuhlosti. Randomizovaná crossover studie s 31 pacienty zjistila čtyři týdny po třítýdenním pobytu lepší kvalitu života a lepší psychickou pohodu, ve 20. týdnu už rozdíl patrný nebyl. Na postup nemoci podle dostupných studií lázeňský pobyt nepůsobí.',
+          },
+          {
+            question: 'Od jakého stadia už lázeňský pobyt nemá smysl?',
+            answer: 'Indikační seznam předpokládá, že host je schopen samostatné chůze a zvládá běžné denní úkony bez cizí pomoci. Kdo je odkázán na péči nebo se pro pokročilou demenci nemůže cvičit podle instrukcí, není přijat. O tom v jednotlivém případě rozhoduje lázeňský lékař při vstupní prohlídce.',
+          },
+          {
+            question: 'Musím během pobytu vysadit léky?',
+            answer: 'Ne, a svou doma předepsanou medikaci byste neměli měnit bez souhlasu svého lékaře ani během pobytu. U Parkinsonovy nemoci časy užívání léků dokonce určují průběh dne: procedury se plánují tak, aby pohybová terapie připadla na fáze s dobrou hybností. Vezměte si proto úplný seznam léků s časy užívání.',
+          },
+          {
+            question: 'Může jet doprovázející osoba se mnou?',
+            answer: 'Ano, doprovázející osoba může být ubytována ve stejném domě. Nenahrazuje to však podmínku indikačního seznamu, že host musí být schopen samostatné chůze a sebeobsluhy; lázeňský pobyt není pečovatelská služba.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VI — položka VI/11',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Parkinsonova nemoc, s typem péče a délkou pobytu.',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci nervové včetně kontraindikací.',
+          },
+          {
+            title: 'Brefel-Courbon C a kol. 2003, Mov Disord — randomizovaná crossover studie, 31 pacientů s Parkinsonovou nemocí',
+            url: 'https://consensus.app/papers/details/a9e96b9dd21d545fbb2795b2537ed0d6/',
+            note: 'Třítýdenní lázeňská léčba zlepšila čtyři týdny po pobytu kvalitu života, část IV UPDRS a psychickou pohodu; ve 20. týdnu už rozdíl patrný nebyl. Malý soubor.',
+          },
+          {
+            title: 'Maccarone MC a kol. 2022, Int J Biometeorol — scoping review k lázeňské rehabilitaci u neurodegenerativních onemocnění',
+            url: 'https://consensus.app/papers/details/6e6a5d578d1c52f9b0e1411ea6617dce/',
+            note: 'Tři studie k Parkinsonově nemoci popisují lepší motoriku, rovnováhu a kvalitu života po lázeňské rehabilitaci; literatura je zatím omezená.',
+          },
+        ],
+        related: [
+          {
+            label: 'Den mozku a nervového systému',
+            href: '/cs/magazin/den-mozku-nervovy-system',
+          },
+          {
+            label: 'Lázeňská léčba polyneuropatie',
+            href: '/cs/lazenska-lecba/polyneuropatie',
+          },
+          {
+            label: 'Pohyb v lázních prodlužuje život',
+            href: '/cs/magazin/pohyb-v-laznich-prodluzuje-zivot',
+          },
+          {
+            label: 'Co hradí pojišťovna u neurologických onemocnění',
+            href: '/cs/lazne-s-pojistovnou/indikace/neurologicka-onemocneni',
+          },
+        ],
+      },
+      ru: {
+        slug: 'bolezn-parkinsona',
+        navLabel: 'Болезнь Паркинсона',
+        title: 'Курортное лечение болезни Паркинсона в Марианских Лазнях',
+        h1: 'Курортное лечение при болезни Паркинсона',
+        metaTitle: 'Лечение болезни Паркинсона — Марианские Лазни | Marienbad.com',
+        metaDescription: 'Курортное лечение болезни Паркинсона в Марианских Лазнях: тренировка ходьбы и равновесия, лечебная физкультура в воде, углекислые ванны — ход лечения и сроки.',
+        lead: 'Болезнь Паркинсона выделена в отдельную позицию чешского индикационного списка, и в Марианских Лазнях её лечат как реабилитационное пребывание: с ежедневной тренировкой ходьбы и равновесия, двигательной терапией в тёплой воде и процедурами из местных лечебных средств. Курортное лечение дополняет неврологическую терапию, а не заменяет её.',
+        teaser: 'Тренировка ходьбы и равновесия, упражнения в воде и углекислые ванны — как дополнение к неврологическому лечению.',
+        treats: [
+          'Болезнь Паркинсона на стадии, когда самостоятельная ходьба и самообслуживание ещё возможны',
+          'Неустойчивость при ходьбе, укороченная длина шага и заторможенность при начале движения в повседневной жизни',
+          'Нарушения равновесия с повышенным риском падений',
+          'Мышечная скованность и болезненное напряжение туловища и плеч',
+          'Снижение физической выносливости и отказ от движения',
+        ],
+        notFor: [
+          'Невозможность ходить без посторонней помощи и самостоятельно выполнять повседневные действия — индикационный список требует и того, и другого',
+          'Выраженная деменция или спутанность сознания, делающая занятия по инструкции невозможными',
+          'Острое заболевание, нелеченая сердечная недостаточность или свежая травма',
+          'Эпилепсия, а также зависимость от алкоголя или других психоактивных веществ',
+          'Беременность',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач изучает неврологическое заключение и текущую медикацию, проверяет походку, равновесие и выносливость и только после этого составляет план процедур. Возьмите с собой последнее заключение вашего невролога и полный список лекарств — время их приёма определяет, когда имеет смысл проводить занятия.',
+          },
+          {
+            heading: 'Первая неделя: найти ритм',
+            body: 'Процедуры выстраивают вокруг времени действия лекарств, чтобы двигательная терапия приходилась на фазы наибольшей подвижности. Упражнения на ходьбу и равновесие начинаются с простых последовательностей; в воде шаги и повороты даются легче, потому что выталкивающая сила снимает риск падения.',
+          },
+          {
+            heading: 'Вторая неделя: увеличение нагрузки',
+            body: 'К этому добавляются длина шага, смена темпа и смена направления, а также тренировка повседневных ситуаций: подъём со стула, разворот, проход через дверь. Бальнеологические процедуры, такие как углекислые ванны и массаж, снимают сопутствующую мышечную скованность.',
+          },
+          {
+            heading: 'Заключительное обследование и план на дом',
+            body: 'В завершение походка и равновесие оцениваются повторно и фиксируются письменно. Вы получаете программу упражнений на дом; без регулярных занятий достигнутый результат не сохраняется.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Индивидуальная физиотерапия',
+            detail: 'Ежедневно, с акцентом на походку, длину шага, выпрямление осанки и безопасный разворот.',
+          },
+          {
+            name: 'Школа равновесия и ходьбы',
+            detail: 'Упражнения на устойчивость, перенос веса тела и смену направления движения, чтобы снизить риск падений в повседневной жизни.',
+          },
+          {
+            name: 'Двигательная терапия в бассейне',
+            detail: 'Выталкивающая сила тёплой воды позволяет выполнять движения, которые на суше были бы слишком небезопасны, и снимает страх падения.',
+          },
+          {
+            name: 'Групповые занятия',
+            detail: 'Занятия под руководством инструктора с гостями со схожим диагнозом, включающие дыхательную технику и упражнения на осанку и подвижность.',
+          },
+          {
+            name: 'Углекислая ванна в минеральной воде',
+            detail: 'Ванна при температуре около 34 °C; углекислый газ, проникающий через кожу из воды, улучшает кровоснабжение кожи и назначается для расслабления.',
+          },
+          {
+            name: 'Сухая газовая ванна в марианском газе',
+            detail: 'Применение природного углекислого газа источника Марии в герметичном мешке — без воды и без нагрузки на кровообращение от тепла.',
+          },
+          {
+            name: 'Классический и рефлекторный массаж',
+            detail: 'Против сопутствующей мышечной скованности туловища, шеи и плечевого пояса; рефлекторный массаж назначает исключительно врач.',
+          },
+          {
+            name: 'Климатотерапия и прогулки под руководством инструктора',
+            detail: 'Ходьба по местности под руководством инструктора, с постепенно увеличивающейся дистанцией в соответствии с текущей выносливостью.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Болезнь Паркинсона выделена в отдельную позицию чешского индикационного списка (VI/11). Для пребываний, оплачиваемых чешской страховой, предусмотрено 21 день комплексного курортного лечения, а для повторного пребывания — также 21 день комплексного лечения; долевой позиции список здесь не предусматривает. Гости, оплачивающие лечение самостоятельно, согласуют срок с курортным врачом; профессиональным минимумом бальнеотерапии считается не менее 10 процедур за не менее чем 10 дней. Для времени года медицинских рекомендаций нет — в конце лета и осенью курорт спокойнее, а дороги безопаснее для ходьбы, чем при обледенении.',
+        },
+        evidence: {
+          heading: 'Что показывают исследования',
+          body: 'В рандомизированном перекрёстном исследовании с 31 пациентом с болезнью Паркинсона трёхнедельное курортное лечение через четыре недели после его завершения улучшило качество жизни (по шкалам PDQ-39 и SF-36), часть IV шкалы UPDRS и психическое самочувствие (по GHQ-28); к 20-й неделе разница уже не была обнаружима, то есть эффект подтверждён только в краткосрочной перспективе (Brefel-Courbon et al., 2003, Mov Disord; небольшая выборка). Скопинг-обзор по курортной реабилитации при нейродегенеративных заболеваниях обобщает три исследования по болезни Паркинсона, которые описывают улучшение моторики, равновесия, качества жизни и психического самочувствия (Maccarone et al., 2022, Int J Biometeorol; только три исследования, ограниченная литература). Ни одно из этих исследований не показывает влияния на прогрессирование заболевания, и ни одно не заменяет неврологическое лечение или медикаментозную терапию.',
+        },
+        physicianNote: 'Возможно ли и в каком объёме курортное лечение при вашей болезни Паркинсона, решает курортный врач при первичном осмотре на основании неврологического заключения и вашей медикации. Курортное пребывание дополняет неврологическое лечение и не заменяет ни его, ни назначенные лекарства. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        faqs: [
+          {
+            question: 'Оплачивается ли курортное лечение при болезни Паркинсона?',
+            answer: 'Болезнь Паркинсона стоит как позиция VI/11 чешского индикационного списка: для застрахованных в чешской страховой компании предусмотрено 21 день комплексного курортного лечения, при повторном пребывании — также 21 день. Гости со страховкой за пределами Чехии заранее уточняют возможность возмещения у своего страховщика; те, кто оплачивает лечение самостоятельно, бронируют пребывание напрямую в курортном отеле.',
+          },
+          {
+            question: 'Что даёт курортное лечение при болезни Паркинсона?',
+            answer: 'Цель — подвижность в повседневной жизни: безопасная ходьба, равновесие, длина шага и разворот, а также снятие сопутствующей мышечной скованности. Рандомизированное перекрёстное исследование с 31 пациентом обнаружило через четыре недели после трёхнедельного курортного лечения улучшение качества жизни и психического самочувствия, к 20-й неделе разница уже не была обнаружима. На прогрессирование заболевания курортное лечение, согласно имеющимся исследованиям, не влияет.',
+          },
+          {
+            question: 'С какой стадии курортное лечение уже не имеет смысла?',
+            answer: 'Индикационный список требует, чтобы гость мог самостоятельно ходить и выполнять повседневные действия без посторонней помощи. Тем, кто нуждается в постоянном уходе или из-за выраженной деменции не может заниматься по инструкции, лечение не назначается. Решение в каждом отдельном случае принимает курортный врач при первичном осмотре.',
+          },
+          {
+            question: 'Нужно ли отменять лекарства во время курортного лечения?',
+            answer: 'Нет, и вам не следует менять назначенную дома медикацию без согласия вашего врача. При болезни Паркинсона время приёма лекарств даже определяет ход лечения: процедуры выстраивают так, чтобы двигательная терапия приходилась на фазы наибольшей подвижности. Поэтому возьмите с собой полный список лекарств с указанием времени приёма.',
+          },
+          {
+            question: 'Может ли приехать сопровождающее лицо?',
+            answer: 'Да, сопровождающее лицо может быть размещено в том же отеле. Однако это не заменяет требование индикационного списка о том, что гость должен сам ходить и обслуживать себя; курортное лечение не является услугой по уходу.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VI — позиция VI/11',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Болезнь Паркинсона: 21 день комплексного курортного лечения как базовое пребывание, 21 день комплексного лечения при повторном пребывании; долевой позиции нет.',
+          },
+          {
+            title: 'Постановление № 2/2015 Сб. о профессиональных критериях курортной реабилитационной помощи — группа VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Полный текст индикационного списка для нервных заболеваний, включая общие противопоказания. Текст на чешском языке.',
+          },
+          {
+            title: 'Brefel-Courbon C et al. 2003, Mov Disord — рандомизированное перекрёстное исследование, 31 пациент с болезнью Паркинсона',
+            url: 'https://consensus.app/papers/details/a9e96b9dd21d545fbb2795b2537ed0d6/',
+            note: 'Трёхнедельное курортное лечение через четыре недели после завершения улучшило качество жизни, часть IV шкалы UPDRS и психическое самочувствие; к 20-й неделе разницы уже не было. Небольшая выборка.',
+          },
+          {
+            title: 'Maccarone MC et al. 2022, Int J Biometeorol — скопинг-обзор по курортной реабилитации при нейродегенеративных заболеваниях',
+            url: 'https://consensus.app/papers/details/6e6a5d578d1c52f9b0e1411ea6617dce/',
+            note: 'Три исследования по болезни Паркинсона описывают улучшение моторики, равновесия и качества жизни после курортной реабилитации; литература пока ограничена.',
+          },
+        ],
+        related: [
+          {
+            label: 'День мозга и нервной системы',
+            href: '/ru/zhurnal/den-mozga-nervnaya-sistema',
+          },
+          {
+            label: 'Курортное лечение полинейропатии',
+            href: '/ru/kurortnoe-lechenie/polinejropatiya',
+          },
+          {
+            label: 'Движение на курорте',
+            href: '/ru/zhurnal/dvizhenie-v-kurorte',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
     },
   },
   {
@@ -7508,9 +7997,9 @@ export const diagnoses: Diagnosis[] = [
     medicalReviewDate: '2026-09-14',
     imageAlt: {
       de: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
-      en: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
-      cs: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
-      ru: 'Ärztin setzt entlang der Wirbelsäule eine Gasinjektion mit natürlichem Kohlendioxid',
+      en: 'A doctor giving a gas injection of natural carbon dioxide alongside the spine',
+      cs: 'Lékařka podává podél páteře plynovou injekci s přírodním oxidem uhličitým',
+      ru: 'Врач делает инъекцию природного углекислого газа вдоль позвоночника',
     },
     content: {
       de: {
@@ -7589,6 +8078,10 @@ export const diagnoses: Diagnosis[] = [
           body: 'Wurzelsyndrome mit Reiz- und Ausfallerscheinungen stehen als Position VI/3 unter den Nervenkrankheiten. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind 21 Tage komplexe Kurbehandlung als Grundaufenthalt vorgesehen; beim Wiederholungsaufenthalt sind es 21 Tage als Zuschussbehandlung, in bestimmten Fällen 14. Geht es dagegen um chronischen Rückenschmerz ohne Wurzelbeteiligung oder um den Zustand nach einer Bandscheibenoperation, greifen die Positionen VII/9 und VII/11 aus der Gruppe der Bewegungsorgane — dafür ist die Seite zu Wirbelsäulenbeschwerden zuständig. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage.',
         },
         physicianNote: 'Ob und in welcher Form eine Kur bei Ihrem Wurzelsyndrom infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des neurologischen Befunds und der Bildgebung. Eine fortschreitende Lähmung oder eine Blasen- und Mastdarmstörung ist ein Notfall und gehört umgehend in ärztliche Behandlung, nicht in eine Kurplanung. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Gasinjektionen mit Mariengas, Moorpackungen und tägliche Physiotherapie werden in Marienbad bei Wurzelsyndromen seit langem eingesetzt; der Kurarzt stellt sie nach dem neurologischen Befund und aus klinischer Erfahrung zusammen. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Hilft eine Kur bei Ischias?',
@@ -7647,9 +8140,387 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      en: {} as unknown as DiagnosisContent,
-      cs: {} as unknown as DiagnosisContent,
-      ru: {} as unknown as DiagnosisContent,
+      en: {
+        slug: 'sciatica-and-nerve-root',
+        navLabel: 'Sciatica and nerve root',
+        title: 'Spa treatment for sciatica and nerve root irritation in Marienbad',
+        h1: 'Spa treatment for sciatica and an irritated nerve root',
+        metaTitle: 'Spa treatment for sciatica in Marienbad — treatments, duration',
+        metaDescription: 'Spa treatment for sciatica and nerve root irritation in Marienbad: gas injections, peat packs, electrotherapy and back school — course and duration.',
+        lead: 'When the pain does not stay in the back but travels into the leg or arm, and numbness, tingling or loss of strength appear as well, the cause lies in the nerve root. The Czech indication list places such root syndromes among the nervous system diseases — in a separate group, distinct from ordinary back pain.',
+        teaser: 'Root syndromes with irritative and deficit symptoms: gas injections, peat, electrotherapy and daily physiotherapy.',
+        treats: [
+          'Root syndrome with irritative and deficit symptoms, both lumbar and cervical',
+          'Sciatic pain that travels from the lower back through the buttock into the leg',
+          'Cervicobrachial syndrome radiating into the shoulder, arm and hand',
+          'Numbness, tingling or loss of strength in the area supplied by the affected nerve root',
+          'Protective posture and muscular tension that have built up around the root pain',
+        ],
+        notFor: [
+          'Acute cauda equina syndrome, progressive paralysis, or bladder and bowel dysfunction — this needs immediate hospital care, not a spa cure',
+          'Unassessed root pain without a neurological work-up and without imaging',
+          'A fresh surgical wound without completed healing',
+          'Acute illness, pregnancy, or an inability to manage personal care independently',
+          'Epilepsy, and dependence on alcohol or other addictive substances',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: 'The spa physician checks the neurological findings, reflexes, strength and sensation in the affected leg or arm, and reviews any imaging you bring. Only then is it clear which treatments are appropriate; without the findings from your neurologist or orthopaedist, the plan is more cautious.',
+          },
+          {
+            heading: 'First week: relieving pain and tension',
+            body: 'The first priority is relief: peat packs and electrotherapy against the muscular tension, gas injections along the affected segments, plus physiotherapy that avoids loading the irritated nerve root.',
+          },
+          {
+            heading: 'Second week: mobility and muscle control',
+            body: 'As the pain eases, mobilisation, back school and targeted training of the weakened muscles are added. In water, movements can be practised that would still hurt on dry land.',
+          },
+          {
+            heading: 'Final examination and a plan for home',
+            body: 'The findings are assessed again and recorded in writing. You receive an exercise programme and advice on posture at work; without it, the relief does not last.',
+          },
+        ],
+        procedures: [
+          { name: 'Gas injections with Mariengas', detail: 'Injections of natural carbon dioxide placed under the skin along the spine; they have long been used in Marienbad for complaints of the spine and joints, and are prescribed only by the physician.' },
+          { name: 'Peat pack', detail: 'A heat-intensive application at up to 40°C on the tense area; it places a strain on the circulation and heart and is prescribed only after an individual medical decision.' },
+          { name: 'Electrotherapy', detail: 'Diadynamic and interferential currents for pain relief and to loosen the accompanying muscle tension.' },
+          { name: 'Individual physiotherapy', detail: 'Daily, with mobilisation, relieving positions and targeted strengthening of the weakened muscles.' },
+          { name: 'Group back school', detail: 'Exercises for posture, pelvic position and stabilising the lumbar spine, together with correct breathing technique.' },
+          { name: 'Exercise therapy in the pool', detail: 'Buoyancy takes the load off the spine, so ranges of movement can be practised that would still hurt on dry land.' },
+          { name: 'Carbon dioxide bath in mineral water', detail: 'A bath at around 34°C in the local mineral water; it promotes skin blood flow and is prescribed to relax tense muscles.' },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'Root syndromes with irritative and deficit symptoms are position VI/3 among the nervous system diseases. For stays covered by Czech public health insurance, 21 days of comprehensive spa care are provided for as the initial stay; a repeat stay runs to 21 days of contributory care, in certain cases 14. Where the issue is instead chronic back pain without nerve-root involvement, or the condition after disc surgery, positions VII/9 and VII/11 from the musculoskeletal group apply — that is covered by the page on spine and back pain. Self-paying guests agree the length with the spa physician; the professional minimum is at least 10 treatments over at least 10 days.',
+        },
+        physicianNote: 'Whether and in what form a spa cure is appropriate for your root syndrome is decided by the spa physician at the initial examination, based on the neurological findings and imaging. Progressive paralysis or bladder and bowel dysfunction is an emergency and requires immediate medical treatment, not spa planning. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Gas injections with Maria’s gas, peat wraps and daily physiotherapy have long been used in Marienbad for root syndromes; the spa physician puts them together according to the neurological findings and from clinical experience. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
+        faqs: [
+          {
+            question: 'Does a spa cure help with sciatica?',
+            answer: 'Root syndromes with irritative and deficit symptoms are a separate position on the Czech indication list (VI/3), and Marienbad treats them regularly: with gas injections, peat packs, electrotherapy and daily physiotherapy under medical supervision. The goals are less pain, more mobility and better control of the weakened muscles. The spa physician decides on the combination after the initial examination.',
+          },
+          {
+            question: 'What is the difference from spa treatment for spine and back pain?',
+            answer: 'The classification depends on the findings. If the nerve root is involved — pain travelling into the leg or arm, together with numbness, tingling or loss of strength — position VI/3 from the nervous system group applies. Chronic back pain of functional origin without nerve-root involvement, and the condition after disc surgery, instead fall under VII/9 and VII/11 in the musculoskeletal group. The physician decides which position applies.',
+          },
+          {
+            question: 'When can I go for a spa cure after disc surgery?',
+            answer: 'Only once the wound has healed and the surgeon has cleared you for exertion. The condition after disc surgery is then covered under position VII/11 in the musculoskeletal group, not under VI/3. Bring the surgical report and the clearance with you — without them, the treatment plan is markedly more cautious.',
+          },
+          {
+            question: 'Are gas injections painful?',
+            answer: 'They are injections under the skin, so a brief prick; the gas then spreads through the tissue and can produce a feeling of tension for a short time. They are prescribed only by the physician and given in Marienbad with the natural carbon dioxide of the Marien Spring. If you do not tolerate a treatment well, tell your spa physician so the plan can be changed.',
+          },
+          {
+            question: 'How long does a spa cure for a root syndrome last?',
+            answer: 'For people insured with a Czech health fund, position VI/3 provides for an initial stay of 21 days of comprehensive spa care; a repeat stay runs to 21 days of contributory care, in certain cases 14. Self-paying guests choose the length in consultation with the spa physician, with at least 10 treatments over at least 10 days as the professional minimum.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VI — position VI/3',
+            url: '/en/indications-and-contraindications',
+            note: 'Root syndromes with irritative and deficit symptoms: initial stay 21 days of comprehensive spa care, repeat stay 21 days of contributory care (14 in certain cases).',
+          },
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VII — positions VII/9 and VII/11',
+            url: '/en/indications-and-contraindications',
+            note: 'Boundary: chronic vertebrogenic pain of functional origin and conditions after disc surgery are covered under the musculoskeletal group, not the nervous system group.',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa medical rehabilitation care — Group VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for nervous system diseases, including contraindications and required initial examinations. Czech-language text.',
+          },
+        ],
+        related: [
+          { label: 'Spa treatment for spine and back pain', href: '/en/spa-treatment-for/spine-and-back-pain' },
+          { label: 'CO₂ gas injections', href: '/en/magazine/co2-gas-injections' },
+          { label: 'CO₂ therapy', href: '/en/co2-therapy' },
+          { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
+        ],
+      },
+      cs: {
+        slug: 'ischias-a-korenovy-syndrom',
+        navLabel: 'Ischias a kořenový syndrom',
+        title: 'Lázeňská léčba ischiasu a kořenového syndromu v Mariánských Lázních',
+        h1: 'Lázeňská léčba ischiasu a dráždění nervového kořene',
+        metaTitle: 'Léčba ischiasu v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Lázeňská léčba ischiasu a kořenového syndromu v Mariánských Lázních: plynové injekce, slatinné zábaly, elektroléčba a škola zad — průběh a délka pobytu.',
+        lead: 'Když bolest nezůstává v zádech, ale táhne do nohy nebo do ruky, a přidá se necitlivost, brnění nebo ubývání síly, jde o nervový kořen. Český indikační seznam vede takové kořenové syndromy mezi nemocemi nervovými — v samostatné skupině, odděleně od běžné bolesti zad.',
+        teaser: 'Kořenový syndrom s iritačně-zánikovými projevy: plynové injekce, slatina, elektroléčba a denní fyzioterapie.',
+        treats: [
+          'Kořenový syndrom s iritačně-zánikovými projevy, lumbální i cervikální',
+          'Ischiatická bolest táhnoucí od kříže přes hýždě do nohy',
+          'Cervikobrachiální syndrom s vyzařováním do ramene, paže a ruky',
+          'Necitlivost, brnění nebo ubývání síly v oblasti postiženého kořene',
+          'Úlevové držení těla a svalové napětí, které se kolem kořenové bolesti vytvořilo',
+        ],
+        notFor: [
+          'Akutní syndrom kaudy, postupující ochrnutí nebo porucha funkce močového měchýře a konečníku — to patří okamžitě do nemocnice, ne do lázní',
+          'Nevyjasněná kořenová bolest bez neurologického nálezu a bez zobrazovacího vyšetření',
+          'Čerstvá operační rána bez zhojení',
+          'Akutní onemocnění, těhotenství a neschopnost sebeobsluhy',
+          'Epilepsie a závislost na alkoholu či jiných návykových látkách',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař vyšetří neurologický nález, reflexy, sílu a citlivost postižené nohy nebo paže a prohlédne přinesené zobrazovací vyšetření. Až poté je jasné, které procedury přicházejí v úvahu; bez nálezu vašeho neurologa nebo ortopeda vyjde plán opatrněji.',
+          },
+          {
+            heading: 'První týden: uvolnění bolesti a napětí',
+            body: 'Nejprve jde o odlehčení: slatinné zábaly a elektroléčba proti svalovému napětí, plynové injekce podél postižených segmentů, k tomu fyzioterapie bez zatížení drážděného kořene.',
+          },
+          {
+            heading: 'Druhý týden: pohyblivost a nácvik',
+            body: 'S ustupující bolestí přibývá mobilizace, škola zad a cílený trénink ochabnutého svalstva. Ve vodě lze cvičit pohyby, které na suchu ještě bolí.',
+          },
+          {
+            heading: 'Závěrečná prohlídka a plán pro doma',
+            body: 'Nález se znovu vyšetří a písemně zaznamená. Dostanete cvičební program a pokyny k držení těla při práci; bez toho se odlehčení neudrží.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Plynové injekce Mariiným plynem',
+            detail: 'Injekce přírodního oxidu uhličitého podávané podkožně podél páteře; v Mariánských Lázních se dlouho používají u potíží páteře a kloubů a předepisuje je výhradně lékař.',
+          },
+          {
+            name: 'Slatinný zábal',
+            detail: 'Tepelně náročná procedura při teplotě až 40 °C na napjatou oblast; je zátěží pro oběh a srdce a předepisuje se jen po individuálním rozhodnutí lékaře.',
+          },
+          {
+            name: 'Elektroléčba',
+            detail: 'Diadynamické a interferenční proudy ke zmírnění bolesti a uvolnění doprovodného svalového napětí.',
+          },
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, s mobilizací, úlevovými polohami a cíleným posilováním ochablého svalstva.',
+          },
+          {
+            name: 'Škola zad ve skupině',
+            detail: 'Cvičení na držení těla, postavení pánve a stabilizaci bederní páteře, k tomu správná dechová technika.',
+          },
+          {
+            name: 'Pohybová terapie v bazénu',
+            detail: 'Vztlak snímá zátěž z páteře, takže lze trénovat rozsah pohybu, který na suchu ještě bolí.',
+          },
+          {
+            name: 'Uhličitá koupel z minerální vody',
+            detail: 'Koupel při zhruba 34 °C z místní minerální vody; podporuje prokrvení kůže a předepisuje se k uvolnění.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Kořenové syndromy s iritačně-zánikovými projevy jsou položka VI/3 mezi nemocemi nervovými; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u neurologických onemocnění. Pokud jde naopak o chronickou bolest zad bez postižení kořene nebo o stav po operaci meziobratlové ploténky, patří případ pod položky VII/9 a VII/11 ze skupiny pohybového ústrojí — tomu odpovídá stránka o potížích s páteří. Samoplátci volí délku po dohodě s lázeňským lékařem; jako odborné minimum platí alespoň 10 procedur během alespoň 10 dní.',
+        },
+        physicianNote: 'O tom, zda a v jaké formě pro vás při kořenovém syndromu připadá v úvahu lázeňský pobyt, rozhoduje lázeňský lékař při vstupní prohlídce podle neurologického nálezu a zobrazovacího vyšetření. Postupující ochrnutí nebo porucha funkce močového měchýře a konečníku je akutní stav a patří neprodleně do lékařské péče, ne do plánování lázní. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Plynové injekce s Mariiným plynem, slatinné zábaly a denní fyzioterapie se v Mariánských Lázních u kořenových syndromů používají dlouho; lázeňský lékař je sestavuje podle neurologického nálezu a z klinické zkušenosti. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
+        faqs: [
+          {
+            question: 'Pomůže lázeňský pobyt při ischiasu?',
+            answer: 'Kořenové syndromy s iritačně-zánikovými projevy jsou samostatná položka českého indikačního seznamu (VI/3) a Mariánské Lázně je léčí běžně: plynovými injekcemi, slatinnými zábaly, elektroléčbou a denní fyzioterapií pod lékařským dohledem. Cílem je méně bolesti, více pohyblivosti a nácvik ochablého svalstva. O složení procedur rozhoduje lázeňský lékař po vstupní prohlídce.',
+          },
+          {
+            question: 'Jaký je rozdíl oproti lázeňské léčbě páteře?',
+            answer: 'Zařazení se řídí nálezem. Je-li postižen nervový kořen — bolest táhne do nohy nebo do paže, k tomu necitlivost, brnění nebo ubývání síly —, platí položka VI/3 ze skupiny nemocí nervových. Chronická bolest zad funkčního původu bez postižení kořene a stav po operaci meziobratlové ploténky naopak spadají pod VII/9 a VII/11 u pohybového ústrojí. Kterou položka platí, rozhoduje lékař.',
+          },
+          {
+            question: 'Kdy mohu jet do lázní po operaci ploténky?',
+            answer: 'Až se rána zhojí a operatér povolí zátěž. Stav po operaci meziobratlové ploténky pak jde přes položku VII/11 u pohybového ústrojí, ne přes VI/3. Vezměte si operační zprávu a povolení k zátěži; bez nich vyjde plán procedur výrazně opatrněji.',
+          },
+          {
+            question: 'Jsou plynové injekce bolestivé?',
+            answer: 'Jde o podkožní injekce, tedy krátký vpich; plyn se poté v tkáni rozptýlí a na krátkou chvíli může vyvolat pocit napětí. Předepisuje je výhradně lékař a v Mariánských Lázních se podávají přírodním oxidem uhličitým z Mariina pramene. Pokud proceduru nesnášíte, řekněte to svému lázeňskému lékaři, aby plán upravil.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při kořenovém syndromu?',
+            answer: 'Přesnou délku hrazeného pobytu u položky VI/3 najdete na stránce Co hradí pojišťovna u neurologických onemocnění. Samoplátci volí délku po dohodě s lázeňským lékařem, jako odborné minimum platí alespoň 10 procedur během alespoň 10 dní.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VI — položka VI/3',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Kořenové syndromy s iritačně-zánikovými projevy, s typem péče a délkou pobytu.',
+          },
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — položky VII/9 a VII/11',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Hranice: chronická vertebrogenní bolest funkčního původu a stavy po operacích meziobratlové ploténky spadají pod pohybové ústrojí, ne pod nemoci nervové.',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci nervové včetně kontraindikací a požadovaných vstupních vyšetření.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba páteře a bolestí zad',
+            href: '/cs/lazenska-lecba/pater-a-bolesti-zad',
+          },
+          {
+            label: 'Plynové injekce CO₂',
+            href: '/cs/magazin/plynove-injekce-co2',
+          },
+          {
+            label: 'CO2 terapie v Mariánských Lázních',
+            href: '/cs/co2-terapie',
+          },
+          {
+            label: 'Co hradí pojišťovna u neurologických onemocnění',
+            href: '/cs/lazne-s-pojistovnou/indikace/neurologicka-onemocneni',
+          },
+        ],
+      },
+      ru: {
+        slug: 'ishias-i-koreshkovyj-sindrom',
+        navLabel: 'Ишиас и корешковый синдром',
+        title: 'Курортное лечение ишиаса и раздражения нервного корешка в Марианских Лазнях',
+        h1: 'Курортное лечение ишиаса и раздражённого нервного корешка',
+        metaTitle: 'Лечение ишиаса в Марианских Лазнях — процедуры и сроки',
+        metaDescription: 'Лечение ишиаса и раздражения нервного корешка в Марианских Лазнях: газовые инъекции, торфяные обёртывания, электротерапия и школа спины — ход лечения и сроки.',
+        lead: 'Если боль не остаётся в спине, а тянет в ногу или руку, а к ней добавляются онемение, покалывание или потеря силы, причина — в нервном корешке. Чешский индикационный список относит такие корешковые синдромы к нервным заболеваниям — в отдельную группу, отделённую от обычной боли в спине.',
+        teaser: 'Корешковые синдромы с раздражением и признаками выпадения функции: газовые инъекции, торф, электротерапия и ежедневная физиотерапия.',
+        treats: [
+          'Корешковый синдром с раздражением и признаками выпадения функции, как поясничный, так и шейный',
+          'Боль при ишиасе, распространяющаяся от крестца через ягодицу в ногу',
+          'Цервикобрахиальный синдром с распространением боли в плечо, руку и кисть',
+          'Онемение, покалывание или потеря силы в зоне иннервации поражённого корешка',
+          'Вынужденная поза и мышечное напряжение, сформировавшиеся вокруг корешковой боли',
+        ],
+        notFor: [
+          'Острый синдром конского хвоста, прогрессирующий паралич или нарушение функции мочевого пузыря и кишечника — это требует немедленной госпитализации, а не курортного лечения',
+          'Неуточнённая корешковая боль без неврологического заключения и без данных визуализации',
+          'Свежая операционная рана без завершённого заживления',
+          'Острые заболевания, беременность, а также неспособность к самостоятельному самообслуживанию',
+          'Эпилепсия, а также зависимость от алкоголя или других психоактивных веществ',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач проверяет неврологическое состояние, рефлексы, силу и чувствительность поражённой ноги или руки и изучает принесённые снимки. Только после этого становится ясно, какие процедуры возможны; без заключения вашего невролога или ортопеда план будет более осторожным.',
+          },
+          {
+            heading: 'Первая неделя: снятие боли и напряжения',
+            body: 'Сначала речь идёт о разгрузке: торфяные обёртывания и электротерапия против мышечного напряжения, газовые инъекции вдоль поражённых сегментов, а также физиотерапия без нагрузки на раздражённый корешок.',
+          },
+          {
+            heading: 'Вторая неделя: подвижность и восстановление контроля',
+            body: 'По мере уменьшения боли добавляются мобилизация, школа спины и целенаправленная тренировка ослабленной мускулатуры. В воде можно тренировать движения, которые на суше пока вызывают боль.',
+          },
+          {
+            heading: 'Заключительное обследование и план на дом',
+            body: 'Состояние оценивается повторно и фиксируется письменно. Вы получаете программу упражнений и рекомендации по осанке во время работы; без этого достигнутая разгрузка не сохранится.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Газовые инъекции с марианским газом',
+            detail: 'Подкожные инъекции природного углекислого газа вдоль позвоночника; в Марианских Лазнях их давно применяют при заболеваниях позвоночника и суставов, назначает их исключительно врач.',
+          },
+          {
+            name: 'Торфяное обёртывание',
+            detail: 'Интенсивная тепловая процедура при температуре до 40 °C на напряжённую область; она создаёт нагрузку на кровообращение и сердце и назначается только по решению врача.',
+          },
+          {
+            name: 'Электротерапия',
+            detail: 'Диадинамические и интерференционные токи для облегчения боли и снятия сопутствующего мышечного напряжения.',
+          },
+          {
+            name: 'Индивидуальная физиотерапия',
+            detail: 'Ежедневно, включает мобилизацию, разгрузочные положения и целенаправленное укрепление ослабленной мускулатуры.',
+          },
+          {
+            name: 'Школа спины в группе',
+            detail: 'Упражнения на осанку, положение таза и стабилизацию поясничного отдела позвоночника, а также правильная техника дыхания.',
+          },
+          {
+            name: 'Двигательная терапия в бассейне',
+            detail: 'Выталкивающая сила снимает нагрузку с позвоночника, поэтому можно тренировать объём движений, который на суше пока вызывает боль.',
+          },
+          {
+            name: 'Углекислая ванна в минеральной воде',
+            detail: 'Ванна при температуре около 34 °C из местной минеральной воды; она улучшает кровоснабжение кожи и назначается для расслабления.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Корешковые синдромы с раздражением и признаками выпадения функции относятся к нервным заболеваниям как позиция VI/3. Для пребываний, оплачиваемых чешской страховой, в качестве базового пребывания предусмотрено 21 день комплексного курортного лечения; при повторном пребывании — 21 день долевого лечения, в отдельных случаях 14. Если же речь идёт о хронической боли в спине без вовлечения корешка или о состоянии после операции на межпозвоночном диске, применяются позиции VII/9 и VII/11 из группы заболеваний опорно-двигательного аппарата — для этого предназначена страница о заболеваниях позвоночника. Гости, оплачивающие лечение самостоятельно, согласуют срок с курортным врачом; профессиональным минимумом считается не менее 10 процедур за не менее чем 10 дней.',
+        },
+        physicianNote: 'Возможно ли и в какой форме курортное лечение при вашем корешковом синдроме, решает курортный врач при первичном осмотре на основании неврологического заключения и данных визуализации. Прогрессирующий паралич или нарушение функции мочевого пузыря и кишечника — это неотложное состояние, требующее немедленного обращения к врачу, а не планирования курортного лечения. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Газовые инъекции Марииным газом, торфяные обёртывания и ежедневная физиотерапия применяются в Марианских Лазнях при корешковых синдромах давно; курортный врач подбирает их по неврологическому заключению и из клинического опыта. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
+        faqs: [
+          {
+            question: 'Помогает ли курортное лечение при ишиасе?',
+            answer: 'Корешковые синдромы с раздражением и признаками выпадения функции выделены в отдельную позицию чешского индикационного списка (VI/3), и в Марианских Лазнях их регулярно лечат: газовыми инъекциями, торфяными обёртываниями, электротерапией и ежедневной физиотерапией под врачебным контролем. Цель — уменьшение боли, увеличение подвижности и восстановление контроля над ослабленной мускулатурой. Состав лечения определяет курортный врач после первичного осмотра.',
+          },
+          {
+            question: 'В чём разница с курортным лечением заболеваний позвоночника?',
+            answer: 'Отнесение к той или иной позиции зависит от заключения. Если поражён нервный корешок — боль тянет в ногу или руку, к ней добавляются онемение, покалывание или потеря силы, — применяется позиция VI/3 из группы нервных заболеваний. Хроническая боль в спине функционального происхождения без вовлечения корешка и состояние после операции на межпозвоночном диске, напротив, относятся к позициям VII/9 и VII/11 из группы заболеваний опорно-двигательного аппарата. Какая позиция применима, определяет врач.',
+          },
+          {
+            question: 'Когда можно ехать на курортное лечение после операции на межпозвоночном диске?',
+            answer: 'Только после того, как рана заживёт и оперировавший врач разрешит нагрузку. Состояние после операции на межпозвоночных дисках относится к позиции VII/11 из группы заболеваний опорно-двигательного аппарата, а не к VI/3. Возьмите с собой выписку из операции и разрешение врача — без них план процедур будет значительно более осторожным.',
+          },
+          {
+            question: 'Болезненны ли газовые инъекции?',
+            answer: 'Это подкожные инъекции, то есть короткий укол; затем газ распределяется в тканях и может на короткое время вызывать чувство распирания. Их назначает исключительно врач, а в Марианских Лазнях используют природный углекислый газ источника Марии. Если процедура плохо переносится, сообщите об этом курортному врачу, чтобы план был изменён.',
+          },
+          {
+            question: 'Сколько длится курортное лечение при корешковом синдроме?',
+            answer: 'Для застрахованных в чешской страховой компании позиция VI/3 предусматривает базовое пребывание длительностью 21 день комплексного курортного лечения; повторное пребывание проходит как 21 день долевого лечения, в отдельных случаях 14. Гости, оплачивающие лечение самостоятельно, выбирают срок по согласованию с курортным врачом, при этом профессиональным минимумом считается не менее 10 процедур за не менее чем 10 дней.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VI — позиция VI/3',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Корешковые синдромы с раздражением и признаками выпадения функции: базовое пребывание — 21 день комплексного курортного лечения, повторное пребывание — 21 день долевого лечения (в отдельных случаях 14).',
+          },
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VII — позиции VII/9 и VII/11',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Разграничение: хроническая вертеброгенная боль функционального происхождения и состояния после операций на межпозвоночных дисках относятся к заболеваниям опорно-двигательного аппарата, а не к нервным заболеваниям.',
+          },
+          {
+            title: 'Постановление № 2/2015 Сб. о профессиональных критериях курортной реабилитационной помощи — группа VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Полный текст индикационного списка для нервных заболеваний, включая противопоказания и требуемые первичные обследования. Текст на чешском языке.',
+          },
+        ],
+        related: [
+          {
+            label: 'Курортное лечение позвоночника',
+            href: '/ru/kurortnoe-lechenie/pozvonochnik-i-boli-v-spine',
+          },
+          {
+            label: 'Газовые инъекции CO₂',
+            href: '/ru/zhurnal/gazovye-inektsii-co2',
+          },
+          {
+            label: 'CO2-терапия в Марианских Лазнях',
+            href: '/ru/co2-terapiya',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
     },
   },
   {
@@ -7665,9 +8536,9 @@ export const diagnoses: Diagnosis[] = [
     medicalReviewDate: '2026-09-14',
     imageAlt: {
       de: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
-      en: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
-      cs: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
-      ru: 'Therapeutin massiert die Hand einer Kurgästin, Nahaufnahme der Griffe an Fingern und Handfläche',
+      en: 'A therapist massaging a spa guest’s hand, close-up of the grips on fingers and palm',
+      cs: 'Terapeutka masíruje ruku lázeňské hostky, detailní záběr na hmaty na prstech a dlani',
+      ru: 'Терапевт массирует руку гостьи, крупный план приёмов на пальцах и ладони',
     },
     content: {
       de: {
@@ -7746,6 +8617,10 @@ export const diagnoses: Diagnosis[] = [
           body: 'Die Polyneuropathie mit paretischen Erscheinungen steht als Position VI/2 auf der tschechischen Indikationsliste. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind als Grundaufenthalt 28 Tage komplexe Kurbehandlung oder 21 Tage Zuschussbehandlung vorgesehen; beim Wiederholungsaufenthalt sind es 28 Tage komplexe oder 21 Tage Zuschussbehandlung, in bestimmten Fällen 14. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage. Eine Jahreszeit ist medizinisch nicht vorgegeben, bei fehlendem Gefühl in den Füßen sind schnee- und eisfreie Wege allerdings sicherer.',
         },
         physicianNote: 'Ob eine Kur bei Ihrer Polyneuropathie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des neurologischen Befunds und des Zustands Ihrer Füße. Der Aufenthalt ergänzt die Behandlung der Grunderkrankung — etwa die Einstellung eines Diabetes — und ersetzt sie nicht. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Bei der Polyneuropathie zielt die Kur auf das, was sich trainieren lässt: Gangbild, Standsicherheit und Kraft. Diese Bausteine werden in Marienbad seit langem verordnet, zusammengestellt nach dem neurologischen Befund und aus klinischer Erfahrung. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Wird eine Kur bei Polyneuropathie bezahlt?',
@@ -7799,9 +8674,372 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      en: {} as unknown as DiagnosisContent,
-      cs: {} as unknown as DiagnosisContent,
-      ru: {} as unknown as DiagnosisContent,
+      en: {
+        slug: 'polyneuropathy',
+        navLabel: 'Polyneuropathy',
+        title: 'Spa treatment for polyneuropathy in Marienbad',
+        h1: 'Spa treatment for polyneuropathy',
+        metaTitle: 'Spa treatment for polyneuropathy in Marienbad — course, duration',
+        metaDescription: 'Spa treatment for polyneuropathy with paretic symptoms in Marienbad: gait training, exercises in water, carbon dioxide baths — course, duration and limits.',
+        lead: 'When the nerves in the feet and hands no longer send accurate signals and strength declines, every step becomes a task requiring concentration. The Czech indication list places polyneuropathy with paretic symptoms among the nervous system diseases. In Marienbad, the focus is on what can be trained: gait, standing stability and strength.',
+        teaser: 'Polyneuropathy with paretic symptoms: gait training, standing stability, exercises in water and carbon dioxide baths.',
+        treats: [
+          'Polyneuropathy with paretic symptoms, that is, with a demonstrable loss of strength',
+          'Diabetic polyneuropathy where diabetes is well controlled',
+          'Polyneuropathy after chemotherapy, once oncological treatment has been completed',
+          'Unsteady gait and standing instability caused by a lack of feedback from the feet',
+          'Muscle wasting and declining stamina from protective inactivity',
+        ],
+        notFor: [
+          'Polyneuropathy without paretic symptoms — the position on the indication list requires paretic symptoms',
+          'Unassessed nerve disorder without a neurological work-up',
+          'Unhealed wounds or ulcers on the feet, for example in diabetic foot syndrome',
+          'Ongoing oncological treatment; a spa cure is possible once it is completed',
+          'Acute illness, pregnancy, epilepsy, and an inability to manage personal care independently',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: "The spa physician takes the neurological findings, checks strength, sensation and reflexes, and examines the feet — open areas or pressure damage also determine which treatments are possible. Bring your neurologist's findings and, if you have diabetes, your current lab results.",
+          },
+          {
+            heading: 'First week: standing safely',
+            body: 'The focus is on standing stability and gait. Practice takes place with visual control and on different surfaces, because the feedback from the feet is missing and has to be replaced through the eyes and hips.',
+          },
+          {
+            heading: 'Second week: strength and endurance',
+            body: 'Targeted strengthening of the weakened muscles, walking distances outdoors, and exercises in water, where buoyancy allows movements that would feel unsteady on dry land. Massage is added for any accompanying tension.',
+          },
+          {
+            heading: 'Final examination and a plan for home',
+            body: 'Strength, gait and standing stability are assessed again and recorded. You receive an exercise programme along with guidance on daily foot checks, since a lack of sensation can hide small injuries.',
+          },
+        ],
+        procedures: [
+          { name: 'Individual physiotherapy', detail: 'Daily, building up the weakened muscles and practising a safe rolling motion of the foot when walking.' },
+          { name: 'Gait and balance training', detail: 'Standing stability on varying surfaces and walking with visual control, to compensate for the missing feedback from the feet.' },
+          { name: 'Exercise therapy in the pool', detail: "In warm water, strength and gait can be practised without fear of falling, because buoyancy supports the body's weight." },
+          { name: 'Carbon dioxide bath in mineral water', detail: 'A bath at around 34°C; the carbon dioxide absorbed from the mineral water promotes skin blood flow.' },
+          { name: 'Dry gas bath in Mariengas', detail: 'The natural carbon dioxide of the Marien Spring is applied without water and without the strain of heat — suitable when warm baths are not an option.' },
+          { name: 'Classic massage', detail: 'For the accompanying tension that develops from protective posture and unsteady gait.' },
+          { name: 'Climate therapy and guided walks', detail: 'Walking distances outdoors under guidance, with length increasing cautiously according to stamina.' },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'Polyneuropathy with paretic symptoms is position VI/2 on the Czech indication list. For stays covered by Czech public health insurance, the initial stay provides for 28 days of comprehensive spa care or 21 days of contributory care; a repeat stay runs to 28 days of comprehensive or 21 days of contributory care, 14 in certain cases. Self-paying guests agree the length with the spa physician; the professional minimum is at least 10 treatments over at least 10 days. There is no medical requirement for the season, though where sensation in the feet is impaired, paths free of snow and ice are safer.',
+        },
+        physicianNote: 'Whether a spa cure is appropriate for your polyneuropathy is decided by the spa physician at the initial examination, based on the neurological findings and the condition of your feet. The stay supplements treatment of the underlying condition — such as diabetes management — and does not replace it. This page provides information and does not replace medical advice.',
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'With polyneuropathy the cure aims at what can be trained: gait, standing stability and strength. These building blocks have long been prescribed in Marienbad, put together according to the neurological findings and from clinical experience. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
+        faqs: [
+          {
+            question: 'Is a spa cure for polyneuropathy covered?',
+            answer: "The Czech indication list lists polyneuropathy with paretic symptoms as position VI/2: for people insured with a Czech health fund, the initial stay provides for 28 days of comprehensive spa care or 21 days of contributory care. The key qualifier is 'with paretic symptoms' — a loss of strength must be documented. Guests insured outside the Czech Republic should clarify cost coverage with their own insurer in advance.",
+          },
+          {
+            question: 'What does spa treatment for polyneuropathy involve?',
+            answer: 'The focus is on what can be trained: gait, standing stability and strength in the affected muscles. In addition there is exercise therapy in warm water, carbon dioxide baths or dry gas baths from the local natural remedies, massage against the accompanying tension, and guided walking outdoors. The spa physician puts the plan together after the initial examination.',
+          },
+          {
+            question: 'Does the cure help with polyneuropathy after chemotherapy?',
+            answer: 'A spa cure is possible once oncological treatment is complete and you are in remission; it is excluded during ongoing cancer treatment. The same things are then treated as in other forms: gait, standing stability and strength. For aftercare following cancer treatment as a whole, Marienbad has a dedicated programme.',
+          },
+          {
+            question: 'What do I need to know if I have diabetes?',
+            answer: 'Bring your current lab results and your medication; the spa physician bases the plan on them. Daily foot checks matter: where sensation is missing, pressure spots and small injuries can go unnoticed. Open areas on the foot rule out a number of treatments, which is why the feet are examined at the initial examination.',
+          },
+          {
+            question: 'Does the cure heal the nerves?',
+            answer: 'No. There is no robust evidence for such an effect in polyneuropathy, so this page makes no such claim. What the cure can change is how you cope with the consequences: gait stability, strength in the affected muscles and stamina in everyday life. Treatment of the underlying condition continues unchanged.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VI — position VI/2',
+            url: '/en/indications-and-contraindications',
+            note: 'Polyneuropathy with paretic symptoms: initial stay 28 days of comprehensive or 21 days of contributory care; repeat stay 28 days of comprehensive or 21 days of contributory care (14 in certain cases).',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa medical rehabilitation care — Group VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for nervous system diseases, including contraindications and required initial examinations. Czech-language text.',
+          },
+        ],
+        related: [
+          { label: 'Spa treatment for metabolism and diabetes', href: '/en/spa-treatment-for/metabolism-and-diabetes' },
+          { label: 'Spa treatment after cancer treatment', href: '/en/spa-treatment-for/after-cancer-treatment' },
+          { label: 'Brain and Nervous System Day', href: '/en/magazine/brain-nervous-system' },
+          { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
+        ],
+      },
+      cs: {
+        slug: 'polyneuropatie',
+        navLabel: 'Polyneuropatie',
+        title: 'Lázeňská léčba polyneuropatie v Mariánských Lázních',
+        h1: 'Lázeňská léčba polyneuropatie',
+        metaTitle: 'Léčba polyneuropatie v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Lázeňská léčba polyneuropatie s parézou v Mariánských Lázních: škola chůze, cvičení ve vodě, uhličité koupele — průběh, délka a hranice léčby.',
+        lead: 'Když nervy v chodidlech a rukou už nehlásí správně a síla ubývá, stává se každý krok úkolem na soustředění. Český indikační seznam vede polyneuropatii s parézou mezi nemocemi nervovými. V Mariánských Lázních jde o to, co se dá cvičit: chůzi, stabilitu ve stoji a síl.',
+        teaser: 'Polyneuropatie s parézou: škola chůze, stabilita ve stoji, cvičení ve vodě a uhličité koupele.',
+        treats: [
+          'Polyneuropatie s parézou, tedy s prokázaným ubýváním síly',
+          'Diabetická polyneuropatie u kompenzovaného diabetu',
+          'Polyneuropatie po chemoterapii, je-li onkologická léčba ukončena',
+          'Nejistá chůze a nestabilita ve stoji z chybějící zpětné vazby z chodidel',
+          'Svalový úbytek a ubývající zátěžová kapacita z ochranného šetření',
+        ],
+        notFor: [
+          'Polyneuropatie bez parézy — položka indikačního seznamu předpokládá parézu',
+          'Nevyjasněná porucha nervů bez neurologického nálezu',
+          'Nezhojené rány nebo vředy na chodidlech, například u syndromu diabetické nohy',
+          'Probíhající onkologická léčba; po jejím ukončení je lázeňský pobyt možný',
+          'Akutní onemocnění, těhotenství, epilepsie a neschopnost sebeobsluhy',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař zjistí neurologický nález, vyšetří síl, citlivost a reflexy a podívá se na chodidla — otevřená místa nebo otlaky spolurozhodují o tom, které procedury jsou možné. Vezměte si nález svého neurologa a při diabetu i aktuální laboratorní hodnoty.',
+          },
+          {
+            heading: 'První týden: jistě stát',
+            body: 'Důraz je na stabilitě ve stoji a chůzi. Cvičí se s kontrolou pohledem a na různém povrchu, protože chybí zpětná vazba z chodidel a musí se nahradit očima a kyčlí.',
+          },
+          {
+            heading: 'Druhý týden: síla a vytrvalost',
+            body: 'Cílené posilování ochablého svalstva, chůze v terénu a cvičení ve vodě, kde vztlak umožňuje pohyby, které by na suchu byly nejisté. Při doprovodném napětí přibývají masáže.',
+          },
+          {
+            heading: 'Závěrečná prohlídka a plán pro doma',
+            body: 'Síla, chůze a stabilita se znovu posoudí a zaznamenají. Dostanete cvičební program a pokyny k denní kontrole chodidel, kde chybějící citlivost zastírá drobná zranění.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, s posilováním ochablého svalstva a nácvikem jistého odvíjení chodidla při chůzi.',
+          },
+          {
+            name: 'Škola chůze a rovnováhy',
+            detail: 'Stabilita ve stoji na proměnlivém povrchu a chůze s kontrolou pohledem, aby se vyrovnala chybějící zpětná vazba z chodidel.',
+          },
+          {
+            name: 'Pohybová terapie v bazénu',
+            detail: 'V teplé vodě lze cvičit síl a chůzi bez strachu z pádu, protože vztlak nese váhu těla.',
+          },
+          {
+            name: 'Uhličitá koupel z minerální vody',
+            detail: 'Koupel při zhruba 34 °C; oxid uhličitý přijímaný z minerální vody podporuje prokrvení kůže.',
+          },
+          {
+            name: 'Suchá plynová koupel v Mariině plynu',
+            detail: 'Přírodní oxid uhličitý z Mariina pramene se používá bez vody a bez zátěže teplem — vhodné tam, kde teplé koupele nepřipadají v úvahu.',
+          },
+          {
+            name: 'Klasická masáž',
+            detail: 'Proti doprovodnému napětí, které vzniká z úlevového držení těla a nejisté chůze.',
+          },
+          {
+            name: 'Klimatoterapie a vedené procházky',
+            detail: 'Chůze v terénu pod vedením, s opatrně narůstající délkou podle zátěžové kapacity.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Polyneuropatie s parézou je položka VI/2 českého indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u neurologických onemocnění. Samoplátci volí délku po dohodě s lázeňským lékařem; jako odborné minimum platí alespoň 10 procedur během alespoň 10 dní. Roční období nemá lékařský předpis, při chybějící citlivosti v chodidlech jsou ale cesty bez sněhu a ledu bezpečnější.',
+        },
+        physicianNote: 'O tom, zda pro vás při polyneuropatii připadá v úvahu lázeňský pobyt, rozhoduje lázeňský lékař při vstupní prohlídce podle neurologického nálezu a stavu vašich chodidel. Pobyt doplňuje léčbu základního onemocnění — například kompenzaci diabetu — a nenahrazuje ji. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'U polyneuropatie míří léčba na to, co se dá trénovat: chůzi, stabilitu ve stoje a sílu. Tyto stavební kameny se v Mariánských Lázních předepisují dlouho, sestavené podle neurologického nálezu a z klinické zkušenosti. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
+        faqs: [
+          {
+            question: 'Hradí pojišťovna lázně při polyneuropatii?',
+            answer: 'Český indikační seznam vede polyneuropatii s parézou jako položku VI/2; přesné podmínky a délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u neurologických onemocnění. Rozhodující je dodatek „s parézou“ — musí být dokumentováno ubývání síly. Hosté s pojištěním mimo Česko si úhradu ověřují předem u vlastní pojišťovny.',
+          },
+          {
+            question: 'Co se u polyneuropatie v lázních dělá?',
+            answer: 'Důraz je na tom, co se dá trénovat: chůzi, stabilitu ve stoji a síl v postižených svalech. K tomu přistupuje pohybová terapie v teplé vodě, uhličité nebo suché plynové koupele z místních léčivých zdrojů, masáže proti doprovodnému napětí a vedené procházky v terénu. Plán sestavuje lázeňský lékař po vstupní prohlídce.',
+          },
+          {
+            question: 'Pomůže lázeňský pobyt při polyneuropatii po chemoterapii?',
+            answer: 'Lázeňský pobyt je možný, jakmile je onkologická léčba ukončena a jste v remisi; při probíhající léčbě nádoru je vyloučen. Léčí se pak totéž jako u jiných forem: chůze, stabilita a síl. Pro následnou péči po onkologické léčbě celkově existuje v Mariánských Lázních samostatný program.',
+          },
+          {
+            question: 'Na co musím dát pozor při diabetu?',
+            answer: 'Vezměte si aktuální laboratorní hodnoty a svou medikaci; lázeňský lékař podle nich upraví plán. Důležitá je denní kontrola chodidel: kde chybí citlivost, zůstávají otlaky a drobná zranění nepovšimnuta. Otevřená místa na chodidle vylučují řadu procedur, proto se chodidla prohlížejí už při vstupní prohlídce.',
+          },
+          {
+            question: 'Vyléčí lázeňský pobyt nervy?',
+            answer: 'Ne. Pro takový účinek u polyneuropatie neexistují průkazné důkazy, a tato stránka ho proto neuvádí. Co se v lázních dá změnit, je zvládání důsledků: jistota chůze, síl v postižených svalech a zátěžová kapacita v běžném dni. Léčba základního onemocnění pokračuje beze změny.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VI — položka VI/2',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Polyneuropatie s paretickými projevy, s typem péče a délkou pobytu.',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci nervové včetně kontraindikací a požadovaných vstupních vyšetření.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba metabolismu a diabetu',
+            href: '/cs/lazenska-lecba/metabolismus-a-diabetes',
+          },
+          {
+            label: 'Lázeňská léčba po onkologické léčbě',
+            href: '/cs/lazenska-lecba/po-onkologicke-lecbe',
+          },
+          {
+            label: 'Den mozku a nervového systému',
+            href: '/cs/magazin/den-mozku-nervovy-system',
+          },
+          {
+            label: 'Co hradí pojišťovna u neurologických onemocnění',
+            href: '/cs/lazne-s-pojistovnou/indikace/neurologicka-onemocneni',
+          },
+        ],
+      },
+      ru: {
+        slug: 'polinejropatiya',
+        navLabel: 'Полинейропатия',
+        title: 'Курортное лечение полинейропатии в Марианских Лазнях',
+        h1: 'Курортное лечение полинейропатии',
+        metaTitle: 'Лечение полинейропатии в Марианских Лазнях — ход, сроки',
+        metaDescription: 'Курортное лечение полинейропатии с парезами в Марианских Лазнях: школа ходьбы, упражнения в воде, углекислые ванны — ход лечения, сроки и ограничения.',
+        lead: 'Когда нервы в стопах и кистях перестают правильно передавать сигналы и сила мышц снижается, каждый шаг превращается в задачу, требующую сосредоточенности. Чешский индикационный список относит полинейропатию с парезами к нервным заболеваниям. В Марианских Лазнях лечение направлено на то, что можно тренировать: ходьбу, устойчивость и силу.',
+        teaser: 'Полинейропатия с парезами: школа ходьбы, устойчивость, упражнения в воде и углекислые ванны.',
+        treats: [
+          'Полинейропатия с парезами, то есть с доказанной потерей силы',
+          'Диабетическая полинейропатия при компенсированном диабете',
+          'Полинейропатия после химиотерапии, если онкологическое лечение завершено',
+          'Неуверенная походка и неустойчивость стояния из-за отсутствия обратной связи от стоп',
+          'Атрофия мышц и снижение выносливости из-за щадящего режима',
+        ],
+        notFor: [
+          'Полинейропатия без парезов — позиция индикационного списка требует наличия парезов',
+          'Неуточнённое нарушение нервной системы без неврологического заключения',
+          'Незаживающие раны или язвы на стопах, например при синдроме диабетической стопы',
+          'Текущее онкологическое лечение; после его завершения курортное лечение возможно',
+          'Острые заболевания, беременность, эпилепсия, а также неспособность к самостоятельному самообслуживанию',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач фиксирует неврологическое состояние, проверяет силу, чувствительность и рефлексы, а также осматривает стопы — открытые повреждения или потёртости влияют на то, какие процедуры возможны. Возьмите с собой заключение вашего невролога и, при диабете, актуальные лабораторные показатели.',
+          },
+          {
+            heading: 'Первая неделя: устойчивое стояние',
+            body: 'Основное внимание уделяется устойчивости и походке. Тренировки проводят с визуальным контролем и на разных поверхностях, поскольку обратная связь от стоп отсутствует и должна замещаться зрением и работой тазобедренного сустава.',
+          },
+          {
+            heading: 'Вторая неделя: сила и выносливость',
+            body: 'Целенаправленное укрепление ослабленной мускулатуры, прогулки по местности и упражнения в воде, где выталкивающая сила позволяет выполнять движения, которые на суше были бы небезопасны. При сопутствующем напряжении добавляется массаж.',
+          },
+          {
+            heading: 'Заключительное обследование и план на дом',
+            body: 'Сила, походка и устойчивость оцениваются повторно и фиксируются. Вы получаете программу упражнений, а также рекомендации по ежедневному осмотру стоп, поскольку при отсутствии чувствительности мелкие повреждения легко остаются незамеченными.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Индивидуальная физиотерапия',
+            detail: 'Ежедневно, включает укрепление ослабленной мускулатуры и тренировку безопасного переката стопы при ходьбе.',
+          },
+          {
+            name: 'Школа ходьбы и равновесия',
+            detail: 'Устойчивость на разных поверхностях и ходьба с визуальным контролем, чтобы компенсировать отсутствие обратной связи от стоп.',
+          },
+          {
+            name: 'Двигательная терапия в бассейне',
+            detail: 'В тёплой воде можно тренировать силу и походку без страха падения, поскольку выталкивающая сила держит вес тела.',
+          },
+          {
+            name: 'Углекислая ванна в минеральной воде',
+            detail: 'Ванна при температуре около 34 °C; углекислый газ, проникающий из минеральной воды, улучшает кровоснабжение кожи.',
+          },
+          {
+            name: 'Сухая газовая ванна в марианском газе',
+            detail: 'Природный углекислый газ источника Марии применяется без воды и без тепловой нагрузки — подходит, когда тёплые ванны невозможны.',
+          },
+          {
+            name: 'Классический массаж',
+            detail: 'Против сопутствующего напряжения, возникающего из-за вынужденной позы и неуверенной походки.',
+          },
+          {
+            name: 'Климатотерапия и прогулки под руководством инструктора',
+            detail: 'Прогулки по местности под руководством инструктора, с постепенно и осторожно увеличивающейся дистанцией в соответствии с выносливостью.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Полинейропатия с парезами относится к позиции VI/2 чешского индикационного списка. Для пребываний, оплачиваемых чешской страховой, в качестве базового пребывания предусмотрено 28 дней комплексного курортного лечения или 21 день долевого лечения; при повторном пребывании — 28 дней комплексного или 21 день долевого лечения, в отдельных случаях 14. Гости, оплачивающие лечение самостоятельно, согласуют срок с курортным врачом; профессиональным минимумом считается не менее 10 процедур за не менее чем 10 дней. Время года медицинскими показаниями не определено, однако при отсутствии чувствительности в стопах дороги без снега и льда безопаснее.',
+        },
+        physicianNote: 'Возможно ли курортное лечение при вашей полинейропатии, решает курортный врач при первичном осмотре на основании неврологического заключения и состояния ваших стоп. Пребывание дополняет лечение основного заболевания — например, коррекцию диабета — и не заменяет его. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'При полинейропатии лечение нацелено на то, что поддаётся тренировке: походку, устойчивость в положении стоя и силу. Эти составляющие назначают в Марианских Лазнях давно, подбирая их по неврологическому заключению и из клинического опыта. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
+        faqs: [
+          {
+            question: 'Оплачивается ли курортное лечение при полинейропатии?',
+            answer: 'Чешский индикационный список относит полинейропатию с парезами к позиции VI/2: для застрахованных в чешской страховой компании в качестве базового пребывания предусмотрено 28 дней комплексного курортного лечения или 21 день долевого лечения. Решающее значение имеет уточнение «с парезами» — потеря силы должна быть документирована. Гости со страховкой за пределами Чехии заранее уточняют возможность возмещения у своего страховщика.',
+          },
+          {
+            question: 'Что делают при полинейропатии во время курортного лечения?',
+            answer: 'Основное внимание уделяется тому, что можно тренировать: походке, устойчивости и силе поражённых мышц. К этому добавляются двигательная терапия в тёплой воде, углекислые или сухие газовые ванны из местных лечебных средств, массаж против сопутствующего напряжения и прогулки по местности под руководством инструктора. План составляет курортный врач после первичного осмотра.',
+          },
+          {
+            question: 'Помогает ли курортное лечение при полинейропатии после химиотерапии?',
+            answer: 'Курортное лечение возможно, как только онкологическое лечение завершено и вы находитесь в ремиссии; во время текущего лечения опухоли оно исключено. Лечение направлено на то же, что и при других формах: ходьбу, устойчивость и силу. Для восстановления после лечения онкологического заболевания в целом в Марианских Лазнях есть отдельная программа.',
+          },
+          {
+            question: 'Что нужно учитывать при диабете?',
+            answer: 'Возьмите с собой актуальные лабораторные показатели и список принимаемых препаратов; курортный врач ориентирует план на них. Важен ежедневный осмотр стоп: там, где отсутствует чувствительность, потёртости и мелкие повреждения остаются незамеченными. Открытые повреждения на стопе исключают ряд процедур, поэтому стопы осматривают уже при первичном осмотре.',
+          },
+          {
+            question: 'Восстанавливаются ли нервы благодаря курортному лечению?',
+            answer: 'Нет. Для такого эффекта при полинейропатии нет надёжных доказательств, и эта страница поэтому его не утверждает. То, что можно изменить во время курортного лечения, — это то, как справляться с последствиями: уверенность при ходьбе, сила поражённых мышц и выносливость в повседневной жизни. Лечение основного заболевания при этом продолжается без изменений.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VI — позиция VI/2',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Полинейропатия с парезами: базовое пребывание — 28 дней комплексного лечения или 21 день долевого лечения; повторное пребывание — 28 дней комплексного или 21 день долевого лечения (в отдельных случаях 14).',
+          },
+          {
+            title: 'Постановление № 2/2015 Сб. о профессиональных критериях курортной реабилитационной помощи — группа VI',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Полный текст индикационного списка для нервных заболеваний, включая противопоказания и требуемые первичные обследования. Текст на чешском языке.',
+          },
+        ],
+        related: [
+          {
+            label: 'Курортное лечение обмена веществ и диабета',
+            href: '/ru/kurortnoe-lechenie/obmen-veshchestv-i-diabet',
+          },
+          {
+            label: 'Курортное лечение после лечения онкологии',
+            href: '/ru/kurortnoe-lechenie/posle-lecheniya-onkologii',
+          },
+          {
+            label: 'День мозга и нервной системы',
+            href: '/ru/zhurnal/den-mozga-nervnaya-sistema',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
     },
   },
   {
@@ -7817,9 +9055,9 @@ export const diagnoses: Diagnosis[] = [
     medicalReviewDate: '2026-09-14',
     imageAlt: {
       de: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
-      en: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
-      cs: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
-      ru: 'Kurgast liegt entspannt im warmen Kohlensäurebecken aus örtlichem Mineralwasser',
+      en: 'A spa guest lying relaxed in the warm carbonated pool of local mineral water',
+      cs: 'Lázeňský host odpočívá v teplém uhličitém bazénu z místní minerální vody',
+      ru: 'Гость лечения расслабленно лежит в тёплом углекислом бассейне из местной минеральной воды',
     },
     content: {
       de: {
@@ -7985,9 +9223,462 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      en: {} as unknown as DiagnosisContent,
-      cs: {} as unknown as DiagnosisContent,
-      ru: {} as unknown as DiagnosisContent,
+      en: {
+        slug: 'high-blood-pressure',
+        navLabel: 'High blood pressure',
+        title: 'Spa treatment for high blood pressure in Marienbad',
+        h1: 'Spa treatment for high blood pressure',
+        metaTitle: 'Spa treatment for high blood pressure in Marienbad — duration',
+        metaDescription: 'Spa treatment for high blood pressure in Marienbad: carbon dioxide baths, terrain cure and nutrition counselling — what studies show, how long the cure lasts.',
+        lead: 'Grade two and three hypertension is on the Czech indication list, and Marienbad treats it with what comes from the ground here: carbon dioxide baths from the local mineral water and dry gas baths in Mariengas, together with outdoor exercise and nutrition counselling. The cure supplements blood-pressure-lowering medication; it does not replace it.',
+        teaser: 'Carbon dioxide baths, dry gas baths, terrain cure and nutrition counselling — as a supplement to blood-pressure-lowering treatment.',
+        treats: [
+          'Grade two and three hypertension under ongoing medical treatment',
+          'High blood pressure with accompanying overweight or lack of exercise',
+          'High blood pressure with elevated blood lipids or disturbed glucose metabolism',
+          'Declining physical stamina that helps sustain the high blood pressure',
+          'The wish to change diet and exercise habits under medical supervision',
+        ],
+        notFor: [
+          'Second- to third-degree AV block, heart failure at NYHA class IV and active endocarditis — the indication list excludes these for the whole group',
+          'Untreated or poorly controlled high blood pressure without medical supervision',
+          'Severe heart disease, and acute infectious disease',
+          'Peat packs: they place a strong strain on the circulation and are prescribed for cardiovascular disease only after an individual medical decision',
+          'The Cross Spring: its high sodium content makes it unsuitable for people with high blood pressure',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: 'The spa physician measures your blood pressure, reviews your medication and reviews any findings you bring. For the circulatory disease group, the indication list requires certain initial examinations and nicotine abstinence. Bring current readings, ideally from your own measurements at home, and a complete list of your medication.',
+          },
+          {
+            heading: 'First week: accustoming the circulation to exertion',
+            body: 'Treatment begins with carbon dioxide baths at around 34°C and short outdoor walks. Blood pressure is checked regularly, and the drinking cure is tailored individually — not every spring in town is suitable for high blood pressure.',
+          },
+          {
+            heading: 'Second week: increasing exertion',
+            body: 'The walking distances become longer and steeper, and group exercise and exercise therapy in water are added. Nutrition counselling runs in parallel; where there is overweight, weight loss is the lever that acts on blood pressure.',
+          },
+          {
+            heading: 'Final examination and a plan for home',
+            body: 'How your blood pressure has changed over the stay is evaluated and recorded in writing; you take the report home for your own doctor. Whether and how medication is adjusted is decided solely by them, not by the spa town.',
+          },
+        ],
+        procedures: [
+          { name: 'Carbon dioxide bath in mineral water', detail: 'A bath in the local mineral water at around 34°C; the carbon dioxide absorbed through the skin is the active agent, and the low temperature keeps the strain on the circulation small.' },
+          { name: 'Dry gas bath in Mariengas', detail: 'Application of the natural carbon dioxide from the Marien Spring in a sealed bag — without water and without the strain of heat, which is why it is often the first choice for cardiovascular diagnoses.' },
+          { name: 'Terrain cure and climate therapy', detail: 'Guided walking on graded paths in the spa forest, with gradually increasing exertion at an altitude of 630 metres.' },
+          { name: 'Group exercise for cardiovascular guests', detail: 'Guided sessions with endurance, mobility and breathing components, put together for guests with a similar diagnosis.' },
+          { name: 'Exercise therapy in the pool', detail: 'Exercises in warm water that spare the joints while still building endurance.' },
+          { name: 'Nutrition counselling', detail: 'Individual sessions on salt, weight and blood lipids, accompanied by the spa diet during the stay.' },
+          { name: 'Drinking cure on medical prescription', detail: 'Which spring and what amount is set by the physician. The Cross Spring is not suitable for high blood pressure because of its high sodium content.' },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'Grade two to three hypertensive disease is position II/3 on the Czech indication list. For stays covered by Czech public health insurance, the initial stay provides for 28 days of comprehensive spa care or 21 days of contributory care; a repeat stay runs to 21 days of contributory care, in certain cases 14. Self-paying guests agree the length with the spa physician; the professional minimum is at least 10 treatments over at least 10 days. There is a reasoned consideration for timing the season: daytime blood pressure is higher in winter than in summer, mainly because of cold, and more cardiovascular events occur in the cold season — a stay in autumn therefore comes before that peak in strain.',
+        },
+        evidence: {
+          heading: 'What the studies show',
+          body: 'A review of bathing in natural thermal mineral water for high blood pressure concluded that the baths — alone, as a supplement to medication, or combined with other measures — had no adverse effects and had a favourable influence on blood pressure in most of the included studies (Yuan et al., 2019, Int J Biometeorol; very heterogeneous interventions, methodologically weaker studies, no meta-analysis). A mini-review describes a blood-pressure-lowering effect for various forms of hydro- and balneotherapy as a supplement to treatment, and names heat, heart-rate regulation and baroreceptors as mechanisms; the authors call for further clinical studies (Moini Jazani et al., 2023; mini-review without systematic methodology). In a before-and-after study of 35 patients, 24-hour blood pressure fell after three weeks of balneotherapy with carbon dioxide baths and peloids in people with medium and high baseline values, while it did not change in those with low baseline values (Ekmekcioglu et al., 2000, Altern Ther Health Med; no control group). On safety, a randomised study is available: 15 baths at 38°C produced no unfavourable changes in metabolic and inflammatory markers in patients with high blood pressure and overweight, so balneotherapy is not contraindicated for these diagnoses (Oláh et al., 2011; laboratory values were observed, not clinical endpoints). None of these studies shows that a spa cure can replace blood-pressure-lowering medication.',
+        },
+        physicianNote: 'Whether and to what extent a spa cure is appropriate for your high blood pressure is decided by the spa physician at the initial examination, based on your readings and findings. Your own doctor alone decides on your medication; do not change it without their agreement. This page provides information and does not replace medical advice.',
+        faqs: [
+          {
+            question: 'Does a spa cure lower blood pressure?',
+            answer: 'The available studies suggest that baths in mineral water can favourably influence blood pressure as a supplement to treatment. In a before-and-after study of 35 patients, 24-hour blood pressure fell after three weeks of balneotherapy in people with raised baseline values, while it remained unchanged at low values; this study had no control group. A review found a favourable effect without adverse effects in most of the included studies, but points out the weaker methodology. According to this data, the cure does not replace blood-pressure-lowering medication.',
+          },
+          {
+            question: 'Is a spa cure for high blood pressure covered?',
+            answer: 'Grade two to three hypertensive disease is position II/3 of the Czech indication list: for people insured with a Czech health fund, the initial stay provides for 28 days of comprehensive spa care or 21 days of contributory care, and a repeat stay runs to 21 or 14 days of contributory care. Guests insured outside the Czech Republic should clarify cost coverage with their own insurer in advance.',
+          },
+          {
+            question: 'Which spring may I drink from with high blood pressure?',
+            answer: 'That is set by the spa physician, as is the amount; never drink more than prescribed. One restriction is known: the Cross Spring contains a great deal of sodium and is not suitable for people with high blood pressure or for heart patients. The springs in town differ considerably in chemistry, which is why the drinking cure is always prescribed individually.',
+          },
+          {
+            question: 'Are peat packs allowed with high blood pressure?',
+            answer: 'Only after an individual medical decision. The peat pack is a heat-intensive application at up to 40°C and therefore places a clear strain on the heart and circulation; caution is needed with cardiovascular disease and at an older age. Where a treatment with carbon dioxide makes sense, the dry gas bath is often chosen instead, since it involves no strain from heat.',
+          },
+          {
+            question: 'Do I have to stop my blood pressure medication during the cure?',
+            answer: "No. Do not change medication prescribed for you at home without your doctor's agreement. The spa physician monitors your blood pressure during the stay and records the course in the final report; whether that leads to an adjustment is decided by your own doctor at home.",
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group II — position II/3',
+            url: '/en/indications-and-contraindications',
+            note: 'Hypertensive disease, grade II to III: initial stay 28 days of comprehensive or 21 days of contributory care; repeat stay 21 days of contributory care (14 in certain cases).',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa medical rehabilitation care — Group II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for circulatory diseases, including contraindications (second- to third-degree AV block, NYHA IV, active endocarditis), required nicotine abstinence and initial examinations. Czech-language text.',
+          },
+          {
+            title: 'Yuan H et al. 2019, Int J Biometeorol — review of bathing in natural thermal mineral water for hypertension',
+            url: 'https://doi.org/10.1007/s00484-019-01780-4',
+            note: 'Baths alone, as a supplement to medication, and combined with other measures had no adverse effects and had a favourable influence on blood pressure in most studies. Heterogeneous interventions, no meta-analysis.',
+          },
+          {
+            title: 'Moini Jazani A et al. 2023, Int J Biometeorol — mini-review of the effect of hydrotherapy, balneotherapy and spa therapy on blood pressure',
+            url: 'https://doi.org/10.1007/s00484-023-02512-5',
+            note: 'Various forms can lower blood pressure as a supplementary treatment; the mechanisms named are heat, heart-rate regulation and baroreceptors. Mini-review without systematic methodology.',
+          },
+          {
+            title: 'Ekmekcioglu C et al. 2000, Altern Ther Health Med — before-and-after study, 35 patients, 24-hour blood pressure measurement',
+            url: 'https://consensus.app/papers/details/39ccd0edaff45a03b6103309fbe833bc/',
+            note: 'After 3 weeks of balneotherapy with CO₂ baths and peloids, 24-hour blood pressure fell at medium and high baseline values; unchanged at low values. No control group.',
+          },
+          {
+            title: 'Oláh M et al. 2011 — randomised study of balneotherapy in hypertension and obesity (15 baths, 38°C)',
+            url: 'https://consensus.app/papers/details/56a643895d4a59608b3486b000ee0c38/',
+            note: 'No unfavourable changes in metabolic and inflammatory parameters after 15 baths at 38°C; balneotherapy is not contraindicated for these diagnoses. Laboratory values were observed, not clinical endpoints.',
+          },
+          {
+            title: 'Narita K, Hoshide S, Kario K 2021, Hypertens Res — review of the seasonal variation of blood pressure',
+            url: 'https://doi.org/10.1038/s41440-021-00732-z',
+            note: 'Daytime blood pressure is higher in winter than in summer, mainly because of cold; the winter rise is associated with more cardiovascular events. Does not concern spa treatment.',
+          },
+          {
+            title: 'Pagourelias ED et al. 2011, Int J Biometeorol — review of CO₂ balneotherapy in cardiovascular disease',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Three main effects: a drop in body temperature, stronger skin blood flow, a feeling of warmth; the authors call for methodologically stronger studies.',
+          },
+        ],
+        related: [
+          { label: 'Heart and circulation before winter', href: '/en/magazine/cardiovascular-spa-cure-marianske-lazne' },
+          { label: 'Spa treatment for coronary heart disease', href: '/en/spa-treatment-for/coronary-heart-disease' },
+          { label: 'Carbon dioxide baths — what the research shows', href: '/en/magazine/co2-baths-science' },
+          { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
+        ],
+      },
+      cs: {
+        slug: 'vysoky-krevni-tlak',
+        navLabel: 'Vysoký krevní tlak',
+        title: 'Lázeňská léčba vysokého krevního tlaku v Mariánských Lázních',
+        h1: 'Lázeňská léčba vysokého krevního tlaku',
+        metaTitle: 'Léčba vysokého krevního tlaku v lázních | Marienbad.com',
+        metaDescription: 'Lázeňská léčba vysokého tlaku v Mariánských Lázních: uhličité koupele, terénní léčba chůzí a dietní poradenství — co ukazují studie, délka pobytu.',
+        lead: 'Hypertenze druhého a třetího stupně je položkou českého indikačního seznamu, a Mariánské Lázně ji léčí tím, co tu vyvěrá ze země: uhličitými koupelemi z místní minerální vody a suchými plynovými koupelemi v Mariině plynu, k tomu pohybem v terénu a dietním poradenstvím. Lázeňský pobyt doplňuje léčbu snižující krevní tlak, nenahrazuje ji.',
+        teaser: 'Uhličité koupele, suché plynové koupele, terénní léčba a dietní poradenství — jako doplněk k léčbě snižující krevní tlak.',
+        treats: [
+          'Hypertenze druhého a třetího stupně v probíhající lékařské léčbě',
+          'Vysoký krevní tlak s doprovodnou nadváhou nebo nedostatkem pohybu',
+          'Vysoký krevní tlak se zvýšenými krevními tuky nebo poruchou metabolismu cukrů',
+          'Ubývající fyzická zátěžová kapacita, která krevní tlak spoluudržuje',
+          'Přání upravit stravu a pohyb pod lékařským dohledem',
+        ],
+        notFor: [
+          'AV blok druhého až třetího stupně, srdeční selhání ve stadiu NYHA IV a aktivní endokarditida — indikační seznam je vylučuje pro celou skupinu',
+          'Neléčený nebo nekompenzovaný vysoký krevní tlak bez lékařské kontroly',
+          'Závažné srdeční onemocnění a akutní infekční onemocnění',
+          'Slatinné zábaly: silně zatěžují oběh a u nemocí srdce a cév se předepisují jen po individuálním rozhodnutí lékaře',
+          'Křížový pramen: jeho vysoký obsah sodíku ho dělá nevhodným pro lidi s vysokým krevním tlakem',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař změří krevní tlak, projde medikaci a přinesené nálezy. Pro skupinu nemocí oběhového ústrojí indikační seznam vyžaduje určitá vstupní vyšetření a abstinenci od nikotinu. Vezměte si aktuální hodnoty, nejlépe z domácího měření, a úplný seznam léků.',
+          },
+          {
+            heading: 'První týden: navyknutí oběhu na zátěž',
+            body: 'Procedury začínají uhličitými koupelemi při zhruba 34 °C a krátkými procházkami v terénu. Krevní tlak se pravidelně kontroluje a pitná kúra se sladí — ne každý pramen v lázních se hodí u vysokého krevního tlaku.',
+          },
+          {
+            heading: 'Druhý týden: zvyšování zátěže',
+            body: 'Procházky se prodlužují a jsou náročnější, přibývají skupinová cvičení a pohybová terapie ve vodě. Souběžně probíhá dietní poradenství; při nadváze je hubnutí páka, která na krevní tlak nejvíc působí.',
+          },
+          {
+            heading: 'Závěrečná prohlídka a plán pro doma',
+            body: 'Vývoj krevního tlaku za dobu pobytu se zhodnotí a písemně zaznamená; zprávu si berete pro svého ošetřujícího lékaře. O případné úpravě medikace rozhoduje výhradně on, ne lázně.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Uhličitá koupel z minerální vody',
+            detail: 'Koupel v místní minerální vodě při zhruba 34 °C; účinnou látkou je oxid uhličitý přijímaný kůží, nízká teplota drží zátěž oběhu nízkou.',
+          },
+          {
+            name: 'Suchá plynová koupel v Mariině plynu',
+            detail: 'Aplikace přírodního oxidu uhličitého z Mariina pramene v uzavřeném vaku — bez vody a bez zátěže teplem, proto u diagnóz srdce a cév často první volba.',
+          },
+          {
+            name: 'Terénní léčba a klimatoterapie',
+            detail: 'Vedená chůze po odstupňovaných cestách v lázeňském lese, s postupně narůstající zátěží v 630 metrech nad mořem.',
+          },
+          {
+            name: 'Skupinové cvičení pro hosty s onemocněním srdce a cév',
+            detail: 'Vedené jednotky s vytrvalostní, pohyblivostní a dechovou složkou, sestavené pro hosty s podobnou diagnózou.',
+          },
+          {
+            name: 'Pohybová terapie v bazénu',
+            detail: 'Cvičení v teplé vodě, která šetří klouby a přitom budují vytrvalost.',
+          },
+          {
+            name: 'Dietní poradenství',
+            detail: 'Individuální konzultace k soli, váze a krevním tukům, doplněné lázeňskou dietou po dobu pobytu.',
+          },
+          {
+            name: 'Pitná kúra podle ordinace lékaře',
+            detail: 'Který pramen a v jakém množství určuje lékař. Křížový pramen se pro vysoký obsah sodíku u vysokého krevního tlaku nehodí.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Hypertenzní nemoc druhého až třetího stupně je položka II/3 českého indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u oběhového ústrojí. Samoplátci volí délku po dohodě s lázeňským lékařem; jako odborné minimum platí alespoň 10 procedur během alespoň 10 dní. K ročnímu období existuje odůvodněná úvaha: denní krevní tlak je v zimě vyšší než v létě, především vlivem chladu, a v chladném období nastává víc kardiovaskulárních příhod — pobyt na podzim tak předchází zátěžový vrchol.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Přehledová práce ke koupelím v přírodní termální minerální vodě u vysokého krevního tlaku dochází k závěru, že koupele — samotné, jako doplněk k lékům nebo v kombinaci s dalšími opatřeními — nemaly nežádoucí účinky a ve většině zahrnutých studií krevní tlak ovlivnily příznivě (Yuan a kol., 2019, Int J Biometeorol; velmi rozdílné intervence, metodicky slabší studie, žádná metaanalýza). Mini-přehled popisuje u různých forem hydro- a balneoterapie snižující účinek na krevní tlak jako doplněk k léčbě a jako mechanismy uvádí teplo, regulaci srdeční frekvence a baroreceptory; autoři žádají další klinické studie (Moini Jazani a kol., 2023; mini-review bez systematické metodiky). Ve studii typu před–po s 35 pacienty klesl po třech týdnech balneoterapie s uhličitými koupelemi a peloidy 24hodinový krevní tlak u osob se středními a vysokými výchozími hodnotami, u nízkých výchozích hodnot se nezměnil (Ekmekcioglu a kol., 2000, Altern Ther Health Med; bez kontrolní skupiny). K bezpečnosti existuje randomizovaná studie: 15 koupelí při 38 °C nevedlo u pacientů s vysokým krevním tlakem a nadváhou k nepříznivým změnám metabolických a zánětlivých hodnot, balneoterapie tedy u těchto diagnóz není kontraindikovaná (Oláh a kol., 2011; sledovány byly laboratorní hodnoty, ne klinické cílové parametry). Žádná z těchto studií neprokazuje, že by lázeňský pobyt mohl nahradit léky snižující krevní tlak.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás při vysokém krevním tlaku připadá v úvahu lázeňský pobyt, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich hodnot a nálezů. O vaší medikaci rozhoduje výhradně váš ošetřující lékař; neměňte ji bez jeho souhlasu. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Snižuje lázeňský pobyt krevní tlak?',
+            answer: 'Dostupné studie naznačují, že koupele v minerální vodě mohou jako doplněk k léčbě příznivě ovlivnit krevní tlak. Ve studii typu před–po s 35 pacienty klesl po třech týdnech balneoterapie 24hodinový krevní tlak u osob se zvýšenými výchozími hodnotami, u nízkých hodnot zůstal beze změny; tato studie neměla kontrolní skupinu. Přehledová práce zjistila ve většině zahrnutých studií příznivý účinek bez nežádoucích projevů, upozorňuje ale na slabší metodiku. Léky snižující krevní tlak podle těchto dat lázeňský pobyt nenahrazuje.',
+          },
+          {
+            question: 'Hradí pojišťovna lázně při vysokém krevním tlaku?',
+            answer: 'Hypertenzní nemoc druhého až třetího stupně je položka II/3 českého indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u oběhového ústrojí. Hosté s pojištěním mimo Česko si úhradu ověřují předem u vlastní pojišťovny.',
+          },
+          {
+            question: 'Který pramen mohu pít při vysokém krevním tlaku?',
+            answer: 'To určuje lázeňský lékař, stejně jako množství; nepijte nikdy víc, než je předepsáno. Jedno omezení je známé: Křížový pramen obsahuje hodně sodíku a pro lidi s vysokým krevním tlakem i pro srdeční pacienty se nehodí. Prameny v lázních se chemicky výrazně liší, proto se pitná kúra vždy předepisuje individuálně.',
+          },
+          {
+            question: 'Jsou slatinné zábaly při vysokém krevním tlaku dovolené?',
+            answer: 'Jen po individuálním rozhodnutí lékaře. Slatinný zábal je tepelně náročná procedura při teplotě až 40 °C a představuje výraznou zátěž pro srdce a oběh; u nemocí srdce a cév a ve vyšším věku je na místě opatrnost. Kde má smysl procedura s oxidem uhličitým, volí se často místo toho suchá plynová koupel, která se zátěží teplem nepracuje.',
+          },
+          {
+            question: 'Musím během pobytu vysadit léky na tlak?',
+            answer: 'Ne. Svou doma předepsanou medikaci neměňte bez souhlasu svého lékaře. Lázeňský lékař krevní tlak během pobytu kontroluje a vývoj zaznamená do závěrečné zprávy; zda z toho vyplyne úprava, rozhoduje váš ošetřující lékař doma.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina II — položka II/3',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Hypertenzní nemoc II. až III. stupně, s typem péče a délkou pobytu.',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci oběhového ústrojí včetně kontraindikací (AV blok II. až III. stupně, NYHA IV, aktivní endokarditida), požadované abstinence od nikotinu a vstupních vyšetření.',
+          },
+          {
+            title: 'Yuan H a kol. 2019, Int J Biometeorol — přehled ke koupelím v přírodní termální minerální vodě u hypertenze',
+            url: 'https://doi.org/10.1007/s00484-019-01780-4',
+            note: 'Koupele samotné, jako doplněk k lékům i v kombinaci s dalšími opatřeními nemaly nežádoucí účinky a ve většině studií ovlivnily krevní tlak příznivě. Heterogenní intervence, žádná metaanalýza.',
+          },
+          {
+            title: 'Moini Jazani A a kol. 2023, Int J Biometeorol — mini-přehled k účinku hydro-, balneo- a lázeňské terapie na krevní tlak',
+            url: 'https://doi.org/10.1007/s00484-023-02512-5',
+            note: 'Různé formy mohou jako doplňková léčba snižovat krevní tlak; jako mechanismy jsou uváděny teplo, regulace srdeční frekvence a baroreceptory. Mini-review bez systematické metodiky.',
+          },
+          {
+            title: 'Ekmekcioglu C a kol. 2000, Altern Ther Health Med — studie typu před–po, 35 pacientů, 24hodinové měření krevního tlaku',
+            url: 'https://consensus.app/papers/details/39ccd0edaff45a03b6103309fbe833bc/',
+            note: 'Po 3 týdnech balneoterapie s CO₂ koupelemi a peloidy klesl 24hodinový krevní tlak u středních a vysokých výchozích hodnot; u nízkých beze změny. Bez kontrolní skupiny.',
+          },
+          {
+            title: 'Oláh M a kol. 2011 — randomizovaná studie k balneoterapii u hypertenze a obezity (15 koupelí, 38 °C)',
+            url: 'https://consensus.app/papers/details/56a643895d4a59608b3486b000ee0c38/',
+            note: '15 koupelí při 38 °C nevedlo k nepříznivým změnám metabolických a zánětlivých parametrů; balneoterapie u těchto diagnóz není kontraindikovaná. Sledovány laboratorní hodnoty, ne klinické cílové parametry.',
+          },
+          {
+            title: 'Narita K, Hoshide S, Kario K 2021, Hypertens Res — přehled k sezónnímu kolísání krevního tlaku',
+            url: 'https://doi.org/10.1038/s41440-021-00732-z',
+            note: 'Denní krevní tlak je v zimě vyšší než v létě, především vlivem chladu; zimní nárůst souvisí s víc kardiovaskulárními příhodami. Netýká se lázeňské léčby.',
+          },
+          {
+            title: 'Pagourelias ED a kol. 2011, Int J Biometeorol — přehled k CO₂ balneoterapii u nemocí srdce a cév',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Tři hlavní účinky: pokles tělesné teploty, silnější prokrvení kůže, pocit tepla; autoři žádají metodicky lepší studie.',
+          },
+        ],
+        related: [
+          {
+            label: 'Srdce a cévy před zimou',
+            href: '/cs/magazin/lazenska-lecba-obehoveho-ustroji',
+          },
+          {
+            label: 'Lázeňská léčba ischemické choroby srdeční',
+            href: '/cs/lazenska-lecba/ischemicka-choroba-srdecni',
+          },
+          {
+            label: 'CO₂ koupele: Co říká věda',
+            href: '/cs/magazin/co2-koupele-veda',
+          },
+          {
+            label: 'Co hradí pojišťovna u oběhového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/obehove-ustroji',
+          },
+        ],
+      },
+      ru: {
+        slug: 'gipertoniya',
+        navLabel: 'Гипертония',
+        title: 'Курортное лечение гипертонии в Марианских Лазнях',
+        h1: 'Курортное лечение гипертонии',
+        metaTitle: 'Лечение гипертонии в Марианских Лазнях — ход и сроки',
+        metaDescription: 'Курортное лечение гипертонии в Марианских Лазнях: углекислые ванны, терренкур и консультации по питанию — что показывают исследования, сколько длится лечение.',
+        lead: 'Гипертония второй и третьей степени включена в чешский индикационный список, и в Марианских Лазнях её лечат тем, что даёт здешняя земля: углекислыми ваннами из местной минеральной воды и сухими газовыми ваннами в марианском газе, а также движением на местности и консультациями по питанию. Курортное лечение дополняет гипотензивную медикацию, а не заменяет её.',
+        teaser: 'Углекислые ванны, сухие газовые ванны, терренкур и консультации по питанию — как дополнение к гипотензивному лечению.',
+        treats: [
+          'Гипертония второй и третьей степени при текущем врачебном наблюдении',
+          'Гипертония с сопутствующим избыточным весом или недостатком движения',
+          'Гипертония с повышенными показателями липидов крови или нарушением углеводного обмена',
+          'Снижение физической выносливости, поддерживающее повышенное давление',
+          'Желание изменить питание и двигательную активность под врачебным наблюдением',
+        ],
+        notFor: [
+          'АВ-блокада второй-третьей степени, сердечная недостаточность стадии NYHA IV и активный эндокардит — индикационный список исключает их для всей группы',
+          'Нелеченая или неконтролируемая гипертония без врачебного контроля',
+          'Тяжёлое заболевание сердца, а также острые инфекционные заболевания',
+          'Торфяные обёртывания: они создают значительную нагрузку на кровообращение и при сердечно-сосудистых заболеваниях назначаются только по индивидуальному решению врача',
+          'Крестовый источник: высокое содержание натрия делает его неподходящим для людей с гипертонией',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач измеряет давление, изучает медикацию и принесённые заключения. Для группы заболеваний системы кровообращения индикационный список требует определённых первичных обследований и отказа от курения. Возьмите с собой актуальные показатели, желательно из домашних самостоятельных измерений, и полный список лекарств.',
+          },
+          {
+            heading: 'Первая неделя: адаптация кровообращения к нагрузке',
+            body: 'Процедуры начинаются с углекислых ванн при температуре около 34 °C и коротких прогулок по местности. Давление регулярно контролируют, а питьевой курс подбирают индивидуально — не каждый источник в городе подходит при гипертонии.',
+          },
+          {
+            heading: 'Вторая неделя: увеличение нагрузки',
+            body: 'Прогулки становятся длиннее и с более выраженным подъёмом, добавляются групповые занятия и двигательная терапия в воде. Параллельно проходят консультации по питанию; при избыточном весе снижение массы тела — тот рычаг, который влияет на давление.',
+          },
+          {
+            heading: 'Заключительное обследование и план на дом',
+            body: 'Динамика давления за время пребывания анализируется и фиксируется письменно; заключение вы забираете для своего лечащего врача. Будет ли и как скорректирована медикация, решает исключительно он, а не курорт.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Углекислая ванна в минеральной воде',
+            detail: 'Ванна в местной минеральной воде при температуре около 34 °C; действующее вещество — углекислый газ, проникающий через кожу, а низкая температура удерживает нагрузку на кровообращение на низком уровне.',
+          },
+          {
+            name: 'Сухая газовая ванна в марианском газе',
+            detail: 'Применение природного углекислого газа источника Марии в герметичном мешке — без воды и без тепловой нагрузки, поэтому при сердечно-сосудистых диагнозах часто становится первым выбором.',
+          },
+          {
+            name: 'Терренкур и климатотерапия',
+            detail: 'Ходьба под руководством инструктора по размеченным маршрутам курортного леса с постепенно возрастающей нагрузкой на высоте 630 метров.',
+          },
+          {
+            name: 'Групповые занятия для гостей с сердечно-сосудистыми заболеваниями',
+            detail: 'Занятия под руководством инструктора с элементами на выносливость, подвижность и дыхание, составленные для гостей со схожим диагнозом.',
+          },
+          {
+            name: 'Двигательная терапия в бассейне',
+            detail: 'Упражнения в тёплой воде, которые щадят суставы и при этом развивают выносливость.',
+          },
+          {
+            name: 'Консультация по питанию',
+            detail: 'Индивидуальные беседы о соли, весе и липидах крови, сопровождаемые курортной диетой во время пребывания.',
+          },
+          {
+            name: 'Питьевой курс по врачебному назначению',
+            detail: 'Какой источник и в каком количестве, определяет врач. Крестовый источник из-за высокого содержания натрия не подходит при гипертонии.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Гипертоническая болезнь второй-третьей степени относится к позиции II/3 чешского индикационного списка. Для пребываний, оплачиваемых чешской страховой, в качестве базового пребывания предусмотрено 28 дней комплексного курортного лечения или 21 день долевого лечения; повторное пребывание проходит как 21 день долевого лечения, в отдельных случаях 14. Гости, оплачивающие лечение самостоятельно, согласуют срок с курортным врачом; профессиональным минимумом считается не менее 10 процедур за не менее чем 10 дней. Относительно времени года есть обоснованное соображение: суточное давление зимой выше, чем летом, в первую очередь из-за холода, а в холодное время года чаще происходят сердечно-сосудистые события — пребывание осенью, таким образом, приходится на период перед пиком нагрузки.',
+        },
+        evidence: {
+          heading: 'Что показывают исследования',
+          body: 'Обзорная работа о купании в природной термальной минеральной воде при гипертонии приходит к выводу, что ванны — отдельно, в дополнение к лекарствам или в сочетании с другими мерами — не вызывали нежелательных эффектов и в большинстве включённых исследований благоприятно влияли на давление (Yuan et al., 2019, Int J Biometeorol; очень разнородные вмешательства, методически более слабые исследования, без метаанализа). Мини-обзор описывает для разных форм гидро- и бальнеотерапии гипотензивный эффект как дополнение к лечению и называет в качестве механизмов тепло, регуляцию частоты сердечных сокращений и барорецепторы; авторы призывают к дальнейшим клиническим исследованиям (Moini Jazani et al., 2023; мини-обзор без систематической методологии). В исследовании «до и после» с 35 пациентами измеренное за 24 часа давление снизилось после трёх недель бальнеотерапии с углекислыми ваннами и пелоидами у лиц с средними и высокими исходными значениями, при низких исходных значениях оно не изменилось (Ekmekcioglu et al., 2000, Altern Ther Health Med; без контрольной группы). Относительно безопасности есть рандомизированное исследование: 15 ванн при 38 °C не привели у пациентов с гипертонией и избыточным весом к неблагоприятным изменениям показателей обмена веществ и воспаления, то есть бальнеотерапия при этих диагнозах не противопоказана (Oláh et al., 2011; наблюдались лабораторные показатели, а не клинические конечные точки). Ни одно из этих исследований не показывает, что курортное лечение может заменить гипотензивные препараты.',
+        },
+        physicianNote: 'Возможно ли и в каком объёме курортное лечение при вашей гипертонии, решает курортный врач при первичном осмотре на основании ваших показателей и заключений. О вашей медикации решает исключительно ваш лечащий врач; не меняйте её без его согласия. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        faqs: [
+          {
+            question: 'Снижает ли курортное лечение давление?',
+            answer: 'Имеющиеся исследования указывают на то, что ванны в минеральной воде могут благоприятно влиять на давление как дополнение к лечению. В исследовании «до и после» с 35 пациентами суточное давление снизилось после трёх недель бальнеотерапии у лиц с повышенными исходными значениями, при низких значениях оно осталось неизменным; это исследование не имело контрольной группы. Обзорная работа обнаружила в большинстве включённых исследований благоприятный эффект без нежелательных явлений, но указывает на более слабую методологию. Гипотензивные препараты, согласно этим данным, курортное лечение не заменяет.',
+          },
+          {
+            question: 'Оплачивается ли курортное лечение при гипертонии?',
+            answer: 'Гипертоническая болезнь второй-третьей степени — это позиция II/3 чешского индикационного списка: для застрахованных в чешской страховой компании в качестве базового пребывания предусмотрено 28 дней комплексного курортного лечения или 21 день долевого лечения, повторное пребывание проходит как 21 или 14 дней долевого лечения. Гости со страховкой за пределами Чехии заранее уточняют возможность возмещения у своего страховщика.',
+          },
+          {
+            question: 'Какой источник можно пить при гипертонии?',
+            answer: 'Это определяет курортный врач, а также количество; никогда не пейте больше назначенного. Известно одно ограничение: Крестовый источник содержит много натрия и не подходит людям с гипертонией, а также пациентам с заболеваниями сердца. Источники города существенно различаются по химическому составу, поэтому питьевой курс всегда назначают индивидуально.',
+          },
+          {
+            question: 'Разрешены ли торфяные обёртывания при гипертонии?',
+            answer: 'Только по индивидуальному решению врача. Торфяное обёртывание — это интенсивная тепловая процедура при температуре до 40 °C и, соответственно, значительная нагрузка на сердце и кровообращение; при сердечно-сосудистых заболеваниях и в пожилом возрасте требуется осторожность. Там, где целесообразна процедура с углекислым газом, вместо этого часто выбирают сухую газовую ванну, которая обходится без тепловой нагрузки.',
+          },
+          {
+            question: 'Нужно ли отменять гипотензивные препараты во время курортного лечения?',
+            answer: 'Нет. Не меняйте назначенную дома медикацию без согласия вашего врача. Курортный врач контролирует давление во время пребывания и фиксирует динамику в итоговом заключении; последует ли из этого корректировка, решает ваш лечащий врач дома.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа II — позиция II/3',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Гипертоническая болезнь II-III степени: базовое пребывание — 28 дней комплексного лечения или 21 день долевого лечения; повторное пребывание — 21 день долевого лечения (в отдельных случаях 14).',
+          },
+          {
+            title: 'Постановление № 2/2015 Сб. о профессиональных критериях курортной реабилитационной помощи — группа II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Полный текст индикационного списка для заболеваний системы кровообращения, включая противопоказания (АВ-блокада II-III степени, NYHA IV, активный эндокардит), требуемый отказ от курения и первичные обследования. Текст на чешском языке.',
+          },
+          {
+            title: 'Yuan H et al. 2019, Int J Biometeorol — обзор по купанию в природной термальной минеральной воде при гипертонии',
+            url: 'https://doi.org/10.1007/s00484-019-01780-4',
+            note: 'Ванны отдельно, как дополнение к лекарствам и в комбинации с другими мерами не вызывали нежелательных эффектов и в большинстве исследований благоприятно влияли на давление. Разнородные вмешательства, без метаанализа.',
+          },
+          {
+            title: 'Moini Jazani A et al. 2023, Int J Biometeorol — мини-обзор о влиянии гидро-, бальнео- и курортной терапии на давление',
+            url: 'https://doi.org/10.1007/s00484-023-02512-5',
+            note: 'Разные формы могут в качестве дополнительного лечения снижать давление; названные механизмы — тепло, регуляция частоты сердечных сокращений и барорецепторы. Мини-обзор без систематической методологии.',
+          },
+          {
+            title: 'Ekmekcioglu C et al. 2000, Altern Ther Health Med — исследование «до и после», 35 пациентов, суточное измерение давления',
+            url: 'https://consensus.app/papers/details/39ccd0edaff45a03b6103309fbe833bc/',
+            note: 'После 3 недель бальнеотерапии с CO₂-ваннами и пелоидами суточное давление снизилось при средних и высоких исходных значениях; при низких — без изменений. Без контрольной группы.',
+          },
+          {
+            title: 'Oláh M et al. 2011 — рандомизированное исследование бальнеотерапии при гипертонии и ожирении (15 ванн, 38 °C)',
+            url: 'https://consensus.app/papers/details/56a643895d4a59608b3486b000ee0c38/',
+            note: '15 ванн при 38 °C не привели к неблагоприятным изменениям показателей обмена веществ и воспаления; бальнеотерапия при этих диагнозах не противопоказана. Наблюдались лабораторные показатели, а не клинические конечные точки.',
+          },
+          {
+            title: 'Narita K, Hoshide S, Kario K 2021, Hypertens Res — обзор о сезонных колебаниях давления',
+            url: 'https://doi.org/10.1038/s41440-021-00732-z',
+            note: 'Суточное давление зимой выше, чем летом, в первую очередь из-за холода; зимнее повышение связано с большим числом сердечно-сосудистых событий. Не относится к курортному лечению.',
+          },
+          {
+            title: 'Pagourelias ED et al. 2011, Int J Biometeorol — обзор по CO₂-бальнеотерапии при сердечно-сосудистых заболеваниях',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Три основных эффекта: снижение температуры тела, усиление кровоснабжения кожи, ощущение тепла; авторы призывают к методически более качественным исследованиям.',
+          },
+        ],
+        related: [
+          {
+            label: 'Сердце и сосуды перед зимой',
+            href: '/ru/zhurnal/kurortnoe-lechenie-serdca-i-sosudov',
+          },
+          {
+            label: 'Курортное лечение ишемической болезни сердца',
+            href: '/ru/kurortnoe-lechenie/ishemicheskaya-bolezn-serdca',
+          },
+          {
+            label: 'Углекислые ванны — что показывает наука',
+            href: '/ru/zhurnal/co2-vanny-nauka',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
     },
   },
   {
@@ -8004,9 +9695,9 @@ export const diagnoses: Diagnosis[] = [
     medicalReviewDate: '2026-09-14',
     imageAlt: {
       de: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
-      en: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
-      cs: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
-      ru: 'Kurgast liegt im abgedichteten Beutel eines trockenen Gasbads mit natürlichem Kohlendioxid',
+      en: 'A spa guest lying in the sealed bag of a dry gas bath with natural carbon dioxide',
+      cs: 'Lázeňský host leží v uzavřeném vaku suché plynové koupele s přírodním oxidem uhličitým',
+      ru: 'Гость лечения лежит в герметичном мешке для сухой газовой ванны с природным углекислым газом',
     },
     content: {
       de: {
@@ -8086,9 +9777,13 @@ export const diagnoses: Diagnosis[] = [
         },
         evidence: {
           heading: 'Was die Studien zeigen',
-          body: 'Am besten belegt ist der Bewegungsanteil der Kur, nicht das Bad. Ein Cochrane-Review zur bewegungsbasierten kardiologischen Rehabilitation bei koronarer Herzkrankheit fand innerhalb von zwölf Monaten ein geringeres Risiko für einen Herzinfarkt (RR 0,72) und für Krankenhausaufenthalte (RR 0,58), wahrscheinlich auch eine leicht niedrigere Gesamtsterblichkeit, langfristig eine niedrigere kardiovaskuläre Sterblichkeit sowie eine etwas bessere Lebensqualität (Dibben et al., 2021, Cochrane Database Syst Rev). Wichtig für die Einordnung: Untersucht wurden ambulante und klinische Rehabilitationsprogramme, nicht Kuraufenthalte, weniger als 15 Prozent der Teilnehmenden waren Frauen, und die Berichtsqualität der Einzelstudien schwankt. Für die Anwendungen mit Kohlendioxid selbst beschreibt eine Übersichtsarbeit drei Haupteffekte — Abfall der Körpertemperatur, stärkere Hautdurchblutung und Wärmegefühl — und fordert methodisch bessere Studien (Pagourelias et al., 2011, Int J Biometeorol). Eine ältere Übersicht hält fest, dass kontrollierte Belege zur CO₂-Balneotherapie nur für einen Teil der Indikationen vorliegen, nämlich periphere arterielle Verschlusskrankheit, trophische Ulzera, Mikroangiopathien und leichte Hypertonie (Resch und Just, 1994, Wien Med Wochenschr). Keine dieser Arbeiten zeigt, dass eine Kur die kardiologische Behandlung oder ihre Medikamente ersetzen kann.',
+          body: 'Am besten belegt ist der Bewegungsanteil der Kur, nicht das Bad. Ein Cochrane-Review zur bewegungsbasierten kardiologischen Rehabilitation bei koronarer Herzkrankheit fand innerhalb von zwölf Monaten ein geringeres Risiko für einen Herzinfarkt (RR 0,72) und für Krankenhausaufenthalte (RR 0,58), wahrscheinlich auch eine leicht niedrigere Gesamtsterblichkeit, langfristig eine niedrigere kardiovaskuläre Sterblichkeit sowie eine etwas bessere Lebensqualität (Dibben et al., 2021, Cochrane Database Syst Rev). Wichtig für die Einordnung: Untersucht wurden ambulante und klinische Rehabilitationsprogramme, nicht Kuraufenthalte, weniger als 15 Prozent der Teilnehmenden waren Frauen, und die Berichtsqualität der Einzelstudien schwankt. Für die Anwendungen mit Kohlendioxid selbst beschreibt eine Übersichtsarbeit drei Haupteffekte — Abfall der Körpertemperatur, stärkere Hautdurchblutung und Wärmegefühl — und fordert methodisch bessere Studien (Pagourelias et al., 2011, Int J Biometeorol). Keine dieser Arbeiten zeigt, dass eine Kur die kardiologische Behandlung oder ihre Medikamente ersetzen kann.',
         },
         physicianNote: 'Ob und wann eine Kur bei Ihrer Herzerkrankung infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand der kardiologischen Befunde und der Freigabe Ihres Kardiologen. Der Aufenthalt ergänzt die kardiologische Behandlung und ersetzt weder sie noch Ihre Medikamente; ändern Sie diese nicht ohne Zustimmung Ihres Arztes. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Trockene Gasbäder, Gasinjektionen und die geführte Terrainkur gehören in Marienbad seit langem zum Programm für Herzgäste; der Kurarzt dosiert die Belastung nach dem kardiologischen Befund und aus klinischer Erfahrung. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Objektive Daten dazu entstehen gerade. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc. Sie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was dabei herauskommen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
         faqs: [
           {
             question: 'Darf ich nach einem Herzinfarkt zur Kur?',
@@ -8157,9 +9852,429 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      en: {} as unknown as DiagnosisContent,
-      cs: {} as unknown as DiagnosisContent,
-      ru: {} as unknown as DiagnosisContent,
+      en: {
+        slug: 'coronary-heart-disease',
+        navLabel: 'Coronary heart disease',
+        title: 'Spa treatment for coronary heart disease in Marienbad',
+        h1: 'Spa treatment for coronary heart disease and after a heart attack',
+        metaTitle: 'Spa treatment for coronary heart disease in Marienbad — duration',
+        metaDescription: 'Spa treatment for coronary heart disease and after a heart attack in Marienbad: dry gas baths, terrain cure, exercise — course, duration and limits.',
+        lead: 'Symptomatic coronary heart disease and the condition after a heart attack are separate positions on the Czech indication list. In Marienbad, treatment runs through measured outdoor exercise, group sessions for cardiac guests and the local carbon dioxide treatments — always under medical supervision and always as a supplement to cardiological treatment.',
+        teaser: 'Dry gas baths, terrain cure and exercise for cardiac guests — as a supplement to cardiological treatment, after clearance from the cardiologist.',
+        treats: [
+          'Symptomatic coronary heart disease in a stable condition under cardiological care',
+          'Condition after a heart attack, once acute treatment is complete and with clearance from the cardiologist',
+          'Declining stamina and uncertainty about resuming exercise',
+          'Accompanying risk factors such as overweight, elevated blood lipids, high blood pressure or lack of exercise',
+          'Condition after procedures on the vascular system outside the heart, and after percutaneous angioplasty',
+        ],
+        notFor: [
+          'Unstable angina pectoris, and a recent heart attack without completed acute treatment',
+          'Heart failure at NYHA class IV, second- to third-degree AV block and active endocarditis — the indication list excludes these for the whole group',
+          "Severe heart disease listed on the spa town's general contraindication list",
+          'Missing clearance from the cardiologist, or missing initial examinations required by the indication list for group II',
+          'Continued smoking: the indication list requires nicotine abstinence for the circulatory group',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: "The spa physician reviews your cardiological findings and medication, measures blood pressure and pulse, and assesses your stamina. Bring your cardiologist's clearance and the examinations required by the indication list for the circulatory disease group; without them the plan cannot be drawn up in full.",
+          },
+          {
+            heading: 'First week: building up exertion cautiously',
+            body: 'Treatment begins with short, level walks and low-intensity group exercise. Of the local natural remedies, the dry gas bath is used most, because it involves no strain on the circulation from heat.',
+          },
+          {
+            heading: 'Second week: building endurance',
+            body: 'The walks become longer and the climbs steeper, always in graded stages and with monitoring of pulse and blood pressure. Nutrition counselling on blood lipids, salt and weight runs in parallel.',
+          },
+          {
+            heading: 'Final examination and a plan for home',
+            body: 'Your stamina and progress are assessed and recorded in writing; you take the report home for your cardiologist. You receive an exercise programme for home — the benefit depends on continuing it.',
+          },
+        ],
+        procedures: [
+          { name: 'Dry gas bath in Mariengas', detail: 'The natural carbon dioxide from the Marien Spring is applied in a sealed bag, without water and without the strain of heat — which is why it is often the first choice for heart diagnoses.' },
+          { name: 'Gas injections with Mariengas', detail: 'Injections of natural carbon dioxide placed under the skin; in Marienbad they are part of the programme for ischaemic heart disease and are prescribed only by the physician.' },
+          { name: 'Carbon dioxide bath in mineral water', detail: 'A bath at around 34°C; the low temperature keeps the strain on the circulation small while the carbon dioxide is absorbed through the skin.' },
+          { name: 'Terrain cure and climate therapy', detail: 'Guided walking on graded paths with gradually increasing exertion, at an altitude of 630 metres and under medical supervision.' },
+          { name: 'Group exercise for cardiac guests', detail: 'Guided sessions put together specifically for cardiological diagnoses, with breathing, endurance and mobility components.' },
+          { name: 'Exercise therapy in the pool', detail: 'Exercises in warm water that spare the joints and allow the exertion to be dosed precisely.' },
+          { name: 'Nutrition counselling', detail: 'Individual sessions on blood lipids, salt and weight, accompanied by the spa diet during the stay.' },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'The Czech indication list distinguishes two positions here. Symptomatic ischaemic heart disease (II/1) provides for an initial stay of 21 days of contributory care, and a repeat stay likewise runs to 21 days of contributory care, in certain cases 14. For the condition after a heart attack (II/2), 28 days of comprehensive spa care are provided for; there is no separate repeat-stay position for it. Self-paying guests agree the length with the spa physician and the cardiologist. Timing follows the cardiological course, not the season.',
+        },
+        evidence: {
+          heading: 'What the studies show',
+          body: 'The exercise component of the cure is best supported, not the bathing. A Cochrane review of exercise-based cardiac rehabilitation in coronary heart disease found, within twelve months, a lower risk of heart attack (RR 0.72) and of hospital admission (RR 0.58), probably also a slightly lower all-cause mortality, and in the longer term lower cardiovascular mortality and somewhat better quality of life (Dibben et al., 2021, Cochrane Database Syst Rev). Important for context: what was studied were outpatient and clinical rehabilitation programmes, not spa stays; fewer than 15 percent of participants were women, and the reporting quality of the individual studies varies. For the carbon dioxide treatments themselves, a review describes three main effects — a drop in body temperature, stronger skin blood flow and a feeling of warmth — and calls for methodologically stronger studies (Pagourelias et al., 2011, Int J Biometeorol). None of these papers shows that a spa cure can replace cardiological treatment or its medication.',
+        },
+        physicianNote: "Whether and when a spa cure is appropriate for your heart condition is decided by the spa physician at the initial examination, based on the cardiological findings and your cardiologist's clearance. The stay supplements cardiological treatment and replaces neither it nor your medication; do not change your medication without your doctor's agreement. This page provides information and does not replace medical advice.",
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Dry gas baths, gas injections and the guided terrain cure have long been part of the programme for cardiac guests in Marienbad; the spa physician doses the load according to the cardiological findings and from clinical experience. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Objective data are being produced right now. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor. It runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
+        faqs: [
+          {
+            question: 'May I go for a spa cure after a heart attack?',
+            answer: 'Yes, once acute treatment is complete and with clearance from the cardiologist. The condition after a heart attack is position II/2 of the Czech indication list and provides for 28 days of comprehensive spa care. Excluded are unstable courses, as well as the conditions the indication list excludes for the whole circulatory group: second- to third-degree AV block, heart failure at NYHA class IV, and active endocarditis.',
+          },
+          {
+            question: 'What can a spa cure do for coronary heart disease?',
+            answer: 'The part with the best evidence is measured exercise. A Cochrane review of exercise-based cardiac rehabilitation found, within twelve months, fewer heart attacks and fewer hospital admissions, and in the longer term lower cardiovascular mortality — though in outpatient and clinical programmes, not in spa stays. In Marienbad, the guided terrain cure, group exercise for cardiac guests and the carbon dioxide treatments come together, under daily medical supervision.',
+          },
+          {
+            question: 'Do I have to stop smoking for the cure?',
+            answer: 'For stays run through the Czech indication list, yes: nicotine abstinence is a requirement for the circulatory disease group, set out in the decree itself. Independently of that, smoking is the risk factor that most limits the benefit of a spa stay for this diagnosis.',
+          },
+          {
+            question: 'Which treatment is gentlest for heart disease?',
+            answer: 'Usually the dry gas bath in Mariengas. It works through the carbon dioxide absorbed through the skin, but involves no water and no strain from heat. Peat packs, by contrast, are a heat-intensive treatment and a clear strain for people with cardiovascular disease; the physician always decides on their suitability.',
+          },
+          {
+            question: 'What documents should I bring?',
+            answer: 'The clearance and current findings from your cardiologist, a complete list of your medication, and the examinations required by the indication list for the circulatory disease group. The more complete the documents, the more precisely the spa physician can dose the exertion; without them, the plan is more cautious.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group II — positions II/1 and II/2',
+            url: '/en/indications-and-contraindications',
+            note: 'Symptomatic ischaemic heart disease: initial stay 21 days of contributory care, repeat stay 21 days (14 in certain cases). Condition after a heart attack: 28 days of comprehensive spa care, with no separate repeat-stay position.',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa medical rehabilitation care — Group II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for circulatory diseases, including contraindications (second- to third-degree AV block, NYHA IV, active endocarditis), required nicotine abstinence and initial examinations. Czech-language text.',
+          },
+          {
+            title: 'Dibben G et al. 2021, Cochrane Database Syst Rev — review of exercise-based cardiac rehabilitation in coronary heart disease',
+            url: 'https://doi.org/10.1002/14651858.CD001800.pub4',
+            note: 'Within 12 months, fewer heart attacks (RR 0.72) and hospital admissions (RR 0.58), and lower cardiovascular mortality in the longer term. Outpatient and clinical programmes, not spa treatment; under 15% women.',
+          },
+          {
+            title: 'Pagourelias ED et al. 2011, Int J Biometeorol — review of CO₂ balneotherapy in cardiovascular disease',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Three main effects: a drop in body temperature, stronger skin blood flow, a feeling of warmth; the authors call for methodologically stronger studies.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — review of the possibilities and limits of CO₂ balneotherapy',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Controlled evidence only for peripheral arterial disease, trophic ulcers, microangiopathies and mild hypertension. Older review.',
+          },
+        ],
+        related: [
+          { label: 'Heart and circulation before winter', href: '/en/magazine/cardiovascular-spa-cure-marianske-lazne' },
+          { label: 'Spa treatment for high blood pressure', href: '/en/spa-treatment-for/high-blood-pressure' },
+          { label: 'CO₂ gas injections', href: '/en/magazine/co2-gas-injections' },
+          { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
+        ],
+      },
+      cs: {
+        slug: 'ischemicka-choroba-srdecni',
+        navLabel: 'Ischemická choroba srdeční',
+        title: 'Lázeňská léčba ischemické choroby srdeční v Mariánských Lázních',
+        h1: 'Lázeňská léčba ischemické choroby srdeční a po infarktu',
+        metaTitle: 'Léčba ischemické choroby srdeční | Marienbad.com',
+        metaDescription: 'Lázeňská léčba ischemické choroby srdeční a po infarktu v Mariánských Lázních: suché plynové koupele, terénní léčba a cvičení — průběh a délka pobytu.',
+        lead: 'Symptomatická ischemická choroba srdeční a stav po infarktu myokardu jsou samostatné položky českého indikačního seznamu. V Mariánských Lázních probíhá léčba přes dávkovaný pohyb v terénu, skupinová cvičení pro srdeční hosty a místní procedury s oxidem uhličitým — vždy pod lékařskou kontrolou a vždy jako doplněk ke kardiologické léčbě.',
+        teaser: 'Suché plynové koupele, terénní léčba a cvičení pro srdeční hosty — jako doplněk ke kardiologické léčbě, po souhlasu kardiologa.',
+        treats: [
+          'Symptomatická ischemická choroba srdeční ve stabilizovaném stavu pod kardiologickým vedením',
+          'Stav po infarktu myokardu, po ukončení akutní léčby a se souhlasem kardiologa',
+          'Ubývající zátěžová kapacita a nejistota při návratu k pohybu',
+          'Doprovodné rizikové faktory jako nadváha, zvýšené krevní tuky, vysoký krevní tlak nebo nedostatek pohybu',
+          'Stav po zákrocích na cévním systému mimo srdce a po perkutánní angioplastice',
+        ],
+        notFor: [
+          'Nestabilní angina pectoris a čerstvý infarkt myokardu bez ukončené akutní léčby',
+          'Srdeční selhání ve stadiu NYHA IV, AV blok druhého až třetího stupně a aktivní endokarditida — indikační seznam je vylučuje pro celou skupinu',
+          'Závažné srdeční onemocnění uvedené na obecném seznamu kontraindikací lázeňského místa',
+          'Chybějící souhlas kardiologa nebo chybějící vstupní vyšetření, která indikační seznam pro skupinu II vyžaduje',
+          'Pokračující kouření: indikační seznam pro skupinu oběhového ústrojí vyžaduje abstinenci od nikotinu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde vaše kardiologické nálezy a medikaci, změří krevní tlak a puls a zhodnotí zátěžovou kapacitu. Vezměte si souhlas svého kardiologa a vyšetření, která indikační seznam pro skupinu nemocí oběhového ústrojí požaduje; bez nich nelze plán sestavit v plném rozsahu.',
+          },
+          {
+            heading: 'První týden: opatrné nastavení zátěže',
+            body: 'Začíná se krátkými, rovnými procházkami a skupinovým cvičením nízké intenzity. Z místních léčivých zdrojů se nejčastěji používá suchá plynová koupel, protože nezatěžuje oběh teplem.',
+          },
+          {
+            heading: 'Druhý týden: budování vytrvalosti',
+            body: 'Cesty se prodlužují a stoupání přibývá, vždy v odstupňovaných etapách a s kontrolou pulsu a krevního tlaku. Souběžně probíhá dietní poradenství ke krevním tukům, soli a váze.',
+          },
+          {
+            heading: 'Závěrečná prohlídka a plán pro doma',
+            body: 'Zátěžová kapacita a vývoj se zhodnotí a písemně zaznamenají; zprávu si berete pro svého kardiologa. Dostanete pohybový program pro doma — přínos závisí na tom, že v něm budete pokračovat.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Suchá plynová koupel v Mariině plynu',
+            detail: 'Přírodní oxid uhličitý z Mariina pramene se používá v uzavřeném vaku, bez vody a bez zátěže teplem — proto u srdečních diagnóz často první volba.',
+          },
+          {
+            name: 'Plynové injekce Mariiným plynem',
+            detail: 'Injekce přírodního oxidu uhličitého podávané podkožně; v Mariánských Lázních patří k programu při ischemické chorobě srdeční a předepisuje je výhradně lékař.',
+          },
+          {
+            name: 'Uhličitá koupel z minerální vody',
+            detail: 'Koupel při zhruba 34 °C; nízká teplota drží zátěž oběhu nízkou, oxid uhličitý se přitom přijímá kůží.',
+          },
+          {
+            name: 'Terénní léčba a klimatoterapie',
+            detail: 'Vedená chůze po odstupňovaných cestách s postupně narůstající zátěží, v 630 metrech nad mořem a pod lékařskou kontrolou.',
+          },
+          {
+            name: 'Skupinové cvičení pro srdeční hosty',
+            detail: 'Vedené jednotky sestavené přímo pro kardiologické diagnózy, s dechovou, vytrvalostní a pohyblivostní složkou.',
+          },
+          {
+            name: 'Pohybová terapie v bazénu',
+            detail: 'Cvičení v teplé vodě, které šetří klouby a dobře umožňuje dávkovat zátěž.',
+          },
+          {
+            name: 'Dietní poradenství',
+            detail: 'Individuální konzultace ke krevním tukům, soli a váze, doplněné lázeňskou dietou po dobu pobytu.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Český indikační seznam tu rozlišuje dvě položky. Symptomatická ischemická choroba srdeční (II/1) a stav po infarktu myokardu (II/2) mají hrazenou délku pobytu podle konkrétní položky; přesný rozpis najdete na stránce Co hradí pojišťovna u oběhového ústrojí. Samoplátci volí délku po dohodě s lázeňským lékařem a kardiologem. Termín se řídí kardiologickým vývojem, ne ročním obdobím.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Nejlépe doložená je pohybová složka lázeňského pobytu, ne koupel. Cochranský přehled k pohybové kardiologické rehabilitaci u ischemické choroby srdeční zjistil během dvanácti měsíců nižší riziko infarktu myokardu (RR 0,72) a hospitalizace (RR 0,58), pravděpodobně i o něco nižší celkovou úmrtnost, z dlouhodobého hlediska nižší kardiovaskulární úmrtnost a o něco lepší kvalitu života (Dibben a kol., 2021, Cochrane Database Syst Rev). Pro zařazení je důležité: zkoumány byly ambulantní a klinické rehabilitační programy, ne lázeňské pobyty, méně než 15 procent účastníků byly ženy a kvalita zpracování jednotlivých studií kolísá. Pro samotné procedury s oxidem uhličitým popisuje přehledová práce tři hlavní účinky — pokles tělesné teploty, silnější prokrvení kůže a pocit tepla — a žádá metodicky lepší studie (Pagourelias a kol., 2011, Int J Biometeorol). Žádná z těchto prací neprokazuje, že by lázeňský pobyt mohl nahradit kardiologickou léčbu nebo její léky.',
+        },
+        physicianNote: 'O tom, zda a kdy pro vás při srdečním onemocnění připadá v úvahu lázeňský pobyt, rozhoduje lázeňský lékař při vstupní prohlídce podle kardiologických nálezů a souhlasu vašeho kardiologa. Pobyt doplňuje kardiologickou léčbu a nenahrazuje ji ani vaše léky; neměňte je bez souhlasu svého lékaře. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Suché plynové koupele, plynové injekce a řízená terénní kúra patří v Mariánských Lázních k programu pro srdeční hosty dlouho; lázeňský lékař dávkuje zátěž podle kardiologického nálezu a z klinické zkušenosti. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Objektivní data k tomu právě vznikají. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
+        faqs: [
+          {
+            question: 'Mohu jet do lázní po infarktu?',
+            answer: 'Ano, po ukončení akutní léčby a se souhlasem kardiologa. Stav po infarktu myokardu je položka II/2 českého indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u oběhového ústrojí. Vyloučeny jsou nestabilní stavy a stavy, které indikační seznam vylučuje pro celou skupinu oběhového ústrojí: AV blok druhého až třetího stupně, srdeční selhání ve stadiu NYHA IV a aktivní endokarditida.',
+          },
+          {
+            question: 'Co přinese lázeňský pobyt při ischemické chorobě srdeční?',
+            answer: 'Nejlépe doloženou částí je dávkovaný pohyb. Cochranský přehled k pohybové kardiologické rehabilitaci zjistil během dvanácti měsíců méně infarktů a méně hospitalizací a z dlouhodobého hlediska nižší kardiovaskulární úmrtnost — ovšem v ambulantních a klinických programech, ne v lázeňských pobytech. V Mariánských Lázních se spojuje vedená terénní léčba, skupinová cvičení pro srdeční hosty a procedury s oxidem uhličitým, pod denní lékařskou kontrolou.',
+          },
+          {
+            question: 'Musím pro lázně přestat kouřit?',
+            answer: 'Pro pobyty hrazené přes český indikační seznam ano: pro skupinu nemocí oběhového ústrojí je abstinence od nikotinu podmínkou, která je přímo ve vyhlášce. Nezávisle na tom je kouření rizikový faktor, který přínos lázeňského pobytu u této diagnózy omezuje nejvíc.',
+          },
+          {
+            question: 'Která procedura je při srdečních onemocněních nejšetrnější?',
+            answer: 'Nejčastěji suchá plynová koupel v Mariině plynu. Působí přes oxid uhličitý přijímaný kůží, ale bez vody a bez zátěže teplem. Slatinné zábaly jsou naopak tepelně náročná procedura a pro lidi s nemocemi srdce a cév výrazná zátěž; o jejich vhodnosti vždy rozhoduje lékař.',
+          },
+          {
+            question: 'Jaké dokumenty si mám vzít?',
+            answer: 'Souhlas a aktuální nález svého kardiologa, úplný seznam léků a vyšetření, která indikační seznam pro skupinu nemocí oběhového ústrojí požaduje. Čím úplnější jsou podklady, tím přesněji může lázeňský lékař dávkovat zátěž; když chybí, vyjde plán opatrněji.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina II — položky II/1 a II/2',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Symptomatická ischemická choroba srdeční a stav po infarktu myokardu, s typem péče a délkou pobytu.',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci oběhového ústrojí včetně kontraindikací (AV blok II. až III. stupně, NYHA IV, aktivní endokarditida), požadované abstinence od nikotinu a vstupních vyšetření.',
+          },
+          {
+            title: 'Dibben G a kol. 2021, Cochrane Database Syst Rev — přehled k pohybové kardiologické rehabilitaci u ischemické choroby srdeční',
+            url: 'https://doi.org/10.1002/14651858.CD001800.pub4',
+            note: 'Během 12 měsíců méně infarktů (RR 0,72) a hospitalizací (RR 0,58), z dlouhodobého hlediska nižší kardiovaskulární úmrtnost. Ambulantní a klinické programy, ne lázeňská léčba; méně než 15 % žen.',
+          },
+          {
+            title: 'Pagourelias ED a kol. 2011, Int J Biometeorol — přehled k CO₂ balneoterapii u nemocí srdce a cév',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Tři hlavní účinky: pokles tělesné teploty, silnější prokrvení kůže, pocit tepla; autoři žádají metodicky lepší studie.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — přehled k možnostem a hranicím CO₂ balneoterapie',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Kontrolované důkazy jen pro periferní tepennou uzávěrovou nemoc, trofické vředy, mikroangiopatie a mírnou hypertenzi. Starší přehled.',
+          },
+        ],
+        related: [
+          {
+            label: 'Srdce a cévy před zimou',
+            href: '/cs/magazin/lazenska-lecba-obehoveho-ustroji',
+          },
+          {
+            label: 'Lázeňská léčba vysokého krevního tlaku',
+            href: '/cs/lazenska-lecba/vysoky-krevni-tlak',
+          },
+          {
+            label: 'Plynové injekce CO₂',
+            href: '/cs/magazin/plynove-injekce-co2',
+          },
+          {
+            label: 'Co hradí pojišťovna u oběhového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/obehove-ustroji',
+          },
+        ],
+      },
+      ru: {
+        slug: 'ishemicheskaya-bolezn-serdca',
+        navLabel: 'Ишемическая болезнь сердца',
+        title: 'Курортное лечение ишемической болезни сердца в Марианских Лазнях',
+        h1: 'Курортное лечение ишемической болезни сердца и после инфаркта миокарда',
+        metaTitle: 'Лечение ишемической болезни сердца — Марианские Лазни',
+        metaDescription: 'Лечение ишемической болезни сердца и после инфаркта в Марианских Лазнях: сухие газовые ванны, терренкур, упражнения — ход лечения, сроки, ограничения.',
+        lead: 'Симптоматическая ишемическая болезнь сердца и состояние после инфаркта миокарда выделены в отдельные позиции чешского индикационного списка. В Марианских Лазнях лечение строится на дозированном движении по местности, групповых занятиях для гостей с заболеваниями сердца и местных процедурах с углекислым газом — всегда под врачебным контролем и всегда как дополнение к кардиологическому лечению.',
+        teaser: 'Сухие газовые ванны, терренкур и упражнения для гостей с заболеваниями сердца — как дополнение к кардиологическому лечению, после разрешения кардиолога.',
+        treats: [
+          'Симптоматическая ишемическая болезнь сердца в стабильном состоянии под кардиологическим наблюдением',
+          'Состояние после инфаркта миокарда, после завершения острого лечения и с разрешения кардиолога',
+          'Снижение выносливости и неуверенность при возвращении к физической активности',
+          'Сопутствующие факторы риска, такие как избыточный вес, повышенные липиды крови, гипертония или недостаток движения',
+          'Состояние после вмешательств на сосудистой системе за пределами сердца и после чрескожной ангиопластики',
+        ],
+        notFor: [
+          'Нестабильная стенокардия, а также свежий инфаркт миокарда без завершённого острого лечения',
+          'Сердечная недостаточность стадии NYHA IV, АВ-блокада второй-третьей степени и активный эндокардит — индикационный список исключает их для всей группы',
+          'Тяжёлое заболевание сердца, входящее в общий список противопоказаний курорта',
+          'Отсутствие разрешения кардиолога или отсутствие первичных обследований, которые индикационный список требует для группы II',
+          'Продолжение курения: индикационный список требует для группы заболеваний системы кровообращения отказа от курения',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач изучает ваши кардиологические заключения и медикацию, измеряет давление и пульс и оценивает выносливость. Возьмите с собой разрешение вашего кардиолога, а также обследования, которые индикационный список требует для группы заболеваний системы кровообращения; без них план не может быть составлен полностью.',
+          },
+          {
+            heading: 'Первая неделя: осторожное начало нагрузки',
+            body: 'Начинают с коротких, ровных прогулок и групповых занятий низкой интенсивности. Из местных лечебных средств чаще всего применяют сухую газовую ванну, поскольку она обходится без тепловой нагрузки на кровообращение.',
+          },
+          {
+            heading: 'Вторая неделя: развитие выносливости',
+            body: 'Маршруты становятся длиннее, а подъёмы — более выраженными, всегда в постепенных этапах и с контролем пульса и давления. Параллельно проходят консультации по питанию о липидах крови, соли и весе.',
+          },
+          {
+            heading: 'Заключительное обследование и план на дом',
+            body: 'Выносливость и динамика оцениваются и фиксируются письменно; заключение вы забираете для своего кардиолога. Вы получаете программу физической активности на дом — польза от неё зависит от того, что вы будете её продолжать.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Сухая газовая ванна в марианском газе',
+            detail: 'Природный углекислый газ источника Марии применяется в герметичном мешке, без воды и без тепловой нагрузки — поэтому при заболеваниях сердца часто становится первым выбором.',
+          },
+          {
+            name: 'Газовые инъекции с марианским газом',
+            detail: 'Подкожные инъекции природного углекислого газа; в Марианских Лазнях они входят в программу лечения ишемической болезни сердца и назначаются исключительно врачом.',
+          },
+          {
+            name: 'Углекислая ванна в минеральной воде',
+            detail: 'Ванна при температуре около 34 °C; низкая температура удерживает нагрузку на кровообращение на низком уровне, в то время как углекислый газ проникает через кожу.',
+          },
+          {
+            name: 'Терренкур и климатотерапия',
+            detail: 'Ходьба под руководством инструктора по размеченным маршрутам с постепенно возрастающей нагрузкой, на высоте 630 метров и под врачебным контролем.',
+          },
+          {
+            name: 'Групповые занятия для гостей с заболеваниями сердца',
+            detail: 'Занятия под руководством инструктора, составленные специально для кардиологических диагнозов, с элементами на дыхание, выносливость и подвижность.',
+          },
+          {
+            name: 'Двигательная терапия в бассейне',
+            detail: 'Упражнения в тёплой воде, которые щадят суставы и позволяют хорошо дозировать нагрузку.',
+          },
+          {
+            name: 'Консультация по питанию',
+            detail: 'Индивидуальные беседы о липидах крови, соли и весе, сопровождаемые курортной диетой во время пребывания.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Чешский индикационный список различает здесь две позиции. Симптоматическая ишемическая болезнь сердца (II/1) предусматривает в качестве базового пребывания 21 день долевого лечения, повторное пребывание также проходит как 21 день долевого лечения, в отдельных случаях 14. Для состояния после инфаркта миокарда (II/2) предусмотрено 28 дней комплексного курортного лечения; отдельной позиции для повторного пребывания для этого случая нет. Гости, оплачивающие лечение самостоятельно, согласуют срок с курортным врачом и кардиологом. Время поездки определяется кардиологической динамикой, а не временем года.',
+        },
+        evidence: {
+          heading: 'Что показывают исследования',
+          body: 'Лучше всего доказана двигательная составляющая курортного лечения, а не ванны. Кокрейновский обзор по кардиологической реабилитации на основе физической активности при ишемической болезни сердца обнаружил в течение двенадцати месяцев более низкий риск инфаркта миокарда (ОР 0,72) и госпитализаций (ОР 0,58), вероятно также немного более низкую общую смертность, в долгосрочной перспективе — более низкую сердечно-сосудистую смертность, а также несколько более высокое качество жизни (Dibben et al., 2021, Cochrane Database Syst Rev). Важно для понимания: изучались амбулаторные и клинические программы реабилитации, а не курортные пребывания, менее 15 процентов участников были женщинами, а качество отчётности отдельных исследований варьируется. Для самих процедур с углекислым газом обзорная работа описывает три основных эффекта — снижение температуры тела, усиление кровоснабжения кожи и ощущение тепла — и призывает к методически более качественным исследованиям (Pagourelias et al., 2011, Int J Biometeorol). Ни одна из этих работ не показывает, что курортное лечение может заменить кардиологическое лечение или его препараты.',
+        },
+        physicianNote: 'Возможно ли и когда курортное лечение при вашем заболевании сердца, решает курортный врач при первичном осмотре на основании кардиологических заключений и разрешения вашего кардиолога. Пребывание дополняет кардиологическое лечение и не заменяет ни его, ни ваши препараты; не меняйте их без согласия вашего врача. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Сухие газовые ванны, газовые инъекции и терренкур под наблюдением давно входят в программу для кардиологических гостей Марианских Лазней; курортный врач дозирует нагрузку по кардиологическому заключению и из клинического опыта. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Объективные данные об этом собираются прямо сейчас. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
+        faqs: [
+          {
+            question: 'Можно ли ехать на курортное лечение после инфаркта миокарда?',
+            answer: 'Да, после завершения острого лечения и с разрешения кардиолога. Состояние после инфаркта миокарда — это позиция II/2 чешского индикационного списка, которая предусматривает 28 дней комплексного курортного лечения. Исключены нестабильные состояния, а также состояния, которые индикационный список исключает для всей группы заболеваний системы кровообращения: АВ-блокада второй-третьей степени, сердечная недостаточность стадии NYHA IV и активный эндокардит.',
+          },
+          {
+            question: 'Что даёт курортное лечение при ишемической болезни сердца?',
+            answer: 'Часть с наилучшей доказательной базой — дозированное движение. Кокрейновский обзор по кардиологической реабилитации на основе физической активности обнаружил в течение двенадцати месяцев меньше инфарктов и госпитализаций, а также в долгосрочной перспективе более низкую сердечно-сосудистую смертность — однако в амбулаторных и клинических программах, а не в курортных пребываниях. В Марианских Лазнях сочетаются терренкур под руководством инструктора, групповые занятия для гостей с заболеваниями сердца и процедуры с углекислым газом, под ежедневным врачебным контролем.',
+          },
+          {
+            question: 'Нужно ли бросить курить перед курортным лечением?',
+            answer: 'Для пребываний, проходящих через чешский индикационный список, да: для группы заболеваний системы кровообращения отказ от курения — это требование, закреплённое в самом постановлении. Независимо от этого курение — тот фактор риска, который сильнее всего ограничивает пользу курортного пребывания при этом диагнозе.',
+          },
+          {
+            question: 'Какая процедура наиболее щадящая при заболеваниях сердца?',
+            answer: 'Чаще всего сухая газовая ванна в марианском газе. Она действует через углекислый газ, проникающий через кожу, но обходится без воды и без тепловой нагрузки. Торфяные обёртывания, напротив, являются интенсивной тепловой процедурой и создают значительную нагрузку для людей с сердечно-сосудистыми заболеваниями; об их допустимости всегда решает врач.',
+          },
+          {
+            question: 'Какие документы нужно взять с собой?',
+            answer: 'Разрешение и актуальное заключение вашего кардиолога, полный список лекарств и обследования, которые индикационный список требует для группы заболеваний системы кровообращения. Чем полнее документы, тем точнее курортный врач может дозировать нагрузку; при их отсутствии план будет более осторожным.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа II — позиции II/1 и II/2',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Симптоматическая ишемическая болезнь сердца: базовое пребывание — 21 день долевого лечения, повторное пребывание — 21 (в отдельных случаях 14) день. Состояние после инфаркта миокарда: 28 дней комплексного курортного лечения без отдельной позиции для повторного пребывания.',
+          },
+          {
+            title: 'Постановление № 2/2015 Сб. о профессиональных критериях курортной реабилитационной помощи — группа II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Полный текст индикационного списка для заболеваний системы кровообращения, включая противопоказания (АВ-блокада II-III степени, NYHA IV, активный эндокардит), требуемый отказ от курения и первичные обследования. Текст на чешском языке.',
+          },
+          {
+            title: 'Dibben G et al. 2021, Cochrane Database Syst Rev — обзор по кардиологической реабилитации на основе физической активности при ишемической болезни сердца',
+            url: 'https://doi.org/10.1002/14651858.CD001800.pub4',
+            note: 'В течение 12 месяцев меньше инфарктов миокарда (ОР 0,72) и госпитализаций (ОР 0,58), в долгосрочной перспективе более низкая сердечно-сосудистая смертность. Амбулаторные и клинические программы, а не курортное лечение; менее 15 % женщин.',
+          },
+          {
+            title: 'Pagourelias ED et al. 2011, Int J Biometeorol — обзор по CO₂-бальнеотерапии при сердечно-сосудистых заболеваниях',
+            url: 'https://consensus.app/papers/details/cffd890e39e252b5bf9e66f5a36c8ff6/',
+            note: 'Три основных эффекта: снижение температуры тела, усиление кровоснабжения кожи, ощущение тепла; авторы призывают к методически более качественным исследованиям.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — обзор о возможностях и границах CO₂-бальнеотерапии',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Контролируемые доказательства только для периферической артериальной окклюзионной болезни, трофических язв, микроангиопатий и лёгкой гипертонии. Более старый обзор.',
+          },
+        ],
+        related: [
+          {
+            label: 'Сердце и сосуды перед зимой',
+            href: '/ru/zhurnal/kurortnoe-lechenie-serdca-i-sosudov',
+          },
+          {
+            label: 'Курортное лечение гипертонии',
+            href: '/ru/kurortnoe-lechenie/gipertoniya',
+          },
+          {
+            label: 'Газовые инъекции CO₂',
+            href: '/ru/zhurnal/gazovye-inektsii-co2',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
     },
   },
   {
@@ -8177,9 +10292,9 @@ export const diagnoses: Diagnosis[] = [
     medicalReviewDate: '2026-09-14',
     imageAlt: {
       de: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
-      en: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
-      cs: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
-      ru: 'Kurgäste sitzen am Rand des warmen Kohlensäurebeckens und halten die Beine im Wasser',
+      en: 'Spa guests sitting at the edge of the warm carbonated pool with their legs in the water',
+      cs: 'Lázeňští hosté sedí na okraji teplého uhličitého bazénu a nohy mají ponořené ve vodě',
+      ru: 'Гости лечения сидят на краю тёплого углекислого бассейна и держат ноги в воде',
     },
     content: {
       de: {
@@ -8341,9 +10456,450 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      en: {} as unknown as DiagnosisContent,
-      cs: {} as unknown as DiagnosisContent,
-      ru: {} as unknown as DiagnosisContent,
+      en: {
+        slug: 'leg-circulation-problems',
+        navLabel: 'Leg circulation',
+        title: 'Spa treatment for poor leg circulation in Marienbad',
+        h1: 'Spa treatment for poor leg circulation',
+        metaTitle: 'Spa treatment for poor leg circulation — Marienbad',
+        metaDescription: 'Intermittent claudication, condition after thrombosis, lymphoedema: carbon dioxide baths, walking training and lymphatic drainage — course and duration.',
+        lead: 'When the calf starts burning after two hundred metres and you have to stop to be able to walk on, that is intermittent claudication. The Czech indication list places arterial disease of the limbs, conditions after thrombosis and chronic lymphoedema in the circulatory disease group — and Marienbad treats them with carbon dioxide baths and guided walking training.',
+        teaser: 'Intermittent claudication, condition after thrombosis and chronic lymphoedema: carbon dioxide baths, walking training and lymphatic drainage.',
+        treats: [
+          'Arterial disease of the limbs of atherosclerotic origin at stage IIb, that is, with intermittent claudication',
+          'Arterial disease of the limbs of inflammatory origin',
+          'Functional disorders of the peripheral vessels',
+          'Condition after a thrombosis, once the acute phase is over',
+          'Chronic lymphoedema of the legs',
+          'Condition after reconstructive and revascularising surgery on the vascular system outside the heart and thoracic aorta, and after percutaneous angioplasty',
+        ],
+        notFor: [
+          'Critical limb ischaemia with pain at rest or impending tissue loss — this belongs in vascular surgery, not a spa cure',
+          'A recent deep leg vein thrombosis in its acute phase',
+          'Unhealed wounds and ulcers on the leg',
+          'Heart failure at NYHA class IV, second- to third-degree AV block and active endocarditis',
+          'Continued smoking: the indication list requires nicotine abstinence for the circulatory group',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: 'The spa physician takes the vascular findings, checks pulses, skin condition and leg circumference, and asks about the pain-free walking distance — it is the yardstick against which progress can be measured. Bring the findings from your angiologist or vascular surgeon.',
+          },
+          {
+            heading: 'First week: circulation and walking distance',
+            body: 'Carbon dioxide baths and dry gas baths are used daily, together with guided walking training on level paths up to just below the pain threshold — that is the level of exertion that matters for walking training.',
+          },
+          {
+            heading: 'Second week: extending the distance',
+            body: 'Walking distances become longer, and gradients are added. For lymphoedema, manual lymphatic drainage and machine-assisted drainage take priority instead, supplemented by exercises that support the return flow.',
+          },
+          {
+            heading: 'Final examination and a plan for home',
+            body: 'The pain-free walking distance is measured again and compared with the starting value; the finding goes into the final report. You receive a walking programme for home — without continuing regularly, the gain is lost again.',
+          },
+        ],
+        procedures: [
+          { name: 'Carbon dioxide bath in mineral water', detail: 'A bath in the local mineral water at around 34°C; the carbon dioxide absorbed through the skin is the central treatment for circulatory problems in the limbs.' },
+          { name: 'Dry gas bath in Mariengas', detail: 'Application of the natural carbon dioxide from the Marien Spring without water and without the strain of heat — suitable also where warm baths are not an option.' },
+          { name: 'Guided walking training and terrain cure', detail: 'Graded paths in the spa forest, walking up to just below the pain threshold followed by a rest, in gradually longer stages.' },
+          { name: 'Manual lymphatic drainage', detail: 'For chronic lymphoedema: hand techniques that support the drainage of lymph fluid from the legs.' },
+          { name: 'Machine-assisted lymphatic drainage', detail: 'Devices such as Lymfoven and Lymfopress supplement the manual treatment of lymphoedema.' },
+          { name: 'Group exercise and exercise therapy in the pool', detail: 'Exercises for endurance and calf muscles, in water with less strain on the joints.' },
+          { name: 'Nutrition counselling', detail: 'Individual sessions on blood lipids, weight and glucose metabolism, that is, on the risk factors underlying the vascular findings.' },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'Three positions on the Czech indication list apply here. Arterial disease of the limbs of atherosclerotic origin at stage IIb, or of inflammatory origin (II/4), provides for an initial stay of 21 days of comprehensive or 21 days of contributory care, with the repeat stay the same, in certain cases 14 days of contributory care. Functional disorders of the peripheral vessels, conditions after thrombosis and chronic lymphoedema (II/5) run to 21 days of comprehensive or contributory care, with a repeat stay of 21 or 14 days of contributory care. Conditions after vascular surgery and after percutaneous angioplasty (II/8) provide for 21 days of comprehensive or contributory care. Self-paying guests agree the length with the spa physician; the professional minimum is at least 10 treatments over at least 10 days.',
+        },
+        evidence: {
+          heading: 'What the studies show',
+          body: 'For circulatory problems in the legs, the evidence base for carbon dioxide treatments is comparatively the strongest. In a randomised study, foot baths in carbonated water (1000 mg CO₂ per kilogram, 33°C, 30 minutes, five times weekly over four weeks) increased peak arterial flow, tissue oxygen and the pain-free walking distance, while plain water did not change these values (Hartmann et al., 1997, Angiology; small cohort, artificially carbonated water, effect size not given in the abstract). A crossover study by the same research group with 18 patients found that immersing the feet in carbonated water increased laser-Doppler skin flow and tissue oxygen, while plain water did not (Hartmann et al., 1997, Angiology; single bath, surrogate parameters). After twenty minutes of exposing the skin to spa carbon dioxide gas, flow in the femoral artery, pressure at the posterior tibial artery and tissue oxygen in the foot increased, while water vapour of the same temperature had no effect (Savin et al., 1995, Angiology; very small cohort, single application). For the exercise component, strong evidence exists: a Cochrane review of walking training for intermittent claudication found, compared with usual care, a pain-free walking distance longer by an average of 82 metres and a maximum walking distance longer by 120 metres, with an effect lasting up to two years (Lane et al., 2017, Cochrane Database Syst Rev; outpatient exercise programmes, not spa treatment, most individual studies small). An older review notes that controlled evidence for CO₂ balneotherapy exists specifically for peripheral arterial disease, trophic ulcers and microangiopathies (Resch and Just, 1994, Wien Med Wochenschr). None of these papers shows that the cure replaces vascular surgery or vascular medical treatment.',
+        },
+        physicianNote: 'Whether and to what extent a spa cure is appropriate for your vascular findings is decided by the spa physician at the initial examination, based on the angiological findings. Pain at rest, a non-healing wound on the leg, or a leg that suddenly turns cold and pale, are emergencies and require immediate medical treatment, not spa planning. This page provides information and does not replace medical advice.',
+        faqs: [
+          {
+            question: 'Does a spa cure help with intermittent claudication?',
+            answer: 'Two components of the cure have been studied. For walking training, strong evidence exists: a Cochrane review found, compared with usual care, a pain-free walking distance longer on average by 82 metres and a maximum walking distance longer by 120 metres, with an effect lasting up to two years — though in outpatient programmes, not in spa stays. For foot baths in carbonated water, a randomised study showed an increase in peak arterial flow, tissue oxygen and pain-free walking distance, while plain water had no effect; the cohort was small. In Marienbad, both components come together.',
+          },
+          {
+            question: 'Is a spa cure for circulatory problems covered?',
+            answer: 'For people insured with a Czech health fund, three positions apply: arterial disease of the limbs at stage IIb or of inflammatory origin (II/4), functional disorders of the peripheral vessels, conditions after thrombosis and chronic lymphoedema (II/5), and conditions after vascular surgery and after angioplasty (II/8). Each provides for 21 days of comprehensive or contributory care. Guests insured outside the Czech Republic should clarify cost coverage with their own insurer in advance.',
+          },
+          {
+            question: 'May I go for a spa cure after a thrombosis?',
+            answer: "Once the acute phase is over, yes; the condition after a thrombosis is part of position II/5 on the indication list. A spa cure is excluded during the acute phase. How much time must pass and which treatments are possible is decided by the spa physician based on your own doctor's findings — so bring them with you.",
+          },
+          {
+            question: 'What is done for lymphoedema?',
+            answer: 'The focus is on manual lymphatic drainage and machine-assisted drainage with devices such as Lymfoven and Lymfopress, supplemented by exercises that support the return flow. Chronic lymphoedema is part of position II/5 of the indication list. Unhealed wounds on the leg rule out a number of treatments, which is why the legs are examined at the initial examination.',
+          },
+          {
+            question: 'Do I have to stop smoking for the cure?',
+            answer: 'For stays run through the Czech indication list, yes — nicotine abstinence is a requirement for the circulatory disease group, set out in the decree itself. For arterial disease of the legs, smoking is also the factor that most strongly determines the course.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group II — positions II/4, II/5 and II/8',
+            url: '/en/indications-and-contraindications',
+            note: 'Arterial disease of the limbs (II/4), functional disorders of the peripheral vessels, conditions after thrombosis and chronic lymphoedema (II/5), and conditions after vascular surgery and percutaneous angioplasty (II/8): each 21 days of comprehensive or contributory care.',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa medical rehabilitation care — Group II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for circulatory diseases, including contraindications (second- to third-degree AV block, NYHA IV, active endocarditis), required nicotine abstinence and initial examinations. Czech-language text.',
+          },
+          {
+            title: 'Hartmann BR et al. 1997, Angiology — randomised study of repeated carbon dioxide foot baths in intermittent claudication',
+            url: 'https://doi.org/10.1177/000331979704801104',
+            note: 'Foot baths in carbonated water increased peak arterial flow, tissue oxygen and pain-free walking distance; plain water did not. Small cohort, artificially carbonated water, effect size not given in the abstract.',
+          },
+          {
+            title: 'Hartmann BR et al. 1997, Angiology — crossover study, 18 patients with peripheral arterial disease',
+            url: 'https://doi.org/10.1177/000331979704800406',
+            note: 'In carbonated water, skin blood flow and tissue oxygen increased; not in plain water. Single bath, surrogate parameters.',
+          },
+          {
+            title: 'Savin E et al. 1995, Angiology — study of transcutaneous CO₂ in stage II peripheral arterial disease',
+            url: 'https://doi.org/10.1177/000331979504600904',
+            note: 'After 20 minutes of exposure to spa CO₂ gas, femoral flow, pressure at the posterior tibial artery and tissue oxygen in the foot increased; water vapour of the same temperature had no effect. Very small cohort, single application.',
+          },
+          {
+            title: 'Lane R et al. 2017, Cochrane Database Syst Rev — review of walking training in intermittent claudication',
+            url: 'https://doi.org/10.1002/14651858.CD000990.pub4',
+            note: 'Exercise programmes lengthened the pain-free walking distance by an average of 82 m and the maximum by 120 m compared with usual care, with an effect lasting up to 2 years. Outpatient programmes, not spa treatment.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — review of the possibilities and limits of CO₂ balneotherapy',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Controlled evidence only for peripheral arterial disease, trophic ulcers, microangiopathies and mild hypertension. Older review.',
+          },
+        ],
+        related: [
+          { label: 'Heart and circulation before winter', href: '/en/magazine/cardiovascular-spa-cure-marianske-lazne' },
+          { label: 'Carbon dioxide baths — what the research shows', href: '/en/magazine/co2-baths-science' },
+          { label: 'Spa treatment after cancer treatment', href: '/en/spa-treatment-for/after-cancer-treatment' },
+          { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
+        ],
+      },
+      cs: {
+        slug: 'prokrveni-nohou',
+        navLabel: 'Prokrvení nohou',
+        title: 'Lázeňská léčba poruch prokrvení nohou v Mariánských Lázních',
+        h1: 'Lázeňská léčba poruch prokrvení nohou',
+        metaTitle: 'Léčba prokrvení nohou v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Klaudikace, stav po trombóze, lymfedém: uhličité koupele, trénink chůze a lymfodrenáž v Mariánských Lázních — co se léčí, jak probíhá a jak dlouho pobyt trvá.',
+        lead: 'Když lýtko po dvou stech metrech začne pálit a musíte se zastavit, abyste mohli pokračovat, jde o klaudikaci — takzvanou nemoc výkladních skříní. Český indikační seznam vede onemocnění tepen končetin, stavy po trombózách a chronický lymfatický edém ve skupině nemocí oběhového ústrojí — a Mariánské Lázně je léčí uhličitými koupelemi a vedeným tréninkem chůze.',
+        teaser: 'Klaudikace, stav po trombóze a chronický lymfatický edém: uhličité koupele, trénink chůze a lymfodrenáž.',
+        treats: [
+          'Onemocnění tepen končetin na aterosklerotickém podkladě ve stadiu II b, tedy s klaudikací',
+          'Onemocnění tepen končetin na zánětlivém podkladě',
+          'Funkční poruchy periferních cév',
+          'Stav po trombóze, je-li akutní fáze ukončena',
+          'Chronický lymfatický edém nohou',
+          'Stav po rekonstrukčních a revaskularizačních operacích na cévním systému mimo srdce a hrudní aortu a po perkutánní angioplastice',
+        ],
+        notFor: [
+          'Kritická ischemie končetiny s klidovou bolestí nebo hrozícím odumíráním tkáně — to patří do cévní chirurgie, ne do lázní',
+          'Čerstvá hluboká žilní trombóza v akutní fázi',
+          'Nezhojené rány a vředy na noze',
+          'Srdeční selhání ve stadiu NYHA IV, AV blok druhého až třetího stupně a aktivní endokarditida',
+          'Pokračující kouření: indikační seznam vyžaduje pro skupinu oběhového ústrojí abstinenci od nikotinu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař zjistí cévní nález, vyšetří pulsy, stav kůže a obvody nohou a zjistí bezbolestnou vzdálenost chůze — ta je měřítkem, podle kterého se posuzuje vývoj. Vezměte si nález svého angiologa nebo cévního chirurga.',
+          },
+          {
+            heading: 'První týden: prokrvení a vzdálenost chůze',
+            body: 'Denně se používají uhličité koupele a suché plynové koupele, k tomu vedený trénink chůze po rovných cestách až téměř k hranici bolesti — to je zátěž, na které tréninku chůze záleží.',
+          },
+          {
+            heading: 'Druhý týden: prodlužování vzdálenosti',
+            body: 'Vzdálenost chůze se prodlužuje, přibývá stoupání. U lymfedému stojí naopak v popředí manuální lymfodrenáž a přístrojová drenáž, doplněné cvičením, které podporuje odtok.',
+          },
+          {
+            heading: 'Závěrečná prohlídka a plán pro doma',
+            body: 'Bezbolestná vzdálenost chůze se znovu změří a porovná s výchozí hodnotou; nález se zapíše do závěrečné zprávy. Dostanete program chůze pro doma — bez pravidelného pokračování se dosažený přínos vrátí zpět.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Uhličitá koupel z minerální vody',
+            detail: 'Koupel v místní minerální vodě při zhruba 34 °C; oxid uhličitý přijímaný kůží je u poruch prokrvení končetin hlavní procedurou.',
+          },
+          {
+            name: 'Suchá plynová koupel v Mariině plynu',
+            detail: 'Aplikace přírodního oxidu uhličitého z Mariina pramene bez vody a bez zátěže teplem — vhodná i tam, kde teplé koupele nepřipadají v úvahu.',
+          },
+          {
+            name: 'Vedený trénink chůze a terénní léčba',
+            detail: 'Odstupňované cesty v lázeňském lese, s chůzí až téměř k hranici bolesti a následnou pauzou, v postupně delších úsecích.',
+          },
+          {
+            name: 'Manuální lymfodrenáž',
+            detail: 'U chronického lymfatického edému: hmaty, které podporují odtok lymfy z nohou.',
+          },
+          {
+            name: 'Přístrojová lymfodrenáž',
+            detail: 'Přístroje jako Lymfoven a Lymfopress doplňují manuální léčbu lymfedému.',
+          },
+          {
+            name: 'Skupinové cvičení a pohybová terapie v bazénu',
+            detail: 'Cvičení na vytrvalost a lýtkové svalstvo, ve vodě s menší zátěží kloubů.',
+          },
+          {
+            name: 'Dietní poradenství',
+            detail: 'Individuální konzultace ke krevním tukům, váze a metabolismu cukrů, tedy k rizikovým faktorům, které stojí za cévním nálezem.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'V úvahu přicházejí tři položky českého indikačního seznamu — onemocnění tepen končetin na aterosklerotickém podkladě ve stadiu II b nebo na zánětlivém podkladě (II/4), funkční poruchy periferních cév, stavy po trombózách a chronický lymfatický edém (II/5) a stavy po cévních operacích a po perkutánní angioplastice (II/8); přesnou délku hrazeného pobytu u každé z nich najdete na stránce Co hradí pojišťovna u oběhového ústrojí. Samoplátci volí délku po dohodě s lázeňským lékařem; jako odborné minimum platí alespoň 10 procedur během alespoň 10 dní.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'U poruch prokrvení nohou je u procedur s oxidem uhličitým studijní podklad relativně nejlepší. V randomizované studii zvýšily koupele nohou v uhličité vodě (1000 mg CO₂ na kilogram, 33 °C, 30 minut, pětkrát týdně po dobu čtyř týdnů) arteriální špičkový průtok, tkáňový kyslík a bezbolestnou vzdálenost chůze, zatímco běžná voda hodnoty nezměnila (Hartmann a kol., 1997, Angiology; malý soubor, uměle sycená voda, velikost účinku v abstraktu neuvedena). Cross-over studie téže pracovní skupiny s 18 pacienty zjistila při ponoření nohou do uhličité vody nárůst laserdopplerem měřeného kožního průtoku a tkáňového kyslíku, v běžné vodě ne (Hartmann a kol., 1997, Angiology; jednorázová koupel, náhradní parametry). Po dvacetiminutovém působení lázeňského oxidu uhličitého na kůži stoupl průtok ve stehenní artérii, tlak na zadní tibiální artérii a tkáňový kyslík v noze, zatímco vodní pára stejné teploty zůstala bez účinku (Savin a kol., 1995, Angiology; velmi malý soubor, jednorázová aplikace). Pro pohybovou složku existuje vysoká úroveň důkazů: Cochranský přehled k tréninku chůze u klaudikace zjistil oproti běžné péči o průměrně 82 metrů delší bezbolestnou a o 120 metrů delší maximální vzdálenost chůze, s účinkem až do dvou let (Lane a kol., 2017, Cochrane Database Syst Rev; ambulantní cvičební programy, ne lázeňská léčba, většina jednotlivých studií malá). Starší přehled uvádí, že kontrolované důkazy k CO₂ balneoterapii existují právě pro periferní tepennou uzávěrovou nemoc, trofické vředy a mikroangiopatie (Resch a Just, 1994, Wien Med Wochenschr). Žádná z těchto prací neprokazuje, že by lázeňský pobyt mohl nahradit cévní operaci nebo cévní léčbu.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás při vašem cévním nálezu připadá v úvahu lázeňský pobyt, rozhoduje lázeňský lékař při vstupní prohlídce podle angiologického nálezu. Klidová bolest, nehojící se rána na noze nebo náhle chladnoucí a blednoucí noha jsou akutní stavy a patří neprodleně do lékařské péče, ne do plánování lázní. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Pomůže lázeňský pobyt při klaudikaci?',
+            answer: 'Zkoumány jsou dvě součásti lázeňského pobytu. Pro trénink chůze existuje vysoká úroveň důkazů: Cochranský přehled zjistil oproti běžné péči v průměru o 82 metrů delší bezbolestnou a o 120 metrů delší maximální vzdálenost chůze, s účinkem až do dvou let — šlo však o ambulantní programy, ne o lázeňské pobyty. Pro koupele nohou v uhličité vodě zjistila randomizovaná studie nárůst arteriálního špičkového průtoku, tkáňového kyslíku a bezbolestné vzdálenosti chůze, zatímco běžná voda zůstala bez účinku; soubor byl malý. V Mariánských Lázních se obě součásti spojují.',
+          },
+          {
+            question: 'Hradí pojišťovna lázně při poruchách prokrvení?',
+            answer: 'U pojištěnců české zdravotní pojišťovny přicházejí v úvahu tři položky: onemocnění tepen končetin ve stadiu II b nebo na zánětlivém podkladě (II/4), funkční poruchy periferních cév, stavy po trombózách a chronický lymfatický edém (II/5) a stavy po cévních operacích a po angioplastice (II/8); přesnou délku hrazeného pobytu u každé z nich najdete na stránce Co hradí pojišťovna u oběhového ústrojí. Hosté s pojištěním mimo Česko si úhradu ověřují předem u vlastní pojišťovny.',
+          },
+          {
+            question: 'Mohu jet do lázní po trombóze?',
+            answer: 'Po ukončení akutní fáze ano; stav po trombóze je součástí položky II/5 indikačního seznamu. V akutní fázi je lázeňský pobyt vyloučen. Jak dlouhý odstup je potřeba a které procedury jsou možné, rozhoduje lázeňský lékař podle nálezu vašeho ošetřujícího lékaře — vezměte si ho proto s sebou.',
+          },
+          {
+            question: 'Co se dělá při lymfedému?',
+            answer: 'V popředí stojí manuální lymfodrenáž a přístrojová drenáž pomocí přístrojů jako Lymfoven a Lymfopress, doplněné cvičením, které podporuje odtok. Chronický lymfatický edém je součástí položky II/5 indikačního seznamu. Nezhojené rány na noze vylučují řadu procedur, proto se nohy prohlížejí už při vstupní prohlídce.',
+          },
+          {
+            question: 'Musím pro lázně přestat kouřit?',
+            answer: 'Pro pobyty přes český indikační seznam ano — abstinence od nikotinu je pro skupinu nemocí oběhového ústrojí podmínkou, která je přímo ve vyhlášce. U onemocnění tepen nohou je navíc kouření faktor, který nejvíc určuje další vývoj.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina II — položky II/4, II/5 a II/8',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Onemocnění tepen končetin (II/4), funkční poruchy periferních cév, stavy po trombózách a chronický lymfatický edém (II/5) a stavy po cévních operacích a perkutánní angioplastice (II/8), s typem péče a délkou pobytu.',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci oběhového ústrojí včetně kontraindikací (AV blok II. až III. stupně, NYHA IV, aktivní endokarditida), požadované abstinence od nikotinu a vstupních vyšetření.',
+          },
+          {
+            title: 'Hartmann BR a kol. 1997, Angiology — randomizovaná studie k opakovaným uhličitým koupelím nohou u klaudikace',
+            url: 'https://doi.org/10.1177/000331979704801104',
+            note: 'Koupele nohou v uhličité vodě zvýšily arteriální špičkový průtok, tkáňový kyslík a bezbolestnou vzdálenost chůze; běžná voda ne. Malý soubor, uměle sycená voda, velikost účinku v abstraktu neuvedena.',
+          },
+          {
+            title: 'Hartmann BR a kol. 1997, Angiology — cross-over studie, 18 pacientů s periferní tepennou uzávěrovou nemocí',
+            url: 'https://doi.org/10.1177/000331979704800406',
+            note: 'V uhličité vodě stoupl kožní průtok a tkáňový kyslík, v běžné vodě ne. Jednorázová koupel, náhradní parametry.',
+          },
+          {
+            title: 'Savin E a kol. 1995, Angiology — studie k transkutánnímu CO₂ u periferní tepenné uzávěrové nemoci ve stadiu II',
+            url: 'https://doi.org/10.1177/000331979504600904',
+            note: 'Po 20 minutách působení lázeňského CO₂ plynu stoupl femorální průtok, tlak na a. tibialis posterior a tkáňový kyslík nohy; vodní pára stejné teploty zůstala bez účinku. Velmi malý soubor, jednorázová aplikace.',
+          },
+          {
+            title: 'Lane R a kol. 2017, Cochrane Database Syst Rev — přehled k tréninku chůze u klaudikace',
+            url: 'https://doi.org/10.1002/14651858.CD000990.pub4',
+            note: 'Cvičební programy prodloužily bezbolestnou vzdálenost chůze v průměru o 82 m a maximální o 120 m oproti běžné péči, s účinkem až do 2 let. Ambulantní programy, ne lázeňská léčba.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — přehled k možnostem a hranicím CO₂ balneoterapie',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Kontrolované důkazy jen pro periferní tepennou uzávěrovou nemoc, trofické vředy a mikroangiopatie a mírnou hypertenzi. Starší přehled.',
+          },
+        ],
+        related: [
+          {
+            label: 'Srdce a cévy před zimou',
+            href: '/cs/magazin/lazenska-lecba-obehoveho-ustroji',
+          },
+          {
+            label: 'CO₂ koupele: Co říká věda',
+            href: '/cs/magazin/co2-koupele-veda',
+          },
+          {
+            label: 'Lázeňská léčba po onkologické léčbě',
+            href: '/cs/lazenska-lecba/po-onkologicke-lecbe',
+          },
+          {
+            label: 'Co hradí pojišťovna u oběhového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/obehove-ustroji',
+          },
+        ],
+      },
+      ru: {
+        slug: 'krovoobrashchenie-nog',
+        navLabel: 'Кровообращение ног',
+        title: 'Курортное лечение нарушений кровообращения ног в Марианских Лазнях',
+        h1: 'Курортное лечение нарушений кровообращения ног',
+        metaTitle: 'Лечение нарушений кровообращения ног — Марианские Лазни',
+        metaDescription: 'Перемежающаяся хромота, состояние после тромбоза, лимфедема: углекислые ванны, тренировка ходьбы и лимфодренаж в Марианских Лазнях — ход лечения и сроки.',
+        lead: 'Когда икра начинает жечь уже через двести метров и приходится останавливаться, чтобы продолжить путь, это называется перемежающейся хромотой. Чешский индикационный список относит заболевания артерий конечностей, состояния после тромбозов и хроническую лимфедему к группе заболеваний системы кровообращения — и в Марианских Лазнях их лечат углекислыми ваннами и тренировкой ходьбы под руководством инструктора.',
+        teaser: 'Перемежающаяся хромота, состояние после тромбоза и хроническая лимфедема: углекислые ванны, тренировка ходьбы и лимфодренаж.',
+        treats: [
+          'Заболевание артерий конечностей атеросклеротического происхождения на стадии II b, то есть с перемежающейся хромотой',
+          'Заболевание артерий конечностей воспалительного происхождения',
+          'Функциональные нарушения периферических сосудов',
+          'Состояние после тромбоза, если острая фаза завершена',
+          'Хроническая лимфедема ног',
+          'Состояние после реконструктивных и реваскуляризирующих операций на сосудистой системе за пределами сердца и грудной аорты, а также после чрескожной ангиопластики',
+        ],
+        notFor: [
+          'Критическая ишемия конечности с болью в покое или угрозой гибели тканей — это относится к сосудистой хирургии, а не к курортному лечению',
+          'Свежий тромбоз глубоких вен ноги в острой фазе',
+          'Незаживающие раны и язвы на ноге',
+          'Сердечная недостаточность стадии NYHA IV, АВ-блокада второй-третьей степени и активный эндокардит',
+          'Продолжение курения: индикационный список требует для группы заболеваний системы кровообращения отказа от курения',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач фиксирует сосудистое состояние, проверяет пульсацию, состояние кожи и объём ног и уточняет безболевую дистанцию ходьбы — именно она служит мерой, по которой оценивают динамику. Возьмите с собой заключение вашего ангиолога или сосудистого хирурга.',
+          },
+          {
+            heading: 'Первая неделя: кровообращение и дистанция ходьбы',
+            body: 'Углекислые и сухие газовые ванны применяют ежедневно, а также тренировку ходьбы под руководством инструктора по ровным дорожкам почти до порога боли — именно такая нагрузка важна при тренировке ходьбы.',
+          },
+          {
+            heading: 'Вторая неделя: увеличение дистанции',
+            body: 'Дистанции ходьбы увеличиваются, добавляются подъёмы. При лимфедеме, напротив, на первый план выходят ручной лимфодренаж и аппаратный дренаж, дополненные упражнениями, поддерживающими отток лимфы.',
+          },
+          {
+            heading: 'Заключительное обследование и план на дом',
+            body: 'Безболевая дистанция ходьбы измеряется повторно и сравнивается с исходным значением; результат включается в итоговое заключение. Вы получаете программу ходьбы на дом — без регулярных занятий достигнутый результат теряется.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Углекислая ванна в минеральной воде',
+            detail: 'Ванна в местной минеральной воде при температуре около 34 °C; углекислый газ, проникающий через кожу, — центральная процедура при нарушениях кровообращения конечностей.',
+          },
+          {
+            name: 'Сухая газовая ванна в марианском газе',
+            detail: 'Применение природного углекислого газа источника Марии без воды и без тепловой нагрузки — подходит и там, где тёплые ванны невозможны.',
+          },
+          {
+            name: 'Тренировка ходьбы под руководством инструктора и терренкур',
+            detail: 'Размеченные маршруты в курортном лесу: ходьба почти до порога боли с последующей паузой, этапы постепенно увеличиваются.',
+          },
+          {
+            name: 'Ручной лимфодренаж',
+            detail: 'При хронической лимфедеме: приёмы, поддерживающие отток лимфатической жидкости из ног.',
+          },
+          {
+            name: 'Аппаратный лимфодренаж',
+            detail: 'Аппараты, такие как Lymfoven и Lymfopress, дополняют ручное лечение лимфедемы.',
+          },
+          {
+            name: 'Групповые занятия и двигательная терапия в бассейне',
+            detail: 'Упражнения на выносливость и икроножные мышцы, в воде с меньшей нагрузкой на суставы.',
+          },
+          {
+            name: 'Консультация по питанию',
+            detail: 'Индивидуальные беседы о липидах крови, весе и углеводном обмене, то есть о факторах риска, лежащих в основе сосудистого заболевания.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Здесь применимы три позиции чешского индикационного списка. Заболевания артерий конечностей атеросклеротического происхождения на стадии II b или воспалительного происхождения (II/4) предусматривают в качестве базового пребывания 21 день комплексного или 21 день долевого лечения, повторное пребывание проходит так же, в отдельных случаях — 14 дней долевого лечения. Функциональные нарушения периферических сосудов, состояния после тромбозов и хроническая лимфедема (II/5) проходят как 21 день комплексного или долевого лечения, повторное пребывание — 21 или 14 дней долевого лечения. Состояния после сосудистых операций и после чрескожной ангиопластики (II/8) предусматривают 21 день комплексного или долевого лечения. Гости, оплачивающие лечение самостоятельно, согласуют срок с курортным врачом; профессиональным минимумом считается не менее 10 процедур за не менее чем 10 дней.',
+        },
+        evidence: {
+          heading: 'Что показывают исследования',
+          body: 'Для нарушений кровообращения ног доказательная база по процедурам с углекислым газом сравнительно наиболее полная. В рандомизированном исследовании ножные ванны в воде с углекислым газом (1000 мг CO₂ на килограмм, 33 °C, 30 минут, пять раз в неделю на протяжении четырёх недель) увеличили пиковый артериальный кровоток, тканевой кислород и безболевую дистанцию ходьбы, тогда как обычная вода показатели не изменила (Hartmann et al., 1997, Angiology; небольшая выборка, искусственно обогащённая вода, размер эффекта в резюме не указан). Кросс-оверное исследование той же исследовательской группы с 18 пациентами обнаружило при погружении стоп в воду с углекислым газом повышение измеренного лазерным допплером кожного кровотока и тканевого кислорода, в обычной воде — нет (Hartmann et al., 1997, Angiology; однократная ванна, суррогатные параметры). После двадцатиминутного воздействия курортного углекислого газа на кожу возросли кровоток в бедренной артерии, давление в задней большеберцовой артерии и тканевой кислород стопы, тогда как водяной пар той же температуры оказался безрезультатным (Savin et al., 1995, Angiology; очень небольшая выборка, однократная процедура). Для двигательной составляющей доказательная база высокая: Кокрейновский обзор по тренировке ходьбы при перемежающейся хромоте обнаружил по сравнению с обычным лечением в среднем на 82 метра большую безболевую и на 120 метров большую максимальную дистанцию ходьбы, с эффектом до двух лет (Lane et al., 2017, Cochrane Database Syst Rev; амбулаторные программы упражнений, а не курортное лечение, большинство отдельных исследований небольшие). Более старый обзор указывает, что контролируемые доказательства по CO₂-бальнеотерапии имеются именно для периферической артериальной окклюзионной болезни, трофических язв и микроангиопатий (Resch и Just, 1994, Wien Med Wochenschr). Ни одна из этих работ не показывает, что курортное лечение заменяет сосудистую операцию или сосудистое медицинское лечение.',
+        },
+        physicianNote: 'Возможно ли и в каком объёме курортное лечение при вашем сосудистом заболевании, решает курортный врач при первичном осмотре на основании ангиологического заключения. Боль в покое, незаживающая рана на ноге или внезапно похолодевшая и побледневшая нога — это неотложные состояния, требующие немедленного обращения к врачу, а не планирования курортного лечения. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        faqs: [
+          {
+            question: 'Помогает ли курортное лечение при перемежающейся хромоте?',
+            answer: 'Изучены два компонента курортного лечения. Для тренировки ходьбы доказательная база высокая: Кокрейновский обзор обнаружил по сравнению с обычным лечением в среднем на 82 метра большую безболевую и на 120 метров большую максимальную дистанцию ходьбы, с эффектом до двух лет — однако в амбулаторных программах, а не в курортных пребываниях. Для ножных ванн в воде с углекислым газом рандомизированное исследование показало увеличение пикового артериального кровотока, тканевого кислорода и безболевой дистанции ходьбы, тогда как обычная вода оказалась безрезультатной; выборка была небольшой. В Марианских Лазнях оба компонента сочетаются.',
+          },
+          {
+            question: 'Оплачивается ли курортное лечение при нарушениях кровообращения?',
+            answer: 'Для застрахованных в чешской страховой компании применимы три позиции: заболевания артерий конечностей на стадии II b или воспалительного происхождения (II/4), функциональные нарушения периферических сосудов, состояния после тромбозов и хроническая лимфедема (II/5), а также состояния после сосудистых операций и после ангиопластики (II/8). В каждом случае предусмотрено 21 день комплексного или долевого лечения. Гости со страховкой за пределами Чехии заранее уточняют возможность возмещения у своего страховщика.',
+          },
+          {
+            question: 'Можно ли ехать на курортное лечение после тромбоза?',
+            answer: 'После завершения острой фазы — да; состояние после тромбоза входит в позицию II/5 индикационного списка. В острой фазе курортное лечение исключено. Какой должен быть интервал и какие процедуры возможны, решает курортный врач на основании заключения вашего лечащего врача — поэтому возьмите его с собой.',
+          },
+          {
+            question: 'Что делают при лимфедеме?',
+            answer: 'На первый план выходят ручной лимфодренаж и аппаратный дренаж с помощью таких аппаратов, как Lymfoven и Lymfopress, дополненные упражнениями, поддерживающими отток лимфы. Хроническая лимфедема входит в позицию II/5 индикационного списка. Незаживающие раны на ноге исключают ряд процедур, поэтому ноги осматривают уже при первичном осмотре.',
+          },
+          {
+            question: 'Нужно ли бросить курить перед курортным лечением?',
+            answer: 'Для пребываний через чешский индикационный список — да: отказ от курения для группы заболеваний системы кровообращения — это требование, закреплённое в самом постановлении. При заболеваниях артерий ног курение к тому же тот фактор, который сильнее всего определяет течение болезни.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа II — позиции II/4, II/5 и II/8',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Заболевания артерий конечностей (II/4), функциональные нарушения периферических сосудов, состояния после тромбозов и хроническая лимфедема (II/5), а также состояния после сосудистых операций и чрескожной ангиопластики (II/8): в каждом случае 21 день комплексного или долевого лечения.',
+          },
+          {
+            title: 'Постановление № 2/2015 Сб. о профессиональных критериях курортной реабилитационной помощи — группа II',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Полный текст индикационного списка для заболеваний системы кровообращения, включая противопоказания (АВ-блокада II-III степени, NYHA IV, активный эндокардит), требуемый отказ от курения и первичные обследования. Текст на чешском языке.',
+          },
+          {
+            title: 'Hartmann BR et al. 1997, Angiology — рандомизированное исследование повторных углекислых ножных ванн при перемежающейся хромоте',
+            url: 'https://doi.org/10.1177/000331979704801104',
+            note: 'Ножные ванны в воде с углекислым газом увеличили пиковый артериальный кровоток, тканевой кислород и безболевую дистанцию ходьбы; обычная вода — нет. Небольшая выборка, искусственно обогащённая вода, размер эффекта в резюме не указан.',
+          },
+          {
+            title: 'Hartmann BR et al. 1997, Angiology — кросс-оверное исследование, 18 пациентов с периферической артериальной окклюзионной болезнью',
+            url: 'https://doi.org/10.1177/000331979704800406',
+            note: 'В воде с углекислым газом повысились кожный кровоток и тканевой кислород, в обычной воде — нет. Однократная ванна, суррогатные параметры.',
+          },
+          {
+            title: 'Savin E et al. 1995, Angiology — исследование транскутанного CO₂ при периферической артериальной окклюзионной болезни на стадии II',
+            url: 'https://doi.org/10.1177/000331979504600904',
+            note: 'После 20 минут воздействия курортного CO₂-газа возросли кровоток в бедренной артерии, давление в задней большеберцовой артерии и тканевой кислород стопы; водяной пар той же температуры оказался безрезультатным. Очень небольшая выборка, однократная процедура.',
+          },
+          {
+            title: 'Lane R et al. 2017, Cochrane Database Syst Rev — обзор по тренировке ходьбы при перемежающейся хромоте',
+            url: 'https://doi.org/10.1002/14651858.CD000990.pub4',
+            note: 'Программы упражнений увеличили безболевую дистанцию ходьбы в среднем на 82 м и максимальную на 120 м по сравнению с обычным лечением, с эффектом до 2 лет. Амбулаторные программы, а не курортное лечение.',
+          },
+          {
+            title: 'Resch KL, Just U 1994, Wien Med Wochenschr — обзор о возможностях и границах CO₂-бальнеотерапии',
+            url: 'https://consensus.app/papers/details/624f01a417885d7f9c0caf162686c4cc/',
+            note: 'Контролируемые доказательства только для периферической артериальной окклюзионной болезни, трофических язв, микроангиопатий и лёгкой гипертонии. Более старый обзор.',
+          },
+        ],
+        related: [
+          {
+            label: 'Сердце и сосуды перед зимой',
+            href: '/ru/zhurnal/kurortnoe-lechenie-serdca-i-sosudov',
+          },
+          {
+            label: 'Углекислые ванны — что показывает наука',
+            href: '/ru/zhurnal/co2-vanny-nauka',
+          },
+          {
+            label: 'Курортное лечение после лечения онкологии',
+            href: '/ru/kurortnoe-lechenie/posle-lecheniya-onkologii',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
     },
   },
 ]
