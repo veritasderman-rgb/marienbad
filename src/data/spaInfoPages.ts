@@ -148,6 +148,93 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
     ],
     reviewDate: '2026-09-14',
   },
+  en: {
+    navLabel: 'Advice for Spa Guests',
+    title: 'Advice for spa guests in Marienbad',
+    h1: 'What you should know about how your cure works',
+    metaTitle: 'Advice for spa guests in Marienbad — what to know',
+    metaDescription:
+      'Spa reaction on the third day, bath temperature, which spring is for whom: the advice the local physicians give every spa guest.',
+    lead:
+      'The following is the advice the physicians of the Marienbad spa houses give their guests. Much of it otherwise only comes up once you are there — and some of it, such as the spa reaction on the third day, is unsettling without warning.',
+    sections: [
+      {
+        heading: 'What the physician decides and what they don’t',
+        numbered: true,
+        items: [
+          'Always discuss with your physician which procedures are suitable for you.',
+          'The prescription for each procedure is individual and depends on the condition being treated and your overall state of health. The treatment programme is set solely by the treating physician.',
+          'The drinking cure, too, is decided by the physician. Never drink more mineral water than has been prescribed for you.',
+          'If a procedure does not agree with you, tell your treating physician — the plan will then be changed.',
+          'Do not change medication prescribed at home without your physician’s consent.',
+        ],
+      },
+      {
+        heading: 'How things run on site',
+        numbered: true,
+        items: [
+          'Your treatment plan is managed by a computer system. Keep to the agreed times; if that is not possible on a given occasion, speak to a nurse at the spa house.',
+          'It is best to resolve any problems during your stay on the spot with the staff responsible, not only after you have left.',
+          'Often on the third and fourth day of the cure, the so-called spa reaction sets in: you feel temporarily worse. This is well known and passes.',
+        ],
+      },
+      {
+        heading: 'What you should know about the procedures',
+        numbered: true,
+        items: [
+          'A peat wrap is a considerable strain for people with a cardiovascular condition. Whether it is suitable for you is always decided by the physician.',
+          'Never ask for a different temperature of the mineral bath than the one prescribed. As a rule: the cooler the mineral bath, the more effective it is and the more it fizzes.',
+          'The mineral baths in Marienbad contain, besides carbon dioxide and mineral salts, humic acids, a key component of the peat.',
+        ],
+      },
+      {
+        heading: 'What you should know about the springs',
+        numbered: true,
+        items: [
+          'The Rudolf Spring is not suitable for guests with phosphate kidney stones.',
+          'The Marie Spring is not a mineral water spring. It releases a natural healing gas, used for dry gas baths and gas injections.',
+        ],
+      },
+    ],
+    note:
+      'This advice does not replace a conversation with your spa physician. They decide on your treatment plan at the initial examination and adjust it during your stay.',
+    faqs: [
+      {
+        question: 'What is the spa reaction?',
+        answer:
+          'Often on the third and fourth day of the cure, guests feel temporarily worse — the physicians on site call this the spa reaction. It is well known, part of the usual course, and passes. If the symptoms are severe or last longer, tell your spa physician.',
+      },
+      {
+        question: 'Why am I not allowed to change the temperature of the mineral bath?',
+        answer:
+          'Because the temperature is part of the prescription. As a rule: the cooler the mineral bath, the more effective it is and the more it fizzes — a warmer bath feels more pleasant, but it is not the same thing. So never ask for a different temperature than the one prescribed.',
+      },
+      {
+        question: 'Am I allowed to drink as much mineral water as I like?',
+        answer:
+          'No. The amount, the spring and the timing are set by the spa physician, personally for you: the Marienbad springs differ considerably in their chemistry, and what helps one diagnosis does not suit another. Never drink more than has been prescribed.',
+      },
+      {
+        question: 'Is the Marie Spring suitable for drinking?',
+        answer:
+          'No, it is not a mineral water spring at all. It releases a natural healing gas, almost pure carbon dioxide, used for dry gas baths and for gas injections. Drinking takes place at the town’s other springs.',
+      },
+    ],
+    sources: [
+      {
+        title: 'Léčebné lázně Mariánské Lázně — Ensana Health Spa Hotels',
+        url: LAZNEML,
+        note: 'Advice and information for spa guests from the operator’s treatment brochure.',
+      },
+    ],
+    related: [
+      { label: 'Treatment packages', href: '/en/treatment-packages' },
+      { label: 'Medical team', href: '/en/medical-team' },
+      { label: 'Springs overview', href: '/en/springs-overview' },
+      { label: 'Spa treatment by diagnosis', href: '/en/spa-treatment-for' },
+    ],
+    reviewDate: '2026-09-14',
+  },
 }
 
 export const medicalTeam: Partial<Record<Locale, InfoContent>> = {
@@ -238,6 +325,96 @@ export const medicalTeam: Partial<Record<Locale, InfoContent>> = {
       { label: 'Hinweise für Kurgäste', href: '/de/hinweise-fuer-kurgaeste' },
       { label: 'Kur nach Diagnose', href: '/de/kur-bei' },
       { label: 'Indikationen und Kontraindikationen', href: '/de/indikationen-und-kontraindikationen' },
+    ],
+    reviewDate: '2026-09-14',
+  },
+  en: {
+    navLabel: 'Medical Team',
+    title: 'The medical team of the Marienbad spa houses',
+    h1: 'Who leads the treatment in Marienbad',
+    metaTitle: 'Medical team in Marienbad — qualifications and research',
+    metaDescription:
+      'Which specialist physicians lead the cure in Marienbad, how the initial and final examinations work, and which studies have been carried out here.',
+    lead:
+      'A cure is only as good as the physician who draws up the plan. This page sets out who that is in Marienbad, which specialisms are represented on site, and what research has been carried out here.',
+    sections: [
+      {
+        heading: 'How medical supervision works',
+        body:
+          'On arrival, every guest meets the spa physician. Based on a thorough initial examination, they make the diagnosis and draw up the individual treatment plan with the prescribed procedures. During the stay, the medical team monitors the effect and adjusts the plan as needed. At the end, a further examination follows, at which you receive a detailed summary of the results and recommendations for home.',
+      },
+      {
+        heading: 'Which specialisms are represented on site',
+        items: [
+          'The physicians at the spa houses are specialists in internal medicine.',
+          'Most hold a second specialist qualification, predominantly in physical and rehabilitation medicine — the field formerly known as physiatry, balneology and medical rehabilitation.',
+          'Further specialisms on the team include diabetology and oncology, among others.',
+          'All nursing staff have a vocational or higher-education qualification in nursing; all senior nurses hold a higher-education degree that also entitles them to practise within the EU.',
+          'All of the operator’s houses have an on-call medical and nursing service.',
+        ],
+      },
+      {
+        heading: 'Laboratory diagnostics on site',
+        body:
+          'The spa houses offer a broad range of laboratory diagnostics, from issuing the request through the blood draw at the relevant house to discussing the findings and the recommendation that follows. For stays of seven nights or more, a basic laboratory examination is part of the programme.',
+      },
+      {
+        heading: 'Research carried out here',
+        items: [
+          'For the study on the effects of spa rehabilitation on physical performance, breathlessness, oximetry and spirometry in patients with complaints after COVID-19, the Marienbad spa houses received the 2021 Innovation Award of the European Spas Association in the Medical Spa Scientific Research category.',
+          'From the OnkoFit-Spa project, carried out together with the 1st Faculty of Medicine of Charles University, the Institut lázeňství a balneologie and the Czech spa association, extended follow-up care for patients after oncological treatment was adopted into the standard programme.',
+          'Since 2026, together with the Institut lázeňství a balneologie, the first clinical study of this kind in thirty years has been under way; it concerns urological and nephrological diagnoses and examines more than a hundred patients before and after the spa stay. The scientific guarantor is prim. MUDr. Ladislav Špišák, CSc.; results are not yet available.',
+        ],
+      },
+    ],
+    peopleHeading: 'At the head of the team',
+    people: [
+      { name: 'MUDr. Markéta Hovorková, Ph.D.', role: 'Chief Physician of Ensana Health Spa Hotels Mariánské Lázně' },
+      { name: 'MUDr. Pavel Knára', role: 'Chief Physician emeritus of the Nové Lázně house' },
+    ],
+    peopleNote:
+      'Which physician looks after you during your stay depends on the house you are staying in and on your diagnosis.',
+    note:
+      'This page describes the qualifications of the team and the institution’s research. It is not medical advice; your treatment plan is decided by the spa physician at the initial examination.',
+    faqs: [
+      {
+        question: 'What specialism do the spa physicians in Marienbad have?',
+        answer:
+          'They are specialists in internal medicine, and most hold a second specialist qualification, predominantly in physical and rehabilitation medicine. Further specialisms represented include diabetology and oncology. All senior nurses hold a higher-education degree that also entitles them to practise within the EU.',
+      },
+      {
+        question: 'Do I actually see a physician during the cure?',
+        answer:
+          'Yes, at least twice: at the initial examination on the day of arrival, from which the treatment plan follows, and at the final examination, at which you receive a written summary and recommendations for home. In between, the team monitors progress and adjusts the plan. All houses also have an on-call medical and nursing service.',
+      },
+      {
+        question: 'Has scientific research been carried out in Marienbad?',
+        answer:
+          'Yes. The study on spa rehabilitation after COVID-19 received the 2021 Innovation Award of the European Spas Association in the Medical Spa Scientific Research category. From the OnkoFit-Spa project with the 1st Faculty of Medicine of Charles University, extended follow-up care after oncological treatment was adopted into the standard programme. Since 2026, the first clinical study of this kind in thirty years has been under way, on urological and nephrological diagnoses.',
+      },
+    ],
+    sources: [
+      {
+        title: 'Léčebné lázně Mariánské Lázně — Ensana Health Spa Hotels',
+        url: LAZNEML,
+        note: 'Details on the qualifications of the medical and nursing team, on the process of the initial and final examinations, and on laboratory diagnostics, from the operator’s treatment brochure.',
+      },
+      {
+        title: 'Institut lázeňství a balneologie, v.v.i.',
+        url: ILAB,
+        note: 'Research institute of the Karlovy Vary region, founded in 2019; projects and ongoing studies in spa medicine.',
+      },
+      {
+        title: 'Clinical study on the objective effects of comprehensive spa treatment for urological and nephrological diagnoses (NCT07435844)',
+        url: NCT,
+        note: 'Ongoing study with more than a hundred patients, starting in 2026; results are not yet available.',
+      },
+    ],
+    related: [
+      { label: 'Treatment packages', href: '/en/treatment-packages' },
+      { label: 'Advice for spa guests', href: '/en/advice-for-spa-guests' },
+      { label: 'Spa treatment by diagnosis', href: '/en/spa-treatment-for' },
+      { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
     ],
     reviewDate: '2026-09-14',
   },

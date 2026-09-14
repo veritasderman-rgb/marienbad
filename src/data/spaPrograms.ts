@@ -252,4 +252,174 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     ],
     reviewDate: '2026-09-14',
   },
+  en: {
+    navLabel: 'Treatment Packages',
+    title: 'Spa treatment packages in Marienbad: procedures, duration, content',
+    h1: 'What spa packages exist and what they include',
+    metaTitle: 'Spa packages in Marienbad — how many procedures?',
+    metaDescription:
+      'How many procedures per night, what is included in the package and what additional programmes exist — an overview of the spa packages in Marienbad.',
+    lead:
+      'The difference between the spa packages comes down mainly to one number: how many procedures per night are included in the price. That determines whether a stay is more of a relaxing break or a medically supervised treatment. Prices are deliberately left out here — they depend on the hotel, room category and season, and belong on the booking site.',
+    commonHeading: 'What every treatment stay includes',
+    commonBody:
+      'A treatment stay includes accommodation with half board, the initial and final medical examination, the written final report, the prescribed procedures and the drinking cure at the mineral springs. The shorter relaxation stay is also available without a medical examination; in that case it is not a treatment stay but a wellness stay with individual procedures.',
+    staysHeading: 'The packages compared',
+    stays: [
+      {
+        name: 'Short relaxation stay',
+        length: '2 to 6 nights',
+        treatments: '1 procedure per night',
+        includes: [
+          'Accommodation with half board, i.e. breakfast and dinner',
+          'One procedure per night, from a fixed selection',
+          'No initial medical examination — which is why it is not a treatment stay',
+        ],
+        forWhom:
+          'For a long weekend or a first impression of the spa town, without a medical programme.',
+      },
+      {
+        name: 'Intensive spa stay',
+        length: 'from 7 nights',
+        treatments: '2 procedures per night',
+        includes: [
+          'Accommodation with half board',
+          'Initial and final medical examination with a written final report',
+          'Basic laboratory examination',
+          'Drinking cure as prescribed by the physician',
+        ],
+        forWhom:
+          'For guests who want a medically supervised cure, but with a manageable daily programme.',
+      },
+      {
+        name: 'Traditional spa stay',
+        length: 'from 7 nights',
+        treatments: '3 procedures per night',
+        includes: [
+          'Accommodation with half board',
+          'Initial and final medical examination with a written final report',
+          'Basic laboratory examination',
+          'Drinking cure as prescribed by the physician',
+          'On-call medical and nursing service',
+        ],
+        forWhom:
+          'The classic format of the Marienbad cure, the usual route for most indications.',
+      },
+      {
+        name: 'Intensive treatment stay',
+        length: 'from 7 nights',
+        treatments: '4 procedures per night',
+        includes: [
+          'Accommodation with half board',
+          'Initial and final medical examination with a written final report',
+          'Basic laboratory examination',
+          'Drinking cure as prescribed by the physician',
+          'On-call medical and nursing service',
+        ],
+        forWhom:
+          'For pronounced complaints and for rehabilitation after surgery, when the programme needs to be dense.',
+      },
+    ],
+    decidesHeading: 'Who decides which procedures you get',
+    decidesBody:
+      'The package sets how many procedures per night are included — which ones they are is decided solely by the spa physician at the initial examination, based on the diagnosis and your current condition. You cannot put the programme together yourself, and that is the difference from a wellness stay. If a procedure does not agree with you, the plan is changed; tell your spa physician.',
+    menuHeading: 'What the physician chooses from',
+    menuGroups: [
+      {
+        name: 'Procedures using the natural healing resources',
+        items:
+          'Mineral baths, dry gas baths in Mariengas, gas injections, peat wraps (up to three per week), inhalations, time and exercise outdoors.',
+      },
+      {
+        name: 'Therapeutic rehabilitation',
+        items:
+          'Individual or group exercise therapy, movement therapy in the swimming pool, physiotherapy.',
+      },
+      {
+        name: 'Further procedures',
+        items:
+          'Massages (up to three per week), lymphatic drainage, electrotherapy, magnetic field therapy, laser, cryotherapy, ultrasound, paraffin wraps, oxygen therapy, Lavatherm.',
+      },
+    ],
+    labHeading: 'What the basic laboratory examination covers',
+    labBody:
+      'A biochemical blood test covering blood sugar, cholesterol and other blood lipid values, liver values, kidney function and uric acid, plus a urine test. It is included in all stays of seven nights or more and serves the spa physician as the basis for the treatment plan.',
+    superiorHeading: 'Programmes at the Nové Lázně house',
+    superiorLead:
+      'Beyond the spa packages, the Nové Lázně house offers four programmes that begin with a thorough diagnostic workup. All of them include the Medical Check-Up and build on it.',
+    superior: [
+      {
+        name: 'Medical Check-Up',
+        forWhom: 'For guests who first want to know where they stand.',
+        body:
+          'A diagnostic programme with a comprehensive assessment of your current state of health. The aim is to identify possible risks and early signs of disease. Based on the laboratory values, the instrumental examinations and a nutritional consultation, the medical team then draws up an individual treatment plan.',
+      },
+      {
+        name: 'De-Stress',
+        forWhom: 'For guests under sustained pressure.',
+        body:
+          'Includes the Medical Check-Up and adds an assessment of your current stress level and its effect on your health. The medical team then puts together an individual procedure plan; guidance on recognising and dealing with stress factors is included. A programme of this kind does not replace psychotherapy or psychiatric treatment.',
+      },
+      {
+        name: 'Healthy Aging',
+        forWhom: 'For guests focused on quality of life in later years.',
+        body:
+          'Includes the Medical Check-Up, followed by an individually assembled programme using the local natural healing resources. The focus is on habits that can be continued at home and on a sustainable balance between work and recovery.',
+      },
+      {
+        name: 'Weight Loss',
+        forWhom: 'For guests who are overweight, under medical supervision.',
+        body:
+          'Includes the Medical Check-Up and works on eating habits and lifestyle. The background is medical: excess weight and obesity place a strain on the musculoskeletal system and are among the risk factors for heart and circulation. The programme is accompanied by the medical team, based on the principles of a balanced diet and more exercise in daily life.',
+      },
+    ],
+    disclaimer:
+      'Which package suits your diagnosis and which procedures within it make sense is decided by the spa physician at the initial examination. This page describes the structure of the stays and does not replace medical advice. Prices, availability and the operator’s current package names are available from the operator.',
+    faqs: [
+      {
+        question: 'How many procedures per day do you get in Marienbad?',
+        answer:
+          'That depends on the package booked: the short relaxation stay includes one procedure per night, the intensive spa stay two, the traditional spa stay three and the intensive treatment stay four. Which procedures these are in practice is decided by the spa physician after the initial examination.',
+      },
+      {
+        question: 'What is included in a spa package?',
+        answer:
+          'For a treatment stay: accommodation with half board, the initial and final medical examination, the written final report, the basic laboratory examination, the prescribed procedures and the drinking cure at the mineral springs. From the traditional stay upwards, an on-call medical and nursing service is added. Travel and the local spa tax are paid separately by the guest.',
+      },
+      {
+        question: 'What is the minimum length of a spa stay?',
+        answer:
+          'The treatment stays start at seven nights, because only from that point does a medically supervised series make sense; the recognised professional minimum for a balneotherapy course is at least ten procedures over at least ten days. Shorter stays of two to six nights are available as a relaxation format with one procedure per night, but without an initial medical examination.',
+      },
+      {
+        question: 'Can I choose the procedures myself?',
+        answer:
+          'Not for a treatment stay: the number and combination are decided solely by the spa physician after the initial examination, and that is exactly what distinguishes a cure from a wellness stay. For the short relaxation stay, by contrast, you choose from a fixed list. If a prescribed procedure does not agree with you, tell your spa physician so the plan can be changed.',
+      },
+      {
+        question: 'What is the difference between a spa cure and a wellness stay?',
+        answer:
+          'A spa cure requires a medical examination: the spa physician makes the diagnosis, prescribes an individual programme, follows its progress and records the outcome in writing. A wellness stay is a freely booked relaxation trip with procedures chosen to taste, without a medical indication and without medical supervision.',
+      },
+    ],
+    sources: [
+      {
+        title: 'Léčebné lázně Mariánské Lázně — comprehensive spa treatment',
+        url: LAZNEML,
+        note: 'Operator’s page on the scope of spa treatment. Czech-language text.',
+      },
+      {
+        title: 'Ensana Health Spa Hotels — Marienbad, current packages and prices',
+        url: ENSANA_OFFERS,
+        note: 'Operator’s booking page with the current package names, the number of procedures per night and prices.',
+      },
+    ],
+    related: [
+      { label: 'Spa treatment by diagnosis', href: '/en/spa-treatment-for' },
+      { label: 'Advice for spa guests', href: '/en/advice-for-spa-guests' },
+      { label: 'Medical team', href: '/en/medical-team' },
+      { label: 'Does health insurance cover a spa cure?', href: '/en/paying-for-spa-treatment' },
+    ],
+    reviewDate: '2026-09-14',
+  },
 }
