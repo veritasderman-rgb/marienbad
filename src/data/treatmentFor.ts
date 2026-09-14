@@ -728,10 +728,10 @@ export const diagnoses: Diagnosis[] = [
     image: '/images/library/fitness/senior-stretch-trainer.jpg',
     medicalReviewDate: '2026-09-14',
     imageAlt: {
-      de: 'Eine ältere Gästin dehnt sich beim Gruppentraining seitlich an einem hölzernen Übungsgerät, dahinter weitere Teilnehmende bei derselben Übung.',
-      en: 'An older guest stretching sideways on a wooden exercise frame in a group class, with other participants doing the same exercise behind her.',
-      cs: 'Starší hostka se protahuje do strany na dřevěném cvičebním rámu ve skupinovém cvičení, v pozadí další cvičící při stejném cviku.',
-      ru: 'Пожилая гостья наклоняется вбок на деревянном тренажёре во время группового занятия, позади другие занимающиеся выполняют то же упражнение.',
+      de: 'Eine ältere Gästin dehnt sich seitlich an einem hölzernen Übungsgerät, dahinter ein weiterer Teilnehmer; rechts spiegelt ein Spiegel die beiden.',
+      en: 'An older guest stretching sideways on a wooden exercise frame with another participant behind her; a mirror on the right reflects them both.',
+      cs: 'Starší hostka se protahuje do strany na dřevěném cvičebním rámu, za ní další cvičící; vpravo je oba odráží zrcadlo.',
+      ru: 'Пожилая гостья наклоняется вбок на деревянном тренажёре, позади ещё один занимающийся; справа их обоих отражает зеркало.',
     },
     image2: '/images/library/mineral-bath/indoor-pool-ceiling.jpg',
     imageAlt2: {
@@ -1864,10 +1864,10 @@ export const diagnoses: Diagnosis[] = [
     image: '/images/library/fitness/guided-side-stretch.jpg',
     medicalReviewDate: '2026-09-14',
     imageAlt: {
-      de: 'Der leitende Physiotherapeut der Léčebné lázně Mariánské Lázně – Ensana zeigt physiotherapeutische Übungen.',
-      en: 'The head physiotherapist of Léčebné lázně Mariánské Lázně – Ensana teaching physiotherapy exercises.',
-      cs: 'Hlavní fyzioterapeut společnosti Léčebné lázně Mariánské Lázně – Ensana učí fyzioterapeutické cviky.',
-      ru: 'Главный физиотерапевт компании Léčebné lázně Mariánské Lázně – Ensana обучает физиотерапевтическим упражнениям.',
+      de: 'Der leitende Physiotherapeut der Léčebné lázně Mariánské Lázně – Ensana zeigt physiotherapeutische Übungen: Er leitet eine Gästin bei einer seitlichen Dehnung an.',
+      en: 'The head physiotherapist of Léčebné lázně Mariánské Lázně – Ensana teaching physiotherapy exercises, guiding a guest through a side stretch.',
+      cs: 'Hlavní fyzioterapeut společnosti Léčebné lázně Mariánské Lázně – Ensana učí fyzioterapeutické cviky: vede hostku při bočním protažení.',
+      ru: 'Главный физиотерапевт компании Léčebné lázně Mariánské Lázně – Ensana обучает физиотерапевтическим упражнениям: ведёт гостью в боковом наклоне.',
     },
     image2: '/images/library/mineral-bath/underwater-massage-back-view.jpg',
     imageAlt2: {
