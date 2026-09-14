@@ -98,6 +98,7 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
           'Die Moorpackung ist für Menschen mit einer Herz-Kreislauf-Erkrankung eine erhebliche Belastung. Ob sie für Sie geeignet ist, entscheidet immer der Arzt.',
           'Bitten Sie nie um eine andere Temperatur des Mineralbads als die verordnete. Grundsätzlich gilt: Je kühler das Mineralbad, desto wirksamer ist es und desto mehr perlt es.',
           'Die Mineralbäder in Marienbad enthalten neben Kohlendioxid und Mineralsalzen auch Huminsäuren, einen wesentlichen Bestandteil des Moores.',
+          'Die Reflexmassage ist ein spürbarer Eingriff in den Körper und kann ernste Begleiterscheinungen auslösen — Atemnot, Bauchschmerzen, einen Blutdruckabfall oder plötzliche Müdigkeit. Sie wird deshalb ausschließlich vom Arzt verordnet, nach Beurteilung Ihres aktuellen Gesundheitszustands.',
         ],
       },
       {
@@ -185,6 +186,7 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
           'A peat wrap is a considerable strain for people with a cardiovascular condition. Whether it is suitable for you is always decided by the physician.',
           'Never ask for a different temperature of the mineral bath than the one prescribed. As a rule: the cooler the mineral bath, the more effective it is and the more it fizzes.',
           'The mineral baths in Marienbad contain, besides carbon dioxide and mineral salts, humic acids, a key component of the peat.',
+          'Reflex massage is a perceptible intervention in the body and can bring on serious effects — shortness of breath, abdominal pain, a drop in blood pressure or sudden fatigue. It is therefore prescribed by the physician alone, after an assessment of your current state of health.',
         ],
       },
       {
