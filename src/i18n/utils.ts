@@ -48,6 +48,9 @@ export function getNavItemsFlat(locale: Locale) {
     { navKey: 'nav.romanBaths', section: 'roman-baths' },
     // Sekce o péči hrazené pojišťovnou existuje jen česky.
     ...(locale === 'cs' ? [{ navKey: 'nav.insuranceSpa', section: 'insurance-spa' as SectionKey }] : []),
+    { navKey: 'nav.treatmentFor', section: 'treatment-for' },
+    // Úhrada kúry ze zahraničí: česky neexistuje, tuzemský pacient má `insurance-spa`.
+    ...(locale === 'cs' ? [] : [{ navKey: 'nav.funding', section: 'funding' as SectionKey }]),
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
     { navKey: 'nav.dayTrips', section: 'day-trips' },
     { navKey: 'nav.weddings', section: 'weddings' },
@@ -85,6 +88,8 @@ export function getNavItems(locale: Locale): NavItem[] {
       link('nav.romanBaths', 'roman-baths'),
       ...(locale === 'cs' ? [link('nav.insuranceSpa', 'insurance-spa')] : []),
       link('nav.indications', 'indications'),
+      link('nav.treatmentFor', 'treatment-for'),
+      ...(locale === 'cs' ? [] : [link('nav.funding', 'funding')]),
     ],
   }
 

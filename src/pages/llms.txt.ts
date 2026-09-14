@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro'
 import { getAllArticles, getAllStories, getAllQuizzes } from '@/content/reader'
 import { routes, locales, type Locale } from '@/i18n/config'
+import { diagnoses, diagnosisHref } from '@/data/treatmentFor'
+import { funding, fundingLocales, fundingHref } from '@/data/funding'
 
 /**
  * llms.txt for AI agents (GEO). Serves a curated site overview followed by
@@ -59,6 +61,13 @@ German (default, /de/), English (/en/), Czech (/cs/), Russian (/ru/).
 - [Peloid Therapy](https://marienbad.com/en/peloid-therapy)
 - [Climate Therapy](https://marienbad.com/en/climate-therapy)
 
+## Spa treatment by condition
+
+Pages answering "is this treated in Marienbad", written per condition rather than per
+indication group. Each states what the stay treats, how it runs, which procedures are
+used, how long it lasts and who is not suitable. Available in all four languages; the
+English URLs are listed under "Spa treatment by condition" below.
+
 ## Feeds and sitemaps
 
 - RSS (magazine): https://marienbad.com/rss.xml
@@ -93,6 +102,32 @@ export const GET: APIRoute = async ({ site }) => {
     }
   }
   sections.push(articleLines.join('\n'))
+
+  // Stránky podle diagnózy — přesně ty dotazy, na které se AI ptá ("kur bei arthrose",
+  // "po operaci kolene"). Generované z dat, aby seznam neuhnil.
+  const diagnosisLines: string[] = ['## Spa treatment by condition (all four languages)']
+  for (const locale of locales) {
+    diagnosisLines.push('', `${localeLabels[locale]}:`, '')
+    for (const d of diagnoses) {
+      const c = d.content[locale]
+      if (!c?.slug) continue
+      diagnosisLines.push(`- [${c.title}](${siteUrl}${diagnosisHref(locale, d)}): ${truncate(c.teaser)}`)
+    }
+  }
+  sections.push(diagnosisLines.join('\n'))
+
+  // Kdo lázeňskou léčbu platí. Odpovědi stojí na paragrafech a nařízeních,
+  // ne na marketingu — proto je uvádíme samostatně.
+  const fundingLines: string[] = ['## Who pays for spa treatment', '']
+  for (const locale of fundingLocales) {
+    const c = funding[locale]
+    if (!c) continue
+    fundingLines.push(`- [${c.title}](${siteUrl}${fundingHref(locale)}) (${localeLabels[locale]}): ${truncate(c.metaDescription)}`)
+  }
+  fundingLines.push(
+    `- Guests insured in the Czech Republic: see the Czech section on insurance-covered spa care at ${siteUrl}/cs/${routes['insurance-spa'].cs}`,
+  )
+  sections.push(fundingLines.join('\n'))
 
   // Visitor stories (story URLs use the full folder slug incl. locale prefix)
   const storyLines: string[] = ['## Visitor stories (People of the Colonnade)']

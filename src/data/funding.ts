@@ -202,4 +202,157 @@ export const funding: Partial<Record<FundingLocale, FundingContent>> = {
     ],
     reviewDate: '2026-09-14',
   },
+  en: {
+    navLabel: 'Paying for treatment',
+    title: 'Paying for spa treatment in Marienbad',
+    h1: 'Who pays for a spa cure in Marienbad?',
+    metaTitle: 'Who pays for a spa cure in Marienbad? — Marienbad.com',
+    metaDescription: 'EU cross-border rules, the NHS S2 route, Czech public insurance or paying yourself: who can have a spa cure in Marienbad covered, and how to apply.',
+    lead: 'Whether anyone other than you pays for a spa cure in Marienbad depends entirely on where you are insured. Four routes exist in law, and each rests on a different rule. Below is what each one covers, who can use it and what it takes to apply.',
+    shortAnswer: 'It depends on where you are insured, and for most international guests the honest answer is that they pay themselves. Patients insured in another EU or EEA country can claim a spa stay in Mariánské Lázně back under the Cross-Border Healthcare Directive (2011/24/EU), reimbursed up to what the same care would have cost at home, or have it covered as Czech state care if their insurer authorises it in advance on form S2 (Article 20 of Regulation (EC) No 883/2004). Patients insured in the Czech Republic receive spa care as a benefit of the public system under the Czech indication list. Residents of the United Kingdom can apply to NHS England under the Planned Treatment (S2) route, but it funds only care the NHS would routinely commission for that patient and cannot deliver within a medically acceptable time. In every route the guest pays for travel, accommodation and meals, and only the insurer decides — never the spa.',
+    routesHeading: 'Routes to having the treatment paid for',
+    routes: [
+      {
+        name: 'The Cross-Border Healthcare Directive, for patients insured in the EU or EEA',
+        who: 'Guests covered by the statutory health insurance of another EU or EEA country who want abroad the same care they are entitled to at home.',
+        covers: 'You pay the Czech provider yourself and claim the money back from your own insurer afterwards. Reimbursement is capped at what the same or equivalent treatment would have cost under your own public system, or at the Czech price if that is lower, so any difference stays with you. Prior authorisation is not required for everything, but a country may demand it for care involving an overnight stay, for highly specialised procedures or where expensive equipment is used — a spa stay always involves overnight accommodation, so this has to be settled before booking. Travel, accommodation and meals are the patient’s own cost. Only the National Contact Point for cross-border healthcare in the country where you are insured can tell you which of these conditions apply to you.',
+        steps: [
+          'Contact the National Contact Point for cross-border healthcare in the country where you are insured and ask whether a spa stay in the Czech Republic needs prior authorisation in your case.',
+          'Ask your own doctor for a referral or medical documentation setting out why the treatment is needed.',
+          'If authorisation is required, apply for it and wait for the decision before you book anything.',
+          'Book the stay, pay the provider and keep every invoice together with the report from the spa physician.',
+          'Submit the original documents to your insurer at home and claim reimbursement at your national rate.',
+        ],
+        basis: 'Directive 2011/24/EU on the application of patients’ rights in cross-border healthcare',
+      },
+      {
+        name: 'Prior authorisation on form S2, for patients insured in the EU or EEA',
+        who: 'Guests insured in another EU or EEA country whose insurer agrees in advance to fund planned treatment in the Czech Republic.',
+        covers: 'With an authorised S2 you are treated as if you were insured in the Czech Republic: the Czech public system provides the authorised care on the same terms as for a Czech patient, and you pay only what a Czech patient would pay. The route works only where the provider delivers the care inside the Czech public health insurance system rather than as a private booking, and only for the treatment named in the authorisation. Your insurer must authorise it before you travel and may refuse. Travel, accommodation and meals are not covered.',
+        steps: [
+          'Ask your insurer at home whether it will issue an S2 for spa treatment in the Czech Republic, and on what medical grounds.',
+          'Have your doctor document the diagnosis and the reason the treatment is needed.',
+          'Confirm with the chosen spa facility that it can deliver the stay within the Czech public health insurance system and will accept an S2.',
+          'Submit the application and wait for the written authorisation — travelling first forfeits the route.',
+          'Take the authorised S2 with you and present it on arrival, before treatment begins.',
+        ],
+        basis: 'Article 20 of Regulation (EC) No 883/2004 on the coordination of social security systems (portable document S2)',
+      },
+      {
+        name: 'The NHS Planned Treatment (S2) route, for residents of the United Kingdom',
+        who: 'People ordinarily resident in England, registered with an NHS GP and entitled to NHS treatment. Wales, Scotland and Northern Ireland run their own equivalent arrangements through their own health departments.',
+        covers: 'NHS England funds planned state healthcare in an EU country only where every criterion is met: approval obtained before travelling, care delivered inside the treating country’s state system rather than privately, treatment that would be routinely commissioned for that patient on the NHS, and confirmation that the NHS cannot provide the same or equivalent treatment within a medically acceptable timeframe. Written support from a clinician in the treating country and a declaration from the provider are both required. Travel, accommodation and translation costs are explicitly excluded. The separate EU Directive reimbursement route ended for the UK after Brexit and now covers only legacy cases from before 2021. A traditional spa cure meets this set of conditions only rarely, which is why most British guests come to Marienbad as self-paying visitors.',
+        steps: [
+          'Read the eligibility criteria on the NHS page for the Planned Treatment (S2 funding) route before making any arrangements.',
+          'See your NHS GP about the condition and obtain the clinical assessment the application requires.',
+          'Obtain written support from a clinician in the EU country stating the diagnosis, the need for treatment and the timeframe.',
+          'Ask the intended provider to complete the Provider Declaration confirming the care is delivered through the Czech state system.',
+          'Submit the S2 application to NHS England and wait for approval before you travel.',
+        ],
+        basis: 'NHS England, the Planned Treatment Scheme (S2 funding route)',
+      },
+      {
+        name: 'Czech public health insurance, for guests insured in the Czech Republic',
+        who: 'Anyone covered by Czech public health insurance, including citizens of other countries who live and work in the Czech Republic.',
+        covers: 'Spa care is a benefit of the Czech public system rather than an extra. A physician proposes the stay, the insurer approves it, and a ministerial decree — the indication list — sets which diagnosis qualifies for which type and length of stay. Under comprehensive care the insurer pays for accommodation, meals, treatments and medical supervision and the stay lasts 21 or 28 days. Under contributory care the insurer pays for the treatments and medical supervision while the patient pays for accommodation and meals, and the stay lasts 14 or 21 days. Which applies is set by the item on the indication list, not by choice.',
+        steps: [
+          'See your GP or an outpatient specialist and ask for a proposal for spa treatment care.',
+          'Ask the doctor to name Léčebné lázně Mariánské Lázně a.s. in the proposal.',
+          'Wait for your insurer to approve the proposal and issue the stay.',
+          'Arrive on the date given and see the spa physician, who sets the individual treatment plan.',
+        ],
+        basis: 'Decree No. 2/2015 Coll., the Czech indication list for spa treatment care',
+      },
+    ],
+    selfPayHeading: 'What every guest pays for themselves',
+    selfPayBody: 'None of the routes above pays for getting to Marienbad, for the hotel room or for meals during an outpatient cure; those remain the guest’s own cost even when an insurer approves the treatment itself. Booking a package directly with a spa hotel and paying for it is the simplest and by far the fastest option, because it needs no referral, no authorisation and no waiting for a decision — and it is how the large majority of international guests come. The medical side does not change: the spa physician examines you on arrival and sets the treatment plan either way.',
+    disclaimer: 'Only your own insurer, health authority or National Contact Point can decide whether your treatment is covered and at what rate. Neither Marienbad.com nor the spa facilities can promise an approval or a reimbursement, and none of this page is legal advice. Settle the question with whoever is expected to pay before you travel, not afterwards.',
+    faqs: [
+      {
+        question: 'Does health insurance pay for a spa cure in the Czech Republic?',
+        answer: 'It depends on where you are insured. Patients insured in another EU or EEA country can claim the treatment back under the Cross-Border Healthcare Directive, up to what the same care would have cost at home, or have it covered as Czech state care if their insurer authorises it in advance on form S2. Patients insured in the Czech Republic receive spa care as a benefit of the public system under the Czech indication list. Everyone else books and pays directly. Travel, accommodation and meals are the guest’s own cost on every route, and the decision always rests with the insurer rather than with the spa.',
+      },
+      {
+        question: 'Can I use my EHIC or GHIC for spa treatment in Marienbad?',
+        answer: 'No. The European Health Insurance Card entitles you to medical treatment that cannot wait until you get home during a temporary stay in another EU country. A spa cure is planned treatment arranged in advance, which is a different category altogether: it runs either through the Cross-Border Healthcare Directive or through prior authorisation on form S2. Carry the card for anything unexpected that happens while you are here, but it will not pay for the cure itself.',
+      },
+      {
+        question: 'Will the NHS pay for a spa cure abroad?',
+        answer: 'Only through the Planned Treatment (S2) route, and only where every one of its criteria is met: approval before travel, care delivered within the treating country’s state system, treatment that would be routinely commissioned for that patient on the NHS, and NHS confirmation that it cannot provide the same or equivalent treatment within a medically acceptable timeframe. Travel and accommodation are excluded in any case. The EU Directive reimbursement route ended for the UK after Brexit apart from legacy cases. In practice a spa cure clears that bar only rarely, so British guests usually come as self-paying visitors.',
+      },
+      {
+        question: 'How do I apply for a spa cure to be paid for?',
+        answer: 'Start with a doctor, never with the booking. Whichever route applies, it begins with a physician documenting the diagnosis and why the treatment is needed. You then approach whoever would pay — your statutory insurer, your National Contact Point for cross-border healthcare, or NHS England for the S2 route — and apply before you travel. Booking and paying first usually forfeits the claim, because the routes that require prior authorisation cannot be applied retrospectively.',
+      },
+      {
+        question: 'How much does a spa stay cost if I pay for it myself?',
+        answer: 'A self-paid stay covers accommodation, meals, the medical consultation and the prescribed treatments in a single package price. What it comes to depends on the length of the stay, the hotel and room category, and the treatment programme chosen. Current example prices for stays of different lengths in Marienbad are set out in the price guide linked below.',
+      },
+      {
+        question: 'What is the difference between a spa cure and a wellness break?',
+        answer: 'A spa cure rests on a medical indication: a physician examines the patient, prescribes an individual programme of treatments, follows the course and records the result. That medical framework is what allows an insurer to contribute at all. A wellness break is a freely booked holiday with treatments chosen for pleasure, with no diagnosis, no medical supervision and no route to having it paid for by an insurer.',
+      },
+      {
+        question: 'Who decides which treatments I get in Marienbad?',
+        answer: 'The spa physician on site. Whatever your doctor at home has written and whoever is paying, the treatment plan is set here after an examination on arrival, and it takes your current condition and any contraindications into account. That applies to self-paying guests exactly as it does to those whose stay an insurer has approved.',
+      },
+    ],
+    sources: [
+      {
+        title: 'Directive 2011/24/EU on the application of patients’ rights in cross-border healthcare',
+        url: 'https://eur-lex.europa.eu/eli/dir/2011/24/oj',
+        note: 'The reimbursement route: treatment abroad refunded up to the cost of the same care at home, with prior authorisation permitted for overnight and highly specialised care.',
+      },
+      {
+        title: 'Regulation (EC) No 883/2004 on the coordination of social security systems',
+        url: 'https://eur-lex.europa.eu/eli/reg/2004/883/oj',
+        note: 'Article 20: planned treatment in another member state with prior authorisation, provided on portable document S2.',
+      },
+      {
+        title: 'Your Europe — Organising planned medical treatment in another EU country',
+        url: 'https://europa.eu/youreurope/citizens/health/planned-healthcare/right-to-treatment/index_en.htm',
+        note: 'Official EU citizens’ information: which costs are reimbursed, when prior authorisation is needed, and that travel and accommodation are the patient’s own responsibility.',
+      },
+      {
+        title: 'Your Europe — Health cover for temporary stays in another EU country',
+        url: 'https://europa.eu/youreurope/citizens/health/unplanned-healthcare/temporary-stays/index_en.htm',
+        note: 'Why the EHIC does not pay for a spa cure: it covers treatment that cannot wait until you return home, not planned treatment.',
+      },
+      {
+        title: 'NHS — The Planned Treatment Scheme (S2 funding route)',
+        url: 'https://www.nhs.uk/using-the-nhs/healthcare-abroad/going-abroad-for-treatment/planned-treatment-s2-funding-route/',
+        note: 'The full eligibility criteria for UK residents, including prior approval, state healthcare only, routine NHS commissioning, undue delay, and the exclusion of travel and accommodation.',
+      },
+      {
+        title: 'NHS — The EU Directive route',
+        url: 'https://www.nhs.uk/using-the-nhs/healthcare-abroad/going-abroad-for-treatment/eu-directive-route/',
+        note: 'Confirms the EU Directive reimbursement route has ended in the UK, with legacy arrangements only for treatment begun before 2021.',
+      },
+      {
+        title: 'Health Insurance Bureau (Kancelář zdravotního pojištění) — Planned health care in the Czech Republic',
+        url: 'https://kancelarzp.cz/en/planned-health-care-in-cz/',
+        note: 'The Czech National Contact Point for cross-border healthcare: planned treatment with and without the insurer’s consent, and patients’ rights in the Czech Republic.',
+      },
+      {
+        title: 'Decree No. 2/2015 Coll., on the indication list for spa treatment care',
+        url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+        note: 'The Czech indication list: which diagnosis qualifies for comprehensive or contributory spa care and for how many days. Czech text.',
+      },
+    ],
+    related: [
+      {
+        label: 'How to obtain a spa treatment voucher from your doctor — a guide for guests insured in the Czech Republic',
+        href: '/en/magazine/spa-treatment-insurance-guide',
+      },
+      {
+        label: 'How much does a spa week cost — 2026 price guide',
+        href: '/en/magazine/spa-week-cost-marienbad',
+      },
+      {
+        label: 'Outpatient spa treatment in Marienbad',
+        href: '/en/outpatient-treatment',
+      },
+    ],
+    reviewDate: '2026-09-14',
+  },
 }
