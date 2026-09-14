@@ -2,6 +2,7 @@
 import { privacyPaths, type Locale } from '@/i18n/config'
 import { t } from '@/i18n/ui'
 import { getNavItemsFlat } from '@/i18n/utils'
+import { ensanaDestinationUrl } from '@/data/ensanaLinks'
 
 interface Props {
   locale: Locale
@@ -75,7 +76,7 @@ const ensanaDisclosure = t(locale, 'footer.ensanaDisclosure')
       <div class="lg:col-span-1">
         <h3 class="font-heading text-base font-semibold mb-4 text-turquoise-400">{{ de: 'Nützliche Links', en: 'Useful Links', cs: 'Užitečné odkazy', ru: 'Полезные ссылки' }[locale]}</h3>
         <nav aria-label={{ de: 'Nützliche Links', en: 'Useful Links', cs: 'Užitečné odkazy', ru: 'Полезные ссылки' }[locale]} class="flex flex-col gap-2.5">
-          <a href={`https://ensanahotels.com/${locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : locale}/destinace/ceska-republika/marianske-lazne`} target="_blank" rel="noopener noreferrer" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
+          <a href={ensanaDestinationUrl(locale, { medium: 'footer', campaign: 'booking' })} target="_blank" rel="noopener noreferrer" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">
             {{ de: 'Unterkunft in Marienbad buchen', en: 'Book accommodation in Mariánské Lázně', cs: 'Objednejte si ubytování v Mariánských Lázních', ru: 'Забронировать проживание в Марианских Лазнях' }[locale]}
           </a>
           <a href="https://news.lazneml.cz" target="_blank" rel="noopener noreferrer" class="text-beige-600 hover:text-turquoise-300 text-sm transition-colors duration-200">

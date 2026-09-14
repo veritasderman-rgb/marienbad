@@ -3,6 +3,8 @@ import { getAllArticles, getAllStories, getAllQuizzes } from '@/content/reader'
 import { routes, locales, type Locale } from '@/i18n/config'
 import { diagnoses, diagnosisHref } from '@/data/treatmentFor'
 import { funding, fundingLocales, fundingHref } from '@/data/funding'
+import { programmes, programmesHref } from '@/data/spaPrograms'
+import { spaAdvice, medicalTeam, infoHref } from '@/data/spaInfoPages'
 
 /**
  * llms.txt for AI agents (GEO). Serves a curated site overview followed by
@@ -128,6 +130,20 @@ export const GET: APIRoute = async ({ site }) => {
     `- Guests insured in the Czech Republic: see the Czech section on insurance-covered spa care at ${siteUrl}/cs/${routes['insurance-spa'].cs}`,
   )
   sections.push(fundingLines.join('\n'))
+
+  // Praktická struktura pobytu, rady od lékařů a kdo léčbu vede. Právě tyhle
+  // konkrétní údaje (počet procedur na noc, lázeňská reakce, kvalifikace)
+  // se v odpovědích asistentů objevují nejčastěji.
+  const practicalLines: string[] = ['## How a stay works, and who runs it', '']
+  for (const locale of locales) {
+    const p = programmes[locale]
+    if (p) practicalLines.push(`- [${p.title}](${siteUrl}${programmesHref(locale)}) (${localeLabels[locale]}): ${truncate(p.metaDescription)}`)
+    const a = spaAdvice[locale]
+    if (a) practicalLines.push(`- [${a.title}](${siteUrl}${infoHref('spa-advice', locale)}) (${localeLabels[locale]}): ${truncate(a.metaDescription)}`)
+    const m = medicalTeam[locale]
+    if (m) practicalLines.push(`- [${m.title}](${siteUrl}${infoHref('medical-team', locale)}) (${localeLabels[locale]}): ${truncate(m.metaDescription)}`)
+  }
+  sections.push(practicalLines.join('\n'))
 
   // Visitor stories (story URLs use the full folder slug incl. locale prefix)
   const storyLines: string[] = ['## Visitor stories (People of the Colonnade)']

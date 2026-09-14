@@ -1,0 +1,24 @@
+---
+import Base from '@/layouts/Base.astro'
+import InfoPage from '@/components/InfoPage.astro'
+import DiagnosisFaqSchema from '@/components/DiagnosisFaqSchema.astro'
+import { medicalTeam, infoAlternates } from '@/data/spaInfoPages'
+
+export const prerender = true
+
+const locale = 'cs' as const
+const c = medicalTeam[locale]
+---
+
+{c && (
+  <Base
+    locale={locale}
+    section="medical-team"
+    title={c.metaTitle}
+    description={c.metaDescription}
+    alternateUrls={infoAlternates('medical-team')}
+  >
+    <DiagnosisFaqSchema faqs={c.faqs} />
+    <InfoPage locale={locale} content={c} />
+  </Base>
+)}

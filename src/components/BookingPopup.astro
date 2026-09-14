@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '@/i18n/config'
+import { ensanaDestinationUrl } from '@/data/ensanaLinks'
 
 interface Props {
   locale: Locale
@@ -7,14 +8,7 @@ interface Props {
 
 const { locale } = Astro.props
 
-const ensanaLocale = locale === 'de' ? 'de' : locale === 'cs' ? 'cs' : locale === 'ru' ? 'ru' : 'en'
-const destinationPaths: Record<string, string> = {
-  cs: 'destinace/ceska-republika/marianske-lazne',
-  de: 'destinationen/tschechische-republik/marienbad',
-  en: 'destinations/czech-republic/marianske-lazne',
-  ru: 'napravleniya/cheshskaya-respublika/marienbad',
-}
-const bookingUrl = `https://ensanahotels.com/${ensanaLocale}/${destinationPaths[ensanaLocale]}?utm_source=marienbad&utm_medium=popup&utm_campaign=best-offer`
+const bookingUrl = ensanaDestinationUrl(locale, { medium: 'popup', campaign: 'best-offer' })
 
 const messages: Record<Locale, { text: string; cta: string }> = {
   de: { text: 'Für das beste Angebot besuchen Sie', cta: 'ensanahotels.com' },

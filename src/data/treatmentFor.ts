@@ -3716,6 +3716,10 @@ export const diagnoses: Diagnosis[] = [
         ],
         procedures: [
           {
+            name: 'Quellenwahl nach Steinzusammensetzung',
+            detail: 'Die Quellen des Ortes unterscheiden sich chemisch erheblich, deshalb richtet sich die Auswahl nach der Steinart: die Karolinenquelle bei Steinen unbekannter Zusammensetzung und bei Oxalatsteinen, die Waldquelle mit ihrem hohen Hydrogenkarbonatgehalt bei Harnsäuresteinen, die Ambrosiusquelle bei Kalzium-Phosphat-Steinen. Die Rudolfsquelle ist bei Phosphatsteinen nicht geeignet.',
+          },
+          {
             name: 'Trinkkur an den Mineralquellen',
             detail: 'Hydrogenkarbonatreiches Mineralwasser erhöht Harnmenge, Urin-pH und Zitratausscheidung und senkt so die Übersättigung, aus der sich Kalziumoxalatsteine bilden.',
           },
@@ -3751,6 +3755,10 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Ob und in welchem Umfang eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer Bildgebung und Nierenfunktion. Diese Seite informiert und ersetzt keine urologische Beratung.',
         faqs: [
           {
+            question: 'Welche Quelle trinkt man bei welchem Nierenstein?',
+            answer: 'Die Zuordnung nimmt der Kurarzt vor und richtet sich nach der Zusammensetzung des Steins. Bei Steinen unbekannter Zusammensetzung und bei Oxalatsteinen wird die Karolinenquelle verordnet. Bei Harnsäuresteinen die Waldquelle: Sie enthält viel Hydrogenkarbonat und alkalisiert den Harn, und Harnsäuresteine lassen sich durch Alkalisierung auflösen. Bei Kalzium-Phosphat-Steinen die Ambrosiusquelle. Die Rudolfsquelle, sonst die bekannteste des Ortes, ist bei Phosphatsteinen ausdrücklich nicht geeignet. Trinken Sie deshalb nie eine andere Quelle oder eine andere Menge als verordnet.',
+          },
+          {
             question: 'Welche Kur hilft bei Nierensteinen?',
             answer: 'Marienbad führt Nephrolithiasis ohne Harnstauung als offizielle Indikation (Position VIII/2) und setzt dafür eine strukturierte Trinkkur aus den hydrogenkarbonatreichen Mineralquellen ein. Kontrollierte Studien zeigen, dass solches Wasser den Urin-pH und die Zitratausscheidung erhöht und die Übersättigung für Kalziumoxalat senkt.',
           },
@@ -3772,6 +3780,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — Behandlung urologischer Erkrankungen',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Seite des Betreibers: Zuordnung der Quellen zur Steinart — Karolinenquelle bei unbekannter Zusammensetzung und Oxalatsteinen, Waldquelle bei Harnsäuresteinen, Ambrosiusquelle bei Kalzium-Phosphat-Steinen. Tschechischer Text.',
+          },
           {
             title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VIII — Krankheiten des Harnsystems',
             url: '/de/indikationen-und-kontraindikationen',
@@ -3870,6 +3883,10 @@ export const diagnoses: Diagnosis[] = [
         ],
         procedures: [
           {
+            name: 'Spring selection according to stone composition',
+            detail: 'The town’s springs differ considerably in their chemistry, so the choice depends on the type of stone: the Caroline Spring for stones of unknown composition and for oxalate stones, the Forest Spring, with its high bicarbonate content, for uric acid stones, and the Ambrose Spring for calcium phosphate stones. The Rudolph Spring is not suitable for phosphate stones.',
+          },
+          {
             name: 'Drinking cure at the mineral springs',
             detail: 'Bicarbonate-rich mineral water increases urine volume, urinary pH and citrate excretion, lowering the supersaturation from which calcium oxalate stones form.',
           },
@@ -3905,6 +3922,10 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Whether and to what extent a spa cure is right for you is decided by the spa physician at the initial examination, based on your imaging and kidney function. This page provides information and does not replace urological advice.',
         faqs: [
           {
+            question: 'Which spring should you drink for which kidney stone?',
+            answer: 'The assignment is made by the spa physician and depends on the composition of the stone. For stones of unknown composition and for oxalate stones, the Caroline Spring is prescribed. For uric acid stones, the Forest Spring: it contains a great deal of bicarbonate and alkalinises the urine, and uric acid stones can be dissolved by alkalinisation. For calcium phosphate stones, the Ambrose Spring. The Rudolph Spring, otherwise the best known in the town, is explicitly not suitable for phosphate stones. So never drink a different spring, or a different amount, than prescribed.',
+          },
+          {
             question: 'Which spa cure helps with kidney stones?',
             answer: 'Marienbad lists nephrolithiasis without urinary obstruction as an official indication (position VIII/2) and uses a structured drinking cure from the bicarbonate-rich mineral springs for it. Controlled studies show that such water raises urinary pH and citrate excretion and lowers supersaturation for calcium oxalate.',
           },
@@ -3926,6 +3947,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — treatment of urological conditions',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'The operator’s page: assignment of the springs to stone type — Caroline Spring for unknown composition and oxalate stones, Forest Spring for uric acid stones, Ambrose Spring for calcium phosphate stones. Czech text.',
+          },
           {
             title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VIII — diseases of the urinary system',
             url: '/en/indications-and-contraindications',
@@ -4022,6 +4048,10 @@ export const diagnoses: Diagnosis[] = [
         ],
         procedures: [
           {
+            name: 'Volba pramene podle složení kamene',
+            detail: 'Prameny místa se chemicky výrazně liší, proto se volba řídí typem kamene: Karolinin pramen u kamenů neznámého složení a u oxalátových kamenů, Lesní pramen s vysokým obsahem hydrogenuhličitanů u urátových (kyselina močová) kamenů, Ambrožův pramen u kalcium-fosfátových kamenů. Rudolfův pramen není u fosfátových kamenů vhodný.',
+          },
+          {
             name: 'Pitná kúra u minerálních pramenů',
             detail: 'Hydrogenuhličitanem bohatá minerální voda zvyšuje množství moči, pH moči i vylučování citrátu a snižuje tak přesycení, ze kterého vznikají kalciumoxalátové kameny.',
           },
@@ -4057,6 +4087,10 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašeho zobrazovacího vyšetření a funkce ledvin. Tato stránka informuje a nenahrazuje urologickou konzultaci.',
         faqs: [
           {
+            question: 'Který pramen se pije u kterého ledvinového kamene?',
+            answer: 'Přiřazení provádí lázeňský lékař podle složení kamene. U kamenů neznámého složení a u oxalátových kamenů se předepisuje Karolinin pramen. U urátových kamenů (kyselina močová) Lesní pramen: obsahuje mnoho hydrogenuhličitanů a alkalizuje moč, a urátové kameny se alkalizací mohou rozpouštět. U kalcium-fosfátových kamenů Ambrožův pramen. Rudolfův pramen, jinak nejznámější pramen místa, není u fosfátových kamenů výslovně vhodný. Nikdy proto nepijte jiný pramen nebo jiné množství, než je předepsáno.',
+          },
+          {
             question: 'Jsou Mariánské Lázně vhodné na ledvinové kameny?',
             answer: 'Mariánské Lázně vedou nefrolitiázu bez městnání moči jako oficiální indikaci (položka VIII/2) a nasazují pro ni strukturovanou pitnou kúru z hydrogenuhličitanem bohatých minerálních pramenů. Kontrolované studie ukazují, že taková voda zvyšuje pH moči a vylučování citrátu a snižuje přesycení pro kalciumoxalát.',
           },
@@ -4078,6 +4112,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — léčení urologických onemocnění',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Stránka provozovatele: přiřazení pramenů k typu kamene — Karolinin pramen u neznámého složení a oxalátových kamenů, Lesní pramen u urátových kamenů, Ambrožův pramen u kalcium-fosfátových kamenů.',
+          },
           {
             title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VIII — nemoci močového systému',
             url: '/cs/indikace-a-kontraindikace',
@@ -4174,6 +4213,10 @@ export const diagnoses: Diagnosis[] = [
         ],
         procedures: [
           {
+            name: 'Выбор источника по составу камня',
+            detail: 'Источники курорта существенно различаются по химическому составу, поэтому выбор зависит от типа камня: источник Каролины — при камнях неизвестного состава и оксалатных камнях, Лесной источник с высоким содержанием гидрокарбонатов — при уратных (мочекислых) камнях, источник Амброжа — при кальций-фосфатных камнях. Источник Рудольфа не подходит при фосфатных камнях.',
+          },
+          {
             name: 'Питьевой курс у минеральных источников',
             detail: 'Богатая гидрокарбонатами минеральная вода повышает объём мочи, pH мочи и выведение цитрата и тем самым снижает перенасыщение, из-за которого образуются кальций-оксалатные камни.',
           },
@@ -4209,6 +4252,10 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Показано ли вам курортное лечение и в каком объёме, решает курортный врач при первичном осмотре на основании данных визуализации и функции почек. Эта страница носит информационный характер и не заменяет консультацию уролога.',
         faqs: [
           {
+            question: 'Какой источник пьют при каком виде камней в почках?',
+            answer: 'Назначение делает курортный врач, и оно зависит от состава камня. При камнях неизвестного состава и оксалатных камнях назначают источник Каролины. При уратных (мочекислых) камнях — Лесной источник: он содержит много гидрокарбоната и подщелачивает мочу, а уратные камни растворяются при подщелачивании. При кальций-фосфатных камнях — источник Амброжа. Источник Рудольфа, в остальном самый известный на курорте, при фосфатных камнях прямо не подходит. Поэтому никогда не пейте воду из другого источника и не меняйте назначенное количество.',
+          },
+          {
             question: 'Какое курортное лечение помогает при камнях в почках?',
             answer: 'В Марианских Лазнях нефролитиаз без задержки мочи указан как официальное показание (позиция VIII/2), для его лечения применяется структурированный питьевой курс из богатых гидрокарбонатами минеральных источников. Контролируемые исследования показывают, что такая вода повышает pH мочи и выведение цитрата и снижает перенасыщение по кальцию-оксалату.',
           },
@@ -4230,6 +4277,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — лечение урологических заболеваний',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Страница оператора: соответствие источников типу камня — источник Каролины при неизвестном составе и оксалатных камнях, Лесной источник при уратных камнях, источник Амброжа при кальций-фосфатных камнях. Текст на чешском языке.',
+          },
           {
             title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VIII — заболевания мочевыделительной системы',
             url: '/ru/pokazaniya-i-protivopokazaniya',
@@ -4316,6 +4368,8 @@ export const diagnoses: Diagnosis[] = [
         lead: 'Unter urologischen Beschwerden führt die tschechische Indikationsliste unter anderem chronische, therapieresistente Nieren- und Harnwegsentzündungen, Zustände nach Operationen an Niere und Harnwegen sowie chronische Prostatitis. Marienbad behandelt diese Gruppe seit dem 19. Jahrhundert vor allem über die Trinkkur aus den ortseigenen Mineralquellen, ergänzt um urologisch verordnete physikalische Therapie.',
         teaser: 'Chronische Harnwegsentzündungen, Zustände nach Prostataoperation und chronische Prostatitis: Trinkkur, Beckenbodentherapie und urologische Verlaufskontrolle.',
         treats: [
+          'Zustand nach Nierentransplantation sowie Nierenspender — in Marienbad ein neu aufgenommener Behandlungsbereich',
+          'Harninkontinenz und Schwäche der Beckenbodenmuskulatur, auch nach einer Prostataoperation',
           'Rezidivierende und chronische, nicht-tuberkulöse Nieren- und Harnwegsentzündungen, die auf Antibiotika nicht ausreichend ansprechen, in laufender urologischer Betreuung seit mindestens 12 Monaten',
           'Zystische Nierenerkrankungen',
           'Zustände nach Operationen an Niere und Harnwegen, einschließlich endovesikaler Eingriffe und komplizierter Prostatektomie',
@@ -4346,6 +4400,10 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         procedures: [
+          {
+            name: 'PelviPower — Diagnostik und Training des Beckenbodens',
+            detail: 'Die Léčebné lázně Mariánské Lázně haben PelviPower als erster Betreiber in Tschechien eingeführt; das Gerät steht im Haus Nové Lázně. Es misst zunächst die Funktion der Beckenbodenmuskulatur und kräftigt sie anschließend mit magnetischen Impulsen, ohne Eingriff und im Sitzen. Ergänzend wird die Aktivierung und Entspannung des Beckenbodens mit diagnostischem Ultraschall durch die Bauchdecke beurteilt.',
+          },
           {
             name: 'Trinkkur an den Mineralquellen',
             detail: 'Regelmäßiges Trinken zur Erhöhung der Harnmenge; traditionell bei chronischen Nieren- und Harnwegsentzündungen eingesetzt.',
@@ -4386,6 +4444,14 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Ob und in welchem Umfang eine Kur für Sie infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand Ihrer urologischen Vorgeschichte. Diese Seite informiert und ersetzt keine urologische Beratung.',
         faqs: [
           {
+            question: 'Können Nierenspender und Menschen nach einer Nierentransplantation zur Kur?',
+            answer: 'Ja, das ist in Marienbad ein neu aufgenommener Behandlungsbereich: Der Betreiber nennt Klienten nach einer Nierentransplantation und Nierenspender ausdrücklich unter den behandelten Gruppen. Voraussetzung ist ein stabiler Verlauf und der Befund Ihres behandelnden Nephrologen oder Transplantationszentrums; bringen Sie ihn mit, weil Trinkmenge und Anwendungen danach ausgerichtet werden. Über die Aufnahme entscheidet der Kurarzt im Einzelfall.',
+          },
+          {
+            question: 'Hilft eine Kur bei Inkontinenz?',
+            answer: 'Inkontinenz und Prostataerkrankungen sind in Marienbad ein eigener Schwerpunkt. Der Betreiber hat dafür als erster in Tschechien PelviPower eingeführt, ein Gerät, das im Haus Nové Lázně steht: Es misst zuerst die Funktion der Beckenbodenmuskulatur und kräftigt sie danach mit magnetischen Impulsen, ohne Eingriff. Ob das Training für Sie infrage kommt und wie es mit den übrigen Anwendungen zusammenspielt, entscheidet der Kurarzt bei der Eingangsuntersuchung.',
+          },
+          {
             question: 'Welche Kurorte sind für urologische Beschwerden geeignet?',
             answer: 'Geeignet sind Kurorte, die chronische Harnwegsentzündungen, Zustände nach urologischen Operationen oder chronische Prostatitis als offizielle Indikation führen und urologische Betreuung während des Aufenthalts anbieten. Marienbad erfüllt das über die Positionen VIII/1, VIII/3 und VIII/4 der tschechischen Indikationsliste und stützt sich dabei auf die Trinkkur aus den ortseigenen Mineralquellen.',
           },
@@ -4407,6 +4473,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — Behandlung urologischer Erkrankungen',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Seite des Betreibers: behandelte Diagnosen einschließlich Inkontinenz, Prostataerkrankungen sowie neu Klienten nach Nierentransplantation und Nierenspender; Einführung von PelviPower als erster Betreiber in Tschechien, Gerät im Haus Nové Lázně. Tschechischer Text.',
+          },
           {
             title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VIII — Krankheiten des Harnsystems',
             url: '/de/indikationen-und-kontraindikationen',
@@ -4469,6 +4540,8 @@ export const diagnoses: Diagnosis[] = [
           'Among urological conditions, the Czech indication list lists chronic, treatment-resistant kidney and urinary tract infections, conditions after operations on the kidneys and urinary tract, and chronic prostatitis, among others. Marienbad has treated this group since the 19th century mainly through the drinking cure from its own mineral springs, supplemented by urologically prescribed physical therapy.',
         teaser: 'Chronic urinary tract infections, conditions after prostate surgery and chronic prostatitis: drinking cure, pelvic floor therapy and urological monitoring.',
         treats: [
+          'Condition after kidney transplantation, and kidney donors — a newly added area of treatment in Marienbad',
+          'Urinary incontinence and weakness of the pelvic floor muscles, including after prostate surgery',
           'Recurrent and chronic, non-tuberculous kidney and urinary tract infections that do not respond sufficiently to antibiotics, under ongoing urological care for at least 12 months',
           'Cystic kidney disease',
           'Conditions after operations on the kidneys and urinary tract, including endovesical procedures and complicated prostatectomy',
@@ -4499,6 +4572,10 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         procedures: [
+          {
+            name: 'PelviPower — pelvic floor diagnostics and training',
+            detail: 'Léčebné lázně Mariánské Lázně introduced PelviPower as the first operator in the Czech Republic; the device is in the Nové Lázně house. It first measures the function of the pelvic floor muscles, then strengthens them with magnetic impulses, without any procedure and while seated. Activation and relaxation of the pelvic floor are additionally assessed with diagnostic ultrasound through the abdominal wall.',
+          },
           {
             name: 'Drinking cure at the mineral springs',
             detail: 'Regular drinking to increase urine volume; traditionally used for chronic kidney and urinary tract infections.',
@@ -4539,6 +4616,14 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Whether and to what extent a spa cure is right for you is decided by the spa physician at the initial examination, based on your urological history. This page provides information and does not replace urological advice.',
         faqs: [
           {
+            question: 'Can kidney donors and people after a kidney transplant go for a spa cure?',
+            answer: 'Yes — this is a newly added area of treatment in Marienbad: the operator explicitly names clients after a kidney transplant and kidney donors among the groups it treats. The requirement is a stable course and the findings of your treating nephrologist or transplant centre; bring them along, because the amount you drink and the treatments are set accordingly. Admission is decided by the spa physician case by case.',
+          },
+          {
+            question: 'Does a spa cure help with incontinence?',
+            answer: 'Incontinence and prostate conditions are a dedicated focus in Marienbad. For them, the operator was the first in the Czech Republic to introduce PelviPower, a device housed in the Nové Lázně: it first measures the function of the pelvic floor muscles, then strengthens them with magnetic impulses, without any procedure. Whether this training is right for you, and how it fits with the other treatments, is decided by the spa physician at the initial examination.',
+          },
+          {
             question: 'Which spa resorts are suitable for urological conditions?',
             answer: 'Suitable resorts list chronic urinary tract infections, conditions after urological operations or chronic prostatitis as official indications and offer urological care during the stay. Marienbad meets this through positions VIII/1, VIII/3 and VIII/4 of the Czech indication list, drawing on the drinking cure from its own mineral springs.',
           },
@@ -4560,6 +4645,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — treatment of urological conditions',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'The operator’s page: conditions treated, including incontinence, prostate conditions, and newly, clients after a kidney transplant and kidney donors; introduction of PelviPower as the first operator in the Czech Republic, device housed in the Nové Lázně. Czech text.',
+          },
           {
             title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VIII — diseases of the urinary system',
             url: '/en/indications-and-contraindications',
@@ -4620,6 +4710,8 @@ export const diagnoses: Diagnosis[] = [
         lead: 'Mezi urologické potíže patří podle indikačního seznamu mimo jiné chronické, na léčbu obtížně reagující záněty ledvin a močových cest, stavy po operacích ledvin a močových cest a chronická prostatitida. Mariánské Lázně tuto skupinu léčí od 19. století především pitnou kúrou z místních minerálních pramenů, doplněnou o urologem předepsanou fyzikální terapii.',
         teaser: 'Chronické záněty močových cest, stavy po operaci prostaty a chronická prostatitida: pitná kúra, terapie pánevního dna a urologická kontrola průběhu.',
         treats: [
+          'Stav po transplantaci ledviny a dárci ledviny — v Mariánských Lázních nově zařazená oblast léčby',
+          'Močová inkontinence a oslabené svalstvo pánevního dna, také po operaci prostaty',
           'Opakující se a chronické, netuberkulózní záněty ledvin a močových cest, které dostatečně nereagují na antibiotika, v průběžné urologické péči alespoň 12 měsíců',
           'Cystická onemocnění ledvin',
           'Stavy po operacích ledvin a močových cest, včetně endovezikálních zákroků a komplikované prostatektomie',
@@ -4650,6 +4742,10 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         procedures: [
+          {
+            name: 'PelviPower — diagnostika a trénink pánevního dna',
+            detail: 'Léčebné lázně Mariánské Lázně zavedly PelviPower jako první provozovatel v Česku; přístroj je v domě Nové Lázně. Nejprve změří funkci svalstva pánevního dna a poté ji posílí magnetickými impulzy, bez zákroku a vsedě. Doplňkově se aktivace a uvolnění pánevního dna posuzují diagnostickým ultrazvukem přes břišní stěnu.',
+          },
           {
             name: 'Pitná kúra u minerálních pramenů',
             detail: 'Pravidelné pití ke zvýšení množství moči; tradičně používané u chronických zánětů ledvin a močových cest.',
@@ -4690,6 +4786,14 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vaší urologické anamnézy. Tato stránka informuje a nenahrazuje urologickou konzultaci.',
         faqs: [
           {
+            question: 'Mohou na lázně dárci ledviny a lidé po transplantaci ledviny?',
+            answer: 'Ano, v Mariánských Lázních jde o nově zařazenou oblast léčby: provozovatel výslovně uvádí klienty po transplantaci ledviny a dárce ledviny mezi léčenými skupinami. Podmínkou je stabilní stav a nález vašeho ošetřujícího nefrologa nebo transplantačního centra; vezměte si ho s sebou, protože podle něj se řídí pitné množství i procedury. O přijetí rozhoduje lázeňský lékař v každém jednotlivém případě.',
+          },
+          {
+            question: 'Pomůže lázeňský pobyt při inkontinenci?',
+            answer: 'Inkontinence a onemocnění prostaty jsou v Mariánských Lázních samostatné téma. Provozovatel pro ně jako první v Česku zavedl PelviPower, přístroj v domě Nové Lázně: nejprve změří funkci svalstva pánevního dna a poté ji posílí magnetickými impulzy, bez zákroku. Zda je trénink pro vás vhodný a jak zapadá do ostatních procedur, rozhoduje lázeňský lékař při vstupní prohlídce.',
+          },
+          {
             question: 'Kam na lázně s urologickými potížemi?',
             answer: 'Vhodné jsou lázně, které vedou chronické záněty močových cest, stavy po urologických operacích nebo chronickou prostatitidu jako oficiální indikaci a nabízejí během pobytu urologickou péči. Mariánské Lázně to splňují přes položky VIII/1, VIII/3 a VIII/4 indikačního seznamu a opírají se přitom o pitnou kúru z místních minerálních pramenů.',
           },
@@ -4711,6 +4815,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — léčení urologických onemocnění',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Stránka provozovatele: léčené diagnózy včetně inkontinence, onemocnění prostaty a nově klientů po transplantaci ledviny a dárců ledviny; zavedení PelviPower jako první provozovatel v Česku, přístroj v domě Nové Lázně.',
+          },
           {
             title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VIII — nemoci močového systému',
             url: '/cs/indikace-a-kontraindikace',
@@ -4771,6 +4880,8 @@ export const diagnoses: Diagnosis[] = [
         lead: 'Среди урологических заболеваний чешский индикационный список выделяет, в частности, хронические, резистентные к терапии воспаления почек и мочевых путей, состояния после операций на почках и мочевых путях, а также хронический простатит. В Марианских Лазнях эту группу лечат с XIX века прежде всего питьевым курсом из собственных минеральных источников, дополненным назначенной урологом физиотерапией.',
         teaser: 'Хронические воспаления мочевых путей, состояния после операции на простате и хронический простатит: питьевой курс, терапия тазового дна и урологический контроль динамики.',
         treats: [
+          'Состояние после трансплантации почки, а также доноры почки — новое направление лечения, недавно введённое в Марианских Лазнях',
+          'Недержание мочи и слабость мышц тазового дна, в том числе после операции на простате',
           'Рецидивирующие и хронические, нетуберкулёзные воспаления почек и мочевых путей, недостаточно отвечающие на антибиотики, при постоянном урологическом наблюдении не менее 12 месяцев',
           'Кистозные заболевания почек',
           'Состояния после операций на почках и мочевых путях, включая эндовезикальные вмешательства и осложнённую простатэктомию',
@@ -4801,6 +4912,10 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         procedures: [
+          {
+            name: 'PelviPower — диагностика и тренировка тазового дна',
+            detail: '«Léčebné lázně Mariánské Lázně» первыми в Чехии внедрили PelviPower; аппарат находится в отеле Нове Лазне. Он сначала измеряет функцию мышц тазового дна, а затем укрепляет их магнитными импульсами — без вмешательства, сидя. Дополнительно активация и расслабление тазового дна оцениваются диагностическим ультразвуком через брюшную стенку.',
+          },
           {
             name: 'Питьевой курс у минеральных источников',
             detail: 'Регулярное питьё для увеличения объёма мочи; традиционно применяется при хронических воспалениях почек и мочевых путей.',
@@ -4841,6 +4956,14 @@ export const diagnoses: Diagnosis[] = [
         physicianNote: 'Показано ли вам курортное лечение и в каком объёме, решает курортный врач при первичном осмотре на основании вашего урологического анамнеза. Эта страница носит информационный характер и не заменяет консультацию уролога.',
         faqs: [
           {
+            question: 'Могут ли доноры почки и люди после трансплантации почки приехать на курортное лечение?',
+            answer: 'Да, это новое направление лечения, недавно введённое в Марианских Лазнях: оператор прямо называет клиентов после трансплантации почки и доноров почки среди пролеченных групп. Условие — стабильное течение и заключение вашего лечащего нефролога или трансплантационного центра; возьмите его с собой, так как объём питья и процедуры подбираются с учётом этого. О приёме на лечение решает курортный врач в индивидуальном порядке.',
+          },
+          {
+            question: 'Помогает ли курортное лечение при недержании мочи?',
+            answer: 'Недержание мочи и заболевания простаты — отдельное направление в Марианских Лазнях. Для этого оператор первым в Чехии внедрил PelviPower — аппарат, установленный в отеле Нове Лазне: он сначала измеряет функцию мышц тазового дна, а затем укрепляет их магнитными импульсами, без вмешательства. Подходит ли вам такая тренировка и как она сочетается с остальными процедурами, решает курортный врач при первичном осмотре.',
+          },
+          {
             question: 'Какие курорты подходят при урологических заболеваниях?',
             answer: 'Подходят курорты, где хронические воспаления мочевых путей, состояния после урологических операций или хронический простатит указаны как официальное показание и предлагается урологическое наблюдение во время пребывания. Марианские Лазни отвечают этому через позиции VIII/1, VIII/3 и VIII/4 чешского индикационного списка и опираются на питьевой курс из собственных минеральных источников.',
           },
@@ -4862,6 +4985,11 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
         sources: [
+          {
+            title: 'Léčebné lázně Mariánské Lázně — лечение урологических заболеваний',
+            url: 'https://lazneml.cz/leceni-urologickych-onemocneni/',
+            note: 'Страница оператора: пролеченные диагнозы, включая недержание мочи, заболевания простаты, а также новое направление — клиенты после трансплантации почки и доноры почки; внедрение PelviPower первыми в Чехии, аппарат в отеле Нове Лазне. Текст на чешском языке.',
+          },
           {
             title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VIII — заболевания мочевыделительной системы',
             url: '/ru/pokazaniya-i-protivopokazaniya',
@@ -11053,6 +11181,593 @@ export const diagnoses: Diagnosis[] = [
           {
             label: 'Курортное лечение после лечения онкологии',
             href: '/ru/kurortnoe-lechenie/posle-lecheniya-onkologii',
+          },
+          {
+            label: 'Показания и противопоказания',
+            href: '/ru/pokazaniya-i-protivopokazaniya',
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: 'tendon-pain',
+    groupId: 'musculoskeletal',
+    roman: 'VII',
+    codes: [
+      'VII/6',
+    ],
+    conditionName: 'Tendinopathy',
+    icd10: 'M77',
+    image: '/images/library/treatments/electrode-pad-shoulder.jpg',
+    medicalReviewDate: '2026-09-14',
+    imageAlt: {
+      de: 'Therapeutin legt eine Elektrode an die Schulter einer Kurgästin vor der Elektrotherapie',
+      en: 'A therapist attaching an electrode to a spa guest’s shoulder before electrotherapy',
+      cs: 'Detail rukou připevňujících elektrodu s popruhem na horní část zad a rameno muže.',
+      ru: 'Терапевт закрепляет электрод на плече пациентки курорта перед электролечением',
+    },
+    content: {
+      de: {
+        slug: 'sehnen-und-sehnenansaetze',
+        navLabel: 'Sehnen und Ansätze',
+        title: 'Kur bei Sehnen- und Ansatzbeschwerden in Marienbad',
+        h1: 'Kur bei Sehnen-, Schleimbeutel- und Ansatzbeschwerden',
+        metaTitle: 'Kur bei Sehnenbeschwerden in Marienbad — Anwendungen',
+        metaDescription: 'Karpaltunnel, Fersensporn, Tennisellenbogen, Schleimbeutel: Laser, Stoßwelle, Ultraschall und Kryotherapie in Marienbad — Ablauf und Dauer.',
+        lead: 'Karpaltunnelsyndrom, Fersensporn, Tennisellenbogen, entzündeter Schleimbeutel: Beschwerden an Sehnen, Sehnenscheiden und Muskelansätzen stehen als eigene Position auf der tschechischen Indikationsliste — einschließlich der Fälle, die durch Vibration oder jahrelange einseitige Überlastung als Berufskrankheit entstanden sind.',
+        teaser: 'Karpaltunnel, Fersensporn, Tennisellenbogen und Schleimbeutel: Laser, Stoßwelle, Ultraschall und Kryotherapie unter ärztlicher Kontrolle.',
+        treats: [
+          'Karpaltunnelsyndrom in leichter bis mittlerer Ausprägung, solange keine Operationsindikation besteht',
+          'Plantarfasziitis und Fersenschmerz durch Überlastung, umgangssprachlich Fersensporn',
+          'Epikondylitis am Ellenbogen, also Tennis- und Golferellenbogen',
+          'Schleimbeutelentzündung an Schulter, Ellenbogen, Hüfte oder Knie',
+          'Enthesopathien, also schmerzhafte Reizzustände an den Ansätzen von Sehnen und Bändern',
+          'Beschwerden durch Vibration oder langjährige einseitige Überlastung, die als Berufskrankheit anerkannt sind',
+        ],
+        notFor: [
+          'Frische Sehnenruptur oder ein Befund, der operativ versorgt gehört',
+          'Karpaltunnelsyndrom mit fortschreitendem Muskelschwund oder deutlichem Ausfall — das gehört zur Entlastungsoperation, nicht in die Kur',
+          'Akute eitrige Entzündung eines Schleimbeutels oder Gelenks',
+          'Nicht abgeheilte Wunde im Anwendungsgebiet',
+          'Akute Erkrankungen, Schwangerschaft, Epilepsie sowie Unfähigkeit zur selbstständigen Versorgung',
+        ],
+        course: [
+          {
+            heading: 'Eingangsuntersuchung am Anreisetag',
+            body: 'Der Kurarzt tastet die schmerzhafte Region ab, prüft Kraft, Gefühl und Beweglichkeit und sichtet mitgebrachte Befunde — bei Verdacht auf ein Karpaltunnelsyndrom ist die Elektroneurografie Ihres Neurologen wichtig, weil sie über die Schwere entscheidet. Danach steht der Anwendungsplan.',
+          },
+          {
+            heading: 'Erste Woche: Reizzustand beruhigen',
+            body: 'Zuerst geht es um die Entlastung des gereizten Gewebes: Laser, Ultraschall und lokale Kryotherapie auf den Schmerzpunkt, dazu Physiotherapie, die die Region vorerst nicht belastet.',
+          },
+          {
+            heading: 'Zweite Woche: Belastbarkeit aufbauen',
+            body: 'Mit nachlassendem Schmerz kommen Dehnung, exzentrisches Training der betroffenen Sehne und die Korrektur der Bewegung dazu, die den Reiz überhaupt ausgelöst hat — bei Berufskrankheiten ist genau das der entscheidende Teil.',
+          },
+          {
+            heading: 'Abschlussuntersuchung und Plan für zu Hause',
+            body: 'Befund und Beweglichkeit werden erneut beurteilt und schriftlich festgehalten. Sie erhalten ein Übungsprogramm und Hinweise zur Entlastung am Arbeitsplatz; ohne die kehrt der Reiz zurück.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Lasertherapie',
+            detail: 'Der Laserscanner wird in Marienbad unter anderem bei Arthroseschmerz, Chondropathie, Karpaltunnelsyndrom, akuter Muskelverletzung, Epikondylitis, Bandentzündung, Diskopathie, Schleimbeutelentzündung, Enthesopathie, Muskelverspannung und Plantarfasziitis durch Überlastung eingesetzt.',
+          },
+          {
+            name: 'Lokale Kryotherapie',
+            detail: 'Behandlung mit extremer Kälte auf den Schmerzpunkt; in Marienbad wechseln dabei Kälte von etwa −18 °C und Wärme von etwa +41 °C in rascher Folge. Temperatur und Zahl der Zyklen legt der Arzt je nach Befund fest.',
+          },
+          {
+            name: 'Stoßwelle und Ultraschall',
+            detail: 'Physikalische Anwendungen auf die betroffene Sehne oder den Ansatz, Teil des Angebots der physikalischen Therapie vor Ort.',
+          },
+          {
+            name: 'Magnetfeldtherapie',
+            detail: 'Einschließlich Hochinduktionsmagnet; wird auf die schmerzhafte Region angewandt und vom Arzt verordnet.',
+          },
+          {
+            name: 'Elektrotherapie',
+            detail: 'Diadynamische und Interferenzströme zur Schmerzlinderung und Lösung der begleitenden Muskelverspannung.',
+          },
+          {
+            name: 'Einzelphysiotherapie',
+            detail: 'Täglich, mit Dehnung, exzentrischem Training der betroffenen Sehne und der Korrektur der auslösenden Bewegung.',
+          },
+          {
+            name: 'Moorpackung',
+            detail: 'Wärmeintensive Anwendung bei bis zu 40 °C auf die betroffene Region; sie belastet Herz und Kreislauf und wird nur nach ärztlicher Entscheidung verordnet.',
+          },
+          {
+            name: 'Klassische Massage',
+            detail: 'Auf die Regionen, in denen sich als Reaktion auf die Schonhaltung sekundäre Verspannungen gebildet haben.',
+          },
+        ],
+        stay: {
+          heading: 'Wie lange und wann',
+          body: 'Schmerzhafte Syndrome der Sehnen, Sehnenscheiden, Schleimbeutel, Muskelansätze, Skelettmuskeln oder Gelenke stehen als Position VII/6 auf der tschechischen Indikationsliste, ausdrücklich einschließlich der Erkrankungen durch Vibration und durch langjährige, übermäßige, einseitige Überlastung als Berufskrankheit. Für Aufenthalte, die eine tschechische Krankenkasse trägt, sind als Grundaufenthalt 21 Tage komplexe oder 21 Tage Zuschussbehandlung vorgesehen; der Wiederholungsaufenthalt läuft über 21 Tage komplexe oder Zuschussbehandlung, in bestimmten Fällen über 14. Selbstzahler stimmen die Dauer mit dem Kurarzt ab; als fachliche Untergrenze gelten mindestens 10 Anwendungen über mindestens 10 Tage. Eine Jahreszeit ist medizinisch nicht vorgegeben.',
+        },
+        ongoing: {
+          heading: 'Erfahrung und laufende Forschung',
+          body: 'Laser, Ultraschall, Stoßwelle und Magnetfeld gehören in Marienbad seit langem zur physikalischen Therapie bei Sehnen- und Ansatzbeschwerden; der Kurarzt stellt sie nach Befund und aus klinischer Erfahrung zusammen. Wie es dem einzelnen Gast dabei ergeht, bleibt nicht ungeprüft: Jeder Behandlungsaufenthalt beginnt mit einer Eingangs- und endet mit einer Abschlussuntersuchung samt schriftlichem Abschlussbericht, sodass der Verlauf dokumentiert ist und der Kurarzt den Plan unterwegs anpassen kann. Für die Kurmedizin als Fach entsteht derzeit erstmals seit Langem systematische Evidenz. Das Institut lázeňství a balneologie, v.v.i., die 2019 vom Karlsbader Kreis gegründete Forschungseinrichtung für Kurwesen und Balneologie, führt seit 2026 gemeinsam mit den Léčebné lázně Mariánské Lázně die erste klinische Studie dieses Formats seit dreißig Jahren durch. Sie betrifft urologische und nephrologische Diagnosen, nicht die auf dieser Seite beschriebene: Mehr als hundert Patienten werden vor und nach dem Kuraufenthalt auf Gesundheitszustand und Lebensqualität untersucht, fachlicher Garant ist prim. MUDr. Ladislav Špišák, CSc.; Ergebnisse liegen noch nicht vor. Die Studie läuft im Projekt Zentrum für Kurforschung (2024 bis 2027), das aus dem Operationellen Programm Gerechter Übergang finanziert wird und mit der Tschechischen Technischen Universität, der Westböhmischen Universität und der Akademie der Wissenschaften der Tschechischen Republik zusammenarbeitet. Was solche Arbeit erbringen kann, zeigt die frühere Zusammenarbeit desselben Instituts mit den Marienbader Kurhäusern: Die gemeinsame Studie zur Kurrehabilitation nach COVID-19 erhielt 2021 den Innovation Award der European Spas Association in der Kategorie Medical Spa Scientific Research.',
+        },
+        physicianNote: 'Ob und in welchem Umfang eine Kur bei Ihren Sehnen- oder Ansatzbeschwerden infrage kommt, entscheidet der Kurarzt bei der Eingangsuntersuchung anhand des Befunds. Ein Karpaltunnelsyndrom mit fortschreitendem Ausfall gehört in die Hand eines Operateurs, nicht in eine Kurplanung. Diese Seite informiert und ersetzt keine ärztliche Beratung.',
+        faqs: [
+          {
+            question: 'Hilft eine Kur beim Karpaltunnelsyndrom?',
+            answer: 'Bei leichter bis mittlerer Ausprägung gehört das Karpaltunnelsyndrom zu den Diagnosen, für die der Laserscanner in Marienbad eingesetzt wird, ergänzt um Physiotherapie und physikalische Anwendungen. Entscheidend ist der Schweregrad: Zeigt die Elektroneurografie einen fortschreitenden Ausfall oder bildet sich die Daumenballenmuskulatur zurück, ist die Entlastungsoperation das Mittel der Wahl und die Kur nicht der richtige Weg. Bringen Sie den Befund Ihres Neurologen mit, damit der Kurarzt das beurteilen kann.',
+          },
+          {
+            question: 'Was hilft beim Fersensporn?',
+            answer: 'Gemeint ist meist die Plantarfasziitis, ein Reizzustand der Sehnenplatte an der Fußsohle durch Überlastung. In Marienbad wird sie mit Laser, Stoßwelle und Ultraschall auf den Schmerzpunkt behandelt, dazu kommen Dehnung, exzentrisches Training der Wadenmuskulatur und die Korrektur der Belastung. Den Plan stellt der Kurarzt nach der Eingangsuntersuchung zusammen.',
+          },
+          {
+            question: 'Zahlt die Krankenkasse eine Kur bei Sehnenbeschwerden?',
+            answer: 'Für Versicherte einer tschechischen Krankenkasse gilt Position VII/6 der Indikationsliste: 21 Tage komplexe oder 21 Tage Zuschussbehandlung als Grundaufenthalt, der Wiederholungsaufenthalt über 21 oder 14 Tage. Die Position nennt ausdrücklich auch Beschwerden durch Vibration und durch langjährige einseitige Überlastung, die als Berufskrankheit anerkannt sind. Gäste mit einer Versicherung außerhalb Tschechiens klären die Kostenübernahme vorab mit ihrem eigenen Kostenträger.',
+          },
+          {
+            question: 'Wie fühlt sich die lokale Kryotherapie an?',
+            answer: 'Kälte und Wärme wechseln in rascher Folge, in Marienbad etwa zwischen −18 °C und +41 °C. Das ist kurz unangenehm, aber nicht schmerzhaft. Temperatur und Zahl der Zyklen legt der Arzt je nach Befund fest; wenn Sie eine Anwendung nicht vertragen, sagen Sie es, damit der Plan geändert wird.',
+          },
+          {
+            question: 'Kommt eine Kur auch bei einer anerkannten Berufskrankheit infrage?',
+            answer: 'Ja. Position VII/6 schließt ausdrücklich Erkrankungen ein, die durch die Einwirkung von Vibrationen oder durch langjährige, übermäßige, einseitige Überlastung entstanden und nach der tschechischen Liste der Berufskrankheiten anerkannt sind. In der Kur liegt der Schwerpunkt dann nicht nur auf der Schmerzlinderung, sondern vor allem auf der Korrektur der Bewegung und der Entlastung am Arbeitsplatz.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikationsliste für die Kurbehandlung (Verordnung Nr. 2/2015 Slg.), Gruppe VII — Position VII/6',
+            url: '/de/indikationen-und-kontraindikationen',
+            note: 'Schmerzhafte Syndrome der Sehnen, Sehnenscheiden, Schleimbeutel, Muskelansätze, Skelettmuskeln oder Gelenke, einschließlich Vibrations- und Überlastungsschäden als Berufskrankheit: Grundaufenthalt 21 Tage komplexe oder Zuschussbehandlung, Wiederholungsaufenthalt 21 (in bestimmten Fällen 14) Tage.',
+          },
+          {
+            title: 'Verordnung Nr. 2/2015 Slg. über die fachlichen Kriterien der kurmedizinischen Rehabilitationspflege — Gruppe VII',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Vollständiger Wortlaut der Indikationsliste für Erkrankungen des Bewegungsapparats samt Kontraindikationen. Tschechischer Text.',
+          },
+          {
+            title: 'Klinische Studie zu den objektiven Wirkungen der komplexen Kurbehandlung bei urologischen und nephrologischen Diagnosen (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Laufende Studie des Instituts lázeňství a balneologie mit den Léčebné lázně Mariánské Lázně, mehr als hundert Patienten, Beginn 2026. Sie betrifft urologische und nephrologische Diagnosen; Ergebnisse liegen noch nicht vor.',
+          },
+        ],
+        related: [
+          {
+            label: 'Kur bei Arthrose',
+            href: '/de/kur-bei/arthrose',
+          },
+          {
+            label: 'Kur bei Wirbelsäulenbeschwerden',
+            href: '/de/kur-bei/wirbelsaeule',
+          },
+          {
+            label: 'Bewegungsapparat, Moor und Mineralwasser',
+            href: '/de/magazin/bewegungsapparat-moor-mineralwasser',
+          },
+          {
+            label: 'Indikationen und Kontraindikationen',
+            href: '/de/indikationen-und-kontraindikationen',
+          },
+        ],
+      },
+      en: {
+        slug: 'carpal-tunnel-and-heel-spur',
+        navLabel: 'Tendons and attachments',
+        title: 'Spa treatment for tendon and attachment pain in Marienbad',
+        h1: 'Spa treatment for tendon, bursa and attachment pain',
+        metaTitle: 'Spa treatment for carpal tunnel and heel spur | Marienbad.com',
+        metaDescription: 'Carpal tunnel, heel spur, tennis elbow, bursitis: laser, shock wave, ultrasound and cryotherapy in Marienbad — course and length of stay.',
+        lead: 'Carpal tunnel syndrome, heel spur, tennis elbow, an inflamed bursa: complaints of the tendons, tendon sheaths and muscle attachments have their own position on the Czech indication list — including cases that arose as an occupational disease through vibration or years of one-sided overload.',
+        teaser: 'Carpal tunnel, heel spur, tennis elbow and bursitis: laser, shock wave, ultrasound and cryotherapy under medical supervision.',
+        treats: [
+          'Carpal tunnel syndrome of mild to moderate severity, as long as there is no indication for surgery',
+          'Plantar fasciitis and heel pain from overload, commonly known as a heel spur',
+          'Epicondylitis of the elbow, that is, tennis and golfer’s elbow',
+          'Bursitis of the shoulder, elbow, hip or knee',
+          'Enthesopathies, that is, painful irritation at the attachments of tendons and ligaments',
+          'Complaints from vibration or years of one-sided overload that are recognised as an occupational disease',
+        ],
+        notFor: [
+          'A recent tendon rupture, or a finding that belongs in surgical care',
+          'Carpal tunnel syndrome with progressive muscle wasting or a marked deficit — this calls for decompression surgery, not a spa cure',
+          'Acute purulent inflammation of a bursa or joint',
+          'An unhealed wound in the treatment area',
+          'Acute illness, pregnancy, epilepsy, and an inability to manage personal care independently',
+        ],
+        course: [
+          {
+            heading: 'Initial examination on arrival day',
+            body: 'The spa physician palpates the painful region, checks strength, sensation and mobility, and reviews any findings you bring — if carpal tunnel syndrome is suspected, your neurologist’s electroneurography is important, because it determines the severity. The treatment plan follows from this.',
+          },
+          {
+            heading: 'First week: calming the irritation',
+            body: 'The first priority is relieving the irritated tissue: laser, ultrasound and local cryotherapy on the painful point, together with physiotherapy that does not load the region for now.',
+          },
+          {
+            heading: 'Second week: building up load tolerance',
+            body: 'As pain eases, stretching, eccentric training of the affected tendon and correction of the movement that triggered the irritation in the first place are added — for occupational diseases, this is exactly the decisive part.',
+          },
+          {
+            heading: 'Final examination and plan for home',
+            body: 'Findings and mobility are assessed again and recorded in writing. You receive an exercise programme and guidance on relieving strain at the workplace; without it, the irritation returns.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Laser therapy',
+            detail: 'The laser scanner is used in Marienbad for, among other things, osteoarthritis pain, chondropathy, carpal tunnel syndrome, acute muscle injury, epicondylitis, ligament inflammation, discopathy, bursitis, enthesopathy, muscle tension and plantar fasciitis from overload.',
+          },
+          {
+            name: 'Local cryotherapy',
+            detail: 'Treatment with extreme cold applied to the painful point; in Marienbad, cold at around −18 °C and heat at around +41 °C alternate in rapid succession. The physician sets the temperature and number of cycles according to the findings.',
+          },
+          {
+            name: 'Shock wave and ultrasound',
+            detail: 'Physical treatments applied to the affected tendon or attachment, part of the on-site physical therapy programme.',
+          },
+          {
+            name: 'Magnetic field therapy',
+            detail: 'Including a high-induction magnet; applied to the painful region and prescribed by the physician.',
+          },
+          {
+            name: 'Electrotherapy',
+            detail: 'Diadynamic and interferential currents to relieve pain and ease the accompanying muscle tension.',
+          },
+          {
+            name: 'Individual physiotherapy',
+            detail: 'Daily, with stretching, eccentric training of the affected tendon and correction of the triggering movement.',
+          },
+          {
+            name: 'Peat pack',
+            detail: 'A heat-intensive treatment at up to 40 °C on the affected region; it places a load on the heart and circulation and is prescribed only at the physician’s discretion.',
+          },
+          {
+            name: 'Classic massage',
+            detail: 'On the regions where secondary tension has built up in reaction to the protective posture.',
+          },
+        ],
+        stay: {
+          heading: 'How long, and when',
+          body: 'Painful syndromes of the tendons, tendon sheaths, bursae, muscle attachments, skeletal muscles or joints are listed as position VII/6 of the Czech indication list, explicitly including diseases caused by vibration and by years of excessive, one-sided overload recognised as an occupational disease. For stays covered by Czech public health insurance, the basic stay is set at 21 days of comprehensive or 21 days of contributory care; the repeat stay runs to 21 days of comprehensive or contributory care, in certain cases 14. Self-paying guests agree the length with the spa physician; the professional minimum is at least 10 treatments over at least 10 days. There is no medical rule for the season.',
+        },
+        ongoing: {
+          heading: 'Experience and research under way',
+          body: 'Laser, ultrasound, shock wave and magnetic field therapy have long been part of physical therapy for tendon and attachment complaints in Marienbad; the spa physician puts them together according to the findings and clinical experience. How the individual guest fares is not left unchecked: every treatment stay begins with an initial and ends with a final medical examination and a written final report, so the course is documented and the spa physician can adjust the plan along the way. Systematic evidence for spa medicine as a field is being built for the first time in a long while. The Institute of Spa Medicine and Balneology (Institut lázeňství a balneologie, v.v.i.), founded by the Karlovy Vary Region in 2019, has been running the first clinical study of this format in thirty years since 2026, together with Léčebné lázně Mariánské Lázně. It covers urological and nephrological diagnoses rather than the one described on this page: more than a hundred patients are examined before and after the spa stay for health status and quality of life, with prim. MUDr. Ladislav Špišák, CSc. as professional guarantor, and results are not yet available. The study runs within the Spa Research Centre project (2024 to 2027), funded by the Just Transition Operational Programme and working with the Czech Technical University, the University of West Bohemia and the Czech Academy of Sciences. What such work can produce is shown by the same institute’s earlier collaboration with the Marienbad spa houses: their joint study of spa rehabilitation after COVID-19 received the European Spas Association Innovation Award in 2021 in the Medical Spa Scientific Research category.',
+        },
+        physicianNote: 'Whether and to what extent a spa cure is right for your tendon or attachment complaints is decided by the spa physician at the initial examination, based on the findings. Carpal tunnel syndrome with a progressive deficit belongs in the hands of a surgeon, not in spa cure planning. This page provides information and does not replace medical advice.',
+        faqs: [
+          {
+            question: 'Does a spa cure help with carpal tunnel syndrome?',
+            answer: 'At mild to moderate severity, carpal tunnel syndrome is one of the diagnoses for which the laser scanner is used in Marienbad, supplemented by physiotherapy and physical treatments. The severity is decisive: if electroneurography shows a progressive deficit, or the thumb muscle bulk is wasting, decompression surgery is the treatment of choice and a spa cure is not the right path. Bring your neurologist’s findings so the spa physician can assess this.',
+          },
+          {
+            question: 'What helps with a heel spur?',
+            answer: 'This usually means plantar fasciitis, an irritation of the tendon plate on the sole of the foot caused by overload. In Marienbad it is treated with laser, shock wave and ultrasound on the painful point, together with stretching, eccentric training of the calf muscles and correction of the load. The spa physician puts the plan together after the initial examination.',
+          },
+          {
+            question: 'Does health insurance cover a spa cure for tendon complaints?',
+            answer: 'For people insured with a Czech health insurance fund, position VII/6 of the indication list applies: 21 days of comprehensive or 21 days of contributory care as the basic stay, with the repeat stay running to 21 or 14 days. The position also explicitly names complaints from vibration and from years of one-sided overload that are recognised as an occupational disease. Guests insured outside the Czech Republic should clarify cost coverage with their own insurer in advance.',
+          },
+          {
+            question: 'What does local cryotherapy feel like?',
+            answer: 'Cold and heat alternate in rapid succession, in Marienbad at around −18 °C and +41 °C. This is briefly unpleasant but not painful. The physician sets the temperature and number of cycles according to the findings; if you do not tolerate a treatment well, say so, so the plan can be changed.',
+          },
+          {
+            question: 'Can a spa cure also be an option for a recognised occupational disease?',
+            answer: 'Yes. Position VII/6 explicitly includes diseases that arose through exposure to vibration or through years of excessive, one-sided overload and are recognised under the Czech list of occupational diseases. In that case, the cure focuses not only on relieving pain but above all on correcting movement and relieving strain at the workplace.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Czech indication list for spa treatment (Decree No. 2/2015 Coll.), Group VII — position VII/6',
+            url: '/en/indications-and-contraindications',
+            note: 'Painful syndromes of the tendons, tendon sheaths, bursae, muscle attachments, skeletal muscles or joints, including vibration and overload damage recognised as an occupational disease: basic stay 21 days of comprehensive or contributory care, repeat stay 21 (in certain cases 14) days.',
+          },
+          {
+            title: 'Decree No. 2/2015 Coll. on the professional criteria for spa rehabilitation care — Group VII',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Full text of the indication list for diseases of the musculoskeletal system, including contraindications. Czech text.',
+          },
+          {
+            title: 'Clinical study of the objective effects of comprehensive spa care in kidney and urological conditions (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Ongoing study by the Institute of Spa Medicine and Balneology with Léčebné lázně Mariánské Lázně, more than a hundred patients, started 2026. It covers urological and nephrological diagnoses; results are not yet available.',
+          },
+        ],
+        related: [
+          {
+            label: 'Spa treatment for osteoarthritis',
+            href: '/en/spa-treatment-for/osteoarthritis',
+          },
+          {
+            label: 'Spa treatment for spine and back pain',
+            href: '/en/spa-treatment-for/spine-and-back-pain',
+          },
+          {
+            label: 'Musculoskeletal treatment: peat and mineral water',
+            href: '/en/magazine/musculoskeletal-treatment-peat-mineral',
+          },
+          {
+            label: 'Indications and contraindications',
+            href: '/en/indications-and-contraindications',
+          },
+        ],
+      },
+      cs: {
+        slug: 'slachy-a-uponove-bolesti',
+        navLabel: 'Šlachy a úpony',
+        title: 'Lázeňská léčba bolestí šlach a úponů v Mariánských Lázních',
+        h1: 'Lázeňská léčba bolestí šlach, tíhových váčků a úponů',
+        metaTitle: 'Léčba bolestí šlach a úponů — Mariánské Lázně | Marienbad.com',
+        metaDescription: 'Karpální tunel, patní ostruha, tenisový loket, tíhový váček: laser, rázová vlna, ultrazvuk a kryoterapie v Mariánských Lázních — postup a délka pobytu.',
+        lead: 'Syndrom karpálního tunelu, patní ostruha, tenisový loket, zanícený tíhový váček: potíže se šlachami, šlachovými pochvami a úpony svalů jsou samostatnou položkou českého indikačního seznamu — včetně případů, které vznikly z vibrací nebo z dlouholetého jednostranného přetěžování jako nemoc z povolání.',
+        teaser: 'Karpální tunel, patní ostruha, tenisový loket a tíhový váček: laser, rázová vlna, ultrazvuk a kryoterapie pod lékařskou kontrolou.',
+        treats: [
+          'Syndrom karpálního tunelu v lehkém až středním stupni, pokud nejde o indikaci k operaci',
+          'Plantární fasciitida a bolest patní kosti z přetížení, lidově patní ostruha',
+          'Epikondylitida lokte, tedy tenisový a golfový loket',
+          'Zánět tíhového váčku na ramenu, lokti, kyčli nebo koleni',
+          'Entezopatie, tedy bolestivé dráždění v místě úponu šlach a vazů',
+          'Potíže způsobené vibracemi nebo dlouholetým jednostranným přetěžováním, uznané jako nemoc z povolání',
+        ],
+        notFor: [
+          'Čerstvá ruptura šlachy nebo nález, který patří k operačnímu řešení',
+          'Syndrom karpálního tunelu s postupující svalovou atrofií nebo výrazným výpadkem — ten patří k uvolňovací operaci, ne do lázní',
+          'Akutní hnisavý zánět tíhového váčku nebo kloubu',
+          'Nezhojená rána v oblasti procedury',
+          'Akutní onemocnění, těhotenství, epilepsie a neschopnost samostatné sebeobsluhy',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař prohmatá bolestivou oblast, vyšetří síly, citlivost a hybnost a projde přinesené nálezy — při podezření na syndrom karpálního tunelu je důležitá elektroneurografie od vašeho neurologa, protože rozhoduje o závažnosti. Poté se stanoví plán procedur.',
+          },
+          {
+            heading: 'První týden: zklidnění dráždění',
+            body: 'Nejprve jde o odlehčení podrážděné tkáně: laser, ultrazvuk a lokální kryoterapie na bolestivý bod, k tomu fyzioterapie, která oblast zatím nezatěžuje.',
+          },
+          {
+            heading: 'Druhý týden: budování zátěže',
+            body: 'S ustupující bolestí přibývá strečink, excentrický trénink postižené šlachy a korekce pohybu, který dráždění vůbec vyvolal — u nemocí z povolání je právě tohle rozhodující část.',
+          },
+          {
+            heading: 'Závěrečné vyšetření a plán pro domácí péči',
+            body: 'Nález a hybnost se znovu posoudí a písemně zaznamenají. Dostanete cvičební program a doporučení k odlehčení na pracovišti; bez nich se dráždění vrací.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Laserterapie',
+            detail: 'Laserový skener se v Mariánských Lázních používá mimo jiné u bolesti při artróze, chondropatie, syndromu karpálního tunelu, akutního svalového poranění, epikondylitidy, zánětu vazů, discopatie, zánětu tíhového váčku, entezopatie, svalového napětí a plantární fasciitidy z přetížení.',
+          },
+          {
+            name: 'Lokální kryoterapie',
+            detail: 'Léčba extrémním chladem na bolestivý bod; v Mariánských Lázních se při ní rychle střídá chlad kolem −18 °C a teplo kolem +41 °C. Teplotu a počet cyklů určuje lékař podle nálezu.',
+          },
+          {
+            name: 'Rázová vlna a ultrazvuk',
+            detail: 'Fyzikální procedury na postiženou šlachu nebo úpon, součást místní nabídky fyzikální terapie.',
+          },
+          {
+            name: 'Magnetoterapie',
+            detail: 'Včetně vysokoindukčního magnetu; aplikuje se na bolestivou oblast a předepisuje ji lékař.',
+          },
+          {
+            name: 'Elektroléčba',
+            detail: 'Diadynamické a interferenční proudy ke zmírnění bolesti a uvolnění doprovodného svalového napětí.',
+          },
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, se strečinkem, excentrickým tréninkem postižené šlachy a korekcí pohybu, který dráždění vyvolal.',
+          },
+          {
+            name: 'Slatinný zábal',
+            detail: 'Tepelně náročná procedura při teplotě do 40 °C na postiženou oblast; zatěžuje srdce a oběh a předepisuje se jen po rozhodnutí lékaře.',
+          },
+          {
+            name: 'Klasická masáž',
+            detail: 'Na oblasti, kde se jako reakce na úlevové držení těla vytvořilo druhotné svalové napětí.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Bolestivé syndromy šlach, šlachových pochev, tíhových váčků, úponů svalů, kosterních svalů nebo kloubů jsou položka VII/6 indikačního seznamu, výslovně včetně onemocnění způsobeného vibracemi a dlouhodobým, nadměrným, jednostranným přetěžováním jako nemoc z povolání; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí délku po dohodě s lázeňským lékařem; jako odborné minimum platí alespoň 10 procedur během alespoň 10 dnů. Pro roční období neexistuje lékařský předpis.',
+        },
+        ongoing: {
+          heading: 'Zkušenost a probíhající výzkum',
+          body: 'Laser, ultrazvuk, rázová vlna a magnetoterapie patří v Mariánských Lázních dlouho k fyzikální terapii bolestí šlach a úponů; lázeňský lékař je sestavuje podle nálezu a z klinické zkušenosti. Jak na tom jednotlivý host je, se nenechává bez kontroly: každý léčebný pobyt začíná vstupní a končí výstupní lékařskou prohlídkou a závěrečnou zprávou, takže je průběh doložený a lázeňský lékař může plán během pobytu upravit. Pro lázeňskou medicínu jako obor vzniká poprvé po dlouhé době systematická evidence. Institut lázeňství a balneologie, v.v.i., který Karlovarský kraj založil v roce 2019, vede od roku 2026 spolu s Léčebnými lázněmi Mariánské Lázně první klinickou studii tohoto formátu po třiceti letech. Týká se urologických a nefrologických diagnóz, ne té popsané na této stránce: více než sto pacientů se vyšetřuje před lázeňskou léčbou a po ní na ukazatele zdravotního stavu a kvality života, odborným garantem je prim. MUDr. Ladislav Špišák, CSc., a výsledky zatím nejsou k dispozici. Studie běží v projektu Centrum lázeňského výzkumu (2024 až 2027), financovaném z Operačního programu Spravedlivá transformace a spolupracujícím s ČVUT, Západočeskou univerzitou a Akademií věd ČR. Co z takové práce může vzejít, ukazuje dřívější spolupráce téhož institutu s mariánskolázeňskými lázeňskými domy: jejich společná studie lázeňské rehabilitace po covidu-19 získala v roce 2021 Innovation Award Evropského svazu lázní v kategorii Medical Spa Scientific Research.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba bolestí šlach nebo úponů připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle nálezu. Syndrom karpálního tunelu s postupujícím výpadkem patří do rukou operatéra, ne do plánování lázeňské léčby. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Pomůže lázeňský pobyt při syndromu karpálního tunelu?',
+            answer: 'V lehkém až středním stupni patří syndrom karpálního tunelu k diagnózám, u kterých se v Mariánských Lázních používá laserový skener, doplněný fyzioterapií a fyzikálními procedurami. Rozhodující je stupeň závažnosti: pokud elektroneurografie ukáže postupující výpadek nebo se zmenšuje svalstvo palcového hrbolu, je metodou volby uvolňovací operace a lázeňská léčba není správná cesta. Přineste si nález svého neurologa, aby to lázeňský lékař mohl posoudit.',
+          },
+          {
+            question: 'Co pomáhá na patní ostruhu?',
+            answer: 'Obvykle se tím myslí plantární fasciitida, dráždění šlachové ploténky na chodidle z přetížení. V Mariánských Lázních se léčí laserem, rázovou vlnou a ultrazvukem na bolestivý bod, k tomu přistupuje strečink, excentrický trénink lýtkového svalstva a korekce zátěže. Plán stanoví lázeňský lékař po vstupní prohlídce.',
+          },
+          {
+            question: 'Hradí pojišťovna lázeňský pobyt při bolestech šlach?',
+            answer: 'Pro pojištěnce české zdravotní pojišťovny platí položka VII/6 indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Položka výslovně zahrnuje i potíže způsobené vibracemi a dlouholetým jednostranným přetěžováním, uznané jako nemoc z povolání. Hosté s pojištěním mimo Česko si úhradu předem ověří u svého pojištění.',
+          },
+          {
+            question: 'Jak se cítí lokální kryoterapie?',
+            answer: 'Chlad a teplo se rychle střídají, v Mariánských Lázních zhruba mezi −18 °C a +41 °C. To je krátce nepříjemné, ale ne bolestivé. Teplotu a počet cyklů určuje lékař podle nálezu; pokud vám procedura nesedí, řekněte to, aby se plán upravil.',
+          },
+          {
+            question: 'Přichází lázeňský pobyt v úvahu i při uznané nemoci z povolání?',
+            answer: 'Ano. Položka VII/6 výslovně zahrnuje onemocnění vzniklá působením vibrací nebo dlouhodobým, nadměrným, jednostranným přetěžováním, uznaná podle českého seznamu nemocí z povolání. V lázních se pak důraz neklade jen na zmírnění bolesti, ale především na korekci pohybu a odlehčení na pracovišti.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — položka VII/6',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Bolestivé syndromy šlach, šlachových pochev, tíhových váčků, úponů svalů, kosterních svalů nebo kloubů, včetně poškození z vibrací a přetěžování jako nemoci z povolání: základní pobyt K 21, P 21, opakovaný pobyt K 21, P 21 (P 14).',
+          },
+          {
+            title: 'Vyhláška č. 2/2015 Sb. o odborných kritériích lázeňské léčebně rehabilitační péče — skupina VII',
+            url: 'https://www.zakonyprolidi.cz/cs/2015-2',
+            note: 'Úplné znění indikačního seznamu pro nemoci pohybového ústrojí včetně kontraindikací.',
+          },
+          {
+            title: 'Klinická studie objektivních účinků komplexní lázeňské péče u urologických a nefrologických diagnóz (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Probíhající studie Institutu lázeňství a balneologie s Léčebnými lázněmi Mariánské Lázně, více než sto pacientů, zahájena 2026. Týká se urologických a nefrologických diagnóz; výsledky zatím nejsou k dispozici.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba artrózy',
+            href: '/cs/lazenska-lecba/artroza',
+          },
+          {
+            label: 'Lázeňská léčba páteře a bolestí zad',
+            href: '/cs/lazenska-lecba/pater-a-bolesti-zad',
+          },
+          {
+            label: 'Léčba pohybového aparátu slatinou a minerální vodou',
+            href: '/cs/magazin/lecba-pohyboveho-aparatu',
+          },
+          {
+            label: 'Co hradí pojišťovna u pohybového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/pohybove-ustroji',
+          },
+        ],
+      },
+      ru: {
+        slug: 'zapyastnyj-kanal-i-pyatochnaya-shpora',
+        navLabel: 'Боли в сухожилиях',
+        title: 'Курортное лечение болей в сухожилиях в Марианских Лазнях',
+        h1: 'Курортное лечение сухожилий, суставных сумок и энтезопатий',
+        metaTitle: 'Лечение болей в сухожилиях — Марианские Лазни | Marienbad.com',
+        metaDescription: 'Запястный канал, пяточная шпора, теннисный локоть, бурсит: лазер, ударная волна, ультразвук и криотерапия в Марианских Лазнях — программа и сроки лечения.',
+        lead: 'Синдром запястного канала, пяточная шпора, теннисный локоть, воспалённая суставная сумка: болезненные состояния сухожилий, их влагалищ и мест прикрепления мышц выделены в отдельную позицию чешского индикационного списка — включая случаи, возникшие как профессиональное заболевание из-за вибрации или многолетней односторонней перегрузки.',
+        teaser: 'Запястный канал, пяточная шпора, теннисный локоть и суставная сумка: лазер, ударно-волновая терапия, ультразвук и криотерапия под врачебным контролем.',
+        treats: [
+          'Синдром запястного канала лёгкой и средней степени выраженности, если отсутствуют показания к операции',
+          'Плантарный фасциит и боль в пятке из-за перегрузки, в обиходе — пяточная шпора',
+          'Эпикондилит локтевого сустава — теннисный локоть и локоть гольфиста',
+          'Бурсит плечевого, локтевого, тазобедренного или коленного сустава',
+          'Энтезопатии — болезненные раздражения в местах прикрепления сухожилий и связок',
+          'Жалобы, вызванные вибрацией или многолетней односторонней перегрузкой, признанные профессиональным заболеванием',
+        ],
+        notFor: [
+          'Свежий разрыв сухожилия или состояние, требующее хирургического лечения',
+          'Синдром запястного канала с прогрессирующей мышечной атрофией или выраженным неврологическим дефицитом — это показание к операции декомпрессии, а не к курортному лечению',
+          'Острое гнойное воспаление суставной сумки или сустава',
+          'Незажившая рана в зоне процедуры',
+          'Острые заболевания, беременность, эпилепсия, а также невозможность самостоятельно себя обслуживать',
+        ],
+        course: [
+          {
+            heading: 'Первичный осмотр в день заезда',
+            body: 'Курортный врач пальпирует болезненную область, проверяет силу, чувствительность и подвижность и изучает привезённые заключения — при подозрении на синдром запястного канала важна электронейрография от вашего невролога, поскольку именно она определяет степень тяжести. После этого составляется план процедур.',
+          },
+          {
+            heading: 'Первая неделя: снятие воспаления',
+            body: 'Сначала речь идёт о снижении нагрузки на раздражённую ткань: лазер, ультразвук и локальная криотерапия на болевую точку, а также физиотерапия, которая пока не нагружает поражённую область.',
+          },
+          {
+            heading: 'Вторая неделя: восстановление нагрузочной способности',
+            body: 'По мере уменьшения боли добавляются растяжка, эксцентрическая тренировка поражённого сухожилия и коррекция движения, которое изначально вызвало раздражение, — при профессиональных заболеваниях именно это является решающей частью лечения.',
+          },
+          {
+            heading: 'Итоговый осмотр и план на дом',
+            body: 'Состояние и подвижность оцениваются повторно и фиксируются письменно. Вы получаете программу упражнений и рекомендации по снижению нагрузки на рабочем месте — без них раздражение вернётся.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Лазеротерапия',
+            detail: 'Лазерный сканер применяется в Марианских Лазнях, в частности, при боли при артрозе, хондропатии, синдроме запястного канала, острой мышечной травме, эпикондилите, воспалении связок, дископатии, бурсите, энтезопатии, мышечном напряжении и плантарном фасциите из-за перегрузки.',
+          },
+          {
+            name: 'Локальная криотерапия',
+            detail: 'Воздействие экстремальным холодом на болевую точку; в Марианских Лазнях холод около −18 °C и тепло около +41 °C быстро чередуются. Температуру и число циклов врач определяет индивидуально по результатам осмотра.',
+          },
+          {
+            name: 'Ударно-волновая терапия и ультразвук',
+            detail: 'Физические процедуры на поражённое сухожилие или место его прикрепления — часть местной программы физиотерапии.',
+          },
+          {
+            name: 'Магнитотерапия',
+            detail: 'Включая магнит высокой индукции; применяется на болезненную область по назначению врача.',
+          },
+          {
+            name: 'Электротерапия',
+            detail: 'Диадинамические и интерференционные токи для снятия боли и сопутствующего мышечного напряжения.',
+          },
+          {
+            name: 'Индивидуальная физиотерапия',
+            detail: 'Ежедневно, с растяжкой, эксцентрической тренировкой поражённого сухожилия и коррекцией движения, вызвавшего раздражение.',
+          },
+          {
+            name: 'Торфяное обёртывание',
+            detail: 'Интенсивная тепловая процедура при температуре до 40 °C на поражённую область; она нагружает сердце и кровообращение и назначается только по решению врача.',
+          },
+          {
+            name: 'Классический массаж',
+            detail: 'На области, где из-за щадящего положения тела образовалось вторичное мышечное напряжение.',
+          },
+        ],
+        stay: {
+          heading: 'Сколько длится и когда ехать',
+          body: 'Болезненные синдромы сухожилий, их влагалищ, суставных сумок, мест прикрепления мышц, скелетных мышц или суставов указаны как позиция VII/6 чешского индикационного списка, причём прямо включая заболевания, вызванные вибрацией и многолетней, чрезмерной, односторонней перегрузкой как профессиональное заболевание. Для пребываний, оплачиваемых чешской страховой, предусмотрено 21 день комплексного или долевого курортного лечения как базовое пребывание; повторное пребывание длится 21 день комплексного или долевого лечения, в отдельных случаях — 14 дней. Гости, оплачивающие лечение самостоятельно, согласуют продолжительность с курортным врачом; профессиональным минимумом считаются не менее 10 процедур за не менее 10 дней. Определённое время года медицински не предписано.',
+        },
+        ongoing: {
+          heading: 'Опыт и текущие исследования',
+          body: 'Лазер, ультразвук, ударно-волновая терапия и магнитотерапия уже давно входят в физиотерапию сухожилий и мест их прикрепления в Марианских Лазнях; курортный врач подбирает их по результатам осмотра и клиническому опыту. Как идут дела у конкретного гостя, не остаётся без проверки: каждое лечебное пребывание начинается с первичного и заканчивается выходным врачебным осмотром и письменным заключением, поэтому течение задокументировано, а курортный врач может по ходу скорректировать план. Для курортной медицины как отрасли впервые за долгое время создаётся систематическая доказательная база. Институт курортного дела и бальнеологии (Institut lázeňství a balneologie, v.v.i.), основанный Карловарским краем в 2019 году, с 2026 года вместе с «Léčebné lázně Mariánské Lázně» проводит первое клиническое исследование такого формата за тридцать лет. Оно касается урологических и нефрологических диагнозов, а не того, который описан на этой странице: более ста пациентов обследуют до курортного лечения и после него по показателям состояния здоровья и качества жизни, научный гарант — prim. MUDr. Ladislav Špišák, CSc., результатов пока нет. Исследование идёт в рамках проекта «Центр курортных исследований» (2024–2027), финансируемого Операционной программой справедливой трансформации, с участием Чешского технического университета, Западночешского университета и Академии наук Чехии. Что даёт такая работа, показывает более раннее сотрудничество того же института с курортными домами Марианских Лазней: их совместное исследование курортной реабилитации после COVID-19 получило в 2021 году Innovation Award Европейского союза курортов в категории Medical Spa Scientific Research.',
+        },
+        physicianNote: 'Показано ли вам курортное лечение при жалобах на сухожилия или места их прикрепления и в каком объёме, решает курортный врач при первичном осмотре на основании результатов обследования. Синдром запястного канала с прогрессирующим неврологическим дефицитом — это задача хирурга, а не курортного планирования. Эта страница носит информационный характер и не заменяет консультацию врача.',
+        faqs: [
+          {
+            question: 'Помогает ли курортное лечение при синдроме запястного канала?',
+            answer: 'При лёгкой и средней степени выраженности синдром запястного канала относится к диагнозам, при которых в Марианских Лазнях применяется лазерный сканер в сочетании с физиотерапией и физическими процедурами. Решающее значение имеет степень тяжести: если электронейрография показывает прогрессирующий неврологический дефицит или отмечается атрофия мышц возвышения большого пальца, методом выбора становится операция декомпрессии, а не курортное лечение. Возьмите с собой заключение вашего невролога, чтобы курортный врач мог это оценить.',
+          },
+          {
+            question: 'Что помогает при пяточной шпоре?',
+            answer: 'Как правило, речь идёт о плантарном фасциите — раздражении сухожильной пластины на подошве стопы из-за перегрузки. В Марианских Лазнях его лечат лазером, ударно-волновой терапией и ультразвуком на болевую точку, а также растяжкой, эксцентрической тренировкой икроножных мышц и коррекцией нагрузки. План составляет курортный врач после первичного осмотра.',
+          },
+          {
+            question: 'Оплачивает ли страховая компания курортное лечение при боли в сухожилиях?',
+            answer: 'Для застрахованных в чешской страховой компании действует позиция VII/6 индикационного списка: 21 день комплексного или 21 день долевого курортного лечения как базовое пребывание, повторное пребывание — 21 или 14 дней. Позиция прямо называет также жалобы из-за вибрации и многолетней односторонней перегрузки, признанные профессиональным заболеванием. Гости со страховкой за пределами Чехии заранее уточняют возможность оплаты у своего страховщика.',
+          },
+          {
+            question: 'Как ощущается локальная криотерапия?',
+            answer: 'Холод и тепло быстро чередуются, в Марианских Лазнях — примерно между −18 °C и +41 °C. Это ненадолго неприятно, но не больно. Температуру и число циклов врач определяет по результатам осмотра; если процедура вам не подходит, сообщите об этом, чтобы план был изменён.',
+          },
+          {
+            question: 'Подходит ли курортное лечение при признанном профессиональном заболевании?',
+            answer: 'Да. Позиция VII/6 прямо включает заболевания, возникшие в результате воздействия вибрации или многолетней, чрезмерной, односторонней перегрузки и признанные профессиональными по чешскому перечню профессиональных заболеваний. В этом случае в курортном лечении акцент делается не только на снятии боли, но прежде всего на коррекции движения и снижении нагрузки на рабочем месте.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Индикационный список для курортного лечения (Постановление № 2/2015 Сб.), группа VII — позиция VII/6',
+            url: '/ru/pokazaniya-i-protivopokazaniya',
+            note: 'Болезненные синдромы сухожилий, их влагалищ, суставных сумок, мест прикрепления мышц, скелетных мышц или суставов, включая повреждения от вибрации и перегрузки как профессиональное заболевание: базовое пребывание 21 день комплексного или долевого лечения, повторное пребывание 21 (в отдельных случаях 14) дней.',
+          },
+          {
+            title: 'Клиническое исследование объективных эффектов комплексного курортного лечения при урологических и нефрологических диагнозах (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Продолжающееся исследование Института курортного дела и бальнеологии вместе с «Léčebné lázně Mariánské Lázně», более ста пациентов, начато в 2026 году. Касается урологических и нефрологических диагнозов; результатов пока нет.',
+          },
+        ],
+        related: [
+          {
+            label: 'Лечение артроза',
+            href: '/ru/kurortnoe-lechenie/artroz',
+          },
+          {
+            label: 'Курортное лечение позвоночника',
+            href: '/ru/kurortnoe-lechenie/pozvonochnik-i-boli-v-spine',
+          },
+          {
+            label: 'Опорно-двигательный аппарат: торф и минеральная вода',
+            href: '/ru/zhurnal/lechenie-oporno-dvigatelnogo-apparata',
           },
           {
             label: 'Показания и противопоказания',

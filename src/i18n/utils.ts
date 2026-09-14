@@ -49,6 +49,9 @@ export function getNavItemsFlat(locale: Locale) {
     // Sekce o péči hrazené pojišťovnou existuje jen česky.
     ...(locale === 'cs' ? [{ navKey: 'nav.insuranceSpa', section: 'insurance-spa' as SectionKey }] : []),
     { navKey: 'nav.treatmentFor', section: 'treatment-for' },
+    { navKey: 'nav.spaProgrammes', section: 'spa-programmes' },
+    { navKey: 'nav.medicalTeam', section: 'medical-team' },
+    { navKey: 'nav.spaAdvice', section: 'spa-advice' },
     // Úhrada kúry ze zahraničí: česky neexistuje, tuzemský pacient má `insurance-spa`.
     ...(locale === 'cs' ? [] : [{ navKey: 'nav.funding', section: 'funding' as SectionKey }]),
     { navKey: 'nav.thingsToDo', section: 'things-to-do' },
@@ -89,6 +92,8 @@ export function getNavItems(locale: Locale): NavItem[] {
       ...(locale === 'cs' ? [link('nav.insuranceSpa', 'insurance-spa')] : []),
       link('nav.indications', 'indications'),
       link('nav.treatmentFor', 'treatment-for'),
+      link('nav.spaProgrammes', 'spa-programmes'),
+      link('nav.medicalTeam', 'medical-team'),
       ...(locale === 'cs' ? [] : [link('nav.funding', 'funding')]),
     ],
   }
@@ -124,6 +129,7 @@ export function getNavItems(locale: Locale): NavItem[] {
       children: [
         link('nav.history', 'history'),
         link('nav.practicalInfo', 'practical-info'),
+        link('nav.spaAdvice', 'spa-advice'),
         link('nav.parking', 'parking'),
       ],
     },
