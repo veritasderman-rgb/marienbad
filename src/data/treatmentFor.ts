@@ -385,7 +385,165 @@ export const diagnoses: Diagnosis[] = [
           { label: 'What a spa cure in Marienbad costs', href: '/en/magazine/spa-week-cost-marienbad' },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'artroza',
+        navLabel: 'Artróza',
+        title: 'Lázeňská léčba artrózy v Mariánských Lázních',
+        h1: 'Lázeňská léčba artrózy',
+        metaTitle: 'Léčba artrózy v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Artróza kolene, kyčle a rukou: jaké procedury lázeňská léčba v Mariánských Lázních nabízí, jak dlouho pobyt trvá a kdy lázně nepřipadají v úvahu.',
+        lead: 'Artróza je nejčastější diagnóza, se kterou hosté do Mariánských Lázní přijíždějí. Léčba stojí na uhličitých koupelích z místní minerální vody, slatinných zábalech a denní fyzioterapii — kombinaci, kterou ambulantní rehabilitace v tomto rozsahu nenabídne.',
+        teaser: 'Koleno, kyčel a ruce: uhličité koupele, slatina a denní fyzioterapie po dva až tři týdny.',
+        treats: [
+          'Gonartróza a koxartróza, tedy artróza kolene a kyčle, pod průběžným ortopedickým dohledem',
+          'Artróza dalších kloubů a artropatie, například ramene, ruky nebo hlezna',
+          'Bolestivé syndromy šlach, šlachových pochev, tíhových váčků a úponů svalů, které artrózu doprovázejí',
+          'Chronické bolesti zad funkčního původu, které se s kloubní artrózou často pojí',
+        ],
+        notFor: [
+          'Akutní ataka s výrazným otokem, přehřátím a výpotkem — ta se řeší nejprve ambulantně',
+          'Čerstvý úraz nebo operace bez zhojené rány a bez souhlasu ošetřujícího lékaře',
+          'Akutní infekční onemocnění, aktivní nádorové onemocnění, srdeční selhání ve stadiu NYHA IV',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde nálezy a medikaci, vyšetří postižené klouby a sestaví léčebný plán. Vezměte si s sebou aktuální rentgenové nebo MR nálezy a seznam léků; bez nich vyjde plán nutně opatrněji.',
+          },
+          {
+            heading: 'Dvě až tři procedury denně',
+            body: 'Dopoledne patří pasivním procedurám — koupel, slatinný zábal, elektroléčba —, odpoledne pohybu. Po každé tepelné proceduře následuje klid vleže; je součástí léčby, ne přestávkou od ní.',
+          },
+          {
+            heading: 'Pohyb jako druhý pilíř',
+            body: 'Individuální i skupinová terapie, cvičení ve vodě a dávkovaná chůze po kolonádě. Zátěž se zvyšuje postupně, protože účinek přichází z opakování, ne z intenzity jedné jednotky.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Jednou týdně lékař zkontroluje průběh a upraví plán. Na závěr dostanete zprávu pro svého ošetřujícího lékaře a cvičební program domů — tu část kúry, která působí nejdéle.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Uhličitá koupel',
+            detail: 'V přírodní minerální vodě. CO₂ vstřebané kůží rozšiřuje drobné cévy a zvyšuje prokrvení kůže.',
+          },
+          {
+            name: 'Suchá plynová koupel',
+            detail: 'V Mariině plynu s 99,7 % CO₂, bez oběhové zátěže vodou — vhodná, když by vanová koupel byla příliš namáhavá.',
+          },
+          {
+            name: 'Slatinný zábal',
+            detail: 'Termoterapie kolem 40 °C. Slatina odevzdává teplo pomalu, proto se při stejné teplotě snáší lépe než voda.',
+          },
+          {
+            name: 'Podvodní masáž',
+            detail: 'Tlaková vodní masáž v teplém bazénu, cílená hlavně na svalstvo kolem kloubu.',
+          },
+          {
+            name: 'Pohybová terapie ve vodě',
+            detail: 'Vztlak snímá zátěž z kloubu, takže lze trénovat rozsah pohybu, který na suchu bolí.',
+          },
+          {
+            name: 'Fyzikální terapie',
+            detail: 'Elektroléčba, magnetoterapie, laser a ultrazvuk, podle nálezu a v sérii.',
+          },
+          {
+            name: 'Plynové injekce',
+            detail: 'Podkožní aplikace CO₂ v okolí kloubu. Opírá se o dlouhou lázeňskou praxi; kontrolované studie k ní chybí.',
+          },
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, s nácvikem domácího cvičebního programu po odjezdu.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'U kox- a gonartrózy jde o položku VII/7 indikačního seznamu, u artrózy dalších kloubů o VII/8; obě hradí zdravotní pojišťovna po dobu, kterou konkrétně rozepisuje stránka Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí obvykle dva až tři týdny po dohodě s lázeňským lékařem. Kratší pobyt než dva týdny nedává velký smysl: odborná literatura označuje 2–3 týdny s 10–21 procedurami za normu balneoterapie. Pro roční období neexistuje lékařský předpis — v pozdním létě a na podzim bývá v lázních klidněji a termíny se snáz domlouvají.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Artróza je nejlépe prozkoumanou oblastí lázeňské medicíny. V randomizované studii se 145 pacienty byla funkce kloubu šest měsíců po třítýdenní lázeňské léčbě o 11,7 bodu WOMAC lepší než při obvyklé péči, lepší zůstala i bolest a ztuhlost (Forestier a kol., 2025, Int J Biometeorol; studie nebyla zaslepená a probíhala v jedné zemi). Metaanalýza 734 pacientů zjistila zlepšení bolesti, ztuhlosti a funkce v období dvou až dvanácti měsíců, ale upozorňuje na velmi nejednotné studie (Matsumoto a kol., 2017, Clin Rheumatol). Pro slatinu existuje randomizovaná studie s 80 pacienty: po dvou týdnech zábalů a koupelí přetrvávala nižší bolest a nižší spotřeba léků devět měsíců, zatímco kontrolní skupina se nezměnila (Fioravanti a kol., 2010, Am J Phys Med Rehabil). Přehled z roku 2025 shrnuje, co z toho plyne a co ne: lázeňská léčba zlepšuje bolest, ztuhlost a výkonnost déle než běžná rehabilitace, ale žádný postup nemění průběh artrózy samotné.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich nálezů. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Které lázně pomáhají při artróze?',
+            answer: 'V Mariánských Lázních je artróza nejčastější léčenou diagnózou. Místo má tři přírodní léčivé zdroje využívané u artrózy: uhličitou minerální vodu pro koupele, přírodní CO₂ plyn pro suché koupele a plynové injekce a slatinu pro teplé zábaly. Studie balneoterapie u artrózy kolene ukazují zlepšení bolesti a funkce, které přetrvává i po skončení pobytu.',
+          },
+          {
+            question: 'Jak dlouho má lázeňský pobyt při artróze trvat, aby zabral?',
+            answer: 'Odborná literatura uvádí jako normu dva až tři týdny s 10 až 21 procedurami; pod deset procedur za deset dní se už o balneoterapii nemluví. Studie s nejdéle zdokumentovaným účinkem u artrózy pracovala se třemi týdny. Víkendový pobyt je odpočinek, ne léčebná kúra.',
+          },
+          {
+            question: 'Pomáhá lázeňský pobyt při artróze trvale?',
+            answer: 'Zmírňuje potíže na měsíce, artrózu ale nevyléčí. V kontrolovaných studiích přetrvávala úleva od bolesti a lepší funkce kloubu podle konkrétního výzkumu tři až devět měsíců, někdy i při nižší spotřebě léků proti bolesti. Úbytek chrupavky samotný nezastaví žádný známý postup, proto se lázeňská léčba u řady indikací opakuje.',
+          },
+          {
+            question: 'Kolik stojí lázeňský pobyt při artróze bez pojišťovny?',
+            answer: 'Cena se řídí hotelem, kategorií pokoje, stravou a počtem procedur, ne diagnózou. Lázeňské balíčky mariánskolázeňských domů zahrnují vstupní prohlídku, lékařem předepsané procedury, polopenzi nebo plnou penzi a ubytování v jedné ceně. Aktuální přehled najdete v rádci k cenám lázeňského pobytu.',
+          },
+          {
+            question: 'Mohu s umělým kloubem jet do lázní?',
+            answer: 'Ano, stavy po náhradě kloubu jsou samostatnou položkou indikačního seznamu a v Mariánských Lázních se běžně léčí. Podmínkou je zhojená rána a souhlas operatéra. Podrobnosti jsou na stránce o lázeňské léčbě po operaci kyčle.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — nemoci pohybového ústrojí',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položky VII/7 (kox- a gonartróza) a VII/8 (artróza jiné lokalizace) s typem péče a délkou hrazeného pobytu.',
+          },
+          {
+            title: 'Forestier R a kol. 2025, Int J Biometeorol — randomizovaná studie, 145 pacientů s artrózou kolene, 6 měsíců',
+            url: 'https://consensus.app/papers/details/ec2bd40091555fb8918ed883777a3427/',
+            note: 'Třítýdenní lázeňská léčba oproti obvyklé péči: po 6 měsících o 11,7 bodu WOMAC lepší funkce. Nezaslepená, jedna země.',
+          },
+          {
+            title: 'Matsumoto H a kol. 2017, Clin Rheumatol — metaanalýza, 734 pacientů',
+            url: 'https://consensus.app/papers/details/7633beab80a1540daf33f7876b289d50/',
+            note: 'Balneoterapie zlepšuje bolest, ztuhlost a funkci po dobu 2 až 12 měsíců. Heterogenita 88–93 %, nízká kvalita primárních studií.',
+          },
+          {
+            title: 'Fioravanti A a kol. 2010, Am J Phys Med Rehabil — randomizovaná studie, 80 pacientů s artrózou kolene',
+            url: 'https://consensus.app/papers/details/117ceeafb8b45fcb8ed8113fbdbc701c/',
+            note: 'Dva týdny slatinných zábalů a koupelí: nižší bolest a spotřeba léků přetrvávaly 9 měsíců. Jednoduše zaslepená, jedno centrum.',
+          },
+          {
+            title: 'Montvydaitė-Kreivaitienė O a kol. 2025, Int J Biometeorol — systematický přehled',
+            url: 'https://consensus.app/papers/details/1c3b89a927ee5550b463873139004fd6/',
+            note: 'Lepší dlouhodobé výsledky než obvyklá rehabilitace; zároveň upozornění, že žádný postup nemění průběh nemoci. Většinou artróza kolene.',
+          },
+          {
+            title: 'Karagülle MZ, Karagülle M 2021, Int J Biometeorol — dopis redakci k délce lázeňské léčby',
+            url: 'https://consensus.app/papers/details/14ac08e16e2d5bbb804b6330ab17303b/',
+            note: 'Norma lázeňské léčby je 2–3 týdny s 10–21 procedurami. Odborný názor, ne studie.',
+          },
+        ],
+        related: [
+          {
+            label: 'Peloidní terapie',
+            href: '/cs/peloidni-terapie',
+          },
+          {
+            label: 'CO₂ terapie',
+            href: '/cs/co2-terapie',
+          },
+          {
+            label: 'Léčba pohybového aparátu slatinou a minerální vodou',
+            href: '/cs/magazin/lecba-pohyboveho-aparatu',
+          },
+          {
+            label: 'Kolik stojí lázeňský pobyt',
+            href: '/cs/magazin/cena-lazenskeho-pobytu',
+          },
+          {
+            label: 'Co hradí pojišťovna u pohybového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/pohybove-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'artroz',
         navLabel: 'Артроз',
@@ -805,7 +963,148 @@ export const diagnoses: Diagnosis[] = [
           { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'po-operaci-kycle',
+        navLabel: 'Po operaci kyčle',
+        title: 'Lázeňská léčba po operaci kyčle v Mariánských Lázních',
+        h1: 'Lázeňská léčba po operaci kyčle',
+        metaTitle: 'Lázně po operaci kyčle — Mariánské Lázně | Marienbad.com',
+        metaDescription: 'Rehabilitace po operaci kyčle v Mariánských Lázních: jaké procedury lázeňská léčba po TEP kyčle nabízí, jak dlouho trvá a kdy je ještě brzy.',
+        lead: 'Po totální endoprotéze kyčle nebo jiné náhradě kyčelního kloubu navazuje lázeňská léčba tam, kde ambulantní fyzioterapie naráží na hranice — denními, lékařem předepsanými procedurami po několik týdnů. Mariánské Lázně kombinují suchou fyzioterapii s pohybovou terapií v teplé vodě, která čerstvě operované kyčli dává vztlak místo zátěže.',
+        teaser: 'Nácvik chůze, cvičení ve vodě a individuální fyzioterapie po TEP kyčle — v úzké návaznosti na operatéra.',
+        treats: [
+          'Stav po totální endoprotéze kyčle (TEP kyčle) po zhojené ráně',
+          'Stav po jiné náhradě kyčelního kloubu, například po krátkodříkové protéze',
+          'Svalové dysbalance a nejistota při chůzi v období doléčení',
+          'Omezená hybnost operované kyčle, když ambulantní rehabilitace sama nestačí',
+        ],
+        notFor: [
+          'Čerstvá rána bez zhojení nebo se známkami infekce v místě operace',
+          'Hluboká žilní trombóza dolní končetiny, kterou prodělal pacient před méně než třemi měsíci',
+          'Chybějící souhlas operatéra s plnou zátěží nebo nejasný plán zátěže',
+          'Akutní onemocnění a stavy se zvýšeným rizikem destabilizace, například neléčené srdeční selhání',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde operační zprávu, typ protézy a souhlas operatéra se zátěží, zkontroluje ránu a rozsah pohybu a poté sestaví plán procedur. Vezměte si propouštěcí zprávu z nemocnice; bez ní vyjde plán opatrněji.',
+          },
+          {
+            heading: 'Suché a vodní procedury ve střídání',
+            body: 'Elektroléčba pro reaktivaci hýžďového a stehenního svalstva, lymfodrenáž proti pooperačnímu otoku a pohybová terapie v teplém bazénu, kde vztlak snímá zátěž z kyčle. Zda a kdy přijde v úvahu i celková koupel, například uhličitá, rozhodne lázeňský lékař podle stavu rány.',
+          },
+          {
+            heading: 'Nácvik chůze a postupné zatěžování',
+            body: 'Individuální fyzioterapie s korekcí chůze, odvykáním berlí a cíleným posilováním svalstva kolem kloubu. Zátěž stoupá postupně, podle plánu operatéra, ne podle pevného kalendáře.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Jednou týdně lékař zkontroluje pohyblivost a sílu a upraví plán. Na závěr dostanete zprávu pro svého ortopeda a cvičební program domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, s cíleným posilováním hýžďového a stehenního svalstva, které po přístupu ke kyčli často oslabí.',
+          },
+          {
+            name: 'Pohybová terapie ve vodě',
+            detail: 'Vztlak snímá zátěž z čerstvě operovaného kloubu, takže lze trénovat hybnost, která na suchu ještě bolí.',
+          },
+          {
+            name: 'Nácvik chůze',
+            detail: 'Korekce chůzového vzorce a postupné odvykání berlí, pod vedením fyzioterapeuta.',
+          },
+          {
+            name: 'Lymfodrenáž',
+            detail: 'Manuální ošetření otoku, který bývá po operaci v oblasti kyčle a stehna častý.',
+          },
+          {
+            name: 'Elektroléčba',
+            detail: 'Dráždivý proud k reaktivaci hýžďového svalstva, které může být operačním přístupem dočasně utlumené.',
+          },
+          {
+            name: 'Podvodní masáž',
+            detail: 'Tlaková vodní masáž v teplém bazénu pro svalstvo kolem operovaného kloubu.',
+          },
+          {
+            name: 'Suchá plynová koupel',
+            detail: 'V Mariině plynu s 99,7 % CO₂, bez ponoření do vody — možnost, dokud celková koupel kvůli ráně ještě nepřipadá v úvahu.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Stavy po ortopedických operacích s náhradou kloubu spadají pod položku VII/10 indikačního seznamu; přesnou délku hrazeného pobytu i podmínky najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí délku podle souhlasu operatéra a skutečné potřeby rehabilitace; jako odborné minimum pro balneoterapii platí alespoň 10 procedur během alespoň 10 dní. Termín se obvykle plánuje hned po ústavní rehabilitaci nebo po dohodě s praktickým lékařem, nezávisle na ročním období.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Kontrolované studie speciálně k lázeňské léčbě po operaci kyčle jsou vzácné. Italská pilotní studie s 12 pacienty po totální endoprotéze kyčle zjistila po dvou týdnech kombinované suché a vodní rehabilitace v lázeňském provozu větší rozsah pohybu, vyšší Harris Hip Score a lepší tělesnou kvalitu života; intenzita bolesti se přitom významně nezměnila (Musumeci a kol., 2018, Int J Biometeorol; velmi malý, nekontrolovaný vzorek). Rozsáhlejší italská observační studie se 123 pacienty s degenerativními a pooperačními onemocněními pohybového aparátu — nikoli speciálně po operaci kyčle — zjistila po dvanácti cvičebních jednotkách v termální vodě během dvou týdnů lepší hodnoty bolesti, nálady a kvality života (Maccarone a kol., 2022, Int J Biometeorol; bez kontrolní skupiny, krátké sledování). Obě studie ukazují krátkodobé účinky jednotlivých lázeňských programů, žádné srovnání s ambulantní rehabilitací a žádný dlouhodobý průběh nad rámec sledovaných týdnů.',
+        },
+        physicianNote: 'O tom, zda a kdy pro vás po operaci kyčle připadá v úvahu lázeňská léčba, rozhoduje lázeňský lékař při vstupní prohlídce podle operační zprávy a souhlasu vašeho operatéra. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Kam na lázně po operaci kyčle?',
+            answer: 'Stavy po ortopedických operacích s náhradou kloubu tvoří samostatnou položku indikačního seznamu (VII/10) a Mariánské Lázně je pravidelně léčí — individuální fyzioterapií, pohybovou terapií ve vodě a nácvikem chůze pod denní lékařskou kontrolou. Který dům a program se hodí, závisí na typu protézy a aktuálním stavu rehabilitace.',
+          },
+          {
+            question: 'Jak dlouho po TEP kyčle mohu jet do lázní?',
+            answer: 'Neexistuje pevné kalendářní datum — rozhoduje zhojená rána a souhlas operatéra se zátěží. Lázeňská léčba může začít hned po pobytu v nemocnici jako navazující rehabilitace, nebo až po ambulantní doléčovací péči; to určí lázeňský lékař při vstupní prohlídce podle vaší operační zprávy.',
+          },
+          {
+            question: 'Jaké procedury dostanu po náhradě kyčelního kloubu?',
+            answer: 'Obvyklá je kombinace suché individuální fyzioterapie a pohybové terapie v teplé vodě, doplněná lymfodrenáží proti otoku a elektroléčbou pro hýžďové svalstvo. V italské pilotní studii s 12 pacienty právě tato kombinace za dva týdny zlepšila rozsah pohybu a Harris Hip Score.',
+          },
+          {
+            question: 'Co po operaci kyčle hradí pojišťovna?',
+            answer: 'Pro stavy po náhradě kloubu je to položka VII/10 indikačního seznamu; přesnou délku a podmínky komplexní i příspěvkové péče najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí délku i rozsah volně, po dohodě s lázeňským lékařem.',
+          },
+          {
+            question: 'Mohu jet do lázní i s artrózou druhé kyčle?',
+            answer: 'Ano — koxartróza je samostatná, často léčená indikace v Mariánských Lázních a při potřebě se doléčí v rámci stejného pobytu. Podrobnosti najdete na stránce o léčbě artrózy.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — položka VII/10',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Stavy po ortopedických operacích s náhradou kloubu: délka a typ hrazené péče.',
+          },
+          {
+            title: 'Musumeci A a kol. 2018, Int J Biometeorol — pilotní studie, 12 pacientů po TEP kyčle',
+            url: 'https://consensus.app/papers/details/eb2b91377a9d514e93540cf8fb6c915e/',
+            note: 'Dva týdny kombinované suché a vodní lázeňské rehabilitace: lepší rozsah pohybu a Harris Hip Score, bolest bez významné změny. Velmi malá, nekontrolovaná.',
+          },
+          {
+            title: 'Maccarone MC a kol. 2022, Int J Biometeorol — observační studie, 123 pacientů',
+            url: 'https://consensus.app/papers/details/6ef7b07cc1c0596595210db7e97ae760/',
+            note: 'Degenerativní a pooperační onemocnění pohybového aparátu, nikoli specificky kyčel. Cvičení v termální vodě zlepšilo bolest, náladu a kvalitu života. Bez kontrolní skupiny.',
+          },
+          {
+            title: 'Karagülle MZ, Karagülle M 2021, Int J Biometeorol — dopis redakci k délce lázeňské léčby',
+            url: 'https://consensus.app/papers/details/14ac08e16e2d5bbb804b6330ab17303b/',
+            note: 'Odborné minimum: alespoň 10 procedur během alespoň 10 dní. Odborný názor, ne studie.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba artrózy',
+            href: '/cs/lazenska-lecba/artroza',
+          },
+          {
+            label: 'Pohyb v lázních prodlužuje život',
+            href: '/cs/magazin/pohyb-v-laznich-prodluzuje-zivot',
+          },
+          {
+            label: 'Lázeňský pobyt pro seniory',
+            href: '/cs/magazin/lazensky-pobyt-pro-seniory',
+          },
+          {
+            label: 'Co hradí pojišťovna u pohybového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/pohybove-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'posle-operacii-tazobedrennogo-sustava',
         navLabel: 'После операции на тазобедренном суставе',
@@ -1190,7 +1489,136 @@ export const diagnoses: Diagnosis[] = [
           { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'po-operaci-kolene',
+        navLabel: 'Po operaci kolene',
+        title: 'Lázeňská léčba po operaci kolene v Mariánských Lázních',
+        h1: 'Lázeňská léčba po operaci kolene',
+        metaTitle: 'Léčba po operaci kolene v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Rehabilitace po operaci kolene v Mariánských Lázních: procedury po TEP kolene nebo operaci menisku, délka pobytu a kdy lázně připadají v úvahu.',
+        lead: 'Po totální endoprotéze kolene nebo jiné operaci kolene potřebuje kloub především jedno: pravidelný, vedený trénink ohybu a stehenního svalstva. Lázeňská léčba v Mariánských Lázních spojuje denní individuální fyzioterapii s pohybovou terapií v teplé vodě, kde vztlak čerstvě operované koleno odlehčuje.',
+        teaser: 'Nácvik ohybu, chůze a cvičení ve vodě po TEP kolene nebo operaci menisku — denně, pod lékařskou kontrolou.',
+        treats: [
+          'Stav po totální endoprotéze kolene (TEP kolene) po zhojené ráně',
+          'Stav po unikondylární nebo jiné částečné náhradě kolenního kloubu',
+          'Stavy po operacích menisku a dalších operacích kolene, když ambulantní nebo ústavní rehabilitace nebyla dostatečná',
+          'Svalové dysbalance kvadricepsu a nejistota při chůzi po operaci',
+        ],
+        notFor: [
+          'Čerstvá rána bez zhojení nebo se známkami infekce',
+          'Hluboká žilní trombóza dolní končetiny, kterou pacient prodělal před méně než třemi měsíci',
+          'Chybějící souhlas operatéra s plnou zátěží',
+          'Akutní kloubní výpotek nebo akutní zánět v operovaném koleni',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde operační zprávu, úhel ohybu a souhlas operatéra se zátěží a poté sestaví plán procedur. Vezměte si propouštěcí zprávu z nemocnice; bez ní vyjde plán opatrněji.',
+          },
+          {
+            heading: 'Pohyb v teplé vodě a na suchu ve střídání',
+            body: 'Pohybová terapie v bazénu, kde vztlak koleno při nácviku ohybu odlehčuje, doplněná lymfodrenáží proti otoku a elektroléčbou pro kvadriceps. Celková koupel, například uhličitá, přichází v úvahu, až to stav rány dovolí.',
+          },
+          {
+            heading: 'Nácvik chůze a posilování kvadricepsu',
+            body: 'Individuální fyzioterapie s odvykáním berlí, nácvikem chůze do schodů a cíleným posilováním svalstva kolem kolenního kloubu. Zátěž stoupá postupně, podle plánu operatéra.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Jednou týdně lékař zkontroluje úhel ohybu a sílu a upraví plán. Na závěr dostanete zprávu pro svého ortopeda a cvičební program domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, s cíleným nácvikem ohybu a posilováním kvadricepsu, který po operaci kolene rychle ztrácí sílu.',
+          },
+          {
+            name: 'Pohybová terapie ve vodě',
+            detail: 'Vztlak snímá zátěž z čerstvě operovaného kolene, takže lze cvičit ohyb, který na suchu ještě bolí.',
+          },
+          {
+            name: 'Nácvik chůze',
+            detail: 'Korekce chůzového vzorce, nácvik chůze do schodů a postupné odvykání berlí.',
+          },
+          {
+            name: 'Lymfodrenáž',
+            detail: 'Manuální ošetření otoku, který bývá po operacích kolene zvlášť výrazný.',
+          },
+          {
+            name: 'Elektroléčba',
+            detail: 'Dráždivý proud k reaktivaci kvadricepsu, který může být operací utlumený.',
+          },
+          {
+            name: 'Podvodní masáž',
+            detail: 'Tlaková vodní masáž v teplém bazénu pro svalstvo kolem operovaného kloubu.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Endoprotézy kolene spadají pod položku VII/10 indikačního seznamu, jiné stavy po operaci kolene, například po operaci menisku, kdy ambulantní nebo ústavní rehabilitace nestačila, pod položku VII/11; přesnou délku i podmínky obou najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci délku ladí s lázeňským lékařem a operatérem; jako odborné minimum pro balneoterapii platí alespoň 10 procedur během alespoň 10 dní.',
+        },
+        physicianNote: 'O tom, zda a kdy pro vás po operaci kolene připadá v úvahu lázeňská léčba, rozhoduje lázeňský lékař při vstupní prohlídce podle operační zprávy a souhlasu vašeho operatéra. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Které lázně jsou nejlepší po operaci kolene?',
+            answer: 'Pro stavy po TEP kolene nebo jiných operacích kolene vede indikační seznam samostatné položky (VII/10 a VII/11) a Mariánské Lázně je léčí denní individuální fyzioterapií, pohybovou terapií ve vodě a nácvikem chůze. Který program se hodí, závisí na zákroku a aktuálním úhlu ohybu a určí se při vstupní prohlídce.',
+          },
+          {
+            question: 'Jak dlouho trvá rehabilitace po TEP kolene?',
+            answer: 'Paušální délka neexistuje — závisí na průběhu hojení, typu protézy a hybnosti při nástupu. Indikační seznam u stavů po náhradě kloubu počítá s pobytem podle položky VII/10; kolik procedur a cvičebních jednotek v něm dostanete, určí lázeňský lékař individuálně.',
+          },
+          {
+            question: 'Mohu jet do lázní po operaci menisku?',
+            answer: 'Ano, pokud ambulantní nebo ústavní rehabilitace sama nestačila — to je podmínka položky VII/11 indikačního seznamu, která pokrývá stavy po operaci menisku a dalších operacích kolene. Návrh na lázeňskou péči vystavuje odesílající lékař; o konkrétním plánu procedur pak rozhoduje lázeňský lékař.',
+          },
+          {
+            question: 'Co po operaci kolene hradí pojišťovna?',
+            answer: 'U endoprotézy kolene i u jiných operací kolene bez dostatečného úspěchu rehabilitace jde o položky VII/10 a VII/11 indikačního seznamu; přesnou délku a podmínky najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí délku i rozsah volně, po dohodě s lázeňským lékařem.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — položky VII/10 a VII/11',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'VII/10: stavy po náhradě kloubu. VII/11: stavy po úrazech/operacích včetně operací kolene, pokud ambulantní nebo ústavní rehabilitace nestačila.',
+          },
+          {
+            title: 'Maraver F a kol. 2020, Int J Biometeorol — dopis redakci k délce balneoterapie',
+            url: 'https://doi.org/10.1007/s00484-020-02041-5',
+            note: 'Odborné minimum: alespoň 10 procedur během alespoň 10 dní; víkendový pobyt není balneoterapie. Odborný názor, ne studie.',
+          },
+          {
+            title: 'Karagülle MZ, Karagülle M 2021, Int J Biometeorol — dopis redakci k délce lázeňské léčby',
+            url: 'https://consensus.app/papers/details/14ac08e16e2d5bbb804b6330ab17303b/',
+            note: 'Norma lázeňské léčby 2–3 týdny s 10–21 procedurami. Odborný názor, ne studie.',
+          },
+          {
+            title: 'Maccarone MC a kol. 2022, Int J Biometeorol — observační studie, 123 pacientů',
+            url: 'https://consensus.app/papers/details/6ef7b07cc1c0596595210db7e97ae760/',
+            note: 'Degenerativní a pooperační onemocnění pohybového aparátu, nikoli specificky koleno nebo konkrétní operace. Cvičení v termální vodě zlepšilo bolest, náladu a kvalitu života. Bez kontrolní skupiny, obecná orientace.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba artrózy',
+            href: '/cs/lazenska-lecba/artroza',
+          },
+          {
+            label: 'Pohyb v lázních prodlužuje život',
+            href: '/cs/magazin/pohyb-v-laznich-prodluzuje-zivot',
+          },
+          {
+            label: 'Lázeňský pobyt pro seniory',
+            href: '/cs/magazin/lazensky-pobyt-pro-seniory',
+          },
+          {
+            label: 'Co hradí pojišťovna u pohybového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/pohybove-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'posle-operacii-kolennogo-sustava',
         navLabel: 'После операции на коленном суставе',
@@ -1607,7 +2035,159 @@ export const diagnoses: Diagnosis[] = [
           { label: 'Indications and contraindications', href: '/en/indications-and-contraindications' },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'pater-a-bolesti-zad',
+        navLabel: 'Páteř a bolesti zad',
+        title: 'Lázeňská léčba páteře a bolestí zad v Mariánských Lázních',
+        h1: 'Lázeňská léčba páteře a bolestí zad',
+        metaTitle: 'Léčba páteře a bolestí zad v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Léčba páteře v Mariánských Lázních: procedury při chronických bolestech zad, po operaci ploténky, délka pobytu a co ukazují studie o účinku.',
+        lead: 'Chronické bolesti zad a stavy po operacích páteře patří k nejčastějším důvodům lázeňského pobytu v Mariánských Lázních. Léčba kombinuje teplo ze slatinných zábalů, elektroléčbu a denní školu zad — intenzitu, kterou týdenní ambulantní fyzioterapie nedosáhne.',
+        teaser: 'Slatinné zábaly, elektroléčba a škola zad při chronických bolestech zad a po operacích ploténky.',
+        treats: [
+          'Chronický vertebrogenní algický syndrom funkčního původu v průběžné ambulantní léčbě',
+          'Artróza páteře (spondylartróza) s doprovodnými bolestmi zad',
+          'Stavy po operacích meziobratlové ploténky a po zákrocích pro spinální stenózu, když ambulantní nebo ústavní rehabilitace nebyla dostatečná',
+          'Svalově podmíněné napětí a blokády krční, hrudní a bederní páteře',
+          'Svalové dysbalance a omezená hybnost po operacích páteře',
+        ],
+        notFor: [
+          'Akutní radikulopatie s postupujícím neurologickým výpadkem nebo kaudálním syndromem — zde je nutné akutní vyšetření, ne lázeňský pobyt',
+          'Čerstvá rána bez zhojení po operaci páteře',
+          'Nestabilní poměry na páteři bez souhlasu odborného lékaře',
+          'Akutní infekční onemocnění, aktivní nádorové onemocnění nebo čerstvá neléčená zlomenina obratle',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde zobrazovací vyšetření, případně operační zprávu, a provede základní neurologické vyšetření, než stanoví plán procedur. Vezměte si aktuální rentgenové nebo MR nálezy; bez nich vyjde plán opatrněji.',
+          },
+          {
+            heading: 'Teplo a elektroléčba dopoledne',
+            body: 'Slatinný zábal a elektroléčba uvolní napjaté zádové svalstvo, poté následuje klid vleže. Odpoledne patří pohybu — individuální terapii, škole zad nebo cvičení ve vodě.',
+          },
+          {
+            heading: 'Škola zad a cílené posilování',
+            body: 'Cvičení na stabilizaci trupového svalstva, vedená individuálně nebo ve skupině, doplněná pohybovou terapií ve vodě, kde vztlak páteř odlehčuje. Zátěž se zvyšuje postupně.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Jednou týdně lékař zkontroluje průběh a upraví plán. Na závěr dostanete zprávu pro svého ošetřujícího lékaře a cvičební program domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Slatinný zábal',
+            detail: 'Termoterapie kolem 40 °C pro napjaté zádové svalstvo; slatina odevzdává teplo pomalu, proto se snáší lépe než voda.',
+          },
+          {
+            name: 'Elektroléčba',
+            detail: 'Dráždivý proud ke zmírnění bolesti a uvolnění svalů při chronickém vertebrogenním bolestivém syndromu.',
+          },
+          {
+            name: 'Individuální fyzioterapie / škola zad',
+            detail: 'Cílená cvičení na stabilizaci trupového svalstva, přizpůsobená nálezu a případně operační anamnéze.',
+          },
+          {
+            name: 'Pohybová terapie ve vodě',
+            detail: 'Vztlak snímá zátěž z páteře, takže lze trénovat rozsah pohybu, který na suchu bolí.',
+          },
+          {
+            name: 'Podvodní masáž',
+            detail: 'Tlaková vodní masáž v teplém bazénu, cílená na svalstvo podél páteře.',
+          },
+          {
+            name: 'Klasická masáž',
+            detail: 'Manuální uvolnění napjatých svalových partií podél páteře.',
+          },
+          {
+            name: 'Magnetoterapie',
+            detail: 'Doplňková fyzikální terapie podle nálezu a v sérii.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Chronický vertebrogenní bolestivý syndrom funkčního původu je položka VII/9, stavy po operacích ploténky nebo pro spinální stenózu při nedostatečné rehabilitaci položka VII/11 indikačního seznamu; přesnou délku obou najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí délku většinou po dohodě s lázeňským lékařem; jako odborné minimum platí alespoň 10 procedur během alespoň 10 dní, obvyklé jsou 2 až 3 týdny.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'U bolestí zad patří lázeňská medicína k nejdéle zkoumaným přístupům. Polská kontrolovaná studie s 302 pacienty se spondylartrózou srovnala lázeňskou léčbu, ambulantní rehabilitaci a žádnou léčbu: zlepšení bolesti, funkce a spokojenosti přetrvalo po šesti měsících jen ve skupině s lázeňskou léčbou (Zwolińska a kol., 2022, Sci Rep; nerandomizovaná). Francouzská RCT se 102 pacienty s chronickými bolestmi zad zjistila, že třítýdenní lázeňský pobyt zlepšil pohyblivost páteře a snížil intenzitu bolesti i spotřebu léků; po devíti měsících přetrvávala úleva od bolesti a nižší spotřeba léků, funkce se však vrátila na výchozí úroveň (Guillemin a kol., 1994, Br J Rheumatol; starší, nezaslepená studie). Další francouzská RCT s 224 pacienty zjistila po třech týdnech a znovu po třech měsících lepší tělesnou i psychickou kvalitu života a méně úzkosti, deprese a bolesti (Constant a kol., 1998, Med Care; otevřená studie). Turecká RCT s 60 pacienty ukázala po dvou týdnech balneoterapie přetrvávající zlepšení bolesti a funkce po třech a šesti měsících; doplňkový pohybový trénink nepřinesl další rozdíl (Takinaci a kol., 2019, Eur J Integr Med; malý vzorek). Tyto studie se týkají chronických, funkčních nebo degenerativních bolestí zad — nic neříkají o období bezprostředně po akutní operaci ploténky, a při doprovodných psychických potížích lázeňský pobyt nenahrazuje psychoterapii ani psychiatrickou péči.',
+        },
+        physicianNote: 'O tom, zda a v jaké formě pro vás při potížích se zády připadá v úvahu lázeňská léčba, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich nálezů a případně operační zprávy. Tato stránka informuje a nenahrazuje lékařskou ani psychoterapeutickou konzultaci.',
+        faqs: [
+          {
+            question: 'Které lázně jsou vhodné při bolestech páteře?',
+            answer: 'Mariánské Lázně vedou chronický vertebrogenní bolestivý syndrom jako samostatnou položku indikačního seznamu (VII/9) a kombinují pro něj slatinné zábaly, elektroléčbu a denní školu zad. Polská srovnávací studie s 302 pacienty se spondylartrózou zjistila, že jen u lázeňských hostů zlepšení bolesti a funkce přetrvalo po šesti měsících, ne u ambulantně léčené nebo neléčené skupiny.',
+          },
+          {
+            question: 'Kam na lázně po operaci ploténky?',
+            answer: 'Stavy po operacích ploténky a po zákrocích pro spinální stenózu jsou samostatnou položkou indikačního seznamu (VII/11), pokud ambulantní nebo ústavní rehabilitace sama nestačila. Mariánské Lázně tyto případy léčí elektroléčbou, tepelnými procedurami a vedenou školou zad; přesný termín a rozsah určí lázeňský lékař podle operační zprávy.',
+          },
+          {
+            question: 'Pomáhá lázeňský pobyt při chronických bolestech zad?',
+            answer: 'Kontrolované studie ukazují po třítýdenním pobytu lepší pohyblivost, méně bolesti a nižší spotřebu léků, u některých ještě po devíti měsících. Základní příčinu bolestí zad tím lázeňská léčba neodstraní, a v jedné studii se funkce po devíti měsících vrátila na výchozí úroveň.',
+          },
+          {
+            question: 'Jak dlouho by měl lázeňský pobyt při bolestech zad trvat?',
+            answer: 'Jako odborná norma platí 2 až 3 týdny s 10 až 21 procedurami; pod 10 procedur za 10 dní se léčba odborně nepovažuje za balneoterapii. Studie s nejdéle zdokumentovaným účinkem u bolestí zad pracovala se třemi týdny.',
+          },
+          {
+            question: 'Mohu jet do lázní s akutním výhřezem ploténky?',
+            answer: 'Při akutní radikulopatii s postupujícím neurologickým výpadkem nebo kaudálním syndromem je nutné akutní odborné vyšetření, ne lázeňský pobyt. Až po stabilizaci, případně po operaci a souhlasu ošetřujícího lékaře, přichází lázeňský pobyt v úvahu.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — položky VII/9 a VII/11',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'VII/9: chronický vertebrogenní bolestivý syndrom. VII/11: stavy po operaci ploténky a spinální stenóze, pokud ambulantní/ústavní rehabilitace nestačila.',
+          },
+          {
+            title: 'Zwolińska J a kol. 2022, Sci Rep — kontrolovaná studie, 302 pacientů se spondylartrózou',
+            url: 'https://consensus.app/papers/details/1c6d434bfbb75ea188230cef75f69ac8/',
+            note: 'Lázeňská léčba vs. ambulantní rehabilitace vs. žádná léčba: jen u lázeňské skupiny přetrvalo zlepšení bolesti, funkce a spokojenosti po 6 měsících. Nerandomizovaná.',
+          },
+          {
+            title: 'Guillemin F a kol. 1994, Br J Rheumatol — RCT, 102 pacientů s chronickými bolestmi zad',
+            url: 'https://consensus.app/papers/details/ae6044021e235aad9e5bb9e81e6e18c1/',
+            note: 'Třítýdenní lázeňská léčba: lepší pohyblivost, méně bolesti a spotřeby léků; po 9 měsících úleva od bolesti zůstala, funkce zpět na výchozí úrovni. Starší, nezaslepená.',
+          },
+          {
+            title: 'Constant F a kol. 1998, Med Care — RCT, 224 pacientů s chronickými bolestmi zad',
+            url: 'https://consensus.app/papers/details/29e095b728a756f88e07eebd015a311c/',
+            note: 'Lepší tělesná i psychická kvalita života, méně úzkosti, deprese a bolesti po 3 týdnech a 3 měsících. Otevřená studie.',
+          },
+          {
+            title: 'Takinaci Z a kol. 2019, Eur J Integr Med — RCT, 60 pacientů s chronickými bolestmi zad',
+            url: 'https://consensus.app/papers/details/08504c1e2ef354679262cc9364550b10/',
+            note: 'Dva týdny balneoterapie: přetrvávající zlepšení bolesti a funkce po 3 a 6 měsících. Malý vzorek.',
+          },
+          {
+            title: 'Maraver F a kol. 2020, Int J Biometeorol — dopis redakci k délce balneoterapie',
+            url: 'https://doi.org/10.1007/s00484-020-02041-5',
+            note: 'Odborné minimum: alespoň 10 procedur během alespoň 10 dní; norma jsou 2–3 týdny. Odborný názor, ne studie.',
+          },
+        ],
+        related: [
+          {
+            label: 'Peloidní terapie',
+            href: '/cs/peloidni-terapie',
+          },
+          {
+            label: 'Lázeňská léčba artrózy',
+            href: '/cs/lazenska-lecba/artroza',
+          },
+          {
+            label: 'Léčba pohybového aparátu slatinou a minerální vodou',
+            href: '/cs/magazin/lecba-pohyboveho-aparatu',
+          },
+          {
+            label: 'Co hradí pojišťovna u pohybového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/pohybove-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'pozvonochnik-i-boli-v-spine',
         navLabel: 'Позвоночник и боли в спине',
@@ -1779,7 +2359,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Therapeutin legt eine warme Moorpackung auf den Rücken eines Kurgastes',
       en: 'A therapist applies a warm peat pack to a spa guest’s back',
-      cs: 'Therapeutin legt eine warme Moorpackung auf den Rücken eines Kurgastes',
+      cs: 'Terapeutka pokládá teplý slatinný zábal na záda lázeňského hosta',
       ru: 'Терапевт накладывает тёплое торфяное обёртывание на спину пациента курорта',
     },
     content: {
@@ -2087,7 +2667,157 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'revmatoidni-artritida',
+        navLabel: 'Revma',
+        title: 'Lázeňská léčba revmatu v Mariánských Lázních',
+        h1: 'Lázeňská léčba revmatoidní artritidy a revmatu',
+        metaTitle: 'Léčba revmatu v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Revmatoidní artritida a Bechtěrevova nemoc: jaké procedury lázeňská léčba v Mariánských Lázních při revmatu nabízí, jak dlouho trvá a co ukazují studie.',
+        lead: 'Revmatoidní artritida je chronické zánětlivé kloubní onemocnění, které vedle základní medikamentózní léčby potřebuje doprovodnou rehabilitaci. Mariánské Lázně vedou revma jako samostatnou skupinu indikačního seznamu a kombinují pro ni lékařem předepsanou pohybovou terapii, fyzioterapii a — ve stabilních fázích nemoci — tepelné a koupelové procedury.',
+        teaser: 'Revmatoidní artritida, Bechtěrevova nemoc a příbuzné formy: pohybová terapie ve vodě, fyzioterapie a tepelné procedury v klidných fázích nemoci.',
+        treats: [
+          'Revmatoidní artritida stupně I až IV včetně juvenilní formy, v průběžné odborné péči',
+          'Ankylozující spondylitida (Bechtěrevova nemoc) v průběžné ambulantní léčbě',
+          'Další seronegativní spondylartritidy jako psoriatická artritida, Reiterův syndrom a enteropatická nebo reaktivní artritida, v průběžné ambulantní léčbě',
+          'Sekundární artritidy v průběžné ambulantní léčbě',
+        ],
+        notFor: [
+          'Akutní ataka s výrazným otokem kloubu, přehřátím, horečkou nebo silně zvýšenými zánětlivými parametry',
+          'Nedávno zahájená nebo nestabilně nastavená základní léčba (DMARD, biologika) bez konzultace s ošetřujícím revmatologem',
+          'Akutní infekční onemocnění, aktivní nádorové onemocnění, srdeční selhání ve stadiu NYHA IV',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde průběh nemoci, aktuální základní léčbu a poslední laboratorní výsledky a zjistí, zda se onemocnění nachází v klidné fázi vhodné pro lázeňský pobyt. Vezměte si aktuální zprávu revmatologa a úplný seznam léků, zejména biologik.',
+          },
+          {
+            heading: 'Dvě až tři procedury denně',
+            body: 'Dopoledne patří převážně pasivním procedurám jako elektroléčba nebo — mimo akutní ataky — tepelné zábaly, odpoledne vedenému pohybu. Po každé tepelné proceduře následuje klid vleže.',
+          },
+          {
+            heading: 'Pohyb jako druhý pilíř',
+            body: 'V centru je pohybový bazén, individuální a skupinová terapie i ergoterapie pro drobné klouby rukou. V teplé vodě lze trénovat rozsah pohybu, který na suchu kvůli zátěži kloubu bolí.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Lázeňský lékař kontroluje průběh, sleduje nově vzniklé známky zánětu a upravuje plán. Na závěr dostanete zprávu pro svého revmatologa a cvičební program domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Denně, s cílem udržet pohyblivost kloubu, aniž by se přetěžovaly zanícené struktury.',
+          },
+          {
+            name: 'Pohybová terapie ve vodě',
+            detail: 'Vztlak snímá zátěž z kloubů, takže lze trénovat rozsah pohybu, který u revmatoidní artritidy na suchu bývá příliš bolestivý.',
+          },
+          {
+            name: 'Ergoterapie a trénink funkce ruky',
+            detail: 'Revmatoidní artritida často postihuje nejprve drobné klouby ruky a prstů; ergoterapie nacvičuje techniky šetrné ke kloubům a práci s pomůckami.',
+          },
+          {
+            name: 'Elektroléčba',
+            detail: 'Ke zmírnění bolesti ve svalstvu kolem kloubu, předepisovaná podle nálezu.',
+          },
+          {
+            name: 'Magnetoterapie',
+            detail: 'Doplňková fyzikální procedura při bolesti a ztuhlosti.',
+          },
+          {
+            name: 'Slatinný zábal',
+            detail: 'Tradiční tepelná procedura používaná mimo akutní ataky k uvolnění svalů; u revmatoidní artritidy je studijní podklad slabší než u Bechtěrevovy nemoci, při akutním zánětu kloubu se vysazuje.',
+          },
+          {
+            name: 'Uhličitá koupel',
+            detail: 'Teplá minerální koupel ve stabilních fázích nemoci, k uvolnění okolního svalstva.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Revmatoidní artritida (položka VII/1), Bechtěrevova nemoc (VII/2) a další seronegativní spondylartritidy (VII/3) mají hrazenou délku pobytu podle indikačního seznamu; přesný rozpis najdete na stránce Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí obvykle dva až tři týdny po dohodě s lázeňským lékařem a ošetřujícím revmatologem. Pro roční období neexistuje lékařský předpis; důležitější je, aby nemoc při nástupu probíhala klidně.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Pro Bechtěrevovu nemoc existuje mezi zánětlivě-revmatickými onemocněními nejlepší evidence: v nizozemské studii se 120 pacienty zlepšil třítýdenní lázeňský pobyt s cvičební terapií funkci a kvalitu života ještě po 40 týdnech oproti standardní léčbě (van Tubergen a kol., 2002, Arthritis Rheum; otevřená studie). Cochranův přehled potvrzuje, že kombinovaná lázeňská cvičební terapie s navazující skupinovou fyzioterapií je účinnější než samotná fyzioterapie, opírá se ale jen o jednu srovnávací studii (Dagfinrud a kol., 2008, Cochrane Database Syst Rev). Pro samotnou revmatoidní artritidu je evidence slabší: malá turecká zkřížená studie s 50 pacienty na průběžné základní léčbě zjistila po dvou týdnech lázeňské léčby až šest měsíců přetrvávající lepší aktivitu nemoci a sebehodnocení (Karagülle M a kol., 2018, Int J Biometeorol; jednoduše zaslepená, malý vzorek). Cochranův přehled dochází celkově k opatrnějšímu závěru: dostupné studie nestačí k prokázání, že je balneoterapie u revmatoidní artritidy účinnější než žádná nebo jiná léčba (Verhagen AP a kol., 2015, Eur J Phys Rehabil Med; nejasné riziko zkreslení v primárních studiích). Narativní přehledový článek shrnuje: nejlepší výsledky se ukazují u axiálního postižení jako Bechtěrevova nemoc, u revmatoidní artritidy je evidence méně přesvědčivá, procedury se ale považují za bezpečné (Cozzi F a kol., 2018, Int J Biometeorol; nízká kvalita primárních studií). Žádná z těchto studií neukazuje vliv na dlouhodobý průběh nemoci a žádná nenahrazuje základní léčbu DMARDy nebo biologiky.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich nálezů a v součinnosti s vaším revmatologem. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Kam na lázně při revmatu?',
+            answer: 'Mariánské Lázně vedou revma jako samostatnou skupinu indikačního seznamu (skupina VII) a léčí revmatoidní artritidu, Bechtěrevovu nemoc i příbuzné formy pod lékařským dohledem. Místo nabízí pohybovou terapii v teplé minerální vodě, fyzioterapii, ergoterapii a — v klidných fázích nemoci — tepelné procedury jako slatinné zábaly. Podmínkou je průběžná odborná péče a stabilní fáze nemoci bez akutní ataky.',
+          },
+          {
+            question: 'Které lázně jsou vhodné při revmatoidní artritidě?',
+            answer: 'Vhodné jsou lázně s ortopedicko-revmatologickou péčí, které vedou revmatoidní artritidu jako oficiální indikaci. Mariánské Lázně to splňují přes položku VII/1 indikačního seznamu a kombinují pohybovou terapii s fyzikální terapií. Základní léčba DMARDy nebo biologiky během pobytu pokračuje, nenahrazuje se.',
+          },
+          {
+            question: 'Pomáhá slatina při revmatu?',
+            answer: 'Slatinné zábaly se u revmatu tradičně používají k uvolnění svalů mimo akutní ataky. Narativní přehledový článek k zánětlivě-revmatickým onemocněním popisuje evidenci pro revmatoidní artritidu jako méně přesvědčivou než pro Bechtěrevovu nemoc, proceduru ale hodnotí jako bezpečnou. Při oteklých, přehřátých kloubech během ataky se teplo zásadně vysazuje.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při revmatu?',
+            answer: 'Podle indikačního seznamu jde u revmatoidní artritidy, Bechtěrevovy nemoci a příbuzných forem o délku pobytu, kterou konkrétně rozepisuje stránka Co hradí pojišťovna u pohybového ústrojí. Samoplátci volí obvykle dva až tři týdny.',
+          },
+          {
+            question: 'Mohu jet do lázní s biologiky nebo základní léčbou?',
+            answer: 'Ano, pokud je nemoc stabilně nastavená a nejde o akutní ataku. Lázeňský lékař probere aktuální medikaci při vstupní prohlídce a přizpůsobí jí procedury; přerušení základní léčby bez konzultace s ošetřujícím revmatologem se nepředpokládá.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VII — nemoci pohybového ústrojí',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položky VII/1 (revmatoidní artritida), VII/2 (Bechtěrevova nemoc) a VII/3 (další seronegativní spondylartritidy) s typem péče a délkou hrazeného pobytu.',
+          },
+          {
+            title: 'Karagülle M a kol. 2018, Int J Biometeorol — zkřížená RCT, 50 pacientů s revmatoidní artritidou',
+            url: 'https://consensus.app/papers/details/3a546f1db0215be397a42844e0a18000/',
+            note: 'Dva týdny lázeňské léčby navíc k základní léčbě: lepší aktivita nemoci a sebehodnocení do 6 měsíců. Jednoduše zaslepená, malý vzorek.',
+          },
+          {
+            title: 'Verhagen AP a kol. 2015, Eur J Phys Rehabil Med — Cochranův přehled, 579 pacientů',
+            url: 'https://pubmed.ncbi.nlm.nih.gov/26158921/',
+            note: 'Evidence nestačí k prokázání, že je balneoterapie u revmatoidní artritidy účinnější než žádná nebo jiná léčba. Nejasné riziko zkreslení.',
+          },
+          {
+            title: 'Cozzi F a kol. 2018, Int J Biometeorol — narativní přehledový článek',
+            url: 'https://consensus.app/papers/details/33fbc3c63859578092b804c4f0e12e10/',
+            note: 'Nejlepší výsledky u axiálního postižení (Bechtěrevova nemoc), méně přesvědčivé u revmatoidní artritidy; hodnoceno jako bezpečné. Narativní, nízká kvalita primárních studií.',
+          },
+          {
+            title: 'van Tubergen A a kol. 2002, Arthritis Rheum — RCT, 120 pacientů s ankylozující spondylitidou',
+            url: 'https://consensus.app/papers/details/0e1611a811bd5155a8737b08699663d0/',
+            note: 'Třítýdenní lázeňský pobyt s cvičební terapií: lepší funkce a kvalita života po 40 týdnech oproti standardní léčbě. Otevřená studie.',
+          },
+          {
+            title: 'Dagfinrud H a kol. 2008, Cochrane Database Syst Rev — Cochranův přehled, 763 pacientů s ankylozující spondylitidou',
+            url: 'https://consensus.app/papers/details/aeb377bc7dbc5e52bb1266865ef5ec15/',
+            note: 'Lázeňská cvičební terapie s navazující skupinovou fyzioterapií účinnější než samotná fyzioterapie. Opírá se jen o jednu srovnávací studii.',
+          },
+        ],
+        related: [
+          {
+            label: 'Peloidní terapie',
+            href: '/cs/peloidni-terapie',
+          },
+          {
+            label: 'Léčba rašelinou v Mariánských Lázních',
+            href: '/cs/magazin/lecba-raselinou-marianske-lazne',
+          },
+          {
+            label: 'Léčba pohybového aparátu slatinou a minerální vodou',
+            href: '/cs/magazin/lecba-pohyboveho-aparatu',
+          },
+          {
+            label: 'Co hradí pojišťovna u pohybového ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/pohybove-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'revmatoidnyj-artrit',
         navLabel: 'Ревматизм',
@@ -2255,7 +2985,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Nahaufnahme einer Hand, die die Wasseroberfläche eines Mineralbads berührt',
       en: 'Close-up of a hand touching the water surface of a mineral bath',
-      cs: 'Nahaufnahme einer Hand, die die Wasseroberfläche eines Mineralbads berührt',
+      cs: 'Detail ruky dotýkající se hladiny minerální koupele',
       ru: 'Крупный план руки, касающейся поверхности воды в минеральной ванне',
     },
     content: {
@@ -2535,7 +3265,143 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'lupenka',
+        navLabel: 'Lupénka',
+        title: 'Lázeňská léčba lupénky v Mariánských Lázních',
+        h1: 'Lázeňská léčba lupénky',
+        metaTitle: 'Léčba lupénky v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Psoriasis vulgaris v Mariánských Lázních: minerální koupele, fototerapie a klimatoterapie. Co lázeňská léčba nabízí, jak dlouho trvá a co ukazují studie.',
+        lead: 'Lupénka je chronické zánětlivé kožní onemocnění se šupinatými ložisky, které probíhá v atakách. Mariánské Lázně vedou generalizovanou psoriasis vulgaris jako samostatnou položku indikačního seznamu a kombinují pro ni minerální koupele, dermatologem předepsanou fototerapii a mírnou klimatoterapii lázeňského města.',
+        teaser: 'Generalizovaná psoriasis vulgaris: minerální koupele, fototerapie a klimatoterapie v lázeňském lese pod dermatologickým dohledem.',
+        treats: [
+          'Generalizovaná psoriasis vulgaris střední až těžké tíže',
+          'Artropatická psoriáza (psoriatická artritida) s postižením kloubů',
+          'Chronicky stabilní formy bez akutní superinfekce kůže',
+          'Doprovodné svědění a pocit napětí kůže při rozsáhlém postižení ložisky',
+        ],
+        notFor: [
+          'Akutní, rozsáhlá ataka s mokvající nebo superinfikovanou kůží',
+          'Akutní bakteriální nebo virové kožní infekce',
+          'Akutní infekční onemocnění, nekontrolované srdeční selhání, aktivní nádorové onemocnění',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař posoudí kožní nález, aktuální systémovou nebo lokální léčbu a rozhodne, zda koupele a fototerapie připadají v úvahu. Vezměte si aktuální dermatologické nálezy a seznam léků.',
+          },
+          {
+            heading: 'Dvě až tři procedury denně',
+            body: 'V centru jsou minerální koupele a případně fototerapie, dávkované podle typu pleti a rozsahu postižení. Po každé koupeli následuje péče o pleť tučnějším přípravkem, aby se kůže nevysušovala.',
+          },
+          {
+            heading: 'Pohyb a klimatoterapie',
+            body: 'Vedené procházky v lázeňském lese koupele doplňují. Klimatický účinek je mírnější než u přímořských lázní nebo Mrtvého moře, přesto se cení jako příjemná součást denního programu.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Lázeňský lékař kontroluje kožní nález a upravuje koupele nebo fototerapii. Na závěr dostanete zprávu pro svého dermatologa a doporučení pro péči o pleť doma.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Minerální koupel',
+            detail: 'Koupel v mírně mineralizované nebo uhličité vodě; tradičně používaná ke změkčení šupin a zklidnění kůže.',
+          },
+          {
+            name: 'Fototerapie (UV-B)',
+            detail: 'Předepsaná dermatologem a dávkovaná podle typu pleti, pro rozsáhlejší postižení ložisky.',
+          },
+          {
+            name: 'Klimatoterapie v lázeňském lese',
+            detail: 'Vedené procházky v čistém lesním vzduchu; účinek je mírnější než u přímořské klimatoterapie nebo u Mrtvého moře, ale slouží jako podpůrná součást programu.',
+          },
+          {
+            name: 'Péče o pleť po koupeli',
+            detail: 'Tučnější péče předchází vysušení, které se po minerálních koupelích může objevit a ložiska zhoršit.',
+          },
+          {
+            name: 'Fyzioterapie',
+            detail: 'Při doprovodné psoriatické artritidě k udržení kloubní pohyblivosti.',
+          },
+          {
+            name: 'Relaxační techniky',
+            detail: 'Doplňková součást programu při onemocnění, které často probíhá v atakách.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Generalizovaná a artropatická psoriasis vulgaris je položka X/2 indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u kožních onemocnění. Samoplátci se orientují na tři týdny, což je délka dokumentovaných rehabilitačních programů. Pro roční období neexistuje lékařský předpis; při plánované fototerapii si někteří hosté navíc s kožním lékařem domluví ochranu před sluncem na zbytek cesty.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie o koupelích při lupénce',
+          body: 'Systematický přehledový článek o 22 studiích hydroterapie, lázeňské a balneoterapie při psoriáze a atopické dermatitidě popisuje ve většině studií zlepšení hodnoty PASI a kožního zánětu, při kolísavé kvalitě studií (Moini Jazani A a kol., 2022, Int J Dermatol). V nekontrolované maďarské observační studii se 80 pacienty klesla hodnota PASI v průměru ze 7,15 na 2,62 po třítýdenní rehabilitaci s balneoterapií, doprovázené poklesem hodnoty CRP; bez kontrolní skupiny se podíl přirozeného průběhu nemoci na tom nedá odlišit (Péter I a kol., 2017, In Vivo). Další systematický přehledový článek o koupelích v termální minerální vodě zjistil ve všech zahrnutých studiích k psoriáze zlepšení příznaků, při nízkém počtu a kvalitě studií (Protano C a kol., 2024, Int J Biometeorol). Pro zařazení je důležité: Mariánské Lázně leží ve vnitrozemí s mírným klimatem a nejsou klimatickými lázněmi typu Mrtvé moře nebo Jadran, kde byla klimatoterapie zkoumána samostatně. Žádná z citovaných studií neukazuje vyléčení lupénky; procedury zmírňují kožní příznaky a nenahrazují systémovou léčbu.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce společně s vaším kožním nálezem a probíhající dermatologickou léčbou. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Které lázně léčí psoriázu?',
+            answer: 'Mariánské Lázně vedou generalizovanou a artropatickou psoriasis vulgaris jako oficiální indikaci (položka X/2) a kombinují pro ni minerální koupele, dermatologem předepsanou fototerapii a klimatoterapii v lázeňském lese. Systematické přehledové články o koupelích v minerální a termální vodě popisují u většiny zkoumaných studií zlepšení kožních příznaků.',
+          },
+          {
+            question: 'Které lázně jsou vhodné při kožních problémech?',
+            answer: 'Vhodné jsou lázně s dermatologickou péčí, které vedou psoriázu nebo ekzém jako oficiální indikaci a nabízejí koupele, fototerapii a případně klimatoterapii. Mariánské Lázně to splňují přes položku X/2 indikačního seznamu.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při lupénce?',
+            answer: 'Podle indikačního seznamu jde u položky X/2 o délku pobytu, kterou konkrétně rozepisuje stránka Co hradí pojišťovna u kožních onemocnění. Dokumentovaná třítýdenní rehabilitace s balneoterapií v maďarské studii ukázala výrazný pokles hodnoty PASI, ovšem bez kontrolní skupiny.',
+          },
+          {
+            question: 'Jsou Mariánské Lázně jako Mrtvé moře pro pokožku?',
+            answer: 'Ne. Mariánské Lázně jsou lázeňské město v českém vnitrozemí s mírným klimatem, ne přímořské klimatické lázně. Zdejší fototerapie a klimatoterapie stojí na dermatologicky dávkovaném UV-B záření a lesním vzduchu, ne na výškovém klimatu nebo slanosti srovnatelné s Mrtvým mořem.',
+          },
+          {
+            question: 'Co se děje při akutní atace lupénky během pobytu?',
+            answer: 'Při rozsáhlé, mokvající nebo superinfikované kůži se koupele a fototerapie vysazují, dokud se stav kůže nestabilizuje. Lázeňský lékař program odpovídajícím způsobem upraví; akutní rozsáhlá ataka se považuje za dočasnou kontraindikaci.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina X — kožní nemoci',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položka X/2 (generalizovaná a artropatická psoriasis vulgaris) s typem péče a délkou hrazeného pobytu.',
+          },
+          {
+            title: 'Moini Jazani A a kol. 2022, Int J Dermatol — systematický přehledový článek, 22 studií',
+            url: 'https://consensus.app/papers/details/17694155c34a597d9d2d05c671207037/',
+            note: 'Většina studií hydroterapie, lázeňské a balneoterapie při psoriáze a atopické dermatitidě popisuje zlepšení hodnoty PASI a kožního zánětu. Kvalita studií kolísá.',
+          },
+          {
+            title: 'Péter I a kol. 2017, In Vivo — observační studie bez kontrolní skupiny, 80 pacientů',
+            url: 'https://consensus.app/papers/details/c3145bd954875e3bbf05c5bfdc39ba1a/',
+            note: 'PASI klesla v průměru ze 7,15 na 2,62 po třítýdenní rehabilitaci s balneoterapií, CRP klesl. Bez kontrolní skupiny.',
+          },
+          {
+            title: 'Protano C a kol. 2024, Int J Biometeorol — systematický přehledový článek',
+            url: 'https://doi.org/10.1007/s00484-024-02649-x',
+            note: 'Všechny zahrnuté studie k psoriáze popisují zlepšení příznaků po koupelích v termální minerální vodě. Málo studií, nízká kvalita.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba kožních onemocnění',
+            href: '/cs/magazin/lazenska-lecba-koznich-onemocneni',
+          },
+          {
+            label: 'Klimatoterapie',
+            href: '/cs/klimatoterapie',
+          },
+          {
+            label: 'Přehled minerálních pramenů',
+            href: '/cs/mineralni-prameny',
+          },
+          {
+            label: 'Co hradí pojišťovna u kožních onemocnění',
+            href: '/cs/lazne-s-pojistovnou/indikace/kozni-onemocneni',
+          },
+        ],
+      },
       ru: {
         slug: 'psoriaz',
         navLabel: 'Псориаз',
@@ -2690,7 +3556,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Kurgast füllt einen Trinkkurbecher bei Tageslicht an einer Mineralquelle',
       en: 'A spa guest fills a drinking-cure cup in daylight at a mineral spring',
-      cs: 'Kurgast füllt einen Trinkkurbecher bei Tageslicht an einer Mineralquelle',
+      cs: 'Lázeňský host plní pitný pohárek za denního světla u pramene',
       ru: 'Гость курорта наполняет питьевой курортный бокальчик у минерального источника при дневном свете',
     },
     content: {
@@ -3000,7 +3866,158 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'ledvinove-kameny',
+        navLabel: 'Ledvinové kameny',
+        title: 'Lázeňská léčba ledvinových kamenů v Mariánských Lázních',
+        h1: 'Lázeňská léčba ledvinových kamenů',
+        metaTitle: 'Léčba ledvinových kamenů — Mariánské Lázně | Marienbad.com',
+        metaDescription: 'Ledvinové kameny a nefrolitiáza v Mariánských Lázních: jak probíhá pitná kúra z minerálních pramenů, jak dlouho pobyt trvá a co ukazují studie.',
+        lead: 'Ledvinové kameny patří k nejstarším léčebným důvodům, kvůli kterým se do Mariánských Lázní jezdí: hydrogenuhličitanem bohaté minerální prameny místa se k pitné kúře využívají už od 19. století. Indikační seznam vede nefrolitiázu bez městnání moči jako samostatnou položku, doplněnou o doléčení po zákrocích na ledvinách a močových cestách.',
+        teaser: 'Nefrolitiáza bez městnání moči: strukturovaná pitná kúra z minerálních pramenů, pod lékařským dohledem, s doléčením po drcení kamenů.',
+        treats: [
+          'Ledvinové kameny (nefrolitiáza) bez aktuálního městnání moči, zejména kalciumoxalátové kameny',
+          'Nefrokalcinóza',
+          'Doléčení po drcení kamenů (litotrypsi) nebo jiných zákrocích na ledvinách a močových cestách',
+          'Prevence nové tvorby kamenů díky lékařem vedenému zvýšení příjmu tekutin',
+        ],
+        notFor: [
+          'Akutní městnání moči, kolika nebo uzávěr močových cest — zde je potřeba akutní urologická léčba, ne lázeňský pobyt',
+          'Akutní infekce močových cest s horečkou',
+          'Nevyjasněné krvácení z močových cest',
+          'Obecné kontraindikace: nekontrolované srdeční selhání, aktivní nádorové onemocnění, těhotenství',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde zobrazovací vyšetření, rozbor kamene (je-li k dispozici) a funkci ledvin a stanoví individuální pitný plán. Vezměte si aktuální ultrazvukový nebo CT nález a případně informaci o složení kamene.',
+          },
+          {
+            heading: 'Pitná kúra podle pevného rozvrhu',
+            body: 'Minerální voda z přidělených pramenů se pije v pevných denních dobách a v postupně rostoucím množství. Cílem je dostatečné množství moči během dne, ne pevné množství tekutin — lázeňský lékař množství individuálně upravuje.',
+          },
+          {
+            heading: 'Doplňkový pohyb',
+            body: 'Procházky po kolonádě a dávkovaný pohyb podporují celkový metabolismus a rozložení tekutin během dne.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Lázeňský lékař kontroluje hodnoty moči a upravuje pitný plán. Na závěr dostanete zprávu pro svého urologa a pitný plán domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Pitná kúra u minerálních pramenů',
+            detail: 'Hydrogenuhličitanem bohatá minerální voda zvyšuje množství moči, pH moči i vylučování citrátu a snižuje tak přesycení, ze kterého vznikají kalciumoxalátové kameny.',
+          },
+          {
+            name: 'Individuální úprava pitného množství',
+            detail: 'Lázeňský lékař stanoví množství a časování podle typu kamene, funkce ledvin a přidružených onemocnění.',
+          },
+          {
+            name: 'Nutriční poradenství',
+            detail: 'K příjmu soli, bílkovin a oxalátů, jako součást prevence recidivy vedle pitné kúry.',
+          },
+          {
+            name: 'Pohybová terapie',
+            detail: 'Procházky a dávkovaný pohyb jako obecná součást lázeňského programu, bez vlastního přímého důkazu pro tvorbu kamenů.',
+          },
+          {
+            name: 'Pravidelná kontrola moči',
+            detail: 'Hodnota pH a další parametry moči se během pobytu opakovaně kontrolují, aby se pitný plán mohl upravovat.',
+          },
+          {
+            name: 'Doléčení po litotrypsi',
+            detail: 'Pitná kúra podporuje vyplavení úlomků kamene po mimotělní litotrypsi rázovou vlnou (ESWL).',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Nefrolitiáza bez městnání moči je položka VIII/2, doléčení po zákrocích na ledvinách a močových cestách položka VIII/3 indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u ledvin a močových cest. Samoplátci volí obvykle dva až tři týdny. Pitnou kúru lze absolvovat celoročně, preferované roční období z lékařského hlediska neexistuje.',
+        },
+        evidence: {
+          heading: 'Co ukazuje výzkum pitné kúry při ledvinových kamenech',
+          body: 'Mechanismus je dobře prozkoumaný: ve zkřížené studii u zdravých mužů zvýšila voda s 1715 mg hydrogenuhličitanu na litr pH moči a vylučování citrátu a snížila oxalát i přesycení pro kalciumoxalát a kyselinu močovou, srovnatelně s citrátem draselným (Kessler T, Hesse A, 2000, Br J Nutr; zdraví dobrovolníci, ne pacienti). Dvojitě zaslepená zkřížená studie s 34 pacienty s opakovanými kalciumoxalátovými kameny zjistila při 1,5 l vody s 2673 mg hydrogenuhličitanu na litr pH moči 6,73, vyšší hodnoty citrátu a hořčíku a nižší přesycení kalciumoxalátem, zároveň však vyšší riziko fosfátových kamenů; přesycení snížila i obyčejná voda, jen díky množství vypité tekutiny (Karagülle O a kol., 2007, World J Urol; jen 3 dny, malý vzorek). Dvanáctitýdenní RCT s 51 pacienty zjistila u hydrogenuhličitanem bohaté vody vyšší množství moči, hořčíku, pH a citrátu oproti obyčejné vodě, zatímco oxalát a Tiseliův index se nelišily (Lu Y a kol., 2022, Int Urol Nephrol; otevřená studie). Evropská doporučení pro prevenci recidivy uvádějí dostatečný příjem tekutin vedle regulace vápníku a kuchyňské soli jako základ prevence (Skolarikos A a kol., 2024, Eur Urol). Přehledový článek popisuje pitnou kúru oligomineralních vod s cílem alespoň 2,5 l moči denně jako součást prevence u k tomu náchylných pacientů i k vyplavení úlomků po litotrypsi (Mennuni G a kol., 2015, Clin Ter; narativní). V Mariánských Lázních samotných probíhá od roku 2026 poprvé po 30 letech klinická studie k objektivním účinkům lázeňské léčby u urologických a nefrologických diagnóz, zapojeno je přes 100 sledovaných pacientů; výsledky zatím nejsou k dispozici (Institut lázeňství a balneologie & Léčebné lázně Mariánské Lázně, 2026, ClinicalTrials.gov NCT07435844). Žádná z těchto studií neukazuje, že by pitná kúra rozpouštěla existující kameny nebo nahrazovala nutné drcení kamene; její doložený účinek se týká složení moči a prevence nových kamenů.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašeho zobrazovacího vyšetření a funkce ledvin. Tato stránka informuje a nenahrazuje urologickou konzultaci.',
+        faqs: [
+          {
+            question: 'Jsou Mariánské Lázně vhodné na ledvinové kameny?',
+            answer: 'Mariánské Lázně vedou nefrolitiázu bez městnání moči jako oficiální indikaci (položka VIII/2) a nasazují pro ni strukturovanou pitnou kúru z hydrogenuhličitanem bohatých minerálních pramenů. Kontrolované studie ukazují, že taková voda zvyšuje pH moči a vylučování citrátu a snižuje přesycení pro kalciumoxalát.',
+          },
+          {
+            question: 'Pomůže lázeňský pobyt v Mariánských Lázních při ledvinových kamenech?',
+            answer: 'Obecný účinek hydrogenuhličitanem bohatých minerálních vod na složení moči je doložen několika kontrolovanými studiemi. Přímo pro Mariánské Lázně probíhá od roku 2026 poprvé po 30 letech vlastní klinická studie k urologickým a nefrologickým diagnózám; její výsledky zatím nejsou k dispozici.',
+          },
+          {
+            question: 'Kolik minerální vody se pije při pitné kúře?',
+            answer: 'Pevné množství pro všechny hosty neexistuje: lázeňský lékař stanoví množství individuálně, s cílem dostatečného množství moči během dne. Přehledový článek k prevenci ledvinových kamenů uvádí jako orientaci alespoň 2,5 l moči denně.',
+          },
+          {
+            question: 'Mohu jet do lázní s ledvinovými kameny bez příznaků?',
+            answer: 'Ano, to je typický případ pro položku VIII/2: nefrolitiáza bez aktuálního městnání moči. Při akutní kolice, uzávěru močových cest nebo horečnaté infekci je nutná nejprve akutní urologická léčba, ne lázeňský pobyt.',
+          },
+          {
+            question: 'Nahrazuje pitná kúra drcení kamene (ESWL)?',
+            answer: 'Ne. Pitná kúra doplňuje urologickou léčbu, například jako doléčení po litotrypsi a k vyplavení úlomků, nenahrazuje ale nutný zákrok u větších nebo městnajících kamenů.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VIII — nemoci močového systému',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položky VIII/2 (nefrolitiáza bez městnání moči, nefrokalcinóza) a VIII/3 (stavy po operacích ledvin a močových cest) s typem péče a délkou.',
+          },
+          {
+            title: 'Kessler T, Hesse A 2000, Br J Nutr — zkřížená studie, zdraví muži',
+            url: 'https://consensus.app/papers/details/2d5a08f705975e588e5670b41859518c/',
+            note: 'Hydrogenuhličitanem bohatá voda zvýšila pH moči a citrát, snížila oxalát a přesycení pro kalciumoxalát a kyselinu močovou. Zdraví dobrovolníci, ne pacienti.',
+          },
+          {
+            title: 'Karagülle O a kol. 2007, World J Urol — dvojitě zaslepená zkřížená studie, 34 pacientů',
+            url: 'https://consensus.app/papers/details/382178a2b7565f0da7a6bc61a1723e47/',
+            note: 'Vyšší hodnoty citrátu a hořčíku, nižší přesycení kalciumoxalátem, vyšší riziko fosfátových kamenů. Jen 3 dny, malý vzorek.',
+          },
+          {
+            title: 'Lu Y a kol. 2022, Int Urol Nephrol — RCT, 51 pacientů s kalciumoxalátovými kameny',
+            url: 'https://consensus.app/papers/details/d78c43250ece58558ba0b8db3d517d7d/',
+            note: '12 týdnů: vyšší množství moči, hořčíku, pH a citrátu oproti obyčejné vodě. Otevřená studie.',
+          },
+          {
+            title: 'Skolarikos A a kol. 2024, Eur Urol — aktualizace doporučení EAU',
+            url: 'https://consensus.app/papers/details/e104f08c54a75b18b24c5090e527a34a/',
+            note: 'Dostatečný příjem tekutin a vápníku, méně soli a bílkovin jako základ prevence recidivy.',
+          },
+          {
+            title: 'Mennuni G a kol. 2015, Clin Ter — přehledový článek k pitné kúře při nefrolitiáze',
+            url: 'https://consensus.app/papers/details/3d02fb18ab44591e89ef2e5a3b728141/',
+            note: 'Pitná kúra oligomineralních vod s cílem ≥2,5 l moči denně jako prevence a doléčení po litotrypsi. Narativní.',
+          },
+          {
+            title: 'Institut lázeňství a balneologie & Léčebné lázně Mariánské Lázně 2026, ClinicalTrials.gov (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Probíhající klinická studie k lázeňské léčbě urologických a nefrologických diagnóz v Mariánských Lázních, přes 100 pacientů. Výsledky zatím nejsou k dispozici.',
+          },
+        ],
+        related: [
+          {
+            label: 'Léčba ledvin a močových cest',
+            href: '/cs/magazin/lecba-ledvin-mocovych-cest',
+          },
+          {
+            label: 'Průvodce pitnou kúrou',
+            href: '/cs/magazin/pitna-kura-pruvodce',
+          },
+          {
+            label: 'Přehled minerálních pramenů',
+            href: '/cs/mineralni-prameny',
+          },
+          {
+            label: 'Co hradí pojišťovna u ledvin a močových cest',
+            href: '/cs/lazne-s-pojistovnou/indikace/ledviny-a-mocove-cesty',
+          },
+        ],
+      },
       ru: {
         slug: 'kamni-v-pochkah',
         navLabel: 'Камни в почках',
@@ -3170,7 +4187,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Älterer Mann trinkt Mineralwasser aus einem Trinkkurbecher während der Trinkkur',
       en: 'An elderly man drinks mineral water from a drinking-cure cup during the drinking cure',
-      cs: 'Älterer Mann trinkt Mineralwasser aus einem Trinkkurbecher während der Trinkkur',
+      cs: 'Starší muž pije minerální vodu z pitného pohárku během pitné kúry',
       ru: 'Пожилой мужчина пьёт минеральную воду из питьевого курортного бокальчика во время питьевого курса',
     },
     content: {
@@ -3478,7 +4495,157 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'urologicke-potize',
+        navLabel: 'Urologické potíže',
+        title: 'Lázeňská léčba urologických potíží v Mariánských Lázních',
+        h1: 'Lázeňská léčba urologických potíží',
+        metaTitle: 'Léčba urologických potíží v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Chronické záněty močových cest, stavy po operaci prostaty a chronická prostatitida: léčba, pitná kúra a délka pobytu v Mariánských Lázních.',
+        lead: 'Mezi urologické potíže patří podle indikačního seznamu mimo jiné chronické, na léčbu obtížně reagující záněty ledvin a močových cest, stavy po operacích ledvin a močových cest a chronická prostatitida. Mariánské Lázně tuto skupinu léčí od 19. století především pitnou kúrou z místních minerálních pramenů, doplněnou o urologem předepsanou fyzikální terapii.',
+        teaser: 'Chronické záněty močových cest, stavy po operaci prostaty a chronická prostatitida: pitná kúra, terapie pánevního dna a urologická kontrola průběhu.',
+        treats: [
+          'Opakující se a chronické, netuberkulózní záněty ledvin a močových cest, které dostatečně nereagují na antibiotika, v průběžné urologické péči alespoň 12 měsíců',
+          'Cystická onemocnění ledvin',
+          'Stavy po operacích ledvin a močových cest, včetně endovezikálních zákroků a komplikované prostatektomie',
+          'Chronická prostatitida nebo prostatovezikulitida, která dostatečně nereaguje na medikamentózní léčbu a antibiotika, v průběžné urologické péči alespoň 12 měsíců',
+        ],
+        notFor: [
+          'Akutní infekce močových cest s horečkou nebo aktivní bakteriální zánět',
+          'Čerstvá operace bez zhojené rány a bez souhlasu odborného lékaře',
+          'Nevyjasněná makrohematurie nebo podezření na nádor močových cest',
+          'Obecné kontraindikace: nekontrolované srdeční selhání, aktivní nádorové onemocnění, těhotenství',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde urologickou anamnézu, dřívější kultivace a antibiotickou léčbu, případně operační zprávu, a sestaví léčebný plán. Vezměte si aktuální zprávu svého urologa.',
+          },
+          {
+            heading: 'Pitná kúra a denní procedury',
+            body: 'Základ tvoří pitná kúra z přidělených pramenů, doplněná urologem předepsanou fyzikální terapií a po operaci prostaty terapií pánevního dna.',
+          },
+          {
+            heading: 'Pohyb jako druhý pilíř',
+            body: 'Procházky po kolonádě a cílená cvičení pánevního dna podporují kontinenci po operačních zákrocích a celkový krevní oběh.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Lázeňský lékař kontroluje nálezy moči a upravuje program. Na závěr dostanete zprávu pro svého urologa a doporučení domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Pitná kúra u minerálních pramenů',
+            detail: 'Pravidelné pití ke zvýšení množství moči; tradičně používané u chronických zánětů ledvin a močových cest.',
+          },
+          {
+            name: 'Terapie pánevního dna',
+            detail: 'Cílený trénink po operaci prostaty na podporu kontinence.',
+          },
+          {
+            name: 'Fyzikální tepelné procedury v oblasti pánve',
+            detail: 'Mírné procedury, tradičně používané u chronických potíží v oblasti pánve.',
+          },
+          {
+            name: 'Pravidelná urologická kontrola',
+            detail: 'Hodnoty moči a další laboratorní parametry se během pobytu opakovaně kontrolují.',
+          },
+          {
+            name: 'Pohybová terapie na kolonádě',
+            detail: 'Obecný pohyb jako součást lázeňského programu, podporuje krevní oběh a rozložení tekutin během dne.',
+          },
+          {
+            name: 'Nutriční poradenství',
+            detail: 'Doplňuje pitnou kúru u chronických potíží s močovými cestami.',
+          },
+          {
+            name: 'Relaxační techniky',
+            detail: 'Doplňková součást programu u chronicky recidivujících potíží.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Chronické záněty ledvin a močových cest (položka VIII/1), stavy po operacích ledvin a močových cest (VIII/3) i chronická prostatitida (VIII/4) mají hrazenou délku pobytu podle indikačního seznamu; přesný rozpis najdete na stránce Co hradí pojišťovna u ledvin a močových cest. Samoplátci volí obvykle dva až tři týdny. Pro roční období neexistuje lékařský předpis.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'K chronické pyelonefritidě existují dvě kontrolované ruské studie: u 48 pacientů v latentní fázi ustoupily při doplňkové pitné kúře do 2 l minerální vody denně klinické příznaky u 91 % skupiny s vodou, s trvale sterilními kulturami moči (Nejmark AI a kol., 2020, Urol Vedomosti; malá, nezaslepená studie). Starší studie s 95 pacienty v aktivní fázi zjistila při antibiotikách plus hydrogenuhličitanové vodě sterilní moč u 88,6 % a o 25,6 % méně recidiv za dva roky oproti samotným antibiotikům (Neimark AI a kol., 2004, Vopr Kurortol; starší, nerandomizovaná studie). K chronické prostatitidě shrnuje Cochranův přehled, že akupunktura a rázová vlna pomáhají se střední až vysokou jistotou výsledků a pohybové programy s nízkou jistotou — lázeňská léčba jako celek v něm zkoumána nebyla (Franco JVA a kol., 2019, BJU Int). Malá korejská pilotní studie s 16 osobami s chronickým syndromem pánevní bolesti zjistila po pěti dnech balneoterapie zmírnění bolesti a močových příznaků a pokles zánětlivých markerů IL-1 a TNF-α (Min K a kol., 2020, J Obstet Gynaecol; velmi malý vzorek, bez kontrolní skupiny). V Mariánských Lázních samotných probíhá od roku 2026 poprvé po 30 letech klinická studie k objektivním účinkům lázeňské léčby u urologických a nefrologických diagnóz, zapojeno je přes 100 sledovaných pacientů; výsledky zatím nejsou k dispozici (Institut lázeňství a balneologie & Léčebné lázně Mariánské Lázně, 2026, ClinicalTrials.gov NCT07435844). Žádná z těchto studií neukazuje, že lázeňská léčba vyléčí akutní infekci nebo strukturální urologické onemocnění; doplňuje urologickou léčbu, nenahrazuje ji.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vaší urologické anamnézy. Tato stránka informuje a nenahrazuje urologickou konzultaci.',
+        faqs: [
+          {
+            question: 'Kam na lázně s urologickými potížemi?',
+            answer: 'Vhodné jsou lázně, které vedou chronické záněty močových cest, stavy po urologických operacích nebo chronickou prostatitidu jako oficiální indikaci a nabízejí během pobytu urologickou péči. Mariánské Lázně to splňují přes položky VIII/1, VIII/3 a VIII/4 indikačního seznamu a opírají se přitom o pitnou kúru z místních minerálních pramenů.',
+          },
+          {
+            question: 'Jak probíhá rehabilitace po operaci prostaty?',
+            answer: 'Podmínkou je zhojená rána a souhlas operatéra. Lázeňský lékař projde operační zprávu, poté následuje terapie pánevního dna na podporu kontinence, pitná kúra a dávkovaný pohyb, s týdenní kontrolou a závěrečnou zprávou pro urologa.',
+          },
+          {
+            question: 'Jsou mariánskolázeňské prameny vhodné při zánětech močových cest?',
+            answer: 'Při akutních, horečnatých infekcích je nejprve nutná akutní antibiotická léčba, ne lázeňský pobyt. Pro opakující se nebo chronické, na antibiotika obtížně reagující záněty ledvin a močových cest v průběžné urologické péči vedou Mariánské Lázně samostatnou indikaci (VIII/1); kontrolované ruské studie popisují při doplňkové pitné kúře ústup klinických potíží a sterilní kultury moči u velké části léčených pacientů.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při chronické prostatitidě?',
+            answer: 'Podle indikačního seznamu jde u položky VIII/4 o délku pobytu, kterou konkrétně rozepisuje stránka Co hradí pojišťovna u ledvin a močových cest. Podmínkou je alespoň dvanáctiměsíční urologická péče bez dostatečné odezvy na léky a antibiotika.',
+          },
+          {
+            question: 'Co dělat při akutním zánětu močového měchýře?',
+            answer: 'Akutní zánět močového měchýře nebo močových cest s horečkou se v lázních neléčí, nejprve je nutná urologická nebo praktická léčba antibiotiky. Až chronické, opakující se nebo na léčbu obtížně reagující průběhy v průběžné urologické péči jsou indikací pro lázeňský pobyt.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina VIII — nemoci močového systému',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položky VIII/1 (chronické záněty ledvin a močových cest), VIII/3 (stavy po urologických operacích) a VIII/4 (chronická prostatitida) s typem péče a délkou.',
+          },
+          {
+            title: 'Nejmark AI a kol. 2020, Urol Vedomosti — kontrolovaná studie, 48 pacientů s chronickou pyelonefritidou',
+            url: 'https://consensus.app/papers/details/454b649ed6a757d58534c939e4796fe8/',
+            note: 'Doplňková pitná kúra: ústup klinických příznaků u 91 %, trvale sterilní kultury moči. Malá, nezaslepená studie.',
+          },
+          {
+            title: 'Neimark AI a kol. 2004, Vopr Kurortol — kontrolovaná studie, 95 pacientů s chronickou pyelonefritidou',
+            url: 'https://consensus.app/papers/details/a54c04d759fa5caca9519c669fdd6099/',
+            note: 'Antibiotika plus hydrogenuhličitanová voda: sterilní moč u 88,6 %, o 25,6 % méně recidiv za 2 roky. Starší, nerandomizovaná studie.',
+          },
+          {
+            title: 'Franco JVA a kol. 2019, BJU Int — Cochranův přehled, 38 studií k chronické prostatitidě',
+            url: 'https://doi.org/10.1111/bju.14492',
+            note: 'Akupunktura a rázová vlna se střední až vysokou jistotou důkazů pomáhají; lázeňská léčba jako celek nezkoumána.',
+          },
+          {
+            title: 'Min K a kol. 2020, J Obstet Gynaecol — pilotní studie, 16 osob s chronickým syndromem pánevní bolesti',
+            url: 'https://doi.org/10.1080/01443615.2019.1631771',
+            note: '5 dní balneoterapie: zmírnění bolesti a močových příznaků, pokles IL-1 a TNF-α. Velmi malý vzorek, bez kontrolní skupiny.',
+          },
+          {
+            title: 'Institut lázeňství a balneologie & Léčebné lázně Mariánské Lázně 2026, ClinicalTrials.gov (NCT07435844)',
+            url: 'https://clinicaltrials.gov/study/NCT07435844',
+            note: 'Probíhající klinická studie k lázeňské léčbě urologických a nefrologických diagnóz v Mariánských Lázních, přes 100 pacientů. Výsledky zatím nejsou k dispozici.',
+          },
+        ],
+        related: [
+          {
+            label: 'Léčba ledvin a močových cest',
+            href: '/cs/magazin/lecba-ledvin-mocovych-cest',
+          },
+          {
+            label: 'Průvodce pitnou kúrou',
+            href: '/cs/magazin/pitna-kura-pruvodce',
+          },
+          {
+            label: 'Ambulantní léčba',
+            href: '/cs/ambulantni-lecba',
+          },
+          {
+            label: 'Co hradí pojišťovna u ledvin a močových cest',
+            href: '/cs/lazne-s-pojistovnou/indikace/ledviny-a-mocove-cesty',
+          },
+        ],
+      },
       ru: {
         slug: 'urologicheskie-zabolevaniya',
         navLabel: 'Урологические заболевания',
@@ -3645,7 +4812,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Therapeutin führt eine manuelle Lymphdrainage an den Beinen einer Gästin durch',
       en: 'A therapist performs manual lymphatic drainage on a guest’s legs',
-      cs: 'Therapeutin führt eine manuelle Lymphdrainage an den Beinen einer Gästin durch',
+      cs: 'Terapeutka provádí manuální lymfodrenáž na nohou lázeňské hostky',
       ru: 'Терапевт выполняет ручной лимфодренаж ног пациентки',
     },
     content: {
@@ -3945,7 +5112,157 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'po-onkologicke-lecbe',
+        navLabel: 'Po onkologické léčbě',
+        title: 'Lázeňská léčba po onkologické léčbě v Mariánských Lázních',
+        h1: 'Lázeňská léčba po onkologické léčbě',
+        metaTitle: 'Lázně po onkologické léčbě v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Rekondice po onkologické léčbě v Mariánských Lázních: lékařem vedený lázeňský program pro kondici, stravu a psychiku — podmínky, průběh a délka.',
+        lead: 'Pro hosty, kteří dokončili onkologickou léčbu, nabízejí Mariánské Lázně lékařem vedený lázeňský program pro obnovu kondice, stravy a psychické rovnováhy. Podmínkou je ukončená komplexní onkologická léčba bez známek recidivy — lázeňský pobyt nenahrazuje onkologickou dispenzarizaci.',
+        teaser: 'Rekondice po chemoterapii nebo ozařování: minerální koupele, nutriční poradenství a psychická podpora pod lékařským dohledem, od sedmi nocí.',
+        treats: [
+          'Onkologické případy po ukončené komplexní protinádorové léčbě bez známek recidivy (položka I/1 indikačního seznamu)',
+          'Přetrvávající únava a ztráta tělesné kondice po chemoterapii nebo radioterapii',
+          'Lymfedém po operaci nebo ozařování',
+          'Bolesti pohybového aparátu nebo nervového systému v důsledku léčby',
+          'Psychické vyčerpání a potřeba doprovázené rekondice v období remise',
+        ],
+        notFor: [
+          'Probíhající onkologická léčba nebo nádorové onemocnění s klinicky zjistitelnými známkami trvání či progrese nemoci',
+          'Akutní infekční onemocnění a stavy, u kterých lze očekávat destabilizaci zdravotního stavu',
+          'Výrazná kachexie, která znemožňuje intenzivní rehabilitaci',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Odborný lékař posoudí váš aktuální zdravotní stav, projde podklady k ukončené onkologické léčbě a stanoví cíle rekonvalescence. Vezměte si závěrečnou zprávu z onkologické léčby a aktuální seznam léků — bez nich vyjde plán opatrněji.',
+          },
+          {
+            heading: 'Až tři procedury denně',
+            body: 'Dopoledne minerální koupele, suché plynové koupele a fyzioterapie, poté klid vleže. Zátěž se přizpůsobuje vaší individuální kondici, ne pevnému plánu.',
+          },
+          {
+            heading: 'Strava a psychická podpora',
+            body: 'Analýza tělesného složení a individuální jídelníček pomáhají doplnit živiny. Relaxační techniky, dechová cvičení a rozhovory podporují zvládání stresu a potíží se spánkem — pobyt přitom nenahrazuje psychoterapii ani psychiatrickou léčbu.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Lékař týdně kontroluje průběh, sleduje laboratorní hodnoty jako glukózu, cholesterol a funkci jater a ledvin a upravuje plán. Na závěr dostanete zprávu pro svého ošetřujícího onkologa.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Uhličitá koupel',
+            detail: 'Minerální koupel s přírodním CO₂ k uvolnění po náročné léčbě; CO₂ vstřebané kůží zvyšuje prokrvení kůže.',
+          },
+          {
+            name: 'Suchá plynová koupel',
+            detail: 'CO₂ koupel v Mariině plynu bez oběhové zátěže vodou — vhodná, dokud je celková koupel ještě příliš namáhavá.',
+          },
+          {
+            name: 'Manuální lymfodrenáž',
+            detail: 'Cíleně při lymfedému po operaci nebo ozařování, nejčastěji na pažích nebo nohou.',
+          },
+          {
+            name: 'Individuální fyzioterapie',
+            detail: 'Postupné obnovování síly a pohyblivosti, přizpůsobené individuální zátěžové kapacitě po léčbě.',
+          },
+          {
+            name: 'Cvičení ve vodě',
+            detail: 'Vztlak odlehčuje klouby a svalstvo, takže lze trénovat pohyb, který na suchu ještě příliš zatěžuje.',
+          },
+          {
+            name: 'Nutriční poradenství s analýzou tělesného složení',
+            detail: 'Individuální jídelníček k doplnění živin a vybudování zdravých stravovacích návyků po období léčby.',
+          },
+          {
+            name: 'Krevní testy',
+            detail: 'Kontrola glukózy, cholesterolu a hodnot jater a ledvin během pobytu.',
+          },
+          {
+            name: 'Relaxační techniky a dechová cvičení',
+            detail: 'Podporují zvládání stresu a kvalitu spánku; nenahrazují psychoterapii ani psychiatrickou léčbu.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Onkologické případy po ukončené léčbě bez známek recidivy jsou položka I/1 indikačního seznamu; přesnou délku hrazeného pobytu najdete na stránce Co hradí pojišťovna u onkologických onemocnění. Samoplátci mohou postonkologický program hotelů Ensana rezervovat od sedmi nocí, pro citelnou změnu stravy a pohybu se však doporučuje delší pobyt. Termín se řídí ukončením onkologické léčby a souhlasem ošetřujícího onkologa, ne ročním obdobím.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Doklady se týkají únavy, návratu do běžného života a kvality života — ne průběhu samotného nádorového onemocnění. Francouzská randomizovaná studie se 181 ženami v remisi karcinomu prsu zjistila, že třítýdenní lázeňský program s nutričním poradenstvím zvýšil návrat k pracovním a rodinným aktivitám po 12 měsících (Mourgues a kol., 2014, Eur J Oncol Nurs; otevřená studie bez zaslepení). Rakouské pozorování 149 žen po operaci prsu popsalo po třítýdenní rehabilitaci s uhličitými koupelemi a peloidy lepší kvalitu života, nejvýrazněji u únavy (Strauss-Blasche a kol., 2005, Cancer Nurs; bez kontrolní skupiny). Nejsilnější doklady se týkají samotného vedeného tréninku: metaanalýza randomizovaných studií ukazuje méně únavy a lepší kvalitu života po karcinomu prsu a prostaty (Cano-Uceda a kol., 2025, Appl Sci), další speciálně pro trénink ve vodě po karcinomu prsu (Wang a kol., 2022, PLoS ONE). Vlastní observační program Ensany OnkoFit-Spa, který provozuje společně s 1. lékařskou fakultou Univerzity Karlovy, je interní sledování průběhu Ensany a ne doklad účinnosti jednotlivých procedur. Vliv na imunitní systém nebo průběh nádorového onemocnění žádná z těchto studií nezkoumá.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich onkologických podkladů. Tato stránka informuje a nenahrazuje lékařskou ani onkologickou konzultaci.',
+        faqs: [
+          {
+            question: 'Jsou v Mariánských Lázních hotely pro onkologické pacienty na zotavení?',
+            answer: 'Ano. Ensana provozuje v Mariánských Lázních v hotelech Nové Lázně a Hvězda specializovaný postonkologický program pro hosty po ukončené onkologické léčbě. Kombinuje minerální koupele, fyzioterapii, nutriční poradenství a psychickou podporu pod lékařským dohledem, rezervovatelný od minimální délky sedmi nocí.',
+          },
+          {
+            question: 'Které lázně jsou vhodné pro onkologické pacienty po léčbě?',
+            answer: 'Vhodné jsou lázně s lékařem vedeným postonkologickým programem, ne každý wellness pobyt. V Mariánských Lázních je základem oficiální indikace I/1 — onkologické případy po ukončené komplexní léčbě bez známek recidivy —, doplněná specializovaným hotelovým programem se vstupní prohlídkou a týdenní lékařskou kontrolou.',
+          },
+          {
+            question: 'Jak dlouho po onkologické léčbě mohu jet do lázní?',
+            answer: 'Podmínkou je ukončená komplexní onkologická léčba bez klinicky zjistitelných známek recidivy. Přesný termín stanoví váš ošetřující onkolog; závisí na průběhu léčby a vašem aktuálním zdravotním stavu, ne na pevné čekací době.',
+          },
+          {
+            question: 'Co zahrnuje postonkologický lázeňský program v Mariánských Lázních?',
+            answer: 'Po vstupní lékařské prohlídce obvykle zahrnuje až tři denní procedury — například minerální koupele, suché plynové koupele, individuální fyzioterapii nebo cvičení ve vodě —, k tomu nutriční poradenství s krevními testy a relaxační techniky. Přesný plán se řídí vaším stavem a týdně se upravuje.',
+          },
+          {
+            question: 'Nahrazuje lázeňský pobyt onkologickou dispenzarizaci?',
+            answer: 'Ne. Lázeňský pobyt je doplňková rekonvalescenční fáze po ukončené léčbě, ne onkologická dispenzarizace ani protinádorová léčba. Pravidelné kontroly u ošetřujícího onkologa zůstávají nadále nutné, nezávisle na pobytu.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina I — onkologická onemocnění',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položka I/1: onkologické případy po ukončené komplexní léčbě bez známek recidivy, s typem péče a délkou hrazeného pobytu.',
+          },
+          {
+            title: 'Mourgues C a kol. 2014, Eur J Oncol Nurs — randomizovaná studie PACThe, 181 žen v remisi karcinomu prsu',
+            url: 'https://consensus.app/papers/details/198633cfa0215c57ae77164ff322c1c7/',
+            note: 'Lázeňský program s nutričním poradenstvím oproti samotnému poradenství: vyšší návrat k pracovním a rodinným aktivitám po 12 měsících. Otevřená studie bez zaslepení.',
+          },
+          {
+            title: 'Strauss-Blasche G a kol. 2005, Cancer Nurs — 149 žen po operaci prsu, rakouská lázeňská rehabilitace',
+            url: 'https://consensus.app/papers/details/a05ea52de8d85748bc6c07d9c5ae805a/',
+            note: 'Třítýdenní rehabilitace s CO₂ koupelemi a peloidy: lepší kvalita života, nejtrvaleji u únavy. Studie před-po bez kontrolní skupiny.',
+          },
+          {
+            title: 'Cano-Uceda A a kol. 2025, Appl Sci — metaanalýza 19 randomizovaných studií k vedenému tréninku',
+            url: 'https://consensus.app/papers/details/e08c50ee291d557789f5692e153034b4/',
+            note: 'Vedený trénink snižuje únavu po karcinomu prsu a prostaty oproti obvyklé péči. Riziko zkreslení v mnoha studiích nejasné.',
+          },
+          {
+            title: 'Wang J a kol. 2022, PLoS ONE — metaanalýza k tréninku ve vodě po karcinomu prsu',
+            url: 'https://consensus.app/papers/details/fd7851ada1675ae3894bc22fdf8153d8/',
+            note: 'Trénink ve vodě snižuje únavu a zlepšuje kvalitu života oproti obvyklé péči. Zahrnuto jen 5 randomizovaných studií.',
+          },
+        ],
+        related: [
+          {
+            label: 'Postonkologický lázeňský program',
+            href: '/cs/magazin/postonkologicky-lazensky-program',
+          },
+          {
+            label: 'Přehled minerálních pramenů',
+            href: '/cs/mineralni-prameny',
+          },
+          {
+            label: 'CO₂ terapie',
+            href: '/cs/co2-terapie',
+          },
+          {
+            label: 'Co hradí pojišťovna u onkologických onemocnění',
+            href: '/cs/lazne-s-pojistovnou/indikace/onkologicka-onemocneni',
+          },
+        ],
+      },
       ru: {
         slug: 'posle-lecheniya-onkologii',
         navLabel: 'После лечения онкологии',
@@ -4110,7 +5427,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Gast erhält im Profil eine Sauerstofftherapie über eine Atemmaske',
       en: 'A guest receives oxygen therapy through a breathing mask, seen in profile',
-      cs: 'Gast erhält im Profil eine Sauerstofftherapie über eine Atemmaske',
+      cs: 'Host v profilu podstupuje oxygenoterapii přes dýchací masku',
       ru: 'Гостю курорта в профиль проводят кислородную терапию через дыхательную маску',
     },
     content: {
@@ -4430,7 +5747,167 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'dychaci-cesty',
+        navLabel: 'Dýchací cesty',
+        title: 'Lázeňská léčba dýchacích cest v Mariánských Lázních',
+        h1: 'Lázeňská léčba dýchacích cest',
+        metaTitle: 'Léčba dýchacích cest v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Astma, CHOPN a chronické potíže dýchacích cest v Mariánských Lázních: inhalace z Lesního pramene, dechová terapie a klimatoterapie — pro koho a jak dlouho.',
+        lead: 'Chronická onemocnění dýchacích cest jako astma, CHOPN nebo opakovaná bronchitida tvoří v Mariánských Lázních samostatnou indikační skupinu. Léčba se opírá o inhalace z uhličitého Lesního pramene, dechovou terapii a od roku 2023 úředně uznané klimatické podmínky v nadmořské výšce kolem 630 metrů.',
+        teaser: 'Astma, CHOPN a chronická bronchitida: inhalace z Lesního pramene, dechová terapie a klimatoterapie v nadmořské výšce kolem 630 metrů, po dva až čtyři týdny.',
+        treats: [
+          'Bronchiální astma a chronická obstrukční plicní nemoc (CHOPN) (položka V/5 indikačního seznamu)',
+          'Bronchiektázie a opakované záněty dolních cest dýchacích, i jako uznaná nemoc z povolání (V/4)',
+          'Intersticiální plicní fibróza jakékoli etiologie v trvalé léčbě (V/6)',
+          'Alergická rýma a chronické záněty horních cest dýchacích',
+          'Stavy po prodělaných zápalech plic, včetně následků covidu-19',
+        ],
+        notFor: [
+          'Akutní infekční onemocnění dýchacích cest a akutní zhoršení (exacerbace) v aktivním stadiu',
+          'Aktivní nádorové onemocnění s klinicky zjistitelnými známkami trvání nebo progrese nemoci',
+          'Nekompenzované srdeční selhání nebo výrazná oběhová slabost',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde nálezy plicních funkcí a medikaci a sestaví léčebný plán. Vezměte si aktuální nálezy od pneumologa nebo praktického lékaře a seznam léků.',
+          },
+          {
+            heading: 'Dvě až tři procedury denně',
+            body: 'Dopoledne inhalace z Lesního pramene a dechová terapie, doplněné uhličitými koupelemi nebo plynovými injekcemi podle ordinace lékaře. Po každé proceduře následuje klid vleže.',
+          },
+          {
+            heading: 'Klimatoterapie a terénní léčba',
+            body: 'Vedené procházky po historické síti kolonád v podhorském klimatu, s tempem a stoupáním přizpůsobenými kondici. Chůze na čerstvém vzduchu je součástí léčby, ne volnočasový program.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Lékař týdně kontroluje nález a funkci dýchacích cest a upravuje inhalace i cvičení. Na závěr dostanete zprávu pro svého ošetřujícího lékaře a program dechových cvičení domů.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Inhalace minerální vody z Lesního pramene',
+            detail: 'Jemně rozprášená voda zvlhčuje sliznice a tradičně se používá k uvolnění hlenu; obvykle dvě procedury denně.',
+          },
+          {
+            name: 'Dechová terapie',
+            detail: 'Individuálně i skupinově s fyzioterapeuty: prodloužený výdech, brániční dýchání, technika kašle — část kúry, kterou si člověk odnáší natrvalo.',
+          },
+          {
+            name: 'Uhličitá koupel',
+            detail: 'CO₂ vstřebané kůží rozšiřuje drobné cévy a zvyšuje prokrvení kůže; u diagnóz dýchacích cest jde o doplňkovou proceduru.',
+          },
+          {
+            name: 'Suchá plynová koupel a plynové injekce',
+            detail: 'CO₂ z místního Mariina plynu bez oběhové zátěže vodou, když by celková koupel byla příliš namáhavá.',
+          },
+          {
+            name: 'Klimatoterapie a terénní léčba',
+            detail: 'Vedená chůze v klimaticky uznané kotlině; vedená chůze je u CHOPN zkoumaná jako trénink zlepšující kvalitu života a vytrvalost při chůzi.',
+          },
+          {
+            name: 'Pitná kúra',
+            detail: 'Doplňkově podle diagnózy; který pramen, množství a čas určuje lékař individuálně.',
+          },
+          {
+            name: 'Doplňkové procedury',
+            detail: 'Masáže, solná jeskyně nebo relaxační techniky podle nálezu, při dušnosti a napětí.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Astma a CHOPN (položka V/5), bronchiektázie a opakované záněty dolních cest dýchacích (V/4) i intersticiální plicní fibróza (V/6) mají hrazenou délku pobytu podle indikačního seznamu; přesný rozpis najdete na stránce Co hradí pojišťovna u dýchacích cest. Samoplátci volí obvykle dva až tři týdny po dohodě s lázeňským lékařem. Pro roční období neexistuje lékařský předpis, přesto se podzim díky ustupující pylové zátěži a jako příprava na topnou sezonu považuje za zvlášť vhodný.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Systematický přehled 27 studií k inhalaci minerálních vod popisuje lepší průchodnost nosu a mukociliární transport, upozorňuje ale na nízkou kvalitu a nejednotnost studií (Fontana a kol., 2025, Int J Biometeorol). Další systematický přehled k astmatu a CHOPN nachází u astmatu zlepšenou plicní funkci, u CHOPN smíšené výsledky, při celkově málo kvalitních randomizovaných studiích (Calzetta a kol., 2024, J Clin Med). Pro trénink ve vodě u CHOPN se podle narativního přehledu považují doklady za silné, u sirných inhalací se popisuje lepší mukociliární clearance (Khaltaev a kol., 2020, J Thorac Dis). Maďarská studie před-po bez kontrolní skupiny u 678 pacientů s astmatem nebo CHOPN zaznamenala po třítýdenním programu s denní dechovou terapií venku vzestup průměrné hodnoty FEV1 ze 71,0 na 77,7 % náležité hodnoty; vliv klimatu se v ní nedá oddělit od tréninku a péče (Müller a kol., 2018, Eur J Integr Med). Vedená chůze samotná je u CHOPN doložená multicentrickou randomizovanou studií se 143 pacienty: po 8 až 10 týdnech zlepšila kvalitu života a vytrvalost při chůzi oproti obvyklé péči — šlo ale o ambulantní program, ne o lázeňský pobyt (Wootton a kol., 2014, Eur Respir J). Žádná ze studií neukazuje změnu průběhu astmatu nebo CHOPN samotného.',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle nálezů vašich plicních funkcí. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Co léčí Mariánské Lázně u dýchacích cest?',
+            answer: 'Mariánské Lázně jsou vedeny jako lázeňské místo pro oficiální indikační skupinu V — netuberkulózní nemoci dýchacích orgánů. Základem je uhličitý a hydrogenuhličitanem bohatý Lesní pramen pro inhalace, přírodní oxid uhličitý pro plynové koupele a od roku 2023 úředně uznané klimatické podmínky v nadmořské výšce kolem 630 metrů.',
+          },
+          {
+            question: 'Pomůže lázeňský pobyt při astmatu nebo CHOPN?',
+            answer: 'Astma a CHOPN (položka V/5) jsou hrazenou indikací. Systematický přehled popisuje u astmatu zlepšenou plicní funkci, u CHOPN smíšené výsledky, při celkově málo kvalitních studiích; vedená chůze je jako trénink u CHOPN doložená randomizovanou studií. Lázeňská léčba nenahrazuje předepsané léky.',
+          },
+          {
+            question: 'Co přináší inhalace minerální vody?',
+            answer: 'Jemně rozprášená voda z Lesního pramene zvlhčuje sliznice a tradičně se používá k uvolnění hlenu. Systematický přehled 27 studií popisuje po ní lepší průchodnost nosu a mukociliární transport, upozorňuje ale na nízkou kvalitu podkladových studií.',
+          },
+          {
+            question: 'Proč se pro tuto kúru zvlášť hodí podzim?',
+            answer: 'Na podzim výrazně klesá pylová zátěž, zatímco začíná topná sezona, která navíc vysušuje horní cesty dýchací. Dva až tři týdny ve vlhkém, chladném lesním vzduchu s denní inhalací se proto považují za dobrou přípravu na zimu.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při potížích s dýcháním?',
+            answer: 'Podle indikačního seznamu se délka liší podle konkrétní položky; přesný rozpis najdete na stránce Co hradí pojišťovna u dýchacích cest. Samoplátci volí obvykle dva až tři týdny; první citelná úleva se obvykle dostaví v průběhu prvního týdne.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina V — netuberkulózní nemoci dýchacích orgánů',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položky V/4–V/6 s typem péče a délkou (např. V/5 astma/CHOPN, V/4 bronchiektázie).',
+          },
+          {
+            title: 'Oficiální turistický portál města Mariánské Lázně — Lesní pramen',
+            url: 'https://www.marianskelazne.cz/o-meste/prameny/lesni-pramen/',
+            note: 'Rozbor vody (volný CO₂ 2 960 mg/l, hydrogenuhličitan 1 352 mg/l, sodík 549 mg/l); tradiční využití k inhalacím a pitné kúře.',
+          },
+          {
+            title: 'Fontana M a kol. 2025, Int J Biometeorol — systematický přehled 27 studií k inhalaci minerálních vod',
+            url: 'https://consensus.app/papers/details/e377f688a5f85f3c9e6c9373d675eb8e/',
+            note: 'Lepší průchodnost nosu, mukociliární transport a některé plicní parametry. Nízká kvalita a nejednotnost studií.',
+          },
+          {
+            title: 'Calzetta L a kol. 2024, J Clin Med — systematický přehled k balneoterapii u astmatu a CHOPN',
+            url: 'https://consensus.app/papers/details/a501a68157c55ab987f90c1b05309fbe/',
+            note: 'Zlepšená plicní funkce u astmatu, smíšené výsledky u CHOPN; málo kvalitních randomizovaných studií.',
+          },
+          {
+            title: 'Khaltaev N a kol. 2020, J Thorac Dis — narativní přehled k balneoterapii u chronických nemocí dýchacích cest',
+            url: 'https://consensus.app/papers/details/ef1fb47a66af5341be76a01e6fde2ba4/',
+            note: 'Trénink ve vodě u CHOPN má silné doklady; sirné inhalace zlepšují mukociliární clearance. Narativní přehled.',
+          },
+          {
+            title: 'Müller A a kol. 2018, Eur J Integr Med — studie před-po, 678 pacientů s astmatem a CHOPN, třítýdenní klimatický program',
+            url: 'https://doi.org/10.1016/j.eujim.2018.04.007',
+            note: 'FEV1 vzrostl ze 71,0 na 77,7 % náležité hodnoty. Bez kontrolní skupiny; vliv klimatu neoddělitelný od tréninku a péče.',
+          },
+          {
+            title: 'Wootton SL a kol. 2014, Eur Respir J — multicentrická randomizovaná studie, 143 pacientů s CHOPN',
+            url: 'https://doi.org/10.1183/09031936.00078014',
+            note: 'Vedená chůze 2–3× týdně po 8–10 týdnů zlepšila kvalitu života a vytrvalost při chůzi. Ambulantní program, ne lázeňský pobyt.',
+          },
+        ],
+        related: [
+          {
+            label: 'Lázeňská léčba dýchacích cest — podzimní kúra',
+            href: '/cs/magazin/lazenska-lecba-dychacich-cest',
+          },
+          {
+            label: 'Klimatoterapie',
+            href: '/cs/klimatoterapie',
+          },
+          {
+            label: 'Lesní pramen v profilu',
+            href: '/cs/prehled-pramenu/lesni',
+          },
+          {
+            label: 'Rehabilitace po covidu',
+            href: '/cs/magazin/rehabilitace-po-covidu',
+          },
+          {
+            label: 'Co hradí pojišťovna u dýchacích cest',
+            href: '/cs/lazne-s-pojistovnou/indikace/dychaci-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'dykhatelnye-puti',
         navLabel: 'Дыхательные пути',
@@ -4606,7 +6083,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Kurgast trinkt bei Tageslicht Mineralwasser aus einem Trinkbecher an der Quelle',
       en: 'A spa guest drinks mineral water from a drinking cup at the spring in daylight',
-      cs: 'Kurgast trinkt bei Tageslicht Mineralwasser aus einem Trinkbecher an der Quelle',
+      cs: 'Lázeňský host pije za denního světla minerální vodu z pohárku u pramene',
       ru: 'Гость курорта при дневном свете пьёт минеральную воду из питьевого бокальчика у источника',
     },
     content: {
@@ -4910,7 +6387,159 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'travici-potize',
+        navLabel: 'Trávicí potíže',
+        title: 'Lázeňská léčba trávicích potíží v Mariánských Lázních',
+        h1: 'Lázeňská léčba trávicích potíží',
+        metaTitle: 'Léčba trávicích potíží v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Lázeňská léčba trávicích potíží v Mariánských Lázních: pitná kúra z Křížového pramene, dietní program a indikační seznam — co se léčí a jak dlouho pobyt trvá.',
+        lead: 'Mariánské Lázně proslavila voda, jejíž účinek na trávení byl známý už dřív než první lázeňský hotel. Léčba trávicích potíží se opírá o pitnou kúru ze sulfátových pramenů, jako je Křížový pramen, individuální dietní program a lékařské doprovázení po dobu několika týdnů.',
+        teaser: 'Chronické potíže žaludku a střev, onemocnění žlučníku a chronická pankreatitida: pitná kúra z Křížového pramene, dietní program a denní lékařské doprovázení.',
+        treats: [
+          'Chronická a opakující se onemocnění žaludku a střev s přetrvávajícími potížemi navzdory standardní léčbě (položka III/1)',
+          'Crohnova nemoc a ulcerózní kolitida (III/3)',
+          'Chronická onemocnění žlučníku a žlučových cest se žlučovými kameny a funkční poruchy žlučových cest (III/4)',
+          'Prokázaná chronická pankreatitida a stavy po akutní pankreatitidě (III/8)',
+          'Stavy po operacích žaludku, dvanáctníku nebo střev s endoskopicky potvrzenou pooperační symptomatikou',
+        ],
+        notFor: [
+          'Akutní onemocnění žaludku a střev, akutní infekce nebo aktivní zhoršení bez předchozího odborného vyšetření',
+          'Chybějící endoskopické nebo gastroenterologické nálezy k potvrzení diagnózy, zejména u pooperačních stavů',
+          'Akutní infekční onemocnění, aktivní nádorové onemocnění se známkami progrese, výrazná kachexie',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde gastroenterologické nálezy, u pooperačních stavů i endoskopické zprávy, a individuálně stanoví pramen, množství a čas pitné kúry. Vezměte si aktuální nálezy — bez nich nemůže vzniknout závazný plán.',
+          },
+          {
+            heading: 'Pitná kúra a procedury dopoledne',
+            body: 'Den začíná před snídaní u pramene s pohárkem a pomalou chůzí; následují minerální koupele, suché uhličité koupele nebo procedury podporující prokrvení podle ordinace. Po každé proceduře následuje klid vleže.',
+          },
+          {
+            heading: 'Dieta a pohyb odpoledne',
+            body: 'Lázeňská kuchyně vaří podle předepsaného dietního systému; odpoledne patří lehkému pohybu, nejčastěji chůzi v lázeňských lesích, která trávení podporuje.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Jednou týdně lékař upraví pitný plán a dietu. Na závěr dostanete zprávu pro svého ošetřujícího lékaře a doporučení pro stravu doma.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Pitná kúra z Křížového pramene',
+            detail: 'Voda se síranem, hydrogenuhličitanem a sodíkem s mírně projímavým účinkem; množství, teplotu a čas před jídlem stanoví lékař individuálně.',
+          },
+          {
+            name: 'Pitná kúra z Ferdinandova pramene',
+            detail: 'Blízké složení Křížovému prameni, používané u metabolických a trávicích indikací.',
+          },
+          {
+            name: 'Dietní program lázeňské kuchyně',
+            detail: 'Individuálně sestavený jídelníček podle diagnózy, například u žlučových kamenů nebo po operaci žaludku.',
+          },
+          {
+            name: 'Suchá uhličitá koupel',
+            detail: 'Z místního Mariina plynu s 99,7 % CO₂; podporuje uvolnění a prokrvení jako součást denního plánu.',
+          },
+          {
+            name: 'Fyzikální terapie',
+            detail: 'Elektroterapie nebo magnetoterapie, u některých diagnóz doplňkově k pitné kúře a dietě.',
+          },
+          {
+            name: 'Pohyb chůzí',
+            detail: 'Pomalá chůze mezi doušky i odpoledne podporuje pasáž a je doporučovanou lehkou aktivitou u trávicích diagnóz.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Délka pobytu se řídí konkrétní položkou indikačního seznamu (III/1, III/3, III/4, III/8); přesný rozpis podle diagnózy najdete na stránce Co hradí pojišťovna u trávicího ústrojí. Samoplátci volí obvykle dva až tři týdny po dohodě s lázeňským lékařem. Pozdní léto a podzim se považují za výhodné, protože se do té doby obvykle projeví dopady prázdninových cest a nepravidelného stravování a ve městě bývá po hlavní sezoně klidněji.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Přehled 49 systematických recenzí lázeňské medicíny označuje evidenci pro pitné a inhalační kúry celkově jako „omezenou, byť zajímavou" — výrazně slabší než u pohybového aparátu (Antonelli a kol., 2021, Int J Biometeorol). Pro sulfátem a hořčíkem bohatou minerální vodu u funkční zácpy existuje dvojitě zaslepená randomizovaná studie s 226 účastníky: po 14 dnech reagovalo na léčbu 50 % oproti 29 % u kontrolní vody; šlo o francouzskou vodu jiného složení (Dupont a kol., 2019, Nutrition). Placebem kontrolovaná studie se 106 účastníky zjistila po šesti týdnech půl litru sulfátové vody denně více spontánních stolic a lepší konzistenci, při jen hraničně významném primárním cíli (Bothe a kol., 2015, Eur J Nutr). Britské dietetické doporučení z roku 2025 proto uvádí vodu s vyšším obsahem minerálů jako jednu z možností u chronické zácpy, s nízkou až střední jistotou evidence (Dimidi a kol., 2025, J Hum Nutr Diet). K žlučníku je podkladů méně: v kontrolované studii se 40 účastníky se po dvanácti dnech pití síran-hydrogenuhličitanové vody zmenšil nalačno objem žlučníku, při častější stolici; šlo o italskou vodu jiného složení a malý vzorek (Corradini a kol., 2012, World J Gastroenterol). Ke Crohnově nemoci, ulcerózní kolitidě a chronické pankreatitidě srovnatelné kontrolované studie k pitné kúře nejsou k dispozici; léčba se zde opírá o zkušenost lázeňské medicíny a úzké lékařské doprovázení.',
+        },
+        physicianNote: 'O tom, zda a v jaké formě pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich gastroenterologických nálezů. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Co léčí Mariánské Lázně u trávení?',
+            answer: 'Mariánské Lázně jsou historicky proslulé především účinkem na trávení a metabolismus. Ve městě vyvěrá přes čtyřicet studených minerálních pramenů; síran-hydrogenuhličitan-sodný Křížový pramen s celkovou mineralizací 9 845 mg/l platí za vlajkovou loď pro trávicí indikace.',
+          },
+          {
+            question: 'Která lázeňská léčba pomáhá při trávicích potížích?',
+            answer: 'Indikační seznam vede onemocnění trávicího ústrojí jako samostatnou skupinu III, mimo jiné chronické potíže žaludku a střev (III/1), Crohnovu nemoc a ulcerózní kolitidu (III/3) i chronická onemocnění žlučníku a žlučových cest (III/4). Léčba kombinuje lékařem předepsanou pitnou kúru s individuálním dietním programem.',
+          },
+          {
+            question: 'Jak působí Křížový pramen na trávení?',
+            answer: 'Křížový pramen obsahuje 3 130 mg/l síranu a 2 700 mg/l sodíku — sloučeninu, které se lidově říká Glauberova sůl a která mírně projímá. V kontrolované studii se srovnatelnou síran-hydrogenuhličitanovou vodou se po dvanácti dnech zmenšil nalačno objem žlučníku, při častější stolici. Množství a čas vždy určuje lázeňský lékař.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při trávicích potížích?',
+            answer: 'Podle indikačního seznamu jde nejčastěji o dva až tři týdny podle konkrétní diagnózy; přesný rozpis najdete na stránce Co hradí pojišťovna u trávicího ústrojí. Samoplátci volí obvykle dva až tři týdny — kratší pobyty působí spíše rekonvalescenčně.',
+          },
+          {
+            question: 'Mohu jet do lázní s onemocněním žlučníku?',
+            answer: 'Ano, chronická onemocnění žlučníku a žlučových cest jsou samostatnou položkou indikačního seznamu (III/4). Podmínkou je aktuální gastroenterologický nález; vhodnost posoudí lázeňský lékař při vstupní prohlídce.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina III — nemoci trávicího ústrojí',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Položky III/1, III/3, III/4 a III/8 s typem péče a délkou podle diagnózy.',
+          },
+          {
+            title: 'Oficiální turistický portál města Mariánské Lázně — Křížový pramen',
+            url: 'https://www.marianskelazne.cz/o-meste/prameny/krizovy-pramen/',
+            note: 'Rozbor vody (mineralizace 9 845 mg/l, síran 3 130 mg/l, sodík 2 700 mg/l, volný CO₂ 2 305 mg/l); otevírací doba pavilonu 6–18 hodin.',
+          },
+          {
+            title: 'Antonelli M a kol. 2021, Int J Biometeorol — přehled 49 systematických recenzí lázeňské medicíny',
+            url: 'https://doi.org/10.1007/s00484-021-02133-w',
+            note: 'Nejlépe doložený přínos u vybraných potíží pohybového aparátu; pro pitné a inhalační kúry evidence „omezenější, byť zajímavá".',
+          },
+          {
+            title: 'Dupont C a kol. 2019, Nutrition — dvojitě zaslepená randomizovaná studie, 226 pacientů s funkční zácpou',
+            url: 'https://doi.org/10.1016/j.nut.2019.02.018',
+            note: 'Síran-hořčíková voda: odezva po 14 dnech u 50 % vs. 29 % u kontrolní vody. Financováno výrobcem; francouzská voda jiného složení.',
+          },
+          {
+            title: 'Bothe G a kol. 2015, Eur J Nutr — dvojitě zaslepená placebem kontrolovaná randomizovaná studie, 106 účastníků s funkční zácpou',
+            url: 'https://doi.org/10.1007/s00394-015-1094-8',
+            note: '500 ml sulfátové vody denně po 6 týdnů zvýšilo počet spontánních stolic a zlepšilo konzistenci. Primární cíl jen hraničně významný.',
+          },
+          {
+            title: 'Dimidi E a kol. 2025, J Hum Nutr Diet — britské dietetické doporučení (GRADE) k chronické zácpě',
+            url: 'https://doi.org/10.1111/jhn.70133',
+            note: 'Voda s vyšším obsahem minerálů uvedena mezi možnostmi u chronické zácpy. Jistota evidence nízká až střední.',
+          },
+          {
+            title: 'Corradini SG a kol. 2012, World J Gastroenterol — kontrolovaná studie, 40 účastníků',
+            url: 'https://consensus.app/papers/details/11a1a41b579854e591a67d137a568bda/',
+            note: '12 dní síran-hydrogenuhličitanové vody: menší objem žlučníku nalačno, častější stolice. Malý vzorek, italská voda jiného složení.',
+          },
+        ],
+        related: [
+          {
+            label: 'Když trávení nefunguje — lázeňská léčba trávicího ústrojí',
+            href: '/cs/magazin/lazenska-lecba-traviciho-ustroji',
+          },
+          {
+            label: 'Průvodce pitnou kúrou',
+            href: '/cs/magazin/pitna-kura-pruvodce',
+          },
+          {
+            label: 'Křížový pramen v profilu',
+            href: '/cs/prehled-pramenu/krizovy',
+          },
+          {
+            label: 'Co hradí pojišťovna u trávicího ústrojí',
+            href: '/cs/lazne-s-pojistovnou/indikace/travici-ustroji',
+          },
+        ],
+      },
       ru: {
         slug: 'pishchevarenie',
         navLabel: 'Пищеварение',
@@ -5076,7 +6705,7 @@ export const diagnoses: Diagnosis[] = [
     imageAlt: {
       de: 'Ernährungsberaterin bespricht am Schreibtisch einen individuellen Speiseplan mit einer Kurgästin',
       en: 'A nutrition counsellor discusses an individual meal plan with a spa guest at her desk',
-      cs: 'Ernährungsberaterin bespricht am Schreibtisch einen individuellen Speiseplan mit einer Kurgästin',
+      cs: 'Nutriční poradkyně probírá u stolu individuální jídelníček s lázeňskou hostkou',
       ru: 'Диетолог обсуждает за столом индивидуальный план питания с пациенткой курорта',
     },
     content: {
@@ -5386,7 +7015,162 @@ export const diagnoses: Diagnosis[] = [
           },
         ],
       },
-      cs: {} as unknown as DiagnosisContent,
+      cs: {
+        slug: 'metabolismus-a-diabetes',
+        navLabel: 'Metabolismus a diabetes',
+        title: 'Lázeňská léčba poruch metabolismu a diabetu v Mariánských Lázních',
+        h1: 'Lázeňská léčba poruch metabolismu a diabetu',
+        metaTitle: 'Léčba diabetu a metabolismu v Mariánských Lázních | Marienbad.com',
+        metaDescription: 'Lázeňská léčba diabetu a poruch metabolismu v Mariánských Lázních: pitná kúra z Křížového pramene, pohyb a dietní program — hrazená indikace a průběh.',
+        lead: 'Diabetes mellitus je jedinou indikací metabolické skupiny hrazenou českou zdravotní pojišťovnou; nadváha a dna se v Mariánských Lázních tradičně léčí také, samostatnou hrazenou položkou ale nejsou. Léčba kombinuje lékařem předepsanou pitnou kúru ze sulfátových pramenů s pohybem a dietním programem.',
+        teaser: 'Diabetes mellitus, nadváha a dna: pitná kúra z Křížového a Ferdinandova pramene, denní pohyb a dietní program po jeden až tři týdny.',
+        treats: [
+          'Diabetes mellitus a jeho následné komplikace (položka IV/1 indikačního seznamu — jediná hrazená položka této skupiny)',
+          'Nadváha a obezita ve spojení s poruchami metabolismu, tradičně léčené, avšak bez vlastní hrazené položky',
+          'Dna, rovněž bez vlastní hrazené položky, tradičně doléčovaná v rámci pitné kúry',
+          'Počínající diabetes 2. typu a trávicí potíže spojené s metabolismem',
+        ],
+        notFor: [
+          'Nestabilní nebo dekompenzovaný diabetes mellitus (kromě dětí a dospívajících)',
+          'Výrazná kachexie nebo body mass index pod 16,5',
+          'Akutní infekční onemocnění a těžké srdeční nebo ledvinové selhání bez souhlasu odborného lékaře',
+          'Těhotenství a neschopnost sebeobsluhy bez doprovodu',
+        ],
+        course: [
+          {
+            heading: 'Vstupní prohlídka v den příjezdu',
+            body: 'Lázeňský lékař projde hodnoty glykemie, medikaci a přidružená onemocnění a individuálně stanoví pitnou kúru, dietu a rozsah pohybu. Vezměte si aktuální laboratorní výsledky a seznam léků.',
+          },
+          {
+            heading: 'Pitná kúra podle lékařského plánu',
+            body: 'Pije se u pramene, pomalu a po malých doušcích před jídlem. U sulfátových pramenů se projímavý účinek objevuje už kolem tří čtvrtin litru denně — více není výhoda, ale riziko.',
+          },
+          {
+            heading: 'Pohyb na kolonádě a v Císařském lese',
+            body: 'Vedená chůze po síti kolonád, přizpůsobená kondici a diagnóze; kolem osmi tisíc kroků denně platí za realistický wellness cíl, ne za lékařský předpis.',
+          },
+          {
+            heading: 'Týdenní kontrola a závěrečná zpráva',
+            body: 'Jednou týdně lékař zkontroluje průběh glykemie a hmotnosti a upraví pitnou kúru, dietu i rozsah pohybu. Na závěr dostanete zprávu pro svého ošetřujícího lékaře.',
+          },
+        ],
+        procedures: [
+          {
+            name: 'Pitná kúra z Křížového pramene',
+            detail: 'Voda bohatá na síran a sodík, tradičně používaná u nadváhy, dny a diabetu; množství a teplotu stanoví lékař individuálně.',
+          },
+          {
+            name: 'Pitná kúra z Ferdinandova pramene',
+            detail: 'Blízké složení Křížovému prameni, používané u stejných metabolických indikací.',
+          },
+          {
+            name: 'Dietní program lázeňské kuchyně',
+            detail: 'Individuálně sestavený jídelníček na míru diabetu nebo nadváze, po tři týdny připravovaný lázeňskou kuchyní.',
+          },
+          {
+            name: 'Vedená chůze (terénní léčba)',
+            detail: 'Trasy s pevně daným tempem a výškovým profilem po historické síti kolonád, přizpůsobené kondici.',
+          },
+          {
+            name: 'Analýza tělesného složení',
+            detail: 'Zaznamenává výchozí hodnoty hmotnosti a slouží nutričnímu poradenství na začátku pobytu.',
+          },
+          {
+            name: 'Krevní testy',
+            detail: 'Kontrola glykemie, cholesterolu a dalších metabolických hodnot během pobytu.',
+          },
+        ],
+        stay: {
+          heading: 'Jak dlouho a kdy',
+          body: 'Diabetes mellitus (položka IV/1) je jedinou hrazenou položkou této skupiny; přesnou délku pobytu najdete na stránce Co hradí pojišťovna u metabolismu a štítné žlázy. Samoplátci volí obvykle jeden až tři týdny po dohodě s lázeňským lékařem; kratší pobyty působí spíše regeneračně, klasická třítýdenní kúra dává metabolismu více času na změnu režimu. Pro roční období neexistuje lékařský předpis.',
+        },
+        evidence: {
+          heading: 'Co ukazují studie',
+          body: 'Přehled 22 studií balneoterapie u diabetu a obezity spojuje koupele i pití síranem a hydrogenuhličitanem bohatých vod s poklesem glykemie a hmotnosti, ale jen tři z těchto studií měly více než sto účastníků (Maeda a kol., 2026, Int J Biometeorol). V otevřené pilotní studii s 50 muži s nadváhou, z toho 21 s diabetem 2. typu, se po třech týdnech diety v kombinaci s koupelemi a peloidy naznačil pokles hmotnosti, krevních tuků a glykemie; chyběla kontrolní skupina, takže se účinek diety nedá od lázeňské léčby oddělit (Fioravanti a kol., 2015, Int J Biometeorol). Nejpevnější oporu má rámec lázeňského pobytu samotný: francouzská randomizovaná studie s 257 účastníky zjistila po třítýdenním lázeňském programu pokles body mass indexu během jednoho roku o 1,91 bodu oproti 0,20 při obvyklé péči, vyhodnocený jen u účastníků, kteří program dokončili (Hanh a kol., 2012, Evid Based Complement Alternat Med). V kontrolované, nerandomizované studii s 340 pacienty se úbytek hmotnosti po jedenácti měsících udržel jen u těch, kdo k lázeňské léčbě dostali navíc edukaci (Schnebelen-Berthier a kol., 2019, Obes Res Clin Pract). Samotná pitná kúra sice v kontrolované studii se 40 účastníky vedla k častější stolici, tělesná hmotnost se však po dvanácti dnech nezměnila; její přínos tedy leží v regulaci trávení, ne v hmotnosti samotné (Corradini a kol., 2012, World J Gastroenterol).',
+        },
+        physicianNote: 'O tom, zda a v jakém rozsahu pro vás lázeňská léčba připadá v úvahu, rozhoduje lázeňský lékař při vstupní prohlídce podle vašich hodnot glykemie a přidružených onemocnění. Tato stránka informuje a nenahrazuje lékařskou konzultaci.',
+        faqs: [
+          {
+            question: 'Co léčí Mariánské Lázně u diabetu?',
+            answer: 'Diabetes mellitus (položka IV/1) je jedinou indikací metabolické skupiny hrazenou českou zdravotní pojišťovnou. Léčba kombinuje lékařem předepsanou pitnou kúru z Křížového pramene, denní pohyb a dietní program; nenahrazuje léčbu diabetu léky.',
+          },
+          {
+            question: 'Dá se v lázních zhubnout?',
+            answer: 'Obezita není samostatnou hrazenou položkou, v Mariánských Lázních se ale tradičně léčí v rámci samoplátecké kúry. V randomizované studii s 257 účastníky klesl po třítýdenním lázeňském programu body mass index během jednoho roku výrazněji než při obvyklé péči; rozhodující byl přitom celý režim pohybu, diety a pravidelnosti, ne jedna procedura.',
+          },
+          {
+            question: 'Který pramen v Mariánských Lázních pomáhá metabolismu?',
+            answer: 'Tradičně se u metabolických potíží používá Křížový a Ferdinandův pramen, oba bohaté na síran a sodík. Křížový pramen obsahuje 3 130 mg/l síranu a 2 700 mg/l sodíku; projímavý účinek se objevuje už kolem tří čtvrtin litru denně. Množství a teplotu vždy určuje lázeňský lékař.',
+          },
+          {
+            question: 'Jak dlouho trvá lázeňský pobyt při diabetu?',
+            answer: 'U diabetu mellitu jde o délku pobytu, kterou konkrétně uvádí stránka Co hradí pojišťovna u metabolismu a štítné žlázy. Samoplátci volí obvykle jeden až tři týdny po dohodě s lázeňským lékařem.',
+          },
+          {
+            question: 'Jsou nadváha a dna samostatné lázeňské indikace?',
+            answer: 'Ne. V indikačním seznamu tvoří samostatnou hrazenou položku metabolické skupiny jen diabetes mellitus (IV/1). Nadváha a dna se v Mariánských Lázních tradičně doléčují, nejčastěji v rámci samoplátecké kúry nebo jako součást léčby trávicích a metabolických diagnóz.',
+          },
+        ],
+        sources: [
+          {
+            title: 'Indikační seznam lázeňské péče (vyhláška č. 2/2015 Sb.), skupina IV — nemoci z poruchy látkové výměny a žláz s vnitřní sekrecí',
+            url: '/cs/indikace-a-kontraindikace',
+            note: 'Diabetes mellitus (IV/1) je jedinou hrazenou položkou. Obezita a dna nejsou samostatnou položkou.',
+          },
+          {
+            title: 'Oficiální turistický portál města Mariánské Lázně — Křížový pramen',
+            url: 'https://www.marianskelazne.cz/o-meste/prameny/krizovy-pramen/',
+            note: 'Rozbor vody (síran 3 130 mg/l, sodík 2 700 mg/l, mineralizace 9 845 mg/l); tradiční použití u nadváhy, dny a diabetu.',
+          },
+          {
+            title: 'Maeda T a kol. 2026, Int J Biometeorol — přehled 22 studií balneoterapie u diabetu a obezity',
+            url: 'https://consensus.app/papers/details/4f3bc4fade0e5c85a19be59f75baf233/',
+            note: 'Koupele, sauna a pití síranem a hydrogenuhličitanem bohatých vod spojeny s poklesem glykemie a hmotnosti. Jen 3 studie s více než 100 účastníky.',
+          },
+          {
+            title: 'Fioravanti A a kol. 2015, Int J Biometeorol — otevřená pilotní studie, 50 mužů s nadváhou, z toho 21 s diabetem 2. typu',
+            url: 'https://consensus.app/papers/details/d07d15078653551e9b6c616717e39656/',
+            note: '3 týdny diety s koupelemi a peloidy: pokles hmotnosti, krevních tuků a glykemie. Bez kontrolní skupiny, účinek diety neoddělitelný.',
+          },
+          {
+            title: 'Hanh T a kol. 2012, Evid Based Complement Alternat Med — randomizovaná studie (Zelenův design), 257 účastníků s obezitou',
+            url: 'https://consensus.app/papers/details/7dbe44960ff55b5eb0b27cd970c93926/',
+            note: 'Třítýdenní lázeňský program: po roce pokles BMI o 1,91 oproti 0,20 při obvyklé péči. Analýza jen u účastníků, kteří program dokončili.',
+          },
+          {
+            title: 'Schnebelen-Berthier C a kol. 2019, Obes Res Clin Pract — kontrolovaná studie, 340 pacientů',
+            url: 'https://consensus.app/papers/details/ce94b07d6802580283fee76ae74a0cf6/',
+            note: 'Lázeňská léčba s edukací vs. samotná lázeňská léčba: úbytek hmotnosti po 11 měsících se udržel jen ve skupině s edukací. Nerandomizovaná.',
+          },
+          {
+            title: 'Corradini SG a kol. 2012, World J Gastroenterol — kontrolovaná studie, 40 účastníků',
+            url: 'https://consensus.app/papers/details/11a1a41b579854e591a67d137a568bda/',
+            note: '12 dní síran-hydrogenuhličitanové vody: častější stolice, hmotnost beze změny. Malý vzorek, italská voda jiného složení.',
+          },
+        ],
+        related: [
+          {
+            label: 'Hubnutí a metabolická léčba v lázních',
+            href: '/cs/magazin/hubnuti-a-metabolicka-lecba-v-laznich-jak-funguje-lazenska-kura-na-vahu',
+          },
+          {
+            label: 'Průvodce pitnou kúrou',
+            href: '/cs/magazin/pitna-kura-pruvodce',
+          },
+          {
+            label: 'Ferdinandův pramen v profilu',
+            href: '/cs/prehled-pramenu/ferdinanduv',
+          },
+          {
+            label: 'Pohyb v lázních prodlužuje život',
+            href: '/cs/magazin/pohyb-v-laznich-prodluzuje-zivot',
+          },
+          {
+            label: 'Co hradí pojišťovna u metabolismu a štítné žlázy',
+            href: '/cs/lazne-s-pojistovnou/indikace/metabolismus-a-stitna-zlaza',
+          },
+        ],
+      },
       ru: {
         slug: 'obmen-veshchestv-i-diabet',
         navLabel: 'Обмен веществ и диабет',
