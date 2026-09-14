@@ -126,6 +126,17 @@ const breadcrumbs = [
     </dl>
   </section>
 
+  {diagnosis.image2 && diagnosis.imageAlt2 && (
+    <figure class="not-prose m-0 overflow-hidden" style="border-radius: var(--radius-card);">
+      <Pic
+        src={diagnosis.image2}
+        alt={diagnosis.imageAlt2[locale]}
+        class="w-full h-56 md:h-80 object-cover block"
+        sizes="(max-width: 768px) 100vw, 900px"
+      />
+    </figure>
+  )}
+
   <section class="bg-turquoise-50 border-l-4 border-turquoise-400 px-6 py-6 md:px-8 md:py-7 rounded-r-xl">
     <h2 class="font-heading text-xl md:text-2xl font-bold text-indigo-700 mb-3">{c.stay.heading}</h2>
     <p class="text-beige-900 text-base leading-relaxed m-0">{c.stay.body}</p>

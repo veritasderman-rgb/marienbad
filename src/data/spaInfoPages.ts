@@ -13,8 +13,16 @@ import { routes } from '@/i18n/config'
  * čím podepřít zdravotní obsah.
  */
 
+/** Fotografie u sekce. Alt musí být v jazyce stránky, ne převzatý. */
+export interface Figure {
+  src: string
+  alt: string
+}
+
 export interface InfoSection {
   heading: string
+  /** Fotografie pod textem sekce. */
+  image?: Figure
   body?: string
   items?: string[]
   /** Číslovaný seznam místo odrážek. */
@@ -84,23 +92,25 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
         heading: 'Как всё происходит на месте',
         numbered: true,
         items: [
-          'Ваш план лечения ведётся компьютером. Соблюдайте согласованное время; если это однажды не получится, обратитесь к медсестре в курортном доме.',
+          'Соблюдайте согласованное время. Если вы знаете, что не сможете прийти на процедуру, обратитесь на нашу спа-рецепцию.',
           'Проблемы, возникшие во время пребывания, лучше всего решать сразу на месте с ответственными лицами, а не только после отъезда.',
           'Часто на третий и четвёртый день лечения наступает так называемая курортная реакция: вы временно чувствуете себя хуже. Это известное явление, и оно проходит.',
         ],
       },
       {
         heading: 'Что вам следует знать о процедурах',
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Женщина с полотенцем-тюрбаном улыбается, отдыхая у бассейна, на спине тёмное торфяное обёртывание.' },
         numbered: true,
         items: [
           'Торфяное обёртывание представляет значительную нагрузку для людей с сердечно-сосудистыми заболеваниями. Подходит ли оно вам, всегда решает врач.',
           'Никогда не просите об иной температуре минеральной ванны, кроме назначенной. Действует общее правило: чем прохладнее минеральная ванна, тем она эффективнее и тем сильнее в ней выделяются пузырьки газа.',
-          'Минеральные ванны в Марианских Лазнях содержат, помимо углекислого газа и минеральных солей, также гуминовые кислоты — существенную составляющую торфа.',
+          'Минеральная ванна — это ванна с природной минеральной водой, в которой растворены углекислый газ и минеральные соли. Торф в её состав не входит; торфяной экстракт добавляют в ванну только тогда, когда его назначает врач.',
           'Рефлекторный массаж — ощутимое вмешательство в организм и может вызвать серьёзные побочные явления: одышку, боль в животе, падение артериального давления или внезапную усталость. Поэтому его назначает исключительно врач после оценки вашего текущего состояния здоровья.',
         ],
       },
       {
         heading: 'Что вам следует знать об источниках',
+        image: { src: '/images/library/drinking-cure/elderly-man-drinking-cure.jpg', alt: 'Пожилой мужчина пьёт минеральную воду из чугунной колонки источника в парке' },
         numbered: true,
         items: [
           'Источник Рудольфа не подходит гостям с фосфатными почечными камнями.',
@@ -177,23 +187,25 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
         heading: 'Jak probíhá pobyt na místě',
         numbered: true,
         items: [
-          'Váš léčebný plán vede počítač. Dodržujte sjednané časy; když to jednou nejde, obraťte se na sestru v lázeňském domě.',
+          'Dodržujte sjednané časy. Pokud víte, že proceduru nebudete moci absolvovat, obraťte se na naši spa recepci.',
           'Problémy během pobytu je nejlepší vyřešit hned na místě s odpovědnými pracovníky, ne až po odjezdu.',
           'Často třetí a čtvrtý den kúry přichází takzvaná lázeňská reakce: dočasně se cítíte hůř. Je to známý jev a odezní.',
         ],
       },
       {
         heading: 'Co byste měli vědět o procedurách',
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Žena s ručníkovým turbanem odpočívá s úsměvem u bazénu, na zádech má tmavý rašelinový zábal.' },
         numbered: true,
         items: [
           'Slatinný zábal je pro lidi s onemocněním srdce a oběhu značnou zátěží. Zda je pro vás vhodný, rozhoduje vždy lékař.',
           'Nikdy neproste o jinou teplotu minerální koupele, než jaká je předepsaná. Platí zásada: čím chladnější minerální koupel, tím účinnější je a tím víc perlí.',
-          'Minerální koupele v Mariánských Lázních obsahují vedle oxidu uhličitého a minerálních solí i huminové kyseliny, podstatnou složku slatiny.',
+          'Minerální koupel je koupel v přírodní minerální vodě s rozpuštěným oxidem uhličitým a minerálními solemi. Slatina její součástí není; slatinný extrakt se do koupele přidává jen tehdy, když ho lékař předepíše.',
           'Reflexní masáž je citelný zásah do organismu a může vyvolat závažné průvodní jevy — dušnost, bolest břicha, pokles krevního tlaku nebo náhlou únavu. Předepisuje ji proto výhradně lékař po posouzení vašeho aktuálního zdravotního stavu.',
         ],
       },
       {
         heading: 'Co byste měli vědět o pramenech',
+        image: { src: '/images/library/drinking-cure/elderly-man-drinking-cure.jpg', alt: 'Starší muž pije minerální vodu z litinového stojanu pramene v parku' },
         numbered: true,
         items: [
           'Rudolfův pramen není vhodný pro hosty s fosfátovými ledvinovými kameny.',
@@ -272,23 +284,25 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
         heading: 'Der Ablauf vor Ort',
         numbered: true,
         items: [
-          'Ihr Behandlungsplan wird von einem Rechner geführt. Halten Sie die vereinbarten Zeiten ein; wenn das einmal nicht geht, wenden Sie sich an eine Schwester im Kurhaus.',
+          'Halten Sie die vereinbarten Zeiten ein. Wenn Sie wissen, dass Sie eine Anwendung nicht wahrnehmen können, wenden Sie sich an unsere Spa-Rezeption.',
           'Probleme während des Aufenthalts klären Sie am besten sofort vor Ort mit den Verantwortlichen, nicht erst nach der Abreise.',
           'Oft am dritten und vierten Tag der Kur tritt die sogenannte Kurreaktion ein: Sie fühlen sich vorübergehend schlechter. Das ist bekannt und geht vorüber.',
         ],
       },
       {
         heading: 'Was Sie über die Anwendungen wissen sollten',
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Frau mit Handtuchturban entspannt lächelnd am Beckenrand, mit dunkler Moorpackung auf dem Rücken.' },
         numbered: true,
         items: [
           'Die Moorpackung ist für Menschen mit einer Herz-Kreislauf-Erkrankung eine erhebliche Belastung. Ob sie für Sie geeignet ist, entscheidet immer der Arzt.',
           'Bitten Sie nie um eine andere Temperatur des Mineralbads als die verordnete. Grundsätzlich gilt: Je kühler das Mineralbad, desto wirksamer ist es und desto mehr perlt es.',
-          'Die Mineralbäder in Marienbad enthalten neben Kohlendioxid und Mineralsalzen auch Huminsäuren, einen wesentlichen Bestandteil des Moores.',
+          'Das Mineralbad ist ein Bad in natürlichem Mineralwasser mit gelöstem Kohlendioxid und Mineralsalzen. Moor gehört nicht dazu; ein Moorextrakt wird dem Bad nur dann zugesetzt, wenn der Arzt ihn verordnet.',
           'Die Reflexmassage ist ein spürbarer Eingriff in den Körper und kann ernste Begleiterscheinungen auslösen — Atemnot, Bauchschmerzen, einen Blutdruckabfall oder plötzliche Müdigkeit. Sie wird deshalb ausschließlich vom Arzt verordnet, nach Beurteilung Ihres aktuellen Gesundheitszustands.',
         ],
       },
       {
         heading: 'Was Sie über die Quellen wissen sollten',
+        image: { src: '/images/library/drinking-cure/elderly-man-drinking-cure.jpg', alt: 'Ein älterer Mann trinkt Mineralwasser an einem gusseisernen Quellständer im Park' },
         numbered: true,
         items: [
           'Die Rudolfsquelle ist für Gäste mit Phosphat-Nierensteinen nicht geeignet.',
@@ -360,23 +374,25 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
         heading: 'How things run on site',
         numbered: true,
         items: [
-          'Your treatment plan is managed by a computer system. Keep to the agreed times; if that is not possible on a given occasion, speak to a nurse at the spa house.',
+          'Keep to the agreed times. If you know that you will not be able to attend a treatment, please contact our spa reception.',
           'It is best to resolve any problems during your stay on the spot with the staff responsible, not only after you have left.',
           'Often on the third and fourth day of the cure, the so-called spa reaction sets in: you feel temporarily worse. This is well known and passes.',
         ],
       },
       {
         heading: 'What you should know about the procedures',
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Woman with a towel turban relaxing poolside, smiling, with a dark peat mud wrap on her back.' },
         numbered: true,
         items: [
           'A peat wrap is a considerable strain for people with a cardiovascular condition. Whether it is suitable for you is always decided by the physician.',
           'Never ask for a different temperature of the mineral bath than the one prescribed. As a rule: the cooler the mineral bath, the more effective it is and the more it fizzes.',
-          'The mineral baths in Marienbad contain, besides carbon dioxide and mineral salts, humic acids, a key component of the peat.',
+          'A mineral bath is a bath in natural mineral water with dissolved carbon dioxide and mineral salts. Peat is not part of it; a peat extract is added to the bath only when the physician prescribes it.',
           'Reflex massage is a perceptible intervention in the body and can bring on serious effects — shortness of breath, abdominal pain, a drop in blood pressure or sudden fatigue. It is therefore prescribed by the physician alone, after an assessment of your current state of health.',
         ],
       },
       {
         heading: 'What you should know about the springs',
+        image: { src: '/images/library/drinking-cure/elderly-man-drinking-cure.jpg', alt: 'An older man drinking mineral water from a cast-iron spring stand in the park' },
         numbered: true,
         items: [
           'The Rudolf Spring is not suitable for guests with phosphate kidney stones.',
@@ -436,6 +452,7 @@ export const medicalTeam: Partial<Record<Locale, InfoContent>> = {
     sections: [
       {
         heading: 'Как проходит врачебное сопровождение',
+        image: { src: '/images/library/treatments/nutrition-consultation-desk.jpg', alt: 'Медицинский работник в белом халате разбирает с гостем запись за столом в кабинете' },
         body: 'При заезде каждый гость встречается с курортным врачом. На основании подробного первичного осмотра он ставит диагноз и составляет индивидуальный план лечения с назначенными процедурами. Во время пребывания медицинская команда наблюдает за эффектом и при необходимости корректирует план. По завершении проводится ещё один осмотр, на котором вы получаете подробное резюме результатов и рекомендации для дома.',
       },
       {
@@ -535,6 +552,7 @@ export const medicalTeam: Partial<Record<Locale, InfoContent>> = {
     sections: [
       {
         heading: 'Jak probíhá lékařská péče',
+        image: { src: '/images/library/treatments/nutrition-consultation-desk.jpg', alt: 'Zdravotnice v bílém plášti probírá s hostem záznam u stolu v ordinaci' },
         body: 'Při příjezdu se každý host setká s lázeňským lékařem. Na základě podrobné vstupní prohlídky stanoví diagnózu a individuální léčebný plán s předepsanými procedurami. V průběhu pobytu lékařský tým sleduje účinek a plán v případě potřeby upravuje. Na závěr následuje další vyšetření, při kterém dostanete podrobné shrnutí výsledků a doporučení pro domácí péči.',
       },
       {
@@ -636,6 +654,7 @@ export const medicalTeam: Partial<Record<Locale, InfoContent>> = {
     sections: [
       {
         heading: 'Wie die ärztliche Begleitung abläuft',
+        image: { src: '/images/library/treatments/nutrition-consultation-desk.jpg', alt: 'Eine Fachkraft im weißen Kittel bespricht mit einem Gast den Befund am Schreibtisch' },
         body:
           'Bei der Ankunft trifft jeder Gast den Kurarzt. Auf Grundlage einer ausführlichen Eingangsuntersuchung stellt er die Diagnose und den individuellen Behandlungsplan mit den verordneten Anwendungen auf. Während des Aufenthalts verfolgt das medizinische Team die Wirkung und passt den Plan bei Bedarf an. Zum Abschluss folgt eine weitere Untersuchung, bei der Sie eine ausführliche Zusammenfassung der Ergebnisse und Empfehlungen für zu Hause erhalten.',
       },
@@ -726,6 +745,7 @@ export const medicalTeam: Partial<Record<Locale, InfoContent>> = {
     sections: [
       {
         heading: 'How medical supervision works',
+        image: { src: '/images/library/treatments/nutrition-consultation-desk.jpg', alt: 'A clinician in a white coat going through a record with a guest at a consulting-room desk' },
         body:
           'On arrival, every guest meets the spa physician. Based on a thorough initial examination, they make the diagnosis and draw up the individual treatment plan with the prescribed procedures. During the stay, the medical team monitors the effect and adjusts the plan as needed. At the end, a further examination follows, at which you receive a detailed summary of the results and recommendations for home.',
       },
