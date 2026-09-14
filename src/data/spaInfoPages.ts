@@ -99,7 +99,7 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
       },
       {
         heading: 'Что вам следует знать о процедурах',
-        image: { src: '/images/library/treatments/traditional-massage-treatment.jpg', alt: 'Массажистка вытягивает руку гостя во время классического массажа' },
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Женщина с полотенцем-тюрбаном улыбается, отдыхая у бассейна, на спине тёмное торфяное обёртывание.' },
         numbered: true,
         items: [
           'Торфяное обёртывание представляет значительную нагрузку для людей с сердечно-сосудистыми заболеваниями. Подходит ли оно вам, всегда решает врач.',
@@ -194,7 +194,7 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
       },
       {
         heading: 'Co byste měli vědět o procedurách',
-        image: { src: '/images/library/treatments/traditional-massage-treatment.jpg', alt: 'Fyzioterapeutka protahuje paži hosta při klasické masáži na lehátku' },
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Žena s ručníkovým turbanem odpočívá s úsměvem u bazénu, na zádech má tmavý rašelinový zábal.' },
         numbered: true,
         items: [
           'Slatinný zábal je pro lidi s onemocněním srdce a oběhu značnou zátěží. Zda je pro vás vhodný, rozhoduje vždy lékař.',
@@ -291,7 +291,7 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
       },
       {
         heading: 'Was Sie über die Anwendungen wissen sollten',
-        image: { src: '/images/library/treatments/traditional-massage-treatment.jpg', alt: 'Eine Therapeutin dehnt den Arm eines Gastes bei einer klassischen Massage' },
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Frau mit Handtuchturban entspannt lächelnd am Beckenrand, mit dunkler Moorpackung auf dem Rücken.' },
         numbered: true,
         items: [
           'Die Moorpackung ist für Menschen mit einer Herz-Kreislauf-Erkrankung eine erhebliche Belastung. Ob sie für Sie geeignet ist, entscheidet immer der Arzt.',
@@ -381,7 +381,7 @@ export const spaAdvice: Partial<Record<Locale, InfoContent>> = {
       },
       {
         heading: 'What you should know about the procedures',
-        image: { src: '/images/library/treatments/traditional-massage-treatment.jpg', alt: 'A therapist stretching a guest’s arm during a classical massage' },
+        image: { src: '/images/library/treatments/poolside-peat-wrap.jpg', alt: 'Woman with a towel turban relaxing poolside, smiling, with a dark peat mud wrap on her back.' },
         numbered: true,
         items: [
           'A peat wrap is a considerable strain for people with a cardiovascular condition. Whether it is suitable for you is always decided by the physician.',
