@@ -1,7 +1,9 @@
 ---
 /** Rozcestník sekce „léčba podle diagnózy“. */
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Pic from '@/components/Pic.astro'
 import { diagnoses, diagnosisHref } from '@/data/treatmentFor'
+import { diagnosisIcons } from '@/data/diagnosisIcons'
 import type { Locale } from '@/i18n/config'
 import { localizedHref } from '@/i18n/utils'
 import { t } from '@/i18n/ui'
@@ -15,24 +17,28 @@ const ui = {
     lead: 'Marienbad behandelt seit über zweihundert Jahren mit Mineralwasser, natürlichem Kohlendioxid, Moor und Heilklima. Wählen Sie Ihre Diagnose: Sie erfahren, was hier behandelt wird, wie die Kur abläuft, wie lange sie dauert und wann sie nicht infrage kommt.',
     note: 'Über die Aufnahme in den Behandlungsplan entscheidet immer der Kurarzt bei der Eingangsuntersuchung. Diese Seiten informieren, sie ersetzen keine ärztliche Beratung.',
     all: 'Vollständige Indikationsliste',
+    photoAlt: 'Prachtvolle Thermalbadehalle im Neorenaissance-Stil mit roten Marmorsäulen, Bogendecke und zwei mosaikgefliesten Becken, ohne Besucher.',
   },
   en: {
     h1: 'Spa treatment by condition',
     lead: 'Mariánské Lázně (Marienbad) has treated with mineral water, natural carbon dioxide, peat and therapeutic climate for over two hundred years. Choose your condition to see what is treated here, how the cure works, how long it lasts and when it is not an option.',
     note: 'Admission to a treatment plan is always decided by the spa physician at the initial examination. These pages inform; they are no substitute for medical advice.',
     all: 'Full indication list',
+    photoAlt: 'Grand neo-Renaissance thermal bath hall with red marble columns, arched ceiling, and two mosaic-tiled pools, no visitors present.',
   },
   cs: {
     h1: 'Lázeňská léčba podle diagnózy',
     lead: 'Mariánské Lázně léčí přes dvě stě let minerální vodou, přírodním oxidem uhličitým, slatinou a léčivým klimatem. Vyberte diagnózu a uvidíte, co se tady léčí, jak léčba probíhá, jak dlouho trvá a kdy nepřipadá v úvahu.',
     note: 'O zařazení do léčebného plánu rozhoduje vždy lázeňský lékař při vstupní prohlídce. Tyto stránky informují, nenahrazují lékařskou radu.',
     all: 'Úplný indikační seznam',
+    photoAlt: 'Velkolepý neorenesanční sál termálních lázní s červenými mramorovými sloupy, klenutým stropem a dvěma mozaikovými bazény, bez návštěvníků.',
   },
   ru: {
     h1: 'Курортное лечение по диагнозу',
     lead: 'Марианские Лазни лечат более двухсот лет минеральной водой, природным углекислым газом, торфом и целебным климатом. Выберите диагноз: Вы узнаете, что здесь лечат, как проходит курс, сколько он длится и когда он невозможен.',
     note: 'Вопрос о включении в план лечения всегда решает курортный врач на первичном осмотре. Эти страницы информируют и не заменяют врачебной консультации.',
     all: 'Полный индикационный список',
+    photoAlt: 'Величественный зал термальных бань в неоренессансном стиле с красными мраморными колоннами, сводчатым потолком и двумя мозаичными бассейнами, без посетителей.',
   },
 }[locale]
 ---
@@ -47,10 +53,25 @@ const ui = {
 </section>
 
 <div class="container-wide py-14 md:py-20 flex flex-col gap-10">
+  <figure class="m-0 overflow-hidden" style="border-radius: var(--radius-card);">
+    <Pic
+      src="/images/library/mineral-bath/grand-thermal-bath-hall.jpg"
+      alt={ui.photoAlt}
+      class="w-full h-auto block"
+      sizes="(max-width: 1024px) 100vw, 1100px"
+      loading="eager"
+    />
+  </figure>
+
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
     {diagnoses.filter((d) => d.content[locale]?.slug).map((d) => (
       <li class="m-0">
-        <a href={diagnosisHref(locale, d)} class="group flex flex-col gap-2 bg-white border border-beige-200 p-5 hover:border-turquoise-400 hover:shadow-card transition-all duration-300 h-full" style="border-radius: var(--radius-card);">
+        <a href={diagnosisHref(locale, d)} class="group flex flex-col gap-3 bg-white border border-beige-200 p-5 hover:border-turquoise-400 hover:shadow-card transition-all duration-300 h-full" style="border-radius: var(--radius-card);">
+          {diagnosisIcons[d.id] && (
+            <span class="w-11 h-11 rounded-xl bg-turquoise-400/15 text-indigo-700 flex items-center justify-center shrink-0 group-hover:bg-turquoise-400/25 transition-colors">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={diagnosisIcons[d.id]} />
+            </span>
+          )}
           <span class="font-heading font-bold text-indigo-700 group-hover:text-turquoise-600 transition-colors">{d.content[locale].navLabel}</span>
           <span class="text-beige-700 text-sm leading-relaxed">{d.content[locale].teaser}</span>
         </a>
