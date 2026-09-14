@@ -50,6 +50,11 @@ export interface ProgramsContent {
   commonBody: string
   staysHeading: string
   stays: StayType[]
+  /**
+   * Poznamka pod nadpisem prehledu. Nese upresneni, ze nejkratsi delka
+   * pobytu se lisi podle domu — cisla v kartach plati pro obvyklou nabidku.
+   */
+  staysNote?: string
   /** Kdo určuje počet a skladbu procedur. */
   decidesHeading: string
   decidesBody: string
@@ -92,6 +97,8 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     commonHeading: 'Что входит в любое лечебное пребывание',
     commonBody: 'В лечебное пребывание входят проживание с полупансионом, первичный и заключительный врачебный осмотр, письменное заключение, назначенные процедуры и питьевой курс у минеральных источников. Более короткое пребывание для отдыха возможно и без врачебного осмотра; тогда это не лечебное пребывание, а wellness-пребывание с отдельными процедурами.',
     staysHeading: 'Пакеты в сравнении',
+    staysNote:
+      'Указанные сроки относятся к обычному предложению мариансколазеньских домов. Минимальная продолжительность зависит от отеля и пакета: в отеле Ensana Butterfly лечебные пребывания начинаются уже от пяти ночей, а интенсивное лечебное пребывание — от шести. Актуальную границу для конкретного дома уточните у оператора.',
     stays: [
       {
         name: 'Короткое пребывание для отдыха',
@@ -100,13 +107,13 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         includes: [
           'Проживание с полупансионом, то есть завтраком и ужином',
           'Одна процедура за каждую ночь размещения, из фиксированного перечня',
-          'Без первичного врачебного осмотра — поэтому это не лечебное пребывание',
+          'Обычно без первичного врачебного осмотра, и тогда это не лечебное пребывание; в некоторых домах, например в отеле Butterfly, первичный осмотр входит в каждое пребывание',
         ],
         forWhom: 'Для длинных выходных или первого знакомства с курортом, без медицинской программы.',
       },
       {
         name: 'Интенсивное курортное пребывание',
-        length: 'от 7 ночей',
+        length: 'обычно от 7 ночей',
         treatments: '2 процедуры за ночь',
         includes: [
           'Проживание с полупансионом',
@@ -118,7 +125,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Традиционное курортное пребывание',
-        length: 'от 7 ночей',
+        length: 'обычно от 7 ночей',
         treatments: '3 процедуры за ночь',
         includes: [
           'Проживание с полупансионом',
@@ -131,7 +138,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Интенсивное лечебное пребывание',
-        length: 'от 7 ночей',
+        length: 'обычно от 7 ночей',
         treatments: '4 процедуры за ночь',
         includes: [
           'Проживание с полупансионом',
@@ -161,7 +168,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
     ],
     labHeading: 'Что включает базовое лабораторное обследование',
-    labBody: 'Биохимический анализ крови на глюкозу, холестерин и другие показатели жиров крови, показатели функции печени, функции почек и мочевую кислоту, а также анализ мочи. Оно включено во все пребывания от семи ночей и служит курортному врачу основой для составления плана лечения.',
+    labBody: 'Биохимический анализ крови на глюкозу, холестерин и другие показатели жиров крови, показатели функции печени, функции почек и мочевую кислоту, а также анализ мочи. Оно входит в лечебные пребывания и служит курортному врачу основой для составления плана лечения.',
     superiorHeading: 'Программы в отеле Нове Лазне',
     superiorLead: 'Помимо лечебных пакетов, в отеле Нове Лазне действуют четыре программы, которые начинаются с подробной диагностики. Все они включают Medical Check-Up и строятся на его основе.',
     superior: [
@@ -198,7 +205,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         question: 'Какова минимальная продолжительность курортного пребывания?',
-        answer: 'Лечебные пребывания начинаются от семи ночей, поскольку только тогда имеет смысл серия процедур под руководством врача; профессиональным нижним порогом бальнеотерапии считаются не менее десяти процедур за не менее чем десять дней. Более короткие пребывания продолжительностью от двух до шести ночей существуют как формат отдыха с одной процедурой за ночь, но без первичного врачебного осмотра.',
+        answer: 'Минимальная продолжительность зависит от отеля и пакета. В обычном предложении мариансколазеньских домов лечебные пребывания начинаются от семи ночей, в отеле Ensana Butterfly — уже от пяти, а интенсивное лечебное пребывание от шести. У более длинной серии есть основание: профессиональным нижним порогом бальнеотерапии считаются не менее десяти процедур за не менее чем десять дней. Более короткие пребывания от двух ночей существуют как формат отдыха с одной процедурой за ночь.',
       },
       {
         question: 'Могу ли я сам выбирать процедуры?',
@@ -219,6 +226,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         title: 'Ensana Health Spa Hotels — Марианские Лазни, актуальные пакеты и цены',
         url: 'https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne',
         note: 'Страница бронирования оператора с актуальными названиями пакетов, количеством процедур за ночь и ценами.',
+      },
+      {
+        title: 'Отель Ensana Butterfly — предложение курортных пребываний',
+        url: 'https://ensanahotels.com/cs/hotely/butterfly',
+        note: 'Страница оператора об отеле, на которой основана более короткая минимальная продолжительность. Текст на чешском языке.',
       },
     ],
     related: [
@@ -251,6 +263,8 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     commonHeading: 'Co má společné každý léčebný pobyt',
     commonBody: 'K léčebnému pobytu patří ubytování s polopenzí, vstupní a výstupní lékařská prohlídka, písemná závěrečná zpráva, předepsané procedury a pitná kúra u minerálních pramenů. Kratší odpočinkový pobyt existuje i bez lékařské prohlídky; pak ale nejde o léčebný pobyt, ale o wellness pobyt s jednotlivými procedurami.',
     staysHeading: 'Pobyty v přehledu',
+    staysNote:
+      'Uvedené délky platí pro obvyklou nabídku mariánskolázeňských domů. Nejkratší možná délka se ale liší podle hotelu a balíčku: v hotelu Ensana Butterfly začínají léčebné pobyty už od pěti nocí a intenzivní léčebný pobyt od šesti. Aktuální hranici pro konkrétní dům najdete u provozovatele.',
     stays: [
       {
         name: 'Krátký odpočinkový pobyt',
@@ -259,13 +273,13 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         includes: [
           'Ubytování s polopenzí, tedy snídaní a večeří',
           'Jedna procedura na každou noc, z pevně stanovené nabídky',
-          'Bez vstupní lékařské prohlídky — proto nejde o léčebný pobyt',
+          'Obvykle bez vstupní lékařské prohlídky, a pak nejde o léčebný pobyt; v některých domech, například v hotelu Butterfly, patří vstupní vyšetření ke každému pobytu',
         ],
         forWhom: 'Pro dlouhý víkend nebo první seznámení s lázeňským místem, bez léčebného programu.',
       },
       {
         name: 'Intenzivní lázeňský pobyt',
-        length: 'od 7 nocí',
+        length: 'obvykle od 7 nocí',
         treatments: '2 procedury na noc',
         includes: [
           'Ubytování s polopenzí',
@@ -277,7 +291,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Tradiční lázeňský pobyt',
-        length: 'od 7 nocí',
+        length: 'obvykle od 7 nocí',
         treatments: '3 procedury na noc',
         includes: [
           'Ubytování s polopenzí',
@@ -290,7 +304,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Intenzivní léčebný pobyt',
-        length: 'od 7 nocí',
+        length: 'obvykle od 7 nocí',
         treatments: '4 procedury na noc',
         includes: [
           'Ubytování s polopenzí',
@@ -320,7 +334,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
     ],
     labHeading: 'Co obsahuje základní laboratorní vyšetření',
-    labBody: 'Biochemické vyšetření krve se stanovením krevního cukru, cholesterolu a dalších krevních tuků, jaterních hodnot, funkce ledvin a kyseliny močové, k tomu vyšetření moči. Je součástí všech pobytů od sedmi nocí a slouží lázeňskému lékaři jako podklad pro léčebný plán.',
+    labBody: 'Biochemické vyšetření krve se stanovením krevního cukru, cholesterolu a dalších krevních tuků, jaterních hodnot, funkce ledvin a kyseliny močové, k tomu vyšetření moči. Je součástí léčebných pobytů a slouží lázeňskému lékaři jako podklad pro léčebný plán.',
     superiorHeading: 'Programy v hotelu Nové Lázně',
     superiorLead: 'Nad rámec léčebných pobytů nabízí hotel Nové Lázně čtyři programy, které začínají podrobnou diagnostikou. Všechny obsahují Medical Check-Up a na něm dále staví.',
     superior: [
@@ -357,7 +371,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         question: 'Jak dlouho musí trvat léčebný pobyt minimálně?',
-        answer: 'Léčebné pobyty začínají na sedmi nocích, protože až tehdy má smysl lékařem vedená série procedur; za odbornou spodní hranici balneoterapie se považuje nejméně deset procedur během nejméně deseti dnů. Kratší pobyty od dvou do šesti nocí existují jako odpočinkový formát s jednou procedurou na noc, ale bez vstupní lékařské prohlídky.',
+        answer: 'Nejkratší délka se liší podle hotelu a balíčku. V obvyklé nabídce mariánskolázeňských domů začínají léčebné pobyty na sedmi nocích, v hotelu Ensana Butterfly už na pěti a intenzivní léčebný pobyt na šesti. Delší série má svůj důvod: za odbornou spodní hranici balneoterapie se považuje nejméně deset procedur během nejméně deseti dnů. Kratší pobyty od dvou nocí existují jako odpočinkový formát s jednou procedurou na noc.',
       },
       {
         question: 'Můžu si procedury vybrat sám?',
@@ -378,6 +392,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         title: 'Ensana Health Spa Hotels — Mariánské Lázně, aktuální pobyty a ceny',
         url: 'https://ensanahotels.com/cs/destinace/ceska-republika/marianske-lazne',
         note: 'Rezervační stránka provozovatele s aktuálními názvy pobytů, počtem procedur na noc a cenami.',
+      },
+      {
+        title: 'Hotel Ensana Butterfly — nabídka lázeňských pobytů',
+        url: 'https://ensanahotels.com/cs/hotely/butterfly',
+        note: 'Stránka provozovatele k hotelu, z níž vychází kratší nejmenší délka pobytu.',
       },
     ],
     related: [
@@ -413,6 +432,8 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     commonBody:
       'Zu einem Behandlungsaufenthalt gehören die Unterkunft mit Halbpension, die ärztliche Eingangs- und Abschlussuntersuchung, der schriftliche Abschlussbericht, die verordneten Anwendungen und die Trinkkur an den Mineralquellen. Den kürzeren Erholungsaufenthalt gibt es auch ohne ärztliche Untersuchung; dann ist es kein Behandlungsaufenthalt, sondern ein Wellnessaufenthalt mit einzelnen Anwendungen.',
     staysHeading: 'Die Pakete im Vergleich',
+    staysNote:
+      'Die genannten Dauern gelten für das übliche Angebot der Marienbader Häuser. Die Mindestdauer hängt jedoch vom Hotel und vom Paket ab: Im Hotel Ensana Butterfly beginnen die Behandlungsaufenthalte bereits ab fünf Nächten, der intensive Behandlungsaufenthalt ab sechs. Die aktuelle Untergrenze für ein bestimmtes Haus erfahren Sie beim Betreiber.',
     stays: [
       {
         name: 'Kurzaufenthalt zur Erholung',
@@ -421,14 +442,14 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         includes: [
           'Unterkunft mit Halbpension, also Frühstück und Abendessen',
           'Eine Anwendung je Übernachtung, aus einer festen Auswahl',
-          'Keine ärztliche Eingangsuntersuchung — deshalb kein Behandlungsaufenthalt',
+          'In der Regel ohne ärztliche Eingangsuntersuchung, und dann kein Behandlungsaufenthalt; in manchen Häusern, etwa im Hotel Butterfly, gehört die Eingangsuntersuchung zu jedem Aufenthalt',
         ],
         forWhom:
           'Für ein langes Wochenende oder einen ersten Eindruck vom Kurort, ohne medizinisches Programm.',
       },
       {
         name: 'Intensiver Kuraufenthalt',
-        length: 'ab 7 Nächten',
+        length: 'in der Regel ab 7 Nächten',
         treatments: '2 Anwendungen pro Nacht',
         includes: [
           'Unterkunft mit Halbpension',
@@ -441,7 +462,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Traditioneller Kuraufenthalt',
-        length: 'ab 7 Nächten',
+        length: 'in der Regel ab 7 Nächten',
         treatments: '3 Anwendungen pro Nacht',
         includes: [
           'Unterkunft mit Halbpension',
@@ -455,7 +476,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Intensiver Behandlungsaufenthalt',
-        length: 'ab 7 Nächten',
+        length: 'in der Regel ab 7 Nächten',
         treatments: '4 Anwendungen pro Nacht',
         includes: [
           'Unterkunft mit Halbpension',
@@ -491,7 +512,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     ],
     labHeading: 'Was die Labor-Basisuntersuchung umfasst',
     labBody:
-      'Eine biochemische Blutuntersuchung mit Blutzucker, Cholesterin und weiteren Blutfettwerten, Leberwerten, Nierenfunktion und Harnsäure, dazu eine Harnuntersuchung. Sie ist bei allen Aufenthalten ab sieben Nächten enthalten und dient dem Kurarzt als Grundlage für den Behandlungsplan.',
+      'Eine biochemische Blutuntersuchung mit Blutzucker, Cholesterin und weiteren Blutfettwerten, Leberwerten, Nierenfunktion und Harnsäure, dazu eine Harnuntersuchung. Sie ist bei den Behandlungsaufenthalten enthalten und dient dem Kurarzt als Grundlage für den Behandlungsplan.',
     superiorHeading: 'Programme im Haus Nové Lázně',
     superiorLead:
       'Über die Kurpakete hinaus gibt es im Haus Nové Lázně vier Programme, die bei einer ausführlichen Diagnostik beginnen. Alle enthalten den Medical Check-Up und bauen darauf auf.',
@@ -537,7 +558,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       {
         question: 'Wie lange muss ein Kuraufenthalt mindestens dauern?',
         answer:
-          'Die Behandlungsaufenthalte beginnen bei sieben Nächten, weil erst dann eine ärztlich geführte Serie sinnvoll ist; als fachliche Untergrenze einer Balneotherapie gelten mindestens zehn Anwendungen über mindestens zehn Tage. Kürzere Aufenthalte von zwei bis sechs Nächten gibt es als Erholungsformat mit einer Anwendung pro Nacht, aber ohne ärztliche Eingangsuntersuchung.',
+          'Die Mindestdauer hängt vom Hotel und vom Paket ab. Im üblichen Angebot der Marienbader Häuser beginnen die Behandlungsaufenthalte bei sieben Nächten, im Hotel Ensana Butterfly bereits bei fünf und der intensive Behandlungsaufenthalt bei sechs. Die längere Serie hat ihren Grund: Als fachliche Untergrenze einer Balneotherapie gelten mindestens zehn Anwendungen über mindestens zehn Tage. Kürzere Aufenthalte ab zwei Nächten gibt es als Erholungsformat mit einer Anwendung pro Nacht.',
       },
       {
         question: 'Kann ich mir die Anwendungen selbst aussuchen?',
@@ -561,6 +582,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         url: ENSANA_OFFERS,
         note: 'Buchungsseite des Betreibers mit den aktuellen Bezeichnungen der Pakete, der Zahl der Anwendungen pro Nacht und den Preisen.',
       },
+      {
+        title: 'Hotel Ensana Butterfly — Angebot der Kuraufenthalte',
+        url: 'https://ensanahotels.com/cs/hotely/butterfly',
+        note: 'Seite des Betreibers zum Hotel, auf die sich die kürzere Mindestdauer stützt. Text auf Tschechisch.',
+      },
     ],
     related: [
       { label: 'Kur nach Diagnose', href: '/de/kur-bei' },
@@ -583,6 +609,8 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     commonBody:
       'A treatment stay includes accommodation with half board, the initial and final medical examination, the written final report, the prescribed procedures and the drinking cure at the mineral springs. The shorter relaxation stay is also available without a medical examination; in that case it is not a treatment stay but a wellness stay with individual procedures.',
     staysHeading: 'The packages compared',
+    staysNote:
+      'The durations given apply to the usual offer of the Marienbad houses. The minimum length depends on the hotel and the package: at the Ensana Butterfly, treatment stays start from five nights and the intensive treatment stay from six. Ask the operator for the current minimum at a particular house.',
     stays: [
       {
         name: 'Short relaxation stay',
@@ -591,14 +619,14 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         includes: [
           'Accommodation with half board, i.e. breakfast and dinner',
           'One procedure per night, from a fixed selection',
-          'No initial medical examination — which is why it is not a treatment stay',
+          'Usually no initial medical examination, and then it is not a treatment stay; at some houses, the Butterfly among them, the initial examination is part of every stay',
         ],
         forWhom:
           'For a long weekend or a first impression of the spa town, without a medical programme.',
       },
       {
         name: 'Intensive spa stay',
-        length: 'from 7 nights',
+        length: 'usually from 7 nights',
         treatments: '2 procedures per night',
         includes: [
           'Accommodation with half board',
@@ -611,7 +639,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Traditional spa stay',
-        length: 'from 7 nights',
+        length: 'usually from 7 nights',
         treatments: '3 procedures per night',
         includes: [
           'Accommodation with half board',
@@ -625,7 +653,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       },
       {
         name: 'Intensive treatment stay',
-        length: 'from 7 nights',
+        length: 'usually from 7 nights',
         treatments: '4 procedures per night',
         includes: [
           'Accommodation with half board',
@@ -661,7 +689,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
     ],
     labHeading: 'What the basic laboratory examination covers',
     labBody:
-      'A biochemical blood test covering blood sugar, cholesterol and other blood lipid values, liver values, kidney function and uric acid, plus a urine test. It is included in all stays of seven nights or more and serves the spa physician as the basis for the treatment plan.',
+      'A biochemical blood test covering blood sugar, cholesterol and other blood lipid values, liver values, kidney function and uric acid, plus a urine test. It is included in the treatment stays and serves the spa physician as the basis for the treatment plan.',
     superiorHeading: 'Programmes at the Nové Lázně house',
     superiorLead:
       'Beyond the spa packages, the Nové Lázně house offers four programmes that begin with a thorough diagnostic workup. All of them include the Medical Check-Up and build on it.',
@@ -707,7 +735,7 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
       {
         question: 'What is the minimum length of a spa stay?',
         answer:
-          'The treatment stays start at seven nights, because only from that point does a medically supervised series make sense; the recognised professional minimum for a balneotherapy course is at least ten procedures over at least ten days. Shorter stays of two to six nights are available as a relaxation format with one procedure per night, but without an initial medical examination.',
+          'The minimum length depends on the hotel and the package. In the usual offer of the Marienbad houses treatment stays start at seven nights, at the Ensana Butterfly from five and the intensive treatment stay from six. The longer series has its reason: the recognised professional minimum for a balneotherapy course is at least ten procedures over at least ten days. Shorter stays from two nights are available as a relaxation format with one procedure per night.',
       },
       {
         question: 'Can I choose the procedures myself?',
@@ -730,6 +758,11 @@ export const programmes: Partial<Record<Locale, ProgramsContent>> = {
         title: 'Ensana Health Spa Hotels — Marienbad, current packages and prices',
         url: ENSANA_OFFERS,
         note: 'Operator’s booking page with the current package names, the number of procedures per night and prices.',
+      },
+      {
+        title: 'Hotel Ensana Butterfly — spa stay offer',
+        url: 'https://ensanahotels.com/cs/hotely/butterfly',
+        note: "The operator's page for the hotel, the basis for the shorter minimum length. Text in Czech.",
       },
     ],
     related: [
